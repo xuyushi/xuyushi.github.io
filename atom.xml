@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com//"/>
-  <updated>2015-06-24T15:06:01.000Z</updated>
+  <updated>2015-06-24T15:10:49.000Z</updated>
   <id>http://yoursite.com//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2015/06/24/git_study/"/>
     <id>http://yoursite.com/2015/06/24/git_study/</id>
     <published>2015-06-24T14:22:00.000Z</published>
-    <updated>2015-06-24T15:06:01.000Z</updated>
+    <updated>2015-06-24T15:10:49.000Z</updated>
     <content type="html"><![CDATA[<h1 id="Git_总结">Git 总结</h1><h2 id="创建版本">创建版本</h2><h3 id="创建本地仓库">创建本地仓库</h3><p><code>git init</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">提示：Initialized empty Git repository in</span><br><span class="line">/Users/xuyushi/Downloads/.git/`</span><br></pre></td></tr></table></figure></p>
 <p>会在本地生成 .git 文件</p>
 <h3 id="创建工作区文件">创建工作区文件</h3><p><code>vim test.txt</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">内容为:<span class="keyword">this</span> is a test</span><br></pre></td></tr></table></figure></p>
@@ -105,6 +105,7 @@ index <span class="number">90</span>bfcb5..<span class="number">6</span>fb5b55 <
 </ul>
 </li>
 </ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEventMainThread</span><span class="params">(SecondEvent event)</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">    Log.d(<span class="string">"harvic"</span>, <span class="string">"onEventMainThread收到了消息："</span> + event.getMsg());  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">//SecondEvent接收函数二  </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEventBackgroundThread</span><span class="params">(SecondEvent event)</span></span>&#123;  </span><br><span class="line">    Log.d(<span class="string">"harvic"</span>, <span class="string">"onEventBackground收到了消息："</span> + event.getMsg());  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">//SecondEvent接收函数三  </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEventAsync</span><span class="params">(SecondEvent event)</span></span>&#123;  </span><br><span class="line">    Log.d(<span class="string">"harvic"</span>, <span class="string">"onEventAsync收到了消息："</span> + event.getMsg());  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </xmy166@gmail.com></xmy166@gmail.com>]]></content>
     <summary type="html">
     <![CDATA[git的入门]]>
