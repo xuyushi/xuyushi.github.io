@@ -1,0 +1,338 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Git 总结 | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="John Doe">
+    
+    <meta name="description" itemprop="description" content="git的入门">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/06/24/git_study/" title="Git 总结" itemprop="url">Git 总结</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="John Doe">John Doe</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-06-24T14:22:00.000Z" itemprop="datePublished">2015-06-24</time>
+    更新日期:<time datetime="2015-06-24T14:24:57.000Z" itemprop="dateModified">2015-06-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git_总结"><span class="toc-number">1.</span> <span class="toc-text">Git 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建版本"><span class="toc-number">1.1.</span> <span class="toc-text">创建版本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建本地仓库"><span class="toc-number">1.1.1.</span> <span class="toc-text">创建本地仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建工作区文件"><span class="toc-number">1.1.2.</span> <span class="toc-text">创建工作区文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加进_index"><span class="toc-number">1.1.3.</span> <span class="toc-text">添加进 index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加文件进git工程"><span class="toc-number">1.1.4.</span> <span class="toc-text">添加文件进git工程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版本回退"><span class="toc-number">1.2.</span> <span class="toc-text">版本回退</span></a></li></ol></li></ol>
+		</div>
+		
+		<h1 id="Git_总结">Git 总结</h1><h2 id="创建版本">创建版本</h2><h3 id="创建本地仓库">创建本地仓库</h3><p><code>git init</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">提示：Initialized empty Git repository in</span><br><span class="line">/Users/xuyushi/Downloads/.git/`</span><br></pre></td></tr></table></figure></p>
+<p>会在本地生成 .git 文件</p>
+<h3 id="创建工作区文件">创建工作区文件</h3><p><code>vim test.txt</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">内容为:<span class="keyword">this</span> is a test</span><br></pre></td></tr></table></figure></p>
+<h3 id="添加进_index">添加进 index</h3><p>使用<code>git status</code>查看git 工程状态<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to include in what will be committed)</span><br><span class="line"></span><br><span class="line">	test.<span class="function">txt</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files <span class="title">present</span> <span class="params">(use <span class="string">"git add"</span> to track)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>发现 test.txt为 <code>Untracked</code>状态</p>
+<p>使用<code>git add test.txt</code>将test.txt添加进 index<br>执行完不提示<br>再次使用<code>git status</code> 查看状态<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">"git rm --cached &lt;file&gt;..."</span> to unstage)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">new</span> file:   test.txt</span><br></pre></td></tr></table></figure></p>
+<p>发现 test.txt为 <code>Changes to be committed:</code>状态</p>
+<h3 id="添加文件进git工程">添加文件进git工程</h3><p><code>git commit</code><br>出现vim界面，添加commit备注<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">init the project</span><br><span class="line"># Please enter the commit message <span class="keyword">for</span> your changes. Lines starting</span><br><span class="line"># with <span class="string">'#'</span> will be ignored, and an empty message aborts the commit.</span><br><span class="line"># On branch master</span><br><span class="line">#</span><br><span class="line"># Initial commit</span><br><span class="line">#</span><br><span class="line"># Changes to be committed:</span><br><span class="line">#   <span class="keyword">new</span> file:   test.txt</span><br><span class="line">#</span><br></pre></td></tr></table></figure></p>
+<p>提示<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[master (root-commit) <span class="number">9</span>edc2b1] init the project</span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">1</span> insertion(+)</span><br><span class="line"> create mode <span class="number">100644</span> test.txt</span><br></pre></td></tr></table></figure></p>
+<p>再次使用<code>git status</code> 查看状态<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line">nothing to commit, working directory clean</span><br></pre></td></tr></table></figure></p>
+<h2 id="版本回退">版本回退</h2><p>修改<code>test.txt</code><br><code>vim test.txt</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span> is a test</span><br><span class="line">add something</span><br></pre></td></tr></table></figure></p>
+<p>使用<code>git diff</code>可以看到两次修改的不同</p>
+<blockquote>
+<p>git diff：是查看working tree与index file的差别的。<br>git diff —cached：是查看index file与commit的差别的。<br>git diff HEAD：是查看working tree和commit的差别的。（HEAD代表的是最近的一次commit的信息）</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/test.txt b/test.txt</span><br><span class="line">index <span class="number">90</span>bfcb5..<span class="number">6f</span>b5b55 <span class="number">100644</span></span><br><span class="line">--- a/test.txt</span><br><span class="line">+++ b/test.txt</span><br><span class="line">@@ -<span class="number">1</span> +<span class="number">1</span>,<span class="number">2</span> @@</span><br><span class="line"> <span class="keyword">this</span> is a test</span><br><span class="line">+add something</span><br></pre></td></tr></table></figure>
+<p>依次<br><code>git add .</code><br><code>git commit</code><br>使用<code>git log</code>可以看到两次commit的信息<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">commit 3621c62a5421df8a0b39effc2c9efa1d7e168ac8</span><br><span class="line">Author: xuyushi <span class="tag">&lt;<span class="title">xmy166@gmail.com</span>&gt;</span></span><br><span class="line">Date:   Tue Jun 23 19:42:07 2015 +0800</span><br><span class="line"></span><br><span class="line">    add something</span><br><span class="line"></span><br><span class="line">commit 9edc2b1f9037490e3b089def232028567154af23</span><br><span class="line">Author: xuyushi <span class="tag">&lt;<span class="title">xmy166@gmail.com</span>&gt;</span></span><br><span class="line">Date:   Tue Jun 23 19:05:12 2015 +0800</span><br><span class="line"></span><br><span class="line">    init the project</span><br></pre></td></tr></table></figure></p>
+<p>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，往上100个写成HEAD~100。</p>
+<p>回退到上个版本使用<br><code>git reset --hard HEAD^</code></p>
+<blockquote>
+<p>—hard 表示工作区和index区都被还原</p>
+</blockquote>
+<p>每次修改，如果不add到暂存区，那就不会加入到commit中<br>git add之后 git checkout — file可以丢弃工作区的修改：</p>
+<p>命令<code>git checkout -- test.txt</code>意思就是，test.txt文件在工作区的修改全部撤销，这里有两种情况：</p>
+<ol>
+<li>test.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</li>
+<li>一种是test.txt已经添加到暂存区后，又作了修改，此时工作区的文件被还原，但是index文件不会。<ul>
+<li>此时要 先<code>git reset HEAD file</code>把index还原，再<code>git checkout -- file</code></li>
+<li>或者 <code>git reset --hard HEAD^</code></li>
+</ul>
+</li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/git/">git</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2015/06/24/git_study/" data-title="Git 总结 | Hexo" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/06/24/hello-world/"  title="Hello World">
+ <strong>NEXT:</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git_总结"><span class="toc-number">1.</span> <span class="toc-text">Git 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建版本"><span class="toc-number">1.1.</span> <span class="toc-text">创建版本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建本地仓库"><span class="toc-number">1.1.1.</span> <span class="toc-text">创建本地仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建工作区文件"><span class="toc-number">1.1.2.</span> <span class="toc-text">创建工作区文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加进_index"><span class="toc-number">1.1.3.</span> <span class="toc-text">添加进 index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加文件进git工程"><span class="toc-number">1.1.4.</span> <span class="toc-text">添加文件进git工程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版本回退"><span class="toc-number">1.2.</span> <span class="toc-text">版本回退</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+			<li><a href="/categories/android/" title="android">android<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2015 
+		
+		<a href="http://yoursite.com" target="_blank" title="John Doe">John Doe</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
