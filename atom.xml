@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   
   <title><![CDATA[Xu Yushi Blog]]></title>
-  <subtitle><![CDATA[Email:xmy166@gmail.com]]></subtitle>
+  <subtitle><![CDATA[低调、务实、自驱、反思]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com//"/>
   <updated>2015-06-25T04:49:29.000Z</updated>
@@ -115,6 +115,27 @@ index <span class="number">90</span>bfcb5..<span class="number">6</span>fb5b55 <
       <category term="android" scheme="http://yoursite.com/tags/android/"/>
     
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Git 总结]]></title>
+    <link href="http://yoursite.com/2015/06/24/test/"/>
+    <id>http://yoursite.com/2015/06/24/test/</id>
+    <published>2015-06-24T14:22:00.000Z</published>
+    <updated>2015-06-25T05:58:05.000Z</updated>
+    <content type="html"><![CDATA[<p>this is suibi categories</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[git的入门]]>
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/tags/android/"/>
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
