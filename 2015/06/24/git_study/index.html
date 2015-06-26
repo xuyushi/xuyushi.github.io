@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/06/24/git_study/index.html">
 <meta property="og:site_name" content="Xu Yushi Blog">
 <meta property="og:description" content="git的入门">
-<meta property="og:updated_time" content="2015-06-25T04:49:29.000Z">
+<meta property="og:updated_time" content="2015-06-26T10:31:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 总结">
 <meta name="twitter:description" content="git的入门">
@@ -211,81 +211,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Git_总结">Git 总结</h1><h2 id="创建版本">创建版本</h2><h3 id="创建本地仓库">创建本地仓库</h3><p><code>git init</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">提示：Initialized empty Git repository in</span><br><span class="line">/Users/xuyushi/Downloads/.git/`</span><br></pre></td></tr></table></figure></p>
+        <h1 id="Git_总结">Git 总结</h1><h2 id="创建版本">创建版本</h2><h3 id="创建本地仓库">创建本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">提示：Initialized empty Git repository <span class="keyword">in</span></span><br><span class="line">/Users/xuyushi/Downloads/.git/`</span><br></pre></td></tr></table></figure>
 <p>会在本地生成 .git 文件</p>
-<h3 id="创建工作区文件">创建工作区文件</h3><p><code>vim test.txt</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">内容为:<span class="keyword">this</span> is a test</span><br></pre></td></tr></table></figure></p>
-<h3 id="添加进_index">添加进 index</h3><p>使用<code>git status</code>查看git 工程状态</p>
-<pre><code>On branch master
-
-Initial <span class="operator"><span class="keyword">commit</span>
-
-Untracked files:
-  (<span class="keyword">use</span> <span class="string">"git add &lt;file&gt;..."</span> <span class="keyword">to</span> include <span class="keyword">in</span> what will be committed)
-
-    test.txt
-
-nothing added <span class="keyword">to</span> <span class="keyword">commit</span> but untracked files present (<span class="keyword">use</span> <span class="string">"git add"</span> <span class="keyword">to</span> track)</span>
-</code></pre><p>发现 test.txt为 <code>Untracked</code>状态</p>
-<p>使用<code>git add test.txt</code>将test.txt添加进 index<br>执行完不提示<br>再次使用<code>git status</code> 查看状态</p>
-<pre><code><span class="keyword">On</span> branch master
-
-Initial commit
-
-Changes <span class="keyword">to</span> be committed:
-  (<span class="keyword">use</span> <span class="string">"git rm --cached &lt;file&gt;..."</span> <span class="keyword">to</span> unstage)
-
-    <span class="keyword">new</span> <span class="keyword">file</span>:   test.txt
-</code></pre><p>发现 test.txt为 <code>Changes to be committed:</code>状态</p>
-<h3 id="添加文件进git工程">添加文件进git工程</h3><p><code>git commit</code><br>出现vim界面，添加commit备注</p>
-<p>init the project</p>
-<pre><code><span class="preprocessor"># Please enter the commit message for your changes. Lines starting</span>
-<span class="preprocessor"># with '#' will be ignored, and an empty message aborts the commit.</span>
-<span class="preprocessor"># On branch master</span>
-<span class="preprocessor">#</span>
-<span class="preprocessor"># Initial commit</span>
-<span class="preprocessor">#</span>
-<span class="preprocessor"># Changes to be committed:</span>
-<span class="preprocessor">#   new file:   test.txt</span>
-<span class="preprocessor">#</span>
-</code></pre><p>提示</p>
-<pre><code><span class="list">[<span class="keyword">master</span> <span class="list">(<span class="keyword">root-commit</span>)</span> <span class="number">9</span>edc2b1] init the project
- <span class="number">1</span> file changed, <span class="number">1</span> insertion<span class="list">(<span class="keyword"><span class="built_in">+</span></span>)</span>
- create mode <span class="number">100644</span> test.txt</span>
-</code></pre><p>再次使用<code>git status</code> 查看状态</p>
-<pre><code><span class="keyword">On</span> branch master
-<span class="literal">nothing</span> <span class="keyword">to</span> commit, working directory clean
-</code></pre><h2 id="版本回退">版本回退</h2><p>修改<code>test.txt</code><br><code>vim test.txt</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span> is a test</span><br><span class="line">add something</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建工作区文件">创建工作区文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">内容为:this is a <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<h3 id="添加进_index">添加进 index</h3><p>使用<code>git status</code>查看git 工程状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to include <span class="keyword">in</span> what will be committed)</span><br><span class="line"></span><br><span class="line">	test.txt</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use <span class="string">"git add"</span> to track)</span><br></pre></td></tr></table></figure></p>
+<p>发现 test.txt为 <code>Untracked</code>状态</p>
+<p>使用<code>git add test.txt</code>将test.txt添加进 index<br>执行完不提示<br>再次使用<code>git status</code> 查看状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">"git rm --cached &lt;file&gt;..."</span> to unstage)</span><br><span class="line"></span><br><span class="line">	new file:   test.txt</span><br></pre></td></tr></table></figure></p>
+<p>发现 test.txt为 <code>Changes to be committed:</code>状态</p>
+<h3 id="添加文件进git工程">添加文件进git工程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit</span><br></pre></td></tr></table></figure>
+<p>出现vim界面，添加commit备注<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">init the project</span><br><span class="line"><span class="comment"># Please enter the commit message for your changes. Lines starting</span></span><br><span class="line"><span class="comment"># with '#' will be ignored, and an empty message aborts the commit.</span></span><br><span class="line"><span class="comment"># On branch master</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Initial commit</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Changes to be committed:</span></span><br><span class="line"><span class="comment">#   new file:   test.txt</span></span><br><span class="line"><span class="comment">#</span></span><br></pre></td></tr></table></figure></p>
+<p>提示<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[master (root-commit) <span class="number">9</span>edc2b1] init the project</span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">1</span> insertion(+)</span><br><span class="line"> create mode <span class="number">100644</span> test.txt</span><br></pre></td></tr></table></figure></p>
+<p>再次使用<code>git status</code> 查看状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line">nothing to commit, working directory clean</span><br></pre></td></tr></table></figure></p>
+<h2 id="版本回退">版本回退</h2><p>修改<code>test.txt</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.txt</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this is a <span class="built_in">test</span></span><br><span class="line">add something</span><br></pre></td></tr></table></figure>
 <p>使用<code>git diff</code>可以看到两次修改的不同</p>
 <blockquote>
 <p>git diff：是查看working tree与index file的差别的。<br>git diff —cached：是查看index file与commit的差别的。<br>git diff HEAD：是查看working tree和commit的差别的。（HEAD代表的是最近的一次commit的信息）</p>
 </blockquote>
-<pre><code>diff --git a/test<span class="class">.txt</span> b/test<span class="class">.txt</span>
-index <span class="number">90</span>bfcb5..<span class="number">6</span>fb5b55 <span class="number">100644</span>
---- a/test<span class="class">.txt</span>
-+++ b/test<span class="class">.txt</span>
-@@ -<span class="number">1</span> +<span class="number">1</span>,<span class="number">2</span> @@
- this is <span class="tag">a</span> test
-+add something
-</code></pre><p>依次<br><code>git add .</code><br><code>git commit</code><br>使用<code>git log</code>可以看到两次commit的信息</p>
-
-	commit 3621c62a5421df8a0b39effc2c9efa1d7e168ac8
-	Author: xuyushi <xmy166@gmail.com>
-	Date:   Tue Jun 23 19:42:07 2015 +0800
-
-		add something
-
-	commit 9edc2b1f9037490e3b089def232028567154af23
-	Author: xuyushi <xmy166@gmail.com>
-	Date:   Tue Jun 23 19:05:12 2015 +0800
-
-		init the project
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/test.txt b/test.txt</span><br><span class="line">index <span class="number">90</span>bfcb5..<span class="number">6</span>fb5b55 <span class="number">100644</span></span><br><span class="line">--- a/test.txt</span><br><span class="line">+++ b/test.txt</span><br><span class="line">@@ -<span class="number">1</span> +<span class="number">1</span>,<span class="number">2</span> @@</span><br><span class="line"> this is a <span class="built_in">test</span></span><br><span class="line">+add something</span><br></pre></td></tr></table></figure>
+<p>依次<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit </span><br><span class="line">使用`git <span class="built_in">log</span>`可以看到两次commit的信息</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">commit <span class="number">3621</span>c62a5421df8a0b39effc2c9efa1d7e168ac8</span><br><span class="line">Author: xuyushi &lt;xmy166@gmail.com&gt;</span><br><span class="line">Date:   Tue Jun <span class="number">23</span> <span class="number">19</span>:<span class="number">42</span>:<span class="number">07</span> <span class="number">2015</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">	add something</span><br><span class="line"></span><br><span class="line">commit <span class="number">9</span>edc2b1f9037490e3b089def232028567154af23</span><br><span class="line">Author: xuyushi &lt;xmy166@gmail.com&gt;</span><br><span class="line">Date:   Tue Jun <span class="number">23</span> <span class="number">19</span>:<span class="number">05</span>:<span class="number">12</span> <span class="number">2015</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">		init the project</span><br></pre></td></tr></table></figure></p>
 <p>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，往上100个写成HEAD~100。</p>
-<p>回退到上个版本使用<br><code>git reset --hard HEAD^</code></p>
+<p>回退到上个版本使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>—hard 表示工作区和index区都被还原</p>
 </blockquote>
-<p>每次修改，如果不add到暂存区，那就不会加入到commit中<br>git add之后 git checkout — file可以丢弃工作区的修改：</p>
+<p>每次修改，如果不add到暂存区，那就不会加入到commit中<br><code>git add</code>之后<code>git checkout -- file</code>可以丢弃工作区的修改：</p>
 <p>命令<code>git checkout -- test.txt</code>意思就是，test.txt文件在工作区的修改全部撤销，这里有两种情况：</p>
 <ol>
 <li>test.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</li>
@@ -295,8 +247,7 @@ index <span class="number">90</span>bfcb5..<span class="number">6</span>fb5b55 <
 </ul>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEventMainThread</span><span class="params">(SecondEvent event)</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">    Log.d(<span class="string">"harvic"</span>, <span class="string">"onEventMainThread收到了消息："</span> + event.getMsg());  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">//SecondEvent接收函数二  </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEventBackgroundThread</span><span class="params">(SecondEvent event)</span></span>&#123;  </span><br><span class="line">    Log.d(<span class="string">"harvic"</span>, <span class="string">"onEventBackground收到了消息："</span> + event.getMsg());  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">//SecondEvent接收函数三  </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEventAsync</span><span class="params">(SecondEvent event)</span></span>&#123;  </span><br><span class="line">    Log.d(<span class="string">"harvic"</span>, <span class="string">"onEventAsync收到了消息："</span> + event.getMsg());  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</xmy166@gmail.com></xmy166@gmail.com>
+
       
     </div>
     
