@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>loader 总结 | Xu Yushi Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在listfragment使用自定义的adpter现实数据库的数据，当数据库的数据发生变化时，自动刷新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="loader 总结">
+<meta property="og:url" content="http://yoursite.com/2015/07/05/loader 总结/index.html">
+<meta property="og:site_name" content="Xu Yushi Blog">
+<meta property="og:description" content="在listfragment使用自定义的adpter现实数据库的数据，当数据库的数据发生变化时，自动刷新">
+<meta property="og:image" content="https://raw.githubusercontent.com/xuyushi/Blog_img/master/loader.gif">
+<meta property="og:updated_time" content="2015-07-05T07:59:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="loader 总结">
+<meta name="twitter:description" content="在listfragment使用自定义的adpter现实数据库的数据，当数据库的数据发生变化时，自动刷新">
+  
+    <link rel="alternative" href="/atom.xml" title="Xu Yushi Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Xu Yushi</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">低调、务实、自驱、反思</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/android">Andronid</a></li>
+				        
+							<li><a href="/categories/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/xuyushi/" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="/xmy166@gmail.com" title="mail">mail</a>
+					        
+								<a class="linkedin" target="_blank" href="http://www.linkedin.com/profile/view?id=391535324" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Gson/" style="font-size: 10px;">Gson</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/bluetooth/" style="font-size: 10px;">bluetooth</a> <a href="/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/greendao/" style="font-size: 16.67px;">greendao</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Xu Yushi</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Xu Yushi</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">低调、务实、自驱、反思</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/android">Andronid</a></li>
+		        
+					<li><a href="/categories/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/xuyushi/" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="/xmy166@gmail.com" title="mail">mail</a>
+			        
+						<a class="linkedin" target="_blank" href="http://www.linkedin.com/profile/view?id=391535324" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-loader 总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/05/loader 总结/" class="article-date">
+  	<time datetime="2015-07-05T07:57:00.000Z" itemprop="datePublished">2015-07-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      loader 总结
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/greendao/">greendao</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/loader/">loader</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/android/">android</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h2 id="本文实现的功能">本文实现的功能</h2><p>在listfragment使用自定义的adpter现实数据库的数据，当数据库的数据发生变化时，自动刷新</p>
+<p>效果如下<br><img src="https://raw.githubusercontent.com/xuyushi/Blog_img/master/loader.gif" alt="loader"></p>
+<h2 id="用到的知识点">用到的知识点</h2><ol>
+<li>listfragment</li>
+<li><a href="http://xuyushi.github.io/2015/06/29/GreenDao学习/" target="_blank" rel="external">GreenDao</a></li>
+<li>自定义loader</li>
+<li>自定义adapter</li>
+<li>loaderManger</li>
+<li>contentobserver监听数据库</li>
+</ol>
+<h2 id="实现过程">实现过程</h2><h3 id="数据库的简历">数据库的简历</h3><p>不做过多分析，详见<a href="http://xuyushi.github.io/2015/06/29/GreenDao学习/" target="_blank" rel="external">GreenDao</a><br>建立了student表，包括</p>
+<ol>
+<li>id</li>
+<li>name</li>
+<li>age</li>
+</ol>
+<p>在DBHleper中实现了以下增加，删除的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addToStudentTable</span><span class="params">(de.greenrobot.daoexample.Student student)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == Student) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == student) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Student.insert(student);</span><br><span class="line">    <span class="keyword">if</span> (mObserver!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        mObserver.onChange(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">getStudent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Student.loadAll();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clearStudent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Student.deleteAll();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在MainActivity的onCreat方法初始化数据库<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    DBHelper.getInstance(<span class="keyword">this</span>).clearStudent();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i &lt; STUDENT_NUM;i++) &#123;</span><br><span class="line">        student = <span class="keyword">new</span> Student();</span><br><span class="line">        student.setName(<span class="string">"testname"</span>+i);</span><br><span class="line">        student.setAge(<span class="number">10</span>+i);</span><br><span class="line">        DBHelper.getInstance(<span class="keyword">this</span>).addToStudentTable(student);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在主界面中增加一个按钮，用来增加数据库，用来观测loader是否刷新List<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add_sth</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    student = <span class="keyword">new</span> Student();</span><br><span class="line">    student.setName(<span class="string">"createdByButton"</span>);</span><br><span class="line">    student.setAge(<span class="number">100</span>);</span><br><span class="line">    DBHelper.getInstance(<span class="keyword">this</span>).addToStudentTable(student);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="实现自定义adapter">实现自定义adapter</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentAdapter</span> <span class="keyword">extends</span> <span class="title">BaseAdapter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mresourceId; <span class="comment">//对应的xml布局文件，也可以不传出来，在getView中写死。</span></span><br><span class="line">    <span class="keyword">private</span> Context mcontext;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Student&gt; mdata;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StudentAdapter</span><span class="params">(Context context, <span class="keyword">int</span> resourceId, List&lt;Student&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        mresourceId = resourceId;</span><br><span class="line">        mcontext = context;</span><br><span class="line">        mdata = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mdata.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mdata.get(position);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getItemId</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> position;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//convertView用于将之前加载好的view缓存</span></span><br><span class="line">        ViewHolder holder = <span class="keyword">null</span>;</span><br><span class="line">        View view;</span><br><span class="line">        Student student = (Student) getItem(position);</span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</span><br><span class="line">            holder = <span class="keyword">new</span> ViewHolder();</span><br><span class="line"></span><br><span class="line">            view = LayoutInflater.from(mcontext).inflate(mresourceId, <span class="keyword">null</span>);</span><br><span class="line">            holder.id = (TextView) view.findViewById(R.id.id);</span><br><span class="line">            holder.name = (TextView) view.findViewById(R.id.name);</span><br><span class="line">            holder.age = (TextView) view.findViewById(R.id.age);</span><br><span class="line">            view.setTag(holder);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            view = convertView;</span><br><span class="line">            holder = (ViewHolder) view.getTag();</span><br><span class="line">        &#125;</span><br><span class="line">        holder.id.setText(<span class="string">"id"</span> + student.getId().toString());</span><br><span class="line">        holder.name.setText(<span class="string">"name"</span> + student.getName());</span><br><span class="line">        holder.age.setText(<span class="string">"age"</span> + student.getAge());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        TextView id;</span><br><span class="line">        TextView name;</span><br><span class="line">        TextView age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用holder可以大大加快程序效率，避免重复加载。</p>
+<h3 id="自定义loader">自定义loader</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.xuyushi.loadertest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.AsyncTaskLoader;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.content.Loader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> de.greenrobot.DBHelper;</span><br><span class="line"><span class="keyword">import</span> de.greenrobot.daoexample.Student;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 15/7/5.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentLoader</span> <span class="keyword">extends</span> <span class="title">AsyncTaskLoader</span>&lt;<span class="title">List</span>&lt;<span class="title">Student</span>&gt;&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Student&gt; mdata;</span><br><span class="line">    <span class="keyword">final</span> ForceLoadContentObserver mObserver ;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StudentLoader</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">        mObserver = <span class="keyword">new</span> ForceLoadContentObserver();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">loadInBackground</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">            mdata =  DBHelper.getInstance(getContext()).getStudent();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mdata;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deliverResult</span><span class="params">(List&lt;Student&gt; data)</span> </span>&#123;</span><br><span class="line">        mdata = data;</span><br><span class="line">        <span class="keyword">if</span> (isStarted()) &#123;</span><br><span class="line">            <span class="keyword">super</span>.deliverResult(data);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStartLoading</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStartLoading();</span><br><span class="line">        <span class="keyword">if</span> (mdata != <span class="keyword">null</span>) &#123;</span><br><span class="line">            deliverResult(mdata);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (mdata == <span class="keyword">null</span>) &#123;</span><br><span class="line">            forceLoad();</span><br><span class="line">        &#125;</span><br><span class="line">        DBHelper.getInstance(getContext()).registerObserver(mObserver);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCanceled</span><span class="params">(List&lt;Student&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCanceled(data);</span><br><span class="line">        cancelLoad();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onReset</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onReset();</span><br><span class="line">        onStopLoading();</span><br><span class="line">        <span class="keyword">if</span> (mdata != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//释放资源</span></span><br><span class="line">            mdata = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>onStartLoading：注册一些监听器到loader上，并且执行一次forceLoad(); 否则loader不会开始工作</li>
+<li>loadInBackground：加载数据并且返回，其实这个数据就返回到了回调函数中LoaderManager的onLoadFinished方法第二个data参数</li>
+<li>onStopLoading：停止加载数据，但不要停止监听也不要释放数据，就可以随时重启loader</li>
+<li>onReset：先确保已经停止加载数据了，然后释放掉监听器并设为null</li>
+<li>onCanceled： 在这里可以释放资源，如果是list就不需要做什么了，但是象cursor或者打开了什么文件就应该关闭一下</li>
+</ul>
+<h3 id="fragment">fragment</h3><p>继承fragmentlist ，并实现 LoaderManager.LoaderCallbacks方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 15/7/5.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fragment1</span> <span class="keyword">extends</span> <span class="title">ListFragment</span> <span class="keyword">implements</span></span><br><span class="line">        <span class="title">LoaderManager</span>.<span class="title">LoaderCallbacks</span>&lt;<span class="title">List</span>&lt;<span class="title">Student</span>&gt;&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> StudentAdapter mAdapter;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Student&gt; mStudents;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater,</span><br><span class="line">                             ViewGroup container, Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> inflater.inflate(R.layout.fragment1, container, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        <span class="comment">//在fragment中获取context的方法getActivity().getApplicationContext()</span></span><br><span class="line">        <span class="comment">//设置list的Adapter</span></span><br><span class="line"><span class="comment">//        setListAdapter(new StudentAdapter(getActivity().getApplicationContext(),</span></span><br><span class="line"><span class="comment">//                R.layout.student_adpter,</span></span><br><span class="line"><span class="comment">//                DBHelper.getInstance(getActivity().getApplicationContext()).getStudent()));</span></span><br><span class="line">        mStudents = DBHelper.getInstance(getActivity().getApplicationContext()).getStudent();</span><br><span class="line">        mAdapter = <span class="keyword">new</span> StudentAdapter(getActivity().getApplicationContext(),</span><br><span class="line">                R.layout.student_adpter,</span><br><span class="line">                mStudents);</span><br><span class="line">        setListAdapter(mAdapter);</span><br><span class="line">        getLoaderManager().initLoader(<span class="number">2</span>, <span class="keyword">null</span>, <span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onListItemClick</span><span class="params">(ListView parent, View v,</span><br><span class="line">                                <span class="keyword">int</span> position, <span class="keyword">long</span> id)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        Toast.makeText(getActivity(),</span></span><br><span class="line"><span class="comment">//                "You have selected " + presidents[position],</span></span><br><span class="line"><span class="comment">//                Toast.LENGTH_SHORT).show();</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//回调函数</span></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Loader&lt;List&lt;Student&gt;&gt; onCreateLoader(<span class="keyword">int</span> id, Bundle args) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StudentLoader(getActivity().getApplicationContext());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoadFinished</span><span class="params">(Loader&lt;List&lt;Student&gt;&gt; loader, List&lt;Student&gt; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != mAdapter) &#123;</span><br><span class="line">            mStudents.clear();</span><br><span class="line">            mStudents.addAll(DBHelper.getInstance(getActivity().getApplicationContext()).getStudent());</span><br><span class="line">            mAdapter.notifyDataSetChanged();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoaderReset</span><span class="params">(Loader&lt;List&lt;Student&gt;&gt; loader)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>onLoadFinished:中的第二个参数，即loader在doinbackfround的返回值</li>
+</ul>
+<blockquote>
+<p>注：在调试中发现虽然 mStudents 的数据刷新了，但是直接调用 mAdapter.notifyDataSetChanged();并不能刷新界面。<br>原因是:mAdapter会通过mStudents获取数据库中的内容。但是实际上可能是，在调用super(MyActivity.this, R.layout.item, usersList)时mAdapter保存了指向原数据库的引用，在调用query函数之后，mstudent指向了一个新的List（List b）。但是在调用notifyDataSetChanged()时，mAdapter会跟据保存的引用（即指向List a的引用）去更新，因此当然还是原来的结果，不会进行更新。</p>
+</blockquote>
+<p>所以有以下修改<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mStudents.clear();           mStudents.addAll(DBHelper.getInstance(getActivity().getApplicationContext()).getStudent());</span><br><span class="line">            mAdapter.notifyDataSetChanged();</span><br></pre></td></tr></table></figure></p>
+<h3 id="contentobserver监听数据库">contentobserver监听数据库</h3><p>通过contentobserver可以实时的更新数据库中的信息，无需去轮询。</p>
+<h4 id="在StudentLoader中注册contentobserver">在StudentLoader中注册contentobserver</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStartLoading</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onStartLoading();</span><br><span class="line">    <span class="keyword">if</span> (mdata != <span class="keyword">null</span>) &#123;</span><br><span class="line">        deliverResult(mdata);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (mdata == <span class="keyword">null</span>) &#123;</span><br><span class="line">        forceLoad();</span><br><span class="line">    &#125;</span><br><span class="line">    DBHelper.getInstance(getContext()).registerObserver(mObserver);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="DBHelper中">DBHelper中</h4><h5 id="定义mObserver">定义mObserver</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Loader.ForceLoadContentObserver mObserver;</span><br></pre></td></tr></table></figure>
+<h5 id="实现注册函数registerObserver">实现注册函数registerObserver</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerObserver</span><span class="params">(Loader&lt;List&lt;Student&gt;&gt;.ForceLoadContentObserver Observer)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.mObserver = Observer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>即把变量取出</p>
+<h5 id="在数据库改变的地方发出通知">在数据库改变的地方发出通知</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addToStudentTable</span><span class="params">(de.greenrobot.daoexample.Student student)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == Student) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == student) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Student.insert(student);</span><br><span class="line">    <span class="keyword">if</span> (mObserver!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        mObserver.onChange(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用<code>mObserver.onChange(true);</code>发出通知</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/07/05/使用命令行查看android sqlite数据库/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用命令行查看android sqlite数据库</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="loader 总结" data-title="loader 总结" data-url="http://yoursite.com/2015/07/05/loader 总结/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xuyushi"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = '/js/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Xu Yushi
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
