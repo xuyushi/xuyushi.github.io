@@ -5,7 +5,7 @@
   <subtitle><![CDATA[低调、务实、自驱、反思]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com//"/>
-  <updated>2015-08-02T08:07:41.000Z</updated>
+  <updated>2015-08-09T13:31:05.000Z</updated>
   <id>http://yoursite.com//</id>
   
   <author>
@@ -14,6 +14,121 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Android View 小结]]></title>
+    <link href="http://yoursite.com/2015/08/09/Android%20View%20%E5%B0%8F%E7%BB%93/"/>
+    <id>http://yoursite.com/2015/08/09/Android View 小结/</id>
+    <published>2015-08-09T13:31:05.000Z</published>
+    <updated>2015-08-09T13:31:05.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="Android_View_小结">Android View 小结</h1><h2 id="LayoutInflater分析">LayoutInflater分析</h2><p>功能：加载布局的</p>
+<p>Activity中调用setContentView()方法也是调用LayoutInflater()完成加载布局的</p>
+<h3 id="使用步骤">使用步骤</h3><p>-获取LayoutInflater的实例</p>
+<p>法1:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LayoutInflater layoutInflater = LayoutInflater.from(context);</span><br></pre></td></tr></table></figure>
+<p>法2:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LayoutInflater layoutInflater = (LayoutInflater) context  </span><br><span class="line">        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);</span><br></pre></td></tr></table></figure>
+<p>-使用inflate()方法加载布局</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">layoutInflater.inflate(resourceId, root);</span><br></pre></td></tr></table></figure>
+<p>参数1:需要加载的布局Id</p>
+<p>参数2:是指给该布局的外部再嵌套一层父布局，如果不需要就直接传null。这样就成功成功创建了一个布局的实例，之后再将它添加到指定的位置就可以显示出来了。</p>
+<h3 id="举例">举例</h3><h4 id="定义一个button_layout-xml">定义一个button_layout.xml</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">Button</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:text</span>=<span class="value">"button"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">Button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="MainActivity中">MainActivity中</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    LayoutInflater layoutInflater = LayoutInflater.from(<span class="keyword">this</span>);</span><br><span class="line">    mainLayout = (LinearLayout) findViewById(R.id.activity_main);</span><br><span class="line">    View buttonLayout = layoutInflater.inflate(R.layout.bytton_layout, <span class="keyword">null</span>);</span><br><span class="line">    mainLayout.addView(buttonLayout);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时即可将<code>button_layout.xml</code>加载进来</p>
+<p>测试若想调整<code>button_layout.xml</code>的大小，修改<code>android:layout_width</code>是没有效果的，必须将button_layout.xml 放入一个layout中，跳转layout的大小来。</p>
+<p>而setContentView()方法中的子控件可以调整大小是因为，Android会自动在布局文件的最外层再嵌套一个FrameLayout，所以layout_width和layout_height属性才会有效果。</p>
+<h3 id="分析源码">分析源码</h3><p>View inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot):pull解析xml</p>
+<pre><code>-<span class="ruby">&gt;<span class="constant">View</span> temp = createViewFromTag(name, attrs); 根据节点名来创建<span class="constant">View</span>对象的
+</span>
+    -<span class="ruby">&gt;createView() 创建view实例并且返回
+</span>
+-<span class="ruby">&gt;rInflate()循环遍历这个根布局下的子元素
+</span>
+    -<span class="ruby">&gt; rInflate()递归调用，查找这个<span class="constant">View</span>下的子元素，每次递归完成后则将这个<span class="constant">View</span>添加到父布局当中</span>
+</code></pre><h2 id="View的绘制过程">View的绘制过程</h2><h3 id="onMeasure()">onMeasure()</h3><p>功能：测量视图的大小的</p>
+<p>View系统的绘制流程会从ViewRoot的performTraversals()方法中开始，在其内部调用View的measure()方法。measure()方法接收两个参数，widthMeasureSpec和heightMeasureSpec，这两个值分别用于确定视图的宽度和高度的规格和大小。</p>
+<p>MeasureSpec的值由specSize和specMode共同组成的，其中specSize记录的是大小，specMode记录的是规格。specMode一共有三种类型，如下所示：</p>
+<p>-EXACTLY</p>
+<p>表示父视图希望子视图的大小应该是由specSize的值来决定的，系统默认会按照这个规则来设置子视图的大小，开发人员当然也可以按照自己的意愿设置成任意的大小。</p>
+<p>-AT_MOST</p>
+<p>表示子视图最多只能是specSize中指定的大小，开发人员应该尽可能小得去设置这个视图，并且保证不会超过specSize。系统默认会按照这个规则来设置子视图的大小，开发人员当然也可以按照自己的意愿设置成任意的大小。</p>
+<p>-UNSPECIFIED</p>
+<p>表示开发人员可以将视图按照自己的意愿设置成任意的大小，没有任何限制。这种情况比较少见，不太会用到。</p>
+<p>widthMeasureSpec和heightMeasureSpec两个值都是由父视图经过计算后传递给子视图的，说明父视图会在一定程度上决定子视图的大小</p>
+<p>measure()这个方法是final的，因此我们无法在子类中去重写这个方法，说明Android是不允许我们改变View的measure框架的。然后在第9行调用了onMeasure()方法，这里才是真正去测量并设置View大小的地方，默认会调用getDefaultSize()方法来获取视图的大小，</p>
+<p>onMeasure()方法是可以重写的，也就是说，如果你不想使用系统默认的测量方式，可以按照自己的意愿进行定制，比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyView</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">    ......  </span><br><span class="line">      </span><br><span class="line">    <span class="annotation">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;  </span><br><span class="line">        setMeasuredDimension(<span class="number">200</span>, <span class="number">200</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样的话就把View默认的测量流程覆盖掉了，不管在布局文件中定义MyView这个视图的大小是多少，最终在界面上显示的大小都将会是200*200。</p>
+<p>需要注意的是，在setMeasuredDimension()方法调用之后，我们才能使用getMeasuredWidth()和getMeasuredHeight()来获取视图测量出的宽高，以此之前调用这两个方法得到的值都会是0。</p>
+<p>由此可见，视图大小的控制是由父视图、布局文件、以及视图本身共同完成的，父视图会提供给子视图参考的大小，而开发人员可以在XML文件中指定视图的大小，然后视图本身会对最终的大小进行拍板。</p>
+<h3 id="onLayout()">onLayout()</h3><p>ViewRoot的performTraversals()方法会在measure结束后继续执行，并调用View的layout()方法来执行此过程</p>
+<p>View中的onLayout()方法就是一个空方法，因为onLayout()过程是为了确定视图在布局中所在的位置，而这个操作应该是由布局来完成的，即父视图决定子视图的显示位置。</p>
+<h3 id="onDraw()">onDraw()</h3><p>ViewRoot中的代码会继续执行并创建出一个Canvas对象，然后调用View的draw()方法来执行具体的绘制工作。draw()方法内部的绘制过程总共可以分为六步，其中第二步和第五步在一般情况下很少用到，因此这里我们只分析简化后的绘制过程。代码如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Canvas canvas)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">if</span> (ViewDebug.TRACE_HIERARCHY) &#123;  </span><br><span class="line">        ViewDebug.trace(<span class="keyword">this</span>, ViewDebug.HierarchyTraceType.DRAW);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> privateFlags = mPrivateFlags;  </span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">boolean</span> dirtyOpaque = (privateFlags &amp; DIRTY_MASK) == DIRTY_OPAQUE &amp;&amp;  </span><br><span class="line">            (mAttachInfo == <span class="keyword">null</span> || !mAttachInfo.mIgnoreDirtyState);  </span><br><span class="line">    mPrivateFlags = (privateFlags &amp; ~DIRTY_MASK) | DRAWN;  </span><br><span class="line">    <span class="comment">// Step 1, draw the background, if needed  </span></span><br><span class="line">    <span class="keyword">int</span> saveCount;  </span><br><span class="line">    <span class="keyword">if</span> (!dirtyOpaque) &#123;  </span><br><span class="line">        <span class="keyword">final</span> Drawable background = mBGDrawable;  </span><br><span class="line">        <span class="keyword">if</span> (background != <span class="keyword">null</span>) &#123;  </span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> scrollX = mScrollX;  </span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> scrollY = mScrollY;  </span><br><span class="line">            <span class="keyword">if</span> (mBackgroundSizeChanged) &#123;  </span><br><span class="line">                background.setBounds(<span class="number">0</span>, <span class="number">0</span>,  mRight - mLeft, mBottom - mTop);  </span><br><span class="line">                mBackgroundSizeChanged = <span class="keyword">false</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">if</span> ((scrollX | scrollY) == <span class="number">0</span>) &#123;  </span><br><span class="line">                background.draw(canvas);  </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">                canvas.translate(scrollX, scrollY);  </span><br><span class="line">                background.draw(canvas);  </span><br><span class="line">                canvas.translate(-scrollX, -scrollY);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> viewFlags = mViewFlags;  </span><br><span class="line">    <span class="keyword">boolean</span> horizontalEdges = (viewFlags &amp; FADING_EDGE_HORIZONTAL) != <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">boolean</span> verticalEdges = (viewFlags &amp; FADING_EDGE_VERTICAL) != <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">if</span> (!verticalEdges &amp;&amp; !horizontalEdges) &#123;  </span><br><span class="line">        <span class="comment">// Step 3, draw the content  </span></span><br><span class="line">        <span class="keyword">if</span> (!dirtyOpaque) onDraw(canvas);  </span><br><span class="line">        <span class="comment">// Step 4, draw the children  </span></span><br><span class="line">        dispatchDraw(canvas);  </span><br><span class="line">        <span class="comment">// Step 6, draw decorations (scrollbars)  </span></span><br><span class="line">        onDrawScrollBars(canvas);  </span><br><span class="line">        <span class="comment">// we're done...  </span></span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="视图重绘">视图重绘</h2><p>调用视图的setVisibility()、setEnabled()、setSelected()等方法时都会导致视图重绘，而如果我们想要手动地强制让视图进行重绘，可以调用invalidate()方法来实现</p>
+<p>-&gt; invalidate()</p>
+<pre><code>-&gt;skipInvalidate<span class="literal">()</span>判断是否许重绘
+
+-&gt; invalidateChild<span class="literal">()</span>
+
+    -&gt; invalidateChildInParent<span class="literal">()</span>
+
+        -&gt; invalidateChild<span class="literal">()</span>
+
+            -&gt; scheduleTraversals<span class="literal">()</span>
+
+                -&gt; sendEmptyMessage(<span class="type">DO_TRAVERSAL</span>); 
+
+                    handler 接受
+
+                    - &gt; performTraversals<span class="literal">()</span> [onmeasure的入口]
+
+    不断地获取当前布局的父布局，并调用它的invalidateChildInParent<span class="literal">()</span>方法，当循环到最外层的根布局后，就会调用<span class="type">ViewRoot</span>的invalidateChildInParent<span class="literal">()</span>方法了，仅仅是去调用了invalidateChild<span class="literal">()</span>方法而
+</code></pre>]]></content>
+    <summary type="html">
+    <![CDATA[Android View 小结]]>
+    
+    </summary>
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="view" scheme="http://yoursite.com/tags/view/"/>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[listview的复用机制]]></title>
+    <link href="http://yoursite.com/2015/08/09/listview%E7%9A%84%E5%A4%8D%E7%94%A8%E6%9C%BA%E5%88%B6/"/>
+    <id>http://yoursite.com/2015/08/09/listview的复用机制/</id>
+    <published>2015-08-09T13:30:30.000Z</published>
+    <updated>2015-08-09T13:30:30.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="listview的复用机制">listview的复用机制</h1><p>listview 的item只会创建一定数量，只会创建的view会复用之前的</p>
+<p>测试代码如下</p>
+<p>自定义一个adapter</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 15/8/9.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">String</span> &gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MyAdapter"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> resourceId ;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyAdapter</span><span class="params">(Context context, <span class="keyword">int</span> textViewResourceId, List&lt;String&gt; objects)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, textViewResourceId, objects);</span><br><span class="line">        <span class="keyword">this</span>.resourceId = textViewResourceId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        ViewHolder myViews;</span><br><span class="line">        String string =  getItem(position);</span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</span><br><span class="line">            Log.d(TAG, <span class="string">"为空："</span> + position);</span><br><span class="line">            myViews = <span class="keyword">new</span> ViewHolder();</span><br><span class="line">            convertView = LayoutInflater.from(getContext()).inflate(resourceId, <span class="keyword">null</span>);</span><br><span class="line">            myViews.mNameText = (TextView) convertView.findViewById(R.id.list_item);</span><br><span class="line">            convertView.setTag(myViews);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            myViews = (ViewHolder) convertView.getTag();</span><br><span class="line">            Log.d(TAG, <span class="string">"不为空："</span> + position);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        myViews.mNameText.setText(string);</span><br><span class="line">        <span class="keyword">return</span> convertView;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> TextView mNameText;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到 随着listview 往下滚动，打印的都为”不为空”</p>
+<p>那么问题来了</p>
+<p>比如异步加载图片，最终造成界面显示的混乱</p>
+<p>举个例子：listview中有一个imageview，动态的加载网络图片</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span>  </span><br><span class="line">    </span>&#123;  </span><br><span class="line">        <span class="keyword">final</span> String url = getItem(position);  </span><br><span class="line">        View view;  </span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>)  </span><br><span class="line">        &#123;  </span><br><span class="line">            view = LayoutInflater.from(getContext()).inflate(R.layout.photo_layout, <span class="keyword">null</span>);  </span><br><span class="line">        &#125; <span class="keyword">else</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            view = convertView;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">final</span> ImageView photo = (ImageView) view.findViewById(R.id.photo);  </span><br><span class="line">        <span class="comment">// 给ImageView设置一个Tag，保证异步加载图片时不会乱序  </span></span><br><span class="line">        photo.setTag(url);  </span><br><span class="line">        <span class="keyword">new</span> LoadImgTask(photo).execute(url);  </span><br><span class="line">        <span class="keyword">return</span> view;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>当第一页的imageview开启异步线程加载图片时候，listview下翻，新的item会复用之前恩item，而且setTag会覆盖之前的tag。当第一屏的ItemView的图片下载完成后，如果直接findViewByTag然后设置图片会显示在第二屏上，就混乱了，所以一般在显示前都会判断photo.getTag().equals(url);确定了再显示。也就是说第一屏的ItemView图片下载完了，但是Tag被覆盖了，所以即使下载完成了，也不会有任何显示。这就解释了为什么我们防止混乱的代码需要那样去写。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[listview的复用机制]]>
+    
+    </summary>
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="listview" scheme="http://yoursite.com/tags/listview/"/>
+    
+      <category term="view" scheme="http://yoursite.com/tags/view/"/>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
@@ -563,52 +678,69 @@
     <link href="http://yoursite.com/2015/06/24/git%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2015/06/24/git总结/</id>
     <published>2015-06-24T14:22:00.000Z</published>
-    <updated>2015-06-28T03:57:22.000Z</updated>
-    <content type="html"><![CDATA[<h2 id="创建版本">创建版本</h2><h3 id="创建本地仓库">创建本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+    <updated>2015-08-09T13:30:48.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="description:_git的入门">description: git的入门</h2><h2 id="创建版本">创建版本</h2><h3 id="创建本地仓库">创建本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">提示：Initialized empty Git repository <span class="keyword">in</span></span><br><span class="line">/Users/xuyushi/Downloads/.git/`</span><br></pre></td></tr></table></figure>
 <p>会在本地生成 .git 文件</p>
 <h3 id="创建工作区文件">创建工作区文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.txt</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">内容为:this is a <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<h3 id="添加进_index">添加进 index</h3><p>使用<code>git status</code>查看git 工程状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to include <span class="keyword">in</span> what will be committed)</span><br><span class="line"></span><br><span class="line">	test.txt</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use <span class="string">"git add"</span> to track)</span><br></pre></td></tr></table></figure></p>
+<h3 id="添加进_index">添加进 index</h3><p>使用<code>git status</code>查看git 工程状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to include <span class="keyword">in</span> what will be committed)</span><br><span class="line"></span><br><span class="line">	test.txt</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use <span class="string">"git add"</span> to track)</span><br></pre></td></tr></table></figure>
 <p>发现 test.txt为 <code>Untracked</code>状态</p>
-<p>使用<code>git add test.txt</code>将test.txt添加进 index<br>执行完不提示<br>再次使用<code>git status</code> 查看状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">"git rm --cached &lt;file&gt;..."</span> to unstage)</span><br><span class="line"></span><br><span class="line">	new file:   test.txt</span><br></pre></td></tr></table></figure></p>
+<p>使用<code>git add test.txt</code>将test.txt添加进 index</p>
+<p>执行完不提示</p>
+<p>再次使用<code>git status</code> 查看状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">Initial commit</span><br><span class="line"></span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">"git rm --cached &lt;file&gt;..."</span> to unstage)</span><br><span class="line"></span><br><span class="line">	new file:   test.txt</span><br></pre></td></tr></table></figure>
 <p>发现 test.txt为 <code>Changes to be committed:</code>状态</p>
 <h3 id="添加文件进git工程">添加文件进git工程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit</span><br></pre></td></tr></table></figure>
-<p>出现vim界面，添加commit备注<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">init the project</span><br><span class="line"><span class="comment"># Please enter the commit message for your changes. Lines starting</span></span><br><span class="line"><span class="comment"># with '#' will be ignored, and an empty message aborts the commit.</span></span><br><span class="line"><span class="comment"># On branch master</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Initial commit</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Changes to be committed:</span></span><br><span class="line"><span class="comment">#   new file:   test.txt</span></span><br><span class="line"><span class="comment">#</span></span><br></pre></td></tr></table></figure></p>
-<p>提示<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[master (root-commit) <span class="number">9</span>edc2b1] init the project</span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">1</span> insertion(+)</span><br><span class="line"> create mode <span class="number">100644</span> test.txt</span><br></pre></td></tr></table></figure></p>
-<p>再次使用<code>git status</code> 查看状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line">nothing to commit, working directory clean</span><br></pre></td></tr></table></figure></p>
-<h2 id="版本回退">版本回退</h2><p>修改<code>test.txt</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.txt</span><br></pre></td></tr></table></figure></p>
+<p>出现vim界面，添加commit备注</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">init the project</span><br><span class="line"><span class="comment"># Please enter the commit message for your changes. Lines starting</span></span><br><span class="line"><span class="comment"># with '#' will be ignored, and an empty message aborts the commit.</span></span><br><span class="line"><span class="comment"># On branch master</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Initial commit</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Changes to be committed:</span></span><br><span class="line"><span class="comment">#   new file:   test.txt</span></span><br><span class="line"><span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p>提示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[master (root-commit) <span class="number">9</span>edc2b1] init the project</span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">1</span> insertion(+)</span><br><span class="line"> create mode <span class="number">100644</span> test.txt</span><br></pre></td></tr></table></figure>
+<p>再次使用<code>git status</code> 查看状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">On branch master</span><br><span class="line">nothing to commit, working directory clean</span><br></pre></td></tr></table></figure>
+<h2 id="版本回退">版本回退</h2><p>修改<code>test.txt</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim test.txt</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this is a <span class="built_in">test</span></span><br><span class="line">add something</span><br></pre></td></tr></table></figure>
 <p>使用<code>git diff</code>可以看到两次修改的不同</p>
-<blockquote>
-<p>git diff：是查看working tree与index file的差别的。<br>git diff —cached：是查看index file与commit的差别的。<br>git diff HEAD：是查看working tree和commit的差别的。（HEAD代表的是最近的一次commit的信息）</p>
-</blockquote>
+<p>&gt;</p>
+<p>git diff：是查看working tree与index file的差别的。</p>
+<p>git diff —cached：是查看index file与commit的差别的。</p>
+<p>git diff HEAD：是查看working tree和commit的差别的。（HEAD代表的是最近的一次commit的信息）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/test.txt b/test.txt</span><br><span class="line">index <span class="number">90</span>bfcb5..<span class="number">6</span>fb5b55 <span class="number">100644</span></span><br><span class="line">--- a/test.txt</span><br><span class="line">+++ b/test.txt</span><br><span class="line">@@ -<span class="number">1</span> +<span class="number">1</span>,<span class="number">2</span> @@</span><br><span class="line"> this is a <span class="built_in">test</span></span><br><span class="line">+add something</span><br></pre></td></tr></table></figure>
-<p>依次<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit </span><br><span class="line">使用`git <span class="built_in">log</span>`可以看到两次commit的信息</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">commit <span class="number">3621</span>c62a5421df8a0b39effc2c9efa1d7e168ac8</span><br><span class="line">Author: xuyushi &lt;xmy166@gmail.com&gt;</span><br><span class="line">Date:   Tue Jun <span class="number">23</span> <span class="number">19</span>:<span class="number">42</span>:<span class="number">07</span> <span class="number">2015</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">	add something</span><br><span class="line"></span><br><span class="line">commit <span class="number">9</span>edc2b1f9037490e3b089def232028567154af23</span><br><span class="line">Author: xuyushi &lt;xmy166@gmail.com&gt;</span><br><span class="line">Date:   Tue Jun <span class="number">23</span> <span class="number">19</span>:<span class="number">05</span>:<span class="number">12</span> <span class="number">2015</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">		init the project</span><br></pre></td></tr></table></figure></p>
+<p>依次</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit </span><br><span class="line">使用`git <span class="built_in">log</span>`可以看到两次commit的信息</span><br><span class="line"></span><br><span class="line">​```bash</span><br><span class="line">commit <span class="number">3621</span>c62a5421df8a0b39effc2c9efa1d7e168ac8</span><br><span class="line">Author: xuyushi &lt;xmy166@gmail.com&gt;</span><br><span class="line">Date:   Tue Jun <span class="number">23</span> <span class="number">19</span>:<span class="number">42</span>:<span class="number">07</span> <span class="number">2015</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">	add something</span><br><span class="line"></span><br><span class="line">commit <span class="number">9</span>edc2b1f9037490e3b089def232028567154af23</span><br><span class="line">Author: xuyushi &lt;xmy166@gmail.com&gt;</span><br><span class="line">Date:   Tue Jun <span class="number">23</span> <span class="number">19</span>:<span class="number">05</span>:<span class="number">12</span> <span class="number">2015</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">		init the project</span><br></pre></td></tr></table></figure>
 <p>在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，往上100个写成HEAD~100。</p>
-<p>回退到上个版本使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br></pre></td></tr></table></figure></p>
+<p>回退到上个版本使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>—hard 表示工作区和index区都被还原</p>
 </blockquote>
-<p>每次修改，如果不add到暂存区，那就不会加入到commit中<br><code>git add</code>之后<code>git checkout -- file</code>可以丢弃工作区的修改：</p>
+<p>每次修改，如果不add到暂存区，那就不会加入到commit中</p>
+<p><code>git add</code>之后<code>git checkout -- file</code>可以丢弃工作区的修改：</p>
 <p>命令<code>git checkout -- test.txt</code>意思就是，test.txt文件在工作区的修改全部撤销，这里有两种情况：</p>
-<ol>
-<li>test.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</li>
-<li>一种是test.txt已经添加到暂存区后，又作了修改，此时工作区的文件被还原，但是index文件不会。<ul>
-<li>此时要 先<code>git reset HEAD file</code>把index还原，再<code>git checkout -- file</code></li>
-<li>或者 <code>git reset --hard HEAD^</code></li>
-</ul>
-</li>
-</ol>
+<h2 id="分支管理">分支管理</h2><p>查看分支：git branch</p>
+<p>创建分支：git branch <name></name></p>
+<p>切换分支：git checkout <name></name></p>
+<p>创建+切换分支：git checkout -b <name></name></p>
+<p>合并某分支到当前分支：git merge <name></name></p>
+<p>删除分支：git branch -d <name></name></p>
+<p>如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除。</name></p>
+<h3 id="合并分支">合并分支</h3><p>在主分支上 git merge <branch></branch></p>
+<h2 id="储藏">储藏</h2><p>经常有这样的事情发生，当你正在进行项目中某一部分的工作，里面的东西处于一个比较杂乱的状态，而你想转到其他分支上进行一些工作。问题是，你不想提交进行了一半的工作，否则以后你无法回到这个工作点。解决这个问题的办法就是git stash命令。</p>
+<p>要查看现有的储藏，你可以使用 git stash list：</p>
+<p>存多个可以添加备注信息。</p>
+<p>git stash save “message”</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[git的入门]]>
-    
+    <![CDATA[<h2 id="description:_git的入门">description: git的入门</h2><h2 id="创建版本">创建版本</h2><h3 id="创建本地仓库">创建本地仓库</h3><figure class="highlight bash"><table]]>
     </summary>
     
       <category term="android" scheme="http://yoursite.com/tags/android/"/>
     
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
     
   </entry>
   
