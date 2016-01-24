@@ -178,8 +178,8 @@
     <article id="post-Android View 小结" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/09/Android View 小结/" class="article-date">
-  	<time datetime="2015-08-09T13:31:05.000Z" itemprop="datePublished">2015-08-09</time>
+      <a href="/2015/09/23/Android View 小结/" class="article-date">
+  	<time datetime="2015-09-23T06:06:53.000Z" itemprop="datePublished">2015-09-23</time>
 </a>
     </div>
   
@@ -192,7 +192,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/09/Android View 小结/">Android View 小结</a>
+      <a class="article-title" href="/2015/09/23/Android View 小结/">Android View 小结</a>
     </h1>
   
 
@@ -296,79 +296,11 @@
 
 
   
-    <article id="post-listview的复用机制" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/09/listview的复用机制/" class="article-date">
-  	<time datetime="2015-08-09T13:30:30.000Z" itemprop="datePublished">2015-08-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/09/listview的复用机制/">listview的复用机制</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="listview的复用机制">listview的复用机制</h1><p>listview 的item只会创建一定数量，只会创建的view会复用之前的</p>
-<p>测试代码如下</p>
-<p>自定义一个adapter</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 15/8/9.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">String</span> &gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MyAdapter"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> resourceId ;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyAdapter</span><span class="params">(Context context, <span class="keyword">int</span> textViewResourceId, List&lt;String&gt; objects)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, textViewResourceId, objects);</span><br><span class="line">        <span class="keyword">this</span>.resourceId = textViewResourceId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        ViewHolder myViews;</span><br><span class="line">        String string =  getItem(position);</span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</span><br><span class="line">            Log.d(TAG, <span class="string">"为空："</span> + position);</span><br><span class="line">            myViews = <span class="keyword">new</span> ViewHolder();</span><br><span class="line">            convertView = LayoutInflater.from(getContext()).inflate(resourceId, <span class="keyword">null</span>);</span><br><span class="line">            myViews.mNameText = (TextView) convertView.findViewById(R.id.list_item);</span><br><span class="line">            convertView.setTag(myViews);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            myViews = (ViewHolder) convertView.getTag();</span><br><span class="line">            Log.d(TAG, <span class="string">"不为空："</span> + position);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        myViews.mNameText.setText(string);</span><br><span class="line">        <span class="keyword">return</span> convertView;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> TextView mNameText;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到 随着listview 往下滚动，打印的都为”不为空”</p>
-<p>那么问题来了</p>
-<p>比如异步加载图片，最终造成界面显示的混乱</p>
-<p>举个例子：listview中有一个imageview，动态的加载网络图片</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span>  </span><br><span class="line">    </span>&#123;  </span><br><span class="line">        <span class="keyword">final</span> String url = getItem(position);  </span><br><span class="line">        View view;  </span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>)  </span><br><span class="line">        &#123;  </span><br><span class="line">            view = LayoutInflater.from(getContext()).inflate(R.layout.photo_layout, <span class="keyword">null</span>);  </span><br><span class="line">        &#125; <span class="keyword">else</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            view = convertView;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">final</span> ImageView photo = (ImageView) view.findViewById(R.id.photo);  </span><br><span class="line">        <span class="comment">// 给ImageView设置一个Tag，保证异步加载图片时不会乱序  </span></span><br><span class="line">        photo.setTag(url);  </span><br><span class="line">        <span class="keyword">new</span> LoadImgTask(photo).execute(url);  </span><br><span class="line">        <span class="keyword">return</span> view;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>当第一页的imageview开启异步线程加载图片时候，listview下翻，新的item会复用之前恩item，而且setTag会覆盖之前的tag。当第一屏的ItemView的图片下载完成后，如果直接findViewByTag然后设置图片会显示在第二屏上，就混乱了，所以一般在显示前都会判断photo.getTag().equals(url);确定了再显示。也就是说第一屏的ItemView图片下载完了，但是Tag被覆盖了，所以即使下载完成了，也不会有任何显示。这就解释了为什么我们防止混乱的代码需要那样去写。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/listview/">listview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/view/">view</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/android/">android</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-Android 触摸事件传递机制" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/02/Android 触摸事件传递机制/" class="article-date">
-  	<time datetime="2015-08-02T08:07:41.000Z" itemprop="datePublished">2015-08-02</time>
+      <a href="/2015/09/23/Android 触摸事件传递机制/" class="article-date">
+  	<time datetime="2015-09-23T06:06:53.000Z" itemprop="datePublished">2015-09-23</time>
 </a>
     </div>
   
@@ -452,6 +384,133 @@
       
       
       
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/23/hello-world/" class="article-date">
+  	<time datetime="2015-09-23T06:06:53.000Z" itemprop="datePublished">2015-09-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/23/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-listview的复用机制" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/23/listview的复用机制/" class="article-date">
+  	<time datetime="2015-09-23T06:06:53.000Z" itemprop="datePublished">2015-09-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/23/listview的复用机制/">listview的复用机制</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="listview的复用机制">listview的复用机制</h1><p>listview 的item只会创建一定数量，只会创建的view会复用之前的</p>
+<p>测试代码如下</p>
+<p>自定义一个adapter</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 15/8/9.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">String</span> &gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MyAdapter"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> resourceId ;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyAdapter</span><span class="params">(Context context, <span class="keyword">int</span> textViewResourceId, List&lt;String&gt; objects)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, textViewResourceId, objects);</span><br><span class="line">        <span class="keyword">this</span>.resourceId = textViewResourceId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        ViewHolder myViews;</span><br><span class="line">        String string =  getItem(position);</span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</span><br><span class="line">            Log.d(TAG, <span class="string">"为空："</span> + position);</span><br><span class="line">            myViews = <span class="keyword">new</span> ViewHolder();</span><br><span class="line">            convertView = LayoutInflater.from(getContext()).inflate(resourceId, <span class="keyword">null</span>);</span><br><span class="line">            myViews.mNameText = (TextView) convertView.findViewById(R.id.list_item);</span><br><span class="line">            convertView.setTag(myViews);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            myViews = (ViewHolder) convertView.getTag();</span><br><span class="line">            Log.d(TAG, <span class="string">"不为空："</span> + position);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        myViews.mNameText.setText(string);</span><br><span class="line">        <span class="keyword">return</span> convertView;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> TextView mNameText;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到 随着listview 往下滚动，打印的都为”不为空”</p>
+<p>那么问题来了</p>
+<p>比如异步加载图片，最终造成界面显示的混乱</p>
+<p>举个例子：listview中有一个imageview，动态的加载网络图片</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span>  </span><br><span class="line">    </span>&#123;  </span><br><span class="line">        <span class="keyword">final</span> String url = getItem(position);  </span><br><span class="line">        View view;  </span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>)  </span><br><span class="line">        &#123;  </span><br><span class="line">            view = LayoutInflater.from(getContext()).inflate(R.layout.photo_layout, <span class="keyword">null</span>);  </span><br><span class="line">        &#125; <span class="keyword">else</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            view = convertView;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">final</span> ImageView photo = (ImageView) view.findViewById(R.id.photo);  </span><br><span class="line">        <span class="comment">// 给ImageView设置一个Tag，保证异步加载图片时不会乱序  </span></span><br><span class="line">        photo.setTag(url);  </span><br><span class="line">        <span class="keyword">new</span> LoadImgTask(photo).execute(url);  </span><br><span class="line">        <span class="keyword">return</span> view;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>当第一页的imageview开启异步线程加载图片时候，listview下翻，新的item会复用之前恩item，而且setTag会覆盖之前的tag。当第一屏的ItemView的图片下载完成后，如果直接findViewByTag然后设置图片会显示在第二屏上，就混乱了，所以一般在显示前都会判断photo.getTag().equals(url);确定了再显示。也就是说第一屏的ItemView图片下载完了，但是Tag被覆盖了，所以即使下载完成了，也不会有任何显示。这就解释了为什么我们防止混乱的代码需要那样去写。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/listview/">listview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/view/">view</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/android/">android</a>
+	</div>
+
 
       
       <div class="clearfix"></div>
@@ -1068,73 +1127,6 @@
 
 
   
-    <article id="post-June 27, 2015 8-12 PM" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/06/27/June 27, 2015 8-12 PM/" class="article-date">
-  	<time datetime="2015-06-27T12:12:00.000Z" itemprop="datePublished">2015-06-27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/27/June 27, 2015 8-12 PM/">June 27, 2015 8:12 PM</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  宿舍断网一天，感觉人都放空了。开启沉思模式，回顾半个月以来工作。</p>
-<ul>
-<li>搭建了这个博客，遇到的问题太多了，以前也没接触过JS、CSS什么的，中国局域网坑了我很久。hexo的3.0版本和之前的配置环境也不一样，用github搭建博客 —&gt; 用hexo生成静态网页 —&gt; clone主题 —&gt; 加入duoshuo评论 —&gt; 动态识别UA。最终弄完还是蛮有成就感的。看代码、写代码、再自己总结一遍。确实是三种不同的境界。</li>
-<li>同事很牛逼。人也很nice。之前实习做的是驱动，后来想转做android app，和老大说了，没想到老大答应的这么爽快，非常感谢老大能给这样的一次机会，让我能做自己喜欢的事情。平时技术上的问题刘波哥和申燊同学都非常热情的解答。遇到一群好同事啊。</li>
-<li>自己要学的太多太多。拿到代码的时候都懵了，完全不知道从哪下手。不知道申燊同学之前一个人是如何完成的。</li>
-<li>学会习惯一个人。刚来的前几天，一个人买个面包能在门口和小黄玩好久，搞得它没事就蹲我门口。习惯了之后发现一个人挺不错的，一个人早睡早起，学习的效率也高不少，以前也很少会静下心来思考一些问题。</li>
-<li>理财知识和专业知识并进，后悔没有早点接触理财方面的知识，浮盈的20%多收益差不多都没了，让我坚定了1.资产配置的重要性。2.独立思考，切勿盲目跟风。3没必要整天关心股市做布朗运动。4.对于刚毕业的学生来说多花时间在工作上肯定是没错的。</li>
-<li>每天健身，这两周种种原因没有坚持完成。下周先计划个20公里吧。<br>写的好乱，语文不好的基因被暴露无疑。</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/日记/">日记</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/随笔/">随笔</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1145,7 +1137,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 Xu Yushi
+    		&copy; 2016 Xu Yushi
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
