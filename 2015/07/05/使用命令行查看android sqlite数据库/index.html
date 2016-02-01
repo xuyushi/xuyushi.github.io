@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/07/05/使用命令行查看android sqlite数据库/index.html">
 <meta property="og:site_name" content="Xu Yushi Blog">
 <meta property="og:description" content="使用命令行查看android sqlite数据库">
-<meta property="og:updated_time" content="2015-07-05T08:00:08.000Z">
+<meta property="og:updated_time" content="2016-02-01T02:23:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用命令行查看android sqlite数据库">
 <meta name="twitter:description" content="使用命令行查看android sqlite数据库">
@@ -110,7 +110,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Gson/" style="font-size: 10px;">Gson</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/bluetooth/" style="font-size: 10px;">bluetooth</a> <a href="/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/greendao/" style="font-size: 16.67px;">greendao</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/listview/" style="font-size: 10px;">listview</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/view/" style="font-size: 13.33px;">view</a> <a href="/tags/volley/" style="font-size: 10px;">volley</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a>
+						<a href="/tags/Gson/" style="font-size: 10px;">Gson</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/bluetooth/" style="font-size: 10px;">bluetooth</a> <a href="/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/greendao/" style="font-size: 16.67px;">greendao</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/listview/" style="font-size: 10px;">listview</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/view/" style="font-size: 13.33px;">view</a> <a href="/tags/volley/" style="font-size: 10px;">volley</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a>
 					</div>
 				</section>
 				
@@ -216,6 +216,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>[TOC]</p>
+<p>记录如何使用命令行快速查看数据库<br><a id="more"></a></p>
 <h2 id="首先adb_shell连接虚拟机或者设备">首先adb shell连接虚拟机或者设备</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ adb shell</span><br></pre></td></tr></table></figure>
 <h2 id="进入数据库目录">进入数据库目录</h2><p>通常在/data/data/包名/databases 下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /data/data/com.example.xuyushi.loadertest/databases</span><br></pre></td></tr></table></figure></p>
 <h2 id="进入数据库">进入数据库</h2><p>使用sqlite3 进入，需要安装工具<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sqlite3 xxxx</span><br></pre></td></tr></table></figure></p>

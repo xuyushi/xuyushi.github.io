@@ -8,10 +8,10 @@
   <meta name="description" content="listview的复用机制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="listview的复用机制">
-<meta property="og:url" content="http://yoursite.com/2016/01/25/listview的复用机制/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/02/01/listview的复用机制/index.html">
 <meta property="og:site_name" content="Xu Yushi Blog">
 <meta property="og:description" content="listview的复用机制">
-<meta property="og:updated_time" content="2015-08-09T13:30:30.000Z">
+<meta property="og:updated_time" content="2016-02-01T02:21:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="listview的复用机制">
 <meta name="twitter:description" content="listview的复用机制">
@@ -110,7 +110,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Gson/" style="font-size: 10px;">Gson</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/bluetooth/" style="font-size: 10px;">bluetooth</a> <a href="/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/greendao/" style="font-size: 16.67px;">greendao</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/listview/" style="font-size: 10px;">listview</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/view/" style="font-size: 13.33px;">view</a> <a href="/tags/volley/" style="font-size: 10px;">volley</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a>
+						<a href="/tags/Gson/" style="font-size: 10px;">Gson</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/bluetooth/" style="font-size: 10px;">bluetooth</a> <a href="/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/greendao/" style="font-size: 16.67px;">greendao</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/listview/" style="font-size: 10px;">listview</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/view/" style="font-size: 13.33px;">view</a> <a href="/tags/volley/" style="font-size: 10px;">volley</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a>
 					</div>
 				</section>
 				
@@ -177,8 +177,8 @@
       <div class="body-wrap"><article id="post-listview的复用机制" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/25/listview的复用机制/" class="article-date">
-  	<time datetime="2016-01-25T13:25:14.000Z" itemprop="datePublished">2016-01-25</time>
+      <a href="/2016/02/01/listview的复用机制/" class="article-date">
+  	<time datetime="2016-02-01T02:25:58.000Z" itemprop="datePublished">2016-02-01</time>
 </a>
     </div>
   
@@ -200,7 +200,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/listview/">listview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/view/">view</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/listview/">listview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/view/">view</a></li></ul>
 	</div>
 
         
@@ -215,7 +215,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="listview的复用机制">listview的复用机制</h1><p>listview 的item只会创建一定数量，只会创建的view会复用之前的</p>
+        <h1 id="listview的复用机制">listview的复用机制</h1><p>本文介绍了listview的复用机制<br><a id="more"></a></p>
+<p>listview 的item只会创建一定数量，只会创建的view会复用之前的</p>
 <p>测试代码如下</p>
 <p>自定义一个adapter</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 15/8/9.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span>&lt;<span class="title">String</span> &gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MyAdapter"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> resourceId ;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyAdapter</span><span class="params">(Context context, <span class="keyword">int</span> textViewResourceId, List&lt;String&gt; objects)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, textViewResourceId, objects);</span><br><span class="line">        <span class="keyword">this</span>.resourceId = textViewResourceId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        ViewHolder myViews;</span><br><span class="line">        String string =  getItem(position);</span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</span><br><span class="line">            Log.d(TAG, <span class="string">"为空："</span> + position);</span><br><span class="line">            myViews = <span class="keyword">new</span> ViewHolder();</span><br><span class="line">            convertView = LayoutInflater.from(getContext()).inflate(resourceId, <span class="keyword">null</span>);</span><br><span class="line">            myViews.mNameText = (TextView) convertView.findViewById(R.id.list_item);</span><br><span class="line">            convertView.setTag(myViews);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            myViews = (ViewHolder) convertView.getTag();</span><br><span class="line">            Log.d(TAG, <span class="string">"不为空："</span> + position);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        myViews.mNameText.setText(string);</span><br><span class="line">        <span class="keyword">return</span> convertView;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> TextView mNameText;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -234,9 +235,18 @@
     
 <nav id="article-nav">
   
+    <a href="/2016/02/01/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
   
-    <a href="/2015/09/23/Android View 小结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android View 小结</div>
+  
+    <a href="/2015/07/12/volley学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">volley学习</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -265,7 +275,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="listview的复用机制" data-title="listview的复用机制" data-url="http://yoursite.com/2016/01/25/listview的复用机制/"></div>
+	<div class="ds-thread" data-thread-key="listview的复用机制" data-title="listview的复用机制" data-url="http://yoursite.com/2016/02/01/listview的复用机制/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
