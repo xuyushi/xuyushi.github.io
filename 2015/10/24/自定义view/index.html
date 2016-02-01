@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android View 小结（下） | Xu Yushi Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android View 小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android View 小结（下）">
+<meta property="og:url" content="http://yoursite.com/2015/10/24/自定义view/index.html">
+<meta property="og:site_name" content="Xu Yushi Blog">
+<meta property="og:description" content="Android View 小结">
+<meta property="og:updated_time" content="2016-02-01T07:52:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android View 小结（下）">
+<meta name="twitter:description" content="Android View 小结">
+  
+    <link rel="alternative" href="/atom.xml" title="Xu Yushi Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Xu Yushi</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">低调、务实、自驱、反思</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/Android">Android</a></li>
+				        
+							<li><a href="/categories/Java">Java</a></li>
+				        
+							<li><a href="/categories/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/xuyushi/" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="/xmy166@gmail.com" title="mail">mail</a>
+					        
+								<a class="linkedin" target="_blank" href="http://www.linkedin.com/profile/view?id=391535324" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/GC/" style="font-size: 13.33px;">GC</a> <a href="/tags/Gson/" style="font-size: 10px;">Gson</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Looper/" style="font-size: 10px;">Looper</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/bluetooth/" style="font-size: 10px;">bluetooth</a> <a href="/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/greendao/" style="font-size: 16.67px;">greendao</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/listview/" style="font-size: 10px;">listview</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/robolectric/" style="font-size: 10px;">robolectric</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/unit-tests/" style="font-size: 10px;">unit tests</a> <a href="/tags/view/" style="font-size: 16.67px;">view</a> <a href="/tags/view，Media-Player/" style="font-size: 10px;">view，Media Player</a> <a href="/tags/volley/" style="font-size: 10px;">volley</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/引用/" style="font-size: 10px;">引用</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/触摸事件/" style="font-size: 10px;">触摸事件</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Xu Yushi</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Xu Yushi</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">低调、务实、自驱、反思</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/Android">Android</a></li>
+		        
+					<li><a href="/categories/Java">Java</a></li>
+		        
+					<li><a href="/categories/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/xuyushi/" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="/xmy166@gmail.com" title="mail">mail</a>
+			        
+						<a class="linkedin" target="_blank" href="http://www.linkedin.com/profile/view?id=391535324" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-自定义view" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/24/自定义view/" class="article-date">
+  	<time datetime="2015-10-24T13:32:00.000Z" itemprop="datePublished">2015-10-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android View 小结（下）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/view/">view</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/android/">android</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h1 id="自定义_view">自定义 view</h1><p>自定义 view 的主要步骤如下：</p>
+<ol>
+<li>自定义 view 属性</li>
+<li>在 view 的构造方法中，加载自定义的属性</li>
+<li>重写 onLayout</li>
+<li>重写 onMeasure</li>
+<li>重写 onDraw</li>
+</ol>
+<h2 id="自定义_view_属性">自定义 view 属性</h2><p>自定义View的属性，首先在res/values/  下建立一个attrs.xml</p>
+<a id="more"></a>
+<p>stye.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">resources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Base application theme. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"AppTheme"</span> <span class="attribute">parent</span>=<span class="value">"Theme.AppCompat.Light.DarkActionBar"</span>&gt;</span><span class="css"></span><br><span class="line">        &lt;!<span class="tag">--</span> <span class="tag">Customize</span> <span class="tag">your</span> <span class="tag">theme</span> <span class="tag">here</span>. <span class="tag">--</span>&gt;</span><br><span class="line">        &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">customViewStyle</span>"&gt;<span class="at_rule">@<span class="keyword">style/custom_view_style&lt;/item&gt;</span></span><br><span class="line">    </span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"text_style"</span>&gt;</span><span class="css"></span><br><span class="line">        &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="rule"><span class="attribute">android</span>:<span class="value">text<span class="string">"&gt;text from style&lt;/item&gt;</span><br><span class="line">    </span></span></span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"default_view_style"</span>&gt;</span><span class="css"></span><br><span class="line">        &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">attr4</span>"&gt;<span class="tag">attr4</span> <span class="tag">from</span> <span class="tag">default_view_style</span>&lt;/<span class="tag">item</span>&gt;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"custom_view_style"</span>&gt;</span><span class="css"></span><br><span class="line">        &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">attr3</span>"&gt;<span class="tag">attr3</span> <span class="tag">from</span> <span class="tag">custom_view_style</span>&lt;/<span class="tag">item</span>&gt;</span><br><span class="line">        &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">attr4</span>"&gt;<span class="tag">attr4</span> <span class="tag">from</span> <span class="tag">custom_view_style</span>&lt;/<span class="tag">item</span>&gt;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"xml_style"</span>&gt;</span><span class="css"></span><br><span class="line">        &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">attr2</span>"&gt;<span class="tag">attr2</span> <span class="tag">from</span> <span class="tag">xml_style</span>&lt;/<span class="tag">item</span>&gt;</span><br><span class="line">        &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">attr3</span>"&gt;<span class="tag">attr3</span> <span class="tag">from</span> <span class="tag">xml_style</span>&lt;/<span class="tag">item</span>&gt;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"myViewText"</span> <span class="attribute">format</span>=<span class="value">"string"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"myViewTextColor"</span> <span class="attribute">format</span>=<span class="value">"color"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"myViewTextSize"</span> <span class="attribute">format</span>=<span class="value">"dimension"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">declare-styleable</span> <span class="attribute">name</span>=<span class="value">"myView"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"myViewText"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"myViewTextColor"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"myViewTextSize"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"attr1"</span> <span class="attribute">format</span>=<span class="value">"string"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"attr2"</span> <span class="attribute">format</span>=<span class="value">"string"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"attr3"</span> <span class="attribute">format</span>=<span class="value">"string"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"attr4"</span> <span class="attribute">format</span>=<span class="value">"string"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"attr5"</span> <span class="attribute">format</span>=<span class="value">"string"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"attr6"</span> <span class="attribute">format</span>=<span class="value">"string"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">declare-styleable</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"customViewStyle"</span> <span class="attribute">format</span>=<span class="value">"reference"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在主布局中加载自定义的 view</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">RelativeLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">xmlns:custum</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:paddingBottom</span>=<span class="value">"@dimen/activity_vertical_margin"</span></span><br><span class="line">    <span class="attribute">android:paddingLeft</span>=<span class="value">"@dimen/activity_horizontal_margin"</span></span><br><span class="line">    <span class="attribute">android:paddingRight</span>=<span class="value">"@dimen/activity_horizontal_margin"</span></span><br><span class="line">    <span class="attribute">android:paddingTop</span>=<span class="value">"@dimen/activity_vertical_margin"</span></span><br><span class="line">    <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--注意xmlns导入的是整个工程的包名，不是 view 的包名--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 在 gradle工程中只需要    xmlns:custum="http://schemas.android.com/apk/res-auto"</span><br><span class="line">--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">io.github.xuyushi.viewtest.MyView</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:padding</span>=<span class="value">"10dp"</span></span><br><span class="line">        <span class="attribute">custum:myViewText</span>=<span class="value">"test"</span></span><br><span class="line">        <span class="attribute">custum:myViewTextColor</span>=<span class="value">"#ffff00"</span></span><br><span class="line">        <span class="attribute">custum:myViewTextSize</span>=<span class="value">"30sp"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意xmlns导入的是整个工程的包名，不是 view 的包名.在 gradle工程中只需要    xmlns:custum=”<a href="http://schemas.android.com/apk/res-auto" target="_blank" rel="external">http://schemas.android.com/apk/res-auto</a>“</p>
+<p>2.自定义 view</p>
+<p>自定义 view 继承 view</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.xuyushi.viewtest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.res.TypedArray;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Canvas;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Color;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Paint;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Rect;</span><br><span class="line"><span class="keyword">import</span> android.util.AttributeSet;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 15/10/23.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyView</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> String LOG_TAG = <span class="string">"MyView"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String mText;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mextColor;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mextSize;</span><br><span class="line">    <span class="keyword">private</span> Rect mBound;</span><br><span class="line">    <span class="keyword">private</span> Paint mPaint;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// <span class="doctag"><span class="keyword">TODO</span></span>: 15/10/23 三个构造函数分别什么时候调用</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(context, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(context, attrs, R.attr.customViewStyle);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</span><br><span class="line">        TypedArray array = context.getTheme()</span><br><span class="line">                .obtainStyledAttributes(attrs, R.styleable.myView, defStyleAttr, R.style.default_view_style);</span><br><span class="line">        <span class="keyword">int</span> n = array.getIndexCount();</span><br><span class="line"></span><br><span class="line">        Log.d(LOG_TAG, <span class="string">"attr1 =&gt; "</span> + array.getString(R.styleable.myView_attr1));</span><br><span class="line">        Log.d(LOG_TAG, <span class="string">"attr2 =&gt; "</span> + array.getString(R.styleable.myView_attr2));</span><br><span class="line">        Log.d(LOG_TAG, <span class="string">"attr3 =&gt; "</span> + array.getString(R.styleable.myView_attr3));</span><br><span class="line">        Log.d(LOG_TAG, <span class="string">"attr4 =&gt; "</span> + array.getString(R.styleable.myView_attr4));</span><br><span class="line">        Log.d(LOG_TAG, <span class="string">"attr5 =&gt; "</span> + array.getString(R.styleable.myView_attr5));</span><br><span class="line">        Log.d(LOG_TAG, <span class="string">"attr6 =&gt; "</span> + array.getString(R.styleable.myView_attr6));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> attr = array.getIndex(i);</span><br><span class="line">            <span class="keyword">switch</span> (attr) &#123;</span><br><span class="line">                <span class="keyword">case</span> R.styleable.myView_myViewText:</span><br><span class="line">                    mText = array.getString(attr);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> R.styleable.myView_myViewTextColor:</span><br><span class="line">                    mextColor = array.getColor(attr, Color.BLACK);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> R.styleable.myView_myViewTextSize:</span><br><span class="line">                    mextSize = array.getDimensionPixelSize(attr,</span><br><span class="line">                            getResources().getDimensionPixelSize(R.dimen.textsize));</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        array.recycle(); <span class="comment">//注意释放</span></span><br><span class="line">        mPaint = <span class="keyword">new</span> Paint();</span><br><span class="line">        mPaint.setTextSize(mextSize);</span><br><span class="line">        mBound = <span class="keyword">new</span> Rect();</span><br><span class="line">        Log.d(<span class="string">"MyView"</span>, <span class="string">"height"</span> + mBound.height());</span><br><span class="line">        mPaint.getTextBounds(mText, <span class="number">0</span>, mText.length(), mBound);</span><br><span class="line">        <span class="comment">//调用getTextBounds 方法之后，会根据mText计算mbound 的大小</span></span><br><span class="line">        Log.d(<span class="string">"MyView"</span>, <span class="string">"height"</span> + mBound.height());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                mText = randText();</span><br><span class="line">                <span class="comment">//长度改变，需要重新 layout</span></span><br><span class="line">                requestLayout();</span><br><span class="line">                invalidate();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">randText</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Random random = <span class="keyword">new</span> Random();</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">while</span> (set.size() &lt; <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> randomInt = random.nextInt(<span class="number">10</span>);</span><br><span class="line">            set.add(randomInt);</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span> (Integer i : set) &#123;</span><br><span class="line">            sb.append(<span class="string">""</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        return sb.toString();</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"1234567"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> widthMode = MeasureSpec.getMode(widthMeasureSpec);</span><br><span class="line">        <span class="keyword">int</span> widthSize = MeasureSpec.getSize(widthMeasureSpec);</span><br><span class="line">        <span class="keyword">int</span> heightMode = MeasureSpec.getMode(heightMeasureSpec);</span><br><span class="line">        <span class="keyword">int</span> heightSize = MeasureSpec.getSize(heightMeasureSpec);</span><br><span class="line">        <span class="keyword">int</span> width;</span><br><span class="line">        <span class="keyword">int</span> height;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (widthMode == MeasureSpec.EXACTLY) &#123;</span><br><span class="line">        <span class="comment">//match parent 或者直接写定大小</span></span><br><span class="line">            width = widthSize;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//wrap content</span></span><br><span class="line">            mPaint.setTextSize(mextSize);</span><br><span class="line">            mPaint.getTextBounds(mText, <span class="number">0</span>, mText.length(), mBound);</span><br><span class="line">            <span class="keyword">float</span> textWidth = mBound.width();</span><br><span class="line">            <span class="keyword">int</span> desired = (<span class="keyword">int</span>) (getPaddingLeft() + textWidth + getPaddingRight());</span><br><span class="line">            width = desired;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (heightMode == MeasureSpec.EXACTLY) &#123;</span><br><span class="line">            height = heightSize;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            mPaint.setTextSize(mextSize);</span><br><span class="line">            mPaint.getTextBounds(mText, <span class="number">0</span>, mText.length(), mBound);</span><br><span class="line">            <span class="keyword">float</span> textHeight = mBound.height();</span><br><span class="line">            <span class="keyword">int</span> desired = (<span class="keyword">int</span>) (getPaddingTop() + textHeight + getPaddingBottom());</span><br><span class="line">            height = desired;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        setMeasuredDimension(width, height);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">        mPaint.setColor(Color.RED);</span><br><span class="line">        canvas.drawRect(<span class="number">0</span>, <span class="number">0</span>, getMeasuredWidth(), getMeasuredHeight(), mPaint);</span><br><span class="line">        mPaint.setColor(mextColor);</span><br><span class="line">        canvas.drawText(mText, getWidth() / <span class="number">2</span> - mBound.width() / <span class="number">2</span>,</span><br><span class="line">                getHeight() / <span class="number">2</span> + mBound.height() / <span class="number">2</span></span><br><span class="line">                , mPaint);</span><br><span class="line">        Log.d(<span class="string">"onDraw"</span>, <span class="string">"height"</span> + mBound.height());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLayout</span><span class="params">(<span class="keyword">boolean</span> changed, <span class="keyword">int</span> left, <span class="keyword">int</span> top, <span class="keyword">int</span> right, <span class="keyword">int</span> bottom)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onLayout(changed, left, top, right, bottom);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="函数词典">函数词典</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">public void getTextBounds (char[] text, int index, int count, Rect bounds)</span><br><span class="line"></span><br><span class="line">Added in API level 1</span><br><span class="line">Return in bounds (allocated by the caller) the smallest rectangle that encloses all of the characters, with an implied origin at (0,0).</span><br><span class="line"></span><br><span class="line">Parameters</span><br><span class="line">text	Array of chars to measure and return their unioned bounds</span><br><span class="line">index	Index of the first char in the array to measure</span><br><span class="line">count	The number of chars, beginning at index, to measure</span><br><span class="line">bounds	Returns the unioned bounds of all the text. Must be allocated by the caller.</span><br><span class="line">*/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">Added in API level 1</span><br><span class="line">Draw the text, with origin at (x,y), using the specified paint. The origin is interpreted based on the Align setting in the paint.</span><br><span class="line"></span><br><span class="line">Parameters</span><br><span class="line">text	The text to be drawn</span><br><span class="line">x	The x-coordinate of the origin of the text being drawn</span><br><span class="line">y	The y-coordinate of the baseline of the text being drawn</span><br><span class="line">paint	The paint used for the text (e.g. color, size, style)</span><br><span class="line">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="view的构造函数">view的构造函数</h2><p>可以看到自定义的 view 有三个构造方法</p>
+<ol>
+<li>public void MyView(Context context) {}</li>
+<li>public void MyView(Context context, AttributeSet attrs) {}</li>
+<li>public void MyView(Context context, AttributeSet attrs, int defStyle) {}</li>
+</ol>
+<p><strong>三个构造方法调用的情况</strong></p>
+<ol>
+<li>code动态创建一个view而不使用布局文件xml inflate</li>
+<li>多了一个AttributeSet类型的参数，在通过布局文件xml创建一个view时，这个参数会将xml里设定的属性传递给构造函数。如果你采用xml inflate的方法却没有在code里实现C2，那么运行时就会报错。但是由于编译能顺利通过</li>
+<li>在源码中通常是自己的显示调用</li>
+</ol>
+<p>官方文档如下</p>
+<blockquote>
+<p>Perform inflation from XML and apply a class-specific base style. This constructor of View allows subclasses to use their own base style when they are inflating. For example, a Button class’s constructor would call this version of the super class constructor and supply R.attr.buttonStyle for defStyle; this allows the theme’s button style to modify all of the base view attributes (in particular its background) as well as the Button class’s attributes.</p>
+</blockquote>
+<p>对第三个参数的解释是：</p>
+<blockquote>
+<p>An attribute in the current theme that contains a reference to a style resource to apply to this view. If 0, no default style will be applied.</p>
+</blockquote>
+<p>代码第<code>40</code>行， <strong>注意传入的参数是0 </strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TypedArray array = context.getTheme()</span><br><span class="line">        .obtainStyledAttributes(attrs, R.styleable.myView, defStyleAttr, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>接着分析<code>obtainStyledAttributes</code><a href="http://developer.android.com/intl/zh-cn/reference/android/content/res/Resources.Theme.html#obtainStyledAttributes(android.util.AttributeSet,%20int[],%20int,%20int" target="_blank" rel="external">官方文档</a>)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TypedArray <span class="title">obtainStyledAttributes</span> <span class="params">(AttributeSet <span class="built_in">set</span>, <span class="keyword">int</span>[] attrs, <span class="keyword">int</span> defStyleAttr, <span class="keyword">int</span> defStyleRes)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>set：在XML中明确写出了的属性集合,如<code>android:layout_width</code>， 在本例子中即<code>myView_myViewTextColor</code></li>
+<li>defStyleAttr: 代表需要查询自定义的属性值的 view，在本程序中指<code>myView</code></li>
+<li>defStyleAttr：这是一个定义在attrs.xml文件中的attribute。这个值起作用需要两个条件：1. 值不为0；2. 在Theme中使用了</li>
+<li>defStyleRes：这是在styles.xml文件中定义的一个style。只有当defStyleAttr没有起作用，才会使用到这个值</li>
+</ul>
+<blockquote>
+<p>如果在Code中实例化一个View会调用第一个构造函数，如果在xml中定义会调用第二个构造函数，而第三个函数系统是不调用的，要由View（我们自定义的或系统预定义的View，如此处的CustomTextView和Button）显式调用，比如在这里我们在第二个构造函数中调用了第三个构造函数，并将R.attr.CustomizeStyle传给了第三个参数。</p>
+</blockquote>
+<p>　　第三个参数的意义就如同它的名字所说的，是默认的Style，只是这里没有说清楚，这里的默认的Style是指它在当前Application或Activity所用的Theme中的默认Style<br>显然，一个属性最终的取值，有一个顺序问题，这个顺序优先级从高到低依次是：</p>
+<p>==结论==</p>
+<ol>
+<li>直接在XML文件中定义的。</li>
+<li>在XML文件中通过style这个属性定义的。</li>
+<li>通过defStyleAttr定义的。</li>
+<li>通过defStyleRes定义的。</li>
+<li>直接在当然工程的theme主题下定义的。</li>
+</ol>
+<h4 id="实现过程">实现过程</h4><h5 id="1-_在_view_的_attr_中增加属性">1. 在 view 的 attr 中增加属性</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">declare-styleable</span> <span class="attribute">name</span>=<span class="value">"myView"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"myViewText"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"myViewTextColor"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"myViewTextSize"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"attr1"</span> <span class="attribute">format</span>=<span class="value">"string"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"attr2"</span> <span class="attribute">format</span>=<span class="value">"string"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"attr3"</span> <span class="attribute">format</span>=<span class="value">"string"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"attr4"</span> <span class="attribute">format</span>=<span class="value">"string"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"attr5"</span> <span class="attribute">format</span>=<span class="value">"string"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"attr6"</span> <span class="attribute">format</span>=<span class="value">"string"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">declare-styleable</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">attr</span> <span class="attribute">name</span>=<span class="value">"customViewStyle"</span> <span class="attribute">format</span>=<span class="value">"reference"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意要将<code>customViewStyle</code> 的格式为<code>reference</code></strong></p>
+<h5 id="2-_在_style_中定义custom_view_style">2. 在 style 中定义custom_view_style</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"custom_view_style"</span>&gt;</span><span class="css"></span><br><span class="line">    &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">attr3</span>"&gt;<span class="tag">attr3</span> <span class="tag">from</span> <span class="tag">custom_view_style</span>&lt;/<span class="tag">item</span>&gt;</span><br><span class="line">    &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">attr4</span>"&gt;<span class="tag">attr4</span> <span class="tag">from</span> <span class="tag">custom_view_style</span>&lt;/<span class="tag">item</span>&gt;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="3-在xml_中定义_xml_style">3.在xml 中定义 xml_style</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"xml_style"</span>&gt;</span><span class="css">  </span><br><span class="line">    &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">attr2</span>"&gt;<span class="tag">attr2</span> <span class="tag">from</span> <span class="tag">xml_style</span>&lt;/<span class="tag">item</span>&gt;  </span><br><span class="line">    &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">attr3</span>"&gt;<span class="tag">attr3</span> <span class="tag">from</span> <span class="tag">xml_style</span>&lt;/<span class="tag">item</span>&gt;  </span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="4-_为了使_theme_生效">4. 为了使 theme 生效</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"AppTheme"</span> <span class="attribute">parent</span>=<span class="value">"Theme.AppCompat.Light.DarkActionBar"</span>&gt;</span><span class="css"></span><br><span class="line">    &lt;!— <span class="tag">Customize</span> <span class="tag">your</span> <span class="tag">theme</span> <span class="tag">here</span>. —&gt;</span><br><span class="line">    &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">customViewStyle</span>"&gt;<span class="at_rule">@<span class="keyword">style/custom_view_style&lt;/item&gt;</span></span><br><span class="line">    &lt;item name=<span class="string">"attr5"</span>&gt;attr5 from AppTheme&lt;/item&gt;</span><br><span class="line">    &lt;item name=<span class="string">"attr6"</span>&gt;attr6 from AppTheme&lt;/item&gt;</span><br><span class="line"></span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="5-_布局文件中定义">5. 布局文件中定义</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">io.github.xuyushi.viewtest.MyView</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">    <span class="attribute">android:padding</span>=<span class="value">"10dp"</span></span><br><span class="line">    <span class="attribute">custum:myViewText</span>=<span class="value">"test"</span></span><br><span class="line">    <span class="attribute">custum:myViewTextColor</span>=<span class="value">"#ffff00"</span></span><br><span class="line">    <span class="attribute">custum:myViewTextSize</span>=<span class="value">"30sp"</span></span><br><span class="line">    <span class="attribute">custum:attr1</span>=<span class="value">"attr1 from xml"</span></span><br><span class="line">    <span class="attribute">custum:attr2</span>=<span class="value">"attr2 from xml"</span></span><br><span class="line">    <span class="attribute">style</span>=<span class="value">"@style/xml_style"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="6-_将最后一个参数由0变为">6. 将最后一个参数由0变为</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CustomView, defStyle, R.style.default_view_style);</span><br></pre></td></tr></table></figure>
+<h5 id="7-_在_view_的构造函数中获取这些_attr1-6的属性">7. 在 view 的构造函数中获取这些 attr1-6的属性</h5><p><strong>log</strong></p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10-24 02:05</span>:37.136    <span class="number">4769-4769</span>/? D/MyView﹕ attr1 =&gt; attr1 from xml</span><br><span class="line"><span class="number">10-24 02:05</span>:37.136    <span class="number">4769-4769</span>/? D/MyView﹕ attr2 =&gt; attr2 from xml</span><br><span class="line"><span class="number">10-24 02:05</span>:37.136    <span class="number">4769-4769</span>/? D/MyView﹕ attr3 =&gt; attr3 from xml_style</span><br><span class="line"><span class="number">10-24 02:05</span>:37.136    <span class="number">4769-4769</span>/? D/MyView﹕ attr4 =&gt; attr4 from default_view_style</span><br><span class="line"><span class="number">10-24 02:05</span>:37.136    <span class="number">4769-4769</span>/? D/MyView﹕ attr5 =&gt; attr5 from default_view_style</span><br><span class="line"><span class="number">10-24 02:05</span>:37.136    <span class="number">4769-4769</span>/? D/MyView﹕ attr6 =&gt; null</span><br></pre></td></tr></table></figure>
+<p>分析结果</p>
+<ul>
+<li>attr1只在xml布局文件中设置，所以值为attr1 from xml。</li>
+<li>attr2在xml布局文件和xml style中都设置了，取值为布局文件中设置的值，所以为attr2 from xml。</li>
+<li>attr3没有在xml布局文件中设置，但是在xml style和defStyleAttr定义的style中设置了，取xml style中的值，所以值为attr3 from xml_style。</li>
+<li>attr4只在defStyleAttr定义的style中设置了，所以值为attr4 from custom_view_style。</li>
+<li>attr5和attr6没有在任何地方设置值，所以为null。</li>
+</ul>
+<h4 id="总结">总结</h4><ol>
+<li>直接在XML布局文件中设置的值优先级最高，如果这里设置了值，就不会去取其他地方的值了。</li>
+<li>XML布局文件中有一个叫“style”的属性，它指向一个style，在这个style中设置的属性值优先级次之。</li>
+<li>如果上面两个地方都没有设置值，那么就会根据View带三个参数的构造方法中的第三个参数attribute指向的style设置值，前提是这个attribute的值不为0。</li>
+<li>如果上面的attribute设置为0了，我们就根据obtainStyledAttributes()方法中的最后一个参数指向的style来设置值。</li>
+<li>如果仍然没有设置到值，就会用theme中直接设置的属性值，而不会去管第3步和第4步中是否设置了值。</li>
+</ol>
+<blockquote>
+<p><strong> 参考 <a href="http://www.cnblogs.com/angeldevil/p/3479431.html" target="_blank" rel="external">http://www.cnblogs.com/angeldevil/p/3479431.html</a> 详细解释</strong></p>
+</blockquote>
+<h2 id="onMeasure">onMeasure</h2><p>onMeasure 是测量视图的大小的</p>
+<p>MeasureSpec的值由specSize和specMode共同组成的，其中specSize记录的是大小，specMode记录的是规格。specMode一共有三种类型</p>
+<ul>
+<li>EXACTLY：表示父视图希望子视图的大小应该是由specSize的值来决定的，系统默认会按照这个规则来设置子视图的大小，开发人员当然也可以按照自己的意愿设置成任意的大小。</li>
+<li>AT_MOST：最多只能是specSize中指定的大小，开发人员应该尽可能小得去设置这个视图，并且保证不会超过specSize。系统默认会按照这个规则来设置子视图的大小，开发人员当然也可以按照自己的意愿设置成任意的大小。通常是 wrapcontent</li>
+<li>UNSPECIFIED：表示开发人员可以将视图按照自己的意愿设置成任意的大小，没有任何限制</li>
+</ul>
+<p>当设置了WRAP_CONTENT时，我们需要自己进行测量，即重写onMesure</p>
+<p>计算长宽 最后调用 <code>setMeasuredDimension(width, height);</code></p>
+<h2 id="onLayout">onLayout</h2><p>确定视图的位置，主要是在 viewgroup 中使用</p>
+<p>ViewGroup中的onLayout()方法是一个抽象方法，这就意味着所有ViewGroup的子类都必须重写这个方法。这个例子 layout 只有一个子 view</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleLayout</span> <span class="keyword">extends</span> <span class="title">ViewGroup</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SimpleLayout</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">super</span>(context, attrs);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="annotation">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);  </span><br><span class="line">        <span class="keyword">if</span> (getChildCount() &gt; <span class="number">0</span>) &#123;  </span><br><span class="line">            View childView = getChildAt(<span class="number">0</span>);  </span><br><span class="line">            measureChild(childView, widthMeasureSpec, heightMeasureSpec);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="annotation">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLayout</span><span class="params">(<span class="keyword">boolean</span> changed, <span class="keyword">int</span> l, <span class="keyword">int</span> t, <span class="keyword">int</span> r, <span class="keyword">int</span> b)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">if</span> (getChildCount() &gt; <span class="number">0</span>) &#123;  </span><br><span class="line">            View childView = getChildAt(<span class="number">0</span>);  </span><br><span class="line">            childView.layout(<span class="number">0</span>, <span class="number">0</span>, childView.getMeasuredWidth(), childView.getMeasuredHeight());  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码非常的简单，我们来看下具体的逻辑吧。你已经知道，onMeasure()方法会在onLayout()方法之前调用，因此这里在onMeasure()方法中判断SimpleLayout中是否有包含一个子视图，如果有的话就调用measureChild()方法来测量出子视图的大小。<br>接着在onLayout()方法中同样判断SimpleLayout是否有包含一个子视图，然后调用这个子视图的layout()方法来确定它在SimpleLayout布局中的位置，这里传入的四个参数依次是0、0、childView.getMeasuredWidth()和childView.getMeasuredHeight()，分别代表着子视图在SimpleLayout中左上右下四个点的坐标。其中，调用childView.getMeasuredWidth()和childView.getMeasuredHeight()方法得到的值就是在onMeasure()方法中测量出的宽和高。</p>
+<p><strong>在onLayout()过程结束后，我们就可以调用getWidth()方法和getHeight()方法来获取视图的宽高了，否则得到是 0</strong></p>
+<h2 id="onDraw">onDraw</h2><h2 id="ViewGroup">ViewGroup</h2><h1 id="参考">参考</h1><blockquote>
+<p><a href="http://blog.csdn.net/lmj623565791/article/details/24252901" target="_blank" rel="external">http://blog.csdn.net/lmj623565791/article/details/24252901</a><br><a href="http://blog.csdn.net/lmj623565791/article/details/38339817" target="_blank" rel="external">http://blog.csdn.net/lmj623565791/article/details/38339817</a></p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/27/Media Playback/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Android Media Player
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/15/robolectric/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">robolectric</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="自定义view" data-title="Android View 小结（下）" data-url="http://yoursite.com/2015/10/24/自定义view/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"xuyushi"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = '/js/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Xu Yushi
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72857814-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
