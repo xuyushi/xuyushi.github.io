@@ -12,16 +12,16 @@
 <meta property="og:site_name" content="Xu Yushi Blog">
 <meta property="og:description" content="Android 内存泄露">
 <meta property="og:image" content="http://img.blog.csdn.net/20131025115331781?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZ2VtbWVt/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
-<meta property="og:image" content="https://lh3.googleusercontent.com/-yIB1SKj47_k/VqC3-pUHP_I/AAAAAAAAA0I/oOA2AaYhdvQ/I/14527590780897.jpg">
-<meta property="og:image" content="https://lh3.googleusercontent.com/-IlztqJ_jPQQ/VqC4AItDS6I/AAAAAAAAA0Q/d6r-Hygv7Xk/I/14527591546703.png">
-<meta property="og:image" content="https://lh3.googleusercontent.com/-zTwV2KClLg0/VqC4Av2w0-I/AAAAAAAAA0U/JiCPU8wMOsM/I/14527592144127.png">
-<meta property="og:image" content="https://lh3.googleusercontent.com/-MiBHy9Y-glk/VqC4A_VCklI/AAAAAAAAA0Y/ed7TZpXNtF4/I/14527602568618.png">
-<meta property="og:image" content="https://lh3.googleusercontent.com/-iVkgPGGKTS4/VqC4B-bKFgI/AAAAAAAAA0o/c5N1gVzRgEA/I/14530982417272.png">
-<meta property="og:image" content="https://lh3.googleusercontent.com/-iLYh1rWQkXk/VqC4DUKsVLI/AAAAAAAAA0w/xOg23ruftHs/I/14530983537752.png">
-<meta property="og:image" content="https://lh3.googleusercontent.com/-mfe1iixw6sI/VqC4DsflylI/AAAAAAAAA00/Dh45yMRT6RQ/I/14532588103369.png">
-<meta property="og:image" content="https://lh3.googleusercontent.com/-dmYqSfM7SIc/VqC4E7nb2gI/AAAAAAAAA1A/5b3hdE62L8Y/I/14532588339301.png">
-<meta property="og:image" content="https://lh3.googleusercontent.com/-Eug5-TJnqXg/VqC4F9k1Y4I/AAAAAAAAA1I/u2zV5it0VlQ/I/14532592207499.png">
-<meta property="og:updated_time" content="2016-02-01T08:59:37.000Z">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14527590780897.jpg">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14527591546703.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14527592144127.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14527602568618.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14530982417272.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14530983537752.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14532588103369.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14532588339301.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14532592207499.png">
+<meta property="og:updated_time" content="2016-02-01T09:26:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 内存泄露">
 <meta name="twitter:description" content="Android 内存泄露">
@@ -277,13 +277,13 @@
 <li>Retained heap表示通过回收这一个对象总共能回收的内存，比方说一个100bytes的对象还直接或者间接地持有了另外3个100bytes的对象引用，回收这个对象的时候如果另外3个对象没有其他引用也能被回收掉的时候，Retained heap就是400bytes。</li>
 </ul>
 <h2 id="内存管理分析">内存管理分析</h2><ol>
-<li>打开 DDMS ，选中需要分析的进程，然后点击update heap<img src="https://lh3.googleusercontent.com/-yIB1SKj47_k/VqC3-pUHP_I/AAAAAAAAA0I/oOA2AaYhdvQ/I/14527590780897.jpg" alt=""></li>
-<li>在app 中操作后，点击 Cause GC,观察heap 的使用量<br><img src="https://lh3.googleusercontent.com/-IlztqJ_jPQQ/VqC4AItDS6I/AAAAAAAAA0Q/d6r-Hygv7Xk/I/14527591546703.png" alt=""></li>
-<li>点击 <img src="https://lh3.googleusercontent.com/-zTwV2KClLg0/VqC4Av2w0-I/AAAAAAAAA0U/JiCPU8wMOsM/I/14527592144127.png" alt=""> 导出 HPROF 文件</li>
+<li>打开 DDMS ，选中需要分析的进程，然后点击update heap<img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14527590780897.jpg" alt=""></li>
+<li>在app 中操作后，点击 Cause GC,观察heap 的使用量<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14527591546703.png" alt=""></li>
+<li>点击 <img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14527592144127.png" alt=""> 导出 HPROF 文件</li>
 <li>转换 hprof 的格式，从而支持使用 MAT 工具打开分析</li>
 <li><code>hprof-conv &lt;source_file&gt; &lt;dest_file&gt;</code></li>
 <li>使用 MAT 打开生成文件</li>
-<li>点击<img src="https://lh3.googleusercontent.com/-MiBHy9Y-glk/VqC4A_VCklI/AAAAAAAAA0Y/ed7TZpXNtF4/I/14527602568618.png" alt=""> 查看详情</li>
+<li>点击<img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14527602568618.png" alt=""> 查看详情</li>
 </ol>
 <h2 id="MAT_使用">MAT 使用</h2><ul>
 <li>可以在上面过滤自己需要的类名，支持正则表达式</li>
@@ -294,16 +294,16 @@
 <li>Shallow heap表示对象本身所占内存大小，一个内存大小100bytes的对象Shallow heap就是100bytes。</li>
 <li>Retained heap表示通过回收这一个对象总共能回收的内存，比方说一个100bytes的对象还直接或者间接地持有了另外3个100bytes的对象引用，回收这个对象的时候如果另外3个对象没有其他引用也能被回收掉的时候，Retained heap就是400bytes。</li>
 </ul>
-<h2 id="分析实例">分析实例</h2><h3 id="实例1">实例1</h3><p>Mat中导入数据后，过滤包名，按照 obj 数量排序<br><img src="https://lh3.googleusercontent.com/-iVkgPGGKTS4/VqC4B-bKFgI/AAAAAAAAA0o/c5N1gVzRgEA/I/14530982417272.png" alt=""><br>发现 AsyncTaskService 有9个实例，不正常，右键  Path to GC Roots 查看<br><img src="https://lh3.googleusercontent.com/-iLYh1rWQkXk/VqC4DUKsVLI/AAAAAAAAA0w/xOg23ruftHs/I/14530983537752.png" alt=""><br>发现是 volley 中的 NetworkDispatcher 持有了 context 导致释放不了</p>
+<h2 id="分析实例">分析实例</h2><h3 id="实例1">实例1</h3><p>Mat中导入数据后，过滤包名，按照 obj 数量排序<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14530982417272.png" alt=""><br>发现 AsyncTaskService 有9个实例，不正常，右键  Path to GC Roots 查看<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14530983537752.png" alt=""><br>发现是 volley 中的 NetworkDispatcher 持有了 context 导致释放不了</p>
 <p><strong>NetworkDispatcher 持有（用到了） UserStatsPostRequest 持有 mLIstener、mErrorListener 持有 context</strong></p>
 <p>在  <code>AsyncTaskService</code>中 <code>PoiInfoApi.refreshPoiInfo(AsyncTaskService.this, null);</code><br>传入的 <code>context</code> 是<code>AsyncTaskService</code>，导致 <code>PoiInfo</code> 与 <code>AsyncTaskService</code>的生命周期相关联<br>当 <code>service</code>生命周期结束时，<code>mLIstener</code> 仍然持有 <code>Service</code> ，导致 GC无法回收，当下次再次请求 <code>Poiapi</code>时，会再次用到一个新的<code>AsyncTaskService</code> </p>
 <h4 id="解决方法">解决方法</h4><p>传入的 <code>context</code> 不使用 <code>activity</code> 或<code>Service</code>这样和 Android 生命周期相关的，使用 <code>appcation</code> 中的 <code>sContext</code></p>
 <h3 id="实例2">实例2</h3><ol>
-<li>点击<img src="https://lh3.googleusercontent.com/-mfe1iixw6sI/VqC4DsflylI/AAAAAAAAA00/Dh45yMRT6RQ/I/14532588103369.png" alt=""> ，按照堆排序</li>
+<li>点击<img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14532588103369.png" alt=""> ，按照堆排序</li>
 </ol>
-<p><img src="https://lh3.googleusercontent.com/-dmYqSfM7SIc/VqC4E7nb2gI/AAAAAAAAA1A/5b3hdE62L8Y/I/14532588339301.png" alt=""><br>此时是按照占用的大小排序的，首先Retained Heap表示这个对象以及它所持有的其它引用（包括直接和间接）所占的总内存，因此从上图中看，前两行的Retained Heap是最大的，我们分析内存泄漏时，内存最大的对象也是最应该去怀疑的。</p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14532588339301.png" alt=""><br>此时是按照占用的大小排序的，首先Retained Heap表示这个对象以及它所持有的其它引用（包括直接和间接）所占的总内存，因此从上图中看，前两行的Retained Heap是最大的，我们分析内存泄漏时，内存最大的对象也是最应该去怀疑的。</p>
 <p>在每一行的最左边都有一个文件型的图标，这些图标有的左下角带有一个红色的点，有的则没有。带有红点的对象就表示是可以被GC Roots访问到的，根据上面的讲解，可以被GC Root访问到的对象都是无法被回收的</p>
-<p>第一行为资源文件，比较大很正常，第二行为 bitmap，点击  -&gt; Path to GC Roots -&gt; exclude weak references，为什么选择exclude weak references呢？因为弱引用是不会阻止对象被垃圾回收器回收的，所以我们这里直接把它排除掉<br><img src="https://lh3.googleusercontent.com/-Eug5-TJnqXg/VqC4F9k1Y4I/AAAAAAAAA1I/u2zV5it0VlQ/I/14532592207499.png" alt=""></p>
+<p>第一行为资源文件，比较大很正常，第二行为 bitmap，点击  -&gt; Path to GC Roots -&gt; exclude weak references，为什么选择exclude weak references呢？因为弱引用是不会阻止对象被垃圾回收器回收的，所以我们这里直接把它排除掉<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14532592207499.png" alt=""></p>
 <p><strong>黑体表示变量名，右侧正常体表示类名， 由上到下表示含有关系</strong></p>
 <p>可以看到 bitmap 之所以释放不掉是因为 linearLayout 无法释放，而linearLayout之所以释放不掉是因为 linearLayout 无法释放，是因为 LoginActivity 无法释放，….最终发现是 SPDataManager中 的 sContext 持有了 Activity，导致 Activity 无法被 GC回收</p>
 <h4 id="解决方法-1">解决方法</h4><p>在构造 SPDataManger 时，不使用 Activity 的 context ，而使用 getapplicationContext，避免与 Actvity 的生命周期关联</p>
