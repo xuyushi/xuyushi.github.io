@@ -8,10 +8,10 @@
   <meta name="description" content="之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 触摸事件传递机制">
-<meta property="og:url" content="http://yoursite.com/2015/07/19/Android 触摸事件传递机制/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/02/01/Android 触摸事件传递机制/index.html">
 <meta property="og:site_name" content="Xu Yushi Blog">
 <meta property="og:description" content="之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递">
-<meta property="og:updated_time" content="2016-02-01T03:22:12.000Z">
+<meta property="og:updated_time" content="2016-02-01T08:33:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 触摸事件传递机制">
 <meta name="twitter:description" content="之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递">
@@ -112,7 +112,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/GC/" style="font-size: 13.33px;">GC</a> <a href="/tags/Gson/" style="font-size: 10px;">Gson</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Looper/" style="font-size: 10px;">Looper</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/bluetooth/" style="font-size: 10px;">bluetooth</a> <a href="/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/greendao/" style="font-size: 16.67px;">greendao</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/listview/" style="font-size: 10px;">listview</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/robolectric/" style="font-size: 10px;">robolectric</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/unit-tests/" style="font-size: 10px;">unit tests</a> <a href="/tags/view/" style="font-size: 16.67px;">view</a> <a href="/tags/view，Media-Player/" style="font-size: 10px;">view，Media Player</a> <a href="/tags/volley/" style="font-size: 10px;">volley</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/引用/" style="font-size: 10px;">引用</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/触摸事件/" style="font-size: 10px;">触摸事件</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+						<a href="/tags/Aidl/" style="font-size: 10px;">Aidl</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/GC/" style="font-size: 13.33px;">GC</a> <a href="/tags/Gson/" style="font-size: 10px;">Gson</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Looper/" style="font-size: 10px;">Looper</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/bluetooth/" style="font-size: 10px;">bluetooth</a> <a href="/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/greendao/" style="font-size: 16.67px;">greendao</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/listview/" style="font-size: 10px;">listview</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/robolectric/" style="font-size: 10px;">robolectric</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/unit-tests/" style="font-size: 10px;">unit tests</a> <a href="/tags/view/" style="font-size: 16.67px;">view</a> <a href="/tags/view，Media-Player/" style="font-size: 10px;">view，Media Player</a> <a href="/tags/volley/" style="font-size: 10px;">volley</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/引用/" style="font-size: 10px;">引用</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/触摸事件/" style="font-size: 10px;">触摸事件</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -181,8 +181,8 @@
       <div class="body-wrap"><article id="post-Android 触摸事件传递机制" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/19/Android 触摸事件传递机制/" class="article-date">
-  	<time datetime="2015-07-19T12:12:00.000Z" itemprop="datePublished">2015-07-19</time>
+      <a href="/2016/02/01/Android 触摸事件传递机制/" class="article-date">
+  	<time datetime="2016-02-01T08:33:03.000Z" itemprop="datePublished">2016-02-01</time>
 </a>
     </div>
   
@@ -220,7 +220,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>[TOC]</p>
-<h1 id="Android_触摸事件传递机制">Android 触摸事件传递机制</h1><p>之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递<br><a id="more"></a></p>
+<h1 id="Android_触摸事件传递机制">Android 触摸事件传递机制</h1><p>之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递</p>
 <h2 id="View">View</h2><h3 id="常用监听方法">常用监听方法</h3><p>view表示没有子空间的布局，例如textview、button等，MotionEvent分为三种</p>
 <ul>
 <li>MotionEvent.ACTION_DOWN：按下时候</li>
@@ -228,6 +228,7 @@
 <li>MotionEvent.ACTION_UP：抬起时</li>
 </ul>
 <p>常用两种监听事件</p>
+<a id="more"></a>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">******.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;		</span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">				<span class="comment">// <span class="doctag"><span class="keyword">TODO</span></span> Auto-generated method stub</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">*******.setOnTouchListener(<span class="keyword">new</span> View.OnTouchListener() &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="annotation">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span></span>&#123;</span><br><span class="line">				<span class="comment">// <span class="doctag"><span class="keyword">TODO</span></span> Auto-generated method stub</span></span><br><span class="line">	</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：setOnTouchListener中最后返回的是false</p>
@@ -275,12 +276,35 @@
 <pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent event)</span> </span>{<span class="function"><span class="keyword">return</span> <span class="keyword">super</span>.<span class="title">dispatchTouchEvent</span><span class="params">(event)</span></span>;
 
 我们可以复写，但是最后的<span class="keyword">super</span>.***是万万不能少滴。如果少了，表示连dispatch*** onTouchEvent压根就不调用了，事件就此打住。
-</code></pre><h2 id="参考">参考</h2><blockquote>
-<p><a href="http://blog.csdn.net/yanzi1225627/article/details/22592831" target="_blank" rel="external">http://blog.csdn.net/yanzi1225627/article/details/22592831</a></p>
-<p><a href="http://blog.csdn.net/guolin_blog/article/details/9097463" target="_blank" rel="external">http://blog.csdn.net/guolin_blog/article/details/9097463</a></p>
-<p><a href="http://www.cnblogs.com/sunzn/archive/2013/05/10/3064129.html" target="_blank" rel="external">http://www.cnblogs.com/sunzn/archive/2013/05/10/3064129.html</a></p>
+</code></pre><h1 id="Android_事件分发机制结论">Android 事件分发机制结论</h1><h2 id="View-1">View</h2><p>不管是DOWN，MOVE，UP都会按照下面的顺序执行：</p>
+<ol>
+<li>dispatchTouchEvent  （view中）</li>
+<li>setOnTouchListener的onTouch （监听事件设置 activity 中）</li>
+<li>onTouchEvent （view中）</li>
+</ol>
+<p>在dispatchTouchEvent中会进行OnTouchListener的判断，如果OnTouchListener不为null且返回true，则表示事件被消费，onTouchEvent不会被执行；否则执行onTouchEvent。</p>
+<h2 id="ViewGroup-1">ViewGroup</h2><p>可以看到大体的事件流程为：<br>MyLinearLayout的dispatchTouchEvent -&gt; MyLinearLayout的onInterceptTouchEvent -&gt; MyButton的dispatchTouchEvent -&gt;Mybutton的onTouchEvent </p>
+<p>可以看出，在View上触发事件，最先捕获到事件的为View所在的ViewGroup，然后才会到View自身~</p>
+<h3 id="事件拦截">事件拦截</h3><p>ViewGroup 与 View 不同的是，可以对事件进行拦截，使子 view 是否能接受到事件。<br>复写ViewGroup的onInterceptTouchEvent方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span>  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent ev)</span>  </span><br><span class="line"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> action = ev.getAction();  </span><br><span class="line">    <span class="keyword">switch</span> (action)  </span><br><span class="line">    &#123;  </span><br><span class="line">    <span class="keyword">case</span> MotionEvent.ACTION_DOWN:  </span><br><span class="line">        <span class="comment">//如果你觉得需要拦截  </span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span> ;   </span><br><span class="line">    <span class="keyword">case</span> MotionEvent.ACTION_MOVE:  </span><br><span class="line">        <span class="comment">//如果你觉得需要拦截  </span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span> ;   </span><br><span class="line">    <span class="keyword">case</span> MotionEvent.ACTION_UP:  </span><br><span class="line">        <span class="comment">//如果你觉得需要拦截  </span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span> ;   </span><br><span class="line">    &#125;  </span><br><span class="line">      </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>默认是不拦截的，即返回false；如果你需要拦截，只要return true就行了，这要该事件就不会往子View传递了，并且如果你在DOWN retrun true ，则DOWN,MOVE,UP子View都不会捕获事件；如果你在MOVE return true , 则子View在MOVE和UP都不会捕获事件。</p>
+<h3 id="如何不被拦截">如何不被拦截</h3><p>如果ViewGroup的onInterceptTouchEvent(ev) 当ACTION_MOVE时return true ，即拦截了子View的MOVE以及UP事件；</p>
+<p>此时子View希望依然能够响应MOVE和UP时该咋办呢？</p>
+<p>Android给我们提供了一个方法：requestDisallowInterceptTouchEvent(boolean) 用于设置是否允许拦截，我们在子View的dispatchTouchEvent中直接这么写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent event)</span>  </span><br><span class="line">    </span>&#123;  </span><br><span class="line">        getParent().requestDisallowInterceptTouchEvent(<span class="keyword">true</span>);    </span><br><span class="line">        <span class="keyword">int</span> action = event.getAction();  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">switch</span> (action)  </span><br><span class="line">        &#123;  </span><br><span class="line">        <span class="keyword">case</span> MotionEvent.ACTION_DOWN:  </span><br><span class="line">            Log.e(TAG, <span class="string">"dispatchTouchEvent ACTION_DOWN"</span>);  </span><br><span class="line">            <span class="keyword">break</span>;  </span><br><span class="line">        <span class="keyword">case</span> MotionEvent.ACTION_MOVE:  </span><br><span class="line">            Log.e(TAG, <span class="string">"dispatchTouchEvent ACTION_MOVE"</span>);  </span><br><span class="line">            <span class="keyword">break</span>;  </span><br><span class="line">        <span class="keyword">case</span> MotionEvent.ACTION_UP:  </span><br><span class="line">            Log.e(TAG, <span class="string">"dispatchTouchEvent ACTION_UP"</span>);  </span><br><span class="line">            <span class="keyword">break</span>;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">default</span>:  </span><br><span class="line">            <span class="keyword">break</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.dispatchTouchEvent(event);  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>getParent().requestDisallowInterceptTouchEvent(true);  这样即使ViewGroup在MOVE的时候return true，子View依然可以捕获到MOVE以及UP事件。</p>
+<ol>
+<li>如果ViewGroup找到了能够处理该事件的View，则直接交给子View处理，自己的onTouchEvent不会被触发；</li>
+<li>可以通过复写onInterceptTouchEvent(ev)方法，拦截子View的事件（即return true），把事件交给自己处理，则会执行自己对应的onTouchEvent方法</li>
+<li>子View可以通过调用getParent().requestDisallowInterceptTouchEvent(true);  阻止ViewGroup对其MOVE或者UP事件进行拦截；</li>
+</ol>
+<blockquote>
+<p>比如你需要写一个类似slidingmenu的左侧隐藏menu，主Activity上有个Button、ListView或者任何可以响应点击的View，你在当前View上死命的滑动，菜单栏也出不来；因为MOVE事件被子View处理了~ 你需要这么做：在ViewGroup的dispatchTouchEvent中判断用户是不是想显示菜单，如果是，则在onInterceptTouchEvent(ev)拦截子View的事件；自己进行处理，这样自己的onTouchEvent就可以顺利展现出菜单栏了~~</p>
 </blockquote>
-<h4 id=""> </h4>
+<h1 id="参考">参考</h1><blockquote>
+<p><a href="http://blog.csdn.net/yanzi1225627/article/details/22592831" target="_blank" rel="external">http://blog.csdn.net/yanzi1225627/article/details/22592831</a><br><a href="http://blog.csdn.net/guolin_blog/article/details/9097463" target="_blank" rel="external">http://blog.csdn.net/guolin_blog/article/details/9097463</a><br><a href="http://www.cnblogs.com/sunzn/archive/2013/05/10/3064129.html" target="_blank" rel="external">http://www.cnblogs.com/sunzn/archive/2013/05/10/3064129.html</a></p>
+</blockquote>
+
       
     </div>
     
@@ -289,18 +313,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/08/15/Android Studio中进行单元测试/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Android Studio中进行单元测试
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/07/12/volley学习/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">volley学习</div>
+    <a href="/2016/02/01/状态模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android View 小结</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -329,7 +344,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Android 触摸事件传递机制" data-title="Android 触摸事件传递机制" data-url="http://yoursite.com/2015/07/19/Android 触摸事件传递机制/"></div>
+	<div class="ds-thread" data-thread-key="Android 触摸事件传递机制" data-title="Android 触摸事件传递机制" data-url="http://yoursite.com/2016/02/01/Android 触摸事件传递机制/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

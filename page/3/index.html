@@ -111,7 +111,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/GC/" style="font-size: 13.33px;">GC</a> <a href="/tags/Gson/" style="font-size: 10px;">Gson</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Looper/" style="font-size: 10px;">Looper</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/bluetooth/" style="font-size: 10px;">bluetooth</a> <a href="/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/greendao/" style="font-size: 16.67px;">greendao</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/listview/" style="font-size: 10px;">listview</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/robolectric/" style="font-size: 10px;">robolectric</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/unit-tests/" style="font-size: 10px;">unit tests</a> <a href="/tags/view/" style="font-size: 16.67px;">view</a> <a href="/tags/view，Media-Player/" style="font-size: 10px;">view，Media Player</a> <a href="/tags/volley/" style="font-size: 10px;">volley</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/引用/" style="font-size: 10px;">引用</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/触摸事件/" style="font-size: 10px;">触摸事件</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+						<a href="/tags/Aidl/" style="font-size: 10px;">Aidl</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/GC/" style="font-size: 13.33px;">GC</a> <a href="/tags/Gson/" style="font-size: 10px;">Gson</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Looper/" style="font-size: 10px;">Looper</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/bluetooth/" style="font-size: 10px;">bluetooth</a> <a href="/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/greendao/" style="font-size: 16.67px;">greendao</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/listview/" style="font-size: 10px;">listview</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/robolectric/" style="font-size: 10px;">robolectric</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/unit-tests/" style="font-size: 10px;">unit tests</a> <a href="/tags/view/" style="font-size: 16.67px;">view</a> <a href="/tags/view，Media-Player/" style="font-size: 10px;">view，Media Player</a> <a href="/tags/volley/" style="font-size: 10px;">volley</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/引用/" style="font-size: 10px;">引用</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/触摸事件/" style="font-size: 10px;">触摸事件</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -178,6 +178,75 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-蓝牙学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/01/蓝牙学习/" class="article-date">
+  	<time datetime="2015-07-01T11:16:00.000Z" itemprop="datePublished">2015-07-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/01/蓝牙学习/">蓝牙学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h2 id="权限">权限</h2><p>有两种权限，至少需要一种权限</p>
+<ol>
+<li><code>BLUETOOTH</code>:执行任何蓝牙通信，例如请求一个连接、接受一个连接以及传输数据</li>
+<li><code>BLUETOOTH_ADMIN</code>：初始化设备查找或控制蓝牙设置</li>
+</ol>
+<blockquote>
+<p>如果你使用BLUETOOTH_ADMIN权限，那么必须拥有BLUETOOTH权限。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bluetooth/">bluetooth</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/android/">android</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/01/蓝牙学习/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-GreenDao学习" class="article article-type-post" itemscope itemprop="blogPost">
   

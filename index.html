@@ -111,7 +111,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/GC/" style="font-size: 13.33px;">GC</a> <a href="/tags/Gson/" style="font-size: 10px;">Gson</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Looper/" style="font-size: 10px;">Looper</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/bluetooth/" style="font-size: 10px;">bluetooth</a> <a href="/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/greendao/" style="font-size: 16.67px;">greendao</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/listview/" style="font-size: 10px;">listview</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/robolectric/" style="font-size: 10px;">robolectric</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/unit-tests/" style="font-size: 10px;">unit tests</a> <a href="/tags/view/" style="font-size: 16.67px;">view</a> <a href="/tags/view，Media-Player/" style="font-size: 10px;">view，Media Player</a> <a href="/tags/volley/" style="font-size: 10px;">volley</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/引用/" style="font-size: 10px;">引用</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/触摸事件/" style="font-size: 10px;">触摸事件</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+						<a href="/tags/Aidl/" style="font-size: 10px;">Aidl</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/GC/" style="font-size: 13.33px;">GC</a> <a href="/tags/Gson/" style="font-size: 10px;">Gson</a> <a href="/tags/Handler/" style="font-size: 10px;">Handler</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Looper/" style="font-size: 10px;">Looper</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/UI/" style="font-size: 13.33px;">UI</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/bluetooth/" style="font-size: 10px;">bluetooth</a> <a href="/tags/eventbus/" style="font-size: 10px;">eventbus</a> <a href="/tags/git/" style="font-size: 16.67px;">git</a> <a href="/tags/greendao/" style="font-size: 16.67px;">greendao</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/listview/" style="font-size: 10px;">listview</a> <a href="/tags/loader/" style="font-size: 10px;">loader</a> <a href="/tags/robolectric/" style="font-size: 10px;">robolectric</a> <a href="/tags/sqlite/" style="font-size: 10px;">sqlite</a> <a href="/tags/unit-tests/" style="font-size: 10px;">unit tests</a> <a href="/tags/view/" style="font-size: 16.67px;">view</a> <a href="/tags/view，Media-Player/" style="font-size: 10px;">view，Media Player</a> <a href="/tags/volley/" style="font-size: 10px;">volley</a> <a href="/tags/wifi/" style="font-size: 10px;">wifi</a> <a href="/tags/内存泄露/" style="font-size: 10px;">内存泄露</a> <a href="/tags/引用/" style="font-size: 10px;">引用</a> <a href="/tags/日记/" style="font-size: 10px;">日记</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/触摸事件/" style="font-size: 10px;">触摸事件</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -179,6 +179,76 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Android 触摸事件传递机制" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/01/Android 触摸事件传递机制/" class="article-date">
+  	<time datetime="2016-02-01T08:33:03.000Z" itemprop="datePublished">2016-02-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/01/Android 触摸事件传递机制/">Android 触摸事件传递机制</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h1 id="Android_触摸事件传递机制">Android 触摸事件传递机制</h1><p>之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递</p>
+<h2 id="View">View</h2><h3 id="常用监听方法">常用监听方法</h3><p>view表示没有子空间的布局，例如textview、button等，MotionEvent分为三种</p>
+<ul>
+<li>MotionEvent.ACTION_DOWN：按下时候</li>
+<li>MotionEvent.ACTION_MOVE：滑动时</li>
+<li>MotionEvent.ACTION_UP：抬起时</li>
+</ul>
+<p>常用两种监听事件</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/触摸事件/">触摸事件</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/android/">android</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/01/Android 触摸事件传递机制/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-状态模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -196,7 +266,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/01/状态模式/">状态模式 State Design Pattern</a>
+      <a class="article-title" href="/2016/02/01/状态模式/">Android View 小结</a>
     </h1>
   
 
@@ -225,40 +295,6 @@
 <li>在<code>context</code>中持有一个当前 <code>state</code>的变量</li>
 <li>改变<code>context</code>中的<code>state</code>状态</li>
 </ol>
-<h2 id="适用场景">适用场景</h2><ol>
-<li>对象的行为取决于当前的状态</li>
-<li>代码中包含大量的与对象状态有关的条件语句。状态模式将每一个条件分支放入一个独立的<code>state</code>类中。</li>
-</ol>
-<h2 id="结构">结构</h2><ul>
-<li><code>context</code>中定义客户端所感兴趣的接口，并持有一个状态类的实例，表示类当前的状态</li>
-<li><code>state</code>中定义一个接口，用以封装<code>context</code>中对象的一个特定的状态所对应的行为</li>
-<li>具体状态实现了<code>state</code>中所需要动作的具体行为（可以不实现，那么那个行为保持<code>state</code>中的行为）</li>
-</ul>
-<p><strong>UML 图</strong></p>
-<p><img src="media/14543092051479.png" alt=""></p>
-<h2 id="例子">例子</h2><h3 id="context_类">context 类</h3><ul>
-<li>其中定义了两个方法 <code>goNext</code> <code>goPre</code>，分别调用当前状态中的<code>next</code> <code>pre</code>方法</li>
-<li>复写了<code>toString</code>方法，便于观察结果</li>
-<li>在构造函数中初始化当前的<code>state</code></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.xuyushi.state;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 16/1/29.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Wrapper</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> State state;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Wrapper</span><span class="params">(State state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">goNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        state.next(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">goPre</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        state.pre(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(State state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"now state is "</span>+ state.getClass().getName();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="state_基类">state 基类</h3><ul>
-<li>定义了<code>next</code> <code>pre</code>方法，子类可以不用复写全部的方法，所以在父类中要做相应的处理，也可以抛出异常</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.xuyushi.state;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 16/1/29.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">State</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">next</span><span class="params">(Wrapper wrapper)</span> </span>&#123;</span><br><span class="line">        System.out.println( <span class="string">"error"</span> );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pre</span><span class="params">(Wrapper wrapper)</span> </span>&#123;</span><br><span class="line">        System.out.println( <span class="string">"error"</span> );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">### 具体实现类</span><br><span class="line"></span><br><span class="line">* A 状态只复写 next 方法</span><br><span class="line">* B 状态复写 next 和 pre方法</span><br><span class="line">* C 状态只复写 pre 方法</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line"><span class="keyword">package</span> io.github.xuyushi.state;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 16/1/29.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StateA</span> <span class="keyword">extends</span> <span class="title">State</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">next</span><span class="params">(Wrapper wrapper)</span> </span>&#123;</span><br><span class="line">        wrapper.setState(<span class="keyword">new</span> StateB());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> io.github.xuyushi.state;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 16/1/29.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StateB</span> <span class="keyword">extends</span> <span class="title">State</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">next</span><span class="params">(Wrapper wrapper)</span> </span>&#123;</span><br><span class="line">        wrapper.setState(<span class="keyword">new</span> StateC());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pre</span><span class="params">(Wrapper wrapper)</span> </span>&#123;</span><br><span class="line">        wrapper.setState(<span class="keyword">new</span> StateA());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> io.github.xuyushi.state;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 16/1/29.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StateC</span> <span class="keyword">extends</span> <span class="title">State</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pre</span><span class="params">(Wrapper wrapper)</span> </span>&#123;</span><br><span class="line">        wrapper.setState(<span class="keyword">new</span> StateA());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="客户端使用">客户端使用</h3><p>每次改变状态之后打印当前状态</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.xuyushi.state;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 16/1/29.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StateMain</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"StateMain RUNNING"</span>);</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        Wrapper wrapper = <span class="keyword">new</span> Wrapper(<span class="keyword">new</span> StateA());</span><br><span class="line">        System.out.println(wrapper.toString());</span><br><span class="line">        wrapper.goPre();</span><br><span class="line">        System.out.println(wrapper.toString());</span><br><span class="line">        wrapper.goNext();</span><br><span class="line">        System.out.println(wrapper.toString());</span><br><span class="line">        wrapper.goNext();</span><br><span class="line">        System.out.println(wrapper.toString());</span><br><span class="line">        wrapper.goNext();</span><br><span class="line">        System.out.println(wrapper.toString());</span><br><span class="line">        wrapper.goNext();</span><br><span class="line">        System.out.println(wrapper.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>log</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">StateMain RUNNING</span><br><span class="line">now state is io.github.xuyushi.state.StateA</span><br><span class="line">error</span><br><span class="line">now state is io.github.xuyushi.state.StateA</span><br><span class="line">now state is io.github.xuyushi.state.StateB</span><br><span class="line">now state is io.github.xuyushi.state.StateC</span><br><span class="line">error</span><br><span class="line">now state is io.github.xuyushi.state.StateC</span><br><span class="line">error</span><br><span class="line">now state is io.github.xuyushi.state.StateC</span><br></pre></td></tr></table></figure>
-<h1 id="参考">参考</h1><blockquote>
-<ul>
-<li>『first head 设计模式』 </li>
-<li><a href="https://sourcemaking.com/design_patterns/state" target="_blank" rel="external">https://sourcemaking.com/design_patterns/state</a></li>
-<li><a href="http://www.cnblogs.com/java-my-life/archive/2012/06/08/2538146.html" target="_blank" rel="external">http://www.cnblogs.com/java-my-life/archive/2012/06/08/2538146.html</a></li>
-<li><a href="http://blog.csdn.net/hguisu/article/details/7557252" target="_blank" rel="external">http://blog.csdn.net/hguisu/article/details/7557252</a></li>
-</ul>
-</blockquote>
-
       
     </div>
     
@@ -275,6 +311,10 @@
 	</div>
 
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/01/状态模式/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -307,7 +347,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/01/注解/">Android View 小结</a>
+      <a class="article-title" href="/2016/02/01/注解/">Java注解</a>
     </h1>
   
 
@@ -853,77 +893,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/10/27/Media Playback/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-自定义view" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/24/自定义view/" class="article-date">
-  	<time datetime="2015-10-24T13:32:00.000Z" itemprop="datePublished">2015-10-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/24/自定义view/">Android View 小结（下）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h1 id="自定义_view">自定义 view</h1><p>自定义 view 的主要步骤如下：</p>
-<ol>
-<li>自定义 view 属性</li>
-<li>在 view 的构造方法中，加载自定义的属性</li>
-<li>重写 onLayout</li>
-<li>重写 onMeasure</li>
-<li>重写 onDraw</li>
-</ol>
-<h2 id="自定义_view_属性">自定义 view 属性</h2><p>自定义View的属性，首先在res/values/  下建立一个attrs.xml</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/view/">view</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/android/">android</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/10/24/自定义view/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
