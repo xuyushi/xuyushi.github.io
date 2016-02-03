@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2015/07/14/Android%20%E8%A7%A6%E6%91%B8%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6/</loc>
+    <lastmod>2016-02-03T04:02:33.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/02/03/hello-world/</loc>
+    <lastmod>2016-02-03T03:47:28.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2015/06/19/%E5%8F%96%E6%B6%88%E8%BD%AF%E9%94%AE%E7%9B%98%E8%87%AA%E5%8A%A8%E5%BC%B9%E5%87%BA%20/</loc>
     <lastmod>2016-02-03T03:47:26.000Z</lastmod>
   </url>
@@ -74,11 +84,6 @@
   <url>
     <loc>http://yoursite.com/2015/07/12/volley%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2016-02-03T03:46:18.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/02/03/Android%20%E8%A7%A6%E6%91%B8%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6/</loc>
-    <lastmod>2016-02-03T03:46:13.000Z</lastmod>
   </url>
   
   <url>
@@ -159,11 +164,6 @@
   <url>
     <loc>http://yoursite.com/test/index.html</loc>
     <lastmod>2015-06-24T14:16:52.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/02/01/hello-world/</loc>
-    <lastmod>2015-06-24T13:02:38.000Z</lastmod>
   </url>
   
 </urlset>
