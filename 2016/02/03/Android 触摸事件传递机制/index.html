@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -17,6 +17,8 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
+
+  <meta name="google-site-verification" content="SaHbPoHOxqF4QuVM1TDhfg_Cqik1EY89r1Yt60Bcp5c" />
 
 
 
@@ -59,24 +61,42 @@
 
 
 
-<meta name="description" content="之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递">
+<meta name="description" content="[TOC]
+Android 触摸事件传递机制之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递
+View常用监听方法view表示没有子空间的布局，例如textview、button等，MotionEvent分为三种
+
+MotionEvent.ACTION_DOWN：按下时候
+MotionEvent.ACTION_MOVE：滑动时
+Mo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 触摸事件传递机制">
-<meta property="og:url" content="http://yoursite.com/2016/02/01/Android 触摸事件传递机制/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/02/03/Android 触摸事件传递机制/index.html">
 <meta property="og:site_name" content="Xu Yushi Blog">
-<meta property="og:description" content="之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递">
-<meta property="og:updated_time" content="2016-02-01T08:33:03.000Z">
+<meta property="og:description" content="[TOC]
+Android 触摸事件传递机制之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递
+View常用监听方法view表示没有子空间的布局，例如textview、button等，MotionEvent分为三种
+
+MotionEvent.ACTION_DOWN：按下时候
+MotionEvent.ACTION_MOVE：滑动时
+Mo">
+<meta property="og:updated_time" content="2016-02-03T03:46:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 触摸事件传递机制">
-<meta name="twitter:description" content="之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递">
+<meta name="twitter:description" content="[TOC]
+Android 触摸事件传递机制之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递
+View常用监听方法view表示没有子空间的布局，例如textview、button等，MotionEvent分为三种
+
+MotionEvent.ACTION_DOWN：按下时候
+MotionEvent.ACTION_MOVE：滑动时
+Mo">
 
 
 
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Muse',
+    sidebar: {"display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -111,10 +131,8 @@
 
   
   
-    
-  
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn  page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -162,16 +180,6 @@
               <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
             
             分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
           </a>
         </li>
       
@@ -247,8 +255,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T16:33:03+08:00" content="2016-02-01">
-              2016-02-01
+            <time itemprop="dateCreated" datetime="2016-02-03T11:46:13+08:00" content="2016-02-03">
+              2016-02-03
             </time>
           </span>
 
@@ -277,8 +285,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/01/Android 触摸事件传递机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/Android 触摸事件传递机制/" itemprop="commentsCount"></span>
+                <a href="/2016/02/03/Android 触摸事件传递机制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/03/Android 触摸事件传递机制/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -424,10 +432,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/02/01/Android 触摸事件传递机制/"
+        <div class="ds-share flat" data-thread-key="2016/02/03/Android 触摸事件传递机制/"
      data-title="Android 触摸事件传递机制"
      data-content=""
-     data-url="http://yoursite.com/2016/02/01/Android 触摸事件传递机制/">
+     data-url="http://yoursite.com/2016/02/03/Android 触摸事件传递机制/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -454,8 +462,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/01/Android 触摸事件传递机制/"
-           data-title="Android 触摸事件传递机制" data-url="http://yoursite.com/2016/02/01/Android 触摸事件传递机制/">
+      <div class="ds-thread" data-thread-key="2016/02/03/Android 触摸事件传递机制/"
+           data-title="Android 触摸事件传递机制" data-url="http://yoursite.com/2016/02/03/Android 触摸事件传递机制/">
       </div>
     
   </div>
@@ -508,7 +516,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -578,7 +586,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
@@ -593,7 +601,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

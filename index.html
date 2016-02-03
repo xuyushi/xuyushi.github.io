@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -17,6 +17,8 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
+
+  <meta name="google-site-verification" content="SaHbPoHOxqF4QuVM1TDhfg_Cqik1EY89r1Yt60Bcp5c" />
 
 
 
@@ -74,8 +76,8 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Muse',
+    sidebar: {"display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -110,10 +112,8 @@
 
   
   
-    
-  
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container one-collumn  
    page-home 
  ">
     <div class="headband"></div>
@@ -167,16 +167,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -220,6 +210,15 @@
 
     
     
+      
+      
+        
+        
+        
+      
+
+      
+    
 
     
       
@@ -243,7 +242,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/02/01/Android 触摸事件传递机制/" itemprop="url">
+                <a class="post-title-link" href="/2016/02/03/Android 触摸事件传递机制/" itemprop="url">
                   Android 触摸事件传递机制
                 </a>
               
@@ -257,8 +256,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T16:33:03+08:00" content="2016-02-01">
-              2016-02-01
+            <time itemprop="dateCreated" datetime="2016-02-03T11:46:13+08:00" content="2016-02-03">
+              2016-02-03
             </time>
           </span>
 
@@ -287,8 +286,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/01/Android 触摸事件传递机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/Android 触摸事件传递机制/" itemprop="commentsCount"></span>
+                <a href="/2016/02/03/Android 触摸事件传递机制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/03/Android 触摸事件传递机制/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -310,9 +309,17 @@
 
       
         
-          之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递
+          <p>[TOC]</p>
+<h1 id="Android_触摸事件传递机制">Android 触摸事件传递机制</h1><p>之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递</p>
+<h2 id="View">View</h2><h3 id="常用监听方法">常用监听方法</h3><p>view表示没有子空间的布局，例如textview、button等，MotionEvent分为三种</p>
+<ul>
+<li>MotionEvent.ACTION_DOWN：按下时候</li>
+<li>MotionEvent.ACTION_MOVE：滑动时</li>
+<li>MotionEvent.ACTION_UP：抬起时</li>
+</ul>
+<p>常用两种监听事件</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/01/Android 触摸事件传递机制/">
+            <a class="btn" href="/2016/02/03/Android 触摸事件传递机制/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -383,8 +390,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/justava/" itemprop="url" rel="index">
+                    <span itemprop="name">justava</span>
                   </a>
                 </span>
 
@@ -422,9 +429,28 @@
 
       
         
-          java 状态模式，State Design Pattern
+          <p>[TOC]</p>
+<h1 id="状态模式_State_Design_Pattern">状态模式 State Design Pattern</h1><h2 id="定义">定义</h2><h2 id="目的">目的</h2><ul>
+<li>根据不同的状态，采取不同的行为</li>
+<li>允许一个对象在其内部状态改变的时候改变其行为。这个对象看上去就像是改变了它的类一样</li>
+</ul>
+<h2 id="优点">优点</h2><ul>
+<li>减少了 if else，switch 语句的复杂程度 </li>
+<li>增加新的状态和逻辑时，便于修改</li>
+</ul>
+<h2 id="缺点">缺点</h2><ul>
+<li>类的种类增加<br>*</li>
+</ul>
+<h2 id="步骤">步骤</h2><ol>
+<li>定义一个 <code>context</code> 类，来给外接提供一个接口</li>
+<li>定义一个 <code>state</code> 基类</li>
+<li>根据<code>state</code> 状态，派生定义其他的不同状态类</li>
+<li>在派生<code>state</code> 中，定义不同的行为</li>
+<li>在<code>context</code>中持有一个当前 <code>state</code>的变量</li>
+<li>改变<code>context</code>中的<code>state</code>状态</li>
+</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/01/状态模式/">
+            <a class="btn" href="/2016/02/01/状态模式/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -495,8 +521,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -534,9 +560,12 @@
 
       
         
-          Java 注解
+          
+          注解123456789101112import java.lang.annotation.ElementType;import java.lang.annotation.Retention;import java.lang.annotation.RetentionPolicy;import java.lang.annotation.Target;@Target(ElementType.FIELD)
+          ...
+
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/01/注解/">
+            <a class="btn" href="/2016/02/01/注解/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -704,8 +733,8 @@ Quick
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -743,9 +772,15 @@ Quick
 
       
         
-          java 强引用、软引用、弱引用、虚引用
+          <p>[TOC]</p>
+<h1 id="强引用、软引用、弱引用、虚引用">强引用、软引用、弱引用、虚引用</h1><h2 id="强引用_StrongReference">强引用 StrongReference</h2><blockquote>
+<p>只要某个对象有强引用与之关联，JVM必定不会回收这个对象，即使在内存不足的情况下，JVM宁愿抛出OutOfMemory错误也不会回收这种对象</p>
+</blockquote>
+<p>若需要 jvm 回收此对象，可以将对象复制为 null</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object o = <span class="keyword">new</span> Object();   <span class="comment">//  强引用  </span></span><br><span class="line">o = <span class="keyword">null</span>;     <span class="comment">// 帮助垃圾收集器回收此对象</span></span><br></pre></td></tr></table></figure>
+<p><strong>但是如果这个o是全局的变量时，就需要在不用这个对象时赋值为null，因为强引用不会被垃圾回收。</strong></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/14/Java 引用/">
+            <a class="btn" href="/2016/01/14/Java 引用/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -816,8 +851,8 @@ Quick
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -933,8 +968,8 @@ Quick
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -972,9 +1007,25 @@ Quick
 
       
         
-          Android Android Studio 技巧
+          <p>[TOC]</p>
+<h1 id="IDEA_技巧">IDEA 技巧</h1><h2 id="重构">重构</h2><ul>
+<li>Undo<br><strong>Commend + Z</strong><br><em>undo 是安全的，可以撤销所有 refactor 操作。</em></li>
+<li>Find and replace code duplicates<br><em>可以选择当前文件，uncommit 文件、项目等 进行替换</em></li>
+<li>Rename<br><strong>Shift + Commend + F6</strong></li>
+<li>Type migration<br><strong>Shift + Commend + F6</strong><br>改变变量的属性，举个🌰 ， 可以将 int -&gt; Long ，需要migration 的是 int 而不是变量</li>
+<li>Invert boolean<br>反转 boolean 型变量值 ，true -&gt; false, false -&gt; true ,同时 rename 变量值</li>
+<li>safe delete<br><strong>Fn + Commend + Delete</strong><br>安全删除</li>
+<li><p>extract<br>提取变量、参数等</p>
+</li>
+<li><p>提取为参数:Option + Cmd + P  将变量提取到方法中为方法的参数</p>
+</li>
+<li>提取变量为函数名:Option + Cmd + V 将 new 出的对象，提取成一个对象</li>
+<li>提取常量:Option + Cmd + C 提取的常量为 static final,TAG快速生成</li>
+<li>提取方法:Option + Cmd + M</li>
+<li>提取为成员变量:Option + Cmd + F</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/11/IDEA 技巧/">
+            <a class="btn" href="/2016/01/11/IDEA 技巧/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1045,8 +1096,8 @@ Quick
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -1084,9 +1135,25 @@ Quick
 
       
         
-          VIM 技巧
+          
+          [TOC]
+VIM代码选择v:选择代码块V:选择代码行ctrl+V:多行选中模式 （esc 之后生效）
+跳转
+）:代码快跳转
+] :函数跳转
+} :class 跳转 移动
+hjkl
+f/F: 查找字符
+t/T: 同上，区别是停留前一个字符
+gg/G: 文件开头/结尾 
+H/M/L：跳到当前屏幕的顶部/中间/底部。
+‘[ 跳到上一次被改变的文本的第一个字符
+‘. 跳到上一次文本被修改的地方
+‘’ =
+          ...
+
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/10/VIM/">
+            <a class="btn" href="/2016/01/10/VIM/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1157,8 +1224,8 @@ Quick
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -1196,9 +1263,16 @@ Quick
 
       
         
-          Looper、Handler、Message 分析
+          <p>[TOC]</p>
+<h1 id="Looper、Handler、Message_分析">Looper、Handler、Message 分析</h1><h2 id="Looper">Looper</h2><p>通常在线程中是这样使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LooperThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">     <span class="keyword">public</span> Handler mHandler;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          Looper.prepare();</span><br><span class="line"></span><br><span class="line">          mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">                  <span class="comment">// process incoming messages here</span></span><br><span class="line">              &#125;</span><br><span class="line">          &#125;;</span><br><span class="line">          Looper.loop();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="prepare()">prepare()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    prepare(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(<span class="keyword">boolean</span> quitAllowed)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (sThreadLocal.get() != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Only one Looper may be created per thread"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    sThreadLocal.set(<span class="keyword">new</span> Looper(quitAllowed));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个 Looper 只能有一个 ThreadLoacl 对象</p>
+<blockquote>
+<p>ThreadLocal对象保证每个线程中的 Looper 实例互不相同</p>
+</blockquote>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/02/Looper、Handler、Message 分析/">
+            <a class="btn" href="/2015/12/02/Looper、Handler、Message 分析/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1308,9 +1382,14 @@ Quick
 
       
         
-          Android View 小结
+          <p>[TOC]</p>
+<h1 id="Media_Player">Media Player</h1><h2 id="Audio_Stream">Audio Stream</h2><p>Android为不同的应用场合定义了不同的Audio Stream: Voice Call, Ring, Music,Alarm, Notification, DTMF。 这些AudioStream是相互独立的，所以也有各自的音量</p>
+<h2 id="使用">使用</h2><p>最重要的类是 <code>MediaPlayer</code>，获取、解码、播放<br>播放 res/raw 中的文件 举个🌰</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.sound_file_1);</span><br><span class="line">mediaPlayer.start(); <span class="comment">// no need to call prepare(); create() does that for you</span></span><br></pre></td></tr></table></figure>
+<h3 id="异步准备">异步准备</h3><p>可能需要比较长的时间，media 需要获取资源和解码，最好不要放在 UI 线程。<br>此时可以使用<code>prepareAsync()</code>方法，这个方法在后台运行，当准备工资就绪之后在<code>MediaPlayer.OnPreparedListener</code>返回，可以在回调函数<code>setOnPreparedListener()</code>中设置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mediaPlayer.prepareAsync();</span><br><span class="line">mediaPlayer.setOnPreparedListener(<span class="keyword">new</span> MediaPlayer.OnPreparedListener() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPrepared</span><span class="params">(MediaPlayer mp)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag"><span class="keyword">TODO</span></span>: 15/10/27  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/27/Media Playback/">
+            <a class="btn" href="/2015/10/27/Media Playback/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1386,7 +1465,7 @@ Quick
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1439,7 +1518,7 @@ Quick
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
@@ -1454,7 +1533,7 @@ Quick
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

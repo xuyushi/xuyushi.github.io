@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -17,6 +17,8 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
+
+  <meta name="google-site-verification" content="SaHbPoHOxqF4QuVM1TDhfg_Cqik1EY89r1Yt60Bcp5c" />
 
 
 
@@ -74,8 +76,8 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Muse',
+    sidebar: {"display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -110,10 +112,8 @@
 
   
   
-    
-  
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container one-collumn  
    page-home 
  ">
     <div class="headband"></div>
@@ -167,16 +167,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -219,6 +209,11 @@
     
 
     
+    
+      
+      
+
+      
     
 
     
@@ -310,9 +305,16 @@
 
       
         
-          参考官方文档
+          <p>[TOC]</p>
+<h2 id="权限">权限</h2><p>有两种权限，至少需要一种权限</p>
+<ol>
+<li><code>BLUETOOTH</code>:执行任何蓝牙通信，例如请求一个连接、接受一个连接以及传输数据</li>
+<li><code>BLUETOOTH_ADMIN</code>：初始化设备查找或控制蓝牙设置</li>
+</ol>
+<blockquote>
+<p>如果你使用BLUETOOTH_ADMIN权限，那么必须拥有BLUETOOTH权限。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/01/蓝牙学习/">
+            <a class="btn" href="/2015/07/01/蓝牙学习/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -773,9 +775,9 @@
 
       
         
-          登陆框总结
+          <h2 id="实现功能">实现功能</h2><p>1.账号自动登陆<br>2.输入密码时，有全清按钮<br>3.账号输入失败 &gt; N次，要求用户输入验证码验证<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/27/登陆框UI/">
+            <a class="btn" href="/2015/06/27/登陆框UI/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -885,7 +887,7 @@
 
       
         
-          <h2 id="description:_git的入门">description: git的入门</h2><h2 id="创建版本">创建版本</h2><h3 id="创建本地仓库">创建本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+          <h2 id="创建版本">创建版本</h2><h3 id="创建本地仓库">创建本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">提示：Initialized empty Git repository <span class="keyword">in</span></span><br><span class="line">/Users/xuyushi/Downloads/.git/`</span><br></pre></td></tr></table></figure>
 <p>会在本地生成 .git 文件<br>
           <div class="post-more-link text-center">
@@ -999,9 +1001,12 @@
 
       
         
-          EventBus是一款针对Android优化的发布/订阅事件总线。主要功能是替代Intent,Handler,BroadCast在Fragment，Activity，Service，线程之间传递消息.优点是开销小，代码更优雅。以及将发送者和接收者解耦。
+          <h1 id="EventBus_学习">EventBus 学习</h1><h3 id="一-概述">一.概述</h3><blockquote>
+<p>EventBus是一款针对Android优化的发布/订阅事件总线。主要功能是替代Intent,Handler,BroadCast在Fragment，Activity，Service，线程之间传递消息.优点是开销小，代码更优雅。以及将发送者和接收者解耦。</p>
+</blockquote>
+<p>实现主要有3个元素组成<br>1.事件：event<br>2.发布者：发出消息的一方<br>3.订阅者：接受并处理消息<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/22/EventBus学习/">
+            <a class="btn" href="/2015/06/22/EventBus学习/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1111,9 +1116,10 @@
 
       
         
-          取消软键盘自动弹出
+          <h1 id="取消软键盘自动弹出">取消软键盘自动弹出</h1><p>在实际操作过程中，edittext会自动获取焦点，导致软键盘自动弹出。虚拟机则不会，做如下修改</p>
+<p>在AndroidMainfest.xml中对应的Activity中加入以下属性</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/19/取消软键盘自动弹出 /">
+            <a class="btn" href="/2015/06/19/取消软键盘自动弹出 /" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1335,9 +1341,10 @@
 
       
         
-          GSONJava中很常用的json库，它是google自定义的json库，功能很强大，支持泛型，它也可以实现从json到java对象的装换，也可以从java对象转换成json数据。
+          <h1 id="GSON_学习">GSON 学习</h1><blockquote>
+<p>GSONJava中很常用的json库，它是google自定义的json库，功能很强大，支持泛型，它也可以实现从json到java对象的装换，也可以从java对象转换成json数据。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/06/15/GSON 学习/">
+            <a class="btn" href="/2015/06/15/GSON 学习/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1413,7 +1420,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1466,7 +1473,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
@@ -1481,7 +1488,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

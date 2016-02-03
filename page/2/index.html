@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -17,6 +17,8 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
+
+  <meta name="google-site-verification" content="SaHbPoHOxqF4QuVM1TDhfg_Cqik1EY89r1Yt60Bcp5c" />
 
 
 
@@ -74,8 +76,8 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Muse',
+    sidebar: {"display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -110,10 +112,8 @@
 
   
   
-    
-  
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container one-collumn  
    page-home 
  ">
     <div class="headband"></div>
@@ -167,16 +167,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -219,6 +209,11 @@
     
 
     
+    
+      
+      
+
+      
     
 
     
@@ -310,9 +305,18 @@
 
       
         
-          Android View 小结
+          <p>[TOC]</p>
+<h1 id="自定义_view">自定义 view</h1><p>自定义 view 的主要步骤如下：</p>
+<ol>
+<li>自定义 view 属性</li>
+<li>在 view 的构造方法中，加载自定义的属性</li>
+<li>重写 onLayout</li>
+<li>重写 onMeasure</li>
+<li>重写 onDraw</li>
+</ol>
+<h2 id="自定义_view_属性">自定义 view 属性</h2><p>自定义View的属性，首先在res/values/  下建立一个attrs.xml</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/24/自定义view/">
+            <a class="btn" href="/2015/10/24/自定义view/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -383,8 +387,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -422,9 +426,23 @@
 
       
         
-          robolectric
+          <h2 id="环境搭建">环境搭建</h2><p>环境 : Android Studio 1.2.1.1+ Android Gradle Plugin 1.2.3+ Gradle 2.2.1+</p>
+<p>gradle中加入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  ...</span><br><span class="line">  testCompile <span class="string">'org.robolectric:robolectric:3.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>确认在Build Variants窗口内的Test Artifact中选择了”Unit Tests”。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-ab4402443ad7dc5f.png" alt=""></p>
+<p>然后，在工程的src文件夹内创建test和test/java文件夹。需要注意的是，你不能在Android视图下进行这些操作，要么在系统的文件管理器内创建，要么在工程窗口左上方点击下拉菜单选择Project视图。最终的工程结构应该是这样的：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-9e098817f6fcca44.png" alt=""></p>
+<blockquote>
+<p>配置成功之后<code>java</code>文件夹的颜色是绿色的</p>
+</blockquote>
+<p><code>**重要重要**</code><br>Run -&gt; Edit Configurations -&gt; Defaults -&gt; Junit<br>设置如下  <strong>$MODULE_DIR$.</strong><br><img src="https://camo.githubusercontent.com/b6776bd8da529df04410b6c6d5d6a6a63ebce717/687474703a2f2f726f626f6c6563747269632e6f72672f696d616765732f616e64726f69642d73747564696f2d636f6e6669677572652d64656661756c74732d34626634383430322e706e67" alt=""></p>
+<p>gradle 同步</p>
+<blockquote>
+<p>注意Robolectric目前不支持android 5.1 API level 22，编译时 sdk = 21 或者以下。</p>
+</blockquote>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/15/robolectric/">
+            <a class="btn" href="/2015/08/15/robolectric/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -534,9 +552,19 @@
 
       
         
-          Android Studio中进行单元测试
+          <h2 id="步骤">步骤</h2><h3 id="新建hello_world工程">新建hello_world工程</h3><p>略</p>
+<h3 id="配置单元测试">配置单元测试</h3><p>首先，确认在Build Variants窗口内的Test Artifact中选择了”Unit Tests”。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-ab4402443ad7dc5f.png" alt=""></p>
+<p>然后，在工程的src文件夹内创建test和test/java文件夹。需要注意的是，你不能在Android视图下进行这些操作，要么在系统的文件管理器内创建，要么在工程窗口左上方点击下拉菜单选择Project视图。最终的工程结构应该是这样的：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-9e098817f6fcca44.png" alt=""></p>
+<blockquote>
+<p>配置成功之后<code>java</code>文件夹的颜色是绿色的</p>
+</blockquote>
+<p>最后，打开工程的build.gradle（Module:app）文件，添加JUnit4依赖，点击Gradle sync按钮。</p>
+<p>在<code>build.gradle</code>中加入依赖</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])</span></span><br><span class="line">    compile 'com.android.support:appcompat-v7:22.1.1'</span><br><span class="line">    testCompile 'junit:junit:4.12'</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/15/Android Studio中进行单元测试/">
+            <a class="btn" href="/2015/08/15/Android Studio中进行单元测试/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -646,9 +674,17 @@
 
       
         
-          volley
+          <p>[TOC]</p>
+<h2 id="背景">背景</h2><p>Vollry特别适合数据量不大但是通信频繁的场景。</p>
+<p>比如以前从网上下载图片的步骤可能这样的流程：</p>
+<ul>
+<li>在ListAdatpter-getview（）方法里开始图像的读取</li>
+<li>通过AsyncTask等机制使用HttpURLConnection从服务器去读取图片资源</li>
+<li>在AsyncTask-onPostExecute（）里设置相应的Imageview的属性</li>
+</ul>
+<p>而在Volley下，只需要一个函数即可<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/12/volley学习/">
+            <a class="btn" href="/2015/07/12/volley学习/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -758,9 +794,9 @@
 
       
         
-          Android View 小结
+          <h1 id="Android_View_小结">Android View 小结</h1><p>本文介绍了 Android 自定义 View 的基本步骤<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/09/Android View 小结/">
+            <a class="btn" href="/2015/07/09/Android View 小结/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -984,9 +1020,9 @@
 
       
         
-          listview的复用机制
+          <h1 id="listview的复用机制">listview的复用机制</h1><p>本文介绍了listview的复用机制<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/09/listview的复用机制/">
+            <a class="btn" href="/2015/07/09/listview的复用机制/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1096,9 +1132,11 @@
 
       
         
-          在listfragment使用自定义的adpter现实数据库的数据，当数据库的数据发生变化时，自动刷新
+          <p>[TOC]</p>
+<h2 id="本文实现的功能">本文实现的功能</h2><p>在listfragment使用自定义的adpter现实数据库的数据，当数据库的数据发生变化时，自动刷新</p>
+<p>效果如下<br><img src="https://raw.githubusercontent.com/xuyushi/Blog_img/master/loader1.gif" alt="loader"><br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/05/loader 总结/">
+            <a class="btn" href="/2015/07/05/loader 总结/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1208,9 +1246,10 @@
 
       
         
-          使用命令行查看android sqlite数据库
+          <p>[TOC]</p>
+<p>记录如何使用命令行快速查看数据库<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/05/使用命令行查看android sqlite数据库/">
+            <a class="btn" href="/2015/07/05/使用命令行查看android sqlite数据库/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1320,9 +1359,14 @@
 
       
         
-          Aidl 总结
+          <p>[TOC]</p>
+<h1 id="AIDL_学习">AIDL 学习</h1><h2 id="AIDL的作用">AIDL的作用</h2><p>AIDL (Android Interface Definition Language) 是一种IDL 语言，用于生成可以在Android设备上两个进程之间进行进程间通信(interprocess communication, IPC)的代码。如果在一个进程中（例如Activity）要调用另一个进程中（例如Service）对象的操作，就可以使用AIDL生成可序列化的参数。</p>
+<h2 id="选择AIDL的使用场合">选择AIDL的使用场合</h2><p>官方文档特别提醒我们何时使用AIDL是必要的：只有你允许客户端从不同的应用程序为了进程间的通信而去访问你的service，以及想在你的service处理多线程。</p>
+<p>如果不需要进行不同应用程序间的并发通信(IPC)，you should create your interface by implementing a Binder；或者你想进行IPC，但不需要处理多线程的，则implement your interface using a Messenger。</p>
+<h2 id="如何使用AIDL">如何使用AIDL</h2><h3 id="先建立一个android工程，用作服务端">先建立一个android工程，用作服务端</h3><p>创建一个android工程，用来充当跨进程通信的服务端。</p>
+<h3 id="2-创建一个包名用来存放aidl文件">2.创建一个包名用来存放aidl文件</h3><p>创建一个包名用来存放aidl文件，在里面新建IMyService.aidl文件，如果需要访问自定义对象，还需要建立对象的aidl文件，这里我们由于使用了自定义对象Student，所以，还需要创建Student.aidl和Student.java。注意，这三个文件，需要都放在aidl文件夹下com.example.xuyushi.aidltest包里。下面描述如何写这三个文件。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/04/aidl 学习/">
+            <a class="btn" href="/2015/07/04/aidl 学习/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1398,7 +1442,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1451,7 +1495,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
@@ -1466,7 +1510,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
