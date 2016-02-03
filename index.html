@@ -210,6 +210,15 @@
 
     
     
+      
+      
+        
+        
+        
+      
+
+      
+    
 
     
       
@@ -233,104 +242,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/02/03/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-03T11:47:28+08:00" content="2016-02-03">
-              2016-02-03
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/03/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/03/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/03/hello-world/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/01/状态模式/" itemprop="url">
+                <a class="post-title-link" href="/2016/02/02/状态模式/" itemprop="url">
                   状态模式State Design Pattern
                 </a>
               
@@ -344,8 +256,8 @@ Quick
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T15:12:00+08:00" content="2016-02-01">
-              2016-02-01
+            <time itemprop="dateCreated" datetime="2016-02-02T23:22:55+08:00" content="2016-02-02">
+              2016-02-02
             </time>
           </span>
 
@@ -358,8 +270,8 @@ Quick
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/justava/" itemprop="url" rel="index">
-                    <span itemprop="name">justava</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -374,8 +286,8 @@ Quick
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/01/状态模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/状态模式/" itemprop="commentsCount"></span>
+                <a href="/2016/02/02/状态模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/状态模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -418,7 +330,7 @@ Quick
 <li>改变<code>context</code>中的<code>state</code>状态</li>
 </ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/01/状态模式/" rel="contents">
+            <a class="btn" href="/2016/02/02/状态模式/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -529,14 +441,39 @@ Quick
       
         
           
-          注解123456789101112import java.lang.annotation.ElementType;import java.lang.annotation.Retention;import java.lang.annotation.RetentionPolicy;import java.lang.annotation.Target;@Target(ElementType.FIELD)
-          ...
+            <h1 id="注解">注解</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="annotation">@Target</span>(ElementType.FIELD)</span><br><span class="line"><span class="annotation">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="annotation">@interface</span> Column &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">type</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">primary</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">false</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>interface用来声明一个注解，其中的每一个方法实际上是声明了一个配置参数。</li>
+<li>方法的名称就是参数的名称，返回值类型就是参数的类型。</li>
+<li>可以通过default来声明参数的默认值。</li>
+<li>在这里可以看到@Retention和@Target这样的元注解，用来声明注解本身的行为。</li>
+<li>@Retention用来声明注解的保留策略，有CLASS、RUNTIME和SOURCE这三种，分别表示注解保存在类文件、JVM运行时刻和源代码中。</li>
+<li>只有当声明为RUNTIME的时候，才能够在运行时刻通过反射API来获取到注解的信息。</li>
+<li>@Target用来声明注解可以被添加在哪些类型的元素上，如类型、方法和域等。</li>
+<li>就可以定义一个注解了，它将自动继承Annotation</li>
+</ul>
+<p>@Target 表示该注解用于什么地方，可能的值在枚举类 ElemenetType 中，包括： </p>
+<ul>
+<li>ElemenetType.CONSTRUCTOR 构造器声明 </li>
+<li>ElemenetType.FIELD 域声明（包括 enum 实例） </li>
+<li>ElemenetType.LOCAL_VARIABLE 局部变量声明 </li>
+<li>ElemenetType.METHOD 方法声明 </li>
+<li>ElemenetType.PACKAGE 包声明 </li>
+<li>ElemenetType.PARAMETER 参数声明 </li>
+<li>ElemenetType.TYPE 类，接口（包括注解类型）或enum声明 </li>
+</ul>
+<p>@Retention 表示在什么级别保存该注解信息。可选的参数值在枚举类型 RetentionPolicy 中，包括： </p>
+<ul>
+<li>RetentionPolicy.SOURCE 注解将被编译器丢弃 </li>
+<li>RetentionPolicy.CLASS 注解在class文件中可用，但会被VM丢弃 </li>
+<li><p>RetentionPolicy.RUNTIME VM将在运行期也保留注释，因此可以通过反射机制读取注解的信息。 </p>
+<pre><code><span class="variable">@Documented</span> 将此注解包含在 javadoc 中 ，它代表着此注解会被javadoc工具提取成文档。在doc文档中的内容会因为此注解的信息内容不同而不同。相当与<span class="variable">@see</span>,<span class="variable">@param</span> 等。
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/01/注解/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+<span class="variable">@Inherited</span> 允许子类继承父类中的注解，例子中补充。
+</code></pre></li>
+</ul>
+
+          
         
       
     </div>
@@ -1007,27 +944,32 @@ Quick
       
         
           
-          [TOC]
-VIM代码选择v:选择代码块V:选择代码行ctrl+V:多行选中模式 （esc 之后生效）
-跳转
-）:代码快跳转
-] :函数跳转
-} :class 跳转 移动
-hjkl
-f/F: 查找字符
-t/T: 同上，区别是停留前一个字符
-gg/G: 文件开头/结尾 
-H/M/L：跳到当前屏幕的顶部/中间/底部。
-‘[ 跳到上一次被改变的文本的第一个字符
-‘. 跳到上一次文本被修改的地方
-‘’ =
-          ...
+            <p>[TOC]</p>
+<h1 id="VIM">VIM</h1><h2 id="代码选择">代码选择</h2><p>v:选择代码块<br>V:选择代码行<br>ctrl+V:多行选中模式 （esc 之后生效）</p>
+<h2 id="跳转">跳转</h2><ul>
+<li>）:代码快跳转</li>
+<li>] :函数跳转</li>
+<li>} :class 跳转 <h2 id="移动">移动</h2></li>
+<li>hjkl</li>
+<li>f/F: 查找字符</li>
+<li>t/T: 同上，区别是停留前一个字符</li>
+<li>gg/G: 文件开头/结尾 </li>
+<li>H/M/L：跳到当前屏幕的顶部/中间/底部。</li>
+<li>‘[ 跳到上一次被改变的文本的第一个字符</li>
+<li>‘. 跳到上一次文本被修改的地方</li>
+<li>‘’ ==跳回上一次跳转的地方==</li>
+<li>‘^ 跳到插入模式最后一次结束的地方 <h2 id="编辑模式">编辑模式</h2></li>
+<li>x/X是删除当前光标下/光标前的一个字符</li>
+<li>d/c/y是删除/修改/复制命令</li>
+</ul>
+<p><em>diw, yiw, ciw, viw 删除(复制,改变,选中)光标所在单词<br>da”, ya”, ca”, va” 删除(复制,改变,选中)””号内所有文本,包括引号本身</em></p>
+<ul>
+<li>* 向前查找当前光标下的单词</li>
+<li># 反方向查找当前光标下的单词 </li>
+<li>我们在使用的过程中，会遇到这样的问题，分别在两个地方删除内容，然后需要分别粘贴，这样的情况就需要用到”ayy “ap这样的命令了，”ayy是把当前行复制到名字为a的寄存器中，”ap就是在这里粘帖a寄存器中的内容。</li>
+</ul>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/10/VIM/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
@@ -1403,6 +1345,132 @@ H/M/L：跳到当前屏幕的顶部/中间/底部。
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/15/robolectric/" itemprop="url">
+                  robolectric
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-15T15:25:00+08:00" content="2015-08-15">
+              2015-08-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/15/robolectric/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/15/robolectric/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="环境搭建">环境搭建</h2><p>环境 : Android Studio 1.2.1.1+ Android Gradle Plugin 1.2.3+ Gradle 2.2.1+</p>
+<p>gradle中加入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  ...</span><br><span class="line">  testCompile <span class="string">'org.robolectric:robolectric:3.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>确认在Build Variants窗口内的Test Artifact中选择了”Unit Tests”。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-ab4402443ad7dc5f.png" alt=""></p>
+<p>然后，在工程的src文件夹内创建test和test/java文件夹。需要注意的是，你不能在Android视图下进行这些操作，要么在系统的文件管理器内创建，要么在工程窗口左上方点击下拉菜单选择Project视图。最终的工程结构应该是这样的：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-9e098817f6fcca44.png" alt=""></p>
+<blockquote>
+<p>配置成功之后<code>java</code>文件夹的颜色是绿色的</p>
+</blockquote>
+<p><code>**重要重要**</code><br>Run -&gt; Edit Configurations -&gt; Defaults -&gt; Junit<br>设置如下  <strong>$MODULE_DIR$.</strong><br><img src="https://camo.githubusercontent.com/b6776bd8da529df04410b6c6d5d6a6a63ebce717/687474703a2f2f726f626f6c6563747269632e6f72672f696d616765732f616e64726f69642d73747564696f2d636f6e6669677572652d64656661756c74732d34626634383430322e706e67" alt=""></p>
+<p>gradle 同步</p>
+<blockquote>
+<p>注意Robolectric目前不支持android 5.1 API level 22，编译时 sdk = 21 或者以下。</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/15/robolectric/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 
@@ -1457,7 +1525,7 @@ H/M/L：跳到当前屏幕的顶部/中间/底部。
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
