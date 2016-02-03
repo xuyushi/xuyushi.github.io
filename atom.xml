@@ -121,11 +121,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Android View 小结]]></title>
+    <title><![CDATA[状态模式State Design Pattern]]></title>
     <link href="http://yoursite.com/2016/02/01/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/"/>
     <id>http://yoursite.com/2016/02/01/状态模式/</id>
     <published>2016-02-01T07:12:00.000Z</published>
-    <updated>2016-02-01T08:34:08.000Z</updated>
+    <updated>2016-02-01T12:49:55.000Z</updated>
     <content type="html"><![CDATA[<p>[TOC]</p>
 <h1 id="状态模式_State_Design_Pattern">状态模式 State Design Pattern</h1><h2 id="定义">定义</h2><h2 id="目的">目的</h2><ul>
 <li>根据不同的状态，采取不同的行为</li>
@@ -157,7 +157,7 @@
 <li>具体状态实现了<code>state</code>中所需要动作的具体行为（可以不实现，那么那个行为保持<code>state</code>中的行为）</li>
 </ul>
 <p><strong>UML 图</strong></p>
-<p><img src="media/14543092051479.png" alt=""></p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-01-14543092051479.png" alt=""></p>
 <h2 id="例子">例子</h2><h3 id="context_类">context 类</h3><ul>
 <li>其中定义了两个方法 <code>goNext</code> <code>goPre</code>，分别调用当前状态中的<code>next</code> <code>pre</code>方法</li>
 <li>复写了<code>toString</code>方法，便于观察结果</li>
@@ -313,7 +313,7 @@
     <link href="http://yoursite.com/2016/01/14/%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2/"/>
     <id>http://yoursite.com/2016/01/14/内存泄露/</id>
     <published>2016-01-14T09:27:00.000Z</published>
-    <updated>2016-02-01T09:26:54.000Z</updated>
+    <updated>2016-02-03T02:48:23.000Z</updated>
     <content type="html"><![CDATA[<p>[TOC]</p>
 <h1 id="内存泄露">内存泄露</h1><blockquote>
 <p>内存泄露的定义:<br>当某些对象不再被应用程序所使用,但是由于仍然被引用而导致垃圾收集器不能释放(Remove,移除)他们.</p>
@@ -397,7 +397,12 @@
 </blockquote>
 ]]></content>
     <summary type="html">
-    <![CDATA[Android 内存泄露]]>
+    <![CDATA[<p>[TOC]</p>
+<h1 id="内存泄露">内存泄露</h1><blockquote>
+<p>内存泄露的定义:<br>当某些对象不再被应用程序所使用,但是由于仍然被引用而导致垃圾收集器不能释放(Remove,移除)他们.</p>
+</blockquote>
+<h2 id="产生的原因：">产生的原因：</h2><p>内存对象明明已经不需要的时候，还仍然保留着这块内存和它的访问方式（引用）</p>
+<p><em>长生命周期的对象持有短生命周期对象的引用就很可能发生内存泄露，尽管短生命周期对象已经不再需要，但是因为长生命周期对象持有它的引用而导致不能被回收，这就是java中内存泄露的发生场景。</em></p>]]>
     
     </summary>
     
