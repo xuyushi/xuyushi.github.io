@@ -43,7 +43,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="GC,引用," />
+  <meta name="keywords" content="Pattern,设计模式," />
 
 
 
@@ -62,30 +62,50 @@
 
 
 <meta name="description" content="[TOC]
-强引用、软引用、弱引用、虚引用强引用 StrongReference
-只要某个对象有强引用与之关联，JVM必定不会回收这个对象，即使在内存不足的情况下，JVM宁愿抛出OutOfMemory错误也不会回收这种对象
+策略模式 Strategy Pattern定义
+策略模式定义了算法簇，分别封装起来，让它们之间可以互相替代，此模式让算法的变化独立于使用算法的客户
 
-若需要 jvm 回收此对象，可以将对象复制为 null
-12Object o = new Object();   //  强引用  o = null;     // 帮助垃圾">
+使用场景
+针对同一类型问题的多种处理方式，仅仅是具体行为有差别时。
+需要安全的封装多种同一类型的操作时。
+出现同一抽象多个子类，而又需要使用if-else 或者 switch-case来选择时。
+
+UML 图
+
+Context：用来操作策">
 <meta property="og:type" content="article">
-<meta property="og:title" content="强引用、软引用、弱引用、虚引用">
-<meta property="og:url" content="http://yoursite.com/2016/01/14/Java 引用/index.html">
+<meta property="og:title" content="策略模式 Strategy Pattern">
+<meta property="og:url" content="http://yoursite.com/2016/02/17/策略模式/index.html">
 <meta property="og:site_name" content="Xu Yushi''s Blog">
 <meta property="og:description" content="[TOC]
-强引用、软引用、弱引用、虚引用强引用 StrongReference
-只要某个对象有强引用与之关联，JVM必定不会回收这个对象，即使在内存不足的情况下，JVM宁愿抛出OutOfMemory错误也不会回收这种对象
+策略模式 Strategy Pattern定义
+策略模式定义了算法簇，分别封装起来，让它们之间可以互相替代，此模式让算法的变化独立于使用算法的客户
 
-若需要 jvm 回收此对象，可以将对象复制为 null
-12Object o = new Object();   //  强引用  o = null;     // 帮助垃圾">
-<meta property="og:updated_time" content="2016-02-03T03:45:20.000Z">
+使用场景
+针对同一类型问题的多种处理方式，仅仅是具体行为有差别时。
+需要安全的封装多种同一类型的操作时。
+出现同一抽象多个子类，而又需要使用if-else 或者 switch-case来选择时。
+
+UML 图
+
+Context：用来操作策">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-20-14557164239727.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-20-14557189438038.png">
+<meta property="og:updated_time" content="2016-02-20T14:17:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="强引用、软引用、弱引用、虚引用">
+<meta name="twitter:title" content="策略模式 Strategy Pattern">
 <meta name="twitter:description" content="[TOC]
-强引用、软引用、弱引用、虚引用强引用 StrongReference
-只要某个对象有强引用与之关联，JVM必定不会回收这个对象，即使在内存不足的情况下，JVM宁愿抛出OutOfMemory错误也不会回收这种对象
+策略模式 Strategy Pattern定义
+策略模式定义了算法簇，分别封装起来，让它们之间可以互相替代，此模式让算法的变化独立于使用算法的客户
 
-若需要 jvm 回收此对象，可以将对象复制为 null
-12Object o = new Object();   //  强引用  o = null;     // 帮助垃圾">
+使用场景
+针对同一类型问题的多种处理方式，仅仅是具体行为有差别时。
+需要安全的封装多种同一类型的操作时。
+出现同一抽象多个子类，而又需要使用if-else 或者 switch-case来选择时。
+
+UML 图
+
+Context：用来操作策">
 
 
 
@@ -103,7 +123,7 @@
   };
 </script>
 
-  <title> 强引用、软引用、弱引用、虚引用 | Xu Yushi''s Blog </title>
+  <title> 策略模式 Strategy Pattern | Xu Yushi''s Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -250,7 +270,7 @@
             
             
               
-                强引用、软引用、弱引用、虚引用
+                策略模式 Strategy Pattern
               
             
           </h1>
@@ -262,8 +282,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-14T17:27:00+08:00" content="2016-01-14">
-              2016-01-14
+            <time itemprop="dateCreated" datetime="2016-02-17T21:26:55+08:00" content="2016-02-17">
+              2016-02-17
             </time>
           </span>
 
@@ -292,8 +312,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/14/Java 引用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/Java 引用/" itemprop="commentsCount"></span>
+                <a href="/2016/02/17/策略模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/策略模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -315,25 +335,51 @@
 
       
         <p>[TOC]</p>
-<h1 id="强引用、软引用、弱引用、虚引用">强引用、软引用、弱引用、虚引用</h1><h2 id="强引用_StrongReference">强引用 StrongReference</h2><blockquote>
-<p>只要某个对象有强引用与之关联，JVM必定不会回收这个对象，即使在内存不足的情况下，JVM宁愿抛出OutOfMemory错误也不会回收这种对象</p>
+<h1 id="策略模式_Strategy_Pattern">策略模式 Strategy Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p><strong>策略模式</strong>定义了算法簇，分别封装起来，让它们之间可以互相替代，此模式让算法的变化独立于使用算法的客户</p>
 </blockquote>
-<p>若需要 jvm 回收此对象，可以将对象复制为 null</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object o = <span class="keyword">new</span> Object();   <span class="comment">//  强引用  </span></span><br><span class="line">o = <span class="keyword">null</span>;     <span class="comment">// 帮助垃圾收集器回收此对象</span></span><br></pre></td></tr></table></figure>
-<p><strong>但是如果这个o是全局的变量时，就需要在不用这个对象时赋值为null，因为强引用不会被垃圾回收。</strong></p>
-<a id="more"></a>
-<h2 id="软引用_SoftReference">软引用 SoftReference</h2><blockquote>
-<p>对于软引用关联着的对象，只有在内存不足的时候JVM才会回收该对象。</p>
-</blockquote>
-<p>因此，这一点可以很好地用来解决OOM的问题，并且这个特性很适合用来实现缓存：比如网页缓存、图片缓存等。</p>
-<h2 id="弱引用_WeakReference">弱引用 WeakReference</h2><blockquote>
-<p>当JVM进行垃圾回收时，无论内存是否充足，都会回收被弱引用关联的对象</p>
-</blockquote>
-<h2 id="虚引用_PhantomReference">虚引用 PhantomReference</h2><blockquote>
-<p>如果一个对象与虚引用关联，则跟没有引用与之关联一样，在任何时候都可能被垃圾回收器回收。</p>
-</blockquote>
-<h1 id="参考">参考</h1><blockquote>
-<p><a href="http://www.cnblogs.com/dolphin0520/p/3784171.html" target="_blank" rel="external">http://www.cnblogs.com/dolphin0520/p/3784171.html</a><br><a href="http://blog.csdn.net/mazhimazh/article/details/19752475" target="_blank" rel="external">http://blog.csdn.net/mazhimazh/article/details/19752475</a></p>
+<h2 id="使用场景">使用场景</h2><ul>
+<li>针对同一类型问题的多种处理方式，仅仅是具体行为有差别时。</li>
+<li>需要安全的封装多种同一类型的操作时。</li>
+<li>出现同一抽象多个子类，而又需要使用if-else 或者 switch-case来选择时。</li>
+</ul>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-20-14557164239727.png" alt=""></p>
+<ul>
+<li>Context：用来操作策略的上下文环境。</li>
+<li>Strategy : 策略的抽象</li>
+<li>ImplementationOne、ImplementationTwo：具体策略的实现</li>
+</ul>
+<h2 id="简单实现">简单实现</h2><p>通常如果一个问题有多个解决方案或者稍有区别的操作时，最简单的方式就是利用if-else or switch-case方式来解决，对于简单的解决方案这样做无疑是比较简单、方便、快捷的，但是如果解决方案中包括大量的处理逻辑需要封装，或者处理方式变动较大的时候则就显得混乱、复杂，而策略模式则很好的解决了这样的问题，它将各种方案分离开来，让操作者根据具体的需求来动态的选择不同的策略方案。</p>
+<h3 id="步骤">步骤</h3><ol>
+<li>定义Strategy接口</li>
+<li>具体的算法 实现Strategy接口</li>
+<li>客户端调用Strategy接口</li>
+</ol>
+<h3 id="例子">例子</h3><p>定义Strategy接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.xuyushi.strategy;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 16/2/17.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Strategy</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体的算法 实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.xuyushi.strategy;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 16/2/17.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StrategyA</span> <span class="keyword">implements</span> <span class="title">Strategy</span> </span>&#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"This is StrategyA"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.xuyushi.state;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 16/1/29.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StateB</span> <span class="keyword">extends</span> <span class="title">State</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">next</span><span class="params">(Wrapper wrapper)</span> </span>&#123;</span><br><span class="line">        wrapper.setState(<span class="keyword">new</span> StateC());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pre</span><span class="params">(Wrapper wrapper)</span> </span>&#123;</span><br><span class="line">        wrapper.setState(<span class="keyword">new</span> StateA());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义 context</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.xuyushi.strategy;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 16/2/17.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Strategy strategy;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">(Strategy strategy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.strategy = strategy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStrategy</span><span class="params">(Strategy strategy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.strategy = strategy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doStrategy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        strategy.doSomething();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>客户端调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.xuyushi.strategy;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 16/2/17.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">strategyMain</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"StateMain RUNNING"</span>);</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        Context context = <span class="keyword">new</span> Context(<span class="keyword">new</span> StrategyA());</span><br><span class="line">        context.doStrategy();</span><br><span class="line">        context.setStrategy(<span class="keyword">new</span> StrategyB());</span><br><span class="line">        context.doStrategy();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">StateMain RUNNING</span><br><span class="line">This is StrategyA</span><br><span class="line">This is StrategyB</span><br></pre></td></tr></table></figure>
+<p>例子的 UML 图 </p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-20-14557189438038.png" alt=""></p>
+<h2 id="总结">总结</h2><p>策略模式主要用来分离算法，根据相同的行为抽象来做不同的具体策略实现。<br>通过以上也可以看出策略模式的优缺点：<br><strong>优点：</strong></p>
+<ul>
+<li>结构清晰明了、使用简单直观。</li>
+<li>耦合度相对而言较低，扩展方便。</li>
+<li>操作封装也更为彻底，数据更为安全。</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>随着策略的增加，子类也会变得繁多。</li>
+</ul>
+<h2 id="参考">参考</h2><blockquote>
+<p><a href="https://sourcemaking.com/design_patterns/strategy" target="_blank" rel="external">https://sourcemaking.com/design_patterns/strategy</a><br><a href="https://github.com/simple-android-framework/android_design_patterns_analysis/tree/master/strategy/gkerison" target="_blank" rel="external">https://github.com/simple-android-framework/android_design_patterns_analysis/tree/master/strategy/gkerison</a><br>『head first 设计模式』</p>
 </blockquote>
 
       
@@ -343,9 +389,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/GC/" rel="tag">#GC</a>
+            <a href="/tags/Pattern/" rel="tag">#Pattern</a>
           
-            <a href="/tags/引用/" rel="tag">#引用</a>
+            <a href="/tags/设计模式/" rel="tag">#设计模式</a>
           
         </div>
       
@@ -354,16 +400,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/14/内存泄露/" rel="next" title="Android 内存泄露">
-                <i class="fa fa-chevron-left"></i> Android 内存泄露
+              <a href="/2016/02/04/2015summarize/" rel="next" title="2015小结">
+                <i class="fa fa-chevron-left"></i> 2015小结
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/01/注解/" rel="prev" title="Java注解">
-                Java注解 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/02/20/观察者模式/" rel="prev" title="观察者模式 Observer Design Pattern">
+                观察者模式 Observer Design Pattern <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -379,10 +425,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/01/14/Java 引用/"
-     data-title="强引用、软引用、弱引用、虚引用"
+        <div class="ds-share flat" data-thread-key="2016/02/17/策略模式/"
+     data-title="策略模式 Strategy Pattern"
      data-content=""
-     data-url="http://yoursite.com/2016/01/14/Java 引用/">
+     data-url="http://yoursite.com/2016/02/17/策略模式/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -409,8 +455,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/14/Java 引用/"
-           data-title="强引用、软引用、弱引用、虚引用" data-url="http://yoursite.com/2016/01/14/Java 引用/">
+      <div class="ds-thread" data-thread-key="2016/02/17/策略模式/"
+           data-title="策略模式 Strategy Pattern" data-url="http://yoursite.com/2016/02/17/策略模式/">
       </div>
     
   </div>
@@ -512,7 +558,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#强引用、软引用、弱引用、虚引用"><span class="nav-number">1.</span> <span class="nav-text">强引用、软引用、弱引用、虚引用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#强引用_StrongReference"><span class="nav-number">1.1.</span> <span class="nav-text">强引用 StrongReference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软引用_SoftReference"><span class="nav-number">1.2.</span> <span class="nav-text">软引用 SoftReference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弱引用_WeakReference"><span class="nav-number">1.3.</span> <span class="nav-text">弱引用 WeakReference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚引用_PhantomReference"><span class="nav-number">1.4.</span> <span class="nav-text">虚引用 PhantomReference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#策略模式_Strategy_Pattern"><span class="nav-number">1.</span> <span class="nav-text">策略模式 Strategy Pattern</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景"><span class="nav-number">1.2.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UML_图"><span class="nav-number">1.3.</span> <span class="nav-text">UML 图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单实现"><span class="nav-number">1.4.</span> <span class="nav-text">简单实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤"><span class="nav-number">1.4.1.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">1.4.2.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.6.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
