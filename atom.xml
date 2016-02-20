@@ -5,7 +5,7 @@
   <subtitle><![CDATA[低调、务实、自驱、反思]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com//"/>
-  <updated>2016-02-20T14:16:44.000Z</updated>
+  <updated>2016-02-20T14:21:48.000Z</updated>
   <id>http://yoursite.com//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/02/20/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
     <id>http://yoursite.com/2016/02/20/观察者模式/</id>
     <published>2016-02-20T14:07:55.000Z</published>
-    <updated>2016-02-20T14:16:44.000Z</updated>
+    <updated>2016-02-20T14:21:48.000Z</updated>
     <content type="html"><![CDATA[<p>[TOC]</p>
 <h1 id="观察者模式_Observer_Design_Pattern">观察者模式 Observer Design Pattern</h1><h2 id="定义">定义</h2><blockquote>
 <p>观察者模式定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖都会受到通知并自动更新</p>
@@ -31,6 +31,7 @@
 <li>MVC 中的 View 层实现</li>
 </ol>
 <h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-20-14559766489224.png" alt=""></p>
+<a id="more"></a>
 <ul>
 <li>Observable:<strong>抽象主题</strong>，抽象主题角色把所有对观察者对象的引用保存在一个聚集（比如ArrayList对象）里，每个主题都可以有任何数量的观察者。抽象主题提供一个接口，可以增加和删除观察者对象，抽象主题角色又叫做抽象被观察者(Observable)角色。</li>
 <li>Message:具体被观察对象</li>
@@ -78,7 +79,15 @@
     <summary type="html">
     <![CDATA[<p>[TOC]</p>
 <h1 id="观察者模式_Observer_Design_Pattern">观察者模式 Observer Design Pattern</h1><h2 id="定义">定义</h2><blockquote>
-<p>观察者模式定义了对象之间的一对多依赖，]]>
+<p>观察者模式定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖都会受到通知并自动更新</p>
+</blockquote>
+<h2 id="使用场景">使用场景</h2><ol>
+<li>对象之间的一对多依赖。一个对象状态的更新时，其他对象需要自动更新，而且其他对象的数量动态可变。（注册、反注册） </li>
+<li>对象仅需要将自己的更新通知给其他对象而不需要知道其他对象的细节。 (解耦)</li>
+<li>MVC 中的 View 层实现</li>
+</ol>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-20-14559766489224.png" alt=""></p>]]>
+    
     </summary>
     
       <category term="Pattern" scheme="http://yoursite.com/tags/Pattern/"/>
@@ -94,7 +103,7 @@
     <link href="http://yoursite.com/2016/02/17/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/"/>
     <id>http://yoursite.com/2016/02/17/策略模式/</id>
     <published>2016-02-17T13:26:55.000Z</published>
-    <updated>2016-02-20T14:17:07.000Z</updated>
+    <updated>2016-02-20T14:21:21.000Z</updated>
     <content type="html"><![CDATA[<p>[TOC]</p>
 <h1 id="策略模式_Strategy_Pattern">策略模式 Strategy Pattern</h1><h2 id="定义">定义</h2><blockquote>
 <p><strong>策略模式</strong>定义了算法簇，分别封装起来，让它们之间可以互相替代，此模式让算法的变化独立于使用算法的客户</p>
@@ -110,6 +119,7 @@
 <li>Strategy : 策略的抽象</li>
 <li>ImplementationOne、ImplementationTwo：具体策略的实现</li>
 </ul>
+<a id="more"></a>
 <h2 id="简单实现">简单实现</h2><p>通常如果一个问题有多个解决方案或者稍有区别的操作时，最简单的方式就是利用if-else or switch-case方式来解决，对于简单的解决方案这样做无疑是比较简单、方便、快捷的，但是如果解决方案中包括大量的处理逻辑需要封装，或者处理方式变动较大的时候则就显得混乱、复杂，而策略模式则很好的解决了这样的问题，它将各种方案分离开来，让操作者根据具体的需求来动态的选择不同的策略方案。</p>
 <h3 id="步骤">步骤</h3><ol>
 <li>定义Strategy接口</li>
@@ -146,7 +156,20 @@
     <summary type="html">
     <![CDATA[<p>[TOC]</p>
 <h1 id="策略模式_Strategy_Pattern">策略模式 Strategy Pattern</h1><h2 id="定义">定义</h2><blockquote>
-<p><strong>策略模式</strong>定义了算法簇，分别封装起来，]]>
+<p><strong>策略模式</strong>定义了算法簇，分别封装起来，让它们之间可以互相替代，此模式让算法的变化独立于使用算法的客户</p>
+</blockquote>
+<h2 id="使用场景">使用场景</h2><ul>
+<li>针对同一类型问题的多种处理方式，仅仅是具体行为有差别时。</li>
+<li>需要安全的封装多种同一类型的操作时。</li>
+<li>出现同一抽象多个子类，而又需要使用if-else 或者 switch-case来选择时。</li>
+</ul>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-20-14557164239727.png" alt=""></p>
+<ul>
+<li>Context：用来操作策略的上下文环境。</li>
+<li>Strategy : 策略的抽象</li>
+<li>ImplementationOne、ImplementationTwo：具体策略的实现</li>
+</ul>]]>
+    
     </summary>
     
       <category term="Pattern" scheme="http://yoursite.com/tags/Pattern/"/>
