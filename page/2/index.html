@@ -243,8 +243,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/27/Media Playback/" itemprop="url">
-                  Android Media Player
+                <a class="post-title-link" href="/2016/02/21/抽象工厂模式/" itemprop="url">
+                  抽象工厂模式 Abstract Factory Pattern
                 </a>
               
             
@@ -257,8 +257,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-27T11:32:00+08:00" content="2015-10-27">
-              2015-10-27
+            <time itemprop="dateCreated" datetime="2016-02-21T22:26:00+08:00" content="2016-02-21">
+              2016-02-21
             </time>
           </span>
 
@@ -271,8 +271,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -287,8 +287,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/27/Media Playback/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/27/Media Playback/" itemprop="commentsCount"></span>
+                <a href="/2016/02/21/抽象工厂模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/21/抽象工厂模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -311,13 +311,19 @@
       
         
           <p>[TOC]</p>
-<h1 id="Media_Player">Media Player</h1><h2 id="Audio_Stream">Audio Stream</h2><p>Android为不同的应用场合定义了不同的Audio Stream: Voice Call, Ring, Music,Alarm, Notification, DTMF。 这些AudioStream是相互独立的，所以也有各自的音量</p>
-<h2 id="使用">使用</h2><p>最重要的类是 <code>MediaPlayer</code>，获取、解码、播放<br>播放 res/raw 中的文件 举个🌰</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.sound_file_1);</span><br><span class="line">mediaPlayer.start(); <span class="comment">// no need to call prepare(); create() does that for you</span></span><br></pre></td></tr></table></figure>
-<h3 id="异步准备">异步准备</h3><p>可能需要比较长的时间，media 需要获取资源和解码，最好不要放在 UI 线程。<br>此时可以使用<code>prepareAsync()</code>方法，这个方法在后台运行，当准备工资就绪之后在<code>MediaPlayer.OnPreparedListener</code>返回，可以在回调函数<code>setOnPreparedListener()</code>中设置</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mediaPlayer.prepareAsync();</span><br><span class="line">mediaPlayer.setOnPreparedListener(<span class="keyword">new</span> MediaPlayer.OnPreparedListener() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPrepared</span><span class="params">(MediaPlayer mp)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag"><span class="keyword">TODO</span></span>: 15/10/27  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="抽象工厂模式_Abstract_Factory_Pattern">抽象工厂模式 Abstract Factory Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p>抽象工厂模式 Abstract Factory Pattern：提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。</p>
+</blockquote>
+<h2 id="使用场景">使用场景</h2><ul>
+<li>一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。</li>
+<li>系统中有多于一个的产品族，而每次只使用其中某一产品族。</li>
+<li>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</li>
+<li>系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
+</ul>
+<h2 id="UML_图">UML 图</h2><p><img src="/media/14560648848499.png" alt=""></p>
+<p>AbstractFactory：抽象工厂<br>ConcreteFactory：具体工厂<br>AbstractProduct：抽象产品<br>Product：具体产品</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/27/Media Playback/" rel="contents">
+            <a class="btn" href="/2016/02/21/抽象工厂模式/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -360,8 +366,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/10/24/自定义view/" itemprop="url">
-                  Android View 小结（下）
+                <a class="post-title-link" href="/2016/02/21/工厂方法模式/" itemprop="url">
+                  工厂方法模式 Factory Method Pattern
                 </a>
               
             
@@ -374,8 +380,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-24T21:32:00+08:00" content="2015-10-24">
-              2015-10-24
+            <time itemprop="dateCreated" datetime="2016-02-21T21:46:00+08:00" content="2016-02-21">
+              2016-02-21
             </time>
           </span>
 
@@ -388,8 +394,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -404,8 +410,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/24/自定义view/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/24/自定义view/" itemprop="commentsCount"></span>
+                <a href="/2016/02/21/工厂方法模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/21/工厂方法模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -428,17 +434,384 @@
       
         
           <p>[TOC]</p>
-<h1 id="自定义_view">自定义 view</h1><p>自定义 view 的主要步骤如下：</p>
-<ol>
-<li>自定义 view 属性</li>
-<li>在 view 的构造方法中，加载自定义的属性</li>
-<li>重写 onLayout</li>
-<li>重写 onMeasure</li>
-<li>重写 onDraw</li>
+<h1 id="工厂方法模式_Factory_Method_Pattern">工厂方法模式 Factory Method Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p>工厂方法模式(Factory Method Pattern)又称为工厂模式，也叫虚拟构造器(Virtual Constructor)模式或者多态工厂(Polymorphic Factory)模式，它属于类创建型模式。在工厂方法模式中，工厂父类负责定义创建产品对象的公共接口，而工厂子类则负责生成具体的产品对象，这样做的目的是将产品类的实例化操作延迟到工厂子类中完成，即<strong>通过工厂子类来确定究竟应该实例化哪一个具体产品类</strong>（并不是指子类本身在运行时做决定，而是编写者在创建类时，不需要知道实际的创建产品的类型，选择了使用哪个子类自然决定了实际的创建产品类型）。</p>
+</blockquote>
+<h2 id="使用场景">使用场景</h2><ul>
+<li>一个类不知道它所需要的对象的类：在工厂方法模式中，客户端不需要知道具体产品类的类名，只需要知道所对应的工厂即可，具体的产品对象由具体工厂类创建；客户端需要知道创建具体产品的工厂类。</li>
+<li>一个类通过其子类来指定创建哪个对象：在工厂方法模式中，对于抽象工厂类只需要提供一个创建产品的接口，而由其子类来确定具体要创建的对象，利用面向对象的多态性和里氏代换原则，在程序运行时，子类对象将覆盖父类对象，从而使得系统更容易扩展。</li>
+<li>将创建对象的任务 给多个工厂子类中的某一个，客户端在使用时可以无须关心是哪一个工厂子类创建产品子类，需要时再动态指定，可将具体工厂类的类名存储在配置文件或数据库中。</li>
+</ul>
+<h2 id="UML_图">UML 图</h2><p><img src="/media/14560634114616.png" alt=""></p>
+<p>Product：抽象产品<br>ConcreteProduct：具体产品<br>Factory：抽象工厂<br>ConcreteFactory：具体工厂，实现了实际造出产品的方法</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/21/工厂方法模式/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/21/工厂模式/" itemprop="url">
+                  工厂模式 Factory  Pattern
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-21T21:10:00+08:00" content="2016-02-21">
+              2016-02-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/21/工厂模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/21/工厂模式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>[TOC]</p>
+<h1 id="简单工厂模式">简单工厂模式</h1><h2 id="定义">定义</h2><blockquote>
+<p>简单工厂模式(Simple Factory Pattern)：又称为静态工厂方法(Static Factory Method)模式，它属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类。</p>
+</blockquote>
+<h2 id="使用场景">使用场景</h2><ul>
+<li>工厂类负责创建的对象比较少：由于创建的对象较少，不会造成工厂方法中的业务逻辑太过复杂。</li>
+<li>客户端只知道传入工厂类的参数，对于如何创建对象不关心：客户端既不需要关心创建细节，甚至连类名都不需要记住，只需要知道类型所对应的参数。</li>
+</ul>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14560604563955.png" alt=""></p>
+<p>Factory：工厂角色<br>工厂角色负责实现创建所有实例的内部逻辑</p>
+<p>Product：抽象产品角色<br>抽象产品角色是所创建的所有对象的父类，负责描述所有实例所共有的公共接口</p>
+<p>ConcreteProduct：具体产品角色<br>具体产品角色是创建目标，所有创建的对象都充当这个角色的某个具体类的实例。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/21/工厂模式/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/21/装饰者模式/" itemprop="url">
+                  装饰者模式 Decorator Design Pattern
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-21T10:23:55+08:00" content="2016-02-21">
+              2016-02-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/21/装饰者模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/21/装饰者模式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>[TOC]</p>
+<h1 id="装饰者模式_Decorator_Design_Pattern">装饰者模式 Decorator Design Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p><strong>装饰者模式</strong>动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更具有弹性的替代方案，其别名也可以称为包装器(Wrapper） </p>
+</blockquote>
+<h2 id="使用场景">使用场景</h2><ul>
+<li>在不影响其他对象的情况下，以动态、透明的方式给单个对象添加职责。</li>
+<li>需要动态地给一个对象增加功能，这些功能也可以动态地被撤销。</li>
+<li>当不能采用继承的方式对系统进行扩充或者采用继承不利于系统扩展和维护时。不能采用继承的情况主要有两类：第一类是系统中存在大量独立的扩展，为支持每一种组合将产生大量的子类，使得子类数目呈爆炸性增长；第二类是因为类定义不能继承（如final类）.</li>
+</ul>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14560246781613.png" alt=""></p>
+<p>Component: 抽象构件<br>ConcreteComponent: 具体构件<br>Decorator: 抽象装饰类<br>ConcreteDecorator: 具体装饰类</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/21/装饰者模式/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/20/观察者模式/" itemprop="url">
+                  观察者模式 Observer Design Pattern
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-20T22:07:55+08:00" content="2016-02-20">
+              2016-02-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/20/观察者模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/20/观察者模式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>[TOC]</p>
+<h1 id="观察者模式_Observer_Design_Pattern">观察者模式 Observer Design Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p>观察者模式定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖都会受到通知并自动更新</p>
+</blockquote>
+<h2 id="使用场景">使用场景</h2><ol>
+<li>对象之间的一对多依赖。一个对象状态的更新时，其他对象需要自动更新，而且其他对象的数量动态可变。（注册、反注册） </li>
+<li>对象仅需要将自己的更新通知给其他对象而不需要知道其他对象的细节。 (解耦)</li>
+<li>MVC 中的 View 层实现</li>
 </ol>
-<h2 id="自定义_view_属性">自定义 view 属性</h2><p>自定义View的属性，首先在res/values/  下建立一个attrs.xml</p>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-20-14559766489224.png" alt=""></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/24/自定义view/" rel="contents">
+            <a class="btn" href="/2016/02/20/观察者模式/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -481,8 +854,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/15/Android Studio中进行单元测试/" itemprop="url">
-                  Android Studio中进行单元测试
+                <a class="post-title-link" href="/2016/02/17/策略模式/" itemprop="url">
+                  策略模式 Strategy Pattern
                 </a>
               
             
@@ -495,8 +868,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-15T15:25:00+08:00" content="2015-08-15">
-              2015-08-15
+            <time itemprop="dateCreated" datetime="2016-02-17T21:26:55+08:00" content="2016-02-17">
+              2016-02-17
             </time>
           </span>
 
@@ -509,8 +882,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -525,256 +898,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/15/Android Studio中进行单元测试/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/15/Android Studio中进行单元测试/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="步骤">步骤</h2><h3 id="新建hello_world工程">新建hello_world工程</h3><p>略</p>
-<h3 id="配置单元测试">配置单元测试</h3><p>首先，确认在Build Variants窗口内的Test Artifact中选择了”Unit Tests”。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/580359-ab4402443ad7dc5f.png" alt=""></p>
-<p>然后，在工程的src文件夹内创建test和test/java文件夹。需要注意的是，你不能在Android视图下进行这些操作，要么在系统的文件管理器内创建，要么在工程窗口左上方点击下拉菜单选择Project视图。最终的工程结构应该是这样的：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/580359-9e098817f6fcca44.png" alt=""></p>
-<blockquote>
-<p>配置成功之后<code>java</code>文件夹的颜色是绿色的</p>
-</blockquote>
-<p>最后，打开工程的build.gradle（Module:app）文件，添加JUnit4依赖，点击Gradle sync按钮。</p>
-<p>在<code>build.gradle</code>中加入依赖</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])</span></span><br><span class="line">    compile 'com.android.support:appcompat-v7:22.1.1'</span><br><span class="line">    testCompile 'junit:junit:4.12'</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/15/Android Studio中进行单元测试/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/15/robolectric/" itemprop="url">
-                  robolectric
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-15T15:25:00+08:00" content="2015-08-15">
-              2015-08-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/15/robolectric/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/15/robolectric/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="环境搭建">环境搭建</h2><p>环境 : Android Studio 1.2.1.1+ Android Gradle Plugin 1.2.3+ Gradle 2.2.1+</p>
-<p>gradle中加入：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  ...</span><br><span class="line">  testCompile <span class="string">'org.robolectric:robolectric:3.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>确认在Build Variants窗口内的Test Artifact中选择了”Unit Tests”。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/580359-ab4402443ad7dc5f.png" alt=""></p>
-<p>然后，在工程的src文件夹内创建test和test/java文件夹。需要注意的是，你不能在Android视图下进行这些操作，要么在系统的文件管理器内创建，要么在工程窗口左上方点击下拉菜单选择Project视图。最终的工程结构应该是这样的：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/580359-9e098817f6fcca44.png" alt=""></p>
-<blockquote>
-<p>配置成功之后<code>java</code>文件夹的颜色是绿色的</p>
-</blockquote>
-<p><code>**重要重要**</code><br>Run -&gt; Edit Configurations -&gt; Defaults -&gt; Junit<br>设置如下  <strong>$MODULE_DIR$.</strong><br><img src="https://camo.githubusercontent.com/b6776bd8da529df04410b6c6d5d6a6a63ebce717/687474703a2f2f726f626f6c6563747269632e6f72672f696d616765732f616e64726f69642d73747564696f2d636f6e6669677572652d64656661756c74732d34626634383430322e706e67" alt=""></p>
-<p>gradle 同步</p>
-<blockquote>
-<p>注意Robolectric目前不支持android 5.1 API level 22，编译时 sdk = 21 或者以下。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/15/robolectric/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/14/Android 触摸事件传递机制/" itemprop="url">
-                  Android 触摸事件传递机制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-14T20:13:00+08:00" content="2015-07-14">
-              2015-07-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/14/Android 触摸事件传递机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/Android 触摸事件传递机制/" itemprop="commentsCount"></span>
+                <a href="/2016/02/17/策略模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/策略模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -797,136 +922,22 @@
       
         
           <p>[TOC]</p>
-<h1 id="Android_触摸事件传递机制">Android 触摸事件传递机制</h1><p>之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递</p>
-<h2 id="View">View</h2><h3 id="常用监听方法">常用监听方法</h3><p>view表示没有子空间的布局，例如textview、button等，MotionEvent分为三种</p>
-<ul>
-<li>MotionEvent.ACTION_DOWN：按下时候</li>
-<li>MotionEvent.ACTION_MOVE：滑动时</li>
-<li>MotionEvent.ACTION_UP：抬起时</li>
+<h1 id="策略模式_Strategy_Pattern">策略模式 Strategy Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p><strong>策略模式</strong>定义了算法簇，分别封装起来，让它们之间可以互相替代，此模式让算法的变化独立于使用算法的客户</p>
+</blockquote>
+<h2 id="使用场景">使用场景</h2><ul>
+<li>针对同一类型问题的多种处理方式，仅仅是具体行为有差别时。</li>
+<li>需要安全的封装多种同一类型的操作时。</li>
+<li>出现同一抽象多个子类，而又需要使用if-else 或者 switch-case来选择时。</li>
 </ul>
-<p>常用两种监听事件</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/14/Android 触摸事件传递机制/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/12/volley学习/" itemprop="url">
-                  volley学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-12T17:13:00+08:00" content="2015-07-12">
-              2015-07-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/12/volley学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/12/volley学习/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>[TOC]</p>
-<h2 id="背景">背景</h2><p>Vollry特别适合数据量不大但是通信频繁的场景。</p>
-<p>比如以前从网上下载图片的步骤可能这样的流程：</p>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-20-14557164239727.png" alt=""></p>
 <ul>
-<li>在ListAdatpter-getview（）方法里开始图像的读取</li>
-<li>通过AsyncTask等机制使用HttpURLConnection从服务器去读取图片资源</li>
-<li>在AsyncTask-onPostExecute（）里设置相应的Imageview的属性</li>
+<li>Context：用来操作策略的上下文环境。</li>
+<li>Strategy : 策略的抽象</li>
+<li>ImplementationOne、ImplementationTwo：具体策略的实现</li>
 </ul>
-<p>而在Volley下，只需要一个函数即可<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/12/volley学习/" rel="contents">
+            <a class="btn" href="/2016/02/17/策略模式/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -969,8 +980,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/09/Android View 小结/" itemprop="url">
-                  Android View 小结（上）
+                <a class="post-title-link" href="/2016/02/04/2015summarize/" itemprop="url">
+                  2015小结
                 </a>
               
             
@@ -983,8 +994,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-09T19:12:00+08:00" content="2015-07-09">
-              2015-07-09
+            <time itemprop="dateCreated" datetime="2016-02-04T23:22:55+08:00" content="2016-02-04">
+              2016-02-04
             </time>
           </span>
 
@@ -997,8 +1008,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
                   </a>
                 </span>
 
@@ -1013,8 +1024,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/09/Android View 小结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/09/Android View 小结/" itemprop="commentsCount"></span>
+                <a href="/2016/02/04/2015summarize/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/04/2015summarize/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1036,9 +1047,16 @@
 
       
         
-          <h1 id="Android_View_小结">Android View 小结</h1><p>本文介绍了 Android 自定义 View 的基本步骤<br>
+          <p>[TOC]<br>I</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=1141940&auto=1&height=66"></iframe>
+
+<h1 id="2015小结">2015小结</h1><p>　　2015算是自己人生中又一个分水岭，过了除夕才是过完中国的一年，赶在除夕之前整理下自己的2015。</p>
+<h2 id="工作">工作</h2><p>　　在学校做硬件 -&gt; 实习做驱动 -&gt; 离开了校园 -&gt; 迈入职场-&gt; Android APP 开发<br>　　<br>　　这一年在技术上的成长自己还是很满意的</p>
+<h3 id="流水账">流水账</h3><p>　　2015年初，从美团实习完回学校之后就发觉对 Android 有浓厚的兴趣，考虑到后续工作可能接触到 Android 相关的工作，2015年出开始自学 Java 和 Android，抱着『第一行代码』走了一遍，对 Android 有了初步的认识。之后忙毕业一直到了6月。</p>
+<p>　　6月正式入职之后，最初是被分配在了 MTK 平台那边，并不和 Android 相关，主动找了桥哥和栋哥商量，调到了 Android 开发，美团这一点还是挺人性的，尊重员工的意愿。还好有申燊同学带着，一步一步开始了 Android 之旅。</p>
+<p>　　第一个项目是做的小美接单，当样机拼装完成，成功打印的那一刻还是挺有成就感的。<br>　　<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/09/Android View 小结/" rel="contents">
+            <a class="btn" href="/2016/02/04/2015summarize/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1081,8 +1099,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/09/listview的复用机制/" itemprop="url">
-                  listview的复用机制
+                <a class="post-title-link" href="/2016/02/02/状态模式/" itemprop="url">
+                  状态模式State Design Pattern
                 </a>
               
             
@@ -1095,8 +1113,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-09T19:12:00+08:00" content="2015-07-09">
-              2015-07-09
+            <time itemprop="dateCreated" datetime="2016-02-02T23:22:55+08:00" content="2016-02-02">
+              2016-02-02
             </time>
           </span>
 
@@ -1109,8 +1127,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -1125,120 +1143,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/09/listview的复用机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/09/listview的复用机制/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="listview的复用机制">listview的复用机制</h1><p>本文介绍了listview的复用机制<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/09/listview的复用机制/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/09/wifi压力测试/" itemprop="url">
-                  wifi压力测试
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-09T19:12:00+08:00" content="2015-07-09">
-              2015-07-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/09/wifi压力测试/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/09/wifi压力测试/" itemprop="commentsCount"></span>
+                <a href="/2016/02/02/状态模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/状态模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1261,10 +1167,27 @@
       
         
           <p>[TOC]</p>
-<h2 id="效果图">效果图</h2><p><img src="https://raw.githubusercontent.com/xuyushi/Blog_img/master/wifitest.gif" alt="效果图"></p>
-<p>开关wifi<br>并且在开wifi后，判断网络连接<br>由于存在wifi连接之后并没有网络的情况，所以采用ping 来判断网络的通断<br>
+<h1 id="状态模式_State_Design_Pattern">状态模式 State Design Pattern</h1><h2 id="定义">定义</h2><h2 id="目的">目的</h2><ul>
+<li>根据不同的状态，采取不同的行为</li>
+<li>允许一个对象在其内部状态改变的时候改变其行为。这个对象看上去就像是改变了它的类一样</li>
+</ul>
+<h2 id="优点">优点</h2><ul>
+<li>减少了 if else，switch 语句的复杂程度 </li>
+<li>增加新的状态和逻辑时，便于修改</li>
+</ul>
+<h2 id="缺点">缺点</h2><ul>
+<li>类的种类增加<br>*</li>
+</ul>
+<h2 id="步骤">步骤</h2><ol>
+<li>定义一个 <code>context</code> 类，来给外接提供一个接口</li>
+<li>定义一个 <code>state</code> 基类</li>
+<li>根据<code>state</code> 状态，派生定义其他的不同状态类</li>
+<li>在派生<code>state</code> 中，定义不同的行为</li>
+<li>在<code>context</code>中持有一个当前 <code>state</code>的变量</li>
+<li>改变<code>context</code>中的<code>state</code>状态</li>
+</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/09/wifi压力测试/" rel="contents">
+            <a class="btn" href="/2016/02/02/状态模式/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1307,8 +1230,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/05/loader 总结/" itemprop="url">
-                  loader 总结
+                <a class="post-title-link" href="/2016/02/01/注解/" itemprop="url">
+                  Java注解
                 </a>
               
             
@@ -1321,8 +1244,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-05T15:57:00+08:00" content="2015-07-05">
-              2015-07-05
+            <time itemprop="dateCreated" datetime="2016-02-01T15:12:00+08:00" content="2016-02-01">
+              2016-02-01
             </time>
           </span>
 
@@ -1335,8 +1258,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -1351,8 +1274,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/05/loader 总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/05/loader 总结/" itemprop="commentsCount"></span>
+                <a href="/2016/02/01/注解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/注解/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1375,10 +1298,133 @@
       
         
           <p>[TOC]</p>
-<h2 id="本文实现的功能">本文实现的功能</h2><p>在listfragment使用自定义的adpter现实数据库的数据，当数据库的数据发生变化时，自动刷新</p>
-<p>效果如下<br><img src="https://raw.githubusercontent.com/xuyushi/Blog_img/master/loader1.gif" alt="loader"><br>
+<h1 id="注解">注解</h1><h2 id="注解目的">注解目的</h2><ol>
+<li>生成文档 ，如 @see @param @return 等</li>
+<li>跟踪代码依赖性，实现替代配置文件功能</li>
+<li>在编译时进行格式检查。如@override </li>
+</ol>
+<h2 id="注解基础">注解基础</h2><p>最基础的注解如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Entity</span></span><br></pre></td></tr></table></figure>
+<p>@ 表示这是一个注解，之后的字母表示这个注解的名字，以上例子的注解名字为 <code>Entity</code></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/05/loader 总结/" rel="contents">
+            <a class="btn" href="/2016/02/01/注解/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/14/内存泄露/" itemprop="url">
+                  Android 内存泄露
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-14T17:27:00+08:00" content="2016-01-14">
+              2016-01-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/14/内存泄露/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/内存泄露/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>[TOC]</p>
+<h1 id="内存泄露">内存泄露</h1><blockquote>
+<p>内存泄露的定义:<br>当某些对象不再被应用程序所使用,但是由于仍然被引用而导致垃圾收集器不能释放(Remove,移除)他们.</p>
+</blockquote>
+<h2 id="产生的原因：">产生的原因：</h2><p>内存对象明明已经不需要的时候，还仍然保留着这块内存和它的访问方式（引用）</p>
+<p><em>长生命周期的对象持有短生命周期对象的引用就很可能发生内存泄露，尽管短生命周期对象已经不再需要，但是因为长生命周期对象持有它的引用而导致不能被回收，这就是java中内存泄露的发生场景。</em></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/14/内存泄露/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1405,7 +1451,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1446,7 +1492,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">46</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1463,7 +1509,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

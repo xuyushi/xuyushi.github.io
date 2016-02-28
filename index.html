@@ -243,8 +243,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/02/20/观察者模式/" itemprop="url">
-                  观察者模式 Observer Design Pattern
+                <a class="post-title-link" href="/2016/02/28/MVP/" itemprop="url">
+                  工厂模式 Factory  Pattern
                 </a>
               
             
@@ -257,8 +257,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-20T22:07:55+08:00" content="2016-02-20">
-              2016-02-20
+            <time itemprop="dateCreated" datetime="2016-02-28T09:10:00+08:00" content="2016-02-28">
+              2016-02-28
             </time>
           </span>
 
@@ -271,8 +271,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -287,8 +287,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/20/观察者模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/20/观察者模式/" itemprop="commentsCount"></span>
+                <a href="/2016/02/28/MVP/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/28/MVP/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -310,18 +310,20 @@
 
       
         
-          <p>[TOC]</p>
-<h1 id="观察者模式_Observer_Design_Pattern">观察者模式 Observer Design Pattern</h1><h2 id="定义">定义</h2><blockquote>
-<p>观察者模式定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖都会受到通知并自动更新</p>
+          <p>MVP模式的核心思想：</p>
+<blockquote>
+<p>MVP把Activity中的UI逻辑抽象成View接口，把业务逻辑抽象成功接口，Model类还是原来的Model。</p>
 </blockquote>
-<h2 id="使用场景">使用场景</h2><ol>
-<li>对象之间的一对多依赖。一个对象状态的更新时，其他对象需要自动更新，而且其他对象的数量动态可变。（注册、反注册） </li>
-<li>对象仅需要将自己的更新通知给其他对象而不需要知道其他对象的细节。 (解耦)</li>
-<li>MVC 中的 View 层实现</li>
-</ol>
-<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-20-14559766489224.png" alt=""></p>
+<h2 id="MVC">MVC</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14566254770300.png" alt=""></p>
+<ul>
+<li>其中View层其实就是程序的UI界面，用于向用户展示数据以及接收用户的输入</li>
+<li>而Model层就是JavaBean实体类，用于保存实例数据</li>
+<li>Controller控制器用于更新UI界面和数据实例</li>
+</ul>
+<p>View层接受用户的输入，然后通过Controller修改对应的Model实例；同时，当Model实例的数据发生变化的时候，需要修改UI界面，可以通过Controller更新界面。View层也可以直接更新Model实例的数据，而不用每次都通过Controller，这样对于一些简单的数据更新工作会变得方便许多。</p>
+<h2 id="MVP">MVP</h2><p>MVP与MVC最不同的一点是<strong>M与V是不直接关联的也是就Model与View不存在直接关系，这两者之间间隔着的是Presenter层</strong><br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/20/观察者模式/" rel="contents">
+            <a class="btn" href="/2016/02/28/MVP/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -364,8 +366,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/02/17/策略模式/" itemprop="url">
-                  策略模式 Strategy Pattern
+                <a class="post-title-link" href="/2016/02/23/代理模式/" itemprop="url">
+                  代理模式 Proxy Pattern
                 </a>
               
             
@@ -378,8 +380,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-17T21:26:55+08:00" content="2016-02-17">
-              2016-02-17
+            <time itemprop="dateCreated" datetime="2016-02-23T00:00:00+08:00" content="2016-02-23">
+              2016-02-23
             </time>
           </span>
 
@@ -408,8 +410,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/17/策略模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/策略模式/" itemprop="commentsCount"></span>
+                <a href="/2016/02/23/代理模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/23/代理模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -432,22 +434,260 @@
       
         
           <p>[TOC]</p>
-<h1 id="策略模式_Strategy_Pattern">策略模式 Strategy Pattern</h1><h2 id="定义">定义</h2><blockquote>
-<p><strong>策略模式</strong>定义了算法簇，分别封装起来，让它们之间可以互相替代，此模式让算法的变化独立于使用算法的客户</p>
+<h1 id="代理模式_Proxy_Pattern">代理模式 Proxy Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p>代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。</p>
+<h2 id="使用场景">使用场景</h2></blockquote>
+<ul>
+<li>一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。</li>
+<li>系统中有多于一个的产品族，而每次只使用其中某一产品族。</li>
+<li>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</li>
+<li>系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
+</ul>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14562373472577.png" alt=""></p>
+<p>Subject: 抽象主题角色<br>Proxy: 代理主题角色<br>RealSubject: 真实主题角色</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/23/代理模式/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/23/组合模式/" itemprop="url">
+                  组合模式 Composite Pattern
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-23T00:00:00+08:00" content="2016-02-23">
+              2016-02-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/23/组合模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/23/组合模式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>[TOC]</p>
+<h1 id="组合模式_Composite_Pattern">组合模式 Composite Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p>代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。</p>
+<h2 id="使用场景">使用场景</h2></blockquote>
+<ul>
+<li>需要表示一个对象整体或部分层次，在具有整体和部分的层次结构中，希望通过一种方式忽略整体与部分的差异，可以一致地对待它们。</li>
+<li>让客户能够忽略不同对象层次的变化，客户端可以针对抽象构件编程，无须关心对象层次结构的细节。</li>
+</ul>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14562390427827.png" alt=""></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/23/组合模式/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/23/迭代器模式/" itemprop="url">
+                  迭代器模式 Iterator Pattern
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-23T00:00:00+08:00" content="2016-02-23">
+              2016-02-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/23/迭代器模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/23/迭代器模式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>[TOC]</p>
+<h1 id="迭代器模式_Iterator_Pattern">迭代器模式 Iterator Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p>迭代器模式 Iterator Pattern 提供一个方法顺序访问一个聚合对象中的个个元素，而不是暴露其内部的表示</p>
 </blockquote>
 <h2 id="使用场景">使用场景</h2><ul>
-<li>针对同一类型问题的多种处理方式，仅仅是具体行为有差别时。</li>
-<li>需要安全的封装多种同一类型的操作时。</li>
-<li>出现同一抽象多个子类，而又需要使用if-else 或者 switch-case来选择时。</li>
+<li>访问一个聚合对象的内容而无须暴露它的内部表示。</li>
+<li>需要为聚合对象提供多种遍历方式。</li>
+<li>为遍历不同的聚合结构提供一个统一的接口。<h2 id="UML_图">UML 图</h2><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14562354344010.jpg" alt=""></li>
 </ul>
-<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-20-14557164239727.png" alt=""></p>
-<ul>
-<li>Context：用来操作策略的上下文环境。</li>
-<li>Strategy : 策略的抽象</li>
-<li>ImplementationOne、ImplementationTwo：具体策略的实现</li>
-</ul>
+<p>迭代器角色(Iterator)：迭代器角色负责定义访问和遍历元素的接口。<br>具体迭代器角色(Concrete Iterator)：具体迭代器角色要实现迭代器接口，并要记录遍历中的当前位置。<br>容器角色(Container)：容器角色负责提供创建具体迭代器角色的接口。<br>具体容器角色(Concrete Container)：具体容器角色实现创建具体迭代器角色的接口。这个具体迭代器角色与该容器的结构相关。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/17/策略模式/" rel="contents">
+            <a class="btn" href="/2016/02/23/迭代器模式/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -490,8 +730,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/02/04/2015summarize/" itemprop="url">
-                  2015小结
+                <a class="post-title-link" href="/2016/02/23/模板方法模式/" itemprop="url">
+                  模板方法模式 Template Method Pattern
                 </a>
               
             
@@ -504,127 +744,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-04T23:22:55+08:00" content="2016-02-04">
-              2016-02-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/04/2015summarize/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/04/2015summarize/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>[TOC]<br>I</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=1141940&auto=1&height=66"></iframe>
-
-<h1 id="2015小结">2015小结</h1><p>　　2015算是自己人生中又一个分水岭，过了除夕才是过完中国的一年，赶在除夕之前整理下自己的2015。</p>
-<h2 id="工作">工作</h2><p>　　在学校做硬件 -&gt; 实习做驱动 -&gt; 离开了校园 -&gt; 迈入职场-&gt; Android APP 开发<br>　　<br>　　这一年在技术上的成长自己还是很满意的</p>
-<h3 id="流水账">流水账</h3><p>　　2015年初，从美团实习完回学校之后就发觉对 Android 有浓厚的兴趣，考虑到后续工作可能接触到 Android 相关的工作，2015年出开始自学 Java 和 Android，抱着『第一行代码』走了一遍，对 Android 有了初步的认识。之后忙毕业一直到了6月。</p>
-<p>　　6月正式入职之后，最初是被分配在了 MTK 平台那边，并不和 Android 相关，主动找了桥哥和栋哥商量，调到了 Android 开发，美团这一点还是挺人性的，尊重员工的意愿。还好有申燊同学带着，一步一步开始了 Android 之旅。</p>
-<p>　　第一个项目是做的小美接单，当样机拼装完成，成功打印的那一刻还是挺有成就感的。<br>　　<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/04/2015summarize/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/02/状态模式/" itemprop="url">
-                  状态模式State Design Pattern
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-02T23:22:55+08:00" content="2016-02-02">
-              2016-02-02
+            <time itemprop="dateCreated" datetime="2016-02-23T00:00:00+08:00" content="2016-02-23">
+              2016-02-23
             </time>
           </span>
 
@@ -653,8 +774,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/02/状态模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/状态模式/" itemprop="commentsCount"></span>
+                <a href="/2016/02/23/模板方法模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/23/模板方法模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -677,27 +798,27 @@
       
         
           <p>[TOC]</p>
-<h1 id="状态模式_State_Design_Pattern">状态模式 State Design Pattern</h1><h2 id="定义">定义</h2><h2 id="目的">目的</h2><ul>
-<li>根据不同的状态，采取不同的行为</li>
-<li>允许一个对象在其内部状态改变的时候改变其行为。这个对象看上去就像是改变了它的类一样</li>
+<h1 id="模板方法模式_Template_Method_Pattern">模板方法模式 Template Method Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p>模板方法模式定义了一个算法的步骤，并允许次类别为一个或多个步骤提供其实践方式。让次类别在不改变算法架构的情况下，重新定义算法中的某些步骤。</p>
+</blockquote>
+<h2 id="使用场景">使用场景</h2><ul>
+<li>一次性实现一个算法的不变部分，把变化部分留给子类去实现。</li>
+<li>各子类间的共同行为需要被提取并集中到一个共同的类中来避免代码的重复。你首先识别出这些现有代码的不同之处，然后把这些不同之处分离到新的操作中。最后，你用一个模板方法调用这些新操作之一来替代原有那些不同的代码。</li>
+<li>控制子类扩展。你能定义一个只在特定点调用 hook 操作的模板方法，以此只允许子类在这些点扩展。</li>
 </ul>
-<h2 id="优点">优点</h2><ul>
-<li>减少了 if else，switch 语句的复杂程度 </li>
-<li>增加新的状态和逻辑时，便于修改</li>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14562265059090.jpg" alt=""></p>
+<p>AbstractTemplate：抽象模板</p>
+<ul>
+<li>定义了一个或多个抽象操作，以便让子类实现。这些抽象操作叫做基本操作，它们是一个顶级逻辑的组成步骤。</li>
+<li>定义并实现了一个模板方法。这个模板方法一般是一个具体方法，它给出了一个顶级逻辑的骨架，而逻辑的组成步骤在相应的抽象操作中，推迟到子类实现。顶级逻辑也有可能调用一些具体方法。</li>
 </ul>
-<h2 id="缺点">缺点</h2><ul>
-<li>类的种类增加<br>*</li>
+<p>ConcreteTemplate：具体实现</p>
+<ul>
+<li>实现父类所定义的一个或多个抽象方法，它们是一个顶级逻辑的组成步骤。</li>
+<li>每一个抽象模板角色都可以有任意多个具体模板角色与之对应，而每一个具体模板角色都可以给出这些抽象方法（也就是顶级逻辑的组成步骤）的不同实现，从而使得顶级逻辑的实现各不相同。</li>
 </ul>
-<h2 id="步骤">步骤</h2><ol>
-<li>定义一个 <code>context</code> 类，来给外接提供一个接口</li>
-<li>定义一个 <code>state</code> 基类</li>
-<li>根据<code>state</code> 状态，派生定义其他的不同状态类</li>
-<li>在派生<code>state</code> 中，定义不同的行为</li>
-<li>在<code>context</code>中持有一个当前 <code>state</code>的变量</li>
-<li>改变<code>context</code>中的<code>state</code>状态</li>
-</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/02/状态模式/" rel="contents">
+            <a class="btn" href="/2016/02/23/模板方法模式/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -740,8 +861,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/02/01/注解/" itemprop="url">
-                  Java注解
+                <a class="post-title-link" href="/2016/02/22/命令模式/" itemprop="url">
+                  命令模式 Command Pattern
                 </a>
               
             
@@ -754,8 +875,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T15:12:00+08:00" content="2016-02-01">
-              2016-02-01
+            <time itemprop="dateCreated" datetime="2016-02-22T22:26:00+08:00" content="2016-02-22">
+              2016-02-22
             </time>
           </span>
 
@@ -784,8 +905,131 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/01/注解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/注解/" itemprop="commentsCount"></span>
+                <a href="/2016/02/22/命令模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/22/命令模式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>[TOC]</p>
+<h1 id="命令模式_Command_Pattern">命令模式 Command Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p>将一个请求封装为一个对象，从而使我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。</p>
+</blockquote>
+<h2 id="使用场景">使用场景</h2><ul>
+<li>系统需要将请求调用者和请求接收者解耦，使得调用者和接收者不直接交互。</li>
+<li>系统需要在不同的时间指定请求、将请求排队和执行请求。</li>
+<li>系统需要支持命令的撤销(Undo)操作和恢复(Redo)操作。</li>
+<li>系统需要将一组操作组合在一起，即支持宏命令</li>
+</ul>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14561465850883.png" alt=""></p>
+<p>AbstractFactory：抽象工厂<br>ConcreteFactory：具体工厂<br>AbstractProduct：抽象产品<br>Product：具体产品</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/22/命令模式/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/22/单例模式/" itemprop="url">
+                  单例模式 Singleton Pattern
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-22T21:34:00+08:00" content="2016-02-22">
+              2016-02-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/22/单例模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/22/单例模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -809,86 +1053,33 @@
         
           
             <p>[TOC]</p>
-<h1 id="注解">注解</h1><h2 id="注解目的">注解目的</h2><ol>
-<li>生成文档 ，如 @see @param @return 等</li>
-<li>跟踪代码依赖性，实现替代配置文件功能</li>
-<li>在编译时进行格式检查。如@override </li>
-</ol>
-<h2 id="注解基础">注解基础</h2><p>最基础的注解如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Entity</span></span><br></pre></td></tr></table></figure>
-<p>@ 表示这是一个注解，之后的字母表示这个注解的名字，以上例子的注解名字为 <code>Entity</code></p>
-<h3 id="注解元素">注解元素</h3><p>Java 注解中有一些元素，并且可以设置他们的值，举个🌰</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Entity</span>(tableName = <span class="string">"vehicles"</span>)</span><br></pre></td></tr></table></figure>
-<p>注解<code>Entity</code>中含有一个<code>tableName</code>元素，并且把这个元素赋值为vehicles。</p>
-<p>一个注解也可以同时含有多个元素</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Entity</span>(tableName = <span class="string">"vehicles"</span>, primaryKey = <span class="string">"id"</span>)</span><br></pre></td></tr></table></figure>
-<p>当一个注解只含有一个元素时，赋值可以写成以下形式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@InsertNew</span>(<span class="string">"yes"</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="注解的种类">注解的种类</h2><p>注解可以修饰 类、接口、方法、参数、域、本地变量。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Persistent</span></span><br><span class="line">    <span class="keyword">protected</span> String vehicleName = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Getter</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getVehicleName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.vehicleName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setVehicleName</span><span class="params">(@Optional vehicleName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.vehicleName = vehicleName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List <span class="title">addVehicleNameToList</span><span class="params">(List names)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Optional</span></span><br><span class="line">        List localNames = names;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(localNames == <span class="keyword">null</span>) &#123;</span><br><span class="line">            localNames = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        &#125;</span><br><span class="line">        localNames.add(getVehicleName());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> localNames;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Java_内置的注解">Java 内置的注解</h2><p>Java 内置了三种指导编译的注解，分别为</p>
-<ul>
-<li>@Deprecated</li>
-<li>@Override</li>
-<li>@SuppressWarnings</li>
-</ul>
-<h3 id="@Deprecated">@Deprecated</h3><blockquote>
-<p>Annotation type used to mark program elements that should no longer be used by programmers. Compilers produce a warning if a deprecated program element is used.</p>
+<h1 id="单例模式_Singleton_Pattern">单例模式 Singleton Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p>单例模式(Singleton Pattern)：单例模式确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。</p>
 </blockquote>
-<p>可以修饰 类、方法、域。表示之后不会被使用了。如果代码中使用到了注解为@Deprecated 的代码，编译器会产生警告</p>
-<h3 id="@Override">@Override</h3><blockquote>
-<p>Annotation type used to mark methods that override a method declaration in a superclass. Compilers produce an error if a method annotated with @Override does not actually override a method in a superclass.</p>
-</blockquote>
-<p>修饰方法，表示此方法复现了父类的方法，如果在父类中没有相应的方法编译器会报错</p>
-<p>@Override 并不是必须的，但是在子类中复写父类的方法中最好使用，以防复写的时候名字和父类的方法名不一致而产生一些问题</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySuperClass</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doTheThing</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Do the thing"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySubClass</span> <span class="keyword">extends</span> <span class="title">MySuperClass</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doTheThing</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Do it differently"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="@SuppressWarnings">@SuppressWarnings</h3><blockquote>
-<p> Annotation type used to indicate that the compiler should not issue the specified warnings for the marked program element. Warnings are not only suppressed for the annotated element but also for all program elements contained in that element.</p>
-</blockquote>
-<p> It is recommended that programmers always use this annotation on the most deeply nested element where it is actually needed.</p>
-<p>使编译器不产生对此方法的警告信息。</p>
-<h2 id="自定义注解">自定义注解</h2><p>注解的定义和类、接口的定义类似。举个🌰</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@interface</span> MyAnnotation &#123;</span><br><span class="line">    <span class="function">String   <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">String   <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span>      <span class="title">age</span><span class="params">()</span></span>;</span><br><span class="line">    String[] newNames();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用 @interface 关键字表示定义的是一个注解。其中的每一个方法实际上是声明了一个配置参数。<strong>方法的名称就是参数的名称，返回值类型就是参数的类型。</strong>，元素只支持原始的数据类型。<br>使用上述的注解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@MyAnnotation</span>(</span><br><span class="line">    value=<span class="string">"123"</span>,</span><br><span class="line">    name=<span class="string">"Jakob"</span>,</span><br><span class="line">    age=<span class="number">37</span>,</span><br><span class="line">    newNames=&#123;<span class="string">"Jenkov"</span>, <span class="string">"Peterson"</span>&#125;</span><br><span class="line">)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="元素默认值">元素默认值</h3><p>在定义注解时可以设置默认值，举个🌰</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@interface</span> MyAnnotation &#123;</span><br><span class="line">    <span class="function">String   <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line">    <span class="function">String   <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span>      <span class="title">age</span><span class="params">()</span></span>;</span><br><span class="line">    String[] newNames();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>元素<code>value</code>在使用时可以不赋值，当不赋值时，默认采用定义时的默认值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@MyAnnotation</span>(</span><br><span class="line">    name=<span class="string">"Jakob"</span>,</span><br><span class="line">    age=<span class="number">37</span>,</span><br><span class="line">    newNames=&#123;<span class="string">"Jenkov"</span>, <span class="string">"Peterson"</span>&#125;</span><br><span class="line">)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="@Retention">@Retention</h3><ul>
-<li>用来声明注解的保留策略，有CLASS、RUNTIME和SOURCE这三种，分别表示注解保存在类文件、JVM运行时刻和源代码中。</li>
-<li>只有当声明为RUNTIME的时候，才能够在运行时刻通过反射API来获取到注解的信息。</li>
-<li>RetentionPolicy.SOURCE 注解将被编译器丢弃 </li>
-<li>RetentionPolicy.CLASS 注解在class文件中可用，但会被VM丢弃 </li>
-<li>RetentionPolicy.RUNTIME VM将在运行期也保留注释，<strong>因此可以通过反射机制读取注解的信息。</strong> </li>
+<h2 id="使用场景">使用场景</h2><ul>
+<li>系统只需要一个实例对象，如系统要求提供一个唯一的序列号生成器，或者需要考虑资源消耗太大而只允许创建一个对象。</li>
+<li>客户调用类的单个实例只允许使用一个公共访问点，除了该公共访问点，不能通过其他途径访问该实例</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"></span><br><span class="line"><span class="annotation">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"></span><br><span class="line"><span class="annotation">@interface</span> MyAnnotation &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">String   <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用时可以使用反射的方法得到注解中的信息</p>
-<h4 id="反射得到注解信息">反射得到注解信息</h4><h5 id="类注解">类注解</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="annotation">@MyAnnotation</span>(name=<span class="string">"someName"</span>,  value = <span class="string">"Hello World"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TheClass</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="annotation">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="annotation">@Target</span>(ElementType.TYPE)</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="annotation">@interface</span> MyAnnotation &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//法1：可以直接得到所有的注解，在里面寻找MyAnnotation</span></span><br><span class="line">Class aClass = TheClass.class;</span><br><span class="line">Annotation[] annotations = aClass.getAnnotations();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(Annotation annotation : annotations)&#123;</span><br><span class="line">    <span class="keyword">if</span>(annotation <span class="keyword">instanceof</span> MyAnnotation)&#123;</span><br><span class="line">        MyAnnotation myAnnotation = (MyAnnotation) annotation;</span><br><span class="line">        System.out.println(<span class="string">"name: "</span> + myAnnotation.name());</span><br><span class="line">        System.out.println(<span class="string">"value: "</span> + myAnnotation.value());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//法2：可以直接得到MyAnnotation注解</span></span><br><span class="line">Class aClass = TheClass.class;</span><br><span class="line">Annotation annotation = aClass.getAnnotation(MyAnnotation.class);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(annotation <span class="keyword">instanceof</span> MyAnnotation)&#123;</span><br><span class="line">    MyAnnotation myAnnotation = (MyAnnotation) annotation;</span><br><span class="line">    System.out.println(<span class="string">"name: "</span> + myAnnotation.name());</span><br><span class="line">    System.out.println(<span class="string">"value: "</span> + myAnnotation.value());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="方法注解">方法注解</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TheClass</span> </span>&#123;</span><br><span class="line">  <span class="annotation">@MyAnnotation</span>(name=<span class="string">"someName"</span>,  value = <span class="string">"Hello World"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Method method = ... <span class="comment">//obtain method object</span></span><br><span class="line">Annotation[] annotations = method.getDeclaredAnnotations();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(Annotation annotation : annotations)&#123;</span><br><span class="line">    <span class="keyword">if</span>(annotation <span class="keyword">instanceof</span> MyAnnotation)&#123;</span><br><span class="line">        MyAnnotation myAnnotation = (MyAnnotation) annotation;</span><br><span class="line">        System.out.println(<span class="string">"name: "</span> + myAnnotation.name());</span><br><span class="line">        System.out.println(<span class="string">"value: "</span> + myAnnotation.value());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//同样</span></span><br><span class="line">Method method = ... <span class="comment">// obtain method object</span></span><br><span class="line">Annotation annotation = method.getAnnotation(MyAnnotation.class);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(annotation <span class="keyword">instanceof</span> MyAnnotation)&#123;</span><br><span class="line">    MyAnnotation myAnnotation = (MyAnnotation) annotation;</span><br><span class="line">    System.out.println(<span class="string">"name: "</span> + myAnnotation.name());</span><br><span class="line">    System.out.println(<span class="string">"value: "</span> + myAnnotation.value());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="域、参数注解同理">域、参数注解同理</h5><h3 id="@Target">@Target</h3><p>用来声明注解可以被添加在哪些类型的元素上，如类型、方法和域等。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="annotation">@Target</span>(&#123;ElementType.METHOD&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="annotation">@interface</span> MyAnnotation &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">String   <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>🌰表示这个注解只能修饰方法</p>
-<p><strong>表示该注解用于什么地方</strong>，可能的值在枚举类 ElemenetType 中，包括： </p>
-<ul>
-<li>ElemenetType.CONSTRUCTOR 构造器声明 </li>
-<li>ElemenetType.FIELD 域声明（包括 enum 实例） </li>
-<li>ElemenetType.LOCAL_VARIABLE 局部变量声明 </li>
-<li>ElemenetType.METHOD 方法声明 </li>
-<li>ElemenetType.PACKAGE 包声明 </li>
-<li>ElemenetType.PARAMETER 参数声明 </li>
-<li>ElemenetType.TYPE 类，接口（包括注解类型）或enum声明 </li>
+<h2 id="简单实现">简单实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.xuyushi.singleton;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 16/2/22.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="优缺点">优缺点</h2><ul>
+<li>优点<ul>
+<li>提供了对唯一实例的受控访问。因为单例类封装了它的唯一实例，所以它可以严格控制客户怎样以及何时访问它，并为设计及开发团队提供了共享的概念。</li>
+<li>由于在系统内存中只存在一个对象，因此可以节约系统资源，对于一些需要频繁创建和销毁的对象，单例模式无疑可以提高系统的性能</li>
 </ul>
-<h3 id="@Inherited">@Inherited</h3><p>允许子类继承父类中的注解，举个🌰 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">java.lang.annotation.Inherited</span><br><span class="line"></span><br><span class="line"><span class="annotation">@Inherited</span></span><br><span class="line"><span class="keyword">public</span> <span class="annotation">@interface</span> MyAnnotation &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@MyAnnotation</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySuperClass</span> </span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySubClass</span> <span class="keyword">extends</span> <span class="title">MySuperClass</span> </span>&#123;... &#125;</span><br></pre></td></tr></table></figure>
-<p>在这个例子中，因为<code>MySubClass</code>继承了<code>MySuperClass</code>，并且<code>MySuperClass</code>被注解<code>@MyAnnotation</code>修饰了，所以类<code>MySubClass</code>继承了<code>@MyAnnotation</code>注解</p>
-<h3 id="@Documented">@Documented</h3><p>@Documented 将此注解包含在 javadoc 中 ，它代表着此注解会被javadoc工具提取成文档。在doc文档中的内容会因为此注解的信息内容不同而不同。相当与@see,@param 等。<br>举个🌰</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.annotation.Documented;</span><br><span class="line"></span><br><span class="line"><span class="annotation">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="annotation">@interface</span> MyAnnotation &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@MyAnnotation</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySuperClass</span> </span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
-<h1 id="参考">参考</h1><blockquote>
-<p><a href="http://blog.csdn.net/tigerdsh/article/details/8848890" target="_blank" rel="external">http://blog.csdn.net/tigerdsh/article/details/8848890</a><br><a href="http://tutorials.jenkov.com/java/annotations.html" target="_blank" rel="external">http://tutorials.jenkov.com/java/annotations.html</a></p>
+</li>
+<li>缺点<ul>
+<li>由于单例模式中没有抽象层，因此单例类的扩展有很大的困难。</li>
+<li>单例类的职责过重，在一定程度上违背了“单一职责原则”。因为单例类既充当了工厂角色，提供了工厂方法，同时又充当了产品角色，包含一些业务方法，将产品的创建和产品的本身的功能融合到一起。</li>
+<li>滥用单例将带来一些负面问题，如为了节省资源将数据库连接池对象设计为单例类，可能会导致共享连接池对象的程序过多而出现连接池溢出；现在很多面向对象语言(如Java、C#)的运行环境都提供了自动垃圾回收的技术，因此，如果实例化的对象长时间不被利用，系统会认为它是垃圾，会自动销毁并回收资源，下次利用时又将重新实例化，这将导致对象状态的丢失。    <h2 id="总结">总结</h2></li>
+</ul>
+</li>
+<li>单例模式只包含一个单例角色：在单例类的内部实现只生成一个实例，同时它提供一个静态的工厂方法，让客户可以使用它的唯一实例；<strong>为了防止在外部对其实例化，将其构造函数设计为私有</strong>。</li>
+<li>单例模式的目的是保证一个类仅有一个实例，并提供一个访问它的全局访问点。单例类拥有一个私有构造函数，确保用户无法通过new关键字直接实例化它。除此之外，该模式中包含一个静态私有成员变量与静态公有的工厂方法。该工厂方法负责检验实例的存在性并实例化自己，然后存储在静态成员变量中，以确保只有一个实例被创建。</li>
+<li>单例模式的主要优点在于提供了对唯一实例的受控访问并可以节约系统资源；其主要缺点在于因为缺少抽象层而难以扩展，且单例类职责过重。</li>
+<li>单例模式适用情况包括：系统只需要一个实例对象；客户调用类的单个实例只允许使用一个公共访问点。</li>
+</ul>
+<h2 id="参考">参考</h2><blockquote>
+<p><a href="http://design-patterns.readthedocs.org/zh_CN/latest/creational_patterns/abstract_factory.html" target="_blank" rel="external">http://design-patterns.readthedocs.org/zh_CN/latest/creational_patterns/abstract_factory.html</a><br>『head first 设计模式』</p>
 </blockquote>
 
           
@@ -931,8 +1122,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/14/Java 引用/" itemprop="url">
-                  强引用、软引用、弱引用、虚引用
+                <a class="post-title-link" href="/2016/02/22/适配器模式/" itemprop="url">
+                  适配器模式 Adapter Pattern
                 </a>
               
             
@@ -945,8 +1136,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-14T17:27:00+08:00" content="2016-01-14">
-              2016-01-14
+            <time itemprop="dateCreated" datetime="2016-02-22T00:00:00+08:00" content="2016-02-22">
+              2016-02-22
             </time>
           </span>
 
@@ -975,8 +1166,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/14/Java 引用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/Java 引用/" itemprop="commentsCount"></span>
+                <a href="/2016/02/22/适配器模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/22/适配器模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -999,14 +1190,19 @@
       
         
           <p>[TOC]</p>
-<h1 id="强引用、软引用、弱引用、虚引用">强引用、软引用、弱引用、虚引用</h1><h2 id="强引用_StrongReference">强引用 StrongReference</h2><blockquote>
-<p>只要某个对象有强引用与之关联，JVM必定不会回收这个对象，即使在内存不足的情况下，JVM宁愿抛出OutOfMemory错误也不会回收这种对象</p>
-</blockquote>
-<p>若需要 jvm 回收此对象，可以将对象复制为 null</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object o = <span class="keyword">new</span> Object();   <span class="comment">//  强引用  </span></span><br><span class="line">o = <span class="keyword">null</span>;     <span class="comment">// 帮助垃圾收集器回收此对象</span></span><br></pre></td></tr></table></figure>
-<p><strong>但是如果这个o是全局的变量时，就需要在不用这个对象时赋值为null，因为强引用不会被垃圾回收。</strong></p>
+<h1 id="适配器模式_Adapter_Pattern">适配器模式 Adapter Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p>适配器模式(Adapter Pattern) ：将一个接口转换成客户希望的另一个接口，适配器模式使接口不兼容的那些类可以一起工作，其别名为包装器(Wrapper)。</p>
+<h2 id="使用场景">使用场景</h2></blockquote>
+<ul>
+<li>一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。</li>
+<li>系统中有多于一个的产品族，而每次只使用其中某一产品族。</li>
+<li>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</li>
+<li>系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
+</ul>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14561482662486.png" alt=""></p>
+<p>Target：目标抽象类<br>Adapter：适配器类<br>Adaptee：适配者类<br>Client：客户类</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/14/Java 引用/" rel="contents">
+            <a class="btn" href="/2016/02/22/适配器模式/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1049,8 +1245,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/14/内存泄露/" itemprop="url">
-                  Android 内存泄露
+                <a class="post-title-link" href="/2016/02/22/外观模式/" itemprop="url">
+                  外观模式 Facade Pattern
                 </a>
               
             
@@ -1063,8 +1259,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-14T17:27:00+08:00" content="2016-01-14">
-              2016-01-14
+            <time itemprop="dateCreated" datetime="2016-02-22T00:00:00+08:00" content="2016-02-22">
+              2016-02-22
             </time>
           </span>
 
@@ -1093,8 +1289,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/14/内存泄露/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/内存泄露/" itemprop="commentsCount"></span>
+                <a href="/2016/02/22/外观模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/22/外观模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1117,13 +1313,18 @@
       
         
           <p>[TOC]</p>
-<h1 id="内存泄露">内存泄露</h1><blockquote>
-<p>内存泄露的定义:<br>当某些对象不再被应用程序所使用,但是由于仍然被引用而导致垃圾收集器不能释放(Remove,移除)他们.</p>
+<h1 id="外观模式_Facade_Pattern">外观模式 Facade Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p>外观模式(Facade Pattern)：外部与一个子系统的通信必须通过一个统一的外观对象进行，为子系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。外观模式又称为门面模式，它是一种对象结构型模式。</p>
 </blockquote>
-<h2 id="产生的原因：">产生的原因：</h2><p>内存对象明明已经不需要的时候，还仍然保留着这块内存和它的访问方式（引用）</p>
-<p><em>长生命周期的对象持有短生命周期对象的引用就很可能发生内存泄露，尽管短生命周期对象已经不再需要，但是因为长生命周期对象持有它的引用而导致不能被回收，这就是java中内存泄露的发生场景。</em></p>
+<h2 id="使用场景">使用场景</h2><ul>
+<li>当要为一个复杂子系统提供一个简单接口时可以使用外观模式。该接口可以满足大多数用户的需求，而且用户也可以越过外观类直接访问子系统。</li>
+<li>客户程序与多个子系统之间存在很大的依赖性。引入外观类将子系统与客户以及其他子系统解耦，可以提高子系统的独立性和可移植性。</li>
+<li>在层次化结构中，可以使用外观模式定义系统中每一层的入口，层与层之间不直接产生联系，而通过外观类建立联系，降低层之间的耦合度。</li>
+</ul>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14561498047745.png" alt=""></p>
+<p>Facade: 外观角色<br>SubSystem:子系统角色</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/14/内存泄露/" rel="contents">
+            <a class="btn" href="/2016/02/22/外观模式/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1166,8 +1367,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/11/IDEA 技巧/" itemprop="url">
-                  Android Studio 技巧
+                <a class="post-title-link" href="/2016/02/21/hello-world/" itemprop="url">
+                  抽象工厂模式 Abstract Factory Pattern
                 </a>
               
             
@@ -1180,8 +1381,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-11T17:27:00+08:00" content="2016-01-11">
-              2016-01-11
+            <time itemprop="dateCreated" datetime="2016-02-21T22:26:00+08:00" content="2016-02-21">
+              2016-02-21
             </time>
           </span>
 
@@ -1194,8 +1395,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -1210,8 +1411,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/11/IDEA 技巧/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/11/IDEA 技巧/" itemprop="commentsCount"></span>
+                <a href="/2016/02/21/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/21/hello-world/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1234,276 +1435,19 @@
       
         
           <p>[TOC]</p>
-<h1 id="IDEA_技巧">IDEA 技巧</h1><h2 id="重构">重构</h2><ul>
-<li>Undo<br><strong>Commend + Z</strong><br><em>undo 是安全的，可以撤销所有 refactor 操作。</em></li>
-<li>Find and replace code duplicates<br><em>可以选择当前文件，uncommit 文件、项目等 进行替换</em></li>
-<li>Rename<br><strong>Shift + Commend + F6</strong></li>
-<li>Type migration<br><strong>Shift + Commend + F6</strong><br>改变变量的属性，举个🌰 ， 可以将 int -&gt; Long ，需要migration 的是 int 而不是变量</li>
-<li>Invert boolean<br>反转 boolean 型变量值 ，true -&gt; false, false -&gt; true ,同时 rename 变量值</li>
-<li>safe delete<br><strong>Fn + Commend + Delete</strong><br>安全删除</li>
-<li><p>extract<br>提取变量、参数等</p>
-</li>
-<li><p>提取为参数:Option + Cmd + P  将变量提取到方法中为方法的参数</p>
-</li>
-<li>提取变量为函数名:Option + Cmd + V 将 new 出的对象，提取成一个对象</li>
-<li>提取常量:Option + Cmd + C 提取的常量为 static final,TAG快速生成</li>
-<li>提取方法:Option + Cmd + M</li>
-<li>提取为成员变量:Option + Cmd + F</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/11/IDEA 技巧/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/10/VIM/" itemprop="url">
-                  VIM 技巧
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-10T17:27:00+08:00" content="2016-01-10">
-              2016-01-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/10/VIM/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/10/VIM/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>[TOC]</p>
-<h1 id="VIM">VIM</h1><h2 id="代码选择">代码选择</h2><p>v:选择代码块<br>V:选择代码行<br>ctrl+V:多行选中模式 （esc 之后生效）</p>
-<h2 id="跳转">跳转</h2><ul>
-<li>）:代码快跳转</li>
-<li>] :函数跳转</li>
-<li>} :class 跳转 <h2 id="移动">移动</h2></li>
-<li>hjkl</li>
-<li>f/F: 查找字符</li>
-<li>t/T: 同上，区别是停留前一个字符</li>
-<li>gg/G: 文件开头/结尾 </li>
-<li>H/M/L：跳到当前屏幕的顶部/中间/底部。</li>
-<li>‘[ 跳到上一次被改变的文本的第一个字符</li>
-<li>‘. 跳到上一次文本被修改的地方</li>
-<li>‘’ ==跳回上一次跳转的地方==</li>
-<li>‘^ 跳到插入模式最后一次结束的地方 <h2 id="编辑模式">编辑模式</h2></li>
-<li>x/X是删除当前光标下/光标前的一个字符</li>
-<li>d/c/y是删除/修改/复制命令</li>
-</ul>
-<p><em>diw, yiw, ciw, viw 删除(复制,改变,选中)光标所在单词<br>da”, ya”, ca”, va” 删除(复制,改变,选中)””号内所有文本,包括引号本身</em></p>
-<ul>
-<li>* 向前查找当前光标下的单词</li>
-<li># 反方向查找当前光标下的单词 </li>
-<li>我们在使用的过程中，会遇到这样的问题，分别在两个地方删除内容，然后需要分别粘贴，这样的情况就需要用到”ayy “ap这样的命令了，”ayy是把当前行复制到名字为a的寄存器中，”ap就是在这里粘帖a寄存器中的内容。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/02/Looper、Handler、Message 分析/" itemprop="url">
-                  Looper、Handler、Message 分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-02T12:32:00+08:00" content="2015-12-02">
-              2015-12-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/02/Looper、Handler、Message 分析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/02/Looper、Handler、Message 分析/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>[TOC]</p>
-<h1 id="Looper、Handler、Message_分析">Looper、Handler、Message 分析</h1><h2 id="Looper">Looper</h2><p>通常在线程中是这样使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LooperThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">     <span class="keyword">public</span> Handler mHandler;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          Looper.prepare();</span><br><span class="line"></span><br><span class="line">          mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">                  <span class="comment">// process incoming messages here</span></span><br><span class="line">              &#125;</span><br><span class="line">          &#125;;</span><br><span class="line">          Looper.loop();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="prepare()">prepare()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    prepare(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(<span class="keyword">boolean</span> quitAllowed)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (sThreadLocal.get() != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Only one Looper may be created per thread"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    sThreadLocal.set(<span class="keyword">new</span> Looper(quitAllowed));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>一个 Looper 只能有一个 ThreadLoacl 对象</p>
-<blockquote>
-<p>ThreadLocal对象保证每个线程中的 Looper 实例互不相同</p>
+<h1 id="抽象工厂模式_Abstract_Factory_Pattern">抽象工厂模式 Abstract Factory Pattern</h1><h2 id="定义">定义</h2><blockquote>
+<p>抽象工厂模式 Abstract Factory Pattern：提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。</p>
 </blockquote>
+<h2 id="使用场景">使用场景</h2><ul>
+<li>一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。</li>
+<li>系统中有多于一个的产品族，而每次只使用其中某一产品族。</li>
+<li>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</li>
+<li>系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
+</ul>
+<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14560648848499.png" alt=""></p>
+<p>AbstractFactory：抽象工厂<br>ConcreteFactory：具体工厂<br>AbstractProduct：抽象产品<br>Product：具体产品</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/02/Looper、Handler、Message 分析/" rel="contents">
+            <a class="btn" href="/2016/02/21/hello-world/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1530,7 +1474,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1571,7 +1515,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">46</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1588,7 +1532,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
