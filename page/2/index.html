@@ -1499,8 +1499,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/14/Java 引用/" itemprop="url">
-                  强引用、软引用、弱引用、虚引用
+                <a class="post-title-link" href="/2016/01/14/内存泄露/" itemprop="url">
+                  Android 内存泄露
                 </a>
               
             
@@ -1543,8 +1543,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/14/Java 引用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/Java 引用/" itemprop="commentsCount"></span>
+                <a href="/2016/01/14/内存泄露/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/内存泄露/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1554,7 +1554,7 @@
 
           
           
-             <span id="/2016/01/14/Java 引用/" class="leancloud_visitors" data-flag-title="强引用、软引用、弱引用、虚引用">
+             <span id="/2016/01/14/内存泄露/" class="leancloud_visitors" data-flag-title="Android 内存泄露">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1577,14 +1577,13 @@
       
         
           <p>[TOC]</p>
-<h1 id="强引用、软引用、弱引用、虚引用">强引用、软引用、弱引用、虚引用</h1><h2 id="强引用_StrongReference">强引用 StrongReference</h2><blockquote>
-<p>只要某个对象有强引用与之关联，JVM必定不会回收这个对象，即使在内存不足的情况下，JVM宁愿抛出OutOfMemory错误也不会回收这种对象</p>
+<h1 id="内存泄露">内存泄露</h1><blockquote>
+<p>内存泄露的定义:<br>当某些对象不再被应用程序所使用,但是由于仍然被引用而导致垃圾收集器不能释放(Remove,移除)他们.</p>
 </blockquote>
-<p>若需要 jvm 回收此对象，可以将对象复制为 null</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object o = <span class="keyword">new</span> Object();   <span class="comment">//  强引用  </span></span><br><span class="line">o = <span class="keyword">null</span>;     <span class="comment">// 帮助垃圾收集器回收此对象</span></span><br></pre></td></tr></table></figure>
-<p><strong>但是如果这个o是全局的变量时，就需要在不用这个对象时赋值为null，因为强引用不会被垃圾回收。</strong></p>
+<h2 id="产生的原因：">产生的原因：</h2><p>内存对象明明已经不需要的时候，还仍然保留着这块内存和它的访问方式（引用）</p>
+<p><em>长生命周期的对象持有短生命周期对象的引用就很可能发生内存泄露，尽管短生命周期对象已经不再需要，但是因为长生命周期对象持有它的引用而导致不能被回收，这就是java中内存泄露的发生场景。</em></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/14/Java 引用/" rel="contents">
+            <a class="btn" href="/2016/01/14/内存泄露/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
