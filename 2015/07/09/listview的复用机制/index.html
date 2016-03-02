@@ -83,7 +83,7 @@
     motion: true,
     duoshuo: {
       userId: 0,
-      author: '博主'
+      author: 'ROOT'
     }
   };
 </script>
@@ -197,6 +197,8 @@
       
 
       
+
+
       
       
     </ul>
@@ -288,6 +290,16 @@
 
           
           
+             <span id="/2015/07/09/listview的复用机制/" class="leancloud_visitors" data-flag-title="listview的复用机制">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
         </div>
       </header>
     
@@ -311,6 +323,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span>  </span><br><span class="line">    </span>&#123;  </span><br><span class="line">        <span class="keyword">final</span> String url = getItem(position);  </span><br><span class="line">        View view;  </span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>)  </span><br><span class="line">        &#123;  </span><br><span class="line">            view = LayoutInflater.from(getContext()).inflate(R.layout.photo_layout, <span class="keyword">null</span>);  </span><br><span class="line">        &#125; <span class="keyword">else</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            view = convertView;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">final</span> ImageView photo = (ImageView) view.findViewById(R.id.photo);  </span><br><span class="line">        <span class="comment">// 给ImageView设置一个Tag，保证异步加载图片时不会乱序  </span></span><br><span class="line">        photo.setTag(url);  </span><br><span class="line">        <span class="keyword">new</span> LoadImgTask(photo).execute(url);  </span><br><span class="line">        <span class="keyword">return</span> view;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>当第一页的imageview开启异步线程加载图片时候，listview下翻，新的item会复用之前恩item，而且setTag会覆盖之前的tag。当第一屏的ItemView的图片下载完成后，如果直接findViewByTag然后设置图片会显示在第二屏上，就混乱了，所以一般在显示前都会判断photo.getTag().equals(url);确定了再显示。也就是说第一屏的ItemView图片下载完了，但是Tag被覆盖了，所以即使下载完成了，也不会有任何显示。这就解释了为什么我们防止混乱的代码需要那样去写。</p>
 
+      
+    </div>
+
+    <div>
+      
+        
       
     </div>
 
@@ -719,7 +737,7 @@
     NexT.motion.middleWares.sidebar = function () {
       var $tocContent = $('.post-toc-content');
 
-      if (CONFIG.sidebar === 'post') {
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
         if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
           NexT.utils.displaySidebar();
         }
@@ -766,9 +784,103 @@
 
   
   
+  
 
   
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("YAdBHvVJ56uk21yMM0dTRMBs", "h8V7HbIix1N1EPcnud3UEf0p");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
 
 </body>

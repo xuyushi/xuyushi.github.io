@@ -90,7 +90,7 @@
     motion: true,
     duoshuo: {
       userId: 0,
-      author: '博主'
+      author: 'ROOT'
     }
   };
 </script>
@@ -204,6 +204,8 @@
       
 
       
+
+
       
       
     </ul>
@@ -295,6 +297,16 @@
 
           
           
+             <span id="/2015/07/09/wifi压力测试/" class="leancloud_visitors" data-flag-title="wifi压力测试">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
         </div>
       </header>
     
@@ -325,6 +337,12 @@
 <h2 id="自定义handle处理消息">自定义handle处理消息</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(android.os.Message msg)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">switch</span> (msg.what) &#123;</span><br><span class="line">              <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                  isRunning = <span class="keyword">false</span>;</span><br><span class="line">                  <span class="keyword">if</span> (mTimer != <span class="keyword">null</span>)</span><br><span class="line">                      mTimer.cancel();</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">              <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                  currentCount.setText(getString(R.string.current_count) + mCurrentCount);</span><br><span class="line">                  passCount.setText(getString(R.string.pass_count) + mPassCount);</span><br><span class="line">                  Log.d(TAG, <span class="string">"already test time:"</span> + mCurrentCount);</span><br><span class="line"></span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">              <span class="keyword">default</span>:</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
 <p>源码：<a href="https://github.com/xuyushi/WifiTest" target="_blank" rel="external">https://github.com/xuyushi/WifiTest</a></p>
 
+      
+    </div>
+
+    <div>
+      
+        
       
     </div>
 
@@ -733,7 +751,7 @@
     NexT.motion.middleWares.sidebar = function () {
       var $tocContent = $('.post-toc-content');
 
-      if (CONFIG.sidebar === 'post') {
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
         if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
           NexT.utils.displaySidebar();
         }
@@ -780,9 +798,103 @@
 
   
   
+  
 
   
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("YAdBHvVJ56uk21yMM0dTRMBs", "h8V7HbIix1N1EPcnud3UEf0p");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
 
 </body>
