@@ -1,0 +1,965 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="SaHbPoHOxqF4QuVM1TDhfg_Cqik1EY89r1Yt60Bcp5c" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="robolectric,单元测试," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Xu Yushi''s Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="[TOC]
+robolectric的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。
+环境搭建gradlegradle 中加入
+12345dependencies &amp;#123;  ...  testCompile &apos;junit:junit:4.10&apos;  testCompile &apos;org.robolectric:robolectric:3.0&apos;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="robolectric 单元测试">
+<meta property="og:url" content="http://yoursite.com/2016/03/04/Android 单元测试--Robolectric/index.html">
+<meta property="og:site_name" content="Xu Yushi''s Blog">
+<meta property="og:description" content="[TOC]
+robolectric的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。
+环境搭建gradlegradle 中加入
+12345dependencies &amp;#123;  ...  testCompile &apos;junit:junit:4.10&apos;  testCompile &apos;org.robolectric:robolectric:3.0&apos;">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-638283-f57c55ef447541aa.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-14569873485426.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-14569878339128.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-14569892714536.png">
+<meta property="og:updated_time" content="2016-03-04T10:46:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="robolectric 单元测试">
+<meta name="twitter:description" content="[TOC]
+robolectric的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。
+环境搭建gradlegradle 中加入
+12345dependencies &amp;#123;  ...  testCompile &apos;junit:junit:4.10&apos;  testCompile &apos;org.robolectric:robolectric:3.0&apos;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+  <title> robolectric 单元测试 | Xu Yushi''s Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-72857814-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Xu Yushi''s Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">低调、务实、自驱、反思</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '_iSLz7t9AaMFBh4-e1FR','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                robolectric 单元测试
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-04T00:00:00+08:00" content="2016-03-04">
+              2016-03-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/04/Android 单元测试--Robolectric/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/04/Android 单元测试--Robolectric/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/04/Android 单元测试--Robolectric/" class="leancloud_visitors" data-flag-title="robolectric 单元测试">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-638283-f57c55ef447541aa.png" alt=""></p>
+<p>robolectric的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。</p>
+<h1 id="环境搭建">环境搭建</h1><h2 id="gradle">gradle</h2><p>gradle 中加入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  ...</span><br><span class="line">  testCompile <span class="string">'junit:junit:4.10'</span></span><br><span class="line">  testCompile <span class="string">'org.robolectric:robolectric:3.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="==注意==">==注意==</h3><ul>
+<li>若写成<code>testCompile</code>，则测试代码放在 test 文件夹中</li>
+<li>若写成<code>androidTest</code>，则测试代码放在 androidTest 文件夹中</li>
+</ul>
+<h2 id="Android_studio_配置">Android studio 配置</h2><h3 id="切换成_Unit_Tests">切换成 Unit Tests</h3><p>在Build Variants窗口内的Test Artifact中选择了”Unit Tests”<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-14569873485426.png" alt=""></p>
+<h3 id="Linux_和_Mac_用户需要进行这一步设置、">Linux 和 Mac 用户需要进行这一步设置、</h3><p>Run -&gt; Edit Configurations -&gt; Defaults -&gt; Junit</p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-14569878339128.png" alt=""></p>
+<blockquote>
+<p>注意Robolectric目前不支持android 5.1 API level 22，编译时 sdk = 21 或者以下。</p>
+</blockquote>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-14569892714536.png" alt=""></p>
+<p>在project视图中，test 文件夹下，有个绿的的java 文件夹，绿色文件夹表示是单元测试工程。这些代码能够检测目标代码的正确性，打包时单元测试的代码不会被编译进入APK中</p>
+<h3 id="Activity">Activity</h3><h4 id="Activity的创建">Activity的创建</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Activity activity = Robolectric.buildActivity(MyAwesomeActivity.class).create().get();</span><br></pre></td></tr></table></figure>
+<p>会创建一个<code>MyAwesomeActivity</code>实例，然后调用它的onCreat()方法</p>
+<p>如果只想验证其onResume()方法，可以如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ActivityController controller = Robolectric.buildActivity(MyAwesomeActivity.class).create().start();</span><br><span class="line">Activity activity = controller.get();</span><br><span class="line"><span class="comment">// assert that something hasn't happened</span></span><br><span class="line">activityController.resume();</span><br><span class="line"><span class="comment">// assert it happened!</span></span><br></pre></td></tr></table></figure>
+<p>如果想测试整个activity 的生命周期可以<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Activity activity = Robolectric.buildActivity(MyAwesomeActivity.class).create().start().resume().visible().get();</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>等你需要在activity中，对view进行一些操作时候，比如<code>Robolectric.clickOn()</code>，这时候你需要在<code>create()</code>后加入<code>visible()</code></p>
+</blockquote>
+<h4 id="举例">举例</h4><p>我在工程中建立了三个Activity分别为 MainActivity，AnotherActivity，ThridActivity<br>在MainActivity加入按键跳转到AnotherActivity中，<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startAnotherActivity</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">     startActivity(<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, AnotherActivity.class));</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>增加单元测试用例判断跳转的是否正确<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clickingLogin_shouldStartLoginActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Button button = (Button) activity.findViewById(R.id.button);</span><br><span class="line">    assertTrue(button.isEnabled());</span><br><span class="line">    button.performClick();</span><br><span class="line"></span><br><span class="line">    Intent expectedIntent = <span class="keyword">new</span> Intent(activity, ThridActivity.class);</span><br><span class="line">    assertEquals(expectedIntent,shadowOf(activity).getNextStartedActivity() );</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>1.通过 activity.findViewById 找到button<br>2.判断button是否可以点击<br>3.点击button<br>4.构造一个intent（从MainActivity跳转到ThridActivity）<br>5.判断实际跳转的和构造的是否一致</p>
+<p>结构不一致报错<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">java.lang.AssertionError: </span><br><span class="line">Expected :Intent&#123;componentName=ComponentInfo&#123;io.github.xuyushi.robolectric/io.github.xuyushi.robolectric.ThridActivity&#125;, extras=Bundle[&#123;&#125;]&#125;</span><br><span class="line">Actual   :Intent&#123;componentName=ComponentInfo&#123;io.github.xuyushi.robolectric/io.github.xuyushi.robolectric.AnotherActivity&#125;, extras=Bundle[&#123;&#125;]&#125;</span><br><span class="line"> &lt;Click to see difference&gt;</span><br><span class="line">	at org.junit.Assert.fail(Assert.java:<span class="number">91</span>)</span><br><span class="line">	at org.junit.Assert.failNotEquals(Assert.java:<span class="number">645</span>)</span><br><span class="line">	at org.junit.Assert.assertEquals(Assert.java:<span class="number">126</span>)</span><br><span class="line">	at org.junit.Assert.assertEquals(Assert.java:<span class="number">145</span>)</span><br></pre></td></tr></table></figure></p>
+<p>可以很清楚的定位到错误</p>
+<h3 id="Dialog验证">Dialog验证</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDialog</span><span class="params">()</span></span>&#123;</span><br><span class="line">     Dialog dialog = ShadowDialog.getLatestDialog();</span><br><span class="line">    assertNotNull(dialog);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Toast验证">Toast验证</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testToast</span><span class="params">()</span></span>&#123;</span><br><span class="line">    assertEquals(toastContent, ShadowToast.getTextOfLatestToast());</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Fragment的测试">Fragment的测试</h3><p>如果使用support的Fragment，需添加以下依赖<br><code>testCompile &quot;org.robolectric:shadows-support-v4:3.0&quot;</code></p>
+<p>shadow-support包提供了将Fragment主动添加到Activity中的方法：SupportFragmentTestUtil.startFragment(),简易的测试代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFragment</span><span class="params">()</span></span>&#123;</span><br><span class="line"> SampleFragment sampleFragment = <span class="keyword">new</span> SampleFragment();</span><br><span class="line"> <span class="comment">//此api可以主动添加Fragment到Activity中，因此会触发Fragment的onCreateView()</span></span><br><span class="line"> SupportFragmentTestUtil.startFragment(sampleFragment);</span><br><span class="line"> assertNotNull(sampleFragment.getView());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="访问资源文件@Test">访问资源文件@Test</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testResources</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     Application application = RuntimeEnvironment.application;</span><br><span class="line">     String appName = application.getString(R.string.app_name);</span><br><span class="line">     String activityTitle = application.getString(R.string.title_activity_simple);</span><br><span class="line">     assertEquals(<span class="string">"test"</span>, appName);</span><br><span class="line">     assertEquals(<span class="string">"testActivity"</span>,activityTitle);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Shodaw">Shodaw</h3><blockquote>
+<p>Robolectric的本质是在Java运行环境下，采用Shadow的方式对Android中的组件进行模拟测试，从而实现Android单元测试。对于一些Robolectirc暂不支持的组件，可以采用自定义Shadow的方式扩展Robolectric的功能。</p>
+</blockquote>
+<h4 id="定义原始类">定义原始类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String username, String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="定义_shardow_类">定义 shardow 类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Implements</span>(User.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShadowUser</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Implementation</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"from ShadowUser"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="需要让系统知道_ShardowUser_的存在">需要让系统知道 ShardowUser 的存在</h4><p>定义自己的 <code>RobolectricGradleTestRunner</code> 类，继承自<code>RobolectricGradleTestRunner</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserShadowTestRunner</span> <span class="keyword">extends</span> <span class="title">RobolectricGradleTestRunner</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserShadowTestRunner</span><span class="params">(Class&lt;?&gt; klass)</span> <span class="keyword">throws</span> InitializationError </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(klass);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> InstrumentationConfiguration <span class="title">createClassLoaderConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        InstrumentationConfiguration.Builder builder = InstrumentationConfiguration.newBuilder();</span><br><span class="line">        <span class="comment">/**</span><br><span class="line">         * 添加要进行Shadow的对象</span><br><span class="line">         */</span></span><br><span class="line">        builder.addInstrumentedClass(User.class.getName());</span><br><span class="line">        <span class="keyword">return</span> builder.build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="test_测试中使用">test 测试中使用</h4><p>Runwith 使用上面自定义的类<br>同时指明使用 <code>ShadowUser.class</code>，多个类可以加{},中间使用<code>,</code>分开</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@RunWith</span>(UserShadowTestRunner.class)</span><br><span class="line"><span class="annotation">@Config</span>(constants = BuildConfig.class, shadows = ShadowUser.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginActivityTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCase</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        User user = <span class="keyword">new</span> User(<span class="string">"username"</span>, <span class="string">"password"</span>);</span><br><span class="line">        assertEquals(<span class="string">"from ShadowUser"</span>, user.getUsername());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="网络请求_mock">网络请求 mock</h3><p>gradle 中加入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>Compile <span class="string">'org.robolectric:shadows-httpclient:3.0'</span></span><br><span class="line"><span class="built_in">test</span>Compile <span class="string">'org.robolectric:robolectric-shadows:3.0'</span></span><br></pre></td></tr></table></figure>
+<p>更多robolectric 包见<br><a href="http://mvnrepository.com/artifact/org.robolectric" target="_blank" rel="external">http://mvnrepository.com/artifact/org.robolectric</a></p>
+<h2 id="未搞定的">未搞定的</h2><ol>
+<li>项目网络请求使用的是 volley ，网络请求并没有找到合适办法模拟</li>
+<li>使用了第三方框架 butterknief，并不能模拟</li>
+</ol>
+<p>以上有知道如何解决的 请告诉我一声~ xmy166@gmil.com</p>
+<h2 id="参考">参考</h2><blockquote>
+<p><a href="http://hkliya.gitbooks.io/unit-test-android-with-robolectric/content/2-api-explained.html" target="_blank" rel="external">http://hkliya.gitbooks.io/unit-test-android-with-robolectric/content/2-api-explained.html</a><br><a href="http://www.jianshu.com/p/9d988a2f8ff7" target="_blank" rel="external">http://www.jianshu.com/p/9d988a2f8ff7</a><br><a href="http://robolectric.org" target="_blank" rel="external">http://robolectric.org</a><br><a href="http://chriszou.com/android-unit-testing-with-robolectric" target="_blank" rel="external">http://chriszou.com/android-unit-testing-with-robolectric</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/robolectric/" rel="tag">#robolectric</a>
+          
+            <a href="/tags/单元测试/" rel="tag">#单元测试</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/28/MVP/" rel="next" title="Android 中的MVP 模式">
+                <i class="fa fa-chevron-left"></i> Android 中的MVP 模式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/05/Android MVVM/" rel="prev" title="Android MVVM">
+                Android MVVM <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/03/04/Android 单元测试--Robolectric/"
+     data-title="robolectric 单元测试"
+     data-content=""
+     data-url="http://yoursite.com/2016/03/04/Android 单元测试--Robolectric/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/04/Android 单元测试--Robolectric/"
+           data-title="robolectric 单元测试" data-url="http://yoursite.com/2016/03/04/Android 单元测试--Robolectric/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg"
+               alt="Xu Yushi" />
+          <p class="site-author-name" itemprop="name">Xu Yushi</p>
+          <p class="site-description motion-element" itemprop="description">安卓 | xuyushi | 许雨石 | Android | java | developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境搭建"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gradle"><span class="nav-number">1.1.</span> <span class="nav-text">gradle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#==注意=="><span class="nav-number">1.1.1.</span> <span class="nav-text">==注意==</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android_studio_配置"><span class="nav-number">1.2.</span> <span class="nav-text">Android studio 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#切换成_Unit_Tests"><span class="nav-number">1.2.1.</span> <span class="nav-text">切换成 Unit Tests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux_和_Mac_用户需要进行这一步设置、"><span class="nav-number">1.2.2.</span> <span class="nav-text">Linux 和 Mac 用户需要进行这一步设置、</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity"><span class="nav-number">1.2.3.</span> <span class="nav-text">Activity</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity的创建"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">Activity的创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#举例"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dialog验证"><span class="nav-number">1.2.4.</span> <span class="nav-text">Dialog验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Toast验证"><span class="nav-number">1.2.5.</span> <span class="nav-text">Toast验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fragment的测试"><span class="nav-number">1.2.6.</span> <span class="nav-text">Fragment的测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问资源文件@Test"><span class="nav-number">1.2.7.</span> <span class="nav-text">访问资源文件@Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shodaw"><span class="nav-number">1.2.8.</span> <span class="nav-text">Shodaw</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义原始类"><span class="nav-number">1.2.8.1.</span> <span class="nav-text">定义原始类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义_shardow_类"><span class="nav-number">1.2.8.2.</span> <span class="nav-text">定义 shardow 类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需要让系统知道_ShardowUser_的存在"><span class="nav-number">1.2.8.3.</span> <span class="nav-text">需要让系统知道 ShardowUser 的存在</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#test_测试中使用"><span class="nav-number">1.2.8.4.</span> <span class="nav-text">test 测试中使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络请求_mock"><span class="nav-number">1.2.9.</span> <span class="nav-text">网络请求 mock</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未搞定的"><span class="nav-number">1.3.</span> <span class="nav-text">未搞定的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Yushi</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xuyushi"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("tiPz9wsLpN7Cgr5tSlbUBTfd-gzGzoHsz", "dgGxEGXjbsalP1dAgAmAoPvO");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>

@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/03/05/Android%20MVVM/</loc>
+    <lastmod>2016-03-06T13:45:05.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/03/04/Android%20%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95--Robolectric/</loc>
+    <lastmod>2016-03-04T10:46:47.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/08/15/robolectric/</loc>
+    <lastmod>2016-03-04T10:38:57.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/02/28/MVP/</loc>
     <lastmod>2016-02-28T07:18:43.000Z</lastmod>
   </url>
@@ -49,11 +64,6 @@
   <url>
     <loc>http://yoursite.com/2016/02/23/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2016-02-28T07:05:05.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/02/23/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2016-02-28T07:04:42.000Z</lastmod>
   </url>
   
   <url>
@@ -194,11 +204,6 @@
   <url>
     <loc>http://yoursite.com/2015/07/09/Android%20View%20%E5%B0%8F%E7%BB%93/</loc>
     <lastmod>2016-02-03T03:45:59.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/08/15/robolectric/</loc>
-    <lastmod>2016-02-03T03:45:47.000Z</lastmod>
   </url>
   
   <url>

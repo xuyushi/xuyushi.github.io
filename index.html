@@ -266,6 +266,421 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/05/Android MVVM/" itemprop="url">
+                  Android MVVM
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-05T00:00:00+08:00" content="2016-03-05">
+              2016-03-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/05/Android MVVM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/05/Android MVVM/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/05/Android MVVM/" class="leancloud_visitors" data-flag-title="Android MVVM">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<p>在上一篇博文中介绍了 <img src="http://xuyushi.github.io/2016/02/28/MVP/" alt="Android的MVP模式">。MVVM 是从 MVP 的进一步发展与规范，MVP 隔离了 M 与 V 的直接联系后，靠 Presenter 来中转，所以使用 MVP 时 P 是直接调用 View 的接口来实现对视图的操作的，M 与 V是隔离了，方便测试了，但代码还不够优雅简洁啊，所以 MVVM 就弥补了这些缺陷。</p>
+<h3 id="概述">概述</h3><p>MVVM模式包含了三个部分：</p>
+<ul>
+<li>Model :基本业务逻辑</li>
+<li>View  :视图内容<br>ViewModel: 将前面两者联系在一起的对象</li>
+</ul>
+<p>当View有用户输入后，ViewModel通知Model更新数据，同理Model数据更新后，ViewModel通知View更新。</p>
+<h2 id="MVP_MVVM区别">MVP MVVM区别</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-06-14571436111163.png" alt=""></p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-06-14571436267721.png" alt=""></p>
+<p>可以看到 ViewModel 承担了 Presenter 中与 view和 Model 交互的职责，与 MVP模式不同的是，VM与 V 之间是通过 Datebingding 实现的，而 P是持有 View 的对象，直接调用 View 中的一些接口方法来实现。ViewModel可以理解成是View的数据模型和Presenter的合体。<strong>它通过双向绑定(松耦合)解决了MVP中Presenter与View联系比较紧密的问题。 </strong></p>
+<h2 id="环境搭建">环境搭建</h2><h3 id="Android_的_Gradle_插件版本不低于_1-5-0-alpha1：">Android 的 Gradle 插件版本不低于 1.5.0-alpha1：</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:1.5.0'</span></span><br></pre></td></tr></table></figure>
+<h3 id="然后修改对应模块（Module）的_build-gradle：">然后修改对应模块（Module）的 build.gradle：</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    ....</span><br><span class="line">    dataBinding &#123;</span><br><span class="line">        enabled = <span class="keyword">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注：Android stuido 的版本要大于1.3</strong><br><strong>Android Studio目前对binding对象没有自动代码提示，只会在编译时进行检查。</strong></p>
+<h2 id="基础入门">基础入门</h2><h3 id="布局问文件">布局问文件</h3><p>相比传统的 xml，根节点编程了<code>layout</code>，里面包括了<code>data</code>节点 和传统的视图。<code>data</code>节点就像是连接 View 和 Modle 的桥梁。在<code>data</code>节点中声明一个<code>variable</code>变量，使其可以在这个layout中使用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">layout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">data</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">variable</span> <span class="attribute">name</span>=<span class="value">"user"</span><span class="value">type="com.example.User"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">data</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--原先的根节点（Root Element）--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line">    ....</span><br><span class="line">    <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>例如在 TextView 中使用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">TextView</span> <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line"><span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>          <span class="attribute">android:text</span>=<span class="value">"@&#123;user.firstName&#125;"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="数据对象">数据对象</h3><p>定义一个 User java bean 类</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class User &#123;</span><br><span class="line">    private final String firstName;</span><br><span class="line">    private final String lastName;</span><br><span class="line"></span><br><span class="line">    public User(String firstName, String lastName) &#123;</span><br><span class="line">        this.firstName = firstName;</span><br><span class="line">        this.lastName = lastName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getFirstName() &#123;</span><br><span class="line">        return firstName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getLastName() &#123;</span><br><span class="line">        return lastName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">在` layout`中定义` User`中的对象，然后把它跟布局文件中声明的变量进行绑定</span><br><span class="line"></span><br><span class="line">### 定义 Variable</span><br><span class="line">```xml</span><br><span class="line">    &lt;data&gt;</span><br><span class="line"></span><br><span class="line">        &lt;variable</span><br><span class="line">            name="user"</span><br><span class="line">            type="io.github.xuyushi.androidmvvmdemo.User" /&gt;</span><br><span class="line">    &lt;/data&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>变量名为<code>user</code></li>
+<li>变量类型为<code>&quot;io.github.xuyushi.androidmvvmdemo.User&quot;</code></li>
+</ul>
+<p><code>data</code>也支持 <code>import</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">data</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">import</span> <span class="attribute">type</span>=<span class="value">"io.github.xuyushi.androidmvvmdemo.User"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">variable</span></span><br><span class="line">       <span class="attribute">name</span>=<span class="value">"user"</span></span><br><span class="line">       <span class="attribute">type</span>=<span class="value">"User"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">data</span>&gt;</span></span><br><span class="line">```	</span><br><span class="line"></span><br><span class="line">**注意坑**</span><br><span class="line">import 并不能和 `java` 一样可以 `import xx.xxx.*`，必须具体写明每个要导入的类名，如</span><br><span class="line"></span><br><span class="line">```xml</span><br><span class="line"><span class="tag">&lt;<span class="title">import</span> <span class="attribute">type</span>=<span class="value">"io.github.xuyushi.androidmvvmdemo.User"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">import</span> <span class="attribute">type</span>=<span class="value">"io.github.xuyushi.androidmvvmdemo.MyHandler"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// this is WRONG</span><br><span class="line"><span class="tag">&lt;<span class="title">import</span> <span class="attribute">type</span>=<span class="value">"io.github.xuyushi.androidmvvmdemo.*"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>编译之后，插件会根据 xml 的命名（activity_main），在 <code>output</code>会生成<code>ActivityMainBinding</code>类</p>
+<blockquote>
+<p><code>java.lang.*</code> 包中的类会被自动导入，可以直接使用，例如要定义一个 String 类型的变量：<br><code>&lt;variable name=&quot;firstName&quot; type=&quot;String&quot; /&gt;</code></p>
+</blockquote>
+<h3 id="绑定_Variable">绑定 Variable</h3><p>修改<code>MainActivity</code>中的<code>onCreate</code>，用 <code>DatabindingUtil.setContentView()</code> 来替换掉 <code>setContentView()</code>，然后创建一个 <code>user</code> 对象，通过 <code>binding.setUser(user)</code> 与 variable 进行绑定。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        ActivityMainBinding binding = DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.activity_main);</span><br><span class="line">        User user = <span class="keyword">new</span> User(<span class="string">"testFirst"</span>, <span class="string">"testLast"</span>);</span><br><span class="line">        binding.setUser(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果使用的 <code>ListView</code> 或者<code>RecyclerView</code>可以使用这个</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ListItemBinding binding = ListItemBinding.inflate(layoutInflater, viewGroup, <span class="keyword">false</span>);</span><br><span class="line"><span class="comment">//or</span></span><br><span class="line">ListItemBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item, viewGroup, <span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+<p>有时候不能预先知道 Bingding 类的种类，这时候可以使用<code>DataBindingUtil</code> 类:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater, layoutId,</span><br><span class="line">    parent, attachToParent);</span><br><span class="line">ViewDataBinding binding = DataBindingUtil.bindTo(viewRoot, layoutId);</span><br></pre></td></tr></table></figure>
+<h4 id="支持的语法">支持的语法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Mathematical + - / * %</span><br><span class="line">String concatenation +</span><br><span class="line">Logical &amp;&amp; ||</span><br><span class="line">Binary &amp; | ^</span><br><span class="line">Unary + - ! ~</span><br><span class="line">Shift &gt;&gt; &gt;&gt;&gt; &lt;&lt;</span><br><span class="line">Comparison == &gt; &lt; &gt;= &lt;=</span><br><span class="line">instanceof</span><br><span class="line">Grouping ()</span><br><span class="line">Literals - character, String, numeric, null</span><br><span class="line">Cast</span><br><span class="line">Method calls</span><br><span class="line">Field access</span><br><span class="line">Array access []</span><br><span class="line">Ternary operator ?:</span><br></pre></td></tr></table></figure>
+<h4 id="不支持的语法">不支持的语法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span></span><br><span class="line"><span class="keyword">super</span></span><br><span class="line"><span class="keyword">new</span></span><br></pre></td></tr></table></figure>
+<p><code>ActivityMainBinding</code>类是自动生成的，所有的 set 方法也是根据 variable 名称生成的。例如，我们定义了两个变量。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">variable</span> <span class="attribute">name</span>=<span class="value">"firstName"</span> <span class="attribute">type</span>=<span class="value">"String"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">variable</span> <span class="attribute">name</span>=<span class="value">"lastName"</span> <span class="attribute">type</span>=<span class="value">"String"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">data</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>那么会生成两个 <code>set</code>方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setFirstName(String firstName);</span><br><span class="line">setLastName(String lastName);</span><br></pre></td></tr></table></figure>
+<h3 id="使用Variable">使用Variable</h3><p>数据与 Variable 绑定之后，xml 的 UI 元素就可以直接使用了</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">  <span class="attribute">android:text</span>=<span class="value">"@&#123;user.firstName&#125;"</span></span><br><span class="line">  <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">  <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">  <span class="attribute">android:text</span>=<span class="value">"@&#123;user.lastName&#125;"</span></span><br><span class="line">  <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">  <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="绑定事件">绑定事件</h3><p>可以直接在 xml 导入<code>android.view.View.OnClickListener</code>，并制定其点击事件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">variable</span></span><br><span class="line">  <span class="attribute">name</span>=<span class="value">"clickListener"</span></span><br><span class="line">  <span class="attribute">type</span>=<span class="value">"android.view.View.OnClickListener"</span> /&gt;</span></span><br><span class="line">  </span><br><span class="line"> ...</span><br><span class="line"> android:onClick="@&#123;clickListener&#125;"</span><br><span class="line"> ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">holder.binding.setClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">           <span class="annotation">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">  			<span class="comment">//do something</span></span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="进阶用法">进阶用法</h2><h3 id="使用类的方法">使用类的方法</h3><p>//Error:(27, 29) cannot find method addSomeThing in class io.github.xuyushi.androidmvvmdemo.MyUtill </p>
+<h3 id="类的别名">类的别名</h3><p>如果导入不同的包中有相同的类名，使用<code>import</code> 中的 <code>alias</code> 属性。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">import</span> <span class="attribute">type</span>=<span class="value">"com.example.home.data.User"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">import</span> <span class="attribute">type</span>=<span class="value">"com.examle.detail.data.User"</span> <span class="attribute">alias</span>=<span class="value">"DetailUser"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">variable</span> <span class="attribute">name</span>=<span class="value">"user"</span> <span class="attribute">type</span>=<span class="value">"DetailUser"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="数据绑定">数据绑定</h2><p>直接修改数据对象并不能直接更新 UI，Android的Data Binding模块给提供了通知机制，有3种类型，分别对应于类(Observable)，字段(ObservableField)，集合类型（Observable Collections）。</p>
+<p>Android的Data Binding模块给提供了通知机制，有3种类型，分别对应于类(Observable)，字段(ObservableField)，集合类型（Observable Collections）。</p>
+<h3 id="Observable_Objects">Observable Objects</h3><p>目前 DataBinding 暂时只支持单向绑定。</p>
+<p>要实现 Observable Binding，首先得有一个 <code>implement</code> 了接口<code>android.databinding.Observable</code>的类，为了方便，Android 原生提供了已经封装好的一个类 - <code>BaseObservable</code>，并且实现了监听器的注册机制</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">BaseObservable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String firstName;</span><br><span class="line">    <span class="keyword">private</span> String lastName;</span><br><span class="line">    <span class="annotation">@Bindable</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getFirstName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.firstName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="annotation">@Bindable</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getLastName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.lastName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFirstName</span><span class="params">(String firstName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">        notifyPropertyChanged(io.github.xuyushi.androidmvvmdemo.BR.firstName);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLastName</span><span class="params">(String lastName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">        notifyPropertyChanged(io.github.xuyushi.androidmvvmdemo.BR.lastName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>The Bindable annotation should be applied to any getter accessor method of an {@link Observable} class. Bindable will generate a field in the BR class to identify the field that has changed.</p>
+</blockquote>
+<p><code>Bindable</code>注解是为了在编程的时候生成 BR 类，<code>Bindable</code>会在 BR 类中生成一个域变量 ，来表明这个域有木有被改变。通过代码可以看出，当数据发生变化时还是需要手动发出通知。 通过调用 <code>notifyPropertyChanged(BR.firstName)</code> 可以通知系统 BR.firstName 这个 entry 的数据已经发生变化，需要更新 UI。</p>
+<h3 id="ObservableFields">ObservableFields</h3><p>具体到成员变量,这种方式无需继承 <code>BaseObservable</code><br>如果变量比较少，都是简单的数据类型是时，可以用<code>ObservableFields</code> ， <code>ObservableFields</code> 自包含具有单个字段的observable对象。它有所有基本类型和一个是引用类型。要使用它需要在data对象中创建<code>public final</code>字段：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">BaseObservable</span> </span>&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">final</span> ObservableField&lt;String&gt; firstName =</span><br><span class="line">       <span class="keyword">new</span> ObservableField&lt;&gt;();</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">final</span> ObservableField&lt;String&gt; lastName =</span><br><span class="line">       <span class="keyword">new</span> ObservableField&lt;&gt;();</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">final</span> ObservableInt age = <span class="keyword">new</span> ObservableInt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong></p>
+<ul>
+<li>可以在 java bean 中定义，也可以在 activity 中 或者bind 出定义</li>
+<li>使用<code>ObservableFields</code> 在 Model 中的 @Bindable get set 方法都可以去掉</li>
+<li>当<code>firstName</code>、<code>lastName</code>变化时，UI 会得到通知，使用的赋值语句为<code>user.firstName.set(&quot;Google&quot;);</code></li>
+</ul>
+<h3 id="Observable_集合">Observable 集合</h3><p>一些app使用更多的动态结构来保存数据。Observable集合允许键控访问这些data对象。ObservableArrayMap用于键是引用类型,如String。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ObservableArrayMap&lt;String, Object&gt; user = <span class="keyword">new</span> ObservableArrayMap&lt;&gt;();</span><br><span class="line">user.put(<span class="string">"firstName"</span>, <span class="string">"Google"</span>);</span><br><span class="line">user.put(<span class="string">"lastName"</span>, <span class="string">"Inc."</span>);</span><br><span class="line">user.put(<span class="string">"age"</span>, <span class="number">17</span>);</span><br></pre></td></tr></table></figure>
+<p>在layout文件中，通过String键可以访问map</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">import</span> <span class="attribute">type</span>=<span class="value">"android.databinding.ObservableMap"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">variable</span> <span class="attribute">name</span>=<span class="value">"user"</span> <span class="attribute">type</span>=<span class="value">"ObservableMap&lt;String, Object&gt;"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">data</span>&gt;</span></span><br><span class="line">…</span><br><span class="line"><span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">   <span class="attribute">android:text</span>=<span class="value">'@&#123;user["lastName"]&#125;'</span></span><br><span class="line">   <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">   <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">   <span class="attribute">android:text</span>=<span class="value">'@&#123;String.valueOf(1 + (Integer)user["age"])&#125;'</span></span><br><span class="line">   <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">   <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当 key 是 inter 是， <code>ObservableArrayList</code> 比较适用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ObservableArrayList&lt;Object&gt; user = <span class="keyword">new</span> ObservableArrayList&lt;&gt;();</span><br><span class="line">user.add(<span class="string">"Google"</span>);</span><br><span class="line">user.add(<span class="string">"Inc."</span>);</span><br><span class="line">user.add(<span class="number">17</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">import</span> <span class="attribute">type</span>=<span class="value">"android.databinding.ObservableList"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">import</span> <span class="attribute">type</span>=<span class="value">"com.example.my.app.Fields"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">variable</span> <span class="attribute">name</span>=<span class="value">"user"</span> <span class="attribute">type</span>=<span class="value">"ObservableList&amp;lt;Object&gt;"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">data</span>&gt;</span></span><br><span class="line">…</span><br><span class="line"><span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">   <span class="attribute">android:text</span>=<span class="value">'@&#123;user[Fields.LAST_NAME]&#125;'</span></span><br><span class="line">   <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">   <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">   <span class="attribute">android:text</span>=<span class="value">'@&#123;String.valueOf(1 + (Integer)user[Fields.AGE])&#125;'</span></span><br><span class="line">   <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">   <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="binding_生成">binding 生成</h2><p>binding 类连接了 layout中的variables与Views。，所生成的Binding类都扩展了<code>android.databinding.ViewDataBinding</code></p>
+<h3 id="创建">创建</h3><p>Binding应在inflation之后就立马创建，以确保View层次结构没被改变。</p>
+<p>首先 inflate</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyLayoutBinding binding = MyLayoutBinding.inflate(layoutInflater);</span><br><span class="line">MyLayoutBinding binding = MyLayoutBinding.inflate(LayoutInflater, viewGroup, <span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="带_ID_的_View">带 ID 的 View</h2><p>同步 bind 我们可以不需要 view 实例，但是玩意需要也可以有</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">    android:id=<span class="string">"@+id/firstName"</span></span><br><span class="line">    android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">    android:layout_height=<span class="string">"wrap_content"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>上面代码中定义了一个 ID 为 <code>firstName</code> 的 TextView，那么它对应的变量就是<br>public final TextView firstName;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    binding = DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.activity_view_with_ids);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showMyName</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    binding.firstName.setText(<span class="string">"liang"</span>);</span><br><span class="line">    binding.lastName.setText(<span class="string">"fei"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就免去了些 <code>findViewById</code> 了</p>
+<h2 id="ViewStubs">ViewStubs</h2><p>ViewStubs跟正常的Views略有不同。他们开始时是不可见的，当他们要么设置为可见或被明确告知要载入时，它们通过载入另外一个layout取代了自己。</p>
+<p>当载入另一个layout，为新的布局必需创建一个Binding。因此，ViewStubProxy必需监听ViewStub的OnInflateListener监听器并在那个时候建立Binding。因为只有一个可以存在，ViewStubProxy允许开发者在其上设置一个OnInflateListener它会在建立Binding后调用。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">layout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">        <span class="attribute">...</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">ViewStub</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/view_stub"</span></span><br><span class="line">            <span class="attribute">android:layout</span>=<span class="value">"@layout/view_stub"</span></span><br><span class="line">            <span class="attribute">...</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在 Java 代码中获取 binding 实例，ViewStubProy 注册ViewStub.OnInflateListener 事件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">binding = DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.activity_view_stub);</span><br><span class="line">binding.viewStub.setOnInflateListener(<span class="keyword">new</span> ViewStub.OnInflateListener() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onInflate</span><span class="params">(ViewStub stub, View inflated)</span> </span>&#123;</span><br><span class="line">        ViewStubBinding binding = DataBindingUtil.bind(inflated);</span><br><span class="line">        User user = <span class="keyword">new</span> User(<span class="string">"fee"</span>, <span class="string">"lang"</span>);</span><br><span class="line">        binding.setUser(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="动态_Variables">动态 Variables</h2><p>有时候不止具体绑定的对象，以 <code>RecyclerView</code> 为例，Adapter 的 DataBinding 需要动态生成，因此我们可以在 <code>onCreateViewHolder</code> 的时候创建这个 DataBinding，然后在 <code>onBindViewHolder</code> 中获取这个 DataBinding。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">BindingHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ViewDataBinding binding;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BindingHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(itemView);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ViewDataBinding <span class="title">getBinding</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> binding;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBinding</span><span class="params">(ViewDataBinding binding)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.binding = binding;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> BindingHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup viewGroup, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    ViewDataBinding binding = DataBindingUtil.inflate(</span><br><span class="line">            LayoutInflater.from(viewGroup.getContext()),</span><br><span class="line">            R.layout.list_item,</span><br><span class="line">            viewGroup,</span><br><span class="line">            <span class="keyword">false</span>);</span><br><span class="line">    BindingHolder holder = <span class="keyword">new</span> BindingHolder(binding.getRoot());</span><br><span class="line">    holder.setBinding(binding);</span><br><span class="line">    <span class="keyword">return</span> holder;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(BindingHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">    User user = users.get(position);</span><br><span class="line">    holder.getBinding().setVariable(BR.user, user);</span><br><span class="line">    holder.getBinding().executePendingBindings();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="属性_Setter">属性 Setter</h2><p>每当绑定值的变化，生成的Binding类必须调用setter方法​​。Data Binding框架有可以自定义赋值的方法。</p>
+<h3 id="自动Setters">自动Setters</h3><p>对于一个属性，Data Binding试图找到setAttribute方法。与该属性的namespace并不什么关系，仅仅与属性本身名称有关。</p>
+<p>例如，有关TextView的<code>android:text</code>属性的表达式会寻找一个setText(String)的方法。如果表达式返回一个int，Data Binding会搜索的setText(int)方法。注意：要表达式返回正确的类型，如果需要的话使用casting。Data Binding仍会工作即使没有给定名称的属性存在。然后，您可以通过Data Binding轻松地为任何setter“创造”属性。例如，DrawerLayout没有任何属性，但大量的setters。您可以使用自动setters来使用其中的一个。</p>
+<h3 id="重命名的Setters">重命名的Setters</h3><p>一些有setters的属性按名称并不匹配。对于这些方法，属性可以通过BindingMethods注解相关联。这必须与一个包含BindingMethod注解的类相关联，每一个用于一个重命名的方法。例如，android:tint属性与setImageTintList相关联，而不与setTint相关。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@BindingMethods</span>(&#123;</span><br><span class="line">       <span class="annotation">@BindingMethod</span>(type = <span class="string">"android.widget.ImageView"</span>,</span><br><span class="line">                      attribute = <span class="string">"android:tint"</span>,</span><br><span class="line">                      method = <span class="string">"setImageTintList"</span>),</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="自定义Setters">自定义Setters</h3><p>有些属性需要自定义绑定逻辑。例如，对于<code>android:paddingLeft</code>属性并没有相关setter。相反，<code>setPadding(left, top, right, bottom)</code>是存在在。一个带有BindingAdapter注解的静态绑定适配器方法允许开发者自定义setter如何对于一个属性的调用。</p>
+<p>Android的属性已经创造了BindingAdapters。举例来说，对于paddingLeft：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@BindingAdapter</span>(<span class="string">"android:paddingLeft"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setPaddingLeft</span><span class="params">(View view, <span class="keyword">int</span> padding)</span> </span>&#123;</span><br><span class="line">   view.setPadding(padding,</span><br><span class="line">                   view.getPaddingTop(),</span><br><span class="line">                   view.getPaddingRight(),</span><br><span class="line">                   view.getPaddingBottom());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Binding适配器对其他定制类型非常有用。例如，自定义loader可以用来异步载入图像。</p>
+<p>当有冲突时，开发人员创建的Binding适配器将覆盖Data Binding默认适配器。</p>
+<p>您也可以创建可以接收多个参数的适配器。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@BindingAdapter</span>(&#123;<span class="string">"bind:imageUrl"</span>, <span class="string">"bind:error"</span>&#125;)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loadImage</span><span class="params">(ImageView view, String url, Drawable error)</span> </span>&#123;</span><br><span class="line">   Picasso.with(view.getContext()).load(url).error(error).into(view);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="转换器">转换器</h2><p>在 xml 中为属性赋值时，如果变量的类型与属性不一致，通过 DataBinding 可以进行转换</p>
+<p>例如，下面代码中如果要为属性 android:background 赋值一个 int 型的 color 变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;View</span><br><span class="line">    android:background=<span class="string">"@&#123;isError.get() ? @color/red : @color/white&#125;"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">    app:layout_height=<span class="string">"@&#123;height&#125;"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>只需要定义一个标记了 @BindingConversion 的静态方法即可（方法的定义位置可以随意）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@BindingConversion</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ColorDrawable <span class="title">convertColorToDrawable</span><span class="params">(<span class="keyword">int</span> color)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ColorDrawable(color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Android_stuido_的预览支持">Android stuido 的预览支持</h2><p>类似于 <code>tools:text</code> ,代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">            style=<span class="string">"@style/TextAppearance.AppCompat.Large"</span></span><br><span class="line">            android:text=<span class="string">"@&#123;user.firstName,default=PLACEHOLDER&#125;"</span></span><br><span class="line">            android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">            android:layout_height=<span class="string">"wrap_content"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="缺点">缺点</h2><ol>
+<li>XML不会被编译，它也不能进行单元测试。因此你将会经常在运行时才发现错误，而不是在编译期间。</li>
+</ol>
+<h2 id="参考">参考</h2><blockquote>
+<p><a href="https://www.zhihu.com/question/30976423" target="_blank" rel="external">https://www.zhihu.com/question/30976423</a><br><a href="https://developer.android.com/intl/zh-cn/tools/data-binding/guide.html#generated_binding" target="_blank" rel="external">https://developer.android.com/intl/zh-cn/tools/data-binding/guide.html#generated_binding</a><br><a href="https://segmentfault.com/a/1190000002876984" target="_blank" rel="external">https://segmentfault.com/a/1190000002876984</a><br><a href="http://tech.vg.no/2015/07/17/android-databinding-goodbye-presenter-hello-viewmodel/" target="_blank" rel="external">http://tech.vg.no/2015/07/17/android-databinding-goodbye-presenter-hello-viewmodel/</a><br><a href="http://www.jianshu.com/p/4e3220a580f6" target="_blank" rel="external">http://www.jianshu.com/p/4e3220a580f6</a><br><a href="https://github.com/LyndonChin/MasteringAndroidDataBinding" target="_blank" rel="external">https://github.com/LyndonChin/MasteringAndroidDataBinding</a><br><strong><a href="http://www.cnblogs.com/dxy1982/p/3793895.html" target="_blank" rel="external">http://www.cnblogs.com/dxy1982/p/3793895.html</a></strong><br><strong><a href="https://realm.io/cn/news/data-binding-android-boyar-mount/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">https://realm.io/cn/news/data-binding-android-boyar-mount/?utm_source=tuicool&amp;utm_medium=referral</a></strong><br><a href="https://www.aswifter.com/2015/07/04/android-data-binding-1/" target="_blank" rel="external">https://www.aswifter.com/2015/07/04/android-data-binding-1/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/04/Android 单元测试--Robolectric/" itemprop="url">
+                  robolectric 单元测试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-04T00:00:00+08:00" content="2016-03-04">
+              2016-03-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/04/Android 单元测试--Robolectric/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/04/Android 单元测试--Robolectric/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/04/Android 单元测试--Robolectric/" class="leancloud_visitors" data-flag-title="robolectric 单元测试">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-638283-f57c55ef447541aa.png" alt=""></p>
+<p>robolectric的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。</p>
+<h1 id="环境搭建">环境搭建</h1><h2 id="gradle">gradle</h2><p>gradle 中加入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  ...</span><br><span class="line">  testCompile <span class="string">'junit:junit:4.10'</span></span><br><span class="line">  testCompile <span class="string">'org.robolectric:robolectric:3.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="==注意==">==注意==</h3><ul>
+<li>若写成<code>testCompile</code>，则测试代码放在 test 文件夹中</li>
+<li>若写成<code>androidTest</code>，则测试代码放在 androidTest 文件夹中</li>
+</ul>
+<h2 id="Android_studio_配置">Android studio 配置</h2><h3 id="切换成_Unit_Tests">切换成 Unit Tests</h3><p>在Build Variants窗口内的Test Artifact中选择了”Unit Tests”<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-14569873485426.png" alt=""></p>
+<h3 id="Linux_和_Mac_用户需要进行这一步设置、">Linux 和 Mac 用户需要进行这一步设置、</h3><p>Run -&gt; Edit Configurations -&gt; Defaults -&gt; Junit</p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-14569878339128.png" alt=""></p>
+<blockquote>
+<p>注意Robolectric目前不支持android 5.1 API level 22，编译时 sdk = 21 或者以下。</p>
+</blockquote>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-14569892714536.png" alt=""></p>
+<p>在project视图中，test 文件夹下，有个绿的的java 文件夹，绿色文件夹表示是单元测试工程。这些代码能够检测目标代码的正确性，打包时单元测试的代码不会被编译进入APK中</p>
+<h3 id="Activity">Activity</h3><h4 id="Activity的创建">Activity的创建</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Activity activity = Robolectric.buildActivity(MyAwesomeActivity.class).create().get();</span><br></pre></td></tr></table></figure>
+<p>会创建一个<code>MyAwesomeActivity</code>实例，然后调用它的onCreat()方法</p>
+<p>如果只想验证其onResume()方法，可以如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ActivityController controller = Robolectric.buildActivity(MyAwesomeActivity.class).create().start();</span><br><span class="line">Activity activity = controller.get();</span><br><span class="line"><span class="comment">// assert that something hasn't happened</span></span><br><span class="line">activityController.resume();</span><br><span class="line"><span class="comment">// assert it happened!</span></span><br></pre></td></tr></table></figure>
+<p>如果想测试整个activity 的生命周期可以<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Activity activity = Robolectric.buildActivity(MyAwesomeActivity.class).create().start().resume().visible().get();</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>等你需要在activity中，对view进行一些操作时候，比如<code>Robolectric.clickOn()</code>，这时候你需要在<code>create()</code>后加入<code>visible()</code></p>
+</blockquote>
+<h4 id="举例">举例</h4><p>我在工程中建立了三个Activity分别为 MainActivity，AnotherActivity，ThridActivity<br>在MainActivity加入按键跳转到AnotherActivity中，<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startAnotherActivity</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">     startActivity(<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, AnotherActivity.class));</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>增加单元测试用例判断跳转的是否正确<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clickingLogin_shouldStartLoginActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Button button = (Button) activity.findViewById(R.id.button);</span><br><span class="line">    assertTrue(button.isEnabled());</span><br><span class="line">    button.performClick();</span><br><span class="line"></span><br><span class="line">    Intent expectedIntent = <span class="keyword">new</span> Intent(activity, ThridActivity.class);</span><br><span class="line">    assertEquals(expectedIntent,shadowOf(activity).getNextStartedActivity() );</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>1.通过 activity.findViewById 找到button<br>2.判断button是否可以点击<br>3.点击button<br>4.构造一个intent（从MainActivity跳转到ThridActivity）<br>5.判断实际跳转的和构造的是否一致</p>
+<p>结构不一致报错<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">java.lang.AssertionError: </span><br><span class="line">Expected :Intent&#123;componentName=ComponentInfo&#123;io.github.xuyushi.robolectric/io.github.xuyushi.robolectric.ThridActivity&#125;, extras=Bundle[&#123;&#125;]&#125;</span><br><span class="line">Actual   :Intent&#123;componentName=ComponentInfo&#123;io.github.xuyushi.robolectric/io.github.xuyushi.robolectric.AnotherActivity&#125;, extras=Bundle[&#123;&#125;]&#125;</span><br><span class="line"> &lt;Click to see difference&gt;</span><br><span class="line">	at org.junit.Assert.fail(Assert.java:<span class="number">91</span>)</span><br><span class="line">	at org.junit.Assert.failNotEquals(Assert.java:<span class="number">645</span>)</span><br><span class="line">	at org.junit.Assert.assertEquals(Assert.java:<span class="number">126</span>)</span><br><span class="line">	at org.junit.Assert.assertEquals(Assert.java:<span class="number">145</span>)</span><br></pre></td></tr></table></figure></p>
+<p>可以很清楚的定位到错误</p>
+<h3 id="Dialog验证">Dialog验证</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDialog</span><span class="params">()</span></span>&#123;</span><br><span class="line">     Dialog dialog = ShadowDialog.getLatestDialog();</span><br><span class="line">    assertNotNull(dialog);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Toast验证">Toast验证</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testToast</span><span class="params">()</span></span>&#123;</span><br><span class="line">    assertEquals(toastContent, ShadowToast.getTextOfLatestToast());</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Fragment的测试">Fragment的测试</h3><p>如果使用support的Fragment，需添加以下依赖<br><code>testCompile &quot;org.robolectric:shadows-support-v4:3.0&quot;</code></p>
+<p>shadow-support包提供了将Fragment主动添加到Activity中的方法：SupportFragmentTestUtil.startFragment(),简易的测试代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFragment</span><span class="params">()</span></span>&#123;</span><br><span class="line"> SampleFragment sampleFragment = <span class="keyword">new</span> SampleFragment();</span><br><span class="line"> <span class="comment">//此api可以主动添加Fragment到Activity中，因此会触发Fragment的onCreateView()</span></span><br><span class="line"> SupportFragmentTestUtil.startFragment(sampleFragment);</span><br><span class="line"> assertNotNull(sampleFragment.getView());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="访问资源文件@Test">访问资源文件@Test</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testResources</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     Application application = RuntimeEnvironment.application;</span><br><span class="line">     String appName = application.getString(R.string.app_name);</span><br><span class="line">     String activityTitle = application.getString(R.string.title_activity_simple);</span><br><span class="line">     assertEquals(<span class="string">"test"</span>, appName);</span><br><span class="line">     assertEquals(<span class="string">"testActivity"</span>,activityTitle);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Shodaw">Shodaw</h3><blockquote>
+<p>Robolectric的本质是在Java运行环境下，采用Shadow的方式对Android中的组件进行模拟测试，从而实现Android单元测试。对于一些Robolectirc暂不支持的组件，可以采用自定义Shadow的方式扩展Robolectric的功能。</p>
+</blockquote>
+<h4 id="定义原始类">定义原始类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String username, String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="定义_shardow_类">定义 shardow 类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Implements</span>(User.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShadowUser</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Implementation</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"from ShadowUser"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="需要让系统知道_ShardowUser_的存在">需要让系统知道 ShardowUser 的存在</h4><p>定义自己的 <code>RobolectricGradleTestRunner</code> 类，继承自<code>RobolectricGradleTestRunner</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserShadowTestRunner</span> <span class="keyword">extends</span> <span class="title">RobolectricGradleTestRunner</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserShadowTestRunner</span><span class="params">(Class&lt;?&gt; klass)</span> <span class="keyword">throws</span> InitializationError </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(klass);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> InstrumentationConfiguration <span class="title">createClassLoaderConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        InstrumentationConfiguration.Builder builder = InstrumentationConfiguration.newBuilder();</span><br><span class="line">        <span class="comment">/**</span><br><span class="line">         * 添加要进行Shadow的对象</span><br><span class="line">         */</span></span><br><span class="line">        builder.addInstrumentedClass(User.class.getName());</span><br><span class="line">        <span class="keyword">return</span> builder.build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="test_测试中使用">test 测试中使用</h4><p>Runwith 使用上面自定义的类<br>同时指明使用 <code>ShadowUser.class</code>，多个类可以加{},中间使用<code>,</code>分开</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@RunWith</span>(UserShadowTestRunner.class)</span><br><span class="line"><span class="annotation">@Config</span>(constants = BuildConfig.class, shadows = ShadowUser.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginActivityTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCase</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        User user = <span class="keyword">new</span> User(<span class="string">"username"</span>, <span class="string">"password"</span>);</span><br><span class="line">        assertEquals(<span class="string">"from ShadowUser"</span>, user.getUsername());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="网络请求_mock">网络请求 mock</h3><p>gradle 中加入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>Compile <span class="string">'org.robolectric:shadows-httpclient:3.0'</span></span><br><span class="line"><span class="built_in">test</span>Compile <span class="string">'org.robolectric:robolectric-shadows:3.0'</span></span><br></pre></td></tr></table></figure>
+<p>更多robolectric 包见<br><a href="http://mvnrepository.com/artifact/org.robolectric" target="_blank" rel="external">http://mvnrepository.com/artifact/org.robolectric</a></p>
+<h2 id="未搞定的">未搞定的</h2><ol>
+<li>项目网络请求使用的是 volley ，网络请求并没有找到合适办法模拟</li>
+<li>使用了第三方框架 butterknief，并不能模拟</li>
+</ol>
+<p>以上有知道如何解决的 请告诉我一声~ xmy166@gmil.com</p>
+<h2 id="参考">参考</h2><blockquote>
+<p><a href="http://hkliya.gitbooks.io/unit-test-android-with-robolectric/content/2-api-explained.html" target="_blank" rel="external">http://hkliya.gitbooks.io/unit-test-android-with-robolectric/content/2-api-explained.html</a><br><a href="http://www.jianshu.com/p/9d988a2f8ff7" target="_blank" rel="external">http://www.jianshu.com/p/9d988a2f8ff7</a><br><a href="http://robolectric.org" target="_blank" rel="external">http://robolectric.org</a><br><a href="http://chriszou.com/android-unit-testing-with-robolectric" target="_blank" rel="external">http://chriszou.com/android-unit-testing-with-robolectric</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/28/MVP/" itemprop="url">
                   Android 中的MVP 模式
                 </a>
@@ -494,140 +909,6 @@
 <p>Subject: 抽象主题角色<br>Proxy: 代理主题角色<br>RealSubject: 真实主题角色</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/23/代理模式/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/23/组合模式/" itemprop="url">
-                  组合模式 Composite Pattern
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-23T00:00:00+08:00" content="2016-02-23">
-              2016-02-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/23/组合模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/23/组合模式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/02/23/组合模式/" class="leancloud_visitors" data-flag-title="组合模式 Composite Pattern">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>[TOC]</p>
-<h1 id="组合模式_Composite_Pattern">组合模式 Composite Pattern</h1><h2 id="定义">定义</h2><blockquote>
-<p>代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。</p>
-<h2 id="使用场景">使用场景</h2></blockquote>
-<ul>
-<li>需要表示一个对象整体或部分层次，在具有整体和部分的层次结构中，希望通过一种方式忽略整体与部分的差异，可以一致地对待它们。</li>
-<li>让客户能够忽略不同对象层次的变化，客户端可以针对抽象构件编程，无须关心对象层次结构的细节。</li>
-</ul>
-<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14562390427827.png" alt=""></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/23/组合模式/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1495,143 +1776,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/21/hello-world/" itemprop="url">
-                  抽象工厂模式 Abstract Factory Pattern
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-21T22:26:00+08:00" content="2016-02-21">
-              2016-02-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/21/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/21/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/02/21/hello-world/" class="leancloud_visitors" data-flag-title="抽象工厂模式 Abstract Factory Pattern">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>[TOC]</p>
-<h1 id="抽象工厂模式_Abstract_Factory_Pattern">抽象工厂模式 Abstract Factory Pattern</h1><h2 id="定义">定义</h2><blockquote>
-<p>抽象工厂模式 Abstract Factory Pattern：提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。</p>
-</blockquote>
-<h2 id="使用场景">使用场景</h2><ul>
-<li>一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。</li>
-<li>系统中有多于一个的产品族，而每次只使用其中某一产品族。</li>
-<li>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</li>
-<li>系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
-</ul>
-<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14560648848499.png" alt=""></p>
-<p>AbstractFactory：抽象工厂<br>ConcreteFactory：具体工厂<br>AbstractProduct：抽象产品<br>Product：具体产品</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/21/hello-world/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1678,7 +1822,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1695,7 +1839,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
