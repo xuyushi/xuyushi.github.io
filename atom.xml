@@ -5,7 +5,7 @@
   <subtitle><![CDATA[低调、务实、自驱、反思]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com//"/>
-  <updated>2016-03-06T13:45:05.000Z</updated>
+  <updated>2016-03-06T13:48:54.000Z</updated>
   <id>http://yoursite.com//</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://yoursite.com/2016/03/05/Android%20MVVM/"/>
     <id>http://yoursite.com/2016/03/05/Android MVVM/</id>
     <published>2016-03-04T16:00:00.000Z</published>
-    <updated>2016-03-06T13:45:05.000Z</updated>
+    <updated>2016-03-06T13:48:54.000Z</updated>
     <content type="html"><![CDATA[<p>[TOC]</p>
 <p>在上一篇博文中介绍了 <img src="http://xuyushi.github.io/2016/02/28/MVP/" alt="Android的MVP模式">。MVVM 是从 MVP 的进一步发展与规范，MVP 隔离了 M 与 V 的直接联系后，靠 Presenter 来中转，所以使用 MVP 时 P 是直接调用 View 的接口来实现对视图的操作的，M 与 V是隔离了，方便测试了，但代码还不够优雅简洁啊，所以 MVVM 就弥补了这些缺陷。</p>
+<a id="more"></a>
 <h3 id="概述">概述</h3><p>MVVM模式包含了三个部分：</p>
 <ul>
 <li>Model :基本业务逻辑</li>
@@ -138,7 +139,8 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<p>[TOC]</p>
-<p>在上一篇博文中介绍了 <img src="http://xuyushi.github.io/2016/02/28/MVP/" alt="Android的MVP模式">。MVVM 是从 MVP 的进一步发展与规范，MVP 隔离了 M 与 V 的直接联]]>
+<p>在上一篇博文中介绍了 <img src="http://xuyushi.github.io/2016/02/28/MVP/" alt="Android的MVP模式">。MVVM 是从 MVP 的进一步发展与规范，MVP 隔离了 M 与 V 的直接联系后，靠 Presenter 来中转，所以使用 MVP 时 P 是直接调用 View 的接口来实现对视图的操作的，M 与 V是隔离了，方便测试了，但代码还不够优雅简洁啊，所以 MVVM 就弥补了这些缺陷。</p>]]>
+    
     </summary>
     
       <category term="MVVM" scheme="http://yoursite.com/tags/MVVM/"/>
@@ -152,9 +154,10 @@
     <link href="http://yoursite.com/2016/03/04/Android%20%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95--Robolectric/"/>
     <id>http://yoursite.com/2016/03/04/Android 单元测试--Robolectric/</id>
     <published>2016-03-03T16:00:00.000Z</published>
-    <updated>2016-03-04T10:46:47.000Z</updated>
+    <updated>2016-03-06T13:48:36.000Z</updated>
     <content type="html"><![CDATA[<p>[TOC]<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-638283-f57c55ef447541aa.png" alt=""></p>
 <p>robolectric的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。</p>
+<a id="more"></a>
 <h1 id="环境搭建">环境搭建</h1><h2 id="gradle">gradle</h2><p>gradle 中加入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  ...</span><br><span class="line">  testCompile <span class="string">'junit:junit:4.10'</span></span><br><span class="line">  testCompile <span class="string">'org.robolectric:robolectric:3.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="==注意==">==注意==</h3><ul>
@@ -211,7 +214,8 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<p>[TOC]<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-638283-f57c55ef447541aa.png" alt=""></p>
-<p>robolectric的最大特别是运行测试程序时不]]>
+<p>robolectric的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。</p>]]>
+    
     </summary>
     
       <category term="robolectric" scheme="http://yoursite.com/tags/robolectric/"/>
