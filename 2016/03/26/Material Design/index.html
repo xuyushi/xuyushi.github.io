@@ -1,0 +1,1024 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="SaHbPoHOxqF4QuVM1TDhfg_Cqik1EY89r1Yt60Bcp5c" />
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Material," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Xu Yushi''s Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="[TOC]
+Material Design吐槽作为一个 Android developer，没有什么比拿着 UI 设计的一堆 iOS 风格的设计 来做需求更恶心的了，基本所有空间都要照着 iOS 来画一遍，Material Design 辣么酷炫 为什么 UI在设计的阶段不设计成 Material Design风格呢？
+今天试了几个比较Support包中比较典型的Material Design控件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Material Design">
+<meta property="og:url" content="http://yoursite.com/2016/03/26/Material Design/index.html">
+<meta property="og:site_name" content="Xu Yushi''s Blog">
+<meta property="og:description" content="[TOC]
+Material Design吐槽作为一个 Android developer，没有什么比拿着 UI 设计的一堆 iOS 风格的设计 来做需求更恶心的了，基本所有空间都要照着 iOS 来画一遍，Material Design 辣么酷炫 为什么 UI在设计的阶段不设计成 Material Design风格呢？
+今天试了几个比较Support包中比较典型的Material Design控件">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032609.gif">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-14589764144140.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032601.gif">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032602.gif">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-14589800146909.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-14589810228779.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-14589815650659.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032603.gif">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-20160326034.gif">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032605.gif">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032606.gif">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032607.gif">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032608.gif">
+<meta property="og:updated_time" content="2016-03-26T13:07:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Material Design">
+<meta name="twitter:description" content="[TOC]
+Material Design吐槽作为一个 Android developer，没有什么比拿着 UI 设计的一堆 iOS 风格的设计 来做需求更恶心的了，基本所有空间都要照着 iOS 来画一遍，Material Design 辣么酷炫 为什么 UI在设计的阶段不设计成 Material Design风格呢？
+今天试了几个比较Support包中比较典型的Material Design控件">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+  <title> Material Design | Xu Yushi''s Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-72857814-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Xu Yushi''s Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">低调、务实、自驱、反思</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '_iSLz7t9AaMFBh4-e1FR','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Material Design
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-26T00:00:00+08:00" content="2016-03-26">
+              2016-03-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/26/Material Design/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/26/Material Design/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/26/Material Design/" class="leancloud_visitors" data-flag-title="Material Design">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1 id="Material_Design">Material Design</h1><h2 id="吐槽">吐槽</h2><p>作为一个 Android developer，没有什么比拿着 UI 设计的一堆 iOS 风格的设计 来做需求更恶心的了，基本所有空间都要照着 iOS 来画一遍，Material Design 辣么酷炫 为什么 UI在设计的阶段不设计成 Material Design风格呢？</p>
+<p>今天试了几个比较Support包中比较典型的Material Design控件，后期会在学习下Material Design的设计思想和理念，希望能拉着 UI 做一次Material Design 分享，改变我们 APP 的 iOS 风格啊。<br><a id="more"></a></p>
+<p>最终效果如下<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032609.gif" alt=""></p>
+<h2 id="Android_Design_Support_库依赖">Android Design Support 库依赖</h2><p>在 <code>build.gradle</code> 中加入support 包</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:23.1.1'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Design Support Library 中包含了 Support v4 和 AppCompat v7</p>
+</blockquote>
+<h2 id="Floating_Action_Button">Floating Action Button</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-14589764144140.png" alt=""></p>
+<p>我们希望<code>FloatingActionButton</code>悬浮在页面的右下方，所以我们父节点应使用<code>Flowlayout</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">FrameLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:paddingBottom</span>=<span class="value">"@dimen/activity_vertical_margin"</span></span><br><span class="line">    <span class="attribute">android:paddingLeft</span>=<span class="value">"@dimen/activity_horizontal_margin"</span></span><br><span class="line">    <span class="attribute">android:paddingRight</span>=<span class="value">"@dimen/activity_horizontal_margin"</span></span><br><span class="line">    <span class="attribute">android:paddingTop</span>=<span class="value">"@dimen/activity_vertical_margin"</span></span><br><span class="line">    <span class="attribute">tools:context</span>=<span class="value">"io.github.xuyushi.materialdesigndemo.MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:text</span>=<span class="value">"Hello World!"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.design.widget.FloatingActionButton</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">        <span class="attribute">android:layout_gravity</span>=<span class="value">"bottom|end"</span></span><br><span class="line">        <span class="attribute">android:src</span>=<span class="value">"@android:drawable/ic_dialog_email"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">FrameLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>和普通 button 一样可以设置其点击事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initFb</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mFb = (FloatingActionButton) findViewById(R.id.fb);</span><br><span class="line">        mFb.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"fb  predsed "</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><code>Android:elevation</code>属性为 view 在空闲状态下的阴影深度， 需要在 api 21以上才能使用，使用 support 包可以使用<code>app:elevation</code> 来表示空闲状态高度，<code>app:pressedTanslationZ</code>为按下状态的高度</p>
+<p>按钮的颜色一般为主题的强调色，也可以使用 ”app:backgroundTint“修改</p>
+<h2 id="Snackbar">Snackbar</h2><p>和 Toast 很像，snackbar 可以展示一段简单的信息，不同点是它的展示更像是整体 UI 的一部分，不是想 toast 一样是浮在 UI 上的，并且可以有简单的交互</p>
+<p>在点击 floatingActionButton时显示Snackbar</p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032601.gif" alt=""></p>
+<p>但是可以看到，Snackbar 遮挡住了我们的 view，这时候需要一个<code>CoordinatorLayout</code>来协调 view 布局</p>
+<h2 id="CoordinatorLayout">CoordinatorLayout</h2><p>将父布局中的<code>framelaout</code>换成<code>CoordinatorLayout</code>，其他不变，再来看看效果</p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032602.gif" alt=""></p>
+<p>==todo CoordinatorLayout学习==</p>
+<h2 id="Toolbar">Toolbar</h2><p>Toolbar 比传统的 ActionBar 更灵活，功能也更多，我们可以看到现在市面上很多的 APP 已经用 Toolbar 替代了 actionbar，在 Desgin Support 的组件中，很多设计都可以和 Toolbar 协同工作，而不是和 actionbar，所以还是建议使用新的 toolbar 替换以前的 actionbar</p>
+<p>替换步骤</p>
+<p>1、在 minifest 中，将 activity 的 apptheme 的 style 中的 actionbar属性去掉</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"AppTheme.NoActionBar"</span>&gt;</span><span class="css"></span><br><span class="line">   &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">windowActionBar</span>"&gt;<span class="tag">false</span>&lt;/<span class="tag">item</span>&gt;</span><br><span class="line">   &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">windowNoTitle</span>"&gt;<span class="tag">true</span>&lt;/<span class="tag">item</span>&gt;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;<span class="title">activity</span> <span class="attribute">android:name</span>=<span class="value">".MainActivity"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">           <span class="tag">&lt;<span class="title">category</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="title">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>在 fb 之前放入 Toolbar 组件</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.CoordinatorLayout </span><br><span class="line">    .........</span><br><span class="line"></span><br><span class="line">    &lt;android.support.v7.widget.Toolbar</span><br><span class="line">        android:id="@+id/toolbar"</span><br><span class="line">        android:layout_width="match_parent"</span><br><span class="line">        android:layout_height="?attr/actionBarSize"</span><br><span class="line">        android:background="?attr/colorPrimary"</span><br><span class="line">        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"</span><br><span class="line">        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width="wrap_content"</span><br><span class="line">        android:layout_height="wrap_content"</span><br><span class="line">        android:text="Hello World!" /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.FloatingActionButton</span><br><span class="line">        android:id="@+id/fb"</span><br><span class="line">        android:layout_width="wrap_content"</span><br><span class="line">        android:layout_height="wrap_content"</span><br><span class="line">        android:layout_gravity="end|bottom"</span><br><span class="line">        android:src="@android:drawable/ic_dialog_email"</span><br><span class="line">        app:elevation="12dp"</span><br><span class="line">        app:pressedTranslationZ="30dp"</span><br><span class="line">        /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>通知系统使用 toolbar</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initToolbar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mToolbar = (Toolbar) findViewById(R.id.toolbar);</span><br><span class="line">    setSupportActionBar(mToolbar);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>CoordinatorLayout</code>中的 view 必须是能一同协作的 view，就像 Snackbar 一样，但是 toolbar 并不是这样能协同作战的 view，所以我们需要用一个可以协同作战的 view 来包裹上<code>Toolbar</code>，这就是 <code>AppBarLayout</code></p>
+<p>现在我们的布局文件结构是这样的</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">android.support.design.widget.CoordinatorLayout</span></span><br><span class="line">    <span class="attribute">...</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.design.widget.AppBarLayout</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="title">android.support.v7.widget.Toolbar</span></span><br><span class="line">           <span class="attribute">...</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">android.support.design.widget.AppBarLayout</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.design.widget.FloatingActionButton</span></span><br><span class="line">        <span class="attribute">...</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">android.support.design.widget.FloatingActionButton</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">android.support.design.widget.CoordinatorLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong></p>
+<p>根据官方的谷歌文档，AppBarLayout目前必须是第一个嵌套在CoordinatorLayout里面的子view</p>
+<p>在 toolbar 中加入属性，app:layout_collapseMode=”pin”，使得 Toolbar 中的按钮能固定在顶部</p>
+<h2 id="在布局中加入内容">在布局中加入内容</h2><p>在布局中尝试加入一些按钮</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">....</span><br><span class="line"> <span class="tag">&lt;/<span class="title">android.support.design.widget.AppBarLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">app:layout_behavior</span>=<span class="value">"@string/appbar_scrolling_view_behavior"</span></span><br><span class="line">        <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">Button</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:text</span>=<span class="value">"test"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">Button</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:text</span>=<span class="value">"test"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">Button</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:text</span>=<span class="value">"test"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-14589800146909.png" alt=""></p>
+<p>我们定义三个按键，却被 toolbar 遮住了一个，原因是<code>LinearLayout</code>并没有被设计成在<code>CoordinatorLayout</code>协同工作的模式，为了使他们能在<code>CoordinatorLayout</code>协同工作，我们需要在<code>LinearLayout</code>加上一条属性，来告诉它的滚动属性（）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">    <span class="attribute">...</span></span><br><span class="line">    <span class="attribute">app:layout_behavior</span>=<span class="value">"@string/appbar_scrolling_view_behavior"</span></span><br><span class="line">    <span class="attribute">...</span></span><br><span class="line">    &gt;</span></span><br></pre></td></tr></table></figure>
+<p>搞定</p>
+<h2 id="TabLayout">TabLayout</h2><p>根据官网的知道，<code>TabLayout</code>通常应该是放在顶部，（iOS 的 tab 好像基本在底部），<br>他应该在阴影部分上面，所以应该放在<code>AppBarlayout</code>中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">android.support.design.widget.AppBarLayout</span> <span class="attribute">...</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.v7.widget.Toolbar</span> <span class="attribute">...</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.design.widget.TabLayout</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/tabLayout"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">android.support.design.widget.AppBarLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>java 中设置这些 tab 属性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initTableLayout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   mTabLayout = (TabLayout) findViewById(R.id.tabLayout);</span><br><span class="line">   mTabLayout.addTab(mTabLayout.newTab().setText(<span class="string">"Tab 1"</span>));</span><br><span class="line">   mTabLayout.addTab(mTabLayout.newTab().setText(<span class="string">"Tab 2"</span>));</span><br><span class="line">   mTabLayout.addTab(mTabLayout.newTab().setText(<span class="string">"Tab 3"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-14589810228779.png" alt=""></p>
+<p>背景会设置为主题色，导航线是强调色。但是字还是黑色的，因为我们没有为 tablayout 定义主题，</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">android.support.design.widget.TabLayout</span></span><br><span class="line">    <span class="attribute">...</span></span><br><span class="line">    <span class="attribute">app:theme</span>=<span class="value">"@style/ThemeOverlay.AppCompat.Dark.ActionBar"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>通常 tablayout 会和<code>ViewPager</code>一起使用 ，这时候使用<br><code>public void setupWithViewPager (ViewPager viewPager)</code></p>
+<p>一张图看的比较清晰<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-14589815650659.png" alt=""></p>
+<h2 id="内容滚动时，AppBarLayout隐藏">内容滚动时，AppBarLayout隐藏</h2><p>当滑档内容时，为了腾出跟多的空间展示内容可以将<code>AppBarLayout</code>隐藏</p>
+<p>1.用 scrollView 包裹 LinearLayout,记得加上 <code>app:layout_behavior</code>属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">ScrollView</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:fillViewport</span>=<span class="value">"true"</span></span><br><span class="line">    <span class="attribute">app:layout_behavior</span>=<span class="value">"@string/appbar_scrolling_view_behavior"</span></span><br><span class="line">    &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span></span><br><span class="line">        &gt;</span></span><br><span class="line">        ...</span><br><span class="line">    <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ScrollView</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>Toolbar 加上属性</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">android.support.v7.widget.Toolbar</span></span><br><span class="line">    <span class="attribute">...</span></span><br><span class="line">    <span class="attribute">app:layout_scrollFlags</span>=<span class="value">"scroll|enterAlways"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>scrollView 也不能喝 CoordinatorLayout 协同工作，同上面一样，要用别的 view 包裹或者直接使用 NestedSrollView替换scrollView</li>
+</ol>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032603.gif" alt=""></p>
+<p>如果希望 tablayout 也消失，只需要和 tablayout 加上相同的属性就行了</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">android.support.design.widget.TabLayout</span></span><br><span class="line">    <span class="attribute">...</span></span><br><span class="line">    <span class="attribute">app:layout_scrollFlags</span>=<span class="value">"scroll|enterAlways"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="滑动内容_和_AppBarLayout是如何进行联系的？">滑动内容 和 AppBarLayout是如何进行联系的？</h3><p>我们需要定义AppBarLayout与滚动视图之间的联系。在RecyclerView或者任意支持嵌套滚动的view比如NestedScrollView上添加app:layout_behavior。support library包含了一个特殊的字符串资源@string/appbar_scrolling_view_behavior，它和AppBarLayout.ScrollingViewBehavior相匹配，用来通知AppBarLayout 这个特殊的view何时发生了滚动事件，这个behavior需要设置在触发事件（滚动）的view之上</p>
+<p>当CoordinatorLayout发现scrollView中定义了这个属性，它会搜索自己所包含的其他view，看看是否有view与这个behavior相关联。AppBarLayout.ScrollingViewBehavior描述了RecyclerView与AppBarLayout之间的依赖关系。RecyclerView的任意滚动事件都将触发AppBarLayout或者AppBarLayout里面view的改变。</p>
+<p>AppBarLayout里面定义的view只要设置了app:layout_scrollFlags属性，就可以在RecyclerView滚动事件发生的时候被触发：</p>
+<p>app:layout_scrollFlags属性里面必须至少启用scroll这个flag，这样这个view才会滚动出屏幕，否则它将一直固定在顶部。可以使用的其他flag有：</p>
+<ul>
+<li>enterAlways: 一旦向上滚动这个view就可见。</li>
+<li>enterAlwaysCollapsed: 顾名思义，这个flag定义的是何时进入（已经消失之后何时再次显示）。假设你定义了一个最小高度（minHeight）同时enterAlways也定义了，那么view将在到达这个最小高度的时候开始显示，并且从这个时候开始慢慢展开，当滚动到顶部的时候展开完。</li>
+<li>exitUntilCollapsed: 同样顾名思义，这个flag时定义何时退出，当你定义了一个minHeight，这个view将在滚动到达这个最小高度的时候消失。</li>
+</ul>
+<p>记住，要把带有scroll flag的view放在前面，这样收回的view才能让正常退出，而固定的view继续留在顶部。</p>
+<h2 id="可折叠的_Toolbar">可折叠的 Toolbar</h2><ul>
+<li>用 CollapsingToolbarLayout 包裹 Toolbar，但仍然在 AppBarLayout 中</li>
+<li>删除 Toolbar 中的 layout_scrollFlags</li>
+<li>为 CollapsingToolbarLayout 声明 layout_scrollFlags，并且将 layout_scrollFlags 设置成 scroll|exitUntilCollapsed</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">android.support.design.widget.AppBarLayout</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"256dp"</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="title">android.support.design.widget.CollapsingToolbarLayout</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/collapsingToolbarLayout"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">app:layout_scrollFlags</span>=<span class="value">"scroll|exitUntilCollapsed"</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">        <span class="tag">&lt;<span class="title">android.support.v7.widget.Toolbar</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/toolbar"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"?attr/actionBarSize"</span></span><br><span class="line">            <span class="attribute">android:background</span>=<span class="value">"?attr/colorPrimary"</span></span><br><span class="line">            <span class="attribute">android:minHeight</span>=<span class="value">"?attr/actionBarSize"</span></span><br><span class="line">            <span class="attribute">app:theme</span>=<span class="value">"@style/ThemeOverlay.AppCompat.Dark.ActionBar"</span></span><br><span class="line">            <span class="attribute">app:popupTheme</span>=<span class="value">"@style/ThemeOverlay.AppCompat.Light"</span> </span><br><span class="line">            <span class="attribute">app:layout_collapseMode</span>=<span class="value">"pin"</span>/&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;/<span class="title">android.support.design.widget.CollapsingToolbarLayout</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="title">android.support.design.widget.AppBarLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意 CollapsingToolbarLayout 的高度是<code>android:layout_height=&quot;match_parent&quot;</code></p>
+<p>CollapsingToolbarLayout在展开和收缩时，标题的文字会自动过度的，可以通过 app:expandedTitleMargin 等来改变文字位置</p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-20160326034.gif" alt=""></p>
+<h2 id="为_appBar_添加背景图片">为 appBar 添加背景图片</h2><p>由于 CollapsingToolbarLayout 是继承 Framelayout 的，所以我们可以直接添加一个 ImageView 作为背景图片</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">ImageView</span></span><br><span class="line">    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:scaleType</span>=<span class="value">"centerCrop"</span></span><br><span class="line">    <span class="attribute">android:src</span>=<span class="value">"@drawable/header"</span> /&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="title">android.support.v7.widget.Toolbar</span></span><br><span class="line">    <span class="attribute">...</span></span></span><br></pre></td></tr></table></figure>
+<p>此时虽然背景已经出来了，但是蓝色的导航条依旧存在，需要在 toolbar 去掉这条属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:background="?attr/colorPrimary"</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032605.gif" alt=""></p>
+<p>给 Imageview 加上视差模式会更帅</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app:layout_collapseMode="parallax"</span><br><span class="line">app:layout_collapseParallaxMultiplier="0.5"</span><br></pre></td></tr></table></figure>
+<p>也可以在最后恢复成主题色</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">android.support.design.widget.CollapsingToolbarLayout</span></span><br><span class="line">    <span class="attribute">...</span></span><br><span class="line">    <span class="attribute">app:contentScrim</span>=<span class="value">"?attr/colorPrimary"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032606.gif" alt=""></p>
+<h2 id="Navigation_Drawer">Navigation Drawer</h2><h3 id="在AppBarLayout布局下，增DrawerLayout">在<code>AppBarLayout</code>布局下，增<code>DrawerLayout</code></h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">android.support.design.widget.AppBarLayout</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">android.support.v4.widget.DrawerLayout</span> <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">        <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span></span><br><span class="line">        <span class="attribute">android:id</span>=<span class="value">"@+id/drawer_layout"</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:fitsSystemWindows</span>=<span class="value">"true"</span></span><br><span class="line">        <span class="attribute">app:layout_behavior</span>=<span class="value">"@string/appbar_scrolling_view_behavior"</span></span><br><span class="line">        <span class="attribute">tools:openDrawer</span>=<span class="value">"start"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">include</span> <span class="attribute">layout</span>=<span class="value">"@layout/content_main"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">android.support.design.widget.NavigationView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/nav_view"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_gravity</span>=<span class="value">"start"</span></span><br><span class="line">            <span class="attribute">android:fitsSystemWindows</span>=<span class="value">"true"</span></span><br><span class="line">            <span class="attribute">app:headerLayout</span>=<span class="value">"@layout/nav_header_main2"</span></span><br><span class="line">            <span class="attribute">app:menu</span>=<span class="value">"@menu/activity_main2_drawer"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="title">android.support.v4.widget.DrawerLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>DrawerLayout</code>中分两部分组成，一部分是content 就是我们需要的主布局内容，另一部分是我们的抽屉的布局，NavigationView中有顶部头，和标签</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app:headerLayout="@layout/nav_header_main2"</span><br><span class="line">            app:menu="@menu/activity_main2_drawer"</span><br></pre></td></tr></table></figure>
+<h3 id="创建菜单。">创建菜单。</h3><p>菜单元素是放在group标签之下，同时声明每次只能有一个item被选中：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">menu</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">group</span> <span class="attribute">android:checkableBehavior</span>=<span class="value">"single"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">item</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/nav_camera"</span></span><br><span class="line">            <span class="attribute">android:icon</span>=<span class="value">"@drawable/ic_menu_camera"</span></span><br><span class="line">            <span class="attribute">android:title</span>=<span class="value">"Import"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">item</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/nav_gallery"</span></span><br><span class="line">            <span class="attribute">android:icon</span>=<span class="value">"@drawable/ic_menu_gallery"</span></span><br><span class="line">            <span class="attribute">android:title</span>=<span class="value">"Gallery"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">item</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/nav_slideshow"</span></span><br><span class="line">            <span class="attribute">android:icon</span>=<span class="value">"@drawable/ic_menu_slideshow"</span></span><br><span class="line">            <span class="attribute">android:title</span>=<span class="value">"Slideshow"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">item</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/nav_manage"</span></span><br><span class="line">            <span class="attribute">android:icon</span>=<span class="value">"@drawable/ic_menu_manage"</span></span><br><span class="line">            <span class="attribute">android:title</span>=<span class="value">"Tools"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">group</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">item</span> <span class="attribute">android:title</span>=<span class="value">"Communicate"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">menu</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">item</span></span><br><span class="line">                <span class="attribute">android:id</span>=<span class="value">"@+id/nav_share"</span></span><br><span class="line">                <span class="attribute">android:icon</span>=<span class="value">"@drawable/ic_menu_share"</span></span><br><span class="line">                <span class="attribute">android:title</span>=<span class="value">"Share"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">item</span></span><br><span class="line">                <span class="attribute">android:id</span>=<span class="value">"@+id/nav_send"</span></span><br><span class="line">                <span class="attribute">android:icon</span>=<span class="value">"@drawable/ic_menu_send"</span></span><br><span class="line">                <span class="attribute">android:title</span>=<span class="value">"Send"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">menu</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">item</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="title">menu</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>为了防止页面被遮盖，同样要使得 <code>DrawerLayout</code>协调。加入<code>app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;</code>属性</p>
+<h3 id="java初始化">java初始化</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initDraw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);</span><br><span class="line">        ActionBarDrawerToggle toggle = <span class="keyword">new</span> ActionBarDrawerToggle(</span><br><span class="line">                <span class="keyword">this</span>, drawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);</span><br><span class="line">        drawer.setDrawerListener(toggle);</span><br><span class="line">        toggle.syncState();</span><br><span class="line"></span><br><span class="line">        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);</span><br><span class="line">        navigationView.setNavigationItemSelectedListener(<span class="keyword">new</span> NavigationView.OnNavigationItemSelectedListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onNavigationItemSelected</span><span class="params">(MenuItem item)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// Handle navigation view item clicks here.</span></span><br><span class="line">                <span class="keyword">int</span> id = item.getItemId();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (id == R.id.nav_camera) &#123;</span><br><span class="line">                    <span class="comment">// Handle the camera action</span></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (id == R.id.nav_gallery) &#123;</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (id == R.id.nav_slideshow) &#123;</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (id == R.id.nav_manage) &#123;</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (id == R.id.nav_share) &#123;</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (id == R.id.nav_send) &#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);</span><br><span class="line">                drawer.closeDrawer(GravityCompat.START);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032607.gif" alt=""></p>
+<h2 id="SwipeRefreshLayout">SwipeRefreshLayout</h2><p>在<code>NestedScrollView</code>外在包裹一层<code>SwipeRefreshLayout</code>，</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">android.support.v4.widget.SwipeRefreshLayout</span></span><br><span class="line">      <span class="attribute">android:id</span>=<span class="value">"@+id/refresh"</span></span><br><span class="line">      <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">      <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">      <span class="attribute">app:layout_behavior</span>=<span class="value">"@string/appbar_scrolling_view_behavior"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">android.support.v4.widget.NestedScrollView</span></span><br><span class="line">          <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">          <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">          <span class="attribute">android:fillViewport</span>=<span class="value">"true"</span></span><br><span class="line">          &gt;</span></span><br><span class="line">          .....</span><br><span class="line">      <span class="tag">&lt;/<span class="title">android.support.v4.widget.NestedScrollView</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">android.support.v4.widget.SwipeRefreshLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>初始化监听器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initRefresh</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh);</span><br><span class="line">        mSwipeRefreshLayout.setOnRefreshListener(<span class="keyword">new</span> SwipeRefreshLayout.OnRefreshListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRefresh</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                refreshContent();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">refreshContent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Handler().postDelayed(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                mSwipeRefreshLayout.setRefreshing(<span class="keyword">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">2000</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-26-2016032608.gif" alt=""></p>
+<h2 id="参考">参考</h2><blockquote>
+<p><a href="http://inthecheesefactory.com/blog/android-design-support-library-codelab/en" target="_blank" rel="external">http://inthecheesefactory.com/blog/android-design-support-library-codelab/en</a><br><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0717/3196.html" target="_blank" rel="external">http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0717/3196.html</a><br><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0608/3011.html" target="_blank" rel="external">http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0608/3011.html</a><br><a href="http://developer.android.com/design/material/" target="_blank" rel="external">http://developer.android.com/design/material/</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Material/" rel="tag">#Material</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/11/单身汪的自白/" rel="next" title="单身汪的自白">
+                <i class="fa fa-chevron-left"></i> 单身汪的自白
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/03/26/Material Design/"
+     data-title="Material Design"
+     data-content=""
+     data-url="http://yoursite.com/2016/03/26/Material Design/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/26/Material Design/"
+           data-title="Material Design" data-url="http://yoursite.com/2016/03/26/Material Design/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg"
+               alt="Xu Yushi" />
+          <p class="site-author-name" itemprop="name">Xu Yushi</p>
+          <p class="site-description motion-element" itemprop="description">安卓 | xuyushi | 许雨石 | Android | java | developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Material_Design"><span class="nav-number">1.</span> <span class="nav-text">Material Design</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#吐槽"><span class="nav-number">1.1.</span> <span class="nav-text">吐槽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android_Design_Support_库依赖"><span class="nav-number">1.2.</span> <span class="nav-text">Android Design Support 库依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Floating_Action_Button"><span class="nav-number">1.3.</span> <span class="nav-text">Floating Action Button</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Snackbar"><span class="nav-number">1.4.</span> <span class="nav-text">Snackbar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CoordinatorLayout"><span class="nav-number">1.5.</span> <span class="nav-text">CoordinatorLayout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Toolbar"><span class="nav-number">1.6.</span> <span class="nav-text">Toolbar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在布局中加入内容"><span class="nav-number">1.7.</span> <span class="nav-text">在布局中加入内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TabLayout"><span class="nav-number">1.8.</span> <span class="nav-text">TabLayout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容滚动时，AppBarLayout隐藏"><span class="nav-number">1.9.</span> <span class="nav-text">内容滚动时，AppBarLayout隐藏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动内容_和_AppBarLayout是如何进行联系的？"><span class="nav-number">1.9.1.</span> <span class="nav-text">滑动内容 和 AppBarLayout是如何进行联系的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可折叠的_Toolbar"><span class="nav-number">1.10.</span> <span class="nav-text">可折叠的 Toolbar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为_appBar_添加背景图片"><span class="nav-number">1.11.</span> <span class="nav-text">为 appBar 添加背景图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigation_Drawer"><span class="nav-number">1.12.</span> <span class="nav-text">Navigation Drawer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在AppBarLayout布局下，增DrawerLayout"><span class="nav-number">1.12.1.</span> <span class="nav-text">在AppBarLayout布局下，增DrawerLayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建菜单。"><span class="nav-number">1.12.2.</span> <span class="nav-text">创建菜单。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java初始化"><span class="nav-number">1.12.3.</span> <span class="nav-text">java初始化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SwipeRefreshLayout"><span class="nav-number">1.13.</span> <span class="nav-text">SwipeRefreshLayout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.14.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Yushi</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xuyushi"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("tiPz9wsLpN7Cgr5tSlbUBTfd-gzGzoHsz", "dgGxEGXjbsalP1dAgAmAoPvO");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>

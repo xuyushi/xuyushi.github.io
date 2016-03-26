@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/03/26/Material%20Design/</loc>
+    <lastmod>2016-03-26T13:07:13.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/03/11/%E5%8D%95%E8%BA%AB%E6%B1%AA%E7%9A%84%E8%87%AA%E7%99%BD/</loc>
     <lastmod>2016-03-11T14:03:40.000Z</lastmod>
   </url>
