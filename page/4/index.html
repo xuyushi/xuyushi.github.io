@@ -402,6 +402,147 @@
             
               
                 
+                <a class="post-title-link" href="/2015/08/15/robolectric/" itemprop="url">
+                  robolectric
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-15T15:25:00+08:00" content="2015-08-15">
+              2015-08-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/15/robolectric/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/15/robolectric/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/08/15/robolectric/" class="leancloud_visitors" data-flag-title="robolectric">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Robolectric，它的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。</p>
+<h2 id="环境搭建">环境搭建</h2><p>环境 : Android Studio 1.2.1.1+ Android Gradle Plugin 1.2.3+ Gradle 2.2.1+</p>
+<p>gradle中加入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  ...</span><br><span class="line">  testCompile <span class="string">'org.robolectric:robolectric:3.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>确认在Build Variants窗口内的Test Artifact中选择了”Unit Tests”。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-ab4402443ad7dc5f.png" alt=""></p>
+<p>然后，在工程的src文件夹内创建test和test/java文件夹。需要注意的是，你不能在Android视图下进行这些操作，要么在系统的文件管理器内创建，要么在工程窗口左上方点击下拉菜单选择Project视图。最终的工程结构应该是这样的：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-9e098817f6fcca44.png" alt=""></p>
+<blockquote>
+<p>配置成功之后<code>java</code>文件夹的颜色是绿色的</p>
+</blockquote>
+<p><code>**重要重要**</code><br>Run -&gt; Edit Configurations -&gt; Defaults -&gt; Junit<br>设置如下  <strong>$MODULE_DIR$.</strong><br><img src="https://camo.githubusercontent.com/b6776bd8da529df04410b6c6d5d6a6a63ebce717/687474703a2f2f726f626f6c6563747269632e6f72672f696d616765732f616e64726f69642d73747564696f2d636f6e6669677572652d64656661756c74732d34626634383430322e706e67" alt=""></p>
+<p>gradle 同步</p>
+<blockquote>
+<p>注意Robolectric目前不支持android 5.1 API level 22，编译时 sdk = 21 或者以下。</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/15/robolectric/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/07/14/Android 触摸事件传递机制/" itemprop="url">
                   Android 触摸事件传递机制
                 </a>
@@ -670,6 +811,132 @@
             
               
                 
+                <a class="post-title-link" href="/2015/07/09/listview的复用机制/" itemprop="url">
+                  listview的复用机制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-07-09T19:12:00+08:00" content="2015-07-09">
+              2015-07-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/07/09/listview的复用机制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/09/listview的复用机制/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/07/09/listview的复用机制/" class="leancloud_visitors" data-flag-title="listview的复用机制">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="listview的复用机制">listview的复用机制</h1><p>本文介绍了listview的复用机制<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/09/listview的复用机制/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/07/09/wifi压力测试/" itemprop="url">
                   wifi压力测试
                 </a>
@@ -878,132 +1145,6 @@
           <h1 id="Android_View_小结">Android View 小结</h1><p>本文介绍了 Android 自定义 View 的基本步骤<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/07/09/Android View 小结/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/09/listview的复用机制/" itemprop="url">
-                  listview的复用机制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-09T19:12:00+08:00" content="2015-07-09">
-              2015-07-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/09/listview的复用机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/09/listview的复用机制/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/07/09/listview的复用机制/" class="leancloud_visitors" data-flag-title="listview的复用机制">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="listview的复用机制">listview的复用机制</h1><p>本文介绍了listview的复用机制<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/09/listview的复用机制/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1415,139 +1556,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/01/蓝牙学习/" itemprop="url">
-                  蓝牙学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-01T19:16:00+08:00" content="2015-07-01">
-              2015-07-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/01/蓝牙学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/01/蓝牙学习/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/07/01/蓝牙学习/" class="leancloud_visitors" data-flag-title="蓝牙学习">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>[TOC]</p>
-<h2 id="权限">权限</h2><p>有两种权限，至少需要一种权限</p>
-<ol>
-<li><code>BLUETOOTH</code>:执行任何蓝牙通信，例如请求一个连接、接受一个连接以及传输数据</li>
-<li><code>BLUETOOTH_ADMIN</code>：初始化设备查找或控制蓝牙设置</li>
-</ol>
-<blockquote>
-<p>如果你使用BLUETOOTH_ADMIN权限，那么必须拥有BLUETOOTH权限。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/01/蓝牙学习/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1594,7 +1602,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
