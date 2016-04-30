@@ -266,6 +266,161 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/11/listview crash 分析/" itemprop="url">
+                  Listview crash 分析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-11T00:00:00+08:00" content="2016-04-11">
+              2016-04-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/11/listview crash 分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/listview crash 分析/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/11/listview crash 分析/" class="leancloud_visitors" data-flag-title="Listview crash 分析">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h1 id="Listview_crash_分析">Listview crash 分析</h1><p>灰度的时候出的 crash</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">java<span class="class">.lang</span><span class="class">.IllegalStateException</span>: The <span class="attribute">content</span> of the adapter has changed but ListView did not receive <span class="tag">a</span> notification. Make sure the <span class="attribute">content</span> of your adapter is not modified from <span class="tag">a</span> <span class="attribute">background</span> thread, but only from the UI thread. Make sure your adapter calls <span class="function"><span class="title">notifyDataSetChanged</span><span class="params">()</span></span> when its <span class="attribute">content</span> changes. [<span class="keyword">in</span> <span class="function"><span class="title">ListView</span><span class="params">(<span class="number">2131624042</span>, class android.widget.ListView)</span></span> with <span class="function"><span class="title">Adapter</span><span class="params">(class com.sankuai.meituan.meituanwaimaibusiness.modules.order.adapter.j)</span></span>]</span><br><span class="line">	at android<span class="class">.widget</span><span class="class">.ListView</span><span class="class">.layoutChildren</span>(ListView<span class="class">.java</span>:<span class="number">1572</span>)</span><br><span class="line">	at android<span class="class">.widget</span><span class="class">.AbsListView</span><span class="class">.onLayout</span>(AbsListView<span class="class">.java</span>:<span class="number">2586</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.View</span><span class="class">.layout</span>(View<span class="class">.java</span>:<span class="number">15752</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.ViewGroup</span><span class="class">.layout</span>(ViewGroup<span class="class">.java</span>:<span class="number">4932</span>)</span><br><span class="line">	at android<span class="class">.widget</span><span class="class">.LinearLayout</span><span class="class">.setChildFrame</span>(LinearLayout<span class="class">.java</span>:<span class="number">1692</span>)</span><br><span class="line">	at android<span class="class">.widget</span><span class="class">.LinearLayout</span><span class="class">.layoutVertical</span>(LinearLayout<span class="class">.java</span>:<span class="number">1534</span>)</span><br><span class="line">	at android<span class="class">.widget</span><span class="class">.LinearLayout</span><span class="class">.onLayout</span>(LinearLayout<span class="class">.java</span>:<span class="number">1443</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.View</span><span class="class">.layout</span>(View<span class="class">.java</span>:<span class="number">15752</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.ViewGroup</span><span class="class">.layout</span>(ViewGroup<span class="class">.java</span>:<span class="number">4932</span>)</span><br><span class="line">	at android<span class="class">.widget</span><span class="class">.LinearLayout</span><span class="class">.setChildFrame</span>(LinearLayout<span class="class">.java</span>:<span class="number">1692</span>)</span><br><span class="line">	at android<span class="class">.widget</span><span class="class">.LinearLayout</span><span class="class">.layoutVertical</span>(LinearLayout<span class="class">.java</span>:<span class="number">1534</span>)</span><br><span class="line">	at android<span class="class">.widget</span><span class="class">.LinearLayout</span><span class="class">.onLayout</span>(LinearLayout<span class="class">.java</span>:<span class="number">1443</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.View</span><span class="class">.layout</span>(View<span class="class">.java</span>:<span class="number">15752</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.ViewGroup</span><span class="class">.layout</span>(ViewGroup<span class="class">.java</span>:<span class="number">4932</span>)</span><br><span class="line">	at android<span class="class">.widget</span><span class="class">.FrameLayout</span><span class="class">.layoutChildren</span>(FrameLayout<span class="class">.java</span>:<span class="number">453</span>)</span><br><span class="line">	at android<span class="class">.widget</span><span class="class">.FrameLayout</span><span class="class">.onLayout</span>(FrameLayout<span class="class">.java</span>:<span class="number">388</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.View</span><span class="class">.layout</span>(View<span class="class">.java</span>:<span class="number">15752</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.ViewGroup</span><span class="class">.layout</span>(ViewGroup<span class="class">.java</span>:<span class="number">4932</span>)</span><br><span class="line">	at com<span class="class">.android</span><span class="class">.internal</span><span class="class">.widget</span><span class="class">.ActionBarOverlayLayout</span><span class="class">.onLayout</span>(ActionBarOverlayLayout<span class="class">.java</span>:<span class="number">464</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.View</span><span class="class">.layout</span>(View<span class="class">.java</span>:<span class="number">15752</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.ViewGroup</span><span class="class">.layout</span>(ViewGroup<span class="class">.java</span>:<span class="number">4932</span>)</span><br><span class="line">	at android<span class="class">.widget</span><span class="class">.FrameLayout</span><span class="class">.layoutChildren</span>(FrameLayout<span class="class">.java</span>:<span class="number">453</span>)</span><br><span class="line">	at android<span class="class">.widget</span><span class="class">.FrameLayout</span><span class="class">.onLayout</span>(FrameLayout<span class="class">.java</span>:<span class="number">388</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.View</span><span class="class">.layout</span>(View<span class="class">.java</span>:<span class="number">15752</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.ViewGroup</span><span class="class">.layout</span>(ViewGroup<span class="class">.java</span>:<span class="number">4932</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.ViewRootImpl</span><span class="class">.performLayout</span>(ViewRootImpl<span class="class">.java</span>:<span class="number">2410</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.ViewRootImpl</span><span class="class">.performTraversals</span>(ViewRootImpl<span class="class">.java</span>:<span class="number">2125</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.ViewRootImpl</span><span class="class">.doTraversal</span>(ViewRootImpl<span class="class">.java</span>:<span class="number">1292</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.ViewRootImpl</span><span class="variable">$TraversalRunnable</span>.<span class="function"><span class="title">run</span><span class="params">(ViewRootImpl.java:<span class="number">6678</span>)</span></span></span><br><span class="line">	at android<span class="class">.view</span><span class="class">.Choreographer</span><span class="variable">$CallbackRecord</span>.<span class="function"><span class="title">run</span><span class="params">(Choreographer.java:<span class="number">813</span>)</span></span></span><br><span class="line">	at android<span class="class">.view</span><span class="class">.Choreographer</span><span class="class">.doCallbacks</span>(Choreographer<span class="class">.java</span>:<span class="number">613</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.Choreographer</span><span class="class">.doFrame</span>(Choreographer<span class="class">.java</span>:<span class="number">583</span>)</span><br><span class="line">	at android<span class="class">.view</span><span class="class">.Choreographer</span><span class="variable">$FrameDisplayEventReceiver</span>.<span class="function"><span class="title">run</span><span class="params">(Choreographer.java:<span class="number">799</span>)</span></span></span><br><span class="line">	at android<span class="class">.os</span><span class="class">.Handler</span><span class="class">.handleCallback</span>(Handler<span class="class">.java</span>:<span class="number">733</span>)</span><br><span class="line">	at android<span class="class">.os</span><span class="class">.Handler</span><span class="class">.dispatchMessage</span>(Handler<span class="class">.java</span>:<span class="number">95</span>)</span><br><span class="line">	at android<span class="class">.os</span><span class="class">.Looper</span><span class="class">.loop</span>(Looper<span class="class">.java</span>:<span class="number">146</span>)</span><br><span class="line">	at android<span class="class">.app</span><span class="class">.ActivityThread</span><span class="class">.main</span>(ActivityThread<span class="class">.java</span>:<span class="number">5752</span>)</span><br><span class="line">	at java<span class="class">.lang</span><span class="class">.reflect</span><span class="class">.Method</span><span class="class">.invokeNative</span>(Native Method)</span><br><span class="line">	at java<span class="class">.lang</span><span class="class">.reflect</span><span class="class">.Method</span><span class="class">.invoke</span>(Method<span class="class">.java</span>:<span class="number">515</span>)</span><br><span class="line">	at com<span class="class">.android</span><span class="class">.internal</span><span class="class">.os</span><span class="class">.ZygoteInit</span><span class="variable">$MethodAndArgsCaller</span>.<span class="function"><span class="title">run</span><span class="params">(ZygoteInit.java:<span class="number">1291</span>)</span></span></span><br><span class="line">	at com<span class="class">.android</span><span class="class">.internal</span><span class="class">.os</span><span class="class">.ZygoteInit</span><span class="class">.main</span>(ZygoteInit<span class="class">.java</span>:<span class="number">1107</span>)</span><br><span class="line">	at dalvik<span class="class">.system</span><span class="class">.NativeStart</span><span class="class">.main</span>(Native Method)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>The content of the adapter has changed but ListView did not receive a notification. Make sure the content of your adapter is not modified from a background thread, but only from the UI thread. Make sure your adapter calls notifyDataSetChanged() when its content changes.</p>
+</blockquote>
+<p>大概的意思是当 adapter 的数据改变时要及时调用<code>notifyDataSetChanged()</code>，并且是在 UI 线程进行的，检查了<code>OrderAdpater</code>的<code>setData()</code>调用处，均在 UI 线程</p>
+<p>查看 ListView 源码，找到抛出异常的地方</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Handle the empty set by removing all views that are visible</span></span><br><span class="line"><span class="comment">// and calling it a day</span></span><br><span class="line"><span class="keyword">if</span> (mItemCount == <span class="number">0</span>) &#123;</span><br><span class="line"> resetList();</span><br><span class="line"> invokeOnItemScrollListener();</span><br><span class="line"> <span class="keyword">return</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (mItemCount != mAdapter.getCount()) &#123;</span><br><span class="line"> <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"The content of the adapter has changed but "</span></span><br><span class="line">         + <span class="string">"ListView did not receive a notification. Make sure the content of "</span></span><br><span class="line">         + <span class="string">"your adapter is not modified from a background thread, but only from "</span></span><br><span class="line">         + <span class="string">"the UI thread. Make sure your adapter calls notifyDataSetChanged() "</span></span><br><span class="line">         + <span class="string">"when its content changes. [in ListView("</span> + getId() + <span class="string">", "</span> + getClass()</span><br><span class="line">         + <span class="string">") with Adapter("</span> + mAdapter.getClass() + <span class="string">")]"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出 <code>mItemCount != mAdapter.getCount()</code>导致的。</p>
+<p><code>mAdapter.getCount()</code> 很好理解，就是我们复写Adapter 的 <code>getCount()</code>方法。</p>
+<p>的调用处有2个地方</p>
+<ol>
+<li><p>在 <code>public void setAdapter(ListAdapter adapter)</code>中<br> <code>mItemCount = mAdapter.getCount();</code></p>
+</li>
+<li><p>在<code>onMeasure()</code>时<br> <code>mItemCount = mAdapter == null ? 0 : mAdapter.getCount();</code></p>
+<blockquote>
+<p>所以有时没有调用<code>notify</code>并不会引起崩溃</p>
+</blockquote>
+</li>
+<li><p>还有一个地方比较隐蔽，在<code>ListView</code>的父类的父类<code>AdapterView</code>中,在<code>notifyDataSetChanged()</code>时调用</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onChanged</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mDataChanged = <span class="keyword">true</span>;</span><br><span class="line">    mOldItemCount = mItemCount;</span><br><span class="line">    mItemCount = getAdapter().getCount();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Detect the case where a cursor that was previously invalidated has</span></span><br><span class="line">    <span class="comment">// been repopulated with new data.</span></span><br><span class="line">    <span class="keyword">if</span> (AdapterView.<span class="keyword">this</span>.getAdapter().hasStableIds() &amp;&amp; mInstanceState != <span class="keyword">null</span></span><br><span class="line">            &amp;&amp; mOldItemCount == <span class="number">0</span> &amp;&amp; mItemCount &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        AdapterView.<span class="keyword">this</span>.onRestoreInstanceState(mInstanceState);</span><br><span class="line">        mInstanceState = <span class="keyword">null</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        rememberSyncState();</span><br><span class="line">    &#125;</span><br><span class="line">    checkFocus();</span><br><span class="line">    requestLayout();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>所以崩溃的原因就是list 的数据变化时，没有及时<code>notifyDataSetChanged()</code>或者<code>onMeasure()</code>导致<code>mItemCount</code>和<code>getCount()</code>的数据不一致</strong></p>
+<p>在检查我们的adapter 的 <code>setData()</code> 方法</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">setData</span><span class="params">(ArrayList&lt;Order&gt; data)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.mOrderList = data;</span><br><span class="line">    notifyDataSetChanged();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">notifyDataSetChanged</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mHandler.removeMessages(MSG_NOTIFY_DATA_CHANGED);</span><br><span class="line">    mHandler.sendMessage(mHandler.obtainMessage(MSG_NOTIFY_DATA_CHANGED));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">OrderAdapter</span><span class="params">(Context context, String page, <span class="keyword">boolean</span> autoRefresh)</span> </span>&#123;</span><br><span class="line">    mContext = context;</span><br><span class="line">    mOrderViewBinder = <span class="keyword">new</span> OrderViewBinder(context, page);</span><br><span class="line">    mAutoRefreshable = autoRefresh;</span><br><span class="line">    mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> what = msg.what;</span><br><span class="line">            <span class="keyword">switch</span> (what) &#123;</span><br><span class="line">                <span class="keyword">case</span> MSG_NOTIFY_DATA_CHANGED:</span><br><span class="line">                    OrderAdapter.<span class="keyword">super</span>.notifyDataSetChanged();</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (mAutoRefreshable) &#123;</span><br><span class="line">                        Message refreshMsg = mHandler.obtainMessage(MSG_NOTIFY_DATA_CHANGED);</span><br><span class="line">                        mHandler.sendMessageDelayed(refreshMsg, REFRESH_FREQ);</span><br><span class="line">                    &#125;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在改变数据之后并没有及时的<code>notifyDataSetChanged()</code>，而是发了一个 message ，在 handler中在调用<code>notifyDataSetChanged</code>，在数据改变之后，可能 handler 还没收到消息，导致<code>mItemCount</code>和<code>getCount()</code>的数据不一致</p>
+<h3 id="解决办法">解决办法</h3><ol>
+<li>在<code>handler</code>中在对数据赋值并notify</li>
+<li>在 <code>setdata</code>之后立即notify</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/10/Dagger/" itemprop="url">
                   未命名
                 </a>
@@ -280,7 +435,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-10T13:58:30+08:00" content="2016-04-10">
+            <time itemprop="dateCreated" datetime="2016-04-10T14:01:27+08:00" content="2016-04-10">
               2016-04-10
             </time>
           </span>
@@ -1421,149 +1576,12 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/22/命令模式/" itemprop="url">
-                  命令模式 Command Pattern
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-22T22:26:00+08:00" content="2016-02-22">
-              2016-02-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/22/命令模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/22/命令模式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/02/22/命令模式/" class="leancloud_visitors" data-flag-title="命令模式 Command Pattern">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>[TOC]</p>
-<h1 id="命令模式_Command_Pattern">命令模式 Command Pattern</h1><h2 id="定义">定义</h2><blockquote>
-<p>将一个请求封装为一个对象，从而使我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。</p>
-</blockquote>
-<h2 id="使用场景">使用场景</h2><ul>
-<li>系统需要将请求调用者和请求接收者解耦，使得调用者和接收者不直接交互。</li>
-<li>系统需要在不同的时间指定请求、将请求排队和执行请求。</li>
-<li>系统需要支持命令的撤销(Undo)操作和恢复(Redo)操作。</li>
-<li>系统需要将一组操作组合在一起，即支持宏命令</li>
-</ul>
-<h2 id="UML_图">UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14561465850883.png" alt=""></p>
-<p>AbstractFactory：抽象工厂<br>ConcreteFactory：具体工厂<br>AbstractProduct：抽象产品<br>Product：具体产品</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/22/命令模式/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1604,7 +1622,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1621,7 +1639,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
