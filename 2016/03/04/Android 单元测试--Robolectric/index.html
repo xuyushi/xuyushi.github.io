@@ -29,18 +29,45 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
 
 
 
 <link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="robolectric,单元测试," />
@@ -54,7 +81,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
 
 
 
@@ -95,6 +122,11 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
   };
 </script>
 
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/03/04/Android 单元测试--Robolectric/"/>
+
   <title> robolectric 单元测试 | Xu Yushi''s Blog </title>
 </head>
 
@@ -111,6 +143,8 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
   ga('create', 'UA-72857814-1', 'auto');
   ga('send', 'pageview');
 </script>
+
+
 
 
 
@@ -152,13 +186,13 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
   
 
   
-    <ul id="menu" class="menu menu-left">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -168,7 +202,7 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -178,7 +212,7 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -188,7 +222,7 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -198,7 +232,7 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -206,9 +240,16 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
       
 
       
-
-
-      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
       
     </ul>
   
@@ -328,6 +369,7 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
               </span>
           
 
+          
         </div>
       </header>
     
@@ -402,6 +444,13 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
     <div>
       
         
+      
+    </div>
+
+    <div>
+      
+        
+
       
     </div>
 
@@ -525,7 +574,7 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
-          
+
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
@@ -562,17 +611,13 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
         
         
 
-        <div class="links-of-author motion-element">
-          
-        </div>
+        
+        
 
       </section>
 
       
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
           <div class="post-toc">
             
               
@@ -580,9 +625,6 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境搭建"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gradle"><span class="nav-number">1.1.</span> <span class="nav-text">gradle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#==注意=="><span class="nav-number">1.1.1.</span> <span class="nav-text">==注意==</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android_studio_配置"><span class="nav-number">1.2.</span> <span class="nav-text">Android studio 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#切换成_Unit_Tests"><span class="nav-number">1.2.1.</span> <span class="nav-text">切换成 Unit Tests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux_和_Mac_用户需要进行这一步设置、"><span class="nav-number">1.2.2.</span> <span class="nav-text">Linux 和 Mac 用户需要进行这一步设置、</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity"><span class="nav-number">1.2.3.</span> <span class="nav-text">Activity</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity的创建"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">Activity的创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#举例"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dialog验证"><span class="nav-number">1.2.4.</span> <span class="nav-text">Dialog验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Toast验证"><span class="nav-number">1.2.5.</span> <span class="nav-text">Toast验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fragment的测试"><span class="nav-number">1.2.6.</span> <span class="nav-text">Fragment的测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问资源文件@Test"><span class="nav-number">1.2.7.</span> <span class="nav-text">访问资源文件@Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shodaw"><span class="nav-number">1.2.8.</span> <span class="nav-text">Shodaw</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义原始类"><span class="nav-number">1.2.8.1.</span> <span class="nav-text">定义原始类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义_shardow_类"><span class="nav-number">1.2.8.2.</span> <span class="nav-text">定义 shardow 类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需要让系统知道_ShardowUser_的存在"><span class="nav-number">1.2.8.3.</span> <span class="nav-text">需要让系统知道 ShardowUser 的存在</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#test_测试中使用"><span class="nav-number">1.2.8.4.</span> <span class="nav-text">test 测试中使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络请求_mock"><span class="nav-number">1.2.9.</span> <span class="nav-text">网络请求 mock</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未搞定的"><span class="nav-number">1.3.</span> <span class="nav-text">未搞定的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
           </div>
         </section>
       
@@ -618,213 +660,78 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
   </a>
 </div>
 
+        
 
-
+        
       </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
 
   
 
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
 
   
 
 
 
+  
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
+  
   <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
+  
   <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
 
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
 
 
-
-  
-  
 
   
   
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
 
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
 
 
 
@@ -855,11 +762,11 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
 
 
 
+
   
   
   
 
-  
   
 
   
@@ -893,6 +800,14 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
 
             $(element).find(COUNT_CONTAINER_REF).text(time);
           }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
         })
         .fail(function (object, error) {
           console.log("Error: " + error.code + " " + error.message);
@@ -923,6 +838,12 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
             });
           } else {
             var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
             newcounter.set("title", title);
             newcounter.set("url", url);
             newcounter.set("time", 1);
@@ -955,6 +876,7 @@ robolectric的最大特别是运行测试程序时不需要设备或者模拟器
 
 
 
+  
 
 </body>
 </html>
