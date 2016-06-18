@@ -381,11 +381,11 @@
         
           
             <p>[TOC]</p>
-<h1 id="VIM">VIM</h1><h2 id="代码选择">代码选择</h2><p>v:选择代码块<br>V:选择代码行<br>ctrl+V:多行选中模式 （esc 之后生效）</p>
-<h2 id="跳转">跳转</h2><ul>
+<h1 id="VIM"><a href="#VIM" class="headerlink" title="VIM"></a>VIM</h1><h2 id="代码选择"><a href="#代码选择" class="headerlink" title="代码选择"></a>代码选择</h2><p>v:选择代码块<br>V:选择代码行<br>ctrl+V:多行选中模式 （esc 之后生效）</p>
+<h2 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h2><ul>
 <li>）:代码快跳转</li>
 <li>] :函数跳转</li>
-<li>} :class 跳转 <h2 id="移动">移动</h2></li>
+<li>} :class 跳转 <h2 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h2></li>
 <li>hjkl</li>
 <li>f/F: 查找字符</li>
 <li>t/T: 同上，区别是停留前一个字符</li>
@@ -394,7 +394,7 @@
 <li>‘[ 跳到上一次被改变的文本的第一个字符</li>
 <li>‘. 跳到上一次文本被修改的地方</li>
 <li>‘’ ==跳回上一次跳转的地方==</li>
-<li>‘^ 跳到插入模式最后一次结束的地方 <h2 id="编辑模式">编辑模式</h2></li>
+<li>‘^ 跳到插入模式最后一次结束的地方 <h2 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h2></li>
 <li>x/X是删除当前光标下/光标前的一个字符</li>
 <li>d/c/y是删除/修改/复制命令</li>
 </ul>
@@ -532,9 +532,9 @@
       
         
           <p>[TOC]</p>
-<h1 id="Looper、Handler、Message_分析">Looper、Handler、Message 分析</h1><h2 id="Looper">Looper</h2><p>通常在线程中是这样使用</p>
+<h1 id="Looper、Handler、Message-分析"><a href="#Looper、Handler、Message-分析" class="headerlink" title="Looper、Handler、Message 分析"></a>Looper、Handler、Message 分析</h1><h2 id="Looper"><a href="#Looper" class="headerlink" title="Looper"></a>Looper</h2><p>通常在线程中是这样使用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LooperThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">     <span class="keyword">public</span> Handler mHandler;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          Looper.prepare();</span><br><span class="line"></span><br><span class="line">          mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">                  <span class="comment">// process incoming messages here</span></span><br><span class="line">              &#125;</span><br><span class="line">          &#125;;</span><br><span class="line">          Looper.loop();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="prepare()">prepare()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    prepare(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(<span class="keyword">boolean</span> quitAllowed)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (sThreadLocal.get() != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Only one Looper may be created per thread"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    sThreadLocal.set(<span class="keyword">new</span> Looper(quitAllowed));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="prepare"><a href="#prepare" class="headerlink" title="prepare()"></a>prepare()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    prepare(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(<span class="keyword">boolean</span> quitAllowed)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (sThreadLocal.get() != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Only one Looper may be created per thread"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    sThreadLocal.set(<span class="keyword">new</span> Looper(quitAllowed));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>一个 Looper 只能有一个 ThreadLoacl 对象</p>
 <blockquote>
 <p>ThreadLocal对象保证每个线程中的 Looper 实例互不相同</p>
@@ -670,11 +670,11 @@
       
         
           <p>[TOC]</p>
-<h1 id="Media_Player">Media Player</h1><h2 id="Audio_Stream">Audio Stream</h2><p>Android为不同的应用场合定义了不同的Audio Stream: Voice Call, Ring, Music,Alarm, Notification, DTMF。 这些AudioStream是相互独立的，所以也有各自的音量</p>
-<h2 id="使用">使用</h2><p>最重要的类是 <code>MediaPlayer</code>，获取、解码、播放<br>播放 res/raw 中的文件 举个🌰</p>
+<h1 id="Media-Player"><a href="#Media-Player" class="headerlink" title="Media Player"></a>Media Player</h1><h2 id="Audio-Stream"><a href="#Audio-Stream" class="headerlink" title="Audio Stream"></a>Audio Stream</h2><p>Android为不同的应用场合定义了不同的Audio Stream: Voice Call, Ring, Music,Alarm, Notification, DTMF。 这些AudioStream是相互独立的，所以也有各自的音量</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>最重要的类是 <code>MediaPlayer</code>，获取、解码、播放<br>播放 res/raw 中的文件 举个🌰</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.sound_file_1);</span><br><span class="line">mediaPlayer.start(); <span class="comment">// no need to call prepare(); create() does that for you</span></span><br></pre></td></tr></table></figure>
-<h3 id="异步准备">异步准备</h3><p>可能需要比较长的时间，media 需要获取资源和解码，最好不要放在 UI 线程。<br>此时可以使用<code>prepareAsync()</code>方法，这个方法在后台运行，当准备工资就绪之后在<code>MediaPlayer.OnPreparedListener</code>返回，可以在回调函数<code>setOnPreparedListener()</code>中设置</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mediaPlayer.prepareAsync();</span><br><span class="line">mediaPlayer.setOnPreparedListener(<span class="keyword">new</span> MediaPlayer.OnPreparedListener() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPrepared</span><span class="params">(MediaPlayer mp)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag"><span class="keyword">TODO</span></span>: 15/10/27  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="异步准备"><a href="#异步准备" class="headerlink" title="异步准备"></a>异步准备</h3><p>可能需要比较长的时间，media 需要获取资源和解码，最好不要放在 UI 线程。<br>此时可以使用<code>prepareAsync()</code>方法，这个方法在后台运行，当准备工资就绪之后在<code>MediaPlayer.OnPreparedListener</code>返回，可以在回调函数<code>setOnPreparedListener()</code>中设置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mediaPlayer.prepareAsync();</span><br><span class="line">mediaPlayer.setOnPreparedListener(<span class="keyword">new</span> MediaPlayer.OnPreparedListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPrepared</span><span class="params">(MediaPlayer mp)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> 15/10/27  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/27/Media Playback/" rel="contents">
               阅读全文 &raquo;
@@ -806,7 +806,7 @@
       
         
           <p>[TOC]</p>
-<h1 id="自定义_view">自定义 view</h1><p>自定义 view 的主要步骤如下：</p>
+<h1 id="自定义-view"><a href="#自定义-view" class="headerlink" title="自定义 view"></a>自定义 view</h1><p>自定义 view 的主要步骤如下：</p>
 <ol>
 <li>自定义 view 属性</li>
 <li>在 view 的构造方法中，加载自定义的属性</li>
@@ -814,150 +814,9 @@
 <li>重写 onMeasure</li>
 <li>重写 onDraw</li>
 </ol>
-<h2 id="自定义_view_属性">自定义 view 属性</h2><p>自定义View的属性，首先在res/values/  下建立一个attrs.xml</p>
+<h2 id="自定义-view-属性"><a href="#自定义-view-属性" class="headerlink" title="自定义 view 属性"></a>自定义 view 属性</h2><p>自定义View的属性，首先在res/values/  下建立一个attrs.xml</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/24/自定义view/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/15/Android Studio中进行单元测试/" itemprop="url">
-                  Android Studio中进行单元测试
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-15T15:25:00+08:00" content="2015-08-15">
-              2015-08-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/15/Android Studio中进行单元测试/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/15/Android Studio中进行单元测试/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/08/15/Android Studio中进行单元测试/" class="leancloud_visitors" data-flag-title="Android Studio中进行单元测试">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="步骤">步骤</h2><h3 id="新建hello_world工程">新建hello_world工程</h3><p>略</p>
-<h3 id="配置单元测试">配置单元测试</h3><p>首先，确认在Build Variants窗口内的Test Artifact中选择了”Unit Tests”。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/580359-ab4402443ad7dc5f.png" alt=""></p>
-<p>然后，在工程的src文件夹内创建test和test/java文件夹。需要注意的是，你不能在Android视图下进行这些操作，要么在系统的文件管理器内创建，要么在工程窗口左上方点击下拉菜单选择Project视图。最终的工程结构应该是这样的：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/580359-9e098817f6fcca44.png" alt=""></p>
-<blockquote>
-<p>配置成功之后<code>java</code>文件夹的颜色是绿色的</p>
-</blockquote>
-<p>最后，打开工程的build.gradle（Module:app）文件，添加JUnit4依赖，点击Gradle sync按钮。</p>
-<p>在<code>build.gradle</code>中加入依赖</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])</span></span><br><span class="line">    compile 'com.android.support:appcompat-v7:22.1.1'</span><br><span class="line">    testCompile 'junit:junit:4.12'</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/15/Android Studio中进行单元测试/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1087,7 +946,7 @@
       
         
           <p>Robolectric，它的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。</p>
-<h2 id="环境搭建">环境搭建</h2><p>环境 : Android Studio 1.2.1.1+ Android Gradle Plugin 1.2.3+ Gradle 2.2.1+</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>环境 : Android Studio 1.2.1.1+ Android Gradle Plugin 1.2.3+ Gradle 2.2.1+</p>
 <p>gradle中加入：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  ...</span><br><span class="line">  testCompile <span class="string">'org.robolectric:robolectric:3.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>确认在Build Variants窗口内的Test Artifact中选择了”Unit Tests”。</p>
@@ -1104,6 +963,147 @@
 </blockquote>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/08/15/robolectric/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/15/Android Studio中进行单元测试/" itemprop="url">
+                  Android Studio中进行单元测试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-15T15:25:00+08:00" content="2015-08-15">
+              2015-08-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/15/Android Studio中进行单元测试/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/15/Android Studio中进行单元测试/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/08/15/Android Studio中进行单元测试/" class="leancloud_visitors" data-flag-title="Android Studio中进行单元测试">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="新建hello-world工程"><a href="#新建hello-world工程" class="headerlink" title="新建hello_world工程"></a>新建hello_world工程</h3><p>略</p>
+<h3 id="配置单元测试"><a href="#配置单元测试" class="headerlink" title="配置单元测试"></a>配置单元测试</h3><p>首先，确认在Build Variants窗口内的Test Artifact中选择了”Unit Tests”。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-ab4402443ad7dc5f.png" alt=""></p>
+<p>然后，在工程的src文件夹内创建test和test/java文件夹。需要注意的是，你不能在Android视图下进行这些操作，要么在系统的文件管理器内创建，要么在工程窗口左上方点击下拉菜单选择Project视图。最终的工程结构应该是这样的：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-9e098817f6fcca44.png" alt=""></p>
+<blockquote>
+<p>配置成功之后<code>java</code>文件夹的颜色是绿色的</p>
+</blockquote>
+<p>最后，打开工程的build.gradle（Module:app）文件，添加JUnit4依赖，点击Gradle sync按钮。</p>
+<p>在<code>build.gradle</code>中加入依赖</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])</span></span><br><span class="line">    compile 'com.android.support:appcompat-v7:22.1.1'</span><br><span class="line">    testCompile 'junit:junit:4.12'</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/15/Android Studio中进行单元测试/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1233,8 +1233,8 @@
       
         
           <p>[TOC]</p>
-<h1 id="Android_触摸事件传递机制">Android 触摸事件传递机制</h1><p>之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递</p>
-<h2 id="View">View</h2><h3 id="常用监听方法">常用监听方法</h3><p>view表示没有子空间的布局，例如textview、button等，MotionEvent分为三种</p>
+<h1 id="Android-触摸事件传递机制"><a href="#Android-触摸事件传递机制" class="headerlink" title="Android 触摸事件传递机制"></a>Android 触摸事件传递机制</h1><p>之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递</p>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><h3 id="常用监听方法"><a href="#常用监听方法" class="headerlink" title="常用监听方法"></a>常用监听方法</h3><p>view表示没有子空间的布局，例如textview、button等，MotionEvent分为三种</p>
 <ul>
 <li>MotionEvent.ACTION_DOWN：按下时候</li>
 <li>MotionEvent.ACTION_MOVE：滑动时</li>
@@ -1372,7 +1372,7 @@
       
         
           <p>[TOC]</p>
-<h2 id="背景">背景</h2><p>Vollry特别适合数据量不大但是通信频繁的场景。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Vollry特别适合数据量不大但是通信频繁的场景。</p>
 <p>比如以前从网上下载图片的步骤可能这样的流程：</p>
 <ul>
 <li>在ListAdatpter-getview（）方法里开始图像的读取</li>
@@ -1511,7 +1511,7 @@
       
         
           <p>[TOC]</p>
-<h2 id="效果图">效果图</h2><p><img src="https://raw.githubusercontent.com/xuyushi/Blog_img/master/wifitest.gif" alt="效果图"></p>
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://raw.githubusercontent.com/xuyushi/Blog_img/master/wifitest.gif" alt="效果图"></p>
 <p>开关wifi<br>并且在开wifi后，判断网络连接<br>由于存在wifi连接之后并没有网络的情况，所以采用ping 来判断网络的通断<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/07/09/wifi压力测试/" rel="contents">
@@ -1643,7 +1643,7 @@
 
       
         
-          <h1 id="listview的复用机制">listview的复用机制</h1><p>本文介绍了listview的复用机制<br>
+          <h1 id="listview的复用机制"><a href="#listview的复用机制" class="headerlink" title="listview的复用机制"></a>listview的复用机制</h1><p>本文介绍了listview的复用机制<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/07/09/listview的复用机制/" rel="contents">
               阅读全文 &raquo;
@@ -1737,7 +1737,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -379,7 +379,7 @@
 
       
         
-          <h1 id="Android_View_小结">Android View 小结</h1><p>本文介绍了 Android 自定义 View 的基本步骤<br>
+          <h1 id="Android-View-小结"><a href="#Android-View-小结" class="headerlink" title="Android View 小结"></a>Android View 小结</h1><p>本文介绍了 Android 自定义 View 的基本步骤<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/07/09/Android View 小结/" rel="contents">
               阅读全文 &raquo;
@@ -511,7 +511,7 @@
       
         
           <p>[TOC]</p>
-<h2 id="本文实现的功能">本文实现的功能</h2><p>在listfragment使用自定义的adpter现实数据库的数据，当数据库的数据发生变化时，自动刷新</p>
+<h2 id="本文实现的功能"><a href="#本文实现的功能" class="headerlink" title="本文实现的功能"></a>本文实现的功能</h2><p>在listfragment使用自定义的adpter现实数据库的数据，当数据库的数据发生变化时，自动刷新</p>
 <p>效果如下<br><img src="https://raw.githubusercontent.com/xuyushi/Blog_img/master/loader1.gif" alt="loader"><br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/07/05/loader 总结/" rel="contents">
@@ -776,11 +776,11 @@
       
         
           <p>[TOC]</p>
-<h1 id="AIDL_学习">AIDL 学习</h1><h2 id="AIDL的作用">AIDL的作用</h2><p>AIDL (Android Interface Definition Language) 是一种IDL 语言，用于生成可以在Android设备上两个进程之间进行进程间通信(interprocess communication, IPC)的代码。如果在一个进程中（例如Activity）要调用另一个进程中（例如Service）对象的操作，就可以使用AIDL生成可序列化的参数。</p>
-<h2 id="选择AIDL的使用场合">选择AIDL的使用场合</h2><p>官方文档特别提醒我们何时使用AIDL是必要的：只有你允许客户端从不同的应用程序为了进程间的通信而去访问你的service，以及想在你的service处理多线程。</p>
+<h1 id="AIDL-学习"><a href="#AIDL-学习" class="headerlink" title="AIDL 学习"></a>AIDL 学习</h1><h2 id="AIDL的作用"><a href="#AIDL的作用" class="headerlink" title="AIDL的作用"></a>AIDL的作用</h2><p>AIDL (Android Interface Definition Language) 是一种IDL 语言，用于生成可以在Android设备上两个进程之间进行进程间通信(interprocess communication, IPC)的代码。如果在一个进程中（例如Activity）要调用另一个进程中（例如Service）对象的操作，就可以使用AIDL生成可序列化的参数。</p>
+<h2 id="选择AIDL的使用场合"><a href="#选择AIDL的使用场合" class="headerlink" title="选择AIDL的使用场合"></a>选择AIDL的使用场合</h2><p>官方文档特别提醒我们何时使用AIDL是必要的：只有你允许客户端从不同的应用程序为了进程间的通信而去访问你的service，以及想在你的service处理多线程。</p>
 <p>如果不需要进行不同应用程序间的并发通信(IPC)，you should create your interface by implementing a Binder；或者你想进行IPC，但不需要处理多线程的，则implement your interface using a Messenger。</p>
-<h2 id="如何使用AIDL">如何使用AIDL</h2><h3 id="先建立一个android工程，用作服务端">先建立一个android工程，用作服务端</h3><p>创建一个android工程，用来充当跨进程通信的服务端。</p>
-<h3 id="2-创建一个包名用来存放aidl文件">2.创建一个包名用来存放aidl文件</h3><p>创建一个包名用来存放aidl文件，在里面新建IMyService.aidl文件，如果需要访问自定义对象，还需要建立对象的aidl文件，这里我们由于使用了自定义对象Student，所以，还需要创建Student.aidl和Student.java。注意，这三个文件，需要都放在aidl文件夹下com.example.xuyushi.aidltest包里。下面描述如何写这三个文件。</p>
+<h2 id="如何使用AIDL"><a href="#如何使用AIDL" class="headerlink" title="如何使用AIDL"></a>如何使用AIDL</h2><h3 id="先建立一个android工程，用作服务端"><a href="#先建立一个android工程，用作服务端" class="headerlink" title="先建立一个android工程，用作服务端"></a>先建立一个android工程，用作服务端</h3><p>创建一个android工程，用来充当跨进程通信的服务端。</p>
+<h3 id="2-创建一个包名用来存放aidl文件"><a href="#2-创建一个包名用来存放aidl文件" class="headerlink" title="2.创建一个包名用来存放aidl文件"></a>2.创建一个包名用来存放aidl文件</h3><p>创建一个包名用来存放aidl文件，在里面新建IMyService.aidl文件，如果需要访问自定义对象，还需要建立对象的aidl文件，这里我们由于使用了自定义对象Student，所以，还需要创建Student.aidl和Student.java。注意，这三个文件，需要都放在aidl文件夹下com.example.xuyushi.aidltest包里。下面描述如何写这三个文件。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/07/04/aidl 学习/" rel="contents">
               阅读全文 &raquo;
@@ -912,7 +912,7 @@
       
         
           <p>[TOC]</p>
-<h2 id="权限">权限</h2><p>有两种权限，至少需要一种权限</p>
+<h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><p>有两种权限，至少需要一种权限</p>
 <ol>
 <li><code>BLUETOOTH</code>:执行任何蓝牙通信，例如请求一个连接、接受一个连接以及传输数据</li>
 <li><code>BLUETOOTH_ADMIN</code>：初始化设备查找或控制蓝牙设置</li>
@@ -1049,8 +1049,8 @@
 
       
         
-          <h2 id="准备工作">准备工作</h2><h3 id="github下载工程">github下载工程</h3><p><a href="https://github.com/greenrobot/greenDAO">https://github.com/greenrobot/greenDAO</a></p>
-<h3 id="android_studio导入DaoExampleGenerator">android studio导入DaoExampleGenerator</h3><h3 id="下载所需的jar包">下载所需的jar包</h3><p><a href="http://search.maven.org/#search%7Cga%7C1%7CgreenDao">http://search.maven.org/#search%7Cga%7C1%7CgreenDao</a><br>下载greendao-generator-1.3.0.jar 和greendao-1.3.7.jar<br><a href="http://mvnrepository.com/artifact/org.freemarker/freemarker">http://mvnrepository.com/artifact/org.freemarker/freemarker</a><br>下载freemarker-2.3.20.jar<br>
+          <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="github下载工程"><a href="#github下载工程" class="headerlink" title="github下载工程"></a>github下载工程</h3><p><a href="https://github.com/greenrobot/greenDAO">https://github.com/greenrobot/greenDAO</a></p>
+<h3 id="android-studio导入DaoExampleGenerator"><a href="#android-studio导入DaoExampleGenerator" class="headerlink" title="android studio导入DaoExampleGenerator"></a>android studio导入DaoExampleGenerator</h3><h3 id="下载所需的jar包"><a href="#下载所需的jar包" class="headerlink" title="下载所需的jar包"></a>下载所需的jar包</h3><p><a href="http://search.maven.org/#search%7Cga%7C1%7CgreenDao">http://search.maven.org/#search%7Cga%7C1%7CgreenDao</a><br>下载greendao-generator-1.3.0.jar 和greendao-1.3.7.jar<br><a href="http://mvnrepository.com/artifact/org.freemarker/freemarker">http://mvnrepository.com/artifact/org.freemarker/freemarker</a><br>下载freemarker-2.3.20.jar<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/06/29/GreenDao学习/" rel="contents">
               阅读全文 &raquo;
@@ -1315,7 +1315,7 @@
       
         
           
-            <h1 id="近期学习计划">近期学习计划</h1><ul>
+            <h1 id="近期学习计划"><a href="#近期学习计划" class="headerlink" title="近期学习计划"></a>近期学习计划</h1><ul>
 <li>[ ] 学习android优秀的开源库</li>
 <li>[ ] 学习一门脚本语言</li>
 <li>[ ] 熟悉常见命令行</li>
@@ -1451,7 +1451,7 @@
 
       
         
-          <h2 id="实现功能">实现功能</h2><p>1.账号自动登陆<br>2.输入密码时，有全清按钮<br>3.账号输入失败 &gt; N次，要求用户输入验证码验证<br>
+          <h2 id="实现功能"><a href="#实现功能" class="headerlink" title="实现功能"></a>实现功能</h2><p>1.账号自动登陆<br>2.输入密码时，有全清按钮<br>3.账号输入失败 &gt; N次，要求用户输入验证码验证<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/06/27/登陆框UI/" rel="contents">
               阅读全文 &raquo;
@@ -1582,7 +1582,7 @@
 
       
         
-          <h2 id="创建版本">创建版本</h2><h3 id="创建本地仓库">创建本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+          <h2 id="创建版本"><a href="#创建版本" class="headerlink" title="创建版本"></a>创建版本</h2><h3 id="创建本地仓库"><a href="#创建本地仓库" class="headerlink" title="创建本地仓库"></a>创建本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">提示：Initialized empty Git repository <span class="keyword">in</span></span><br><span class="line">/Users/xuyushi/Downloads/.git/`</span><br></pre></td></tr></table></figure>
 <p>会在本地生成 .git 文件<br>
           <div class="post-more-link text-center">
@@ -1678,7 +1678,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

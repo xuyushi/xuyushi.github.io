@@ -390,24 +390,24 @@
 
       
         <p>[TOC]</p>
-<h1 id="强引用、软引用、弱引用、虚引用">强引用、软引用、弱引用、虚引用</h1><h2 id="强引用_StrongReference">强引用 StrongReference</h2><blockquote>
+<h1 id="强引用、软引用、弱引用、虚引用"><a href="#强引用、软引用、弱引用、虚引用" class="headerlink" title="强引用、软引用、弱引用、虚引用"></a>强引用、软引用、弱引用、虚引用</h1><h2 id="强引用-StrongReference"><a href="#强引用-StrongReference" class="headerlink" title="强引用 StrongReference"></a>强引用 StrongReference</h2><blockquote>
 <p>只要某个对象有强引用与之关联，JVM必定不会回收这个对象，即使在内存不足的情况下，JVM宁愿抛出OutOfMemory错误也不会回收这种对象</p>
 </blockquote>
 <p>若需要 jvm 回收此对象，可以将对象复制为 null</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object o = <span class="keyword">new</span> Object();   <span class="comment">//  强引用  </span></span><br><span class="line">o = <span class="keyword">null</span>;     <span class="comment">// 帮助垃圾收集器回收此对象</span></span><br></pre></td></tr></table></figure>
 <p><strong>但是如果这个o是全局的变量时，就需要在不用这个对象时赋值为null，因为强引用不会被垃圾回收。</strong></p>
 <a id="more"></a>
-<h2 id="软引用_SoftReference">软引用 SoftReference</h2><blockquote>
+<h2 id="软引用-SoftReference"><a href="#软引用-SoftReference" class="headerlink" title="软引用 SoftReference"></a>软引用 SoftReference</h2><blockquote>
 <p>对于软引用关联着的对象，只有在内存不足的时候JVM才会回收该对象。</p>
 </blockquote>
 <p>因此，这一点可以很好地用来解决OOM的问题，并且这个特性很适合用来实现缓存：比如网页缓存、图片缓存等。</p>
-<h2 id="弱引用_WeakReference">弱引用 WeakReference</h2><blockquote>
+<h2 id="弱引用-WeakReference"><a href="#弱引用-WeakReference" class="headerlink" title="弱引用 WeakReference"></a>弱引用 WeakReference</h2><blockquote>
 <p>当JVM进行垃圾回收时，无论内存是否充足，都会回收被弱引用关联的对象</p>
 </blockquote>
-<h2 id="虚引用_PhantomReference">虚引用 PhantomReference</h2><blockquote>
+<h2 id="虚引用-PhantomReference"><a href="#虚引用-PhantomReference" class="headerlink" title="虚引用 PhantomReference"></a>虚引用 PhantomReference</h2><blockquote>
 <p>如果一个对象与虚引用关联，则跟没有引用与之关联一样，在任何时候都可能被垃圾回收器回收。</p>
 </blockquote>
-<h1 id="参考">参考</h1><blockquote>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
 <p><a href="http://www.cnblogs.com/dolphin0520/p/3784171.html" target="_blank" rel="external">http://www.cnblogs.com/dolphin0520/p/3784171.html</a><br><a href="http://blog.csdn.net/mazhimazh/article/details/19752475" target="_blank" rel="external">http://blog.csdn.net/mazhimazh/article/details/19752475</a></p>
 </blockquote>
 
@@ -442,16 +442,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/11/IDEA 技巧/" rel="next" title="Android Studio 技巧">
-                <i class="fa fa-chevron-left"></i> Android Studio 技巧
+              <a href="/2016/01/14/内存泄露/" rel="next" title="Android 内存泄露">
+                <i class="fa fa-chevron-left"></i> Android 内存泄露
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/14/内存泄露/" rel="prev" title="Android 内存泄露">
-                Android 内存泄露 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/02/01/注解/" rel="prev" title="Java注解">
+                Java注解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -560,7 +560,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -596,7 +596,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#强引用、软引用、弱引用、虚引用"><span class="nav-number">1.</span> <span class="nav-text">强引用、软引用、弱引用、虚引用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#强引用_StrongReference"><span class="nav-number">1.1.</span> <span class="nav-text">强引用 StrongReference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软引用_SoftReference"><span class="nav-number">1.2.</span> <span class="nav-text">软引用 SoftReference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弱引用_WeakReference"><span class="nav-number">1.3.</span> <span class="nav-text">弱引用 WeakReference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚引用_PhantomReference"><span class="nav-number">1.4.</span> <span class="nav-text">虚引用 PhantomReference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#强引用、软引用、弱引用、虚引用"><span class="nav-number">1.</span> <span class="nav-text">强引用、软引用、弱引用、虚引用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#强引用-StrongReference"><span class="nav-number">1.1.</span> <span class="nav-text">强引用 StrongReference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软引用-SoftReference"><span class="nav-number">1.2.</span> <span class="nav-text">软引用 SoftReference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弱引用-WeakReference"><span class="nav-number">1.3.</span> <span class="nav-text">弱引用 WeakReference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚引用-PhantomReference"><span class="nav-number">1.4.</span> <span class="nav-text">虚引用 PhantomReference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
           </div>
         </section>

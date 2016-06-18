@@ -88,28 +88,16 @@
 
 
 
-<meta name="description" content="从某种意义上说，Dagger2就是一个帮你写工厂代码的工具。当然Dagger2的功能比工厂模式更加强大。
-什么是依赖
-依赖是我们代码中两个模块之间的耦合（在面向对象语言中，指的是两个类），通常是其中一个模块使用另外一个提供的功能
-
-当我们修改其中一个类的代码时，必须保证与其耦合的代码不受到影响">
+<meta name="description" content="安卓 | xuyushi | 许雨石 | Android | java | developer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Xu Yushi''s Blog">
-<meta property="og:url" content="http://yoursite.com/2016/04/10/Dagger/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/03/28/Dagger/index.html">
 <meta property="og:site_name" content="Xu Yushi''s Blog">
-<meta property="og:description" content="从某种意义上说，Dagger2就是一个帮你写工厂代码的工具。当然Dagger2的功能比工厂模式更加强大。
-什么是依赖
-依赖是我们代码中两个模块之间的耦合（在面向对象语言中，指的是两个类），通常是其中一个模块使用另外一个提供的功能
-
-当我们修改其中一个类的代码时，必须保证与其耦合的代码不受到影响">
-<meta property="og:updated_time" content="2016-04-10T05:58:30.000Z">
+<meta property="og:description" content="安卓 | xuyushi | 许雨石 | Android | java | developer">
+<meta property="og:updated_time" content="2016-06-18T02:32:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xu Yushi''s Blog">
-<meta name="twitter:description" content="从某种意义上说，Dagger2就是一个帮你写工厂代码的工具。当然Dagger2的功能比工厂模式更加强大。
-什么是依赖
-依赖是我们代码中两个模块之间的耦合（在面向对象语言中，指的是两个类），通常是其中一个模块使用另外一个提供的功能
-
-当我们修改其中一个类的代码时，必须保证与其耦合的代码不受到影响">
+<meta name="twitter:description" content="安卓 | xuyushi | 许雨石 | Android | java | developer">
 
 
 
@@ -130,7 +118,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/04/10/Dagger/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/03/28/Dagger/"/>
 
   <title>  | Xu Yushi''s Blog </title>
 </head>
@@ -323,8 +311,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-10T14:01:27+08:00" content="2016-04-10">
-              2016-04-10
+            <time itemprop="dateCreated" datetime="2016-03-28T16:27:44+08:00" content="2016-03-28">
+              2016-03-28
             </time>
           </span>
 
@@ -334,8 +322,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/10/Dagger/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/10/Dagger/" itemprop="commentsCount"></span>
+                <a href="/2016/03/28/Dagger/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/28/Dagger/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -345,7 +333,7 @@
 
           
           
-             <span id="/2016/04/10/Dagger/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2016/03/28/Dagger/" class="leancloud_visitors" data-flag-title="">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -367,15 +355,7 @@
       
 
       
-        <p>从某种意义上说，Dagger2就是一个帮你写工厂代码的工具。当然Dagger2的功能比工厂模式更加强大。</p>
-<h2 id="什么是依赖">什么是依赖</h2><blockquote>
-<p>依赖是我们代码中两个模块之间的耦合（在面向对象语言中，指的是两个类），通常是其中一个模块使用另外一个提供的功能</p>
-</blockquote>
-<p>当我们修改其中一个类的代码时，必须保证与其耦合的代码不受到影响</p>
-<a id="more"></a>
-<h2 id="问什么使用依赖注入">问什么使用依赖注入</h2><p>定义一个<code>Develoer</code>接口，分别有<code>AndroidDeveloer</code> ，和<code>IosDeveloer</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Component</span>(modules = &#123;DeveloperModule.class&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DeveloperComponent</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">inject</span><span class="params">(MainActivity activity)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        
       
     </div>
 
@@ -424,10 +404,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/10/Dagger/"
+        <div class="ds-share flat" data-thread-key="2016/03/28/Dagger/"
      data-title=""
      data-content=""
-     data-url="http://yoursite.com/2016/04/10/Dagger/">
+     data-url="http://yoursite.com/2016/03/28/Dagger/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -454,8 +434,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/10/Dagger/"
-           data-title="" data-url="http://yoursite.com/2016/04/10/Dagger/">
+      <div class="ds-thread" data-thread-key="2016/03/28/Dagger/"
+           data-title="" data-url="http://yoursite.com/2016/03/28/Dagger/">
       </div>
     
   </div>
@@ -517,7 +497,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -553,7 +533,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是依赖"><span class="nav-number">1.</span> <span class="nav-text">什么是依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问什么使用依赖注入"><span class="nav-number">2.</span> <span class="nav-text">问什么使用依赖注入</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>

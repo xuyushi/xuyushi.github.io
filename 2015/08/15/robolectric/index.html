@@ -70,7 +70,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android,robolectric," />
+  <meta name="keywords" content="robolectric,android," />
 
 
 
@@ -110,6 +110,7 @@ gradle中加入：
 环境搭建环境 : Android Studio 1.2.1.1+ Android Gradle Plugin 1.2.3+ Gradle 2.2.1+
 gradle中加入：
 1234dependencies &amp;#123;  ...  testCompile &apos;org">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/580359-ab4402443ad7dc5f.png">
 
 
 
@@ -387,7 +388,7 @@ gradle中加入：
 
       
         <p>Robolectric，它的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。</p>
-<h2 id="环境搭建">环境搭建</h2><p>环境 : Android Studio 1.2.1.1+ Android Gradle Plugin 1.2.3+ Gradle 2.2.1+</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>环境 : Android Studio 1.2.1.1+ Android Gradle Plugin 1.2.3+ Gradle 2.2.1+</p>
 <p>gradle中加入：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  ...</span><br><span class="line">  testCompile <span class="string">'org.robolectric:robolectric:3.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>确认在Build Variants窗口内的Test Artifact中选择了”Unit Tests”。</p>
@@ -403,21 +404,21 @@ gradle中加入：
 <p>注意Robolectric目前不支持android 5.1 API level 22，编译时 sdk = 21 或者以下。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="单元测试写法">单元测试写法</h2><p><strong>@Config(constants = BuildConfig.class)</strong><br>记得加入</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//省略import</span></span><br><span class="line"><span class="annotation">@RunWith</span>(RobolectricGradleTestRunner.class)</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivityTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MainActivity activity;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//执行初始化操作</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">validateTextViewContent</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	     <span class="comment">//执行各种测试逻辑判断</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Activity">Activity</h3><h4 id="Activity的创建">Activity的创建</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Activity activity = Robolectric.buildActivity(MyAwesomeActivity.class).create().get();</span><br></pre></td></tr></table></figure>
+<h2 id="单元测试写法"><a href="#单元测试写法" class="headerlink" title="单元测试写法"></a>单元测试写法</h2><p><strong>@Config(constants = BuildConfig.class)</strong><br>记得加入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//省略import</span></span><br><span class="line"><span class="meta">@RunWith</span>(RobolectricGradleTestRunner.class)</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivityTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MainActivity activity;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//执行初始化操作</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">validateTextViewContent</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	     <span class="comment">//执行各种测试逻辑判断</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h3><h4 id="Activity的创建"><a href="#Activity的创建" class="headerlink" title="Activity的创建"></a>Activity的创建</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Activity activity = Robolectric.buildActivity(MyAwesomeActivity.class).create().get();</span><br></pre></td></tr></table></figure>
 <p>会创建一个<code>MyAwesomeActivity</code>实例，然后调用它的onCreat()方法</p>
 <p>如果只想验证其onResume()方法，可以如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ActivityController controller = Robolectric.buildActivity(MyAwesomeActivity.class).create().start();</span><br><span class="line">Activity activity = controller.get();</span><br><span class="line"><span class="comment">// assert that something hasn't happened</span></span><br><span class="line">activityController.resume();</span><br><span class="line"><span class="comment">// assert it happened!</span></span><br></pre></td></tr></table></figure></p>
 <p>如果想测试整个activity 的生命周期可以<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Activity activity = Robolectric.buildActivity(MyAwesomeActivity.class).create().start().resume().visible().get();</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>等你需要在activity中，对view进行一些操作时候，比如<code>Robolectric.clickOn()</code>，这时候你需要在<code>create()</code>后加入<code>visible()</code></p>
 </blockquote>
-<h4 id="举例">举例</h4><p>我在工程中建立了三个Activity分别为 MainActivity，AnotherActivity，ThridActivity<br>在MainActivity加入按键跳转到AnotherActivity中，<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startAnotherActivity</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">     startActivity(<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, AnotherActivity.class));</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<p>增加单元测试用例判断跳转的是否正确<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clickingLogin_shouldStartLoginActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Button button = (Button) activity.findViewById(R.id.button);</span><br><span class="line">    assertTrue(button.isEnabled());</span><br><span class="line">    button.performClick();</span><br><span class="line"></span><br><span class="line">    Intent expectedIntent = <span class="keyword">new</span> Intent(activity, ThridActivity.class);</span><br><span class="line">    assertEquals(expectedIntent,shadowOf(activity).getNextStartedActivity() );</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><p>我在工程中建立了三个Activity分别为 MainActivity，AnotherActivity，ThridActivity<br>在MainActivity加入按键跳转到AnotherActivity中，<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startAnotherActivity</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">     startActivity(<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, AnotherActivity.class));</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>增加单元测试用例判断跳转的是否正确<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clickingLogin_shouldStartLoginActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Button button = (Button) activity.findViewById(R.id.button);</span><br><span class="line">    assertTrue(button.isEnabled());</span><br><span class="line">    button.performClick();</span><br><span class="line"></span><br><span class="line">    Intent expectedIntent = <span class="keyword">new</span> Intent(activity, ThridActivity.class);</span><br><span class="line">    assertEquals(expectedIntent,shadowOf(activity).getNextStartedActivity() );</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>1.通过 activity.findViewById 找到button<br>2.判断button是否可以点击<br>3.点击button<br>4.构造一个intent（从MainActivity跳转到ThridActivity）<br>5.判断实际跳转的和构造的是否一直</p>
-<p>结构不一致报错<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">java.lang.AssertionError: </span><br><span class="line">Expected :Intent&#123;componentName=ComponentInfo&#123;io.github.xuyushi.robolectric/io.github.xuyushi.robolectric.ThridActivity&#125;, extras=Bundle[&#123;&#125;]&#125;</span><br><span class="line">Actual   :Intent&#123;componentName=ComponentInfo&#123;io.github.xuyushi.robolectric/io.github.xuyushi.robolectric.AnotherActivity&#125;, extras=Bundle[&#123;&#125;]&#125;</span><br><span class="line"> &lt;Click to see difference&gt;</span><br><span class="line">	at org.junit.Assert.fail(Assert.java:<span class="number">91</span>)</span><br><span class="line">	at org.junit.Assert.failNotEquals(Assert.java:<span class="number">645</span>)</span><br><span class="line">	at org.junit.Assert.assertEquals(Assert.java:<span class="number">126</span>)</span><br><span class="line">	at org.junit.Assert.assertEquals(Assert.java:<span class="number">145</span>)</span><br></pre></td></tr></table></figure></p>
+<p>结构不一致报错<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">java.lang.AssertionError: </span><br><span class="line">Expected :Intent&#123;componentName=ComponentInfo&#123;io.github.xuyushi.robolectric/io.github.xuyushi.robolectric.ThridActivity&#125;, extras=Bundle[&#123;&#125;]&#125;</span><br><span class="line">Actual   :Intent&#123;componentName=ComponentInfo&#123;io.github.xuyushi.robolectric/io.github.xuyushi.robolectric.AnotherActivity&#125;, extras=Bundle[&#123;&#125;]&#125;</span><br><span class="line"> &lt;Click to see difference&gt;</span><br><span class="line">	at org.junit.Assert.fail(Assert.java:91)</span><br><span class="line">	at org.junit.Assert.failNotEquals(Assert.java:645)</span><br><span class="line">	at org.junit.Assert.assertEquals(Assert.java:126)</span><br><span class="line">	at org.junit.Assert.assertEquals(Assert.java:145)</span><br></pre></td></tr></table></figure></p>
 <p>可以很清楚的定位到错误</p>
-<h3 id="Dialog验证">Dialog验证</h3><h3 id="Toast验证">Toast验证</h3><h3 id="response写法">response写法</h3><h3 id="Shodaw">Shodaw</h3><h2 id="参考">参考</h2><blockquote>
+<h3 id="Dialog验证"><a href="#Dialog验证" class="headerlink" title="Dialog验证"></a>Dialog验证</h3><h3 id="Toast验证"><a href="#Toast验证" class="headerlink" title="Toast验证"></a>Toast验证</h3><h3 id="response写法"><a href="#response写法" class="headerlink" title="response写法"></a>response写法</h3><h3 id="Shodaw"><a href="#Shodaw" class="headerlink" title="Shodaw"></a>Shodaw</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
 <p><a href="http://hkliya.gitbooks.io/unit-test-android-with-robolectric/content/2-api-explained.html" target="_blank" rel="external">http://hkliya.gitbooks.io/unit-test-android-with-robolectric/content/2-api-explained.html</a><br><a href="http://robolectric.org" target="_blank" rel="external">http://robolectric.org</a><br><a href="http://chriszou.com/android-unit-testing-with-robolectric" target="_blank" rel="external">http://chriszou.com/android-unit-testing-with-robolectric</a></p>
 </blockquote>
 
@@ -441,9 +442,9 @@ gradle中加入：
       
         <div class="post-tags">
           
-            <a href="/tags/android/" rel="tag">#android</a>
-          
             <a href="/tags/robolectric/" rel="tag">#robolectric</a>
+          
+            <a href="/tags/android/" rel="tag">#android</a>
           
         </div>
       
@@ -452,16 +453,16 @@ gradle中加入：
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/14/Android 触摸事件传递机制/" rel="next" title="Android 触摸事件传递机制">
-                <i class="fa fa-chevron-left"></i> Android 触摸事件传递机制
+              <a href="/2015/08/15/Android Studio中进行单元测试/" rel="next" title="Android Studio中进行单元测试">
+                <i class="fa fa-chevron-left"></i> Android Studio中进行单元测试
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/15/Android Studio中进行单元测试/" rel="prev" title="Android Studio中进行单元测试">
-                Android Studio中进行单元测试 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/24/自定义view/" rel="prev" title="Android View 小结（下）">
+                Android View 小结（下） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -570,7 +571,7 @@ gradle中加入：
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

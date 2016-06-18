@@ -70,7 +70,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="UI,android," />
+  <meta name="keywords" content="android,UI," />
 
 
 
@@ -377,7 +377,7 @@
       
 
       
-        <h1 id="取消软键盘自动弹出">取消软键盘自动弹出</h1><p>在实际操作过程中，edittext会自动获取焦点，导致软键盘自动弹出。虚拟机则不会，做如下修改</p>
+        <h1 id="取消软键盘自动弹出"><a href="#取消软键盘自动弹出" class="headerlink" title="取消软键盘自动弹出"></a>取消软键盘自动弹出</h1><p>在实际操作过程中，edittext会自动获取焦点，导致软键盘自动弹出。虚拟机则不会，做如下修改</p>
 <p>在AndroidMainfest.xml中对应的Activity中加入以下属性</p>
 <a id="more"></a>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">android:windowSoftInputMode=<span class="string">"adjustUnspecified|stateHidden"</span>  </span><br><span class="line">android:configChanges=<span class="string">"orientation|keyboardHidden"</span></span><br><span class="line"><span class="comment">//切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法</span></span><br></pre></td></tr></table></figure>
@@ -404,9 +404,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/UI/" rel="tag">#UI</a>
-          
             <a href="/tags/android/" rel="tag">#android</a>
+          
+            <a href="/tags/UI/" rel="tag">#UI</a>
           
         </div>
       
@@ -533,7 +533,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -379,18 +379,18 @@
       
         <p>[TOC]</p>
 <p>记录如何使用命令行快速查看数据库<br><a id="more"></a></p>
-<h2 id="首先adb_shell连接虚拟机或者设备">首先adb shell连接虚拟机或者设备</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ adb shell</span><br></pre></td></tr></table></figure>
-<h2 id="进入数据库目录">进入数据库目录</h2><p>通常在/data/data/包名/databases 下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /data/data/com.example.xuyushi.loadertest/databases</span><br></pre></td></tr></table></figure></p>
-<h2 id="进入数据库">进入数据库</h2><p>使用sqlite3 进入，需要安装工具<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sqlite3 xxxx</span><br></pre></td></tr></table></figure></p>
-<p>提示<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQLite version <span class="number">3.7</span>.<span class="number">11</span> <span class="number">2012</span>-<span class="number">03</span>-<span class="number">20</span> <span class="number">11</span>:<span class="number">35</span>:<span class="number">50</span></span><br><span class="line">Enter <span class="string">".help"</span> <span class="keyword">for</span> instructions</span><br><span class="line">Enter SQL statements terminated with a <span class="string">";"</span></span><br><span class="line">sqlite&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="首先adb-shell连接虚拟机或者设备"><a href="#首先adb-shell连接虚拟机或者设备" class="headerlink" title="首先adb shell连接虚拟机或者设备"></a>首先adb shell连接虚拟机或者设备</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ adb shell</span><br></pre></td></tr></table></figure>
+<h2 id="进入数据库目录"><a href="#进入数据库目录" class="headerlink" title="进入数据库目录"></a>进入数据库目录</h2><p>通常在/data/data/包名/databases 下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /data/data/com.example.xuyushi.loadertest/databases</span><br></pre></td></tr></table></figure></p>
+<p>##进入数据库<br>使用sqlite3 进入，需要安装工具<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sqlite3 xxxx</span><br></pre></td></tr></table></figure></p>
+<p>提示<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQLite version 3.7.11 2012-03-20 11:35:50</span><br><span class="line">Enter <span class="string">".help"</span> <span class="keyword">for</span> instructions</span><br><span class="line">Enter SQL statements terminated with a <span class="string">";"</span></span><br><span class="line">sqlite&gt;</span><br></pre></td></tr></table></figure></p>
 <p>使用<code>.help</code>可以查看帮助</p>
-<h2 id="使用-table查看已建的表格">使用.table查看已建的表格</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ .table</span><br></pre></td></tr></table></figure>
+<h2 id="使用-table查看已建的表格"><a href="#使用-table查看已建的表格" class="headerlink" title="使用.table查看已建的表格"></a>使用.table查看已建的表格</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ .table</span><br></pre></td></tr></table></figure>
 <p>提示<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlite&gt; .table</span><br><span class="line">STUDENT           android_metadata</span><br></pre></td></tr></table></figure></p>
-<h2 id="使用SELECT查看表内容">使用SELECT查看表内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ SELECT * FROM STUDENT;</span><br></pre></td></tr></table></figure>
+<h2 id="使用SELECT查看表内容"><a href="#使用SELECT查看表内容" class="headerlink" title="使用SELECT查看表内容"></a>使用SELECT查看表内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ SELECT * FROM STUDENT;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注意有分号</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sqlite&gt; SELECT * FROM STUDENT;</span><br><span class="line"><span class="number">1</span>|zhangsan|<span class="number">22</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sqlite&gt; SELECT * FROM STUDENT;</span><br><span class="line">1|zhangsan|22</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -543,7 +543,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -579,7 +579,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先adb_shell连接虚拟机或者设备"><span class="nav-number">1.</span> <span class="nav-text">首先adb shell连接虚拟机或者设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进入数据库目录"><span class="nav-number">2.</span> <span class="nav-text">进入数据库目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进入数据库"><span class="nav-number">3.</span> <span class="nav-text">进入数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-table查看已建的表格"><span class="nav-number">4.</span> <span class="nav-text">使用.table查看已建的表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用SELECT查看表内容"><span class="nav-number">5.</span> <span class="nav-text">使用SELECT查看表内容</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先adb-shell连接虚拟机或者设备"><span class="nav-number">1.</span> <span class="nav-text">首先adb shell连接虚拟机或者设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进入数据库目录"><span class="nav-number">2.</span> <span class="nav-text">进入数据库目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-table查看已建的表格"><span class="nav-number">3.</span> <span class="nav-text">使用.table查看已建的表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用SELECT查看表内容"><span class="nav-number">4.</span> <span class="nav-text">使用SELECT查看表内容</span></a></li></ol></div>
             
           </div>
         </section>
