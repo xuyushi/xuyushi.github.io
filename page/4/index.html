@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -103,13 +103,13 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"right","display":"post"},
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: xuyushi,
-      author: 'ROOT'
+      userId: 12427169,
+      author: 'Author'
     }
   };
 </script>
@@ -149,7 +149,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right 
+  <div class="container one-collumn sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -203,6 +203,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -222,51 +232,11 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
 
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="st-search-show-outputs">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
       
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  <form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
-
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-  _st('install', '_iSLz7t9AaMFBh4-e1FR','2.0.0');
-</script>
-
-
-
-    </div>
   
 </nav>
 
@@ -356,15 +326,6 @@
 
           
           
-             <span id="/2016/01/11/IDEA 技巧/" class="leancloud_visitors" data-flag-title="Android Studio 技巧">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -397,7 +358,7 @@
 <li>提取为成员变量:Option + Cmd + F</li>
 </ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/11/IDEA 技巧/" rel="contents">
+            <a class="btn" href="/2016/01/11/IDEA 技巧/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -502,15 +463,6 @@
           
 
           
-          
-             <span id="/2016/01/10/VIM/" class="leancloud_visitors" data-flag-title="VIM 技巧">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
           
 
           
@@ -655,15 +607,6 @@
 
           
           
-             <span id="/2015/12/02/Looper、Handler、Message 分析/" class="leancloud_visitors" data-flag-title="Looper、Handler、Message 分析">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -687,7 +630,7 @@
 <p>ThreadLocal对象保证每个线程中的 Looper 实例互不相同</p>
 </blockquote>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/02/Looper、Handler、Message 分析/" rel="contents">
+            <a class="btn" href="/2015/12/02/Looper、Handler、Message 分析/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -793,15 +736,6 @@
 
           
           
-             <span id="/2015/10/27/Media Playback/" class="leancloud_visitors" data-flag-title="Android Media Player">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -823,7 +757,7 @@
 <h3 id="异步准备"><a href="#异步准备" class="headerlink" title="异步准备"></a>异步准备</h3><p>可能需要比较长的时间，media 需要获取资源和解码，最好不要放在 UI 线程。<br>此时可以使用<code>prepareAsync()</code>方法，这个方法在后台运行，当准备工资就绪之后在<code>MediaPlayer.OnPreparedListener</code>返回，可以在回调函数<code>setOnPreparedListener()</code>中设置</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mediaPlayer.prepareAsync();</span><br><span class="line">mediaPlayer.setOnPreparedListener(<span class="keyword">new</span> MediaPlayer.OnPreparedListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPrepared</span><span class="params">(MediaPlayer mp)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> 15/10/27  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/27/Media Playback/" rel="contents">
+            <a class="btn" href="/2015/10/27/Media Playback/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -929,15 +863,6 @@
 
           
           
-             <span id="/2015/10/24/自定义view/" class="leancloud_visitors" data-flag-title="Android View 小结（下）">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -963,7 +888,7 @@
 </ol>
 <h2 id="自定义-view-属性"><a href="#自定义-view-属性" class="headerlink" title="自定义 view 属性"></a>自定义 view 属性</h2><p>自定义View的属性，首先在res/values/  下建立一个attrs.xml</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/24/自定义view/" rel="contents">
+            <a class="btn" href="/2015/10/24/自定义view/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1069,15 +994,6 @@
 
           
           
-             <span id="/2015/08/15/robolectric/" class="leancloud_visitors" data-flag-title="robolectric">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -1109,7 +1025,7 @@
 <p>注意Robolectric目前不支持android 5.1 API level 22，编译时 sdk = 21 或者以下。</p>
 </blockquote>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/15/robolectric/" rel="contents">
+            <a class="btn" href="/2015/08/15/robolectric/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1215,15 +1131,6 @@
 
           
           
-             <span id="/2015/08/15/Android Studio中进行单元测试/" class="leancloud_visitors" data-flag-title="Android Studio中进行单元测试">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -1250,7 +1157,7 @@
 <p>在<code>build.gradle</code>中加入依赖</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])</span></span><br><span class="line">    compile 'com.android.support:appcompat-v7:22.1.1'</span><br><span class="line">    testCompile 'junit:junit:4.12'</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/15/Android Studio中进行单元测试/" rel="contents">
+            <a class="btn" href="/2015/08/15/Android Studio中进行单元测试/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1356,15 +1263,6 @@
 
           
           
-             <span id="/2015/07/14/Android 触摸事件传递机制/" class="leancloud_visitors" data-flag-title="Android 触摸事件传递机制">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -1389,7 +1287,7 @@
 </ul>
 <p>常用两种监听事件</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/14/Android 触摸事件传递机制/" rel="contents">
+            <a class="btn" href="/2015/07/14/Android 触摸事件传递机制/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1495,15 +1393,6 @@
 
           
           
-             <span id="/2015/07/12/volley学习/" class="leancloud_visitors" data-flag-title="volley学习">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -1528,7 +1417,7 @@
 </ul>
 <p>而在Volley下，只需要一个函数即可<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/12/volley学习/" rel="contents">
+            <a class="btn" href="/2015/07/12/volley学习/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1579,8 +1468,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/09/listview的复用机制/" itemprop="url">
-                  listview的复用机制
+                <a class="post-title-link" href="/2015/07/09/Android View 小结/" itemprop="url">
+                  Android View 小结（上）
                 </a>
               
             
@@ -1623,8 +1512,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/09/listview的复用机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/09/listview的复用机制/" itemprop="commentsCount"></span>
+                <a href="/2015/07/09/Android View 小结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/09/Android View 小结/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1633,15 +1522,6 @@
           
 
           
-          
-             <span id="/2015/07/09/listview的复用机制/" class="leancloud_visitors" data-flag-title="listview的复用机制">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
           
 
           
@@ -1657,9 +1537,9 @@
 
       
         
-          <h1 id="listview的复用机制"><a href="#listview的复用机制" class="headerlink" title="listview的复用机制"></a>listview的复用机制</h1><p>本文介绍了listview的复用机制<br>
+          <h1 id="Android-View-小结"><a href="#Android-View-小结" class="headerlink" title="Android View 小结"></a>Android View 小结</h1><p>本文介绍了 Android 自定义 View 的基本步骤<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/09/listview的复用机制/" rel="contents">
+            <a class="btn" href="/2015/07/09/Android View 小结/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1809,7 +1689,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
@@ -1905,6 +1785,10 @@
 
   
     
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
   
 
 
@@ -1917,113 +1801,6 @@
   
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("tiPz9wsLpN7Cgr5tSlbUBTfd-gzGzoHsz", "dgGxEGXjbsalP1dAgAmAoPvO");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 

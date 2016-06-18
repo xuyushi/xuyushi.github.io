@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -103,13 +103,13 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"right","display":"post"},
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: xuyushi,
-      author: 'ROOT'
+      userId: 12427169,
+      author: 'Author'
     }
   };
 </script>
@@ -149,7 +149,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right 
+  <div class="container one-collumn sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -203,6 +203,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -222,51 +232,11 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
 
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="#" class="st-search-show-outputs">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
       
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  <form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
-
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-  _st('install', '_iSLz7t9AaMFBh4-e1FR','2.0.0');
-</script>
-
-
-
-    </div>
   
 </nav>
 
@@ -356,15 +326,6 @@
 
           
           
-             <span id="/2016/06/18/Android APP 新框架/" class="leancloud_visitors" data-flag-title="一个很棒的 Android  APP框架">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -381,7 +342,7 @@
         
           <p>最近在 github 上看到一个 android 的框架，结合了 Rxjava + retrofit + dagger2 + mvp，结合了当下比较流行的框架，并且项目层次非常清晰，易于扩展和维护</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/18/Android APP 新框架/" rel="contents">
+            <a class="btn" href="/2016/06/18/Android APP 新框架/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -487,15 +448,6 @@
 
           
           
-             <span id="/2016/06/10/retrofit源码解析2/" class="leancloud_visitors" data-flag-title="retrofit源码解析2.md">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -512,7 +464,7 @@
         
           <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h4 id="首先定义一个接口"><a href="#首先定义一个接口" class="headerlink" title="首先定义一个接口"></a>首先定义一个接口</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">GitHubService</span> </span>&#123;  </span><br><span class="line">  <span class="meta">@GET</span>(<span class="string">"users/&#123;user&#125;/repos"</span>)</span><br><span class="line">  Call&lt;List&lt;Repo&gt;&gt; listRepos(<span class="meta">@Path</span>(<span class="string">"user"</span>) String user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/10/retrofit源码解析2/" rel="contents">
+            <a class="btn" href="/2016/06/10/retrofit源码解析2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -618,15 +570,6 @@
 
           
           
-             <span id="/2016/06/09/retrofit源码解析1/" class="leancloud_visitors" data-flag-title="retrofit源码解析1.md">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -643,7 +586,7 @@
         
           <h1 id="Retrofit"><a href="#Retrofit" class="headerlink" title="Retrofit"></a>Retrofit</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Retrofit 通过使用方法上的『注解』来定义请求的构成，将我们声明的 Http 接口转化成一个 Call 对象。<br>这个 Call 对象呢，可以调用同步或非同步方法来发送请求，之后就交给 OkHttp 去执行。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/09/retrofit源码解析1/" rel="contents">
+            <a class="btn" href="/2016/06/09/retrofit源码解析1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -749,15 +692,6 @@
 
           
           
-             <span id="/2016/04/30/地图区域绘制 MVP 实践/" class="leancloud_visitors" data-flag-title="地图区域绘制 MVP 实践">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -782,7 +716,7 @@
 <p>结合最近学习的 MVP 模式做了一个 demo</p>
 <p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-04-30-2016043001.gif" alt=""></p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/30/地图区域绘制 MVP 实践/" rel="contents">
+            <a class="btn" href="/2016/04/30/地图区域绘制 MVP 实践/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -887,15 +821,6 @@
           
 
           
-          
-             <span id="/2016/04/11/listview crash 分析/" class="leancloud_visitors" data-flag-title="Listview crash 分析">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
           
 
           
@@ -1029,15 +954,6 @@
 
           
           
-             <span id="/2016/03/28/Dagger/" class="leancloud_visitors" data-flag-title="">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -1157,15 +1073,6 @@
 
           
           
-             <span id="/2016/03/26/Material Design/" class="leancloud_visitors" data-flag-title="Material Design">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -1184,7 +1091,7 @@
 <h1 id="Material-Design"><a href="#Material-Design" class="headerlink" title="Material Design"></a>Material Design</h1><h2 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h2><p>作为一个 Android developer，没有什么比拿着 UI 设计的一堆 iOS 风格的设计 来做需求更恶心的了，基本所有空间都要照着 iOS 来画一遍，Material Design 辣么酷炫 为什么 UI在设计的阶段不设计成 Material Design风格呢？</p>
 <p>今天试了几个比较Support包中比较典型的Material Design控件，后期会在学习下Material Design的设计思想和理念，希望能拉着 UI 做一次Material Design 分享，改变我们 APP 的 iOS 风格啊。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/26/Material Design/" rel="contents">
+            <a class="btn" href="/2016/03/26/Material Design/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1290,15 +1197,6 @@
 
           
           
-             <span id="/2016/03/11/单身汪的自白/" class="leancloud_visitors" data-flag-title="单身汪的自白">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -1318,7 +1216,7 @@
 <p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-11-62caff97gw1f1p84nw5jig20dc07inpd.gif" alt=""></p>
 <p><strong>是时候思考一波哲学问题了，我为什么单身？</strong><br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/11/单身汪的自白/" rel="contents">
+            <a class="btn" href="/2016/03/11/单身汪的自白/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1424,15 +1322,6 @@
 
           
           
-             <span id="/2016/03/05/Android MVVM/" class="leancloud_visitors" data-flag-title="Android MVVM">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -1450,7 +1339,7 @@
           <p>[TOC]</p>
 <p>在上一篇博文中介绍了 <img src="http://xuyushi.github.io/2016/02/28/MVP/" alt="Android的MVP模式">。MVVM 是从 MVP 的进一步发展与规范，MVP 隔离了 M 与 V 的直接联系后，靠 Presenter 来中转，所以使用 MVP 时 P 是直接调用 View 的接口来实现对视图的操作的，M 与 V是隔离了，方便测试了，但代码还不够优雅简洁啊，所以 MVVM 就弥补了这些缺陷。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/05/Android MVVM/" rel="contents">
+            <a class="btn" href="/2016/03/05/Android MVVM/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1556,15 +1445,6 @@
 
           
           
-             <span id="/2016/03/04/Android 单元测试--Robolectric/" class="leancloud_visitors" data-flag-title="robolectric 单元测试">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
 
           
         </div>
@@ -1582,7 +1462,7 @@
           <p>[TOC]<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-638283-f57c55ef447541aa.png" alt=""></p>
 <p>robolectric的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/04/Android 单元测试--Robolectric/" rel="contents">
+            <a class="btn" href="/2016/03/04/Android 单元测试--Robolectric/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1732,7 +1612,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
@@ -1828,6 +1708,10 @@
 
   
     
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
   
 
 
@@ -1840,113 +1724,6 @@
   
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("tiPz9wsLpN7Cgr5tSlbUBTfd-gzGzoHsz", "dgGxEGXjbsalP1dAgAmAoPvO");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 
