@@ -1,0 +1,879 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="SaHbPoHOxqF4QuVM1TDhfg_Cqik1EY89r1Yt60Bcp5c" />
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="dagger,retrofit,mvp," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Xu Yushi''s Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="最近在 github 上看到一个 android 的框架，结合了 Rxjava + retrofit + dagger2 + mvp，结合了当下比较流行的框架，并且项目层次非常清晰，易于扩展和维护">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个很棒的 Android  APP框架">
+<meta property="og:url" content="http://yoursite.com/2016/06/18/Android APP 新框架/index.html">
+<meta property="og:site_name" content="Xu Yushi''s Blog">
+<meta property="og:description" content="最近在 github 上看到一个 android 的框架，结合了 Rxjava + retrofit + dagger2 + mvp，结合了当下比较流行的框架，并且项目层次非常清晰，易于扩展和维护">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-06-18-14662104756908.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-06-18-14662116174333.png">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-06-18-14662174949328.png">
+<meta property="og:updated_time" content="2016-06-18T02:54:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个很棒的 Android  APP框架">
+<meta name="twitter:description" content="最近在 github 上看到一个 android 的框架，结合了 Rxjava + retrofit + dagger2 + mvp，结合了当下比较流行的框架，并且项目层次非常清晰，易于扩展和维护">
+<meta name="twitter:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-06-18-14662104756908.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'ROOT'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/06/18/Android APP 新框架/"/>
+
+  <title> 一个很棒的 Android  APP框架 | Xu Yushi''s Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-72857814-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Xu Yushi''s Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">低调、务实、自驱、反思</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '_iSLz7t9AaMFBh4-e1FR','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                一个很棒的 Android  APP框架
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-18T00:00:00+08:00" content="2016-06-18">
+              2016-06-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/18/Android APP 新框架/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/18/Android APP 新框架/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/18/Android APP 新框架/" class="leancloud_visitors" data-flag-title="一个很棒的 Android  APP框架">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近在 github 上看到一个 android 的框架，结合了 Rxjava + retrofit + dagger2 + mvp，结合了当下比较流行的框架，并且项目层次非常清晰，易于扩展和维护</p>
+<a id="more"></a>
+<p><a href="https://github.com/ribot/android-boilerplate" target="_blank" rel="external">github 地址</a></p>
+<h1 id="项目总览"><a href="#项目总览" class="headerlink" title="项目总览"></a>项目总览</h1><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-06-18-14662104756908.png" alt=""></p>
+<p>可以看到项目采用的 MVP 架构（<a href="http://xuyushi.github.io/2016/02/28/MVP/）" target="_blank" rel="external">http://xuyushi.github.io/2016/02/28/MVP/）</a></p>
+<p>与常规的 MVP 不同的是，在 modle 层和 view 层通过EventBus 连接，当数据发生变化时，发出对应的 event，注册了这个 event 的 view会采取对应的措施。举个例子，退出登录用在这样的情形就很合适，在退出登录后，我们可能不止一个 view 会发生变化，如果把这些写在每一个 Presenter 中无疑是很不简洁的代码</p>
+<p>在 modle 层中，抽象出了一个 DataManger，通过DataManger 我们与数据的具体实现进行了解耦，在 P 层我们无需关注数据是来自 DB ,SP 还是网络。我们只关心拿到的数据对象，而在DataManger 和 具体的数据实现中 还有一层 <strong>Helper</strong>层，这层封装了对数据的具体操作，比如 DBHelper、SPHelper、RetrofitServie，有了这一层封装可以很方便我们进行扩展。</p>
+<blockquote>
+<p>DataManger 和 Helper累 中的方法拿到的都是 Observeable ，从而方便我们对这个流进行操控。</p>
+</blockquote>
+<h1 id="具体分析"><a href="#具体分析" class="headerlink" title="具体分析"></a>具体分析</h1><h2 id="dagger2"><a href="#dagger2" class="headerlink" title="dagger2"></a>dagger2</h2><p>项目使用了 <a href="http://xuyushi.github.io/2016/06/10/retrofit源码解析2/" target="_blank" rel="external">dagger2</a> 依赖注入框架解耦个层，使得单测和框架替换变得很容易</p>
+<h3 id="ApplicationComponent"><a href="#ApplicationComponent" class="headerlink" title="ApplicationComponent"></a>ApplicationComponent</h3><p>首先看<code>ApplicationComponent</code>，他有一个<code>Moudle</code>，并且将这个<code>Moudle</code>中的提供的构造方法暴露出来，可以看到DatabaseHelper、PreferencesHelper等暴露出来的都是全局使用的对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Singleton</span></span><br><span class="line"><span class="meta">@Component</span>(modules = ApplicationModule.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ApplicationComponent</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">inject</span><span class="params">(SyncService syncService)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApplicationContext</span> <span class="function">Context <span class="title">context</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">Application <span class="title">application</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">RibotsService <span class="title">ribotsService</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">PreferencesHelper <span class="title">preferencesHelper</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">DatabaseHelper <span class="title">databaseHelper</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">DataManager <span class="title">dataManager</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">Bus <span class="title">eventBus</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>### </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Module</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationModule</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">final</span> Application mApplication;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ApplicationModule</span><span class="params">(Application application)</span> </span>&#123;</span><br><span class="line">        mApplication = application;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Provides</span></span><br><span class="line">    <span class="function">Application <span class="title">provideApplication</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mApplication;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Provides</span></span><br><span class="line">    <span class="meta">@ApplicationContext</span></span><br><span class="line">    <span class="function">Context <span class="title">provideContext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mApplication;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Provides</span></span><br><span class="line">    <span class="meta">@Singleton</span></span><br><span class="line">    <span class="function">Bus <span class="title">provideEventBus</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Bus();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Provides</span></span><br><span class="line">    <span class="meta">@Singleton</span></span><br><span class="line">    <span class="function">RibotsService <span class="title">provideRibotsService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> RibotsService.Creator.newRibotsService();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到在<code>ApplicationModule</code>中的 provide 方法暴露出的方法对比<code>ApplicationComponent</code>中需要的方法，发现还缺了几项。<code>DatabaseHelper</code>、<code>PreferencesHelper</code>、<code>DataManager</code></p>
+<p>这是为毛捏？ 熟悉 dagger2的小伙伴可能已经明白了</p>
+<p><strong> 复习 dagger</strong></p>
+<p>dagger 创建类实例有2个维度可以创建</p>
+<ul>
+<li>步骤1：查找Module中是否存在创建该类的方法。</li>
+<li>步骤2：若存在创建类方法，查看该方法是否存在参数<ul>
+<li>步骤2.1：若存在参数，则按从<strong>步骤1</strong>开始依次初始化每个参数</li>
+<li>步骤2.2：若不存在参数，则直接初始化该类实例，一次依赖注入到此结束</li>
+</ul>
+</li>
+<li><p>步骤3：若不存在创建类方法，则查找<strong>Inject注解的构造函数</strong>，看构造函数是否存在参数</p>
+<ul>
+<li>步骤3.1：若存在参数，则从<strong>步骤1</strong>开始依次初始化每个参数</li>
+<li><p>步骤3.2：若不存在参数，则直接初始化该类实例，一次依赖注入到此结束</p>
+<blockquote>
+<p>因为在使用第三方代码时，我们无法修改源码的构造方法，所以使用 Module 来提供注入构造</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p>所以再回来看<code>DataManager</code>的构造方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Inject</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">DataManager</span><span class="params">(RibotsService ribotsService, PreferencesHelper preferencesHelper,</span><br><span class="line">                      DatabaseHelper databaseHelper, EventPosterHelper eventPosterHelper)</span> </span>&#123;</span><br><span class="line">       mRibotsService = ribotsService;</span><br><span class="line">       mPreferencesHelper = preferencesHelper;</span><br><span class="line">       mDatabaseHelper = databaseHelper;</span><br><span class="line">       mEventPoster = eventPosterHelper;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>用<code>@Inject</code>标注了构造方法，当注入了<code>DataManager</code>时，在<code>module</code>中找不到对应的 provide 方法，变会在构造方法中寻找，在递归的找参数中的注入…</p>
+<p>以下用一张图来概括   </p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-06-18-14662116174333.png" alt=""></p>
+<h2 id="data"><a href="#data" class="headerlink" title="data"></a>data</h2><p>来看下整体的 data 包</p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-06-18-14662174949328.png" alt=""></p>
+<p>分为 local 和 remote、model几个包</p>
+<ul>
+<li>local 主要是 SP、DB 相关</li>
+<li>remote 是网络相关的操作，这里就是一个 retrofit 的 service</li>
+<li>modle 中定义了 java bean</li>
+</ul>
+<h3 id="retrofit"><a href="#retrofit" class="headerlink" title="retrofit"></a>retrofit</h3><p>再来看下 retrofit service 中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RibotsService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    String ENDPOINT = <span class="string">"https://api.ribot.io/"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GET</span>(<span class="string">"ribots"</span>)</span><br><span class="line">    Observable&lt;List&lt;Ribot&gt;&gt; getRibots();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/******** Helper class that sets up a new services *******/</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Creator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RibotsService <span class="title">newRibotsService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            Gson gson = <span class="keyword">new</span> GsonBuilder()</span><br><span class="line">                    .setDateFormat(<span class="string">"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"</span>)</span><br><span class="line">                    .create();</span><br><span class="line">            Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()</span><br><span class="line">                    .baseUrl(RibotsService.ENDPOINT)</span><br><span class="line">                    .addConverterFactory(GsonConverterFactory.create(gson))</span><br><span class="line">                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())</span><br><span class="line">                    .build();</span><br><span class="line">            <span class="keyword">return</span> retrofit.create(RibotsService.class);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在构建了 <code>Retrofit</code>后再构建<code>service</code>，要是我来写的话会把<code>Retrofit</code>也用 dagger 注入的方式来提供。</p>
+<h2 id="DataManger"><a href="#DataManger" class="headerlink" title="DataManger"></a>DataManger</h2><p>DataManger 基本上放的就是业务逻辑了，具体看个例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Observable&lt;Ribot&gt; <span class="title">syncRibots</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mRibotsService.getRibots()</span><br><span class="line">            .concatMap(<span class="keyword">new</span> Func1&lt;List&lt;Ribot&gt;, Observable&lt;Ribot&gt;&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> Observable&lt;Ribot&gt; <span class="title">call</span><span class="params">(List&lt;Ribot&gt; ribots)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> mDatabaseHelper.setRibots(ribots);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>syncRibots</code>方法中，我们通过retrofit 获得网络的数据，再用 DB 存储，再把结果用<code>Observable</code>的结构返回给 P层，在这个例子中是在一个 service 中调用这个方法</p>
+<h2 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h2><p>关于 MVP 这一块，个人的建议是使用谷歌官方的例子。更为简洁明了<br>也可以看我的<a href="http://xuyushi.github.io/2016/04/30/地图区域绘制%20MVP%20实践/" target="_blank" rel="external">这一篇实践</a></p>
+<p>同样 P V 直接也可以使用 dagger 解耦。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dagger/" rel="tag">#dagger</a>
+          
+            <a href="/tags/retrofit/" rel="tag">#retrofit</a>
+          
+            <a href="/tags/mvp/" rel="tag">#mvp</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/10/retrofit源码解析2/" rel="next" title="retrofit源码解析2.md">
+                <i class="fa fa-chevron-left"></i> retrofit源码解析2.md
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/06/18/Android APP 新框架/"
+     data-title="一个很棒的 Android  APP框架"
+     data-content=""
+     data-url="http://yoursite.com/2016/06/18/Android APP 新框架/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/18/Android APP 新框架/"
+           data-title="一个很棒的 Android  APP框架" data-url="http://yoursite.com/2016/06/18/Android APP 新框架/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg"
+               alt="Xu Yushi" />
+          <p class="site-author-name" itemprop="name">Xu Yushi</p>
+          <p class="site-description motion-element" itemprop="description">安卓 | xuyushi | 许雨石 | Android | java | developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">55</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目总览"><span class="nav-number">1.</span> <span class="nav-text">项目总览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#具体分析"><span class="nav-number">2.</span> <span class="nav-text">具体分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dagger2"><span class="nav-number">2.1.</span> <span class="nav-text">dagger2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ApplicationComponent"><span class="nav-number">2.1.1.</span> <span class="nav-text">ApplicationComponent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data"><span class="nav-number">2.2.</span> <span class="nav-text">data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#retrofit"><span class="nav-number">2.2.1.</span> <span class="nav-text">retrofit</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataManger"><span class="nav-number">2.3.</span> <span class="nav-text">DataManger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVP"><span class="nav-number">2.4.</span> <span class="nav-text">MVP</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Yushi</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xuyushi"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("tiPz9wsLpN7Cgr5tSlbUBTfd-gzGzoHsz", "dgGxEGXjbsalP1dAgAmAoPvO");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
