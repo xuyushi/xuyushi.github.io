@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-19T07:22:39.000Z</updated>
+  <updated>2016-07-19T14:59:19.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,10 +17,97 @@
   
   <entry>
     <title></title>
+    <link href="http://yoursite.com/2016/07/19/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://yoursite.com/2016/07/19/适配器模式/</id>
+    <published>2016-07-19T14:59:19.000Z</published>
+    <updated>2016-07-19T14:59:19.000Z</updated>
+    
+    <content type="html">&lt;p&gt;本文为翻译，在原文的基础上略有改动&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; &lt;a href=&quot;http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Getting-Started&quot;&gt;&lt;a href=&quot;#Getting-Started&quot; class=&quot;headerlink&quot; title=&quot;Getting Started&quot;&gt;&lt;/a&gt;Getting Started&lt;/h1&gt;&lt;p&gt;当你写一个软件时不仅要满足需求，还要使得系统健壮、易于测试、方便修改。这样才能满足需求的变化。写满足这些条件的程序通常是很难很复杂的。这就是为什么提出 “the clean architecture”，这可能是在开发任何应用程序时都是一个不错的办法&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;理念很简单。clean 架构 代表了一组拥有如下特点的实践&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;框架独立&lt;/li&gt;
+&lt;li&gt;容易测试&lt;/li&gt;
+&lt;li&gt;UI独立&lt;/li&gt;
+&lt;li&gt;数据库独立&lt;/li&gt;
+&lt;li&gt;不依赖任何中介&lt;br&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-19-14689267172067.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;实际情况可能和上图不一致，图片只是示意，不是一定要分为4层，我们需要考虑的是&lt;strong&gt;依赖规则&lt;/strong&gt;，&lt;strong&gt;依赖关系只能是外层依赖内层，内层不应该知道外层的存在&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;为了更方便的理解，下面是一些名词解释&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Entities: APP 的业务逻辑&lt;/li&gt;
+&lt;li&gt;Use Cases:这些用例从&lt;code&gt;Entities&lt;/code&gt;中流入流出，也被称作&lt;code&gt;Interactors&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Interface Adapters:这些 adapter 将data 转换为方便 Use Cases使用的结构。Presenters 和 Controllers 都属于这里&lt;/li&gt;
+&lt;li&gt;Frameworks and Drivers: 所有 UI 细节、工具、框架&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;Our-Scenario&quot;&gt;&lt;a href=&quot;#Our-Scenario&quot; class=&quot;headerlink&quot; title=&quot;Our Scenario&quot;&gt;&lt;/a&gt;Our Scenario&lt;/h1&gt;&lt;p&gt;…（作者例子的视频展示）&lt;/p&gt;
+&lt;h1 id=&quot;Android-Architecture&quot;&gt;&lt;a href=&quot;#Android-Architecture&quot; class=&quot;headerlink&quot; title=&quot;Android Architecture&quot;&gt;&lt;/a&gt;Android Architecture&lt;/h1&gt;&lt;p&gt;我们的目标是&lt;strong&gt;分离业务逻辑&lt;/strong&gt;，使得业务逻辑对外部不感知。这样我们在外部可以独立对业务代码进行测试&lt;/p&gt;
+&lt;p&gt;为了达成这个目标，我们的目的是&lt;strong&gt;将项目分为三层&lt;/strong&gt;，每层都有自己的目的并且独立于其它层&lt;/p&gt;
+&lt;p&gt;值得一提的是为了达到每层都独立，每一层都有自己的数据结构。（在代码可以看到通过 mapper来进行层与层之间的数据变换）&lt;/p&gt;
+&lt;p&gt;框架大致是这样&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-19-14689291593465.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NOTE: 我没有使用任何的第三方库（除了使用 gson 来解析数据，junit，mockito，robolectric 和 espresso 来测试），不使用第三库的原因是我希望例子能更清晰。不用犹豫使用 ORMs做存储，或者依赖注入框架，或者任何使你更方便的的工具（记住重复造轮子并不好）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Presentation-Layer&quot;&gt;&lt;a href=&quot;#Presentation-Layer&quot; class=&quot;headerlink&quot; title=&quot;Presentation Layer&quot;&gt;&lt;/a&gt;Presentation Layer&lt;/h2&gt;&lt;p&gt;view 和动画的逻辑的地方。使用了 MVP 模式（可以看这篇 &lt;a href=&quot;http://xuyushi.github.io/2016/02/28/MVP/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xuyushi.github.io/2016/02/28/MVP/&lt;/a&gt; ），你也可以使用 MVC,MVVM。我不会深入讲解这部分。&lt;strong&gt;fragments、activities都只是 view，没用业务逻辑，&lt;/strong&gt; ，渲染的逻辑也在这&lt;/p&gt;
+&lt;p&gt; 其中的&lt;strong&gt;Presenters&lt;/strong&gt;是由&lt;strong&gt; interactors (use cases)&lt;/strong&gt;组成的，这些 use cases 在 UI 线程之外的其他线程做一些工作，并且在回调中更新 view&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-19-14689371091972.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Domain-Layer&quot;&gt;&lt;a href=&quot;#Domain-Layer&quot; class=&quot;headerlink&quot; title=&quot;Domain Layer&quot;&gt;&lt;/a&gt;Domain Layer&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;所有的业务逻辑都在这一层&lt;/strong&gt;，对于 Android 工程，所有的interactors (use cases)的实现都在这一层。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这一层是纯 java 的，没用 android 的相关依赖&lt;/strong&gt;，所有的外部交互都是通过接口实现的&lt;/p&gt;
+&lt;h2 id=&quot;Data-Layer&quot;&gt;&lt;a href=&quot;#Data-Layer&quot; class=&quot;headerlink&quot; title=&quot;Data Layer&quot;&gt;&lt;/a&gt;Data Layer&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;所有应用需要的数据都通过这一层的UserRepository（domain 层定义接口的实现）获取，这里使用了 Repository Pattern 模式，通过 factory 选取不同的 data 的数据源&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;举个栗子，当我们需要获取一个 userID，如果disk 缓存有则使用他，若没有，则获取数据，并把数据保存在 disk 缓存中&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;核心的思想是 data 的获取对客户端透明&lt;/strong&gt;，客户端无需关注数据的来源，内存，disk，或者网络。客户端只需要获取数据&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-19-14689380973016.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NOTE：同上个 NOTE，数据库的实现比较简单，可以使用第三方库。 不要重复造轮子&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Error-Handling&quot;&gt;&lt;a href=&quot;#Error-Handling&quot; class=&quot;headerlink&quot; title=&quot;Error Handling&quot;&gt;&lt;/a&gt;Error Handling&lt;/h1&gt;&lt;p&gt;这一直是一个值得讨论的话题，我在这里分享一下我的解决方案。&lt;strong&gt;我的策略是使用回调&lt;/strong&gt;，举个栗子，如果在&lt;code&gt;repository&lt;/code&gt;产生事件之后，callback中包含两个方法，&lt;code&gt;onResponse()&lt;/code&gt;和&lt;code&gt;onError()&lt;/code&gt;，后者把错误封装在 &lt;code&gt;ErrorBundle&lt;/code&gt; 类里：这样带来一个问题，因为错误通过层层传递导致代码可读性变差。&lt;/p&gt;
+&lt;p&gt;另一方面，我们可以实现一个 event bus 系统来抛出错误，这种解决方法类似于 GOTO 语句。在我的观点中，当你订阅了多个事件是你很容易弄混&lt;/p&gt;
+&lt;h1 id=&quot;Testing&quot;&gt;&lt;a href=&quot;#Testing&quot; class=&quot;headerlink&quot; title=&quot;Testing&quot;&gt;&lt;/a&gt;Testing&lt;/h1&gt;&lt;p&gt;对于测试，对于每层我都给出了不同的解决方案&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Presentation Layer: 使用 &lt;code&gt;android instrumentatio&lt;/code&gt; 和&lt;code&gt;espresso&lt;/code&gt; 做集成 和功能测试&lt;/li&gt;
+&lt;li&gt;Domain Layer: 使用&lt;code&gt;JUnit&lt;/code&gt;和&lt;code&gt;mockito&lt;/code&gt;做单元测试&lt;/li&gt;
+&lt;li&gt;Data Layer: 使用&lt;code&gt;Robolectric&lt;/code&gt;（因为这层有 Android 的依赖）和 junit、mockito做集成和单元测试。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;Show-me-the-code&quot;&gt;&lt;a href=&quot;#Show-me-the-code&quot; class=&quot;headerlink&quot; title=&quot;Show me the code&quot;&gt;&lt;/a&gt;Show me the code&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/android10/Android-CleanArchitecture&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/android10/Android-CleanArchitecture&lt;/a&gt;&lt;br&gt;通过 module 来表示不同的层&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;presentation: Android Module&lt;/li&gt;
+&lt;li&gt;domain: 没有 依赖Android的 java Module&lt;/li&gt;
+&lt;li&gt;data:  Android Module，获取数据的地方&lt;/li&gt;
+&lt;li&gt;data-test:  Data 的测试。&lt;h1 id=&quot;Conclusion&quot;&gt;&lt;a href=&quot;#Conclusion&quot; class=&quot;headerlink&quot; title=&quot;Conclusion&quot;&gt;&lt;/a&gt;Conclusion&lt;/h1&gt;就像Bob大叔所说的，『Architecture is About Intent, not Frameworks』。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;确保的应用满足以下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;易维护 Easy to maintain&lt;/li&gt;
+&lt;li&gt;易测试 Easy to test.&lt;/li&gt;
+&lt;li&gt;高聚合Very cohesive.&lt;/li&gt;
+&lt;li&gt;低耦合 Decoupled. &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文为翻译，在原文的基础上略有改动&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; &lt;a href=&quot;http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/&quot;&gt;http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Getting-Started&quot;&gt;&lt;a href=&quot;#Getting-Started&quot; class=&quot;headerlink&quot; title=&quot;Getting Started&quot;&gt;&lt;/a&gt;Getting Started&lt;/h1&gt;&lt;p&gt;当你写一个软件时不仅要满足需求，还要使得系统健壮、易于测试、方便修改。这样才能满足需求的变化。写满足这些条件的程序通常是很难很复杂的。这就是为什么提出 “the clean architecture”，这可能是在开发任何应用程序时都是一个不错的办法&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
     <link href="http://yoursite.com/2016/07/19/Dagger/"/>
     <id>http://yoursite.com/2016/07/19/Dagger/</id>
-    <published>2016-07-19T07:22:39.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <published>2016-07-19T14:59:19.000Z</published>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html"></content>
     
@@ -32,11 +119,95 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="http://yoursite.com/2016/07/19/Android%20clean%20architecting/"/>
+    <id>http://yoursite.com/2016/07/19/Android clean architecting/</id>
+    <published>2016-07-19T14:59:19.000Z</published>
+    <updated>2016-07-19T14:59:19.000Z</updated>
+    
+    <content type="html">&lt;p&gt;本文为翻译，在原文的基础上略有改动&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; &lt;a href=&quot;http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Getting-Started&quot;&gt;&lt;a href=&quot;#Getting-Started&quot; class=&quot;headerlink&quot; title=&quot;Getting Started&quot;&gt;&lt;/a&gt;Getting Started&lt;/h1&gt;&lt;p&gt;当你写一个软件时不仅要满足需求，还要使得系统健壮、易于测试、方便修改。这样才能满足需求的变化。写满足这些条件的程序通常是很难很复杂的。这就是为什么提出 “the clean architecture”，这可能是在开发任何应用程序时都是一个不错的办法&lt;/p&gt;
+&lt;p&gt;理念很简单。clean 架构 代表了一组拥有如下特点的实践&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;框架独立&lt;/li&gt;
+&lt;li&gt;容易测试&lt;/li&gt;
+&lt;li&gt;UI独立&lt;/li&gt;
+&lt;li&gt;数据库独立&lt;/li&gt;
+&lt;li&gt;不依赖任何中介&lt;br&gt;&lt;img src=&quot;/media/14689267172067.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;实际情况可能和上图不一致，图片只是示意，不是一定要分为4层，我们需要考虑的是&lt;strong&gt;依赖规则&lt;/strong&gt;，&lt;strong&gt;依赖关系只能是外层依赖内层，内层不应该知道外层的存在&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;为了更方便的理解，下面是一些名词解释&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Entities: APP 的业务逻辑&lt;/li&gt;
+&lt;li&gt;Use Cases:这些用例从&lt;code&gt;Entities&lt;/code&gt;中流入流出，也被称作&lt;code&gt;Interactors&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Interface Adapters:这些 adapter 将data 转换为方便 Use Cases使用的结构。Presenters 和 Controllers 都属于这里&lt;/li&gt;
+&lt;li&gt;Frameworks and Drivers: 所有 UI 细节、工具、框架&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;Our-Scenario&quot;&gt;&lt;a href=&quot;#Our-Scenario&quot; class=&quot;headerlink&quot; title=&quot;Our Scenario&quot;&gt;&lt;/a&gt;Our Scenario&lt;/h1&gt;&lt;p&gt;…（作者例子的视频展示）&lt;/p&gt;
+&lt;h1 id=&quot;Android-Architecture&quot;&gt;&lt;a href=&quot;#Android-Architecture&quot; class=&quot;headerlink&quot; title=&quot;Android Architecture&quot;&gt;&lt;/a&gt;Android Architecture&lt;/h1&gt;&lt;p&gt;我们的目标是&lt;strong&gt;分离业务逻辑&lt;/strong&gt;，使得业务逻辑对外部不感知。这样我们在外部可以独立对业务代码进行测试&lt;/p&gt;
+&lt;p&gt;为了达成这个目标，我们的目的是&lt;strong&gt;将项目分为三层&lt;/strong&gt;，每层都有自己的目的并且独立于其它层&lt;/p&gt;
+&lt;p&gt;值得一提的是为了达到每层都独立，每一层都有自己的数据结构。（在代码可以看到通过 mapper来进行层与层之间的数据变换）&lt;/p&gt;
+&lt;p&gt;框架大致是这样&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/media/14689291593465.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NOTE: 我没有使用任何的第三方库（除了使用 gson 来解析数据，junit，mockito，robolectric 和 espresso 来测试），不使用第三库的原因是我希望例子能更清晰。不用犹豫使用 ORMs做存储，或者依赖注入框架，或者任何使你更方便的的工具（记住重复造轮子并不好）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Presentation-Layer&quot;&gt;&lt;a href=&quot;#Presentation-Layer&quot; class=&quot;headerlink&quot; title=&quot;Presentation Layer&quot;&gt;&lt;/a&gt;Presentation Layer&lt;/h2&gt;&lt;p&gt;view 和动画的逻辑的地方。使用了 MVP 模式（可以看这篇 &lt;a href=&quot;http://xuyushi.github.io/2016/02/28/MVP/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xuyushi.github.io/2016/02/28/MVP/&lt;/a&gt; ），你也可以使用 MVC,MVVM。我不会深入讲解这部分。&lt;strong&gt;fragments、activities都只是 view，没用业务逻辑，&lt;/strong&gt; ，渲染的逻辑也在这&lt;/p&gt;
+&lt;p&gt; 其中的&lt;strong&gt;Presenters&lt;/strong&gt;是由&lt;strong&gt; interactors (use cases)&lt;/strong&gt;组成的，这些 use cases 在 UI 线程之外的其他线程做一些工作，并且在回调中更新 view&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;/media/14689371091972.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Domain-Layer&quot;&gt;&lt;a href=&quot;#Domain-Layer&quot; class=&quot;headerlink&quot; title=&quot;Domain Layer&quot;&gt;&lt;/a&gt;Domain Layer&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;所有的业务逻辑都在这一层&lt;/strong&gt;，对于 Android 工程，所有的interactors (use cases)的实现都在这一层。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这一层是纯 java 的，没用 android 的相关依赖&lt;/strong&gt;，所有的外部交互都是通过接口实现的&lt;/p&gt;
+&lt;h2 id=&quot;Data-Layer&quot;&gt;&lt;a href=&quot;#Data-Layer&quot; class=&quot;headerlink&quot; title=&quot;Data Layer&quot;&gt;&lt;/a&gt;Data Layer&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;所有应用需要的数据都通过这一层的UserRepository（domain 层定义接口的实现）获取，这里使用了 Repository Pattern 模式，通过 factory 选取不同的 data 的数据源&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;举个栗子，当我们需要获取一个 userID，如果disk 缓存有则使用他，若没有，则获取数据，并把数据保存在 disk 缓存中&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;核心的思想是 data 的获取对客户端透明&lt;/strong&gt;，客户端无需关注数据的来源，内存，disk，或者网络。客户端只需要获取数据&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/media/14689380973016.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NOTE：同上个 NOTE，数据库的实现比较简单，可以使用第三方库。 不要重复造轮子&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Error-Handling&quot;&gt;&lt;a href=&quot;#Error-Handling&quot; class=&quot;headerlink&quot; title=&quot;Error Handling&quot;&gt;&lt;/a&gt;Error Handling&lt;/h1&gt;&lt;p&gt;这一直是一个值得讨论的话题，我在这里分享一下我的解决方案。&lt;strong&gt;我的策略是使用回调&lt;/strong&gt;，举个栗子，如果在&lt;code&gt;repository&lt;/code&gt;产生事件之后，callback中包含两个方法，&lt;code&gt;onResponse()&lt;/code&gt;和&lt;code&gt;onError()&lt;/code&gt;，后者把错误封装在 &lt;code&gt;ErrorBundle&lt;/code&gt; 类里：这样带来一个问题，因为错误通过层层传递导致代码可读性变差。&lt;/p&gt;
+&lt;p&gt;另一方面，我们可以实现一个 event bus 系统来抛出错误，这种解决方法类似于 GOTO 语句。在我的观点中，当你订阅了多个事件是你很容易弄混&lt;/p&gt;
+&lt;h1 id=&quot;Testing&quot;&gt;&lt;a href=&quot;#Testing&quot; class=&quot;headerlink&quot; title=&quot;Testing&quot;&gt;&lt;/a&gt;Testing&lt;/h1&gt;&lt;p&gt;对于测试，对于每层我都给出了不同的解决方案&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Presentation Layer: 使用 &lt;code&gt;android instrumentatio&lt;/code&gt; 和&lt;code&gt;espresso&lt;/code&gt; 做集成 和功能测试&lt;/li&gt;
+&lt;li&gt;Domain Layer: 使用&lt;code&gt;JUnit&lt;/code&gt;和&lt;code&gt;mockito&lt;/code&gt;做单元测试&lt;/li&gt;
+&lt;li&gt;Data Layer: 使用&lt;code&gt;Robolectric&lt;/code&gt;（因为这层有 Android 的依赖）和 junit、mockito做集成和单元测试。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;Show-me-the-code&quot;&gt;&lt;a href=&quot;#Show-me-the-code&quot; class=&quot;headerlink&quot; title=&quot;Show me the code&quot;&gt;&lt;/a&gt;Show me the code&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/android10/Android-CleanArchitecture&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/android10/Android-CleanArchitecture&lt;/a&gt;&lt;br&gt;通过 module 来表示不同的层&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;presentation: Android Module&lt;/li&gt;
+&lt;li&gt;domain: 没有 依赖Android的 java Module&lt;/li&gt;
+&lt;li&gt;data:  Android Module，获取数据的地方&lt;/li&gt;
+&lt;li&gt;data-test:  Data 的测试。&lt;h1 id=&quot;Conclusion&quot;&gt;&lt;a href=&quot;#Conclusion&quot; class=&quot;headerlink&quot; title=&quot;Conclusion&quot;&gt;&lt;/a&gt;Conclusion&lt;/h1&gt;就像Bob大叔所说的，『Architecture is About Intent, not Frameworks』。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;确保的应用满足以下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;易维护 Easy to maintain&lt;/li&gt;
+&lt;li&gt;易测试 Easy to test.&lt;/li&gt;
+&lt;li&gt;高聚合Very cohesive.&lt;/li&gt;
+&lt;li&gt;低耦合 Decoupled. &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文为翻译，在原文的基础上略有改动&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; &lt;a href=&quot;http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/&quot; target=&quot;_blank&quot; 
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Android Application 从零开始 2 ——DI</title>
     <link href="http://yoursite.com/2016/07/16/Android%20Application%20%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%202%20%E2%80%94%E2%80%94DI/"/>
     <id>http://yoursite.com/2016/07/16/Android Application 从零开始 2 ——DI/</id>
     <published>2016-07-15T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;看懂这篇文章你需要有 依赖注入 以及 dagger 相关的知识点&lt;/p&gt;
@@ -89,7 +260,7 @@
     <link href="http://yoursite.com/2016/07/04/Android%20Application%20%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%200%20%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0%20/"/>
     <id>http://yoursite.com/2016/07/04/Android Application 从零开始 0 ——概述 /</id>
     <published>2016-07-03T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;叨叨叨&quot;&gt;&lt;a href=&quot;#叨叨叨&quot; class=&quot;headerlink&quot; title=&quot;叨叨叨&quot;&gt;&lt;/a&gt;叨叨叨&lt;/h1&gt;&lt;p&gt;有没有想过在没有业务的压力，没有项目接手时一堆繁杂代码的困扰，没有产品天马行空奇葩的需求，一个理想的 Android APP 是怎样一种架构。&lt;/p&gt;
 &lt;p&gt;从2016年起，我一直在持续学习 Android 的各种框架，力求使得项目更清晰，更易于扩展。从mvp 到 mvvm，到之后的依赖注入、rxjava、clean 架构。每一次都让我惊叹，原来代码可以写的这么解耦。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -125,7 +296,7 @@
     <link href="http://yoursite.com/2016/07/04/Android%20Application%20%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%201%20%E2%80%94%E2%80%94Gradle/"/>
     <id>http://yoursite.com/2016/07/04/Android Application 从零开始 1 ——Gradle/</id>
     <published>2016-07-03T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;p&gt;本节主要介绍了 app 的 gradle 的构建&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-18-14676149876044.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -167,7 +338,7 @@
     <link href="http://yoursite.com/2016/06/19/ASimpleCache/"/>
     <id>http://yoursite.com/2016/06/19/ASimpleCache/</id>
     <published>2016-06-18T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;p&gt;ASimpleCache 是一个为android制定的 轻量级的 开源缓存框架。轻量到只有一个java文件（由十几个类精简而来）&lt;br&gt;仓库地址：&lt;a href=&quot;https://github.com/yangfuhai/ASimpleCache&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/yangfuhai/ASimpleCache&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&quot;官方介绍&quot;&gt;&lt;a href=&quot;#官方介绍&quot; class=&quot;headerlink&quot; title=&quot;官方介绍&quot;&gt;&lt;/a&gt;官方介绍&lt;/h1&gt;&lt;h2 id=&quot;1、它可以缓存什么东西？&quot;&gt;&lt;a href=&quot;#1、它可以缓存什么东西？&quot; class=&quot;headerlink&quot; title=&quot;1、它可以缓存什么东西？&quot;&gt;&lt;/a&gt;1、它可以缓存什么东西？&lt;/h2&gt;&lt;p&gt;普通的字符串、JsonObject、JsonArray、Bitmap、Drawable、序列化的java对象，和 byte数据。&lt;/p&gt;
@@ -246,7 +417,7 @@
     <link href="http://yoursite.com/2016/06/18/Android%20APP%20%E6%96%B0%E6%A1%86%E6%9E%B6/"/>
     <id>http://yoursite.com/2016/06/18/Android APP 新框架/</id>
     <published>2016-06-17T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;p&gt;最近在 github 上看到一个 android 的框架，结合了 Rxjava + retrofit + dagger2 + mvp，结合了当下比较流行的框架，并且项目层次非常清晰，易于扩展和维护&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -330,7 +501,7 @@
     <link href="http://yoursite.com/2016/06/10/retrofit%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%902/"/>
     <id>http://yoursite.com/2016/06/10/retrofit源码解析2/</id>
     <published>2016-06-09T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;使用&quot;&gt;&lt;a href=&quot;#使用&quot; class=&quot;headerlink&quot; title=&quot;使用&quot;&gt;&lt;/a&gt;使用&lt;/h2&gt;&lt;h4 id=&quot;首先定义一个接口&quot;&gt;&lt;a href=&quot;#首先定义一个接口&quot; class=&quot;headerlink&quot; title=&quot;首先定义一个接口&quot;&gt;&lt;/a&gt;首先定义一个接口&lt;/h4&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;GitHubService&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;meta&quot;&gt;@GET&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;users/&amp;#123;user&amp;#125;/repos&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Call&amp;lt;List&amp;lt;Repo&amp;gt;&amp;gt; listRepos(&lt;span class=&quot;meta&quot;&gt;@Path&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;user&quot;&lt;/span&gt;) String user);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -414,7 +585,7 @@
     <link href="http://yoursite.com/2016/06/09/retrofit%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%901/"/>
     <id>http://yoursite.com/2016/06/09/retrofit源码解析1/</id>
     <published>2016-06-08T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Retrofit&quot;&gt;&lt;a href=&quot;#Retrofit&quot; class=&quot;headerlink&quot; title=&quot;Retrofit&quot;&gt;&lt;/a&gt;Retrofit&lt;/h1&gt;&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;Retrofit 通过使用方法上的『注解』来定义请求的构成，将我们声明的 Http 接口转化成一个 Call 对象。&lt;br&gt;这个 Call 对象呢，可以调用同步或非同步方法来发送请求，之后就交给 OkHttp 去执行。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;关键类&quot;&gt;&lt;a href=&quot;#关键类&quot; class=&quot;headerlink&quot; title=&quot;关键类&quot;&gt;&lt;/a&gt;关键类&lt;/h2&gt;&lt;h3 id=&quot;Retrofit-1&quot;&gt;&lt;a href=&quot;#Retrofit-1&quot; class=&quot;headerlink&quot; title=&quot;Retrofit&quot;&gt;&lt;/a&gt;Retrofit&lt;/h3&gt;&lt;p&gt;最重要的一个类，直接暴露给用户，我们在使用时通常是使用 build 方法构造一个retrofit。&lt;/p&gt;
@@ -530,7 +701,7 @@
     <link href="http://yoursite.com/2016/04/30/%E5%9C%B0%E5%9B%BE%E5%8C%BA%E5%9F%9F%E7%BB%98%E5%88%B6%20MVP%20%E5%AE%9E%E8%B7%B5/"/>
     <id>http://yoursite.com/2016/04/30/地图区域绘制 MVP 实践/</id>
     <published>2016-04-29T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;p&gt;最近在做一个地图区域绘制的一个需求，如下&lt;/p&gt;
@@ -600,7 +771,7 @@
     <link href="http://yoursite.com/2016/04/11/listview%20crash%20%E5%88%86%E6%9E%90/"/>
     <id>http://yoursite.com/2016/04/11/listview crash 分析/</id>
     <published>2016-04-10T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;h1 id=&quot;Listview-crash-分析&quot;&gt;&lt;a href=&quot;#Listview-crash-分析&quot; class=&quot;headerlink&quot; title=&quot;Listview crash 分析&quot;&gt;&lt;/a&gt;Listview crash 分析&lt;/h1&gt;&lt;p&gt;灰度的时候出的 crash&lt;/p&gt;
@@ -655,7 +826,7 @@
     <link href="http://yoursite.com/2016/03/26/Material%20Design/"/>
     <id>http://yoursite.com/2016/03/26/Material Design/</id>
     <published>2016-03-25T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;h1 id=&quot;Material-Design&quot;&gt;&lt;a href=&quot;#Material-Design&quot; class=&quot;headerlink&quot; title=&quot;Material Design&quot;&gt;&lt;/a&gt;Material Design&lt;/h1&gt;&lt;h2 id=&quot;吐槽&quot;&gt;&lt;a href=&quot;#吐槽&quot; class=&quot;headerlink&quot; title=&quot;吐槽&quot;&gt;&lt;/a&gt;吐槽&lt;/h2&gt;&lt;p&gt;作为一个 Android developer，没有什么比拿着 UI 设计的一堆 iOS 风格的设计 来做需求更恶心的了，基本所有空间都要照着 iOS 来画一遍，Material Design 辣么酷炫 为什么 UI在设计的阶段不设计成 Material Design风格呢？&lt;/p&gt;
@@ -793,7 +964,7 @@
     <link href="http://yoursite.com/2016/03/11/%E5%8D%95%E8%BA%AB%E6%B1%AA%E7%9A%84%E8%87%AA%E7%99%BD/"/>
     <id>http://yoursite.com/2016/03/11/单身汪的自白/</id>
     <published>2016-03-10T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;h1 id=&quot;单身汪的自白&quot;&gt;&lt;a href=&quot;#单身汪的自白&quot; class=&quot;headerlink&quot; title=&quot;单身汪的自白&quot;&gt;&lt;/a&gt;单身汪的自白&lt;/h1&gt;&lt;p&gt;3.5期的项目终于要告一段落了， 解 bug 的心情如下&lt;/p&gt;
@@ -838,7 +1009,7 @@
     <link href="http://yoursite.com/2016/03/05/Android%20MVVM/"/>
     <id>http://yoursite.com/2016/03/05/Android MVVM/</id>
     <published>2016-03-04T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;p&gt;在上一篇博文中介绍了 &lt;img src=&quot;http://xuyushi.github.io/2016/02/28/MVP/&quot; alt=&quot;Android的MVP模式&quot;&gt;。MVVM 是从 MVP 的进一步发展与规范，MVP 隔离了 M 与 V 的直接联系后，靠 Presenter 来中转，所以使用 MVP 时 P 是直接调用 View 的接口来实现对视图的操作的，M 与 V是隔离了，方便测试了，但代码还不够优雅简洁啊，所以 MVVM 就弥补了这些缺陷。&lt;/p&gt;
@@ -988,7 +1159,7 @@
     <link href="http://yoursite.com/2016/03/04/Android%20%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95--Robolectric/"/>
     <id>http://yoursite.com/2016/03/04/Android 单元测试--Robolectric/</id>
     <published>2016-03-03T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;p&gt;[TOC]&lt;br&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-04-638283-f57c55ef447541aa.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;robolectric的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。&lt;/p&gt;
@@ -1070,7 +1241,7 @@
     <link href="http://yoursite.com/2016/02/28/MVP/"/>
     <id>http://yoursite.com/2016/02/28/MVP/</id>
     <published>2016-02-28T01:10:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;p&gt;MVP模式的核心思想：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1166,7 +1337,7 @@
     <link href="http://yoursite.com/2016/02/23/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/"/>
     <id>http://yoursite.com/2016/02/23/迭代器模式/</id>
     <published>2016-02-22T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;h1 id=&quot;迭代器模式-Iterator-Pattern&quot;&gt;&lt;a href=&quot;#迭代器模式-Iterator-Pattern&quot; class=&quot;headerlink&quot; title=&quot;迭代器模式 Iterator Pattern&quot;&gt;&lt;/a&gt;迭代器模式 Iterator Pattern&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
@@ -1242,7 +1413,7 @@
     <link href="http://yoursite.com/2016/02/23/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/"/>
     <id>http://yoursite.com/2016/02/23/模板方法模式/</id>
     <published>2016-02-22T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;h1 id=&quot;模板方法模式-Template-Method-Pattern&quot;&gt;&lt;a href=&quot;#模板方法模式-Template-Method-Pattern&quot; class=&quot;headerlink&quot; title=&quot;模板方法模式 Template Method Pattern&quot;&gt;&lt;/a&gt;模板方法模式 Template Method Pattern&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
@@ -1336,7 +1507,7 @@
     <link href="http://yoursite.com/2016/02/23/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/"/>
     <id>http://yoursite.com/2016/02/23/代理模式/</id>
     <published>2016-02-22T16:00:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
+    <updated>2016-07-19T14:59:19.000Z</updated>
     
     <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;h1 id=&quot;代理模式-Proxy-Pattern&quot;&gt;&lt;a href=&quot;#代理模式-Proxy-Pattern&quot; class=&quot;headerlink&quot; title=&quot;代理模式 Proxy Pattern&quot;&gt;&lt;/a&gt;代理模式 Proxy Pattern&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
@@ -1393,134 +1564,6 @@
 &lt;/ul&gt;
 &lt;h2 id=&quot;UML-图&quot;&gt;&lt;a href=&quot;#UML-图&quot; class=&quot;headerlink&quot; title=&quot;UML 图&quot;&gt;&lt;/a&gt;UML 图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14562373472577.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Subject: 抽象主题角色&lt;br&gt;Proxy: 代理主题角色&lt;br&gt;RealSubject: 真实主题角色&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-      <category term="Pattern" scheme="http://yoursite.com/tags/Pattern/"/>
-    
-      <category term="设计模式" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>命令模式 Command Pattern</title>
-    <link href="http://yoursite.com/2016/02/22/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://yoursite.com/2016/02/22/命令模式/</id>
-    <published>2016-02-22T14:26:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
-    
-    <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;命令模式-Command-Pattern&quot;&gt;&lt;a href=&quot;#命令模式-Command-Pattern&quot; class=&quot;headerlink&quot; title=&quot;命令模式 Command Pattern&quot;&gt;&lt;/a&gt;命令模式 Command Pattern&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;将一个请求封装为一个对象，从而使我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;系统需要将请求调用者和请求接收者解耦，使得调用者和接收者不直接交互。&lt;/li&gt;
-&lt;li&gt;系统需要在不同的时间指定请求、将请求排队和执行请求。&lt;/li&gt;
-&lt;li&gt;系统需要支持命令的撤销(Undo)操作和恢复(Redo)操作。&lt;/li&gt;
-&lt;li&gt;系统需要将一组操作组合在一起，即支持宏命令&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;UML-图&quot;&gt;&lt;a href=&quot;#UML-图&quot; class=&quot;headerlink&quot; title=&quot;UML 图&quot;&gt;&lt;/a&gt;UML 图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14561465850883.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;AbstractFactory：抽象工厂&lt;br&gt;ConcreteFactory：具体工厂&lt;br&gt;AbstractProduct：抽象产品&lt;br&gt;Product：具体产品&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;简单实现&quot;&gt;&lt;a href=&quot;#简单实现&quot; class=&quot;headerlink&quot; title=&quot;简单实现&quot;&gt;&lt;/a&gt;简单实现&lt;/h2&gt;&lt;h3 id=&quot;例子&quot;&gt;&lt;a href=&quot;#例子&quot; class=&quot;headerlink&quot; title=&quot;例子&quot;&gt;&lt;/a&gt;例子&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Light&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;tunOn&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;Light tun On&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;tunOff&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;Light tun Off&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Command&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;excute&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;LightOffCommand&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Command&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Light light;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;LightOffCommand&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Light light)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.light = light;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;excute&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        light.tunOff();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;LightOnCommand&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Command&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Light light;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;LightOnCommand&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Light light)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.light = light;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;excute&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        light.tunOn();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Invoker&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Command command;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Invoker&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Command command)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.command = command;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setCommand&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Command command)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.command = command;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        command.excute();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;客户端调用&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;CommandMain&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;CommandMain RUNNING&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;----&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Light light = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Light();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Command commandOn = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LightOnCommand(light);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Invoker invoker = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Invoker(commandOn);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        invoker.call();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;----&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Command commandOff = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LightOffCommand(light);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        invoker.setCommand(commandOff);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        invoker.call();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;结果&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CommandMain RUNNING&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;----&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Light tun On&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;----&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Light tun Off&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;类图&quot;&gt;&lt;a href=&quot;#类图&quot; class=&quot;headerlink&quot; title=&quot;类图&quot;&gt;&lt;/a&gt;类图&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14561474668159.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;优缺点&quot;&gt;&lt;a href=&quot;#优缺点&quot; class=&quot;headerlink&quot; title=&quot;优缺点&quot;&gt;&lt;/a&gt;优缺点&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;优点&lt;ul&gt;
-&lt;li&gt;降低系统的耦合度。&lt;/li&gt;
-&lt;li&gt;新的命令可以很容易地加入到系统中。&lt;/li&gt;
-&lt;li&gt;可以比较容易地设计一个命令队列和宏命令（组合命令）。&lt;/li&gt;
-&lt;li&gt;可以方便地实现对请求的Undo和Redo。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;缺点&lt;ul&gt;
-&lt;li&gt;使用命令模式可能会导致某些系统有过多的具体命令类。因为针对每一个命令都需要设计一个具体命令类，因此某些系统可能需要大量具体命令类，这将影响命令模式的使用。&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;命令模式包含四个角色：抽象命令类中声明了用于执行请求的execute()等方法，通过这些方法可以调用请求接收者的相关操作；具体命令类是抽象命令类的子类，实现了在抽象命令类中声明的方法，它对应具体的接收者对象，将接收者对象的动作绑定其中；调用者即请求的发送者，又称为请求者，它通过命令对象来执行请求；接收者执行与请求相关的操作，它具体实现对请求的业务处理。&lt;/li&gt;
-&lt;li&gt;命令模式的本质是对命令进行封装，将发出命令的责任和执行命令的责任分割开。命令模式使请求本身成为一个对象，这个对象和其他对象一样可以被存储和传递。&lt;/li&gt;
-&lt;li&gt;命令模式的主要优点在于降低系统的耦合度，增加新的命令很方便，而且可以比较容易地设计一个命令队列和宏命令，并方便地实现对请求的撤销和恢复；其主要缺点在于可能会导致某些系统有过多的具体命令类。&lt;/li&gt;
-&lt;li&gt;命令模式适用情况包括：需要将请求调用者和请求接收者解耦，使得调用者和接收者不直接交互；需要在不同的时间指定请求、将请求排队和执行请求；需要支持命令的撤销操作和恢复操作，需要将一组操作组合在一起，即支持宏命令。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://sourcemaking.com/design_patterns/command&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://sourcemaking.com/design_patterns/command&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://design-patterns.readthedocs.org/zh_CN/latest/creational_patterns/abstract_factory.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://design-patterns.readthedocs.org/zh_CN/latest/creational_patterns/abstract_factory.html&lt;/a&gt;&lt;br&gt;『head first 设计模式』&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;命令模式-Command-Pattern&quot;&gt;&lt;a href=&quot;#命令模式-Command-Pattern&quot; class=&quot;headerlink&quot; title=&quot;命令模式 Command Pattern&quot;&gt;&lt;/a&gt;命令模式 Command Pattern&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;将一个请求封装为一个对象，从而使我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;系统需要将请求调用者和请求接收者解耦，使得调用者和接收者不直接交互。&lt;/li&gt;
-&lt;li&gt;系统需要在不同的时间指定请求、将请求排队和执行请求。&lt;/li&gt;
-&lt;li&gt;系统需要支持命令的撤销(Undo)操作和恢复(Redo)操作。&lt;/li&gt;
-&lt;li&gt;系统需要将一组操作组合在一起，即支持宏命令&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;UML-图&quot;&gt;&lt;a href=&quot;#UML-图&quot; class=&quot;headerlink&quot; title=&quot;UML 图&quot;&gt;&lt;/a&gt;UML 图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14561465850883.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;AbstractFactory：抽象工厂&lt;br&gt;ConcreteFactory：具体工厂&lt;br&gt;AbstractProduct：抽象产品&lt;br&gt;Product：具体产品&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-      <category term="Pattern" scheme="http://yoursite.com/tags/Pattern/"/>
-    
-      <category term="设计模式" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>单例模式 Singleton Pattern</title>
-    <link href="http://yoursite.com/2016/02/22/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://yoursite.com/2016/02/22/单例模式/</id>
-    <published>2016-02-22T13:34:00.000Z</published>
-    <updated>2016-07-19T07:22:39.000Z</updated>
-    
-    <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;单例模式-Singleton-Pattern&quot;&gt;&lt;a href=&quot;#单例模式-Singleton-Pattern&quot; class=&quot;headerlink&quot; title=&quot;单例模式 Singleton Pattern&quot;&gt;&lt;/a&gt;单例模式 Singleton Pattern&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;单例模式(Singleton Pattern)：单例模式确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;系统只需要一个实例对象，如系统要求提供一个唯一的序列号生成器，或者需要考虑资源消耗太大而只允许创建一个对象。&lt;/li&gt;
-&lt;li&gt;客户调用类的单个实例只允许使用一个公共访问点，除了该公共访问点，不能通过其他途径访问该实例&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;简单实现&quot;&gt;&lt;a href=&quot;#简单实现&quot; class=&quot;headerlink&quot; title=&quot;简单实现&quot;&gt;&lt;/a&gt;简单实现&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; io.github.xuyushi.singleton;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * Created by xuyushi on 16/2/22.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Singleton&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;volatile&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton instance;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Singleton&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton &lt;span class=&quot;title&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (instance == &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt; (Singleton.class) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (instance == &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    instance = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Singleton();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; instance;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;优缺点&quot;&gt;&lt;a href=&quot;#优缺点&quot; class=&quot;headerlink&quot; title=&quot;优缺点&quot;&gt;&lt;/a&gt;优缺点&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;优点&lt;ul&gt;
-&lt;li&gt;提供了对唯一实例的受控访问。因为单例类封装了它的唯一实例，所以它可以严格控制客户怎样以及何时访问它，并为设计及开发团队提供了共享的概念。&lt;/li&gt;
-&lt;li&gt;由于在系统内存中只存在一个对象，因此可以节约系统资源，对于一些需要频繁创建和销毁的对象，单例模式无疑可以提高系统的性能&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;缺点&lt;ul&gt;
-&lt;li&gt;由于单例模式中没有抽象层，因此单例类的扩展有很大的困难。&lt;/li&gt;
-&lt;li&gt;单例类的职责过重，在一定程度上违背了“单一职责原则”。因为单例类既充当了工厂角色，提供了工厂方法，同时又充当了产品角色，包含一些业务方法，将产品的创建和产品的本身的功能融合到一起。&lt;/li&gt;
-&lt;li&gt;滥用单例将带来一些负面问题，如为了节省资源将数据库连接池对象设计为单例类，可能会导致共享连接池对象的程序过多而出现连接池溢出；现在很多面向对象语言(如Java、C#)的运行环境都提供了自动垃圾回收的技术，因此，如果实例化的对象长时间不被利用，系统会认为它是垃圾，会自动销毁并回收资源，下次利用时又将重新实例化，这将导致对象状态的丢失。    &lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;单例模式只包含一个单例角色：在单例类的内部实现只生成一个实例，同时它提供一个静态的工厂方法，让客户可以使用它的唯一实例；&lt;strong&gt;为了防止在外部对其实例化，将其构造函数设计为私有&lt;/strong&gt;。&lt;/li&gt;
-&lt;li&gt;单例模式的目的是保证一个类仅有一个实例，并提供一个访问它的全局访问点。单例类拥有一个私有构造函数，确保用户无法通过new关键字直接实例化它。除此之外，该模式中包含一个静态私有成员变量与静态公有的工厂方法。该工厂方法负责检验实例的存在性并实例化自己，然后存储在静态成员变量中，以确保只有一个实例被创建。&lt;/li&gt;
-&lt;li&gt;单例模式的主要优点在于提供了对唯一实例的受控访问并可以节约系统资源；其主要缺点在于因为缺少抽象层而难以扩展，且单例类职责过重。&lt;/li&gt;
-&lt;li&gt;单例模式适用情况包括：系统只需要一个实例对象；客户调用类的单个实例只允许使用一个公共访问点。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://design-patterns.readthedocs.org/zh_CN/latest/creational_patterns/abstract_factory.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://design-patterns.readthedocs.org/zh_CN/latest/creational_patterns/abstract_factory.html&lt;/a&gt;&lt;br&gt;『head first 设计模式』&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;单例模式-Singleton-Pattern&quot;&gt;&lt;a href=&quot;#单例模式-Singleton-Pattern&quot; class=&quot;headerlink&quot; title=&quot;单例模式 Singleton Pattern&quot;&gt;&lt;/a&gt;单例模式 Si
     
     </summary>
     
