@@ -88,33 +88,30 @@
 
 
 
-<meta name="description" content="本文为翻译，在原文的基础上略有改动
+<meta name="description" content="更多 Android 博文请关注我的博客 http://xuyushi.github.io
+本文为翻译，在原文的基础上略有改动
 
- http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/
-
-Getting Started当你写一个软件时不仅要满足需求，还要使得系统健壮、易于测试、方便修改。这样才能满足需求的变化。写满足这些条件的程序通常是很难很复杂的。这就是为什么提出 “the clean archi">
+ http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android clean architecting">
 <meta property="og:url" content="http://yoursite.com/2016/07/19/Android clean architecting/index.html">
 <meta property="og:site_name" content="Xu Yushi''s Blog">
-<meta property="og:description" content="本文为翻译，在原文的基础上略有改动
+<meta property="og:description" content="更多 Android 博文请关注我的博客 http://xuyushi.github.io
+本文为翻译，在原文的基础上略有改动
 
- http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/
-
-Getting Started当你写一个软件时不仅要满足需求，还要使得系统健壮、易于测试、方便修改。这样才能满足需求的变化。写满足这些条件的程序通常是很难很复杂的。这就是为什么提出 “the clean archi">
-<meta property="og:image" content="http://yoursite.com/media/14689267172067.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://yoursite.com/media/14689291593465.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://yoursite.com/media/14689371091972.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://yoursite.com/media/14689380973016.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:updated_time" content="2016-07-19T15:05:06.000Z">
+ http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-19-14689267172067.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-19-14689291593465.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-19-14689371091972.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-19-14689380973016.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta property="og:updated_time" content="2016-07-20T03:07:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android clean architecting">
-<meta name="twitter:description" content="本文为翻译，在原文的基础上略有改动
+<meta name="twitter:description" content="更多 Android 博文请关注我的博客 http://xuyushi.github.io
+本文为翻译，在原文的基础上略有改动
 
- http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/
-
-Getting Started当你写一个软件时不仅要满足需求，还要使得系统健壮、易于测试、方便修改。这样才能满足需求的变化。写满足这些条件的程序通常是很难很复杂的。这就是为什么提出 “the clean archi">
-<meta name="twitter:image" content="http://yoursite.com/media/14689267172067.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+ http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/">
+<meta name="twitter:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-19-14689267172067.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
 
 
 
@@ -352,18 +349,21 @@ Getting Started当你写一个软件时不仅要满足需求，还要使得系�
       
 
       
-        <p>本文为翻译，在原文的基础上略有改动</p>
+        <p>更多 Android 博文请关注我的博客 <a href="http://xuyushi.github.io" target="_blank" rel="external">http://xuyushi.github.io</a></p>
+<p>本文为翻译，在原文的基础上略有改动</p>
 <blockquote>
 <p> <a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank" rel="external">http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/</a></p>
 </blockquote>
+<a id="more"></a>
 <h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><p>当你写一个软件时不仅要满足需求，还要使得系统健壮、易于测试、方便修改。这样才能满足需求的变化。写满足这些条件的程序通常是很难很复杂的。这就是为什么提出 “the clean architecture”，这可能是在开发任何应用程序时都是一个不错的办法</p>
+<!-- more -->
 <p>理念很简单。clean 架构 代表了一组拥有如下特点的实践</p>
 <ul>
 <li>框架独立</li>
 <li>容易测试</li>
 <li>UI独立</li>
 <li>数据库独立</li>
-<li>不依赖任何中介<br><img src="/media/14689267172067.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></li>
+<li>不依赖任何中介<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-19-14689267172067.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></li>
 </ul>
 <p>实际情况可能和上图不一致，图片只是示意，不是一定要分为4层，我们需要考虑的是<strong>依赖规则</strong>，<strong>依赖关系只能是外层依赖内层，内层不应该知道外层的存在</strong></p>
 <p>为了更方便的理解，下面是一些名词解释</p>
@@ -378,19 +378,19 @@ Getting Started当你写一个软件时不仅要满足需求，还要使得系�
 <p>为了达成这个目标，我们的目的是<strong>将项目分为三层</strong>，每层都有自己的目的并且独立于其它层</p>
 <p>值得一提的是为了达到每层都独立，每一层都有自己的数据结构。（在代码可以看到通过 mapper来进行层与层之间的数据变换）</p>
 <p>框架大致是这样</p>
-<p><img src="/media/14689291593465.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-19-14689291593465.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
 <blockquote>
 <p>NOTE: 我没有使用任何的第三方库（除了使用 gson 来解析数据，junit，mockito，robolectric 和 espresso 来测试），不使用第三库的原因是我希望例子能更清晰。不用犹豫使用 ORMs做存储，或者依赖注入框架，或者任何使你更方便的的工具（记住重复造轮子并不好）。</p>
 </blockquote>
 <h2 id="Presentation-Layer"><a href="#Presentation-Layer" class="headerlink" title="Presentation Layer"></a>Presentation Layer</h2><p>view 和动画的逻辑的地方。使用了 MVP 模式（可以看这篇 <a href="http://xuyushi.github.io/2016/02/28/MVP/" target="_blank" rel="external">http://xuyushi.github.io/2016/02/28/MVP/</a> ），你也可以使用 MVC,MVVM。我不会深入讲解这部分。<strong>fragments、activities都只是 view，没用业务逻辑，</strong> ，渲染的逻辑也在这</p>
 <p> 其中的<strong>Presenters</strong>是由<strong> interactors (use cases)</strong>组成的，这些 use cases 在 UI 线程之外的其他线程做一些工作，并且在回调中更新 view</p>
-<p> <img src="/media/14689371091972.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p> <img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-19-14689371091972.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
 <h2 id="Domain-Layer"><a href="#Domain-Layer" class="headerlink" title="Domain Layer"></a>Domain Layer</h2><p><strong>所有的业务逻辑都在这一层</strong>，对于 Android 工程，所有的interactors (use cases)的实现都在这一层。</p>
 <p><strong>这一层是纯 java 的，没用 android 的相关依赖</strong>，所有的外部交互都是通过接口实现的</p>
 <h2 id="Data-Layer"><a href="#Data-Layer" class="headerlink" title="Data Layer"></a>Data Layer</h2><p><strong>所有应用需要的数据都通过这一层的UserRepository（domain 层定义接口的实现）获取，这里使用了 Repository Pattern 模式，通过 factory 选取不同的 data 的数据源</strong></p>
 <p>举个栗子，当我们需要获取一个 userID，如果disk 缓存有则使用他，若没有，则获取数据，并把数据保存在 disk 缓存中</p>
 <p><strong>核心的思想是 data 的获取对客户端透明</strong>，客户端无需关注数据的来源，内存，disk，或者网络。客户端只需要获取数据</p>
-<p><img src="/media/14689380973016.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-19-14689380973016.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
 <blockquote>
 <p>NOTE：同上个 NOTE，数据库的实现比较简单，可以使用第三方库。 不要重复造轮子</p>
 </blockquote>
@@ -416,6 +416,7 @@ Getting Started当你写一个软件时不仅要满足需求，还要使得系�
 <li>高聚合Very cohesive.</li>
 <li>低耦合 Decoupled. </li>
 </ul>
+<p><strong>我现在根据这个架构为模板做一个开源 APP，完成以后会开源，详见请见 <a href="http://xuyushi.github.io/tags/从零开始/" target="_blank" rel="external">http://xuyushi.github.io/tags/从零开始/</a> </strong></p>
 
       
     </div>
