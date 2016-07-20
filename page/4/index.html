@@ -271,6 +271,147 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/02/状态模式/" itemprop="url">
+                  状态模式State Design Pattern
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-02T23:22:55+08:00" content="2016-02-02">
+              2016-02-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/02/状态模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/状态模式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>[TOC]</p>
+<h1 id="状态模式-State-Design-Pattern"><a href="#状态模式-State-Design-Pattern" class="headerlink" title="状态模式 State Design Pattern"></a>状态模式 State Design Pattern</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><ul>
+<li>根据不同的状态，采取不同的行为</li>
+<li>允许一个对象在其内部状态改变的时候改变其行为。这个对象看上去就像是改变了它的类一样</li>
+</ul>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>减少了 if else，switch 语句的复杂程度 </li>
+<li>增加新的状态和逻辑时，便于修改</li>
+</ul>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
+<li>类的种类增加<br>*</li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>定义一个 <code>context</code> 类，来给外接提供一个接口</li>
+<li>定义一个 <code>state</code> 基类</li>
+<li>根据<code>state</code> 状态，派生定义其他的不同状态类</li>
+<li>在派生<code>state</code> 中，定义不同的行为</li>
+<li>在<code>context</code>中持有一个当前 <code>state</code>的变量</li>
+<li>改变<code>context</code>中的<code>state</code>状态</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/02/状态模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/01/注解/" itemprop="url">
                   Java注解
                 </a>
@@ -1324,138 +1465,6 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/15/Android Studio中进行单元测试/" itemprop="url">
-                  Android Studio中进行单元测试
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-15T15:25:00+08:00" content="2015-08-15">
-              2015-08-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/15/Android Studio中进行单元测试/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/15/Android Studio中进行单元测试/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="新建hello-world工程"><a href="#新建hello-world工程" class="headerlink" title="新建hello_world工程"></a>新建hello_world工程</h3><p>略</p>
-<h3 id="配置单元测试"><a href="#配置单元测试" class="headerlink" title="配置单元测试"></a>配置单元测试</h3><p>首先，确认在Build Variants窗口内的Test Artifact中选择了”Unit Tests”。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/580359-ab4402443ad7dc5f.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
-<p>然后，在工程的src文件夹内创建test和test/java文件夹。需要注意的是，你不能在Android视图下进行这些操作，要么在系统的文件管理器内创建，要么在工程窗口左上方点击下拉菜单选择Project视图。最终的工程结构应该是这样的：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/580359-9e098817f6fcca44.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
-<blockquote>
-<p>配置成功之后<code>java</code>文件夹的颜色是绿色的</p>
-</blockquote>
-<p>最后，打开工程的build.gradle（Module:app）文件，添加JUnit4依赖，点击Gradle sync按钮。</p>
-<p>在<code>build.gradle</code>中加入依赖</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])</span></span><br><span class="line">    compile 'com.android.support:appcompat-v7:22.1.1'</span><br><span class="line">    testCompile 'junit:junit:4.12'</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/15/Android Studio中进行单元测试/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2015/08/15/robolectric/" itemprop="url">
                   robolectric
                 </a>
@@ -1617,7 +1626,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">58</span>
+              <span class="site-state-item-count">59</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
