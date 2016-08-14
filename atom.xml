@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-20T12:00:52.000Z</updated>
+  <updated>2016-08-14T06:13:34.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2016/08/14/activity%20%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2016/08/14/activity 总结/</id>
+    <published>2016-08-13T16:00:00.000Z</published>
+    <updated>2016-08-14T06:13:34.000Z</updated>
+    
+    <content type="html">&lt;p&gt;更多 Android 博文请关注我的博客 &lt;a href=&quot;http://xuyushi.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xuyushi.github.io&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Activity-总结&quot;&gt;&lt;a href=&quot;#Activity-总结&quot; class=&quot;headerlink&quot; title=&quot;Activity 总结&quot;&gt;&lt;/a&gt;Activity 总结&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-08-14-14710980877208.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-08-14-14710982175586.jpg?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-08-14-14711550022694.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;更多 Android 博文请关注我的博客 &lt;a href=&quot;http://xuyushi.github.io&quot;&gt;http://xuyushi.github.io&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Activity-总结&quot;&gt;&lt;a href=&quot;#Activity-总结&quot; class=&quot;headerlink&quot; title=&quot;Activity 总结&quot;&gt;&lt;/a&gt;Activity 总结&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-08-14-14710980877208.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+      <category term="clean" scheme="http://yoursite.com/tags/clean/"/>
+    
+  </entry>
   
   <entry>
     <title>Architecting Android…The evolution</title>
@@ -137,7 +165,7 @@
     <link href="http://yoursite.com/2016/07/19/Android%20clean%20architecting/"/>
     <id>http://yoursite.com/2016/07/19/Android clean architecting/</id>
     <published>2016-07-18T16:00:00.000Z</published>
-    <updated>2016-07-20T12:00:52.000Z</updated>
+    <updated>2016-08-01T03:21:29.000Z</updated>
     
     <content type="html">&lt;p&gt;更多 Android 博文请关注我的博客 &lt;a href=&quot;http://xuyushi.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xuyushi.github.io&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;本文为翻译，在原文的基础上略有改动&lt;/p&gt;
@@ -206,6 +234,9 @@
 &lt;li&gt;高聚合Very cohesive.&lt;/li&gt;
 &lt;li&gt;低耦合 Decoupled. &lt;/li&gt;
 &lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;拓展阅读 &lt;a href=&quot;http://xuyushi.github.io/2016/07/20/Architecting%20Android…The%20evolution/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xuyushi.github.io/2016/07/20/Architecting%20Android…The%20evolution/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;我现在根据这个架构为模板做一个开源 APP，完成以后会开源，详见请见 &lt;a href=&quot;http://xuyushi.github.io/tags/从零开始/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xuyushi.github.io/tags/从零开始/&lt;/a&gt; &lt;/strong&gt;&lt;/p&gt;
 </content>
     
@@ -280,6 +311,42 @@
   </entry>
   
   <entry>
+    <title>Android Application 从零开始 0 ——前言</title>
+    <link href="http://yoursite.com/2016/07/04/Android%20Application%20%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%200%20%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0%20/"/>
+    <id>http://yoursite.com/2016/07/04/Android Application 从零开始 0 ——概述 /</id>
+    <published>2016-07-03T16:00:00.000Z</published>
+    <updated>2016-07-20T12:00:52.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;叨叨叨&quot;&gt;&lt;a href=&quot;#叨叨叨&quot; class=&quot;headerlink&quot; title=&quot;叨叨叨&quot;&gt;&lt;/a&gt;叨叨叨&lt;/h1&gt;&lt;p&gt;有没有想过在没有业务的压力，没有项目接手时一堆繁杂代码的困扰，没有产品天马行空奇葩的需求，一个理想的 Android APP 是怎样一种架构。&lt;/p&gt;
+&lt;p&gt;从2016年起，我一直在持续学习 Android 的各种框架，力求使得项目更清晰，更易于扩展。从mvp 到 mvvm，到之后的依赖注入、rxjava、clean 架构。每一次都让我惊叹，原来代码可以写的这么解耦。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;工作已经有一年了，作为一个 Android developer，没有一个属于自己的 APP 怎么能行。准备周末宅家没事的时候就搬搬砖，将之前学的知识点都用上，力求做一个“完美”的框架的 APP&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;关于做什么app&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;煎蛋&lt;/strong&gt; （因为我是8年的资深蛋友啊 2333）&lt;/p&gt;
+&lt;h3 id=&quot;整体框架&quot;&gt;&lt;a href=&quot;#整体框架&quot; class=&quot;headerlink&quot; title=&quot;整体框架&quot;&gt;&lt;/a&gt;整体框架&lt;/h3&gt;&lt;p&gt;整体采用 Android-CleanArchitecture，整个 APP 分为三层，从外到内层依次为&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;presentation：最外层，Android 相关层。activity 、fragment、view、adapter、Presenter 都属于这一次。需要注意的。与普通的 mvp 结构不同的是，这里的 P层比mvp 的 p 要轻。不会业务逻辑，主要是调用domain 层的 uescase，在回调（subsriber）对 view做处理&lt;/li&gt;
+&lt;li&gt;domain：中间层，纯 java 代码，连接presentation 和 data。所有的业务逻辑都应该放这一次。通过repository 连接 data层、usecase 连接presentation。&lt;/li&gt;
+&lt;li&gt;data：采用repository模式。使得外层无需关心数据的具体来源。SP、DP、NET 、CATCH等操作都应封装在这一层。并对外暴露统一接口&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;个层之间使用 dagger2 依赖注入解耦，同时也方便了后期的单测。并且各层的数据传输使用 rxjava。使得数据的传递和变化更清晰。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-18-14688512685004.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;叨叨叨&quot;&gt;&lt;a href=&quot;#叨叨叨&quot; class=&quot;headerlink&quot; title=&quot;叨叨叨&quot;&gt;&lt;/a&gt;叨叨叨&lt;/h1&gt;&lt;p&gt;有没有想过在没有业务的压力，没有项目接手时一堆繁杂代码的困扰，没有产品天马行空奇葩的需求，一个理想的 Android APP 是怎样一种架构。&lt;/p&gt;
+&lt;p&gt;从2016年起，我一直在持续学习 Android 的各种框架，力求使得项目更清晰，更易于扩展。从mvp 到 mvvm，到之后的依赖注入、rxjava、clean 架构。每一次都让我惊叹，原来代码可以写的这么解耦。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+      <category term="从零开始" scheme="http://yoursite.com/tags/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android Application 从零开始 1 ——Gradle</title>
     <link href="http://yoursite.com/2016/07/04/Android%20Application%20%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%201%20%E2%80%94%E2%80%94Gradle/"/>
     <id>http://yoursite.com/2016/07/04/Android Application 从零开始 1 ——Gradle/</id>
@@ -318,42 +385,6 @@
       <category term="从零开始" scheme="http://yoursite.com/tags/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/"/>
     
       <category term="gradle" scheme="http://yoursite.com/tags/gradle/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Application 从零开始 0 ——前言</title>
-    <link href="http://yoursite.com/2016/07/04/Android%20Application%20%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%200%20%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0%20/"/>
-    <id>http://yoursite.com/2016/07/04/Android Application 从零开始 0 ——概述 /</id>
-    <published>2016-07-03T16:00:00.000Z</published>
-    <updated>2016-07-20T12:00:52.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;叨叨叨&quot;&gt;&lt;a href=&quot;#叨叨叨&quot; class=&quot;headerlink&quot; title=&quot;叨叨叨&quot;&gt;&lt;/a&gt;叨叨叨&lt;/h1&gt;&lt;p&gt;有没有想过在没有业务的压力，没有项目接手时一堆繁杂代码的困扰，没有产品天马行空奇葩的需求，一个理想的 Android APP 是怎样一种架构。&lt;/p&gt;
-&lt;p&gt;从2016年起，我一直在持续学习 Android 的各种框架，力求使得项目更清晰，更易于扩展。从mvp 到 mvvm，到之后的依赖注入、rxjava、clean 架构。每一次都让我惊叹，原来代码可以写的这么解耦。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;工作已经有一年了，作为一个 Android developer，没有一个属于自己的 APP 怎么能行。准备周末宅家没事的时候就搬搬砖，将之前学的知识点都用上，力求做一个“完美”的框架的 APP&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;关于做什么app&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;煎蛋&lt;/strong&gt; （因为我是8年的资深蛋友啊 2333）&lt;/p&gt;
-&lt;h3 id=&quot;整体框架&quot;&gt;&lt;a href=&quot;#整体框架&quot; class=&quot;headerlink&quot; title=&quot;整体框架&quot;&gt;&lt;/a&gt;整体框架&lt;/h3&gt;&lt;p&gt;整体采用 Android-CleanArchitecture，整个 APP 分为三层，从外到内层依次为&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;presentation：最外层，Android 相关层。activity 、fragment、view、adapter、Presenter 都属于这一次。需要注意的。与普通的 mvp 结构不同的是，这里的 P层比mvp 的 p 要轻。不会业务逻辑，主要是调用domain 层的 uescase，在回调（subsriber）对 view做处理&lt;/li&gt;
-&lt;li&gt;domain：中间层，纯 java 代码，连接presentation 和 data。所有的业务逻辑都应该放这一次。通过repository 连接 data层、usecase 连接presentation。&lt;/li&gt;
-&lt;li&gt;data：采用repository模式。使得外层无需关心数据的具体来源。SP、DP、NET 、CATCH等操作都应封装在这一层。并对外暴露统一接口&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;个层之间使用 dagger2 依赖注入解耦，同时也方便了后期的单测。并且各层的数据传输使用 rxjava。使得数据的传递和变化更清晰。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-07-18-14688512685004.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;叨叨叨&quot;&gt;&lt;a href=&quot;#叨叨叨&quot; class=&quot;headerlink&quot; title=&quot;叨叨叨&quot;&gt;&lt;/a&gt;叨叨叨&lt;/h1&gt;&lt;p&gt;有没有想过在没有业务的压力，没有项目接手时一堆繁杂代码的困扰，没有产品天马行空奇葩的需求，一个理想的 Android APP 是怎样一种架构。&lt;/p&gt;
-&lt;p&gt;从2016年起，我一直在持续学习 Android 的各种框架，力求使得项目更清晰，更易于扩展。从mvp 到 mvvm，到之后的依赖注入、rxjava、clean 架构。每一次都让我惊叹，原来代码可以写的这么解耦。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-    
-      <category term="从零开始" scheme="http://yoursite.com/tags/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B/"/>
     
   </entry>
   
@@ -1357,80 +1388,6 @@
   </entry>
   
   <entry>
-    <title>代理模式 Proxy Pattern</title>
-    <link href="http://yoursite.com/2016/02/23/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://yoursite.com/2016/02/23/代理模式/</id>
-    <published>2016-02-22T16:00:00.000Z</published>
-    <updated>2016-07-20T12:00:52.000Z</updated>
-    
-    <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;代理模式-Proxy-Pattern&quot;&gt;&lt;a href=&quot;#代理模式-Proxy-Pattern&quot; class=&quot;headerlink&quot; title=&quot;代理模式 Proxy Pattern&quot;&gt;&lt;/a&gt;代理模式 Proxy Pattern&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。&lt;/p&gt;
-&lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h2&gt;&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。&lt;/li&gt;
-&lt;li&gt;系统中有多于一个的产品族，而每次只使用其中某一产品族。&lt;/li&gt;
-&lt;li&gt;属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。&lt;/li&gt;
-&lt;li&gt;系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;UML-图&quot;&gt;&lt;a href=&quot;#UML-图&quot; class=&quot;headerlink&quot; title=&quot;UML 图&quot;&gt;&lt;/a&gt;UML 图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14562373472577.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Subject: 抽象主题角色&lt;br&gt;Proxy: 代理主题角色&lt;br&gt;RealSubject: 真实主题角色&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;简单实现&quot;&gt;&lt;a href=&quot;#简单实现&quot; class=&quot;headerlink&quot; title=&quot;简单实现&quot;&gt;&lt;/a&gt;简单实现&lt;/h2&gt;&lt;h3 id=&quot;例子&quot;&gt;&lt;a href=&quot;#例子&quot; class=&quot;headerlink&quot; title=&quot;例子&quot;&gt;&lt;/a&gt;例子&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Subject&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RealSubject&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Subject&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;RealSubject request&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Proxy&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Subject&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; RealSubject realSubject;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Proxy&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(RealSubject realSubject)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.realSubject = realSubject;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        preRequest();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        realSubject.request();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        afterRequest();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;afterRequest&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;Proxy afterRequest&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;preRequest&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;Proxy preRequest&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;客户端调用&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RealSubject&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Subject&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;RealSubject request&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;结果&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ProxyMain RUNNING&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Proxy preRequest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;RealSubject request&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Proxy afterRequest&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;类图&quot;&gt;&lt;a href=&quot;#类图&quot; class=&quot;headerlink&quot; title=&quot;类图&quot;&gt;&lt;/a&gt;类图&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14562381345397.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;优缺点&quot;&gt;&lt;a href=&quot;#优缺点&quot; class=&quot;headerlink&quot; title=&quot;优缺点&quot;&gt;&lt;/a&gt;优缺点&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;优点&lt;ul&gt;
-&lt;li&gt;代理模式能够协调调用者和被调用者，在一定程度上降低了系 统的耦合度。&lt;/li&gt;
-&lt;li&gt;远程代理使得客户端可以访问在远程机器上的对象，远程机器 可能具有更好的计算性能与处理速度，可以快速响应并处理客户端请求。&lt;/li&gt;
-&lt;li&gt;虚拟代理通过使用一个小对象来代表一个大对象，可以减少系 统资源的消耗，对系统进行优化并提高运行速度。&lt;/li&gt;
-&lt;li&gt;保护代理可以控制对真实对象的使用权限。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;缺点&lt;ul&gt;
-&lt;li&gt;由于在客户端和真实主题之间增加了代理对象，因此 有些类型的代理模式可能会造成请求的处理速度变慢。&lt;/li&gt;
-&lt;li&gt;实现代理模式需要额外的工作，有些代理模式的实现 非常复杂。    &lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;代理模式包含三个角色：抽象主题角色声明了真实主题和代理主题的共同接口；代理主题角色内部包含对真实主题的引用，从而可以在任何时候操作真实主题对象 真实主题角色定义了代理角色所代表的真实对象，在真实主题角色中实现了真实的业务操作，客户端可以通过代理主题角色间接调用真实主题角色中定义的方法。&lt;/li&gt;
-&lt;li&gt;如果需要创建一个资源消耗较大的对象，先创建一个消耗相对较小的对象来表示，真实对象只在需要时才会被真正创建，这个小对象称为虚拟代理。虚拟代理通过使用一个小对象来代表一个大对象，可以减少系统资源的消耗，对系统进行优化并提高运行速度。&lt;/li&gt;
-&lt;li&gt;保护代理可以控制对一个对象的访问，可以给不同的用户提供不同级别的使用权限。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://design-patterns.readthedocs.org/zh_CN/latest/structural_patterns/proxy.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://design-patterns.readthedocs.org/zh_CN/latest/structural_patterns/proxy.html&lt;/a&gt;&lt;br&gt;『head first 设计模式』&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;代理模式-Proxy-Pattern&quot;&gt;&lt;a href=&quot;#代理模式-Proxy-Pattern&quot; class=&quot;headerlink&quot; title=&quot;代理模式 Proxy Pattern&quot;&gt;&lt;/a&gt;代理模式 Proxy Pattern&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。&lt;/p&gt;
-&lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h2&gt;&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。&lt;/li&gt;
-&lt;li&gt;系统中有多于一个的产品族，而每次只使用其中某一产品族。&lt;/li&gt;
-&lt;li&gt;属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。&lt;/li&gt;
-&lt;li&gt;系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;UML-图&quot;&gt;&lt;a href=&quot;#UML-图&quot; class=&quot;headerlink&quot; title=&quot;UML 图&quot;&gt;&lt;/a&gt;UML 图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14562373472577.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Subject: 抽象主题角色&lt;br&gt;Proxy: 代理主题角色&lt;br&gt;RealSubject: 真实主题角色&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-      <category term="Pattern" scheme="http://yoursite.com/tags/Pattern/"/>
-    
-      <category term="设计模式" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>迭代器模式 Iterator Pattern</title>
     <link href="http://yoursite.com/2016/02/23/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/"/>
     <id>http://yoursite.com/2016/02/23/迭代器模式/</id>
@@ -1601,67 +1558,67 @@
   </entry>
   
   <entry>
-    <title>命令模式 Command Pattern</title>
-    <link href="http://yoursite.com/2016/02/22/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://yoursite.com/2016/02/22/命令模式/</id>
-    <published>2016-02-22T14:26:00.000Z</published>
+    <title>代理模式 Proxy Pattern</title>
+    <link href="http://yoursite.com/2016/02/23/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://yoursite.com/2016/02/23/代理模式/</id>
+    <published>2016-02-22T16:00:00.000Z</published>
     <updated>2016-07-20T12:00:52.000Z</updated>
     
     <content type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;命令模式-Command-Pattern&quot;&gt;&lt;a href=&quot;#命令模式-Command-Pattern&quot; class=&quot;headerlink&quot; title=&quot;命令模式 Command Pattern&quot;&gt;&lt;/a&gt;命令模式 Command Pattern&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;将一个请求封装为一个对象，从而使我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;系统需要将请求调用者和请求接收者解耦，使得调用者和接收者不直接交互。&lt;/li&gt;
-&lt;li&gt;系统需要在不同的时间指定请求、将请求排队和执行请求。&lt;/li&gt;
-&lt;li&gt;系统需要支持命令的撤销(Undo)操作和恢复(Redo)操作。&lt;/li&gt;
-&lt;li&gt;系统需要将一组操作组合在一起，即支持宏命令&lt;/li&gt;
+&lt;h1 id=&quot;代理模式-Proxy-Pattern&quot;&gt;&lt;a href=&quot;#代理模式-Proxy-Pattern&quot; class=&quot;headerlink&quot; title=&quot;代理模式 Proxy Pattern&quot;&gt;&lt;/a&gt;代理模式 Proxy Pattern&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。&lt;/p&gt;
+&lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h2&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。&lt;/li&gt;
+&lt;li&gt;系统中有多于一个的产品族，而每次只使用其中某一产品族。&lt;/li&gt;
+&lt;li&gt;属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。&lt;/li&gt;
+&lt;li&gt;系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;UML-图&quot;&gt;&lt;a href=&quot;#UML-图&quot; class=&quot;headerlink&quot; title=&quot;UML 图&quot;&gt;&lt;/a&gt;UML 图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14561465850883.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;AbstractFactory：抽象工厂&lt;br&gt;ConcreteFactory：具体工厂&lt;br&gt;AbstractProduct：抽象产品&lt;br&gt;Product：具体产品&lt;/p&gt;
+&lt;h2 id=&quot;UML-图&quot;&gt;&lt;a href=&quot;#UML-图&quot; class=&quot;headerlink&quot; title=&quot;UML 图&quot;&gt;&lt;/a&gt;UML 图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14562373472577.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Subject: 抽象主题角色&lt;br&gt;Proxy: 代理主题角色&lt;br&gt;RealSubject: 真实主题角色&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;简单实现&quot;&gt;&lt;a href=&quot;#简单实现&quot; class=&quot;headerlink&quot; title=&quot;简单实现&quot;&gt;&lt;/a&gt;简单实现&lt;/h2&gt;&lt;h3 id=&quot;例子&quot;&gt;&lt;a href=&quot;#例子&quot; class=&quot;headerlink&quot; title=&quot;例子&quot;&gt;&lt;/a&gt;例子&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Light&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;tunOn&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;Light tun On&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;tunOff&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;Light tun Off&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Command&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;excute&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;LightOffCommand&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Command&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Light light;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;LightOffCommand&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Light light)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.light = light;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;excute&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        light.tunOff();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;LightOnCommand&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Command&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Light light;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;LightOnCommand&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Light light)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.light = light;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;excute&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        light.tunOn();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Invoker&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Command command;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Invoker&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Command command)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.command = command;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setCommand&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Command command)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.command = command;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        command.excute();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;简单实现&quot;&gt;&lt;a href=&quot;#简单实现&quot; class=&quot;headerlink&quot; title=&quot;简单实现&quot;&gt;&lt;/a&gt;简单实现&lt;/h2&gt;&lt;h3 id=&quot;例子&quot;&gt;&lt;a href=&quot;#例子&quot; class=&quot;headerlink&quot; title=&quot;例子&quot;&gt;&lt;/a&gt;例子&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Subject&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RealSubject&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Subject&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;RealSubject request&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Proxy&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Subject&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; RealSubject realSubject;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Proxy&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(RealSubject realSubject)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.realSubject = realSubject;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        preRequest();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        realSubject.request();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        afterRequest();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;afterRequest&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;Proxy afterRequest&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;preRequest&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;Proxy preRequest&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;客户端调用&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;CommandMain&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;CommandMain RUNNING&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;----&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Light light = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Light();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Command commandOn = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LightOnCommand(light);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Invoker invoker = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Invoker(commandOn);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        invoker.call();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;----&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Command commandOff = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LightOffCommand(light);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        invoker.setCommand(commandOff);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        invoker.call();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RealSubject&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Subject&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;RealSubject request&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;结果&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CommandMain RUNNING&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;----&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Light tun On&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;----&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Light tun Off&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;类图&quot;&gt;&lt;a href=&quot;#类图&quot; class=&quot;headerlink&quot; title=&quot;类图&quot;&gt;&lt;/a&gt;类图&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14561474668159.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ProxyMain RUNNING&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Proxy preRequest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;RealSubject request&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Proxy afterRequest&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;类图&quot;&gt;&lt;a href=&quot;#类图&quot; class=&quot;headerlink&quot; title=&quot;类图&quot;&gt;&lt;/a&gt;类图&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14562381345397.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;优缺点&quot;&gt;&lt;a href=&quot;#优缺点&quot; class=&quot;headerlink&quot; title=&quot;优缺点&quot;&gt;&lt;/a&gt;优缺点&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;优点&lt;ul&gt;
-&lt;li&gt;降低系统的耦合度。&lt;/li&gt;
-&lt;li&gt;新的命令可以很容易地加入到系统中。&lt;/li&gt;
-&lt;li&gt;可以比较容易地设计一个命令队列和宏命令（组合命令）。&lt;/li&gt;
-&lt;li&gt;可以方便地实现对请求的Undo和Redo。&lt;/li&gt;
+&lt;li&gt;代理模式能够协调调用者和被调用者，在一定程度上降低了系 统的耦合度。&lt;/li&gt;
+&lt;li&gt;远程代理使得客户端可以访问在远程机器上的对象，远程机器 可能具有更好的计算性能与处理速度，可以快速响应并处理客户端请求。&lt;/li&gt;
+&lt;li&gt;虚拟代理通过使用一个小对象来代表一个大对象，可以减少系 统资源的消耗，对系统进行优化并提高运行速度。&lt;/li&gt;
+&lt;li&gt;保护代理可以控制对真实对象的使用权限。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;缺点&lt;ul&gt;
-&lt;li&gt;使用命令模式可能会导致某些系统有过多的具体命令类。因为针对每一个命令都需要设计一个具体命令类，因此某些系统可能需要大量具体命令类，这将影响命令模式的使用。&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;/li&gt;
+&lt;li&gt;由于在客户端和真实主题之间增加了代理对象，因此 有些类型的代理模式可能会造成请求的处理速度变慢。&lt;/li&gt;
+&lt;li&gt;实现代理模式需要额外的工作，有些代理模式的实现 非常复杂。    &lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;命令模式包含四个角色：抽象命令类中声明了用于执行请求的execute()等方法，通过这些方法可以调用请求接收者的相关操作；具体命令类是抽象命令类的子类，实现了在抽象命令类中声明的方法，它对应具体的接收者对象，将接收者对象的动作绑定其中；调用者即请求的发送者，又称为请求者，它通过命令对象来执行请求；接收者执行与请求相关的操作，它具体实现对请求的业务处理。&lt;/li&gt;
-&lt;li&gt;命令模式的本质是对命令进行封装，将发出命令的责任和执行命令的责任分割开。命令模式使请求本身成为一个对象，这个对象和其他对象一样可以被存储和传递。&lt;/li&gt;
-&lt;li&gt;命令模式的主要优点在于降低系统的耦合度，增加新的命令很方便，而且可以比较容易地设计一个命令队列和宏命令，并方便地实现对请求的撤销和恢复；其主要缺点在于可能会导致某些系统有过多的具体命令类。&lt;/li&gt;
-&lt;li&gt;命令模式适用情况包括：需要将请求调用者和请求接收者解耦，使得调用者和接收者不直接交互；需要在不同的时间指定请求、将请求排队和执行请求；需要支持命令的撤销操作和恢复操作，需要将一组操作组合在一起，即支持宏命令。&lt;/li&gt;
+&lt;li&gt;代理模式包含三个角色：抽象主题角色声明了真实主题和代理主题的共同接口；代理主题角色内部包含对真实主题的引用，从而可以在任何时候操作真实主题对象 真实主题角色定义了代理角色所代表的真实对象，在真实主题角色中实现了真实的业务操作，客户端可以通过代理主题角色间接调用真实主题角色中定义的方法。&lt;/li&gt;
+&lt;li&gt;如果需要创建一个资源消耗较大的对象，先创建一个消耗相对较小的对象来表示，真实对象只在需要时才会被真正创建，这个小对象称为虚拟代理。虚拟代理通过使用一个小对象来代表一个大对象，可以减少系统资源的消耗，对系统进行优化并提高运行速度。&lt;/li&gt;
+&lt;li&gt;保护代理可以控制对一个对象的访问，可以给不同的用户提供不同级别的使用权限。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://sourcemaking.com/design_patterns/command&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://sourcemaking.com/design_patterns/command&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://design-patterns.readthedocs.org/zh_CN/latest/creational_patterns/abstract_factory.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://design-patterns.readthedocs.org/zh_CN/latest/creational_patterns/abstract_factory.html&lt;/a&gt;&lt;br&gt;『head first 设计模式』&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://design-patterns.readthedocs.org/zh_CN/latest/structural_patterns/proxy.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://design-patterns.readthedocs.org/zh_CN/latest/structural_patterns/proxy.html&lt;/a&gt;&lt;br&gt;『head first 设计模式』&lt;/p&gt;
 &lt;/blockquote&gt;
 </content>
     
     <summary type="html">
     
       &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;命令模式-Command-Pattern&quot;&gt;&lt;a href=&quot;#命令模式-Command-Pattern&quot; class=&quot;headerlink&quot; title=&quot;命令模式 Command Pattern&quot;&gt;&lt;/a&gt;命令模式 Command Pattern&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;将一个请求封装为一个对象，从而使我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;系统需要将请求调用者和请求接收者解耦，使得调用者和接收者不直接交互。&lt;/li&gt;
-&lt;li&gt;系统需要在不同的时间指定请求、将请求排队和执行请求。&lt;/li&gt;
-&lt;li&gt;系统需要支持命令的撤销(Undo)操作和恢复(Redo)操作。&lt;/li&gt;
-&lt;li&gt;系统需要将一组操作组合在一起，即支持宏命令&lt;/li&gt;
+&lt;h1 id=&quot;代理模式-Proxy-Pattern&quot;&gt;&lt;a href=&quot;#代理模式-Proxy-Pattern&quot; class=&quot;headerlink&quot; title=&quot;代理模式 Proxy Pattern&quot;&gt;&lt;/a&gt;代理模式 Proxy Pattern&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。&lt;/p&gt;
+&lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h2&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。&lt;/li&gt;
+&lt;li&gt;系统中有多于一个的产品族，而每次只使用其中某一产品族。&lt;/li&gt;
+&lt;li&gt;属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。&lt;/li&gt;
+&lt;li&gt;系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;UML-图&quot;&gt;&lt;a href=&quot;#UML-图&quot; class=&quot;headerlink&quot; title=&quot;UML 图&quot;&gt;&lt;/a&gt;UML 图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14561465850883.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;AbstractFactory：抽象工厂&lt;br&gt;ConcreteFactory：具体工厂&lt;br&gt;AbstractProduct：抽象产品&lt;br&gt;Product：具体产品&lt;/p&gt;
+&lt;h2 id=&quot;UML-图&quot;&gt;&lt;a href=&quot;#UML-图&quot; class=&quot;headerlink&quot; title=&quot;UML 图&quot;&gt;&lt;/a&gt;UML 图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14562373472577.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Subject: 抽象主题角色&lt;br&gt;Proxy: 代理主题角色&lt;br&gt;RealSubject: 真实主题角色&lt;/p&gt;
     
     </summary>
     
