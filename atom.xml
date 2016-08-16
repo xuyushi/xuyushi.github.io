@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-16T11:42:58.000Z</updated>
+  <updated>2016-08-16T11:44:44.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>迭代器模式 Iterator Pattern</title>
-    <link href="http://yoursite.com/2016/08/16/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F%20Iterator%20Pattern/"/>
-    <id>http://yoursite.com/2016/08/16/迭代器模式 Iterator Pattern/</id>
+    <title>生产者 消费者模式</title>
+    <link href="http://yoursite.com/2016/08/16/%E7%94%9F%E4%BA%A7%E8%80%85%20%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://yoursite.com/2016/08/16/生产者 消费者模式/</id>
     <published>2016-08-15T16:00:00.000Z</published>
-    <updated>2016-08-16T11:42:58.000Z</updated>
+    <updated>2016-08-16T11:44:44.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;生产者-消费者模式&quot;&gt;&lt;a href=&quot;#生产者-消费者模式&quot; class=&quot;headerlink&quot; title=&quot;生产者 消费者模式&quot;&gt;&lt;/a&gt;生产者 消费者模式&lt;/h1&gt;&lt;p&gt;对于多线程程序来说，不管任何编程语言，生产者和消费者模型都是最经典的。就像学习每一门编程语言一样，Hello World！都是最经典的例子。&lt;/p&gt;
 &lt;p&gt;实际上，准确说应该是“生产者-消费者-仓储”模型，离开了仓储，生产者消费者模型就显得没有说服力了。&lt;/p&gt;
@@ -61,34 +61,6 @@
       <category term="Pattern" scheme="http://yoursite.com/tags/Pattern/"/>
     
       <category term="设计模式" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Activity 总结</title>
-    <link href="http://yoursite.com/2016/08/14/activity%20%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2016/08/14/activity 总结/</id>
-    <published>2016-08-13T16:00:00.000Z</published>
-    <updated>2016-08-16T11:42:58.000Z</updated>
-    
-    <content type="html">&lt;p&gt;更多 Android 博文请关注我的博客 &lt;a href=&quot;http://xuyushi.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xuyushi.github.io&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;Activity-总结&quot;&gt;&lt;a href=&quot;#Activity-总结&quot; class=&quot;headerlink&quot; title=&quot;Activity 总结&quot;&gt;&lt;/a&gt;Activity 总结&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/media/14710980877208.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;&lt;img src=&quot;/media/14710982175586.jpg?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/media/14711550022694.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;更多 Android 博文请关注我的博客 &lt;a href=&quot;http://xuyushi.github.io&quot;&gt;http://xuyushi.github.io&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;Activity-总结&quot;&gt;&lt;a href=&quot;#Activity-总结&quot; class=&quot;headerlink&quot; title=&quot;Activity 总结&quot;&gt;&lt;/a&gt;Activity 总结&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/media/14710980877208.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-    
-      <category term="基础" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -139,6 +111,34 @@
 &lt;li&gt;修改一个静态的方法，其作用的范围是整个静态方法，&lt;strong&gt;作用的对象是这个类的所有对象&lt;/strong&gt;；&lt;/li&gt;
 &lt;li&gt;修改一个类，其作用的范围是synchronized后面括号括起来的部分，&lt;strong&gt;作用的对象是这个类的所有对象&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+      <category term="基础" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Activity 总结</title>
+    <link href="http://yoursite.com/2016/08/14/activity%20%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2016/08/14/activity 总结/</id>
+    <published>2016-08-13T16:00:00.000Z</published>
+    <updated>2016-08-16T11:42:58.000Z</updated>
+    
+    <content type="html">&lt;p&gt;更多 Android 博文请关注我的博客 &lt;a href=&quot;http://xuyushi.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://xuyushi.github.io&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Activity-总结&quot;&gt;&lt;a href=&quot;#Activity-总结&quot; class=&quot;headerlink&quot; title=&quot;Activity 总结&quot;&gt;&lt;/a&gt;Activity 总结&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/media/14710980877208.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;img src=&quot;/media/14710982175586.jpg?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/media/14711550022694.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;更多 Android 博文请关注我的博客 &lt;a href=&quot;http://xuyushi.github.io&quot;&gt;http://xuyushi.github.io&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Activity-总结&quot;&gt;&lt;a href=&quot;#Activity-总结&quot; class=&quot;headerlink&quot; title=&quot;Activity 总结&quot;&gt;&lt;/a&gt;Activity 总结&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/media/14710980877208.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
