@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/09/16/Window%20%E5%92%8C%20WindowManager/</loc>
+    
+    <lastmod>2016-09-17T07:41:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/09/15/Activity%EF%BC%8CDecorView%EF%BC%8CPhoneWindow%E5%92%8CViewRoot%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E7%9B%B8%E5%85%B3%E5%85%B3%E7%B3%BB/</loc>
+    
+    <lastmod>2016-09-17T07:41:31.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/02/23/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</loc>
+    
+    <lastmod>2016-09-17T07:41:26.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/08/21/Runnable%E3%80%81Callable%E3%80%81Future%E3%80%81FutureTask%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
     
     <lastmod>2016-09-03T11:10:39.000Z</lastmod>
@@ -30,28 +51,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/06/10/retrofit%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%902/</loc>
-    
-    <lastmod>2016-08-19T03:16:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/07/16/Android%20Application%20%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%202%20%E2%80%94%E2%80%94DI/</loc>
-    
-    <lastmod>2016-08-19T03:16:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2015/08/15/Android%20Studio%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</loc>
-    
-    <lastmod>2016-08-19T03:16:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/03/05/Android%20MVVM/</loc>
+    <loc>http://yoursite.com/2016/06/09/retrofit%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%901/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
@@ -59,6 +59,13 @@
   
   <url>
     <loc>http://yoursite.com/2015/07/09/Android%20View%20%E5%B0%8F%E7%BB%93/</loc>
+    
+    <lastmod>2016-08-19T03:16:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/03/05/Android%20MVVM/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
@@ -100,14 +107,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/06/15/GSON%20%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>http://yoursite.com/2015/06/22/EventBus%E5%AD%A6%E4%B9%A0/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/06/22/EventBus%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>http://yoursite.com/2015/06/15/GSON%20%E5%AD%A6%E4%B9%A0/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
@@ -121,7 +128,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/06/19/ASimpleCache/</loc>
+    <loc>http://yoursite.com/2016/06/18/Android%20APP%20%E6%96%B0%E6%A1%86%E6%9E%B6/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
@@ -163,14 +170,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/10/27/Media%20Playback/</loc>
+    <loc>http://yoursite.com/2016/03/26/Material%20Design/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/03/26/Material%20Design/</loc>
+    <loc>http://yoursite.com/2015/10/27/Media%20Playback/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
@@ -191,6 +198,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/2016/07/16/Android%20Application%20%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%202%20%E2%80%94%E2%80%94DI/</loc>
+    
+    <lastmod>2016-08-19T03:16:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/08/14/activity%20%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
@@ -198,14 +212,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/07/04/aidl%20%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>http://yoursite.com/2015/06/24/git%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/06/24/git%E6%80%BB%E7%BB%93/</loc>
+    <loc>http://yoursite.com/2015/07/04/aidl%20%E5%AD%A6%E4%B9%A0/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
@@ -240,14 +254,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/06/09/retrofit%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%901/</loc>
+    <loc>http://yoursite.com/2016/06/19/ASimpleCache/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/06/18/Android%20APP%20%E6%96%B0%E6%A1%86%E6%9E%B6/</loc>
+    <loc>http://yoursite.com/2016/06/10/retrofit%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%902/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
@@ -282,13 +296,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/07/05/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%9F%A5%E7%9C%8Bandroid%20sqlite%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    
-    <lastmod>2016-08-19T03:16:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2015/07/09/wifi%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
@@ -297,6 +304,13 @@
   
   <url>
     <loc>http://yoursite.com/2016/02/23/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</loc>
+    
+    <lastmod>2016-08-19T03:16:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/07/05/%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%9F%A5%E7%9C%8Bandroid%20sqlite%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
@@ -338,14 +352,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/02/21/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</loc>
-    
-    <lastmod>2016-08-19T03:16:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/02/21/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>http://yoursite.com/2016/02/22/%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
@@ -359,7 +366,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/02/22/%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>http://yoursite.com/2016/02/21/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</loc>
+    
+    <lastmod>2016-08-19T03:16:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/02/21/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
@@ -387,21 +401,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/06/27/%E7%99%BB%E9%99%86%E6%A1%86UI/</loc>
-    
-    <lastmod>2016-08-19T03:16:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2016/02/01/%E6%B3%A8%E8%A7%A3/</loc>
-    
-    <lastmod>2016-08-19T03:16:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/08/16/%E7%94%9F%E4%BA%A7%E8%80%85%20%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
@@ -415,7 +415,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/02/17/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>http://yoursite.com/2016/08/16/%E7%94%9F%E4%BA%A7%E8%80%85%20%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F/</loc>
+    
+    <lastmod>2016-08-19T03:16:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/06/27/%E7%99%BB%E9%99%86%E6%A1%86UI/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
@@ -423,6 +430,13 @@
   
   <url>
     <loc>http://yoursite.com/2015/10/24/%E8%87%AA%E5%AE%9A%E4%B9%89view/</loc>
+    
+    <lastmod>2016-08-19T03:16:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/02/17/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
@@ -450,14 +464,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/02/23/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>http://yoursite.com/2015/06/27/%E8%BF%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2015/06/27/%E8%BF%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</loc>
+    <loc>http://yoursite.com/2015/08/15/Android%20Studio%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</loc>
     
     <lastmod>2016-08-19T03:16:56.000Z</lastmod>
     

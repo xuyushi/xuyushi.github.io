@@ -271,8 +271,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/01/14/Java 引用/" itemprop="url">
-                  强引用、软引用、弱引用、虚引用
+                <a class="post-title-link" href="/2016/02/02/状态模式/" itemprop="url">
+                  状态模式State Design Pattern
                 </a>
               
             
@@ -285,8 +285,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-14T17:27:00+08:00" content="2016-01-14">
-              2016-01-14
+            <time itemprop="dateCreated" datetime="2016-02-02T23:22:55+08:00" content="2016-02-02">
+              2016-02-02
             </time>
           </span>
 
@@ -315,8 +315,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/14/Java 引用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/Java 引用/" itemprop="commentsCount"></span>
+                <a href="/2016/02/02/状态模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/状态模式/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -341,14 +341,157 @@
       
         
           <p>[TOC]</p>
-<h1 id="强引用、软引用、弱引用、虚引用"><a href="#强引用、软引用、弱引用、虚引用" class="headerlink" title="强引用、软引用、弱引用、虚引用"></a>强引用、软引用、弱引用、虚引用</h1><h2 id="强引用-StrongReference"><a href="#强引用-StrongReference" class="headerlink" title="强引用 StrongReference"></a>强引用 StrongReference</h2><blockquote>
-<p>只要某个对象有强引用与之关联，JVM必定不会回收这个对象，即使在内存不足的情况下，JVM宁愿抛出OutOfMemory错误也不会回收这种对象</p>
-</blockquote>
-<p>若需要 jvm 回收此对象，可以将对象复制为 null</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object o = <span class="keyword">new</span> Object();   <span class="comment">//  强引用  </span></span><br><span class="line">o = <span class="keyword">null</span>;     <span class="comment">// 帮助垃圾收集器回收此对象</span></span><br></pre></td></tr></table></figure>
-<p><strong>但是如果这个o是全局的变量时，就需要在不用这个对象时赋值为null，因为强引用不会被垃圾回收。</strong></p>
+<h1 id="状态模式-State-Design-Pattern"><a href="#状态模式-State-Design-Pattern" class="headerlink" title="状态模式 State Design Pattern"></a>状态模式 State Design Pattern</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><ul>
+<li>根据不同的状态，采取不同的行为</li>
+<li>允许一个对象在其内部状态改变的时候改变其行为。这个对象看上去就像是改变了它的类一样</li>
+</ul>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>减少了 if else，switch 语句的复杂程度 </li>
+<li>增加新的状态和逻辑时，便于修改</li>
+</ul>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
+<li>类的种类增加<br>*</li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>定义一个 <code>context</code> 类，来给外接提供一个接口</li>
+<li>定义一个 <code>state</code> 基类</li>
+<li>根据<code>state</code> 状态，派生定义其他的不同状态类</li>
+<li>在派生<code>state</code> 中，定义不同的行为</li>
+<li>在<code>context</code>中持有一个当前 <code>state</code>的变量</li>
+<li>改变<code>context</code>中的<code>state</code>状态</li>
+</ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/14/Java 引用/#more" rel="contents">
+            <a class="btn" href="/2016/02/02/状态模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/注解/" itemprop="url">
+                  Java注解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T15:12:00+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/注解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/注解/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>[TOC]</p>
+<h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><h2 id="注解目的"><a href="#注解目的" class="headerlink" title="注解目的"></a>注解目的</h2><ol>
+<li>生成文档 ，如 @see @param @return 等</li>
+<li>跟踪代码依赖性，实现替代配置文件功能</li>
+<li>在编译时进行格式检查。如@override </li>
+</ol>
+<h2 id="注解基础"><a href="#注解基础" class="headerlink" title="注解基础"></a>注解基础</h2><p>最基础的注解如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br></pre></td></tr></table></figure>
+<p>@ 表示这是一个注解，之后的字母表示这个注解的名字，以上例子的注解名字为 <code>Entity</code></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/01/注解/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -476,6 +619,134 @@
 <p><em>长生命周期的对象持有短生命周期对象的引用就很可能发生内存泄露，尽管短生命周期对象已经不再需要，但是因为长生命周期对象持有它的引用而导致不能被回收，这就是java中内存泄露的发生场景。</em></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/01/14/内存泄露/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/14/Java 引用/" itemprop="url">
+                  强引用、软引用、弱引用、虚引用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-14T17:27:00+08:00" content="2016-01-14">
+              2016-01-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/14/Java 引用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/Java 引用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>[TOC]</p>
+<h1 id="强引用、软引用、弱引用、虚引用"><a href="#强引用、软引用、弱引用、虚引用" class="headerlink" title="强引用、软引用、弱引用、虚引用"></a>强引用、软引用、弱引用、虚引用</h1><h2 id="强引用-StrongReference"><a href="#强引用-StrongReference" class="headerlink" title="强引用 StrongReference"></a>强引用 StrongReference</h2><blockquote>
+<p>只要某个对象有强引用与之关联，JVM必定不会回收这个对象，即使在内存不足的情况下，JVM宁愿抛出OutOfMemory错误也不会回收这种对象</p>
+</blockquote>
+<p>若需要 jvm 回收此对象，可以将对象复制为 null</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object o = <span class="keyword">new</span> Object();   <span class="comment">//  强引用  </span></span><br><span class="line">o = <span class="keyword">null</span>;     <span class="comment">// 帮助垃圾收集器回收此对象</span></span><br></pre></td></tr></table></figure>
+<p><strong>但是如果这个o是全局的变量时，就需要在不用这个对象时赋值为null，因为强引用不会被垃圾回收。</strong></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/14/Java 引用/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1065,143 +1336,6 @@
             
               
                 
-                <a class="post-title-link" href="/2015/08/15/robolectric/" itemprop="url">
-                  robolectric
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-15T15:25:00+08:00" content="2015-08-15">
-              2015-08-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/15/robolectric/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/15/robolectric/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Robolectric，它的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。</p>
-<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>环境 : Android Studio 1.2.1.1+ Android Gradle Plugin 1.2.3+ Gradle 2.2.1+</p>
-<p>gradle中加入：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  ...</span><br><span class="line">  testCompile <span class="string">'org.robolectric:robolectric:3.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>确认在Build Variants窗口内的Test Artifact中选择了”Unit Tests”。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/580359-ab4402443ad7dc5f.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
-<p>然后，在工程的src文件夹内创建test和test/java文件夹。需要注意的是，你不能在Android视图下进行这些操作，要么在系统的文件管理器内创建，要么在工程窗口左上方点击下拉菜单选择Project视图。最终的工程结构应该是这样的：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/580359-9e098817f6fcca44.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
-<blockquote>
-<p>配置成功之后<code>java</code>文件夹的颜色是绿色的</p>
-</blockquote>
-<p><code>**重要重要**</code><br>Run -&gt; Edit Configurations -&gt; Defaults -&gt; Junit<br>设置如下  <strong>$MODULE_DIR$.</strong><br><img src="https://camo.githubusercontent.com/b6776bd8da529df04410b6c6d5d6a6a63ebce717/687474703a2f2f726f626f6c6563747269632e6f72672f696d616765732f616e64726f69642d73747564696f2d636f6e6669677572652d64656661756c74732d34626634383430322e706e67" alt=""></p>
-<p>gradle 同步</p>
-<blockquote>
-<p>注意Robolectric目前不支持android 5.1 API level 22，编译时 sdk = 21 或者以下。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/08/15/robolectric/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2015/08/15/Android Studio中进行单元测试/" itemprop="url">
                   Android Studio中进行单元测试
                 </a>
@@ -1334,8 +1468,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/14/Android 触摸事件传递机制/" itemprop="url">
-                  Android 触摸事件传递机制
+                <a class="post-title-link" href="/2015/08/15/robolectric/" itemprop="url">
+                  robolectric
                 </a>
               
             
@@ -1348,8 +1482,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-14T20:13:00+08:00" content="2015-07-14">
-              2015-07-14
+            <time itemprop="dateCreated" datetime="2015-08-15T15:25:00+08:00" content="2015-08-15">
+              2015-08-15
             </time>
           </span>
 
@@ -1378,8 +1512,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/14/Android 触摸事件传递机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/Android 触摸事件传递机制/" itemprop="commentsCount"></span>
+                <a href="/2015/08/15/robolectric/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/15/robolectric/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1403,147 +1537,24 @@
 
       
         
-          <p>[TOC]</p>
-<h1 id="Android-触摸事件传递机制"><a href="#Android-触摸事件传递机制" class="headerlink" title="Android 触摸事件传递机制"></a>Android 触摸事件传递机制</h1><p>之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递</p>
-<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><h3 id="常用监听方法"><a href="#常用监听方法" class="headerlink" title="常用监听方法"></a>常用监听方法</h3><p>view表示没有子空间的布局，例如textview、button等，MotionEvent分为三种</p>
-<ul>
-<li>MotionEvent.ACTION_DOWN：按下时候</li>
-<li>MotionEvent.ACTION_MOVE：滑动时</li>
-<li>MotionEvent.ACTION_UP：抬起时</li>
-</ul>
-<p>常用两种监听事件</p>
+          <p>Robolectric，它的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>环境 : Android Studio 1.2.1.1+ Android Gradle Plugin 1.2.3+ Gradle 2.2.1+</p>
+<p>gradle中加入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  ...</span><br><span class="line">  testCompile <span class="string">'org.robolectric:robolectric:3.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>确认在Build Variants窗口内的Test Artifact中选择了”Unit Tests”。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-ab4402443ad7dc5f.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p>然后，在工程的src文件夹内创建test和test/java文件夹。需要注意的是，你不能在Android视图下进行这些操作，要么在系统的文件管理器内创建，要么在工程窗口左上方点击下拉菜单选择Project视图。最终的工程结构应该是这样的：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-9e098817f6fcca44.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<blockquote>
+<p>配置成功之后<code>java</code>文件夹的颜色是绿色的</p>
+</blockquote>
+<p><code>**重要重要**</code><br>Run -&gt; Edit Configurations -&gt; Defaults -&gt; Junit<br>设置如下  <strong>$MODULE_DIR$.</strong><br><img src="https://camo.githubusercontent.com/b6776bd8da529df04410b6c6d5d6a6a63ebce717/687474703a2f2f726f626f6c6563747269632e6f72672f696d616765732f616e64726f69642d73747564696f2d636f6e6669677572652d64656661756c74732d34626634383430322e706e67" alt=""></p>
+<p>gradle 同步</p>
+<blockquote>
+<p>注意Robolectric目前不支持android 5.1 API level 22，编译时 sdk = 21 或者以下。</p>
+</blockquote>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/14/Android 触摸事件传递机制/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/12/volley学习/" itemprop="url">
-                  volley学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-12T17:13:00+08:00" content="2015-07-12">
-              2015-07-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/12/volley学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/12/volley学习/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>[TOC]</p>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Vollry特别适合数据量不大但是通信频繁的场景。</p>
-<p>比如以前从网上下载图片的步骤可能这样的流程：</p>
-<ul>
-<li>在ListAdatpter-getview（）方法里开始图像的读取</li>
-<li>通过AsyncTask等机制使用HttpURLConnection从服务器去读取图片资源</li>
-<li>在AsyncTask-onPostExecute（）里设置相应的Imageview的属性</li>
-</ul>
-<p>而在Volley下，只需要一个函数即可<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/12/volley学习/#more" rel="contents">
+            <a class="btn" href="/2015/08/15/robolectric/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1618,7 +1629,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1635,7 +1646,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

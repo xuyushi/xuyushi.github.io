@@ -1,0 +1,702 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="SaHbPoHOxqF4QuVM1TDhfg_Cqik1EY89r1Yt60Bcp5c" />
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="window," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Xu Yushi''s Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="概述window
+window 是一个抽象类，具体实现是PhoneWindow
+window 也是一个抽象的概念，每个 window 内对应这一个 DecorView 和一个 ViewRootImpl，window 和DecorView 通过ViewRootImpl联系。WindowManagerWindowManager 是 外界访问 Window 的入口">
+<meta property="og:type" content="article">
+<meta property="og:title" content="window、Activity、DecorView、ViewRoot关系">
+<meta property="og:url" content="http://yoursite.com/2016/09/16/Window 和 WindowManager/index.html">
+<meta property="og:site_name" content="Xu Yushi''s Blog">
+<meta property="og:description" content="概述window
+window 是一个抽象类，具体实现是PhoneWindow
+window 也是一个抽象的概念，每个 window 内对应这一个 DecorView 和一个 ViewRootImpl，window 和DecorView 通过ViewRootImpl联系。WindowManagerWindowManager 是 外界访问 Window 的入口">
+<meta property="og:updated_time" content="2016-09-17T07:41:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="window、Activity、DecorView、ViewRoot关系">
+<meta name="twitter:description" content="概述window
+window 是一个抽象类，具体实现是PhoneWindow
+window 也是一个抽象的概念，每个 window 内对应这一个 DecorView 和一个 ViewRootImpl，window 和DecorView 通过ViewRootImpl联系。WindowManagerWindowManager 是 外界访问 Window 的入口">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 12427169,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/16/Window 和 WindowManager/"/>
+
+  <title> window、Activity、DecorView、ViewRoot关系 | Xu Yushi''s Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-72857814-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Xu Yushi''s Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">低调、务实、自驱、反思</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                window、Activity、DecorView、ViewRoot关系
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-16T00:00:00+08:00" content="2016-09-16">
+              2016-09-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/16/Window 和 WindowManager/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/16/Window 和 WindowManager/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h1 id="window"><a href="#window" class="headerlink" title="window"></a>window</h1><ul>
+<li><code>window</code> 是一个抽象类，具体实现是<code>PhoneWindow</code></li>
+<li><code>window</code> 也是一个抽象的概念，每个 window 内对应这一个 <code>DecorView</code> 和一个 <code>ViewRootImpl</code>，<code>window</code> 和<code>DecorView</code> 通过<code>ViewRootImpl</code>联系。<h1 id="WindowManager"><a href="#WindowManager" class="headerlink" title="WindowManager"></a>WindowManager</h1><code>WindowManager</code> 是 外界访问 <code>Window</code> 的入口<a id="more"></a>
+<h1 id="WindowManagerService"><a href="#WindowManagerService" class="headerlink" title="WindowManagerService"></a>WindowManagerService</h1>window 的具体实现位于<code>WindowManagerService</code>中，<code>WindowManager</code>和<code>WindowManagerService</code>的交互是一个 IPC 的过程，</li>
+</ul>
+<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p>window 的添加、删除、更新 view 均是通过<code>WindowManager</code>来完成的，而<code>WindowManager</code>继承了 <code>ViewManager</code>的接口 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Interface to let you add and remove child views to an Activity. To get an instance</span><br><span class="line">  * of this class, call &#123;<span class="doctag">@link</span> android.content.Context#getSystemService(java.lang.String) Context.getSystemService()&#125;.</span><br><span class="line">  */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ViewManager</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Assign the passed LayoutParams to the passed View and add the view to the window.</span><br><span class="line">     * &lt;p&gt;Throws &#123;<span class="doctag">@link</span> android.view.WindowManager.BadTokenException&#125; for certain programming</span><br><span class="line">     * errors, such as adding a second view to a window without removing the first view.</span><br><span class="line">     * &lt;p&gt;Throws &#123;<span class="doctag">@link</span> android.view.WindowManager.InvalidDisplayException&#125; if the window is on a</span><br><span class="line">     * secondary &#123;<span class="doctag">@link</span> Display&#125; and the specified display can't be found</span><br><span class="line">     * (see &#123;<span class="doctag">@link</span> android.app.Presentation&#125;).</span><br><span class="line">     * <span class="doctag">@param</span> view The view to be added to this window.</span><br><span class="line">     * <span class="doctag">@param</span> params The LayoutParams to assign to view.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addView</span><span class="params">(View view, ViewGroup.LayoutParams params)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateViewLayout</span><span class="params">(View view, ViewGroup.LayoutParams params)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeView</span><span class="params">(View view)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应的三个方法，继续看<code>WindowManager</code>对应的具体实现类，<code>WindowManagerImple</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addView</span><span class="params">(@NonNull View view, @NonNull ViewGroup.LayoutParams params)</span> </span>&#123;</span><br><span class="line">    applyDefaultToken(params);</span><br><span class="line">    mGlobal.addView(view, params, mDisplay, mParentWindow);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeView</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    mGlobal.removeView(view, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateViewLayout</span><span class="params">(@NonNull View view, @NonNull ViewGroup.LayoutParams params)</span> </span>&#123;</span><br><span class="line">    applyDefaultToken(params);</span><br><span class="line">    mGlobal.updateViewLayout(view, params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，具体的方法均交给<code>WindowManagerGlobal</code>来处理，而<code>WindowManagerGlobal</code>则以工程模式提供了自己的实例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> WindowManagerGlobal mGlobal = WindowManagerGlobal.getInstance();</span><br></pre></td></tr></table></figure>
+<p>看看``中比较重要的几个成员变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ArrayList&lt;View&gt; mViews = <span class="keyword">new</span> ArrayList&lt;View&gt;();<span class="comment">//所有 window 对应的 DecorView</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ArrayList&lt;ViewRootImpl&gt; mRoots = <span class="keyword">new</span> ArrayList&lt;ViewRootImpl&gt;();<span class="comment">////所有 window 对应的 ViewRootImpl</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ArrayList&lt;WindowManager.LayoutParams&gt; mParams =</span><br><span class="line">        <span class="keyword">new</span> ArrayList&lt;WindowManager.LayoutParams&gt;(); <span class="comment">//所有 window 对应的 WindowManager.LayoutParams</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ArraySet&lt;View&gt; mDyingViews = <span class="keyword">new</span> ArraySet&lt;View&gt;();<span class="comment">//所有 window 对应需要删除的 view</span></span><br></pre></td></tr></table></figure>
+<h2 id="添加过程"><a href="#添加过程" class="headerlink" title="添加过程"></a>添加过程</h2><p>具体分析<code>WindowManagerGlobal</code>的<code>addview</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addView</span><span class="params">(View view, ViewGroup.LayoutParams params,</span><br><span class="line">            Display display, Window parentWindow)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//首先检查了参数，并抛出对应的异常</span></span><br><span class="line">        <span class="keyword">if</span> (view == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"view must not be null"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (display == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"display must not be null"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!(params <span class="keyword">instanceof</span> WindowManager.LayoutParams)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Params must be WindowManager.LayoutParams"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> WindowManager.LayoutParams wparams = (WindowManager.LayoutParams) params;</span><br><span class="line">        <span class="keyword">if</span> (parentWindow != <span class="keyword">null</span>) &#123;</span><br><span class="line">            parentWindow.adjustLayoutParamsForSubWindow(wparams);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// If there's no parent, then hardware acceleration for this view is</span></span><br><span class="line">            <span class="comment">// set from the application's hardware acceleration setting.</span></span><br><span class="line">            <span class="keyword">final</span> Context context = view.getContext();</span><br><span class="line">            <span class="keyword">if</span> (context != <span class="keyword">null</span></span><br><span class="line">                    &amp;&amp; (context.getApplicationInfo().flags</span><br><span class="line">                            &amp; ApplicationInfo.FLAG_HARDWARE_ACCELERATED) != <span class="number">0</span>) &#123;</span><br><span class="line">                wparams.flags |= WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ViewRootImpl root;</span><br><span class="line">        View panelParentView = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">synchronized</span> (mLock) &#123;</span><br><span class="line">            <span class="comment">// Start watching for system property changes.</span></span><br><span class="line">            <span class="keyword">if</span> (mSystemPropertyUpdater == <span class="keyword">null</span>) &#123;</span><br><span class="line">                mSystemPropertyUpdater = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">synchronized</span> (mLock) &#123;</span><br><span class="line">                            <span class="keyword">for</span> (<span class="keyword">int</span> i = mRoots.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">                                mRoots.get(i).loadSystemProperties();</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">                SystemProperties.addChangeCallback(mSystemPropertyUpdater);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过findViewLocked找到 view 对应的 index</span></span><br><span class="line">            <span class="keyword">int</span> index = findViewLocked(view, <span class="keyword">false</span>);</span><br><span class="line">            <span class="keyword">if</span> (index &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//如果找到了，说明这个 view 已经被添加进来了</span></span><br><span class="line">                <span class="keyword">if</span> (mDyingViews.contains(view)) &#123;</span><br><span class="line">                <span class="comment">//这个 view 是需要删除的话，那么不用管直接用doDie 删除</span></span><br><span class="line">                    <span class="comment">// Don't wait for MSG_DIE to make it's way through root's queue.</span></span><br><span class="line">                    mRoots.get(index).doDie();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//说明这个 view 已经被添加进来了,抛出异常</span></span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"View "</span> + view</span><br><span class="line">                            + <span class="string">" has already been added to the window manager."</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// The previous removeView() had not completed executing. Now it has.</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// If this is a panel window, then find the window it is being</span></span><br><span class="line">            <span class="comment">// attached to for future reference.</span></span><br><span class="line">            <span class="keyword">if</span> (wparams.type &gt;= WindowManager.LayoutParams.FIRST_SUB_WINDOW &amp;&amp;</span><br><span class="line">                    wparams.type &lt;= WindowManager.LayoutParams.LAST_SUB_WINDOW) &#123;</span><br><span class="line">                <span class="keyword">final</span> <span class="keyword">int</span> count = mViews.size();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">                <span class="comment">//找到对应的 window</span></span><br><span class="line">                    <span class="keyword">if</span> (mRoots.get(i).mWindow.asBinder() == wparams.token) &#123;</span><br><span class="line">                        panelParentView = mViews.get(i);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            root = <span class="keyword">new</span> ViewRootImpl(view.getContext(), display);</span><br><span class="line"></span><br><span class="line">            view.setLayoutParams(wparams);</span><br><span class="line"><span class="comment">//将得DecorView viewimpl params 都加入到 list 中</span></span><br><span class="line">            mViews.add(view);</span><br><span class="line">            mRoots.add(root);</span><br><span class="line">            mParams.add(wparams);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// do this last because it fires off messages to start doing things</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//这个重要，通过 viewrootImpl 的 setview 方法来刷新 view</span></span><br><span class="line">            root.setView(view, wparams, panelParentView);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (RuntimeException e) &#123;</span><br><span class="line">            <span class="comment">// BadTokenException or InvalidDisplayException, clean up.</span></span><br><span class="line">            <span class="keyword">synchronized</span> (mLock) &#123;</span><br><span class="line">                <span class="keyword">final</span> <span class="keyword">int</span> index = findViewLocked(view, <span class="keyword">false</span>);</span><br><span class="line">                <span class="keyword">if</span> (index &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    removeViewLocked(index, <span class="keyword">true</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">throw</span> e;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>setview 的方法比较长，看其中比较重要的几个方法<br><code>requestLayout();</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestLayout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!mHandlingLayoutInLayoutRequest) &#123;</span><br><span class="line">        checkThread();</span><br><span class="line">        mLayoutRequested = <span class="keyword">true</span>;</span><br><span class="line">        scheduleTraversals();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>scheduleTraversals</code> 是 view 开始绘制的入口</p>
+<p>继续往下看 window 的添加过程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mOrigWindowType = mWindowAttributes.type;</span><br><span class="line">                    mAttachInfo.mRecomputeGlobalAttributes = <span class="keyword">true</span>;</span><br><span class="line">                    collectViewAttributes();</span><br><span class="line">                    res = mWindowSession.addToDisplay(mWindow, mSeq, mWindowAttributes,</span><br><span class="line">                            getHostVisibility(), mDisplay.getDisplayId(),</span><br><span class="line">                            mAttachInfo.mContentInsets, mAttachInfo.mStableInsets,</span><br><span class="line">                            mAttachInfo.mOutsets, mInputChannel);</span><br></pre></td></tr></table></figure>
+<p><code>IWindowSession</code>是一个 binder 对象。最终会调用到<code>windowManagerService</code>中的方法</p>
+<h2 id="删除过程"><a href="#删除过程" class="headerlink" title="删除过程"></a>删除过程</h2><p>具体分析<code>WindowManagerGlobal</code>的<code>removeview</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeView</span><span class="params">(View view, <span class="keyword">boolean</span> immediate)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (view == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"view must not be null"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">synchronized</span> (mLock) &#123;</span><br><span class="line">       <span class="comment">//找到对应的 index ，再removeViewLocked</span></span><br><span class="line">            <span class="keyword">int</span> index = findViewLocked(view, <span class="keyword">true</span>);</span><br><span class="line">            View curView = mRoots.get(index).getView();</span><br><span class="line">            removeViewLocked(index, immediate);</span><br><span class="line">            <span class="keyword">if</span> (curView == view) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Calling with view "</span> + view</span><br><span class="line">                    + <span class="string">" but the ViewAncestor is attached to "</span> + curView);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">       <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">removeViewLocked</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">boolean</span> immediate)</span> </span>&#123;</span><br><span class="line">        ViewRootImpl root = mRoots.get(index);</span><br><span class="line">        View view = root.getView();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (view != <span class="keyword">null</span>) &#123;</span><br><span class="line">            InputMethodManager imm = InputMethodManager.getInstance();</span><br><span class="line">            <span class="keyword">if</span> (imm != <span class="keyword">null</span>) &#123;</span><br><span class="line">                imm.windowDismissed(mViews.get(index).getWindowToken());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        ViewRootImpl 的 die 方法</span></span><br><span class="line">        <span class="keyword">boolean</span> deferred = root.die(immediate);</span><br><span class="line">        <span class="keyword">if</span> (view != <span class="keyword">null</span>) &#123;</span><br><span class="line">            view.assignParent(<span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">if</span> (deferred) &#123;</span><br><span class="line">                mDyingViews.add(view);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//die 方法比较简单，就是发送了一个 message，最后在处理 message 的时候调用了doDie</span></span><br><span class="line">        <span class="function"><span class="keyword">boolean</span> <span class="title">die</span><span class="params">(<span class="keyword">boolean</span> immediate)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Make sure we do execute immediately if we are in the middle of a traversal or the damage</span></span><br><span class="line">        <span class="comment">// done by dispatchDetachedFromWindow will cause havoc on return.</span></span><br><span class="line">        <span class="keyword">if</span> (immediate &amp;&amp; !mIsInTraversal) &#123;</span><br><span class="line">            doDie();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!mIsDrawing) &#123;</span><br><span class="line">            destroyHardwareRenderer();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Log.e(TAG, <span class="string">"Attempting to destroy the window while drawing!\n"</span> +</span><br><span class="line">                    <span class="string">"  window="</span> + <span class="keyword">this</span> + <span class="string">", title="</span> + mWindowAttributes.getTitle());</span><br><span class="line">        &#125;</span><br><span class="line">        mHandler.sendEmptyMessage(MSG_DIE);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">     <span class="function"><span class="keyword">void</span> <span class="title">doDie</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        checkThread();</span><br><span class="line">        <span class="keyword">if</span> (LOCAL_LOGV) Log.v(TAG, <span class="string">"DIE in "</span> + <span class="keyword">this</span> + <span class="string">" of "</span> + mSurface);</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (mRemoved) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            mRemoved = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (mAdded) &#123;</span><br><span class="line">            <span class="comment">//这里做了一些资源的回抽，停动画等</span></span><br><span class="line">                dispatchDetachedFromWindow();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (mAdded &amp;&amp; !mFirst) &#123;</span><br><span class="line">                destroyHardwareRenderer();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (mView != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">int</span> viewVisibility = mView.getVisibility();</span><br><span class="line">                    <span class="keyword">boolean</span> viewVisibilityChanged = mViewVisibility != viewVisibility;</span><br><span class="line">                    <span class="keyword">if</span> (mWindowAttributesChanged || viewVisibilityChanged) &#123;</span><br><span class="line">                        <span class="comment">// If layout params have been changed, first give them</span></span><br><span class="line">                        <span class="comment">// to the window manager to make sure it has the correct</span></span><br><span class="line">                        <span class="comment">// animation info.</span></span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            <span class="keyword">if</span> ((relayoutWindow(mWindowAttributes, viewVisibility, <span class="keyword">false</span>)</span><br><span class="line">                                    &amp; WindowManagerGlobal.RELAYOUT_RES_FIRST_TIME) != <span class="number">0</span>) &#123;</span><br><span class="line">                                mWindowSession.finishDrawing(mWindow);</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (RemoteException e) &#123;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    mSurface.release();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            mAdded = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//在其中清理 那些成员 list 变量</span></span><br><span class="line">        WindowManagerGlobal.getInstance().doRemoveView(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="更新过程"><a href="#更新过程" class="headerlink" title="更新过程"></a>更新过程</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateViewLayout</span><span class="params">(View view, ViewGroup.LayoutParams params)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (view == <span class="keyword">null</span>) &#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"view must not be null"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (!(params <span class="keyword">instanceof</span> WindowManager.LayoutParams)) &#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Params must be WindowManager.LayoutParams"</span>);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">final</span> WindowManager.LayoutParams wparams = (WindowManager.LayoutParams)params;</span><br><span class="line"></span><br><span class="line">       view.setLayoutParams(wparams);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">synchronized</span> (mLock) &#123;</span><br><span class="line">       <span class="comment">//删除旧的 param 更新成新的 param</span></span><br><span class="line">           <span class="keyword">int</span> index = findViewLocked(view, <span class="keyword">true</span>);</span><br><span class="line">           ViewRootImpl root = mRoots.get(index);</span><br><span class="line">           mParams.remove(index);</span><br><span class="line">           mParams.add(index, wparams);</span><br><span class="line">           <span class="comment">//通过 viewrootImpl 来刷新 view</span></span><br><span class="line">           root.setLayoutParams(wparams, <span class="keyword">false</span>);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>更多 Android 博文请关注 xuyushi.github.io</strong></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p><a href="http://gold.xitu.io/entry/571338c7c4c9710054cea455" target="_blank" rel="external">http://gold.xitu.io/entry/571338c7c4c9710054cea455</a><br><a href="http://www.jianshu.com/p/687010ccad66" target="_blank" rel="external">http://www.jianshu.com/p/687010ccad66</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-06-18-14662219234605.jpg" alt="Xu Yushi WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/window/" rel="tag">#window</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/15/Activity，DecorView，PhoneWindow和ViewRoot的作用和相关关系/" rel="next" title="window、Activity、DecorView、ViewRoot关系">
+                <i class="fa fa-chevron-left"></i> window、Activity、DecorView、ViewRoot关系
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/16/Window 和 WindowManager/"
+           data-title="window、Activity、DecorView、ViewRoot关系" data-url="http://yoursite.com/2016/09/16/Window 和 WindowManager/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg"
+               alt="Xu Yushi" />
+          <p class="site-author-name" itemprop="name">Xu Yushi</p>
+          <p class="site-description motion-element" itemprop="description">安卓 | xuyushi | 许雨石 | Android | java | developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#window"><span class="nav-number"></span> <span class="nav-text">window</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WindowManager"><span class="nav-number"></span> <span class="nav-text">WindowManager</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WindowManagerService"><span class="nav-number"></span> <span class="nav-text">WindowManagerService</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码分析"><span class="nav-number"></span> <span class="nav-text">源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加过程"><span class="nav-number">1.</span> <span class="nav-text">添加过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除过程"><span class="nav-number">2.</span> <span class="nav-text">删除过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新过程"><span class="nav-number">3.</span> <span class="nav-text">更新过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number"></span> <span class="nav-text">参考</span></a></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Yushi</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xuyushi"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
