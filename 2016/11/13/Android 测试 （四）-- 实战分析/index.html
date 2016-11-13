@@ -1,0 +1,719 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="SaHbPoHOxqF4QuVM1TDhfg_Cqik1EY89r1Yt60Bcp5c" />
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="test," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Xu Yushi''s Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文通过分析一个完整的项目，来学习如果对一个完整的工程比较好的进行编写测试程序
+ 项目地址  ，该项目采用的是 mvp 架构，（关于 mvp 的介绍可以看这里 ），mvp 对于测试的好处就是讲 view 逻辑和业务代码分离，我们可以很方便的对业务代码进行 local unit test 的测试。
+
+项目结构可以看到项目的整体结构比较清晰
+
+项目代码
+Android 测试（Instrumentati">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 测试 （四）-- 实战分析">
+<meta property="og:url" content="http://yoursite.com/2016/11/13/Android 测试 （四）-- 实战分析/index.html">
+<meta property="og:site_name" content="Xu Yushi''s Blog">
+<meta property="og:description" content="本文通过分析一个完整的项目，来学习如果对一个完整的工程比较好的进行编写测试程序
+ 项目地址  ，该项目采用的是 mvp 架构，（关于 mvp 的介绍可以看这里 ），mvp 对于测试的好处就是讲 view 逻辑和业务代码分离，我们可以很方便的对业务代码进行 local unit test 的测试。
+
+项目结构可以看到项目的整体结构比较清晰
+
+项目代码
+Android 测试（Instrumentati">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-11-13-14790068700868.jpg?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-11-13-14790072376156.jpg?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-11-13-14790169960740.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-11-13-14790174109870.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta property="og:updated_time" content="2016-11-13T06:22:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 测试 （四）-- 实战分析">
+<meta name="twitter:description" content="本文通过分析一个完整的项目，来学习如果对一个完整的工程比较好的进行编写测试程序
+ 项目地址  ，该项目采用的是 mvp 架构，（关于 mvp 的介绍可以看这里 ），mvp 对于测试的好处就是讲 view 逻辑和业务代码分离，我们可以很方便的对业务代码进行 local unit test 的测试。
+
+项目结构可以看到项目的整体结构比较清晰
+
+项目代码
+Android 测试（Instrumentati">
+<meta name="twitter:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-11-13-14790068700868.jpg?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 12427169,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/13/Android 测试 （四）-- 实战分析/"/>
+
+  <title> Android 测试 （四）-- 实战分析 | Xu Yushi''s Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-72857814-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Xu Yushi''s Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">低调、务实、自驱、反思</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android 测试 （四）-- 实战分析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-13T00:00:00+08:00" content="2016-11-13">
+              2016-11-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/13/Android 测试 （四）-- 实战分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/13/Android 测试 （四）-- 实战分析/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文通过分析一个完整的项目，来学习如果对一个完整的工程比较好的进行编写测试程序</p>
+<p> <a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="external">项目地址</a>  ，该项目采用的是 mvp 架构，（关于 mvp 的介绍可以看这里 ），mvp 对于测试的好处就是讲 view 逻辑和业务代码分离，我们可以很方便的对业务代码进行 local unit test 的测试。</p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-11-13-14790068700868.jpg?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt="-w539"></p>
+<h1 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h1><p>可以看到项目的整体结构比较清晰</p>
+<ol>
+<li>项目代码</li>
+<li>Android 测试（Instrumentation test） </li>
+<li>Android 测试 相关 mock</li>
+<li>local unit test</li>
+<li>local unit test 相关 mock</li>
+</ol>
+<h1 id="local-unit-test-mock"><a href="#local-unit-test-mock" class="headerlink" title="local unit test mock"></a>local unit test mock</h1><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-11-13-14790072376156.jpg?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt="-w450"></p>
+<p>项目的 model 层采用的是 Repository 模式，在 mock 文件夹中，mock 测试中需要使用的数据源，并提供了注入的接口，这里采用的是手动注入，在后续依赖比较复杂的情况下可以使用 dagger 注入，减少大量冗余代码。</p>
+<p>下面看下 mock 的数据源的实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FakeTasksRemoteDataSource</span> <span class="keyword">implements</span> <span class="title">TasksDataSource</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> FakeTasksRemoteDataSource INSTANCE;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;String, Task&gt; TASKS_SERVICE_DATA = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Prevent direct instantiation.</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">FakeTasksRemoteDataSource</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FakeTasksRemoteDataSource <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (INSTANCE == <span class="keyword">null</span>) &#123;</span><br><span class="line">            INSTANCE = <span class="keyword">new</span> FakeTasksRemoteDataSource();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTasks</span><span class="params">(@NonNull LoadTasksCallback callback)</span> </span>&#123;</span><br><span class="line">        callback.onTasksLoaded(Lists.newArrayList(TASKS_SERVICE_DATA.values()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTask</span><span class="params">(@NonNull String taskId, @NonNull GetTaskCallback callback)</span> </span>&#123;</span><br><span class="line">        Task task = TASKS_SERVICE_DATA.get(taskId);</span><br><span class="line">        callback.onTaskLoaded(task);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveTask</span><span class="params">(@NonNull Task task)</span> </span>&#123;</span><br><span class="line">        TASKS_SERVICE_DATA.put(task.getId(), task);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">completeTask</span><span class="params">(@NonNull Task task)</span> </span>&#123;</span><br><span class="line">        Task completedTask = <span class="keyword">new</span> Task(task.getTitle(), task.getDescription(), task.getId(), <span class="keyword">true</span>);</span><br><span class="line">        TASKS_SERVICE_DATA.put(task.getId(), completedTask);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">completeTask</span><span class="params">(@NonNull String taskId)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Not required for the remote data source.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">activateTask</span><span class="params">(@NonNull Task task)</span> </span>&#123;</span><br><span class="line">        Task activeTask = <span class="keyword">new</span> Task(task.getTitle(), task.getDescription(), task.getId());</span><br><span class="line">        TASKS_SERVICE_DATA.put(task.getId(), activeTask);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">activateTask</span><span class="params">(@NonNull String taskId)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Not required for the remote data source.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clearCompletedTasks</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Iterator&lt;Map.Entry&lt;String, Task&gt;&gt; it = TASKS_SERVICE_DATA.entrySet().iterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            Map.Entry&lt;String, Task&gt; entry = it.next();</span><br><span class="line">            <span class="keyword">if</span> (entry.getValue().isCompleted()) &#123;</span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">refreshTasks</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Not required because the &#123;@link TasksRepository&#125; handles the logic of refreshing the</span></span><br><span class="line">        <span class="comment">// tasks from all the available data sources.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteTask</span><span class="params">(@NonNull String taskId)</span> </span>&#123;</span><br><span class="line">        TASKS_SERVICE_DATA.remove(taskId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteAllTasks</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        TASKS_SERVICE_DATA.clear();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@VisibleForTesting</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addTasks</span><span class="params">(Task... tasks)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Task task : tasks) &#123;</span><br><span class="line">            TASKS_SERVICE_DATA.put(task.getId(), task);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>mock 的数据线 实现了 <code>TasksDataSource</code>接口，将 mock 的数据都存储在了类的<code>Map&lt;String, Task&gt;</code>中</p>
+<h1 id="local-unit-test"><a href="#local-unit-test" class="headerlink" title="local unit test"></a>local unit test</h1><h2 id="model-层测试"><a href="#model-层测试" class="headerlink" title="model 层测试"></a>model 层测试</h2><p>使用了<a href="http://site.mockito.org/" target="_blank" rel="external"> <code>mockito</code></a> 来 mock 数据，</p>
+<p>再看测试代码之前 先回顾下<code>TasksRepository</code>里面逻辑，方法比较多，挑几个来分析一下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">     * Gets tasks from local data source (sqlite) unless the table is new or empty. In that case it</span><br><span class="line">     * uses the network data source. This is done to simplify the sample.</span><br><span class="line">     * &lt;p&gt;</span><br><span class="line">     * Note: &#123;<span class="doctag">@link</span> LoadTasksCallback#onDataNotAvailable()&#125; is fired if both data sources fail to</span><br><span class="line">     * get the data.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTask</span><span class="params">(@NonNull <span class="keyword">final</span> String taskId, @NonNull <span class="keyword">final</span> GetTaskCallback callback)</span> </span>&#123;</span><br><span class="line">        checkNotNull(taskId);</span><br><span class="line">        checkNotNull(callback);</span><br><span class="line"></span><br><span class="line">        Task cachedTask = getTaskWithId(taskId);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Respond immediately with cache if available</span></span><br><span class="line">         <span class="comment">//如果缓存中有数据的话从缓存中获取数据</span></span><br><span class="line">        <span class="keyword">if</span> (cachedTask != <span class="keyword">null</span>) &#123;</span><br><span class="line">            callback.onTaskLoaded(cachedTask);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Load from server/persisted if needed.</span></span><br><span class="line">		<span class="comment">//缓存没有数据则从服务端获取</span></span><br><span class="line">        <span class="comment">// Is the task in the local data source? If not, query the network.</span></span><br><span class="line">        mTasksLocalDataSource.getTask(taskId, <span class="keyword">new</span> GetTaskCallback() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTaskLoaded</span><span class="params">(Task task)</span> </span>&#123;</span><br><span class="line">                callback.onTaskLoaded(task);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDataNotAvailable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="comment">//本地没有数据再从服务端获取</span></span><br><span class="line">                mTasksRemoteDataSource.getTask(taskId, <span class="keyword">new</span> GetTaskCallback() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTaskLoaded</span><span class="params">(Task task)</span> </span>&#123;</span><br><span class="line">                        callback.onTaskLoaded(task);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDataNotAvailable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        callback.onDataNotAvailable();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveTask</span><span class="params">(@NonNull Task task)</span> </span>&#123;</span><br><span class="line">        checkNotNull(task);</span><br><span class="line">        <span class="comment">//将数据 储存的本地 和服务端</span></span><br><span class="line">        mTasksRemoteDataSource.saveTask(task);</span><br><span class="line">        mTasksLocalDataSource.saveTask(task);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Do in memory cache update to keep the app UI up to date</span></span><br><span class="line">        <span class="comment">//将数据存储在缓存中</span></span><br><span class="line">        <span class="keyword">if</span> (mCachedTasks == <span class="keyword">null</span>) &#123;</span><br><span class="line">            mCachedTasks = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        mCachedTasks.put(task.getId(), task);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>由此可以看出，数据的存储分为三层，缓存，本地存储，服务端存储。优先级递减</p>
+<p>接着看 modle 的测试代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Unit tests for the implementation of the in-memory repository with cache.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TasksRepositoryTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String TASK_TITLE = <span class="string">"title"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String TASK_TITLE2 = <span class="string">"title2"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String TASK_TITLE3 = <span class="string">"title3"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> List&lt;Task&gt; TASKS = Lists.newArrayList(<span class="keyword">new</span> Task(<span class="string">"Title1"</span>, <span class="string">"Description1"</span>),</span><br><span class="line">            <span class="keyword">new</span> Task(<span class="string">"Title2"</span>, <span class="string">"Description2"</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> TasksRepository mTasksRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Mock</span></span><br><span class="line">    <span class="keyword">private</span> TasksDataSource mTasksRemoteDataSource;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Mock</span></span><br><span class="line">    <span class="keyword">private</span> TasksDataSource mTasksLocalDataSource;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Mock</span></span><br><span class="line">    <span class="keyword">private</span> Context mContext;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Mock</span></span><br><span class="line">    <span class="keyword">private</span> TasksDataSource.GetTaskCallback mGetTaskCallback;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Mock</span></span><br><span class="line">    <span class="keyword">private</span> TasksDataSource.LoadTasksCallback mLoadTasksCallback;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#123;<span class="doctag">@link</span> ArgumentCaptor&#125; is a powerful Mockito API to capture argument values and use them to</span><br><span class="line">     * perform further actions or assertions on them.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="meta">@Captor</span></span><br><span class="line">    <span class="keyword">private</span> ArgumentCaptor&lt;TasksDataSource.LoadTasksCallback&gt; mTasksCallbackCaptor;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#123;<span class="doctag">@link</span> ArgumentCaptor&#125; is a powerful Mockito API to capture argument values and use them to</span><br><span class="line">     * perform further actions or assertions on them.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="meta">@Captor</span></span><br><span class="line">    <span class="keyword">private</span> ArgumentCaptor&lt;TasksDataSource.GetTaskCallback&gt; mTaskCallbackCaptor;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setupTasksRepository</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Mockito has a very convenient way to inject mocks by using the @Mock annotation. To</span></span><br><span class="line">        <span class="comment">// inject the mocks in the test the initMocks method needs to be called.</span></span><br><span class="line">        MockitoAnnotations.initMocks(<span class="keyword">this</span>);</span><br><span class="line">	  <span class="comment">//首先在 @Before 中创建出Repository，可以看到在TasksRepository.getInstance 中的两个参数也都是 mock 出的</span></span><br><span class="line">        <span class="comment">// Get a reference to the class under test</span></span><br><span class="line">        mTasksRepository = TasksRepository.getInstance(</span><br><span class="line">                mTasksRemoteDataSource, mTasksLocalDataSource);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroyRepositoryInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//销毁创建出的实例</span></span><br><span class="line">        TasksRepository.destroyInstance();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTasks_repositoryCachesAfterFirstApiCall</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Given a setup Captor to capture callbacks</span></span><br><span class="line">        <span class="comment">// When two calls are issued to the tasks repository</span></span><br><span class="line">        <span class="comment">// 使用 mLoadTasksCallback 来记录 callback</span></span><br><span class="line">        twoTasksLoadCallsToRepository(mLoadTasksCallback);</span><br><span class="line">	</span><br><span class="line">        <span class="comment">// Then tasks were only requested once from Service API</span></span><br><span class="line">        <span class="comment">//第一次调用 gettask 时本地是没有缓存的，所以 verify调用了mTasksRemoteDataSource 的 getTasks，并且其中的参数是 TasksDataSource.LoadTasksCallback.class类型，在第二次调用中，本地已经数据已经有了，所以mTasksRemoteDataSource 的方法只调用了一次</span></span><br><span class="line">        verify(mTasksRemoteDataSource).getTasks(any(TasksDataSource.LoadTasksCallback.class));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTasks_requestsAllTasksFromLocalDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// When tasks are requested from the tasks repository</span></span><br><span class="line">        mTasksRepository.getTasks(mLoadTasksCallback);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Then tasks are loaded from the local data source</span></span><br><span class="line">        verify(mTasksLocalDataSource).getTasks(any(TasksDataSource.LoadTasksCallback.class));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveTask_savesTaskToServiceAPI</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Given a stub task with title and description</span></span><br><span class="line">        Task newTask = <span class="keyword">new</span> Task(TASK_TITLE, <span class="string">"Some Task Description"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// When a task is saved to the tasks repository</span></span><br><span class="line">        mTasksRepository.saveTask(newTask);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Then the service API and persistent repository are called and the cache is updated</span></span><br><span class="line">        <span class="comment">//save 时 ，本地和服务端都调用了saveTask，并且本地的缓存 list 会增加</span></span><br><span class="line">        verify(mTasksRemoteDataSource).saveTask(newTask);</span><br><span class="line">        verify(mTasksLocalDataSource).saveTask(newTask);</span><br><span class="line">        assertThat(mTasksRepository.mCachedTasks.size(), is(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTask_requestsSingleTaskFromLocalDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// When a task is requested from the tasks repository</span></span><br><span class="line">        mTasksRepository.getTask(TASK_TITLE, mGetTaskCallback);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Then the task is loaded from the database</span></span><br><span class="line">        verify(mTasksLocalDataSource).getTask(eq(TASK_TITLE), any(</span><br><span class="line">                TasksDataSource.GetTaskCallback.class));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTasksWithDirtyCache_tasksAreRetrievedFromRemote</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// When calling getTasks in the repository with dirty cache</span></span><br><span class="line">        mTasksRepository.refreshTasks();</span><br><span class="line">        mTasksRepository.getTasks(mLoadTasksCallback);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// And the remote data source has data available</span></span><br><span class="line">        setTasksAvailable(mTasksRemoteDataSource, TASKS);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Verify the tasks from the remote data source are returned, not the local</span></span><br><span class="line">        verify(mTasksLocalDataSource, never()).getTasks(mLoadTasksCallback);</span><br><span class="line">        verify(mLoadTasksCallback).onTasksLoaded(TASKS);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTasksWithLocalDataSourceUnavailable_tasksAreRetrievedFromRemote</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// When calling getTasks in the repository</span></span><br><span class="line">        mTasksRepository.getTasks(mLoadTasksCallback);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// And the local data source has no data available</span></span><br><span class="line">        setTasksNotAvailable(mTasksLocalDataSource);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// And the remote data source has data available</span></span><br><span class="line">        setTasksAvailable(mTasksRemoteDataSource, TASKS);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Verify the tasks from the local data source are returned</span></span><br><span class="line">        verify(mLoadTasksCallback).onTasksLoaded(TASKS);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getTasksWithBothDataSourcesUnavailable_firesOnDataUnavailable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// When calling getTasks in the repository</span></span><br><span class="line">        mTasksRepository.getTasks(mLoadTasksCallback);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// And the local data source has no data available</span></span><br><span class="line">        setTasksNotAvailable(mTasksLocalDataSource);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// And the remote data source has no data available</span></span><br><span class="line">        setTasksNotAvailable(mTasksRemoteDataSource);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Verify no data is returned</span></span><br><span class="line">        verify(mLoadTasksCallback).onDataNotAvailable();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Convenience method that issues two calls to the tasks repository</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">twoTasksLoadCallsToRepository</span><span class="params">(TasksDataSource.LoadTasksCallback callback)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// When tasks are requested from repository</span></span><br><span class="line">        mTasksRepository.getTasks(callback); <span class="comment">// First call to API</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Use the Mockito Captor to capture the callback</span></span><br><span class="line">        <span class="comment">// 由于是第一次调用 mTasksRepository.getTasks ，所以会先调用 mTasksLocalDataSource,并且用mTasksCallbackCaptor.capture 记录 callback</span></span><br><span class="line">        verify(mTasksLocalDataSource).getTasks(mTasksCallbackCaptor.capture());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Local data source doesn't have data yet</span></span><br><span class="line">        <span class="comment">//由于第一次调用 get,所以本地数据是空的，会调用onDataNotAvailable 的回调</span></span><br><span class="line">        mTasksCallbackCaptor.getValue().onDataNotAvailable();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Verify the remote data source is queried</span></span><br><span class="line">        <span class="comment">//本地为空，onDataNotAvailable回调中会调用，mTasksRemoteDataSource.getTasks</span></span><br><span class="line">        verify(mTasksRemoteDataSource).getTasks(mTasksCallbackCaptor.capture());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Trigger callback so tasks are cached</span></span><br><span class="line">        <span class="comment">//加载完 task 的回调</span></span><br><span class="line">        mTasksCallbackCaptor.getValue().onTasksLoaded(TASKS);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//第二次调用</span></span><br><span class="line">        mTasksRepository.getTasks(callback); <span class="comment">// Second call to API</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setTasksNotAvailable</span><span class="params">(TasksDataSource dataSource)</span> </span>&#123;</span><br><span class="line">        verify(dataSource).getTasks(mTasksCallbackCaptor.capture());</span><br><span class="line">        mTasksCallbackCaptor.getValue().onDataNotAvailable();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setTasksAvailable</span><span class="params">(TasksDataSource dataSource, List&lt;Task&gt; tasks)</span> </span>&#123;</span><br><span class="line">        verify(dataSource).getTasks(mTasksCallbackCaptor.capture());</span><br><span class="line">        mTasksCallbackCaptor.getValue().onTasksLoaded(tasks);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setTaskNotAvailable</span><span class="params">(TasksDataSource dataSource, String taskId)</span> </span>&#123;</span><br><span class="line">        verify(dataSource).getTask(eq(taskId), mTaskCallbackCaptor.capture());</span><br><span class="line">        mTaskCallbackCaptor.getValue().onDataNotAvailable();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setTaskAvailable</span><span class="params">(TasksDataSource dataSource, Task task)</span> </span>&#123;</span><br><span class="line">        verify(dataSource).getTask(eq(task.getId()), mTaskCallbackCaptor.capture());</span><br><span class="line">        mTaskCallbackCaptor.getValue().onTaskLoaded(task);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="P层测试"><a href="#P层测试" class="headerlink" title="P层测试"></a>P层测试</h2><p>选择<code>AddEditTaskPresenter</code>的测试来分析，这事增加 task 的业务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Unit tests for the implementation of &#123;<span class="doctag">@link</span> AddEditTaskPresenter&#125;.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AddEditTaskPresenterTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Mock</span></span><br><span class="line">    <span class="keyword">private</span> TasksRepository mTasksRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Mock</span></span><br><span class="line">    <span class="keyword">private</span> AddEditTaskContract.View mAddEditTaskView;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#123;<span class="doctag">@link</span> ArgumentCaptor&#125; is a powerful Mockito API to capture argument values and use them to</span><br><span class="line">     * perform further actions or assertions on them.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="meta">@Captor</span></span><br><span class="line">    <span class="keyword">private</span> ArgumentCaptor&lt;TasksDataSource.GetTaskCallback&gt; mGetTaskCallbackCaptor;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> AddEditTaskPresenter mAddEditTaskPresenter;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setupMocksAndView</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Mockito has a very convenient way to inject mocks by using the @Mock annotation. To</span></span><br><span class="line">        <span class="comment">// inject the mocks in the test the initMocks method needs to be called.</span></span><br><span class="line">        MockitoAnnotations.initMocks(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// The presenter wont't update the view unless it's active.</span></span><br><span class="line">        when(mAddEditTaskView.isActive()).thenReturn(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveNewTaskToRepository_showsSuccessMessageUi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Get a reference to the class under test</span></span><br><span class="line">        <span class="comment">//手动构造出AddEditTaskPresente r</span></span><br><span class="line">        mAddEditTaskPresenter = <span class="keyword">new</span> AddEditTaskPresenter(<span class="string">"1"</span>, mTasksRepository, mAddEditTaskView);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// When the presenter is asked to save a task</span></span><br><span class="line">        mAddEditTaskPresenter.saveTask(<span class="string">"New Task Title"</span>, <span class="string">"Some Task Description"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Then a task is saved in the repository and the view updated</span></span><br><span class="line">        <span class="comment">//确认调用了 mTasksRepository 的 saveTask 方法</span></span><br><span class="line">        verify(mTasksRepository).saveTask(any(Task.class)); <span class="comment">// saved to the model</span></span><br><span class="line">        <span class="comment">//确认 UI 对应的结构得到调用，具体效果不在这里的单元测试验证，在 UI 验证</span></span><br><span class="line">        verify(mAddEditTaskView).showTasksList(); <span class="comment">// shown in the UI</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveTask_emptyTaskShowsErrorUi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Get a reference to the class under test</span></span><br><span class="line">        mAddEditTaskPresenter = <span class="keyword">new</span> AddEditTaskPresenter(<span class="keyword">null</span>, mTasksRepository, mAddEditTaskView);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// When the presenter is asked to save an empty task</span></span><br><span class="line">        mAddEditTaskPresenter.saveTask(<span class="string">""</span>, <span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Then an empty not error is shown in the UI</span></span><br><span class="line">        verify(mAddEditTaskView).showEmptyTaskError();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveExistingTaskToRepository_showsSuccessMessageUi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Get a reference to the class under test</span></span><br><span class="line">        mAddEditTaskPresenter = <span class="keyword">new</span> AddEditTaskPresenter(<span class="string">"1"</span>, mTasksRepository, mAddEditTaskView);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// When the presenter is asked to save an existing task</span></span><br><span class="line">        mAddEditTaskPresenter.saveTask(<span class="string">"New Task Title"</span>, <span class="string">"Some Task Description"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Then a task is saved in the repository and the view updated</span></span><br><span class="line">        verify(mTasksRepository).saveTask(any(Task.class)); <span class="comment">// saved to the model</span></span><br><span class="line">        verify(mAddEditTaskView).showTasksList(); <span class="comment">// shown in the UI</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">populateTask_callsRepoAndUpdatesView</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Task testTask = <span class="keyword">new</span> Task(<span class="string">"TITLE"</span>, <span class="string">"DESCRIPTION"</span>);</span><br><span class="line">        <span class="comment">// Get a reference to the class under test</span></span><br><span class="line">        mAddEditTaskPresenter = <span class="keyword">new</span> AddEditTaskPresenter(testTask.getId(),</span><br><span class="line">                mTasksRepository, mAddEditTaskView);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// When the presenter is asked to populate an existing task</span></span><br><span class="line">        mAddEditTaskPresenter.populateTask();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Then the task repository is queried and the view updated</span></span><br><span class="line">        verify(mTasksRepository).getTask(eq(testTask.getId()), mGetTaskCallbackCaptor.capture());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Simulate callback</span></span><br><span class="line">        mGetTaskCallbackCaptor.getValue().onTaskLoaded(testTask);</span><br><span class="line"></span><br><span class="line">        verify(mAddEditTaskView).setTitle(testTask.getTitle());</span><br><span class="line">        verify(mAddEditTaskView).setDescription(testTask.getDescription());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="android-mock-test"><a href="#android-mock-test" class="headerlink" title="android mock test"></a>android mock test</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-11-13-14790169960740.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt="-w469"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Tests for the statistics screen.</span><br><span class="line"> */</span></span><br><span class="line"><span class="meta">@RunWith</span>(AndroidJUnit4.class)</span><br><span class="line"><span class="meta">@LargeTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StatisticsScreenTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#123;<span class="doctag">@link</span> ActivityTestRule&#125; is a JUnit &#123;<span class="doctag">@link</span> Rule <span class="doctag">@Rule</span>&#125; to launch your activity under test.</span><br><span class="line">     *</span><br><span class="line">     * &lt;p&gt;</span><br><span class="line">     * Rules are interceptors which are executed for each test method and are important building</span><br><span class="line">     * blocks of Junit tests.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="meta">@Rule</span></span><br><span class="line">    <span class="keyword">public</span> ActivityTestRule&lt;StatisticsActivity&gt; mStatisticsActivityTestRule =</span><br><span class="line">            <span class="keyword">new</span> ActivityTestRule&lt;&gt;(StatisticsActivity.class, <span class="keyword">true</span>, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Setup your test fixture with a fake task id. The &#123;<span class="doctag">@link</span> TaskDetailActivity&#125; is started with</span><br><span class="line">     * a particular task id, which is then loaded from the service API.</span><br><span class="line">     *</span><br><span class="line">     * &lt;p&gt;</span><br><span class="line">     * Note that this test runs hermetically and is fully isolated using a fake implementation of</span><br><span class="line">     * the service API. This is a great way to make your tests more reliable and faster at the same</span><br><span class="line">     * time, since they are isolated from any outside dependencies.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">intentWithStubbedTaskId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Given some tasks</span></span><br><span class="line">        TasksRepository.destroyInstance();</span><br><span class="line">        <span class="comment">//做了两个 mock 数据，一个已完成 一个未完成</span></span><br><span class="line">        FakeTasksRemoteDataSource.getInstance().addTasks(<span class="keyword">new</span> Task(<span class="string">"Title1"</span>, <span class="string">""</span>, <span class="keyword">false</span>));</span><br><span class="line">        FakeTasksRemoteDataSource.getInstance().addTasks(<span class="keyword">new</span> Task(<span class="string">"Title2"</span>, <span class="string">""</span>, <span class="keyword">true</span>));</span><br><span class="line">		</span><br><span class="line">        <span class="comment">// Lazily start the Activity from the ActivityTestRule</span></span><br><span class="line">        Intent startIntent = <span class="keyword">new</span> Intent();</span><br><span class="line">        mStatisticsActivityTestRule.launchActivity(startIntent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Tasks_ShowsNonEmptyMessage</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// Check that the active and completed tasks text is displayed</span></span><br><span class="line">        <span class="comment">//检测这两种 view 是不是都显示了</span></span><br><span class="line">        String expectedActiveTaskText = InstrumentationRegistry.getTargetContext()</span><br><span class="line">                .getString(R.string.statistics_active_tasks);</span><br><span class="line">        onView(withText(containsString(expectedActiveTaskText))).check(matches(isDisplayed()));</span><br><span class="line">        String expectedCompletedTaskText = InstrumentationRegistry.getTargetContext()</span><br><span class="line">                .getString(R.string.statistics_completed_tasks);</span><br><span class="line">        onView(withText(containsString(expectedCompletedTaskText))).check(matches(isDisplayed()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Android-test"><a href="#Android-test" class="headerlink" title="Android test"></a>Android test<img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-11-13-14790174109870.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt="-w456"></h2><p>模拟人工点击，并检测响应的页面显示，选择增加 task 的例子来分析</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Tests for the tasks screen, the main screen which contains a list of all tasks.</span><br><span class="line"> */</span></span><br><span class="line"><span class="meta">@RunWith</span>(AndroidJUnit4.class)</span><br><span class="line"><span class="meta">@LargeTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TasksScreenTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String TITLE1 = <span class="string">"TITLE1"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String DESCRIPTION = <span class="string">"DESCR"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String TITLE2 = <span class="string">"TITLE2"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#123;<span class="doctag">@link</span> ActivityTestRule&#125; is a JUnit &#123;<span class="doctag">@link</span> Rule <span class="doctag">@Rule</span>&#125; to launch your activity under test.</span><br><span class="line">     * &lt;p&gt;</span><br><span class="line">     * Rules are interceptors which are executed for each test method and are important building</span><br><span class="line">     * blocks of Junit tests.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="meta">@Rule</span></span><br><span class="line">    <span class="keyword">public</span> ActivityTestRule&lt;TasksActivity&gt; mTasksActivityTestRule =</span><br><span class="line">            <span class="keyword">new</span> ActivityTestRule&lt;TasksActivity&gt;(TasksActivity.class) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="comment">/**</span><br><span class="line">                 * To avoid a long list of tasks and the need to scroll through the list to find a</span><br><span class="line">                 * task, we call &#123;<span class="doctag">@link</span> TasksDataSource#deleteAllTasks()&#125; before each test.</span><br><span class="line">                 */</span></span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">beforeActivityLaunched</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">super</span>.beforeActivityLaunched();</span><br><span class="line">                    <span class="comment">// Doing this in @Before generates a race condition.</span></span><br><span class="line">                    <span class="comment">//先删除所有 task</span></span><br><span class="line">                    Injection.provideTasksRepository(InstrumentationRegistry.getTargetContext())</span><br><span class="line">                        .deleteAllTasks();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//检测增加一个 task 到 list</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addTaskToTasksList</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        createTask(TITLE1, DESCRIPTION);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Verify task is displayed on screen</span></span><br><span class="line">        onView(withItemText(TITLE1)).check(matches(isDisplayed()));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//增加数据的操作都是点击并模拟输入的，不是 mock 的数据</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">createTask</span><span class="params">(String title, String description)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Click on the add task button</span></span><br><span class="line">        onView(withId(R.id.fab_add_task)).perform(click());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Add task title and description</span></span><br><span class="line">        onView(withId(R.id.add_task_title)).perform(typeText(title),</span><br><span class="line">                closeSoftKeyboard()); <span class="comment">// Type new task title</span></span><br><span class="line">        onView(withId(R.id.add_task_description)).perform(typeText(description),</span><br><span class="line">                closeSoftKeyboard()); <span class="comment">// Type new task description and close the keyboard</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Save the task</span></span><br><span class="line">        onView(withId(R.id.fab_edit_task_done)).perform(click());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-06-18-14662219234605.jpg" alt="Xu Yushi WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/test/" rel="tag">#test</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/06/Android 测试 （三）--Local Unit Tests/" rel="next" title="Android 测试 （三）--Local Unit Tests">
+                <i class="fa fa-chevron-left"></i> Android 测试 （三）--Local Unit Tests
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/13/Android 测试 （四）-- 实战分析/"
+           data-title="Android 测试 （四）-- 实战分析" data-url="http://yoursite.com/2016/11/13/Android 测试 （四）-- 实战分析/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg"
+               alt="Xu Yushi" />
+          <p class="site-author-name" itemprop="name">Xu Yushi</p>
+          <p class="site-description motion-element" itemprop="description">安卓 | xuyushi | 许雨石 | Android | java | developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目结构"><span class="nav-number">1.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#local-unit-test-mock"><span class="nav-number">2.</span> <span class="nav-text">local unit test mock</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#local-unit-test"><span class="nav-number">3.</span> <span class="nav-text">local unit test</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#model-层测试"><span class="nav-number">3.1.</span> <span class="nav-text">model 层测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P层测试"><span class="nav-number">3.2.</span> <span class="nav-text">P层测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#android-mock-test"><span class="nav-number">3.3.</span> <span class="nav-text">android mock test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-test"><span class="nav-number">3.4.</span> <span class="nav-text">Android test</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Yushi</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xuyushi"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
