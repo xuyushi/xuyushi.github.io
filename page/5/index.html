@@ -5,10 +5,10 @@
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
@@ -31,7 +31,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -65,9 +65,9 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -81,7 +81,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -100,24 +100,35 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    root: '/',
     scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 12427169,
+      userId: '12427169',
       author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
 
 
 
-
   <link rel="canonical" href="http://yoursite.com/page/5/"/>
+
+
+
+
 
   <title> Xu Yushi''s Blog </title>
 </head>
@@ -240,6 +251,8 @@
   
 </nav>
 
+
+
  </div>
     </header>
 
@@ -253,13 +266,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/21/工厂方法模式/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -281,24 +307,30 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-21T21:46:00+08:00" content="2016-02-21">
-              2016-02-21
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-21T21:46:00+08:00">
+                2016-02-21
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+              <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/java/" itemprop="url" rel="index">
                     <span itemprop="name">java</span>
                   </a>
@@ -306,7 +338,6 @@
 
                 
                 
-
               
             </span>
           
@@ -314,9 +345,9 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/02/21/工厂方法模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/21/工厂方法模式/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/21/工厂方法模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -328,6 +359,9 @@
           
 
           
+
+          
+
         </div>
       </header>
     
@@ -351,11 +385,13 @@
 </ul>
 <h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="/media/14560634114616.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
 <p>Product：抽象产品<br>ConcreteProduct：具体产品<br>Factory：抽象工厂<br>ConcreteFactory：具体工厂，实现了实际造出产品的方法</p>
+          <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/21/工厂方法模式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -367,6 +403,7 @@
     <div>
       
     </div>
+
 
     <footer class="post-footer">
       
@@ -385,13 +422,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/21/工厂模式/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -413,24 +463,30 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-21T21:10:00+08:00" content="2016-02-21">
-              2016-02-21
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-21T21:10:00+08:00">
+                2016-02-21
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+              <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/java/" itemprop="url" rel="index">
                     <span itemprop="name">java</span>
                   </a>
@@ -438,7 +494,6 @@
 
                 
                 
-
               
             </span>
           
@@ -446,9 +501,9 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/02/21/工厂模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/21/工厂模式/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/21/工厂模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -460,6 +515,9 @@
           
 
           
+
+          
+
         </div>
       </header>
     
@@ -484,11 +542,13 @@
 <p>Factory：工厂角色<br>工厂角色负责实现创建所有实例的内部逻辑</p>
 <p>Product：抽象产品角色<br>抽象产品角色是所创建的所有对象的父类，负责描述所有实例所共有的公共接口</p>
 <p>ConcreteProduct：具体产品角色<br>具体产品角色是创建目标，所有创建的对象都充当这个角色的某个具体类的实例。</p>
+          <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/21/工厂模式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -500,6 +560,7 @@
     <div>
       
     </div>
+
 
     <footer class="post-footer">
       
@@ -518,13 +579,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/21/装饰者模式/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -546,24 +620,30 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-21T10:23:55+08:00" content="2016-02-21">
-              2016-02-21
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-21T10:23:55+08:00">
+                2016-02-21
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+              <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/java/" itemprop="url" rel="index">
                     <span itemprop="name">java</span>
                   </a>
@@ -571,7 +651,6 @@
 
                 
                 
-
               
             </span>
           
@@ -579,9 +658,9 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/02/21/装饰者模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/21/装饰者模式/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/21/装饰者模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -593,6 +672,9 @@
           
 
           
+
+          
+
         </div>
       </header>
     
@@ -616,11 +698,13 @@
 </ul>
 <h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14560246781613.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
 <p>Component: 抽象构件<br>ConcreteComponent: 具体构件<br>Decorator: 抽象装饰类<br>ConcreteDecorator: 具体装饰类</p>
+          <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/21/装饰者模式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -632,6 +716,7 @@
     <div>
       
     </div>
+
 
     <footer class="post-footer">
       
@@ -650,13 +735,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/20/观察者模式/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -678,24 +776,30 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-20T22:07:55+08:00" content="2016-02-20">
-              2016-02-20
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-20T22:07:55+08:00">
+                2016-02-20
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+              <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/java/" itemprop="url" rel="index">
                     <span itemprop="name">java</span>
                   </a>
@@ -703,7 +807,6 @@
 
                 
                 
-
               
             </span>
           
@@ -711,9 +814,9 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/02/20/观察者模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/20/观察者模式/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/20/观察者模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -725,6 +828,9 @@
           
 
           
+
+          
+
         </div>
       </header>
     
@@ -747,11 +853,13 @@
 <li>MVC 中的 View 层实现</li>
 </ol>
 <h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-20-14559766489224.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+          <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/20/观察者模式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -763,6 +871,7 @@
     <div>
       
     </div>
+
 
     <footer class="post-footer">
       
@@ -781,13 +890,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/17/策略模式/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -809,24 +931,30 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-17T21:26:55+08:00" content="2016-02-17">
-              2016-02-17
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-17T21:26:55+08:00">
+                2016-02-17
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+              <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/java/" itemprop="url" rel="index">
                     <span itemprop="name">java</span>
                   </a>
@@ -834,7 +962,6 @@
 
                 
                 
-
               
             </span>
           
@@ -842,9 +969,9 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/02/17/策略模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/策略模式/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/策略模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -856,6 +983,9 @@
           
 
           
+
+          
+
         </div>
       </header>
     
@@ -883,11 +1013,13 @@
 <li>Strategy : 策略的抽象</li>
 <li>ImplementationOne、ImplementationTwo：具体策略的实现</li>
 </ul>
+          <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/17/策略模式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -899,6 +1031,7 @@
     <div>
       
     </div>
+
 
     <footer class="post-footer">
       
@@ -917,13 +1050,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/04/2015summarize/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -945,24 +1091,30 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-04T23:22:55+08:00" content="2016-02-04">
-              2016-02-04
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-04T23:22:55+08:00">
+                2016-02-04
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+              <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/随笔/" itemprop="url" rel="index">
                     <span itemprop="name">随笔</span>
                   </a>
@@ -970,7 +1122,6 @@
 
                 
                 
-
               
             </span>
           
@@ -978,9 +1129,9 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/02/04/2015summarize/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/04/2015summarize/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/04/2015summarize/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -992,6 +1143,9 @@
           
 
           
+
+          
+
         </div>
       </header>
     
@@ -1012,11 +1166,13 @@
 <h3 id="流水账"><a href="#流水账" class="headerlink" title="流水账"></a>流水账</h3><p>　　2015年初，从美团实习完回学校之后就发觉对 Android 有浓厚的兴趣，考虑到后续工作可能接触到 Android 相关的工作，2015年出开始自学 Java 和 Android，抱着『第一行代码』走了一遍，对 Android 有了初步的认识。之后忙毕业一直到了6月。</p>
 <p>　　6月正式入职之后，最初是被分配在了 MTK 平台那边，并不和 Android 相关，主动找了桥哥和栋哥商量，调到了 Android 开发，美团这一点还是挺人性的，尊重员工的意愿。还好有申燊同学带着，一步一步开始了 Android 之旅。</p>
 <p>　　第一个项目是做的小美接单，当样机拼装完成，成功打印的那一刻还是挺有成就感的。<br>　　<br>
+          <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/04/2015summarize/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1028,6 +1184,7 @@
     <div>
       
     </div>
+
 
     <footer class="post-footer">
       
@@ -1046,13 +1203,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/02/状态模式/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -1074,24 +1244,30 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-02T23:22:55+08:00" content="2016-02-02">
-              2016-02-02
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-02T23:22:55+08:00">
+                2016-02-02
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+              <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/java/" itemprop="url" rel="index">
                     <span itemprop="name">java</span>
                   </a>
@@ -1099,7 +1275,6 @@
 
                 
                 
-
               
             </span>
           
@@ -1107,9 +1282,9 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/02/02/状态模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/状态模式/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/状态模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1121,6 +1296,9 @@
           
 
           
+
+          
+
         </div>
       </header>
     
@@ -1153,11 +1331,13 @@
 <li>在<code>context</code>中持有一个当前 <code>state</code>的变量</li>
 <li>改变<code>context</code>中的<code>state</code>状态</li>
 </ol>
+          <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/02/状态模式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1169,6 +1349,7 @@
     <div>
       
     </div>
+
 
     <footer class="post-footer">
       
@@ -1187,13 +1368,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/01/注解/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -1215,24 +1409,30 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T15:12:00+08:00" content="2016-02-01">
-              2016-02-01
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-02-01T15:12:00+08:00">
+                2016-02-01
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+              <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/java/" itemprop="url" rel="index">
                     <span itemprop="name">java</span>
                   </a>
@@ -1240,7 +1440,6 @@
 
                 
                 
-
               
             </span>
           
@@ -1248,9 +1447,9 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/02/01/注解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/注解/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/注解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1262,6 +1461,9 @@
           
 
           
+
+          
+
         </div>
       </header>
     
@@ -1283,11 +1485,13 @@
 <h2 id="注解基础"><a href="#注解基础" class="headerlink" title="注解基础"></a>注解基础</h2><p>最基础的注解如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br></pre></td></tr></table></figure>
 <p>@ 表示这是一个注解，之后的字母表示这个注解的名字，以上例子的注解名字为 <code>Entity</code></p>
+          <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/01/注解/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1299,6 +1503,7 @@
     <div>
       
     </div>
+
 
     <footer class="post-footer">
       
@@ -1317,13 +1522,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/14/内存泄露/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -1345,24 +1563,30 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-14T17:27:00+08:00" content="2016-01-14">
-              2016-01-14
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-14T17:27:00+08:00">
+                2016-01-14
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+              <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/java/" itemprop="url" rel="index">
                     <span itemprop="name">java</span>
                   </a>
@@ -1370,7 +1594,6 @@
 
                 
                 
-
               
             </span>
           
@@ -1378,9 +1601,9 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/01/14/内存泄露/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/内存泄露/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/内存泄露/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1392,6 +1615,9 @@
           
 
           
+
+          
+
         </div>
       </header>
     
@@ -1410,11 +1636,13 @@
 </blockquote>
 <h2 id="产生的原因："><a href="#产生的原因：" class="headerlink" title="产生的原因："></a>产生的原因：</h2><p>内存对象明明已经不需要的时候，还仍然保留着这块内存和它的访问方式（引用）</p>
 <p><em>长生命周期的对象持有短生命周期对象的引用就很可能发生内存泄露，尽管短生命周期对象已经不再需要，但是因为长生命周期对象持有它的引用而导致不能被回收，这就是java中内存泄露的发生场景。</em></p>
+          <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/01/14/内存泄露/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1426,6 +1654,7 @@
     <div>
       
     </div>
+
 
     <footer class="post-footer">
       
@@ -1444,13 +1673,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/14/Java 引用/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -1472,24 +1714,30 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-14T17:27:00+08:00" content="2016-01-14">
-              2016-01-14
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-14T17:27:00+08:00">
+                2016-01-14
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+              <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/java/" itemprop="url" rel="index">
                     <span itemprop="name">java</span>
                   </a>
@@ -1497,7 +1745,6 @@
 
                 
                 
-
               
             </span>
           
@@ -1505,9 +1752,9 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/01/14/Java 引用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/Java 引用/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/14/Java 引用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1519,6 +1766,9 @@
           
 
           
+
+          
+
         </div>
       </header>
     
@@ -1538,11 +1788,13 @@
 <p>若需要 jvm 回收此对象，可以将对象复制为 null</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object o = <span class="keyword">new</span> Object();   <span class="comment">//  强引用  </span></span><br><span class="line">o = <span class="keyword">null</span>;     <span class="comment">// 帮助垃圾收集器回收此对象</span></span><br></pre></td></tr></table></figure>
 <p><strong>但是如果这个o是全局的变量时，就需要在不用这个对象时赋值为null，因为强引用不会被垃圾回收。</strong></p>
+          <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/01/14/Java 引用/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1554,6 +1806,7 @@
     <div>
       
     </div>
+
 
     <footer class="post-footer">
       
@@ -1603,7 +1856,7 @@
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg"
@@ -1658,6 +1911,9 @@
         
         
 
+        
+
+
       </section>
 
       
@@ -1682,8 +1938,9 @@
   <span class="author" itemprop="copyrightHolder">Xu Yushi</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
@@ -1692,6 +1949,7 @@
     NexT.Muse
   </a>
 </div>
+
 
         
 
@@ -1725,42 +1983,42 @@
 
 
   
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
-
-
-  
-  
-
-  
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -1786,9 +2044,12 @@
   
     
       
-      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-      <script src="/js/src/hook-duoshuo.js"></script>
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
     
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
   
 
 
@@ -1796,13 +2057,19 @@
 
 
 
-  
+
+
   
   
 
   
 
   
+
+  
+
+  
+
 
 </body>
 </html>

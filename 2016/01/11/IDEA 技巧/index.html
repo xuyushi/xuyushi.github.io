@@ -5,10 +5,10 @@
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
@@ -31,7 +31,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -65,9 +65,9 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Android Studio," />
@@ -81,7 +81,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -116,24 +116,35 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    root: '/',
     scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 12427169,
+      userId: '12427169',
       author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
 
 
 
-
   <link rel="canonical" href="http://yoursite.com/2016/01/11/IDEA 技巧/"/>
+
+
+
+
 
   <title> Android Studio 技巧 | Xu Yushi''s Blog </title>
 </head>
@@ -254,6 +265,8 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
   
 </nav>
 
+
+
  </div>
     </header>
 
@@ -267,13 +280,26 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
     
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/11/IDEA 技巧/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -292,24 +318,30 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-11T17:27:00+08:00" content="2016-01-11">
-              2016-01-11
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-11T17:27:00+08:00">
+                2016-01-11
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+              <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/android/" itemprop="url" rel="index">
                     <span itemprop="name">android</span>
                   </a>
@@ -317,7 +349,6 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
 
                 
                 
-
               
             </span>
           
@@ -325,9 +356,9 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
                 <a href="/2016/01/11/IDEA 技巧/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/11/IDEA 技巧/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/11/IDEA 技巧/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -339,6 +370,9 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
           
 
           
+
+          
+
         </div>
       </header>
     
@@ -411,6 +445,7 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
     <div>
       
         
+
       
     </div>
 
@@ -437,11 +472,12 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
       
     </div>
 
+
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/Android-Studio/" rel="tag">#Android Studio</a>
+            <a href="/tags/Android-Studio/" rel="tag"># Android Studio</a>
           
         </div>
       
@@ -455,6 +491,8 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
               </a>
             
           </div>
+
+          <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
@@ -521,7 +559,7 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
         </ul>
       
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg"
@@ -576,19 +614,27 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
         
         
 
+        
+
+
       </section>
 
       
+      <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
+
             
               
             
+
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IDEA-技巧"><span class="nav-number">1.</span> <span class="nav-text">IDEA 技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重构"><span class="nav-number">1.1.</span> <span class="nav-text">重构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#push-menber-up-down"><span class="nav-number">1.1.1.</span> <span class="nav-text">push menber up/down</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳转"><span class="nav-number">1.2.</span> <span class="nav-text">跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑"><span class="nav-number">1.3.</span> <span class="nav-text">编辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找"><span class="nav-number">1.4.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调试"><span class="nav-number">1.5.</span> <span class="nav-text">调试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">1.5.1.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li></ol></div>
             
+
           </div>
         </section>
+      <!--/noindex-->
       
 
     </div>
@@ -611,8 +657,9 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
   <span class="author" itemprop="copyrightHolder">Xu Yushi</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
@@ -621,6 +668,7 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
     NexT.Muse
   </a>
 </div>
+
 
         
 
@@ -654,46 +702,46 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
 
 
   
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -719,9 +767,12 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
   
     
       
-      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-      <script src="/js/src/hook-duoshuo.js"></script>
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
     
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
   
 
 
@@ -729,13 +780,19 @@ Type migrationShift + Commend + F6改变变量的属性，举个🌰 ， 可">
 
 
 
-  
+
+
   
   
 
   
 
   
+
+  
+
+  
+
 
 </body>
 </html>
