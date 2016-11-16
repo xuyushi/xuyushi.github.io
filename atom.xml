@@ -271,47 +271,6 @@
   </entry>
   
   <entry>
-    <title>hashcode</title>
-    <link href="http://yoursite.com/2016/10/16/hashcode/"/>
-    <id>http://yoursite.com/2016/10/16/hashcode/</id>
-    <published>2016-10-15T16:00:00.000Z</published>
-    <updated>2016-11-13T06:22:45.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;官方规定&quot;&gt;&lt;a href=&quot;#官方规定&quot; class=&quot;headerlink&quot; title=&quot;官方规定&quot;&gt;&lt;/a&gt;官方规定&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;hashcode方法返回该对象的哈希码值。支持该方法是为哈希表提供一些优点，例如，java.util.Hashtable 提供的哈希表。&lt;br&gt;hashCode 的常规协定是：&lt;br&gt;在 Java 应用程序执行期间，在同一对象上多次调用 hashCode 方法时，必须一致地返回相同的整数，前提是对象上 equals 比较中所用的信息没有被修改。从某一应用程序的一次执行到同一应用程序的另一次执行，该整数无需保持一致。&lt;br&gt;如果根据 equals(Object) 方法，两个对象是相等的，那么在两个对象中的每个对象上调用 hashCode 方法都必须生成相同的整数结果。&lt;br&gt;以下情况不 是必需的：如果根据 equals(java.lang.Object) 方法，两个对象不相等，那么在两个对象中的任一对象上调用 hashCode 方法必定会生成不同的整数结果。但是，程序员应该知道，为不相等的对象生成不同整数结果可以提高哈希表的性能。&lt;br&gt;实际上，由 Object 类定义的 hashCode 方法确实会针对不同的对象返回不同的整数。（这一般是通过将该对象的内部地址转换成一个整数来实现的，但是 JavaTM 编程语言不需要这种实现技巧。）   &lt;/p&gt;
-&lt;/blockquote&gt;
-  &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;当equals方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明相等对象必须具有相等的哈希码。&lt;/p&gt;
-&lt;p&gt;#关于Hashcode的作用&lt;br&gt;　　总的来说，Java中的集合（Collection）有两类，一类是List，再有一类是Set。前者集合内的元素是有序的，元素可以重复；后者元素无序，但元素不可重复。&lt;br&gt;       要想保证元素不重复，可两个元素是否重复应该依据什么来判断呢？这就是Object.equals方法了。但是，如果每增加一个元素就检查一 次，那么当元素很多时，后添加到集合中的元素比较的次数就非常多了。也就是说，如果集合中现在已经有1000个元素，那么第1001个元素加入集合时，它 就要调用1000次equals方法。这显然会大大降低效率。&lt;br&gt;       于是，Java采用了哈希表的原理。哈希算法也称为散列算法，是将数据依特定算法直接指定到一个地址上。这样一来，当集合要添加新的元素时，先调用这个元素的hashCode方法，就一下子能定位到它应该放置的物理位置上。如果这个位置上没有元素，它就可以 直接存储在这个位置上，不用再进行任何比较了；如果这个位置上已经有元素了，就调用它的equals方法与新元素进行比较，相同的话就不存了；不相同，也就是发生了Hash key相同导致冲突的情况,那么就在这个Hash key的地方产生一个链表,将所有产生相同hashcode的对象放到这个单链表上去,串在一起。所以这里存在一个冲突解决的问题（很少出现）。这样一来实际调用equals方法的次数就大大降低了，几乎只需要一两次。&lt;br&gt;       所以，Java对于eqauls方法和hashCode方法是这样规定的：&lt;br&gt;           1、如果两个对象相等，那么它们的hashCode值一定要相等；&lt;br&gt;           2、如果两个对象的hashCode相等，它们并不一定相等。 &lt;/p&gt;
-&lt;h1 id=&quot;如何理解hashCode的作用&quot;&gt;&lt;a href=&quot;#如何理解hashCode的作用&quot; class=&quot;headerlink&quot; title=&quot;如何理解hashCode的作用:&quot;&gt;&lt;/a&gt;如何理解hashCode的作用:&lt;/h1&gt;&lt;p&gt;以java.lang.Object来理解,JVM每new一个Object,它都会将这个Object丢到一个Hash哈希表中去,这样的话,下次做Object的比较或者取这个对象的时候,它会根据对象的hashcode再从Hash表中取这个对象。这样做的目的是提高取对象的效率。具体过程是这样:&lt;br&gt;1.new Object(),JVM根据这个对象的Hashcode值,放入到对应的Hash表对应的Key上,如果不同的对象确产生了相同的hash值,也就是发生了Hash key相同导致冲突的情况,那么就在这个Hash key的地方产生一个链表,将所有产生相同hashcode的对象放到这个单链表上去,串在一起。&lt;br&gt;2.比较两个对象的时候,首先根据他们的hashcode去hash表中找他的对象,当两个对象的hashcode相同,那么就是说他们这两个对象放在Hash表中的同一个key上,那么他们一定在这个key上的链表上。那么此时就只能根据Object的equal方法来比较这个对象是否equal。当两个对象的hashcode不同的话，肯定他们不能equal. &lt;/p&gt;
-&lt;h1 id=&quot;java-lang-Object中对hashCode的约定：&quot;&gt;&lt;a href=&quot;#java-lang-Object中对hashCode的约定：&quot; class=&quot;headerlink&quot; title=&quot;java.lang.Object中对hashCode的约定：&quot;&gt;&lt;/a&gt;java.lang.Object中对hashCode的约定：&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;在一个应用程序执行期间，如果一个对象的equals方法做比较所用到的信息没有被修改的话，则对该对象调用hashCode方法多次，它必须始终如一地返回同一个整数。 &lt;/li&gt;
-&lt;li&gt;如果两个对象根据equals(Object o)方法是相等的，则调用这两个对象中任一对象的hashCode方法必须产生相同的整数结果。 &lt;/li&gt;
-&lt;li&gt;如果两个对象根据equals(Object o)方法是不相等的，则调用这两个对象中任一个对象的hashCode方法，不要求产生不同的整数结果。但如果能不同，则可能提高散列表的性能。 &lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://c610367182.iteye.com/blog/1930676&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://c610367182.iteye.com/blog/1930676&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/dolphin0520/p/3681042.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/dolphin0520/p/3681042.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/fenglibing/article/details/8905007&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/fenglibing/article/details/8905007&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;官方规定&quot;&gt;&lt;a href=&quot;#官方规定&quot; class=&quot;headerlink&quot; title=&quot;官方规定&quot;&gt;&lt;/a&gt;官方规定&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;hashcode方法返回该对象的哈希码值。支持该方法是为哈希表提供一些优点，例如，java.util.Hashtable 提供的哈希表。&lt;br&gt;hashCode 的常规协定是：&lt;br&gt;在 Java 应用程序执行期间，在同一对象上多次调用 hashCode 方法时，必须一致地返回相同的整数，前提是对象上 equals 比较中所用的信息没有被修改。从某一应用程序的一次执行到同一应用程序的另一次执行，该整数无需保持一致。&lt;br&gt;如果根据 equals(Object) 方法，两个对象是相等的，那么在两个对象中的每个对象上调用 hashCode 方法都必须生成相同的整数结果。&lt;br&gt;以下情况不 是必需的：如果根据 equals(java.lang.Object) 方法，两个对象不相等，那么在两个对象中的任一对象上调用 hashCode 方法必定会生成不同的整数结果。但是，程序员应该知道，为不相等的对象生成不同整数结果可以提高哈希表的性能。&lt;br&gt;实际上，由 Object 类定义的 hashCode 方法确实会针对不同的对象返回不同的整数。（这一般是通过将该对象的内部地址转换成一个整数来实现的，但是 JavaTM 编程语言不需要这种实现技巧。）   &lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-      <category term="hash" scheme="http://yoursite.com/tags/hash/"/>
-    
-  </entry>
-  
-  <entry>
     <title>HashMap 的实现原理</title>
     <link href="http://yoursite.com/2016/10/16/HashMap%20%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"/>
     <id>http://yoursite.com/2016/10/16/HashMap 的实现原理/</id>
@@ -370,6 +329,47 @@
       &lt;h1 id=&quot;HashMap-概述&quot;&gt;&lt;a href=&quot;#HashMap-概述&quot; class=&quot;headerlink&quot; title=&quot;HashMap 概述&quot;&gt;&lt;/a&gt;HashMap 概述&lt;/h1&gt;&lt;p&gt;HashMap 是基于哈希表的 Map 接口的非同步实现。此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。此类不保证映射的顺序，特别是它不保证该顺序恒久不变。&lt;/p&gt;
 &lt;p&gt;此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高或将加载因子设置得太低。也许大家开始对这段话有一点不太懂，不过不用担心，当你读完这篇文章后，就能深切理解这其中的含义了。&lt;/p&gt;
 &lt;p&gt;需要注意的是：Hashmap 不是同步的，如果多个线程同时访问一个 HashMap，而其中至少一个线程从结构上（指添加或者删除一个或多个映射关系的任何操作）修改了，则必须保持外部同步，以防止对映射进行意外的非同步访问。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="hash" scheme="http://yoursite.com/tags/hash/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hashcode</title>
+    <link href="http://yoursite.com/2016/10/16/hashcode/"/>
+    <id>http://yoursite.com/2016/10/16/hashcode/</id>
+    <published>2016-10-15T16:00:00.000Z</published>
+    <updated>2016-11-13T06:22:45.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;官方规定&quot;&gt;&lt;a href=&quot;#官方规定&quot; class=&quot;headerlink&quot; title=&quot;官方规定&quot;&gt;&lt;/a&gt;官方规定&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;hashcode方法返回该对象的哈希码值。支持该方法是为哈希表提供一些优点，例如，java.util.Hashtable 提供的哈希表。&lt;br&gt;hashCode 的常规协定是：&lt;br&gt;在 Java 应用程序执行期间，在同一对象上多次调用 hashCode 方法时，必须一致地返回相同的整数，前提是对象上 equals 比较中所用的信息没有被修改。从某一应用程序的一次执行到同一应用程序的另一次执行，该整数无需保持一致。&lt;br&gt;如果根据 equals(Object) 方法，两个对象是相等的，那么在两个对象中的每个对象上调用 hashCode 方法都必须生成相同的整数结果。&lt;br&gt;以下情况不 是必需的：如果根据 equals(java.lang.Object) 方法，两个对象不相等，那么在两个对象中的任一对象上调用 hashCode 方法必定会生成不同的整数结果。但是，程序员应该知道，为不相等的对象生成不同整数结果可以提高哈希表的性能。&lt;br&gt;实际上，由 Object 类定义的 hashCode 方法确实会针对不同的对象返回不同的整数。（这一般是通过将该对象的内部地址转换成一个整数来实现的，但是 JavaTM 编程语言不需要这种实现技巧。）   &lt;/p&gt;
+&lt;/blockquote&gt;
+  &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;当equals方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明相等对象必须具有相等的哈希码。&lt;/p&gt;
+&lt;p&gt;#关于Hashcode的作用&lt;br&gt;　　总的来说，Java中的集合（Collection）有两类，一类是List，再有一类是Set。前者集合内的元素是有序的，元素可以重复；后者元素无序，但元素不可重复。&lt;br&gt;       要想保证元素不重复，可两个元素是否重复应该依据什么来判断呢？这就是Object.equals方法了。但是，如果每增加一个元素就检查一 次，那么当元素很多时，后添加到集合中的元素比较的次数就非常多了。也就是说，如果集合中现在已经有1000个元素，那么第1001个元素加入集合时，它 就要调用1000次equals方法。这显然会大大降低效率。&lt;br&gt;       于是，Java采用了哈希表的原理。哈希算法也称为散列算法，是将数据依特定算法直接指定到一个地址上。这样一来，当集合要添加新的元素时，先调用这个元素的hashCode方法，就一下子能定位到它应该放置的物理位置上。如果这个位置上没有元素，它就可以 直接存储在这个位置上，不用再进行任何比较了；如果这个位置上已经有元素了，就调用它的equals方法与新元素进行比较，相同的话就不存了；不相同，也就是发生了Hash key相同导致冲突的情况,那么就在这个Hash key的地方产生一个链表,将所有产生相同hashcode的对象放到这个单链表上去,串在一起。所以这里存在一个冲突解决的问题（很少出现）。这样一来实际调用equals方法的次数就大大降低了，几乎只需要一两次。&lt;br&gt;       所以，Java对于eqauls方法和hashCode方法是这样规定的：&lt;br&gt;           1、如果两个对象相等，那么它们的hashCode值一定要相等；&lt;br&gt;           2、如果两个对象的hashCode相等，它们并不一定相等。 &lt;/p&gt;
+&lt;h1 id=&quot;如何理解hashCode的作用&quot;&gt;&lt;a href=&quot;#如何理解hashCode的作用&quot; class=&quot;headerlink&quot; title=&quot;如何理解hashCode的作用:&quot;&gt;&lt;/a&gt;如何理解hashCode的作用:&lt;/h1&gt;&lt;p&gt;以java.lang.Object来理解,JVM每new一个Object,它都会将这个Object丢到一个Hash哈希表中去,这样的话,下次做Object的比较或者取这个对象的时候,它会根据对象的hashcode再从Hash表中取这个对象。这样做的目的是提高取对象的效率。具体过程是这样:&lt;br&gt;1.new Object(),JVM根据这个对象的Hashcode值,放入到对应的Hash表对应的Key上,如果不同的对象确产生了相同的hash值,也就是发生了Hash key相同导致冲突的情况,那么就在这个Hash key的地方产生一个链表,将所有产生相同hashcode的对象放到这个单链表上去,串在一起。&lt;br&gt;2.比较两个对象的时候,首先根据他们的hashcode去hash表中找他的对象,当两个对象的hashcode相同,那么就是说他们这两个对象放在Hash表中的同一个key上,那么他们一定在这个key上的链表上。那么此时就只能根据Object的equal方法来比较这个对象是否equal。当两个对象的hashcode不同的话，肯定他们不能equal. &lt;/p&gt;
+&lt;h1 id=&quot;java-lang-Object中对hashCode的约定：&quot;&gt;&lt;a href=&quot;#java-lang-Object中对hashCode的约定：&quot; class=&quot;headerlink&quot; title=&quot;java.lang.Object中对hashCode的约定：&quot;&gt;&lt;/a&gt;java.lang.Object中对hashCode的约定：&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;在一个应用程序执行期间，如果一个对象的equals方法做比较所用到的信息没有被修改的话，则对该对象调用hashCode方法多次，它必须始终如一地返回同一个整数。 &lt;/li&gt;
+&lt;li&gt;如果两个对象根据equals(Object o)方法是相等的，则调用这两个对象中任一对象的hashCode方法必须产生相同的整数结果。 &lt;/li&gt;
+&lt;li&gt;如果两个对象根据equals(Object o)方法是不相等的，则调用这两个对象中任一个对象的hashCode方法，不要求产生不同的整数结果。但如果能不同，则可能提高散列表的性能。 &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://c610367182.iteye.com/blog/1930676&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://c610367182.iteye.com/blog/1930676&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/dolphin0520/p/3681042.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/dolphin0520/p/3681042.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/fenglibing/article/details/8905007&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/fenglibing/article/details/8905007&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;官方规定&quot;&gt;&lt;a href=&quot;#官方规定&quot; class=&quot;headerlink&quot; title=&quot;官方规定&quot;&gt;&lt;/a&gt;官方规定&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;hashcode方法返回该对象的哈希码值。支持该方法是为哈希表提供一些优点，例如，java.util.Hashtable 提供的哈希表。&lt;br&gt;hashCode 的常规协定是：&lt;br&gt;在 Java 应用程序执行期间，在同一对象上多次调用 hashCode 方法时，必须一致地返回相同的整数，前提是对象上 equals 比较中所用的信息没有被修改。从某一应用程序的一次执行到同一应用程序的另一次执行，该整数无需保持一致。&lt;br&gt;如果根据 equals(Object) 方法，两个对象是相等的，那么在两个对象中的每个对象上调用 hashCode 方法都必须生成相同的整数结果。&lt;br&gt;以下情况不 是必需的：如果根据 equals(java.lang.Object) 方法，两个对象不相等，那么在两个对象中的任一对象上调用 hashCode 方法必定会生成不同的整数结果。但是，程序员应该知道，为不相等的对象生成不同整数结果可以提高哈希表的性能。&lt;br&gt;实际上，由 Object 类定义的 hashCode 方法确实会针对不同的对象返回不同的整数。（这一般是通过将该对象的内部地址转换成一个整数来实现的，但是 JavaTM 编程语言不需要这种实现技巧。）   &lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -816,6 +816,46 @@
   </entry>
   
   <entry>
+    <title>wait/notify/notifyAll 总结</title>
+    <link href="http://yoursite.com/2016/08/14/wait:notify:notifyAll/"/>
+    <id>http://yoursite.com/2016/08/14/wait:notify:notifyAll/</id>
+    <published>2016-08-13T16:00:00.000Z</published>
+    <updated>2016-11-13T06:22:45.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;wait-notify-notifyAll&quot;&gt;&lt;a href=&quot;#wait-notify-notifyAll&quot; class=&quot;headerlink&quot; title=&quot;wait/notify/notifyAll&quot;&gt;&lt;/a&gt;wait/notify/notifyAll&lt;/h1&gt;&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;在Java中，可以通过配合调用Object对象的wait（）方法和notify（）方法或notifyAll（）方法来实现线程间的通信。在线程中调用wait（）方法，将阻塞等待其他线程的通知（其他线程调用notify（）方法或notifyAll（）方法），在线程中调用notify（）方法或notifyAll（）方法，将通知其他线程从wait（）方法处返回。&lt;/p&gt;
+&lt;p&gt;Object是所有类的超类，它有5个方法组成了等待/通知机制的核心：notify（）、notifyAll（）、wait（）、wait（long）和wait（long，int）。在Java中，所有的类都从Object继承而来，因此，所有的类都拥有这些共有方法可供使用。而且，由于他们都被声明为final，因此在子类中不能覆写任何一个方法。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;这里详细说明一下各个方法在使用中需要注意的几点：&lt;/p&gt;
+&lt;h3 id=&quot;wait（）&quot;&gt;&lt;a href=&quot;#wait（）&quot; class=&quot;headerlink&quot; title=&quot;wait（）&quot;&gt;&lt;/a&gt;wait（）&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public final void wait()  throws InterruptedException,IllegalMonitorStateException&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;该方法用来将当前线程置入休眠状态，直到接到通知或被中断为止。在调用wait（）之前，&lt;strong&gt;线程必须要获得该对象的对象级别锁，即只能在同步方法或同步块中调用wait（）方法&lt;/strong&gt;。进入wait（）方法后，当前线程释放锁。在从wait（）返回前，线程与其他线程竞争重新获得锁。如果调用wait（）时，没有持有适当的锁，则抛出IllegalMonitorStateException，它是RuntimeException的一个子类，因此，不需要try-catch结构。&lt;/p&gt;
+&lt;h3 id=&quot;notify（）&quot;&gt;&lt;a href=&quot;#notify（）&quot; class=&quot;headerlink&quot; title=&quot;notify（）&quot;&gt;&lt;/a&gt;notify（）&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public final native void notify() throws IllegalMonitorStateException&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;该方法也要在&lt;strong&gt;同步方法或同步块中调用，即在调用前，线程也必须要获得该对象的对象级别锁&lt;/strong&gt;，的如果调用notify（）时没有持有适当的锁，也会抛出IllegalMonitorStateException。&lt;/p&gt;
+&lt;p&gt;该方法用来通知那些可能等待该对象的对象锁的其他线程。如果有多个线程等待，则线程规划器任意挑选出其中一个wait（）状态的线程来发出通知，并使它等待获取该对象的对象锁（&lt;strong&gt;notify后，当前线程不会马上释放该对象锁，wait所在的线程并不能马上获取该对象锁，要等到程序退出synchronized代码块后，当前线程才会释放锁，wait所在的线程也才可以获取该对象锁&lt;/strong&gt;），但不惊动其他同样在等待被该对象notify的线程们。当第一个获得了该对象锁的wait线程运行完毕以后，它会释放掉该对象锁，此时如果该对象没有再次使用notify语句，&lt;strong&gt;则即便该对象已经空闲，其他wait状态等待的线程由于没有得到该对象的通知，会继续阻塞在wait状态&lt;/strong&gt;，直到这个对象发出一个notify或notifyAll。这里需要注意：它们等待的是被notify或notifyAll，而不是锁。这与下面的notifyAll（）方法执行后的情况不同。&lt;/p&gt;
+&lt;h3 id=&quot;notifyAll（）&quot;&gt;&lt;a href=&quot;#notifyAll（）&quot; class=&quot;headerlink&quot; title=&quot;notifyAll（）&quot;&gt;&lt;/a&gt;notifyAll（）&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public final native void notifyAll() throws IllegalMonitorStateException&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;该方法与notify（）方法的工作方式相同，重要的一点差异是：&lt;/p&gt;
+&lt;p&gt;notifyAll使所有原来在该对象上wait的线程统统退出wait的状态（即全部&lt;strong&gt;被唤醒，不再等待notify或notifyAll，但由于此时还没有获取到该对象锁，因此还不能继续往下执行），变成等待获取该对象上的锁&lt;/strong&gt;，一旦该对象锁被释放（notifyAll线程退出调用了notifyAll的synchronized代码块的时候），他们就会去竞争。如果其中一个线程获得了该对象锁，它就会继续往下执行，在它退出synchronized代码块，&lt;strong&gt;释放锁后，其他的已经被唤醒的线程将会继续竞争获取该锁，一直进行下去，直到所有被唤醒的线程都执行完毕&lt;/strong&gt;（与 notify 不同的点）。&lt;/p&gt;
+&lt;h3 id=&quot;wait（long）和wait（long-int）&quot;&gt;&lt;a href=&quot;#wait（long）和wait（long-int）&quot; class=&quot;headerlink&quot; title=&quot;wait（long）和wait（long,int）&quot;&gt;&lt;/a&gt;wait（long）和wait（long,int）&lt;/h3&gt;&lt;p&gt;显然，这两个方法是设置等待超时时间的，后者在超值时间上加上ns，精度也难以达到，因此，该方法很少使用。对于前者，如果在等待线程接到通知或被中断之前，已经超过了指定的毫秒数，则它通过竞争重新获得锁，并从wait（long）返回。另外，需要知道，如果设置了超时时间，当wait（）返回时，我们不能确定它是因为接到了通知还是因为超时而返回的，因为wait（）方法不会返回任何相关的信息。但&lt;strong&gt;一般可以通过设置标志位来判断，在notify之前改变标志位的值，在wait（）方法后读取该标志位的值来判断，当然为了保证notify不被遗漏&lt;/strong&gt;，我们还需要另外一个标志位来循环判断是否调用wait（）方法。&lt;/p&gt;
+&lt;h2 id=&quot;深入理解：&quot;&gt;&lt;a href=&quot;#深入理解：&quot; class=&quot;headerlink&quot; title=&quot;深入理解：&quot;&gt;&lt;/a&gt;深入理解：&lt;/h2&gt;&lt;p&gt;如果线程调用了对象的wait（）方法，那么线程便会处于该对象的等待池中，等待池中的线程不会去竞争该对象的锁。&lt;br&gt;当有线程调用了对象的notifyAll（）方法（唤醒所有wait线程）或notify（）方法（只随机唤醒一个wait线程），被唤醒的的线程便会进入该对象的锁池中，锁池中的线程会去竞争该对象锁。&lt;br&gt;优先级高的线程竞争到对象锁的概率大，假若某线程没有竞争到该对象锁，它还会留在锁池中，&lt;strong&gt;唯有线程再次调用wait（）方法，它才会重新回到等待池中&lt;/strong&gt;。而竞争到对象锁的线程则继续往下执行，直到执行完了synchronized代码块，它会释放掉该对象锁，这时锁池中的线程会继续竞争该对象锁。&lt;/p&gt;
+&lt;h1 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h1&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/%E4%BD%BF%E7%94%A8wait%20notify%20notifyall%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/%E4%BD%BF%E7%94%A8wait%20notify%20notifyall%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1.md&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;wait-notify-notifyAll&quot;&gt;&lt;a href=&quot;#wait-notify-notifyAll&quot; class=&quot;headerlink&quot; title=&quot;wait/notify/notifyAll&quot;&gt;&lt;/a&gt;wait/notify/notifyAll&lt;/h1&gt;&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;在Java中，可以通过配合调用Object对象的wait（）方法和notify（）方法或notifyAll（）方法来实现线程间的通信。在线程中调用wait（）方法，将阻塞等待其他线程的通知（其他线程调用notify（）方法或notifyAll（）方法），在线程中调用notify（）方法或notifyAll（）方法，将通知其他线程从wait（）方法处返回。&lt;/p&gt;
+&lt;p&gt;Object是所有类的超类，它有5个方法组成了等待/通知机制的核心：notify（）、notifyAll（）、wait（）、wait（long）和wait（long，int）。在Java中，所有的类都从Object继承而来，因此，所有的类都拥有这些共有方法可供使用。而且，由于他们都被声明为final，因此在子类中不能覆写任何一个方法。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+      <category term="基础" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
     <title>synchronized 总结</title>
     <link href="http://yoursite.com/2016/08/14/synchronized/"/>
     <id>http://yoursite.com/2016/08/14/synchronized/</id>
@@ -862,46 +902,6 @@
 &lt;li&gt;修改一个静态的方法，其作用的范围是整个静态方法，&lt;strong&gt;作用的对象是这个类的所有对象&lt;/strong&gt;；&lt;/li&gt;
 &lt;li&gt;修改一个类，其作用的范围是synchronized后面括号括起来的部分，&lt;strong&gt;作用的对象是这个类的所有对象&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-    
-      <category term="基础" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>wait/notify/notifyAll 总结</title>
-    <link href="http://yoursite.com/2016/08/14/wait:notify:notifyAll/"/>
-    <id>http://yoursite.com/2016/08/14/wait:notify:notifyAll/</id>
-    <published>2016-08-13T16:00:00.000Z</published>
-    <updated>2016-11-13T06:22:45.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;wait-notify-notifyAll&quot;&gt;&lt;a href=&quot;#wait-notify-notifyAll&quot; class=&quot;headerlink&quot; title=&quot;wait/notify/notifyAll&quot;&gt;&lt;/a&gt;wait/notify/notifyAll&lt;/h1&gt;&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;在Java中，可以通过配合调用Object对象的wait（）方法和notify（）方法或notifyAll（）方法来实现线程间的通信。在线程中调用wait（）方法，将阻塞等待其他线程的通知（其他线程调用notify（）方法或notifyAll（）方法），在线程中调用notify（）方法或notifyAll（）方法，将通知其他线程从wait（）方法处返回。&lt;/p&gt;
-&lt;p&gt;Object是所有类的超类，它有5个方法组成了等待/通知机制的核心：notify（）、notifyAll（）、wait（）、wait（long）和wait（long，int）。在Java中，所有的类都从Object继承而来，因此，所有的类都拥有这些共有方法可供使用。而且，由于他们都被声明为final，因此在子类中不能覆写任何一个方法。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;这里详细说明一下各个方法在使用中需要注意的几点：&lt;/p&gt;
-&lt;h3 id=&quot;wait（）&quot;&gt;&lt;a href=&quot;#wait（）&quot; class=&quot;headerlink&quot; title=&quot;wait（）&quot;&gt;&lt;/a&gt;wait（）&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public final void wait()  throws InterruptedException,IllegalMonitorStateException&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;该方法用来将当前线程置入休眠状态，直到接到通知或被中断为止。在调用wait（）之前，&lt;strong&gt;线程必须要获得该对象的对象级别锁，即只能在同步方法或同步块中调用wait（）方法&lt;/strong&gt;。进入wait（）方法后，当前线程释放锁。在从wait（）返回前，线程与其他线程竞争重新获得锁。如果调用wait（）时，没有持有适当的锁，则抛出IllegalMonitorStateException，它是RuntimeException的一个子类，因此，不需要try-catch结构。&lt;/p&gt;
-&lt;h3 id=&quot;notify（）&quot;&gt;&lt;a href=&quot;#notify（）&quot; class=&quot;headerlink&quot; title=&quot;notify（）&quot;&gt;&lt;/a&gt;notify（）&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public final native void notify() throws IllegalMonitorStateException&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;该方法也要在&lt;strong&gt;同步方法或同步块中调用，即在调用前，线程也必须要获得该对象的对象级别锁&lt;/strong&gt;，的如果调用notify（）时没有持有适当的锁，也会抛出IllegalMonitorStateException。&lt;/p&gt;
-&lt;p&gt;该方法用来通知那些可能等待该对象的对象锁的其他线程。如果有多个线程等待，则线程规划器任意挑选出其中一个wait（）状态的线程来发出通知，并使它等待获取该对象的对象锁（&lt;strong&gt;notify后，当前线程不会马上释放该对象锁，wait所在的线程并不能马上获取该对象锁，要等到程序退出synchronized代码块后，当前线程才会释放锁，wait所在的线程也才可以获取该对象锁&lt;/strong&gt;），但不惊动其他同样在等待被该对象notify的线程们。当第一个获得了该对象锁的wait线程运行完毕以后，它会释放掉该对象锁，此时如果该对象没有再次使用notify语句，&lt;strong&gt;则即便该对象已经空闲，其他wait状态等待的线程由于没有得到该对象的通知，会继续阻塞在wait状态&lt;/strong&gt;，直到这个对象发出一个notify或notifyAll。这里需要注意：它们等待的是被notify或notifyAll，而不是锁。这与下面的notifyAll（）方法执行后的情况不同。&lt;/p&gt;
-&lt;h3 id=&quot;notifyAll（）&quot;&gt;&lt;a href=&quot;#notifyAll（）&quot; class=&quot;headerlink&quot; title=&quot;notifyAll（）&quot;&gt;&lt;/a&gt;notifyAll（）&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public final native void notifyAll() throws IllegalMonitorStateException&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;该方法与notify（）方法的工作方式相同，重要的一点差异是：&lt;/p&gt;
-&lt;p&gt;notifyAll使所有原来在该对象上wait的线程统统退出wait的状态（即全部&lt;strong&gt;被唤醒，不再等待notify或notifyAll，但由于此时还没有获取到该对象锁，因此还不能继续往下执行），变成等待获取该对象上的锁&lt;/strong&gt;，一旦该对象锁被释放（notifyAll线程退出调用了notifyAll的synchronized代码块的时候），他们就会去竞争。如果其中一个线程获得了该对象锁，它就会继续往下执行，在它退出synchronized代码块，&lt;strong&gt;释放锁后，其他的已经被唤醒的线程将会继续竞争获取该锁，一直进行下去，直到所有被唤醒的线程都执行完毕&lt;/strong&gt;（与 notify 不同的点）。&lt;/p&gt;
-&lt;h3 id=&quot;wait（long）和wait（long-int）&quot;&gt;&lt;a href=&quot;#wait（long）和wait（long-int）&quot; class=&quot;headerlink&quot; title=&quot;wait（long）和wait（long,int）&quot;&gt;&lt;/a&gt;wait（long）和wait（long,int）&lt;/h3&gt;&lt;p&gt;显然，这两个方法是设置等待超时时间的，后者在超值时间上加上ns，精度也难以达到，因此，该方法很少使用。对于前者，如果在等待线程接到通知或被中断之前，已经超过了指定的毫秒数，则它通过竞争重新获得锁，并从wait（long）返回。另外，需要知道，如果设置了超时时间，当wait（）返回时，我们不能确定它是因为接到了通知还是因为超时而返回的，因为wait（）方法不会返回任何相关的信息。但&lt;strong&gt;一般可以通过设置标志位来判断，在notify之前改变标志位的值，在wait（）方法后读取该标志位的值来判断，当然为了保证notify不被遗漏&lt;/strong&gt;，我们还需要另外一个标志位来循环判断是否调用wait（）方法。&lt;/p&gt;
-&lt;h2 id=&quot;深入理解：&quot;&gt;&lt;a href=&quot;#深入理解：&quot; class=&quot;headerlink&quot; title=&quot;深入理解：&quot;&gt;&lt;/a&gt;深入理解：&lt;/h2&gt;&lt;p&gt;如果线程调用了对象的wait（）方法，那么线程便会处于该对象的等待池中，等待池中的线程不会去竞争该对象的锁。&lt;br&gt;当有线程调用了对象的notifyAll（）方法（唤醒所有wait线程）或notify（）方法（只随机唤醒一个wait线程），被唤醒的的线程便会进入该对象的锁池中，锁池中的线程会去竞争该对象锁。&lt;br&gt;优先级高的线程竞争到对象锁的概率大，假若某线程没有竞争到该对象锁，它还会留在锁池中，&lt;strong&gt;唯有线程再次调用wait（）方法，它才会重新回到等待池中&lt;/strong&gt;。而竞争到对象锁的线程则继续往下执行，直到执行完了synchronized代码块，它会释放掉该对象锁，这时锁池中的线程会继续竞争该对象锁。&lt;/p&gt;
-&lt;h1 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h1&gt;&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/%E4%BD%BF%E7%94%A8wait%20notify%20notifyall%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/GeniusVJR/LearningNotes/blob/master/Part2/JavaConcurrent/%E4%BD%BF%E7%94%A8wait%20notify%20notifyall%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1.md&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;wait-notify-notifyAll&quot;&gt;&lt;a href=&quot;#wait-notify-notifyAll&quot; class=&quot;headerlink&quot; title=&quot;wait/notify/notifyAll&quot;&gt;&lt;/a&gt;wait/notify/notifyAll&lt;/h1&gt;&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;在Java中，可以通过配合调用Object对象的wait（）方法和notify（）方法或notifyAll（）方法来实现线程间的通信。在线程中调用wait（）方法，将阻塞等待其他线程的通知（其他线程调用notify（）方法或notifyAll（）方法），在线程中调用notify（）方法或notifyAll（）方法，将通知其他线程从wait（）方法处返回。&lt;/p&gt;
-&lt;p&gt;Object是所有类的超类，它有5个方法组成了等待/通知机制的核心：notify（）、notifyAll（）、wait（）、wait（long）和wait（long，int）。在Java中，所有的类都从Object继承而来，因此，所有的类都拥有这些共有方法可供使用。而且，由于他们都被声明为final，因此在子类中不能覆写任何一个方法。&lt;br&gt;
     
     </summary>
     
