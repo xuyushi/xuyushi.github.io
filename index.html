@@ -272,6 +272,371 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/04/NanoHttpd/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/04/NanoHttpd/" itemprop="url">
+                  NanoHTTPD源码解析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-04T00:00:00+08:00">
+                2017-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/05/04/NanoHttpd/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/04/NanoHttpd/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在微信 、UC 等 APP 中，无法通过scheme 或者 AppLiks 调起我们的 APP，所以想在APP 内部建立起一个 LocalHttpServer，监听某个端口，web 通过访问本地的这个端口，完成通信，调用起一些服务</p>
+<p>在 github 上发现了 <a href="https://github.com/NanoHttpd/nanohttpd" target="_blank" rel="external">NanoHttpd</a> 项目，它仅仅使用一个类，完成了 server 的搭建。它使用的是Socket BIO(阻塞IO)，一个客户端连接分发到一个线程的经典模型，而且具有良好的扩展性.</p>
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>使用比较简单。继承 ‘NanoHTTPD’ ， 复写’serve()’ , 在该函数内处理。调用 start() 启动服务 。stop() 关闭服务</p>
+<h1 id="源码解析"><a href="#源码解析" class="headerlink" title="源码解析"></a>源码解析</h1><p>从调用的入口 start() 开始分析</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Start the server.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@throws</span> IOException</span><br><span class="line"> *             if the socket is in use.</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="comment">//建立 ServerSocket ，并且 bind 对应的 host 和端口号</span></span><br><span class="line">    myServerSocket = <span class="keyword">new</span> ServerSocket();</span><br><span class="line">    myServerSocket.bind((hostname != <span class="keyword">null</span>) ? <span class="keyword">new</span> InetSocketAddress(hostname, myPort)</span><br><span class="line">            : <span class="keyword">new</span> InetSocketAddress(myPort));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//开启一个线程监听这个端口</span></span><br><span class="line">    myThread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> requestCount = <span class="number">0</span>;</span><br><span class="line">            do &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="comment">//阻塞方法，直到有 socket 链接</span></span><br><span class="line">                    <span class="keyword">final</span> Socket finalAccept = myServerSocket.accept();</span><br><span class="line">                    ++requestCount;</span><br><span class="line">                    <span class="comment">//register ，存入一个 set ，方便统一管理 。</span></span><br><span class="line">                    registerConnection(finalAccept);</span><br><span class="line">                    finalAccept.setSoTimeout(SOCKET_READ_TIMEOUT);</span><br><span class="line">                    <span class="comment">//从 socket 中拿到InputStream，客户端发送的数据都在这里</span></span><br><span class="line">                    <span class="keyword">final</span> InputStream inputStream = finalAccept.getInputStream();</span><br><span class="line">                    <span class="keyword">final</span> <span class="keyword">int</span> finalRequestCount = requestCount;</span><br><span class="line">                    <span class="comment">//再开启一个线程单独处理这个 socket </span></span><br><span class="line">                    asyncRunner.exec(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                            Thread.currentThread().setName(<span class="string">"NanoHttpd Request Processor (#"</span> + finalRequestCount + <span class="string">")"</span>);</span><br><span class="line">                            OutputStream outputStream = <span class="keyword">null</span>;</span><br><span class="line">                            <span class="keyword">try</span> &#123;</span><br><span class="line">                                outputStream = finalAccept.getOutputStream();</span><br><span class="line">                                TempFileManager tempFileManager = tempFileManagerFactory.create();</span><br><span class="line">                                <span class="comment">//通过 inputStream ，outputStream 最终得到一个 HTTPSession</span></span><br><span class="line">                                HTTPSession session = <span class="keyword">new</span> HTTPSession(tempFileManager, inputStream, outputStream,</span><br><span class="line">                                        finalAccept.getInetAddress());</span><br><span class="line">                                <span class="keyword">while</span> (!finalAccept.isClosed()) &#123;</span><br><span class="line">                                	<span class="comment">//最终调用session.execute 来处理</span></span><br><span class="line">                                    session.execute();</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                                <span class="comment">// When the socket is closed by the client,</span></span><br><span class="line">                                <span class="comment">// we throw our own SocketException</span></span><br><span class="line">                                <span class="comment">// to break the "keep alive" loop above.</span></span><br><span class="line">                                <span class="keyword">if</span> (!(e <span class="keyword">instanceof</span> SocketException &amp;&amp; <span class="string">"NanoHttpd Shutdown"</span>.equals(e.getMessage()))) &#123;</span><br><span class="line">                                    e.printStackTrace();</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                                safeClose(outputStream);</span><br><span class="line">                                safeClose(inputStream);</span><br><span class="line">                                safeClose(finalAccept);</span><br><span class="line">                                unRegisterConnection(finalAccept);</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Throwable t) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">while</span> (!myServerSocket.isClosed());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    myThread.setDaemon(<span class="keyword">true</span>);</span><br><span class="line">    myThread.setName(<span class="string">"NanoHttpd Main Listener"</span>);</span><br><span class="line">    myThread.start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到所有数据的处理都在HTTPSession,excute()中 ，接着看下 HTTPSession 数据结构。他是<code>NanoHTTPD</code> 的内部类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">protected</span> <span class="class"><span class="keyword">class</span> <span class="title">HTTPSession</span> <span class="keyword">implements</span> <span class="title">IHTTPSession</span> </span>&#123;</span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BUFSIZE = <span class="number">8192</span>;</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">final</span> TempFileManager tempFileManager;</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">final</span> OutputStream outputStream;</span><br><span class="line">      <span class="keyword">private</span> PushbackInputStream inputStream;</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">int</span> splitbyte;</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">int</span> rlen;</span><br><span class="line">      <span class="keyword">private</span> String uri;</span><br><span class="line">      <span class="keyword">private</span> Method method;</span><br><span class="line">      <span class="keyword">private</span> Map&lt;String, String&gt; parms;</span><br><span class="line">      <span class="keyword">private</span> Map&lt;String, String&gt; headers;</span><br><span class="line">      <span class="keyword">private</span> CookieHandler cookies;</span><br><span class="line">      <span class="keyword">private</span> String queryParameterString;</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+<p>实现了 <code>IHTTPSession</code> 这样一个借口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Handles one session, i.e. parses the HTTP request and returns the</span><br><span class="line"> * response.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IHTTPSession</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Map&lt;String, String&gt; <span class="title">getParms</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Map&lt;String, String&gt; <span class="title">getHeaders</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@return</span> the path part of the URL.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function">String <span class="title">getUri</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">getQueryParameterString</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Method <span class="title">getMethod</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">InputStream <span class="title">getInputStream</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">CookieHandler <span class="title">getCookies</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Adds the files in the request body to the files map.</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@arg</span> files - map to modify</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">parseBody</span><span class="params">(Map&lt;String, String&gt; files)</span> <span class="keyword">throws</span> IOException, ResponseException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类似于getMethod() ，getInputStream()，getParms()，都提供了。<br>具体看下 execute方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// Read the first 8192 bytes.</span></span><br><span class="line">      <span class="comment">// The full header should fit in here.</span></span><br><span class="line">      <span class="comment">// Apache's default header limit is 8KB.</span></span><br><span class="line">      <span class="comment">// Do NOT assume that a single read will get the entire header</span></span><br><span class="line">      <span class="comment">// at once!</span></span><br><span class="line">      <span class="comment">//header 最大为8k，所以一次读取8k 的大小</span></span><br><span class="line">      <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[BUFSIZE];</span><br><span class="line">      splitbyte = <span class="number">0</span>;</span><br><span class="line">      rlen = <span class="number">0</span>;</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">int</span> read = -<span class="number">1</span>;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              read = inputStream.read(buf, <span class="number">0</span>, BUFSIZE);</span><br><span class="line">          &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">              safeClose(inputStream);</span><br><span class="line">              safeClose(outputStream);</span><br><span class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> SocketException(<span class="string">"NanoHttpd Shutdown"</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span> (read == -<span class="number">1</span>) &#123;</span><br><span class="line">              <span class="comment">// socket was been closed</span></span><br><span class="line">              safeClose(inputStream);</span><br><span class="line">              safeClose(outputStream);</span><br><span class="line">              <span class="keyword">throw</span> <span class="keyword">new</span> SocketException(<span class="string">"NanoHttpd Shutdown"</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">while</span> (read &gt; <span class="number">0</span>) &#123;</span><br><span class="line">              rlen += read;</span><br><span class="line">              <span class="comment">//找到 head 结束，也就是两个换行的位置，存入splitbyte ，后面解析的时候用到</span></span><br><span class="line">              splitbyte = findHeaderEnd(buf, rlen);</span><br><span class="line">              <span class="keyword">if</span> (splitbyte &gt; <span class="number">0</span>)</span><br><span class="line">                  <span class="keyword">break</span>;</span><br><span class="line">              read = inputStream.read(buf, rlen, BUFSIZE - rlen);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//为了避免 inputStream 被破坏，将读取的数据在回退到 inputStream 中</span></span><br><span class="line">      <span class="keyword">if</span> (splitbyte &lt; rlen) &#123;</span><br><span class="line">          inputStream.unread(buf, splitbyte, rlen - splitbyte);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      parms = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">null</span> == headers) &#123;</span><br><span class="line">          headers = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Create a BufferedReader for parsing the header.</span></span><br><span class="line">      BufferedReader hin = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> ByteArrayInputStream(buf, <span class="number">0</span>, rlen)));</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Decode the header into parms and header java properties</span></span><br><span class="line">      Map&lt;String, String&gt; pre = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">      <span class="comment">//把 header 中的参数 等解析出来</span></span><br><span class="line">      decodeHeader(hin, pre, parms, headers);</span><br><span class="line"></span><br><span class="line">      method = Method.lookup(pre.get(<span class="string">"method"</span>));</span><br><span class="line">      <span class="keyword">if</span> (method == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> ResponseException(Response.Status.BAD_REQUEST, <span class="string">"BAD REQUEST: Syntax error."</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      uri = pre.get(<span class="string">"uri"</span>);</span><br><span class="line"></span><br><span class="line">      cookies = <span class="keyword">new</span> CookieHandler(headers);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Ok, now do the serve()</span></span><br><span class="line">      <span class="comment">//这里是回调，HTTPSession 本身实现了 IHTTPSession 接口 </span></span><br><span class="line">      Response r = serve(<span class="keyword">this</span>);</span><br><span class="line">      <span class="keyword">if</span> (r == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> ResponseException(Response.Status.INTERNAL_ERROR,</span><br><span class="line">                  <span class="string">"SERVER INTERNAL ERROR: Serve() returned a null response."</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          cookies.unloadQueue(r);</span><br><span class="line">          r.setRequestMethod(method);</span><br><span class="line">          r.send(outputStream);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (SocketException e) &#123;</span><br><span class="line">      <span class="comment">// throw it out to close socket object (finalAccept)</span></span><br><span class="line">      <span class="keyword">throw</span> e;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (SocketTimeoutException ste) &#123;</span><br><span class="line">      <span class="keyword">throw</span> ste;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (IOException ioe) &#123;</span><br><span class="line">      Response r = <span class="keyword">new</span> Response(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT,</span><br><span class="line">              <span class="string">"SERVER INTERNAL ERROR: IOException: "</span> + ioe.getMessage());</span><br><span class="line">      r.send(outputStream);</span><br><span class="line">      safeClose(outputStream);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (ResponseException re) &#123;：</span><br><span class="line">      Response r = <span class="keyword">new</span> Response(re.getStatus(), MIME_PLAINTEXT, re.getMessage());</span><br><span class="line">      r.send(outputStream);</span><br><span class="line">      safeClose(outputStream);</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      tempFileManager.clear();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//解析 header</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line">* Decodes the sent headers and loads the data into Key/value pairs</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">decodeHeader</span><span class="params">(BufferedReader in, Map&lt;String, String&gt; pre, Map&lt;String, String&gt; parms,</span><br><span class="line">      Map&lt;String, String&gt; headers)</span> <span class="keyword">throws</span> ResponseException </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// Read the request line</span></span><br><span class="line">      <span class="comment">//首先读取请求行 并解析</span></span><br><span class="line">      String inLine = in.readLine();</span><br><span class="line">      <span class="keyword">if</span> (inLine == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//通过StringTokenizer 将首行安装空格分割</span></span><br><span class="line">      StringTokenizer st = <span class="keyword">new</span> StringTokenizer(inLine);</span><br><span class="line">      <span class="keyword">if</span> (!st.hasMoreTokens()) &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> ResponseException(Response.Status.BAD_REQUEST,</span><br><span class="line">                  <span class="string">"BAD REQUEST: Syntax error. Usage: GET /example/file.html"</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//根据下图的 http 结构可以看出。首先读取的是 methos</span></span><br><span class="line">      pre.put(<span class="string">"method"</span>, st.nextToken());</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (!st.hasMoreTokens()) &#123;</span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> ResponseException(Response.Status.BAD_REQUEST,</span><br><span class="line">                  <span class="string">"BAD REQUEST: Missing URI. Usage: GET /example/file.html"</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//其次是 url</span></span><br><span class="line">      String uri = st.nextToken();</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Decode parameters from the URI</span></span><br><span class="line">      <span class="keyword">int</span> qmi = uri.indexOf(<span class="string">'?'</span>);</span><br><span class="line">      <span class="keyword">if</span> (qmi &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">          decodeParms(uri.substring(qmi + <span class="number">1</span>), parms);</span><br><span class="line">          uri = decodePercent(uri.substring(<span class="number">0</span>, qmi));</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          uri = decodePercent(uri);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// If there's another token, it's protocol version,</span></span><br><span class="line">      <span class="comment">// followed by HTTP headers. Ignore version but parse headers.</span></span><br><span class="line">      <span class="comment">// <span class="doctag">NOTE:</span> this now forces header names lowercase since they are</span></span><br><span class="line">      <span class="comment">// case insensitive and vary by client.</span></span><br><span class="line">      <span class="comment">//解析请求头部，头部的参数是通过 ： 分割</span></span><br><span class="line">      <span class="keyword">if</span> (st.hasMoreTokens()) &#123;</span><br><span class="line">          String line = in.readLine();</span><br><span class="line">          <span class="keyword">while</span> (line != <span class="keyword">null</span> &amp;&amp; line.trim().length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">              <span class="keyword">int</span> p = line.indexOf(<span class="string">':'</span>);</span><br><span class="line">              <span class="keyword">if</span> (p &gt;= <span class="number">0</span>)</span><br><span class="line">                  headers.put(line.substring(<span class="number">0</span>, p).trim().toLowerCase(Locale.US), line.substring(p + <span class="number">1</span>)</span><br><span class="line">                          .trim());</span><br><span class="line">              line = in.readLine();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      pre.put(<span class="string">"uri"</span>, uri);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (IOException ioe) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> ResponseException(Response.Status.INTERNAL_ERROR, <span class="string">"SERVER INTERNAL ERROR: IOException: "</span></span><br><span class="line">              + ioe.getMessage(), ioe);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/media/14938697821290.jpg?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p>session.parseBody(files) ，是解析出请求数据用的 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parseBody</span><span class="params">(Map&lt;String, String&gt; files)</span> <span class="keyword">throws</span> IOException, ResponseException </span>&#123;</span><br><span class="line">         RandomAccessFile randomAccessFile = <span class="keyword">null</span>;</span><br><span class="line">         BufferedReader in = <span class="keyword">null</span>;</span><br><span class="line">         <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//通过 tempFileManager 得到一个 RandomAccessFile</span></span><br><span class="line">             randomAccessFile = getTmpBucket();</span><br><span class="line"></span><br><span class="line">             <span class="keyword">long</span> size;</span><br><span class="line">             <span class="comment">//如果 header 中有content-length ，那么 size 用这个。否则用之前找到 header 结束的位置来算</span></span><br><span class="line">             <span class="keyword">if</span> (headers.containsKey(<span class="string">"content-length"</span>)) &#123;</span><br><span class="line">                 size = Integer.parseInt(headers.get(<span class="string">"content-length"</span>));</span><br><span class="line">             &#125; <span class="keyword">else</span> <span class="keyword">if</span> (splitbyte &lt; rlen) &#123;</span><br><span class="line">                 size = rlen - splitbyte;</span><br><span class="line">             &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                 size = <span class="number">0</span>;</span><br><span class="line">             &#125;</span><br><span class="line"></span><br><span class="line">             <span class="comment">// Now read all the body and write it to f</span></span><br><span class="line">             <span class="comment">//把 body 写入 tempfile 中</span></span><br><span class="line">             <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">512</span>];</span><br><span class="line">             <span class="keyword">while</span> (rlen &gt;= <span class="number">0</span> &amp;&amp; size &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                 rlen = inputStream.read(buf, <span class="number">0</span>, (<span class="keyword">int</span>) Math.min(size, <span class="number">512</span>));</span><br><span class="line">                 size -= rlen;</span><br><span class="line">                 <span class="keyword">if</span> (rlen &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                     randomAccessFile.write(buf, <span class="number">0</span>, rlen);</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line"></span><br><span class="line">             <span class="comment">// Get the raw body as a byte []</span></span><br><span class="line">             ByteBuffer fbuf = randomAccessFile.getChannel().map(FileChannel.MapMode.READ_ONLY, <span class="number">0</span>,</span><br><span class="line">                     randomAccessFile.length());</span><br><span class="line">             randomAccessFile.seek(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">             <span class="comment">// Create a BufferedReader for easily reading it as string.</span></span><br><span class="line">             InputStream bin = <span class="keyword">new</span> FileInputStream(randomAccessFile.getFD());</span><br><span class="line">             in = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(bin));</span><br><span class="line"></span><br><span class="line">             <span class="comment">// If the method is POST, there may be parameters</span></span><br><span class="line">             <span class="comment">// in data section, too, read it:</span></span><br><span class="line">             <span class="keyword">if</span> (Method.POST.equals(method)) &#123;</span><br><span class="line">                 String contentType = <span class="string">""</span>;</span><br><span class="line">                 String contentTypeHeader = headers.get(<span class="string">"content-type"</span>);</span><br><span class="line"></span><br><span class="line">                 StringTokenizer st = <span class="keyword">null</span>;</span><br><span class="line">                 <span class="keyword">if</span> (contentTypeHeader != <span class="keyword">null</span>) &#123;</span><br><span class="line">                     st = <span class="keyword">new</span> StringTokenizer(contentTypeHeader, <span class="string">",; "</span>);</span><br><span class="line">                     <span class="keyword">if</span> (st.hasMoreTokens()) &#123;</span><br><span class="line">                         contentType = st.nextToken();</span><br><span class="line">                     &#125;</span><br><span class="line">                 &#125;</span><br><span class="line"></span><br><span class="line">                 <span class="keyword">if</span> (<span class="string">"multipart/form-data"</span>.equalsIgnoreCase(contentType)) &#123;</span><br><span class="line">                     <span class="comment">// Handle multipart/form-data</span></span><br><span class="line">                     <span class="keyword">if</span> (!st.hasMoreTokens()) &#123;</span><br><span class="line">                         <span class="keyword">throw</span> <span class="keyword">new</span> ResponseException(Response.Status.BAD_REQUEST,</span><br><span class="line">                                 <span class="string">"BAD REQUEST: Content type is multipart/form-data but boundary missing. Usage: GET /example/file.html"</span>);</span><br><span class="line">                     &#125;</span><br><span class="line"></span><br><span class="line">                     String boundaryStartString = <span class="string">"boundary="</span>;</span><br><span class="line">                     <span class="keyword">int</span> boundaryContentStart = contentTypeHeader.indexOf(boundaryStartString)</span><br><span class="line">                             + boundaryStartString.length();</span><br><span class="line">                     String boundary = contentTypeHeader.substring(boundaryContentStart, contentTypeHeader.length());</span><br><span class="line">                     <span class="keyword">if</span> (boundary.startsWith(<span class="string">"\""</span>) &amp;&amp; boundary.endsWith(<span class="string">"\""</span>)) &#123;</span><br><span class="line">                         boundary = boundary.substring(<span class="number">1</span>, boundary.length() - <span class="number">1</span>);</span><br><span class="line">                     &#125;</span><br><span class="line"></span><br><span class="line">                     decodeMultipartData(boundary, fbuf, in, parms, files);</span><br><span class="line">                 &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                     String postLine = <span class="string">""</span>;</span><br><span class="line">                     StringBuilder postLineBuffer = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">                     <span class="keyword">char</span> pbuf[] = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">512</span>];</span><br><span class="line">                     <span class="keyword">int</span> read = in.read(pbuf);</span><br><span class="line">                     <span class="keyword">while</span> (read &gt;= <span class="number">0</span> &amp;&amp; !postLine.endsWith(<span class="string">"\r\n"</span>)) &#123;</span><br><span class="line">                         postLine = String.valueOf(pbuf, <span class="number">0</span>, read);</span><br><span class="line">                         postLineBuffer.append(postLine);</span><br><span class="line">                         read = in.read(pbuf);</span><br><span class="line">                     &#125;</span><br><span class="line">                     postLine = postLineBuffer.toString().trim();</span><br><span class="line">                     <span class="comment">// Handle application/x-www-form-urlencoded</span></span><br><span class="line">                     <span class="keyword">if</span> (<span class="string">"application/x-www-form-urlencoded"</span>.equalsIgnoreCase(contentType)) &#123;</span><br><span class="line">                         decodeParms(postLine, parms);</span><br><span class="line">                     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (postLine.length() != <span class="number">0</span>) &#123;</span><br><span class="line">                         <span class="comment">// Special case for raw POST data =&gt; create a</span></span><br><span class="line">                         <span class="comment">// special files entry "postData" with raw content</span></span><br><span class="line">                         <span class="comment">// data</span></span><br><span class="line">                         files.put(<span class="string">"postData"</span>, postLine);</span><br><span class="line">                     &#125;</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125; <span class="keyword">else</span> <span class="keyword">if</span> (Method.PUT.equals(method)) &#123;</span><br><span class="line">             	<span class="comment">//最终 file 放在 这个 map 里</span></span><br><span class="line">                 files.put(<span class="string">"content"</span>, saveTmpFile(fbuf, <span class="number">0</span>, fbuf.limit()));</span><br><span class="line">             &#125;</span><br><span class="line">         &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">             safeClose(randomAccessFile);</span><br><span class="line">             safeClose(in);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p><a href="http://shensy.iteye.com/blog/1880381" target="_blank" rel="external">http://shensy.iteye.com/blog/1880381</a><br><a href="http://www.voidcn.com/blog/mrtitan/article/p-3280792.html" target="_blank" rel="external">http://www.voidcn.com/blog/mrtitan/article/p-3280792.html</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/08/Android CleanArchitecture --Dagger/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/08/Android CleanArchitecture --Dagger/" itemprop="url">
+                  Android CleanArchitecture --Dagger分析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-08T00:00:00+08:00">
+                2017-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/04/08/Android CleanArchitecture --Dagger/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/08/Android CleanArchitecture --Dagger/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>为了更好的解耦。<a href="https://github.com/android10/Android-CleanArchitecture" target="_blank" rel="external">clean 架构</a> 使用了 Daager2 进行依赖注入。将接口放在了 domain 层。而将具体实现放在了 data 和 Presentation 层。</p>
+<h1 id="项目分析"><a href="#项目分析" class="headerlink" title="项目分析"></a>项目分析</h1><p><img src="/media/14913996461873.jpg?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p>依赖注入的逻辑主要放在了 presentation 层的 di 包中。</p>
+<ul>
+<li>component：连接 module 和需要被注入的实例</li>
+<li>modules：提供实体的构造方法</li>
+<li>PerActivity：注解</li>
+<li>HasComponet：</li>
+</ul>
+<h2 id="ApplicationModule"><a href="#ApplicationModule" class="headerlink" title="ApplicationModule"></a>ApplicationModule</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Dagger module that provides objects which will live during the application lifecycle.</span><br><span class="line"> */</span></span><br><span class="line"><span class="meta">@Module</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationModule</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> AndroidApplication application;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ApplicationModule</span><span class="params">(AndroidApplication application)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.application = application;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Provides</span> <span class="meta">@Singleton</span> <span class="function">Context <span class="title">provideApplicationContext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.application;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Provides</span> <span class="meta">@Singleton</span> <span class="function">ThreadExecutor <span class="title">provideThreadExecutor</span><span class="params">(JobExecutor jobExecutor)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> jobExecutor;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Provides</span> <span class="meta">@Singleton</span> <span class="function">PostExecutionThread <span class="title">providePostExecutionThread</span><span class="params">(UIThread uiThread)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> uiThread;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Provides</span> <span class="meta">@Singleton</span> <span class="function">UserCache <span class="title">provideUserCache</span><span class="params">(UserCacheImpl userCache)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> userCache;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Provides</span> <span class="meta">@Singleton</span> <span class="function">UserRepository <span class="title">provideUserRepository</span><span class="params">(UserDataRepository userDataRepository)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> userDataRepository;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>放在 <code>ApplicationModule</code> 中的 @provides 方法，都加以 <code>@Singleton</code> 修饰，表示在整个 app 生命周期内都是唯一的。</p>
+<p>这几个 Provides 方法都是将参数直接返回。真正的构造发生在类的定义中，举个栗子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">@Provides</span> <span class="meta">@Singleton</span> <span class="function">UserRepository <span class="title">provideUserRepository</span><span class="params">(UserDataRepository userDataRepository)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> userDataRepository;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Decorated &#123;<span class="doctag">@link</span> java.util.concurrent.ThreadPoolExecutor&#125;</span><br><span class="line"> */</span></span><br><span class="line"><span class="meta">@Singleton</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JobExecutor</span> <span class="keyword">implements</span> <span class="title">ThreadExecutor</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> ThreadPoolExecutor threadPoolExecutor;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Inject</span></span><br><span class="line">  JobExecutor() &#123;</span><br><span class="line">    <span class="keyword">this</span>.threadPoolExecutor = <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">3</span>, <span class="number">5</span>, <span class="number">10</span>, TimeUnit.SECONDS,</span><br><span class="line">        <span class="keyword">new</span> LinkedBlockingQueue&lt;&gt;(), <span class="keyword">new</span> JobThreadFactory());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在类的构造方法前加以 <code>@Inject</code> 修饰，这样Daager在需要注入<code>JobExecutor</code> 时就直接使用此构造方法了。</p>
+<h3 id="Container中的-Inject的规则"><a href="#Container中的-Inject的规则" class="headerlink" title="Container中的@Inject的规则"></a>Container中的@Inject的规则</h3><ol>
+<li>@Inject可以标记Container中的成员变量，但是这些成员变量要求是包级可见，也就是说@Inject不可以标记private类型的成员变量。 </li>
+<li>当@Inject标记成员变量时，查找对应依赖按照以下规则<ol>
+<li>该成员变量的依赖会从Module的@Provides方法集合中查找；</li>
+<li>如果查找不到，则查找成员变量类型是否有@Inject构造方法，并注入构造方法且递归注入该类型的成员变量</li>
+</ol>
+</li>
+</ol>
+<h1 id="ActivityModule"><a href="#ActivityModule" class="headerlink" title="ActivityModule"></a>ActivityModule</h1><p>提供了当前的 Activity</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * A module to wrap the Activity state and expose it to the graph.</span><br><span class="line"> */</span></span><br><span class="line"><span class="meta">@Module</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityModule</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> Activity activity;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ActivityModule</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.activity = activity;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">  * Expose the activity to dependents in the graph.</span><br><span class="line">  */</span></span><br><span class="line">  <span class="meta">@Provides</span> <span class="meta">@PerActivity</span> <span class="function">Activity <span class="title">activity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.activity;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="UserModule"><a href="#UserModule" class="headerlink" title="UserModule"></a>UserModule</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Dagger module that provides user related collaborators.</span><br><span class="line"> */</span></span><br><span class="line"><span class="meta">@Module</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserModule</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">UserModule</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>user 相关的构造方法可以放在这里。</p>
+<h2 id="ApplicationComponent"><a href="#ApplicationComponent" class="headerlink" title="ApplicationComponent"></a>ApplicationComponent</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * A component whose lifetime is the life of the application.</span><br><span class="line"> */</span></span><br><span class="line"><span class="meta">@Singleton</span> <span class="comment">// Constraints this component to one-per-application or unscoped bindings.</span></span><br><span class="line"><span class="meta">@Component</span>(modules = ApplicationModule.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ApplicationComponent</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">inject</span><span class="params">(BaseActivity baseActivity)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//Exposed to sub-graphs.</span></span><br><span class="line">  <span class="function">Context <span class="title">context</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function">ThreadExecutor <span class="title">threadExecutor</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function">PostExecutionThread <span class="title">postExecutionThread</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function">UserRepository <span class="title">userRepository</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将<code>ApplicationMoudle</code> 中的构造方法暴露出来。供下面依赖的模块使用。</p>
+<p>这里的<code>inject()</code> 是为了给<code>BaseActivity</code> 中的<code>Navigator</code> 使用。<code>Navigator</code> 使用了 <code>context</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Inject</span> Navigator navigator;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    <span class="keyword">this</span>.getApplicationComponent().inject(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ActivityComponent"><a href="#ActivityComponent" class="headerlink" title="ActivityComponent"></a>ActivityComponent</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * A base component upon which fragment's components may depend.</span><br><span class="line"> * Activity-level components should extend this component.</span><br><span class="line"> *</span><br><span class="line"> * Subtypes of ActivityComponent should be decorated with annotation:</span><br><span class="line"> * &#123;<span class="doctag">@link</span> com.fernandocejas.android10.sample.presentation.internal.di.PerActivity&#125;</span><br><span class="line"> */</span></span><br><span class="line"><span class="meta">@PerActivity</span></span><br><span class="line"><span class="meta">@Component</span>(dependencies = ApplicationComponent.class, modules = ActivityModule.class)</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ActivityComponent</span> </span>&#123;</span><br><span class="line">  <span class="comment">//Exposed to sub-graphs.</span></span><br><span class="line">  <span class="function">Activity <span class="title">activity</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>fragment 级别的 components要依赖这个components</li>
+<li>Activity级别的components 需要继承这个component</li>
+<li>@PerActivity 修饰 </li>
+</ul>
+<p>将<code>ActivityModule</code>其中的的 Activity 构造方法暴露出来</p>
+<h2 id="UserComponent"><a href="#UserComponent" class="headerlink" title="UserComponent"></a>UserComponent</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * A scope &#123;<span class="doctag">@link</span> com.fernandocejas.android10.sample.presentation.internal.di.PerActivity&#125; component.</span><br><span class="line"> * Injects user specific Fragments.</span><br><span class="line"> */</span></span><br><span class="line"><span class="meta">@PerActivity</span></span><br><span class="line"><span class="meta">@Component</span>(dependencies = ApplicationComponent.class, modules = &#123;ActivityModule.class, UserModule.class&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserComponent</span> <span class="keyword">extends</span> <span class="title">ActivityComponent</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">inject</span><span class="params">(UserListFragment userListFragment)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">inject</span><span class="params">(UserDetailsFragment userDetailsFragment)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 fragment 中注入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserListFragment</span> <span class="keyword">extends</span> <span class="title">BaseFragment</span> <span class="keyword">implements</span> <span class="title">UserListView</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Inject</span> UserListPresenter userListPresenter;</span><br><span class="line">  <span class="meta">@Inject</span> UsersAdapter usersAdapter;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    <span class="keyword">this</span>.getComponent(UserComponent.class).inject(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><code>UserListPresenter</code> <code>UsersAdapter</code> 中的构造方法都有<br><code>@Inject</code>修饰。而他们构造参数的依赖 <code>UserComponent</code>都提供了</p>
+<blockquote>
+<p>注 这里的 <code>getConpnent()</code> 是<code>BaseFragment</code>的方法，这里写的有点绕。分析下</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">/**</span><br><span class="line">   * Gets a component for dependency injection by its type.</span><br><span class="line">   */</span></span><br><span class="line">  <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">  <span class="keyword">protected</span> &lt;C&gt; <span class="function">C <span class="title">getComponent</span><span class="params">(Class&lt;C&gt; componentType)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> componentType.cast(((HasComponent&lt;C&gt;) getActivity()).getComponent());</span><br><span class="line">  </span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">为了得到不同类型的`Component`这里使用了泛型。将泛型的 <span class="class"><span class="keyword">class</span> 作为参数</span><br><span class="line"></span><br><span class="line">* `<span class="title">getActivity</span>()`得到当前的 `<span class="title">Activity</span>`</span><br><span class="line">* 而当前的` <span class="title">Activity</span>` 是实现了`<span class="title">HasComponent</span>&lt;<span class="title">C</span>&gt;`接口的。所以强制转型为 `<span class="title">HasComponent</span>&lt;<span class="title">C</span>&gt;`</span><br><span class="line"></span><br><span class="line">看看如何实现接口的</span><br><span class="line"></span><br><span class="line">```<span class="title">java</span></span><br><span class="line">  <span class="title">private</span> <span class="title">void</span> <span class="title">initializeInjector</span>() </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.userComponent = DaggerUserComponent.builder()</span><br><span class="line">        .applicationComponent(getApplicationComponent())</span><br><span class="line">        .activityModule(getActivityModule())</span><br><span class="line">        .build();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> UserComponent <span class="title">getComponent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> userComponent;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>在 Activity 的 builder 构造了<code>UserComponent</code> 的一些 dependence。最后构造出UserComponent，并在接口中返回 </p>
+<ul>
+<li>调用 Activity 的这个接口</li>
+<li>这个返回的 component 用 class的<code>cast()</code>方法强制转型为需要的类型</li>
+</ul>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p><code>dagger2</code> 会通过定义的<code>Component</code>接口生成对应的类</p>
+<p>例如<code>ApplicationComponent</code> -&gt;  <code>DaggerApplicationComponent</code></p>
+<p>首先找到 inject 入口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inject</span><span class="params">(BaseActivity baseActivity)</span> </span>&#123;</span><br><span class="line"><span class="comment">//jnject 入口</span></span><br><span class="line">    baseActivityMembersInjector.injectMembers(baseActivity);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>定义为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> MembersInjector&lt;BaseActivity&gt; baseActivityMembersInjector;</span><br></pre></td></tr></table></figure>
+<p>初始化的地方为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(<span class="keyword">final</span> Builder builder)</span> </span>&#123;</span><br><span class="line"><span class="comment">//这个是初始化函数，在构造方法里面调用</span></span><br><span class="line">    <span class="keyword">this</span>.navigatorProvider = DoubleCheck.provider(Navigator_Factory.create());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.baseActivityMembersInjector = BaseActivity_MembersInjector.create(navigatorProvider);</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>因为在 inject 的 BaseActivity 中 ,只需要依赖注入 <code>Navigator</code>一个类。所以 this.baseActivityMembersInjector 在 create 的时候只需要<code>navigatorProvider</code>，若注入需要其他的 provider 或者 module 都可以依次添加 ，例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.userCacheImplProvider =</span><br><span class="line">     DoubleCheck.provider(</span><br><span class="line">         UserCacheImpl_Factory.create(</span><br><span class="line">             provideApplicationContextProvider,</span><br><span class="line">             serializerProvider,</span><br><span class="line">             fileManagerProvider,</span><br><span class="line">             provideThreadExecutorProvider));</span><br><span class="line"></span><br><span class="line"> <span class="keyword">this</span>.provideUserCacheProvider =</span><br><span class="line">     DoubleCheck.provider(</span><br><span class="line">         ApplicationModule_ProvideUserCacheFactory.create(</span><br><span class="line">             builder.applicationModule, userCacheImplProvider));</span><br></pre></td></tr></table></figure>
+<p>而每个 provider 都是有对应生成的<code>xxxx_Factory.</code> 生成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.navigatorProvider = DoubleCheck.provider(Navigator_Factory.create());</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Generated</span>(</span><br><span class="line">  value = <span class="string">"dagger.internal.codegen.ComponentProcessor"</span>,</span><br><span class="line">  comments = <span class="string">"https://google.github.io/dagger"</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Navigator_Factory</span> <span class="keyword">implements</span> <span class="title">Factory</span>&lt;<span class="title">Navigator</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Navigator_Factory INSTANCE = <span class="keyword">new</span> Navigator_Factory();</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Navigator <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Navigator();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Factory&lt;Navigator&gt; <span class="title">create</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> INSTANCE;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>依赖的 module 通过 建造者模式获取到</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> ApplicationModule applicationModule;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Builder</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> ApplicationComponent <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (applicationModule == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(</span><br><span class="line">          ApplicationModule.class.getCanonicalName() + <span class="string">" must be set"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DaggerApplicationComponent(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Builder <span class="title">applicationModule</span><span class="params">(ApplicationModule applicationModule)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.applicationModule = Preconditions.checkNotNull(applicationModule);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/13/Android 测试 （四）-- 实战分析/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1454,301 +1819,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/03/AsyncTask/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Xu Yushi">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Xu Yushi''s Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/03/AsyncTask/" itemprop="url">
-                  AsyncTask 源码分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-03T00:00:00+08:00">
-                2016-09-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/09/03/AsyncTask/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/AsyncTask/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>[TOC]</p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>AsyncTask enables proper and easy use of the UI thread. This class allows to perform background operations and publish results on the UI thread without having to manipulate threads and/or handlers.<br>主要是为了在后台线程中做操作时更新 UI 的<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/03/AsyncTask/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/21/Runnable、Callable、Future、FutureTask的区别/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Xu Yushi">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Xu Yushi''s Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/21/Runnable、Callable、Future、FutureTask的区别/" itemprop="url">
-                  Runnable、Callable、Future、FutureTask的区别.md
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-21T00:00:00+08:00">
-                2016-08-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/08/21/Runnable、Callable、Future、FutureTask的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/21/Runnable、Callable、Future、FutureTask的区别/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>[TOC]</p>
-<h1 id="Runnable（interface）"><a href="#Runnable（interface）" class="headerlink" title="Runnable（interface）"></a>Runnable（interface）</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Represents a command that can be executed. Often used to run code in a</span><br><span class="line"> * different &#123;<span class="doctag">@link</span> Thread&#125;.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Starts executing the active part of the class' code. This method is</span><br><span class="line">     * called when a thread is started that has been created with a class which</span><br><span class="line">     * implements &#123;<span class="doctag">@code</span> Runnable&#125;.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>run()方法返回值为void类型，所以在执行完任务之后无法返回任何结果。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/21/Runnable、Callable、Future、FutureTask的区别/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1794,7 +1864,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-count">76</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1811,7 +1881,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1858,7 +1928,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
