@@ -89,18 +89,27 @@
 
 
 <meta name="description" content="什么是Gradle插件？在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：
-1apply plugin: &apos;com.android.application&apos;">
+1apply plugin: &apos;com.android.application&apos;
+如果我们创建一个Library的话，就会变成：
+1apply plugin: &apos;com.android.library&apos;
+其实这就是在gra">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gradle 插件开发">
 <meta property="og:url" content="http://yoursite.com/2017/06/03/gradle 插件开发/index.html">
 <meta property="og:site_name" content="Xu Yushi''s Blog">
 <meta property="og:description" content="什么是Gradle插件？在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：
-1apply plugin: &apos;com.android.application&apos;">
-<meta property="og:updated_time" content="2017-06-03T10:18:45.000Z">
+1apply plugin: &apos;com.android.application&apos;
+如果我们创建一个Library的话，就会变成：
+1apply plugin: &apos;com.android.library&apos;
+其实这就是在gra">
+<meta property="og:updated_time" content="2017-06-03T11:09:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gradle 插件开发">
 <meta name="twitter:description" content="什么是Gradle插件？在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：
-1apply plugin: &apos;com.android.application&apos;">
+1apply plugin: &apos;com.android.application&apos;
+如果我们创建一个Library的话，就会变成：
+1apply plugin: &apos;com.android.library&apos;
+其实这就是在gra">
 
 
 
@@ -374,10 +383,9 @@
       
         <h1 id="什么是Gradle插件？"><a href="#什么是Gradle插件？" class="headerlink" title="什么是Gradle插件？"></a>什么是Gradle插件？</h1><p>在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.android.application'</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <p>如果我们创建一个Library的话，就会变成：</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.android.library'</span></span><br></pre></td></tr></table></figure>
-<p>其实这就是在gradle脚本引用android为我们提供的插件，plugin表示插件，’com.android.application’表示我们引用的插件名，通常是以包名来命名。</p>
+<p>其实这就是在gradle脚本引用android为我们提供的插件，plugin表示插件，’com.android.application’表示我们引用的插件名，通常是以包名来命名。<br><a id="more"></a></p>
 <p>这个插件是怎么被引用进来的？我们可以在根目录找到另外一个build.gradle文件，打开可以看到以下代码：</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">buildscript</span> &#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">dependencies</span> &#123;</span><br><span class="line">        <span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:2.0.0'</span></span><br><span class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></span><br><span class="line">        <span class="comment">// in the individual module build.gradle files</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">allprojects</span> &#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
@@ -498,8 +506,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/04/NanoHttpd/" rel="next" title="NanoHTTPD源码解析">
-                <i class="fa fa-chevron-left"></i> NanoHTTPD源码解析
+              <a href="/2017/06/03/Maven 仓库搭建/" rel="next" title="maven 仓库搭建">
+                <i class="fa fa-chevron-left"></i> maven 仓库搭建
               </a>
             
           </div>
@@ -507,10 +515,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/03/Maven 仓库搭建/" rel="prev" title="maven 仓库搭建">
-                maven 仓库搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -582,7 +586,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">94</span>
+              <span class="site-state-item-count">89</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
