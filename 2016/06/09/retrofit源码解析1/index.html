@@ -94,12 +94,12 @@
 <meta property="og:url" content="http://yoursite.com/2016/06/09/retrofit源码解析1/index.html">
 <meta property="og:site_name" content="Xu Yushi''s Blog">
 <meta property="og:description" content="Retrofit简介Retrofit 通过使用方法上的『注解』来定义请求的构成，将我们声明的 Http 接口转化成一个 Call 对象。这个 Call 对象呢，可以调用同步或非同步方法来发送请求，之后就交给 OkHttp 去执行。">
-<meta property="og:image" content="http://yoursite.com/media/14655212601942.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:updated_time" content="2017-05-04T06:45:00.000Z">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14655212601942.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta property="og:updated_time" content="2017-06-03T10:19:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="retrofit源码解析1.md">
 <meta name="twitter:description" content="Retrofit简介Retrofit 通过使用方法上的『注解』来定义请求的构成，将我们声明的 Http 接口转化成一个 Call 对象。这个 Call 对象呢，可以调用同步或非同步方法来发送请求，之后就交给 OkHttp 去执行。">
-<meta name="twitter:image" content="http://yoursite.com/media/14655212601942.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta name="twitter:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14655212601942.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
 
 
 
@@ -448,7 +448,7 @@
 </ol>
 <h3 id="注解类"><a href="#注解类" class="headerlink" title="注解类"></a>注解类</h3><p>在 Retrofit 里面创建了 Body 注解，Filed 注解（Field，FieldMap），请求方法注解（DELETE，GET，PATCH，POST，PUT），请求头注解（HEAD，Header，Headers），multipart 注解（Part，Multipart，PartMap），接口加码（FormUrlEncoded），Url，Streaming，查询（Query，QueryMap），参数路径（Path），HTTP</p>
 <h3 id="CallAdapter-1"><a href="#CallAdapter-1" class="headerlink" title="CallAdapter"></a>CallAdapter</h3><p>对于 Retrofit 项目中 CallAdapter 用着适配器模式也挺巧的，通过适配器将 Callback 回调接口运行在 UI 线程。下面时有关 CallAdapter，Call，Callback 的类图，其中也是连续用了两次代理模式。</p>
-<p><img src="/media/14655212601942.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14655212601942.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
 <p>ExecutorCallback 代理的是用户自定义的 Callback。通过这种方式让 OkHttpCall 去执行 Call，让 ExecutorCallback 将用户自定义的 Callback 运行在指定线程上。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
 <li>Call(接口)–向服务器发送请求并返回响应的调用</li>
@@ -597,7 +597,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">76</span>
+              <span class="site-state-item-count">94</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -605,7 +605,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -614,7 +614,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">59</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

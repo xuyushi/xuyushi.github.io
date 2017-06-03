@@ -97,10 +97,10 @@
 <meta property="og:description" content="[TOC]
 在上一篇博文中介绍了 。MVVM 是从 MVP 的进一步发展与规范，MVP 隔离了 M 与 V 的直接联系后，靠 Presenter 来中转，所以使用 MVP 时 P 是直接调用 View 的接口来实现对视图的操作的，M 与 V是隔离了，方便测试了，但代码还不够优雅简洁啊，所以 MVVM 就弥补了这些缺陷。">
 <meta property="og:image" content="http://xuyushi.github.io/2016/02/28/MVP/">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-06-14571436111163.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-06-14571436267721.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-10-mvvm0310.gif?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:updated_time" content="2017-05-04T06:45:00.000Z">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14571436111163.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14571436267721.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/mvvm0310.gif?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta property="og:updated_time" content="2017-06-03T10:18:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android MVVM">
 <meta name="twitter:description" content="[TOC]
@@ -386,8 +386,8 @@
 <li>View  :视图内容<br>ViewModel: 将前面两者联系在一起的对象</li>
 </ul>
 <p>当View有用户输入后，ViewModel通知Model更新数据，同理Model数据更新后，ViewModel通知View更新。</p>
-<h2 id="MVP-MVVM区别"><a href="#MVP-MVVM区别" class="headerlink" title="MVP MVVM区别"></a>MVP MVVM区别</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-06-14571436111163.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
-<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-06-14571436267721.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h2 id="MVP-MVVM区别"><a href="#MVP-MVVM区别" class="headerlink" title="MVP MVVM区别"></a>MVP MVVM区别</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14571436111163.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14571436267721.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
 <p>可以看到 ViewModel 承担了 Presenter 中与 view和 Model 交互的职责，与 MVP模式不同的是，VM与 V 之间是通过 Datebingding 实现的，而 P是持有 View 的对象，直接调用 View 中的一些接口方法来实现。ViewModel可以理解成是View的数据模型和Presenter的合体。<strong>它通过双向绑定(松耦合)解决了MVP中Presenter与View联系比较紧密的问题。 </strong></p>
 <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="Android-的-Gradle-插件版本不低于-1-5-0-alpha1："><a href="#Android-的-Gradle-插件版本不低于-1-5-0-alpha1：" class="headerlink" title="Android 的 Gradle 插件版本不低于 1.5.0-alpha1："></a>Android 的 Gradle 插件版本不低于 1.5.0-alpha1：</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:1.5.0'</span></span><br></pre></td></tr></table></figure>
 <p>###然后修改对应模块（Module）的 build.gradle：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    ....</span><br><span class="line">    dataBinding &#123;</span><br><span class="line">        enabled = <span class="keyword">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -494,7 +494,7 @@
 <p><strong>注</strong>：convert 可以放在任意包中，只要写明注解，已经被转换和转换成的类型，所以注意不要重复定义类型相同的 convert，使用 Converter 一定要保证它不会影响到其他的属性。举个栗子，int -&gt; int 的 convert 就影响到了<code>android:visibility</code></p>
 <h2 id="Android-stuido-的预览支持"><a href="#Android-stuido-的预览支持" class="headerlink" title="Android stuido 的预览支持"></a>Android stuido 的预览支持</h2><p>类似于 <code>tools:text</code> ,代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">            style=<span class="string">"@style/TextAppearance.AppCompat.Large"</span></span><br><span class="line">            android:text=<span class="string">"@&#123;user.firstName,default=PLACEHOLDER&#125;"</span></span><br><span class="line">            android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">            android:layout_height=<span class="string">"wrap_content"</span> /&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-03-10-mvvm0310.gif?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h2 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/mvvm0310.gif?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
 <p>工程分为两个部分</p>
 <ul>
 <li>第一个简单的例子，点击事件产生后，直接改变了，user 的数据，并没有对 view 操作的逻辑，但是 databinding 已经帮我们完成了一切</li>
@@ -636,7 +636,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">76</span>
+              <span class="site-state-item-count">94</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -644,7 +644,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -653,7 +653,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">59</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
