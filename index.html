@@ -1608,7 +1608,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/03/Maven 仓库搭建/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/03/gradle 插件开发/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Xu Yushi">
@@ -1633,8 +1633,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/03/Maven 仓库搭建/" itemprop="url">
-                  maven 仓库搭建
+                <a class="post-title-link" href="/2017/06/03/gradle 插件开发/" itemprop="url">
+                  gradle 插件开发
                 </a>
               
             
@@ -1682,8 +1682,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/06/03/Maven 仓库搭建/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/03/Maven 仓库搭建/" itemprop="commentCount"></span>
+                <a href="/2017/06/03/gradle 插件开发/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/03/gradle 插件开发/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1710,10 +1710,14 @@
 
       
         
-          <h1 id="Maven-仓库的使用和搭建"><a href="#Maven-仓库的使用和搭建" class="headerlink" title="Maven 仓库的使用和搭建"></a>Maven 仓库的使用和搭建</h1><p>Maven项目使用项目对象模型（Project Object Model，POM）来配置。Maven 是一种构建工具，Maven 包是由所谓 POM（Project Object Model）所定义的文件<br>项目对象模型存储在名为 pom.xml 的文件中。<br>
+          <h1 id="什么是Gradle插件？"><a href="#什么是Gradle插件？" class="headerlink" title="什么是Gradle插件？"></a>什么是Gradle插件？</h1><p>在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.android.application'</span></span><br></pre></td></tr></table></figure>
+<p>如果我们创建一个Library的话，就会变成：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.android.library'</span></span><br></pre></td></tr></table></figure>
+<p>其实这就是在gradle脚本引用android为我们提供的插件，plugin表示插件，’com.android.application’表示我们引用的插件名，通常是以包名来命名。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/06/03/Maven 仓库搭建/#more" rel="contents">
+            <a class="btn" href="/2017/06/03/gradle 插件开发/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
