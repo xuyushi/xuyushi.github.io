@@ -272,6 +272,318 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/ContextWarpper巧用/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/13/ContextWarpper巧用/" itemprop="url">
+                  ContextWarpper巧用.md
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-13T00:00:00+08:00">
+                2018-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2018/01/13/ContextWarpper巧用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/01/13/ContextWarpper巧用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>ContextWrapper 采用了 装饰模式，装饰模式动态地给对象添加额外的职责，就添加功能来说，它比子类的方式更加灵活。</p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>##Context<br>Context是一个全局应用环境接口，具体的实现由Android系统完成。它能访问应用资源，并且能够启动Activity，Service，接收broadcast。</p>
+<p>它是一个抽象类，里面包含了各种方法的声明，应该将它作为一个接口类来看待。</p>
+<h2 id="ContextWrapper"><a href="#ContextWrapper" class="headerlink" title="ContextWrapper"></a>ContextWrapper</h2><p>这是一个Context的包装器，里面包含了一个mBase，ContextWrapper就是包装了mBase。而ContextThemeWrapper, Activity, Application, Service, ReceiverRestrictedContext 都继承自 ContextWrapper</p>
+<p>ContextThemeWrapper这个是包含主题的装饰器，而Activity是它的子类。Application, Service, ReceiverRestrictedContext都是ContextWrapper的子类。每一个应用都会有一个Application。Android源码中已经有的Application有EmailApplication,LauncherApplication, Browser等等。</p>
+<h2 id="ContextImpl"><a href="#ContextImpl" class="headerlink" title="ContextImpl"></a>ContextImpl</h2><p>这个是真正实现Context的类，Context是为应用环境类，它包含了跟环境相关的各种操作：getResource(资源管理，包含了getAssets,layout, string,drawable等等)， getPackageManager(包管理器）， getContentResolver(用于获取内容模型，比如访问ContentProvider)， startActivity(启动Activity)， <em>*</em>Service(包含一系列Service相关操作，start,bind,unbind,stop)， </p>
+<h2 id="ContextWrapper装饰模式的好处"><a href="#ContextWrapper装饰模式的好处" class="headerlink" title="ContextWrapper装饰模式的好处"></a>ContextWrapper装饰模式的好处</h2><p>我们似乎可以考虑用继承去实现Context结构，但是如果用继承的方式给Context添加功能，则将Application, ThemeContext,Service等等直接集成自ContextImpl，假如我们需要一种新的Context实现方式，则会变得非常麻烦，新的ContextImpl实现了后，Application又得去继承新的ContextImpl，一方面麻烦，另外一方面导致子类树集成非常庞大。现在用装饰模式，直接将ContextWrapper装饰的对象替换掉就可以了</p>
+<p><img src="media/15158302623494.png" alt=""></p>
+<h1 id="引申使用"><a href="#引申使用" class="headerlink" title="引申使用"></a>引申使用</h1><p>我们可以 参考 <code>ContextWrapper</code>的概念。在已有的的 context 上进行封装</p>
+<p>举个例子 ，加入我们有个 <code>listview</code>，在每一个 item中 ，有一些自定义 view ，在操作这些自定义 view 时 ，可能需要对这个 listview 的数据进行 增删改等功能<br>一般的解决方法是传一个 listener 给 view，在 view 里通过 listener 进行操作 ，然而当业务逻辑比较复杂,\ 自定义嵌套比较多层时，这样的<code>listener</code> 需要一层层传递到最底端。</p>
+<p>我们可以参考<code>ContextWrapper</code> ，将 listener 通过 context 传下去，每个 view 通过 context 来获取到对应的 listener 。</p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">FeedAdaperContextWrapper</span> <span class="keyword">extends</span> <span class="title">ContextWrapper</span> <span class="keyword">implements</span> <span class="title">AdapterListener</span> </span>&#123;</span><br><span class="line">        LayoutInflater layoutInflater;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> FeedAdapter mAdapter;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">FeedAdaperContextWrapper</span><span class="params">(Context base, FeedAdapter adapter)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(base);</span><br><span class="line">            mAdapter = adapter;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDelete</span><span class="params">(<span class="keyword">long</span> dongtaiId)</span> </span>&#123;</span><br><span class="line">          <span class="comment">//do sth here</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到 我们在 adapter 内部，自定义了一个<code>FeedAdaperContextWrapper</code> ，继承<code>ContextWrapper</code>， 并实现了业务逻辑的<code>AdapterListener</code>接口 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FeedAdaperContextWrapper feedAdaperContextWrapper = <span class="keyword">new</span> FeedAdaperContextWrapper(context, <span class="keyword">this</span>);</span><br><span class="line">Adapter adapter =  <span class="keyword">new</span> VideoAdapter(feedAdaperContextWrapper)</span><br></pre></td></tr></table></figure>
+<p>在初始化 Adapter 时，将自定义的 Adapter 传入 。这样在 adapter 内部使用时</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (mContext <span class="keyword">instanceof</span> AdapterListener) &#123;</span><br><span class="line">    mAdapterListener = (AdapterListener) mContext;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就可以拿到AdapterListener ，进行对应的操作了 </p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>当我们的Adapter 加载了一些自定义 view ，在自定义 view 中获取 getContext(), 发现得到的 context 并不是我们当时传入的<code>FeedAdaperContextWrapper</code>。</p>
+<p>回忆下自定义 view 的产生的过程,在 adapter 中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mInflater = LayoutInflater.from(mContext);</span><br><span class="line">View view =mInflater.inflate(mContext, R.layout.layout_digg_comment, <span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+<p>adapter 中<code>mContext</code>是正常的，通过<code>.inflate</code> 后，子 view 就拿到我们封装后的<code>ContextWrapper</code>了，</p>
+<p>mInflater 的 获取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Obtains the LayoutInflater from the given context.</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LayoutInflater <span class="title">from</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">    LayoutInflater LayoutInflater =</span><br><span class="line">            (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);</span><br><span class="line">    <span class="keyword">if</span> (LayoutInflater == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError(<span class="string">"LayoutInflater not found."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> LayoutInflater;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要 hook 这一步</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> Object <span class="title">getSystemService</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">           <span class="keyword">if</span>(Context.LAYOUT_INFLATER_SERVICE.equals(name)) &#123;</span><br><span class="line">               <span class="keyword">if</span>(layoutInflater == <span class="keyword">null</span>) &#123;</span><br><span class="line">                   layoutInflater = LayoutInflater.from(getBaseContext()).cloneInContext(<span class="keyword">this</span>);</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">return</span> layoutInflater;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">super</span>.getSystemService(name);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1223/2205.html" target="_blank" rel="external">http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1223/2205.html</a><br><a href="https://medium.com/@Zhuinden/data-and-service-sharing-to-custom-views-with-contextwrappers-and-getsystemservice-creating-a-flow-aedeabbd9567" target="_blank" rel="external">https://medium.com/@Zhuinden/data-and-service-sharing-to-custom-views-with-contextwrappers-and-getsystemservice-creating-a-flow-aedeabbd9567</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/06/多样式Adapter /">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xu Yushi">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Xu Yushi''s Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/06/多样式Adapter /" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-06T14:17:26+08:00">
+                2018-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2018/01/06/多样式Adapter /#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/01/06/多样式Adapter /" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>title: 多样式Adapter 框架<br>date: 2018-01-06<br>categories: android<br>tags: [框架]</p>
+<p>—¸</p>
+<p>通常在listview  或者recycleview 中 ，实现多样式的item 通常用的是<code>getItemViewType</code>，在getview 时，根据不同的type 去加载不同的view bind 不同格式的数据。</p>
+<p>但是随着业务场景的变化。 type 变得非常多 。比如头条、微博 中的feed 流。 或者多个listview 需要配置不同样式的种类。比如 ListA, 需要 a,b,c,e 样式 ，ListB 需要 b,e,f 样式 。如何快速调整适配？ </p>
+<p>以下框架很好的解决了这个问题，<a href="https://github.com/sockeqwe/AdapterDelegates" target="_blank" rel="external">https://github.com/sockeqwe/AdapterDelegates</a></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="定义AdapterDelegate"><a href="#定义AdapterDelegate" class="headerlink" title="定义AdapterDelegate"></a>定义AdapterDelegate</h2><p> 每一种样式对应一个Delegate，通过 <code>isForViewType</code> 判断是否使用该<code>AdapterDelegate</code> 。其他的方法和普通Adapter 类似 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatAdapterDelegate</span> <span class="keyword">extends</span> <span class="title">AdapterDelegate</span>&lt;<span class="title">List</span>&lt;<span class="title">Animal</span>&gt;&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> LayoutInflater inflater;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">CatAdapterDelegate</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">    inflater = activity.getLayoutInflater();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isForViewType</span><span class="params">(@NonNull List&lt;Animal&gt; items, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> items.get(position) <span class="keyword">instanceof</span> Cat;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NonNull</span> <span class="meta">@Override</span> <span class="keyword">public</span> RecyclerView.<span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> CatViewHolder(inflater.inflate(R.layout.item_cat, parent, <span class="keyword">false</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(@NonNull List&lt;Animal&gt; items, <span class="keyword">int</span> position,</span><br><span class="line">      @NonNull RecyclerView.ViewHolder holder, @Nullable List&lt;Object&gt; payloads)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    CatViewHolder vh = (CatViewHolder) holder;</span><br><span class="line">    Cat cat = (Cat) items.get(position);</span><br><span class="line"></span><br><span class="line">    vh.name.setText(cat.getName());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">CatViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> TextView name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CatViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">super</span>(itemView);</span><br><span class="line">      name = (TextView) itemView.findViewById(R.id.name);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="定义RecyclerView-Adapter"><a href="#定义RecyclerView-Adapter" class="headerlink" title="定义RecyclerView.Adapter"></a>定义RecyclerView.Adapter</h2><p> 主要是通过 <code>AdapterDelegatesManager</code>，将需要使用的<code>AdapterDelegate</code> 添加进来</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnimalAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> AdapterDelegatesManager&lt;List&lt;Animal&gt;&gt; delegatesManager;</span><br><span class="line">  <span class="keyword">private</span> List&lt;Animal&gt; items;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">AnimalAdapter</span><span class="params">(Activity activity, List&lt;Animal&gt; items)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.items = items;</span><br><span class="line"></span><br><span class="line">    delegatesManager = <span class="keyword">new</span> AdapterDelegatesManager&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// AdapterDelegatesManager internally assigns view types integers</span></span><br><span class="line">    delegatesManager.addDelegate(<span class="keyword">new</span> CatAdapterDelegate(activity))</span><br><span class="line">                    .addDelegate(<span class="keyword">new</span> DogAdapterDelegate(activity))</span><br><span class="line">                    .addDelegate(<span class="keyword">new</span> GeckoAdapterDelegate(activity));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// You can explicitly assign integer view type if you want to</span></span><br><span class="line">    delegatesManager.addDelegate(<span class="number">23</span>, <span class="keyword">new</span> SnakeAdapterDelegate(activity));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemViewType</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> delegatesManager.getItemViewType(items, position);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="keyword">public</span> RecyclerView.<span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> delegatesManager.onCreateViewHolder(parent, viewType);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(RecyclerView.ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">    delegatesManager.onBindViewHolder(items, position, holder);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> items.size();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><h2 id="AdapterDelegate"><a href="#AdapterDelegate" class="headerlink" title="AdapterDelegate"></a>AdapterDelegate</h2><p> 主要是为了hook 住 RecyclerView.Adapter 的一些回调</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AdapterDelegate</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">boolean</span> <span class="title">isForViewType</span><span class="params">(@NonNull T items, <span class="keyword">int</span> position)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NonNull</span> <span class="keyword">abstract</span> <span class="keyword">protected</span> RecyclerView.<span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(@NonNull ViewGroup parent)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(@NonNull T items, <span class="keyword">int</span> position,</span><br><span class="line">      @NonNull RecyclerView.ViewHolder holder, @NonNull List&lt;Object&gt; payloads)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onViewRecycled</span><span class="params">(@NonNull RecyclerView.ViewHolder viewHolder)</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">onFailedToRecycleView</span><span class="params">(@NonNull RecyclerView.ViewHolder holder)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onViewAttachedToWindow</span><span class="params">(@NonNull RecyclerView.ViewHolder holder)</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onViewDetachedFromWindow</span><span class="params">(RecyclerView.ViewHolder holder)</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到 除了 <code>isForViewType</code> ，其他的方法都是<code>RecyclerView.Adapter</code>中的</p>
+<h2 id="AdapterDelegatesManager"><a href="#AdapterDelegatesManager" class="headerlink" title="AdapterDelegatesManager"></a>AdapterDelegatesManager</h2><p> 管理所有AdapterDelegates 的类。<br> 内部维护了一个 <code>SparseArrayCompat&lt;AdapterDelegate&lt;T&gt;&gt; delegates</code>  。通过 <code>addDelegate</code> ，<code>removeDelegate</code>来管理</p>
+<p> 当实际的adapter 调用以下方法时，通过AdapterDelegatesManager 代理完成</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbsDelegationAdapter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">protected</span> AdapterDelegatesManager&lt;T&gt; delegatesManager;</span><br><span class="line">  <span class="keyword">protected</span> T items;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">AbsDelegationAdapter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(<span class="keyword">new</span> AdapterDelegatesManager&lt;T&gt;());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">AbsDelegationAdapter</span><span class="params">(@NonNull AdapterDelegatesManager&lt;T&gt; delegatesManager)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (delegatesManager == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"AdapterDelegatesManager is null"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.delegatesManager = delegatesManager;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="keyword">public</span> RecyclerView.<span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> delegatesManager.onCreateViewHolder(parent, viewType);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(RecyclerView.ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">    delegatesManager.onBindViewHolder(items, position, holder, <span class="keyword">null</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(RecyclerView.ViewHolder holder, <span class="keyword">int</span> position, List payloads)</span> </span>&#123;</span><br><span class="line">    delegatesManager.onBindViewHolder(items, position, holder, payloads);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemViewType</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> delegatesManager.getItemViewType(items, position);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onViewRecycled</span><span class="params">(RecyclerView.ViewHolder holder)</span> </span>&#123;</span><br><span class="line">    delegatesManager.onViewRecycled(holder);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onFailedToRecycleView</span><span class="params">(RecyclerView.ViewHolder holder)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> delegatesManager.onFailedToRecycleView(holder);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onViewAttachedToWindow</span><span class="params">(RecyclerView.ViewHolder holder)</span> </span>&#123;</span><br><span class="line">    delegatesManager.onViewAttachedToWindow(holder);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onViewDetachedFromWindow</span><span class="params">(RecyclerView.ViewHolder holder)</span> </span>&#123;</span><br><span class="line">    delegatesManager.onViewDetachedFromWindow(holder);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * Get the items / data source of this adapter</span><br><span class="line">   *</span><br><span class="line">   * <span class="doctag">@return</span> The items / data source</span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> T <span class="title">getItems</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> items;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * Set the items / data source of this adapter</span><br><span class="line">   *</span><br><span class="line">   * <span class="doctag">@param</span> items The items / data source</span><br><span class="line">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setItems</span><span class="params">(T items)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.items = items;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>AdapterDelegatesManager</code> 根据不通的type 找到不通的<code>AdapterDelegate</code> 去处理</p>
+<p>首先通过 <code>getItemViewType</code> 找到对应的type</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemViewType</span><span class="params">(@NonNull T items, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (items == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"Items datasource is null!"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> delegatesCount = delegates.size();</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; delegatesCount; i++) &#123;</span><br><span class="line">    AdapterDelegate&lt;T&gt; delegate = delegates.valueAt(i);</span><br><span class="line">    <span class="keyword">if</span> (delegate.isForViewType(items, position)) &#123;</span><br><span class="line">      <span class="keyword">return</span> delegates.keyAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (fallbackDelegate != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> FALLBACK_DELEGATE_VIEW_TYPE;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(</span><br><span class="line">      <span class="string">"No AdapterDelegate added that matches position="</span> + position + <span class="string">" in data source"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>举个栗子 <code>onCreateViewHolder</code>,通过 <code>viewType</code> ，找到对应的AdapterDelegate，并调用对用的 <code>onCreateViewHolder</code>，同理其他函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NonNull</span> <span class="keyword">public</span> RecyclerView.<span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">  AdapterDelegate&lt;T&gt; delegate = getDelegateForViewType(viewType);</span><br><span class="line">  <span class="keyword">if</span> (delegate == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"No AdapterDelegate added for ViewType "</span> + viewType);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  RecyclerView.ViewHolder vh = delegate.onCreateViewHolder(parent);</span><br><span class="line">  <span class="keyword">if</span> (vh == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"ViewHolder returned from AdapterDelegate "</span></span><br><span class="line">        + delegate</span><br><span class="line">        + <span class="string">" for ViewType ="</span></span><br><span class="line">        + viewType</span><br><span class="line">        + <span class="string">" is null!"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> vh;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/05/快速搭建新项目框架3-Kotlin/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -864,157 +1176,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/30/Guide to App Architecture/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Xu Yushi">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Xu Yushi''s Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/30/Guide to App Architecture/" itemprop="url">
-                  Architecture Components--Guide to App Architecture
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-30T00:00:00+08:00">
-                2017-06-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2017/06/30/Guide to App Architecture/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/30/Guide to App Architecture/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Architecture-Components-–-Guide-to-App-Architecture"><a href="#Architecture-Components-–-Guide-to-App-Architecture" class="headerlink" title="Architecture Components – Guide to App Architecture"></a>Architecture Components – Guide to App Architecture</h1><h1 id="应用程序架构指南"><a href="#应用程序架构指南" class="headerlink" title="应用程序架构指南"></a>应用程序架构指南</h1><p>本指南使用于具有构建应用程序基础并且想了解构建强大、优质的应用程序的最佳实践和推荐架构的开发人员。</p>
-<blockquote>
-<p>注：本指南假定读者熟悉 Android Framework。如果你是一个应用程序开发的新手，请参阅入门指南系列培训，其中包含了本指南先决条件的相关主题。</p>
-</blockquote>
-<h2 id="应用开发者面临的常见问题"><a href="#应用开发者面临的常见问题" class="headerlink" title="应用开发者面临的常见问题"></a>应用开发者面临的常见问题</h2><p>在大多数情况下，桌面应用程序在启动器快捷方式中有一个单一的入口并且作为单独的独立进程运行，与桌面应用程序不同，Android 应用具有更复杂的结构。一个典型的 Android 应用是由多个应用程序组件构成的，包括 activity，fragment，service，content provider 和 broadcast receiver。</p>
-<p>这些应用程序组件中的大部分声明在由 Android OS 使用的应用程序清单中，用来决定如何将应用融入到用户设备的整体体验中。尽管如前所述，传统的桌面应用程序作为独立进程运行，但是正确的编写 Android 应用程序需要更加灵活，因为用户会同过设备上不同的应用程序组织成自己的方式不断切换流程和任务。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/06/30/Guide to App Architecture/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/30/Room/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1163,7 +1324,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/Handling Lifecycles/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/30/Guide to App Architecture/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Xu Yushi">
@@ -1188,8 +1349,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/25/Handling Lifecycles/" itemprop="url">
-                  Architecture Components--Lifecycle
+                <a class="post-title-link" href="/2017/06/30/Guide to App Architecture/" itemprop="url">
+                  Architecture Components--Guide to App Architecture
                 </a>
               
             
@@ -1203,8 +1364,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T00:00:00+08:00">
-                2017-06-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-30T00:00:00+08:00">
+                2017-06-30
               </time>
             
 
@@ -1237,8 +1398,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/06/25/Handling Lifecycles/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/25/Handling Lifecycles/" itemprop="commentCount"></span>
+                <a href="/2017/06/30/Guide to App Architecture/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/30/Guide to App Architecture/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1265,160 +1426,15 @@
 
       
         
-          <p>通过 <code>android.arch.lifecycle</code> 包提供的接口和类，我们可以构建出能感知到生命周期的组件。这些组件可以根据当前的Fragment 或者 Activity 的生命周期做出相应的调整</p>
-<p>大部分有生命周期的 app 组件都定义在了Android 的Framework 层。操作系统和Framework 维护着这些组件的生命周期。这些都是 Android 运行的核心。</p>
-<p>如果想要在一个Activity 中显示设备的地理位置。通常代码是这样的<br>
+          <h1 id="Architecture-Components-–-Guide-to-App-Architecture"><a href="#Architecture-Components-–-Guide-to-App-Architecture" class="headerlink" title="Architecture Components – Guide to App Architecture"></a>Architecture Components – Guide to App Architecture</h1><h1 id="应用程序架构指南"><a href="#应用程序架构指南" class="headerlink" title="应用程序架构指南"></a>应用程序架构指南</h1><p>本指南使用于具有构建应用程序基础并且想了解构建强大、优质的应用程序的最佳实践和推荐架构的开发人员。</p>
+<blockquote>
+<p>注：本指南假定读者熟悉 Android Framework。如果你是一个应用程序开发的新手，请参阅入门指南系列培训，其中包含了本指南先决条件的相关主题。</p>
+</blockquote>
+<h2 id="应用开发者面临的常见问题"><a href="#应用开发者面临的常见问题" class="headerlink" title="应用开发者面临的常见问题"></a>应用开发者面临的常见问题</h2><p>在大多数情况下，桌面应用程序在启动器快捷方式中有一个单一的入口并且作为单独的独立进程运行，与桌面应用程序不同，Android 应用具有更复杂的结构。一个典型的 Android 应用是由多个应用程序组件构成的，包括 activity，fragment，service，content provider 和 broadcast receiver。</p>
+<p>这些应用程序组件中的大部分声明在由 Android OS 使用的应用程序清单中，用来决定如何将应用融入到用户设备的整体体验中。尽管如前所述，传统的桌面应用程序作为独立进程运行，但是正确的编写 Android 应用程序需要更加灵活，因为用户会同过设备上不同的应用程序组织成自己的方式不断切换流程和任务。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/06/25/Handling Lifecycles/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/LiveData/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Xu Yushi">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Xu Yushi''s Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Xu Yushi''s Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/25/LiveData/" itemprop="url">
-                  Architecture Components--LiveData
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T00:00:00+08:00">
-                2017-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2017/06/25/LiveData/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/25/LiveData/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="LiveData"><a href="#LiveData" class="headerlink" title="LiveData"></a>LiveData</h1><p><code>LiveData</code> 是一个 data holder  类，持有一个可被观察的值。与普通的observable不同的是，<code>LiveData</code>遵循app 组件的生命周期。它能决定在某个生命周期是否被观察</p>
-<p><code>LiveData</code> 在观察者生命周期的 STARTED 和 RESUMED 状态是可被激活的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocationLiveData</span> <span class="keyword">extends</span> <span class="title">LiveData</span>&lt;<span class="title">Location</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> LocationManager locationManager;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> SimpleLocationListener listener = <span class="keyword">new</span> SimpleLocationListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLocationChanged</span><span class="params">(Location location)</span> </span>&#123;</span><br><span class="line">            setValue(location);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LocationLiveData</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        locationManager = (LocationManager) context.getSystemService(</span><br><span class="line">                Context.LOCATION_SERVICE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, <span class="number">0</span>, <span class="number">0</span>, listener);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onInactive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        locationManager.removeUpdates(listener);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/06/25/LiveData/#more" rel="contents">
+            <a class="btn" href="/2017/06/30/Guide to App Architecture/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1608,7 +1624,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/03/gradle 插件开发/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/LiveData/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Xu Yushi">
@@ -1633,8 +1649,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/03/gradle 插件开发/" itemprop="url">
-                  gradle 插件开发
+                <a class="post-title-link" href="/2017/06/25/LiveData/" itemprop="url">
+                  Architecture Components--LiveData
                 </a>
               
             
@@ -1648,8 +1664,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-03T00:00:00+08:00">
-                2017-06-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T00:00:00+08:00">
+                2017-06-25
               </time>
             
 
@@ -1667,8 +1683,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/gradle/" itemprop="url" rel="index">
-                    <span itemprop="name">gradle</span>
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -1682,8 +1698,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/06/03/gradle 插件开发/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/03/gradle 插件开发/" itemprop="commentCount"></span>
+                <a href="/2017/06/25/LiveData/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/25/LiveData/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1710,14 +1726,12 @@
 
       
         
-          <h1 id="什么是Gradle插件？"><a href="#什么是Gradle插件？" class="headerlink" title="什么是Gradle插件？"></a>什么是Gradle插件？</h1><p>在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.android.application'</span></span><br></pre></td></tr></table></figure>
-<p>如果我们创建一个Library的话，就会变成：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.android.library'</span></span><br></pre></td></tr></table></figure>
-<p>其实这就是在gradle脚本引用android为我们提供的插件，plugin表示插件，’com.android.application’表示我们引用的插件名，通常是以包名来命名。<br>
+          <h1 id="LiveData"><a href="#LiveData" class="headerlink" title="LiveData"></a>LiveData</h1><p><code>LiveData</code> 是一个 data holder  类，持有一个可被观察的值。与普通的observable不同的是，<code>LiveData</code>遵循app 组件的生命周期。它能决定在某个生命周期是否被观察</p>
+<p><code>LiveData</code> 在观察者生命周期的 STARTED 和 RESUMED 状态是可被激活的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocationLiveData</span> <span class="keyword">extends</span> <span class="title">LiveData</span>&lt;<span class="title">Location</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> LocationManager locationManager;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> SimpleLocationListener listener = <span class="keyword">new</span> SimpleLocationListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLocationChanged</span><span class="params">(Location location)</span> </span>&#123;</span><br><span class="line">            setValue(location);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LocationLiveData</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        locationManager = (LocationManager) context.getSystemService(</span><br><span class="line">                Context.LOCATION_SERVICE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, <span class="number">0</span>, <span class="number">0</span>, listener);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onInactive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        locationManager.removeUpdates(listener);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/06/03/gradle 插件开发/#more" rel="contents">
+            <a class="btn" href="/2017/06/25/LiveData/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1794,7 +1808,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">98</span>
+              <span class="site-state-item-count">100</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1858,7 +1872,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
