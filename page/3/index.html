@@ -272,7 +272,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/05/Android 测试 （一）--测试总览/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/05/Android 测试 （二）--Instrumented Unit Tests/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Xu Yushi">
@@ -297,8 +297,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/05/Android 测试 （一）--测试总览/" itemprop="url">
-                  Android 测试 （一）--测试总览
+                <a class="post-title-link" href="/2016/11/05/Android 测试 （二）--Instrumented Unit Tests/" itemprop="url">
+                  Android 测试 （二）--Instrumented Unit Tests
                 </a>
               
             
@@ -346,8 +346,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/11/05/Android 测试 （一）--测试总览/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/05/Android 测试 （一）--测试总览/" itemprop="commentCount"></span>
+                <a href="/2016/11/05/Android 测试 （二）--Instrumented Unit Tests/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/05/Android 测试 （二）--Instrumented Unit Tests/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -374,12 +374,11 @@
 
       
         
-          <p>android 测试基于 Junit，我们既可以在 JVM 运行单元测试，也可以在 Android 设备上运行功能测试</p>
-<h1 id="测试类型"><a href="#测试类型" class="headerlink" title="测试类型"></a>测试类型</h1><p>当使用 Android studio 来写测试程序时，你的代码必须放在两个指定的文件夹中。</p>
-<h2 id="Local-unit-testsWARNING-No-manifest-file-found-at-AndroidManifest-xml"><a href="#Local-unit-testsWARNING-No-manifest-file-found-at-AndroidManifest-xml" class="headerlink" title="Local unit testsWARNING: No manifest file found at ./AndroidManifest.xml."></a>Local unit testsWARNING: No manifest file found at ./AndroidManifest.xml.</h2><p>Falling back to the Android OS resources only.<br>To remove this warning, annotate your test class with @Config(manifest=Config.NONE).<br>位于 module-name/src/test/java/.<br>这些测试时运行在本地 JVM，没有运行 Android framework API的权限<br>
+          <p>Instrumented 单元测试运行在物理设备或者模拟器上。他能使用 Android api 和一些 support api，例如 Android  Testing Support Library。如果需要获取 instrumentation 信息（例如需要 app 的 context）或者需要 Android 框架里的一些组件（比如 Parcelable 或 SharedPreferences 对象），可以使用Instrumented 单测</p>
+<p><em>使用Instrumented单元测试也有助于减少编写和维护mock 代码的工作量。如果你选择mock 的话，可以使用一个模仿的框架来mock 任何依赖关系。</em><br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/05/Android 测试 （一）--测试总览/#more" rel="contents">
+            <a class="btn" href="/2016/11/05/Android 测试 （二）--Instrumented Unit Tests/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
