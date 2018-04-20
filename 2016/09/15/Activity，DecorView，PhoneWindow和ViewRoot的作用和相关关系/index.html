@@ -116,8 +116,8 @@ DecorView是FrameLayout的子类，它可以被认为是Android视图树的根�
     tabs: true,
     motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
-      userId: '12427169',
-      author: 'Author'
+      userId: 'undefined',
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -348,16 +348,6 @@ DecorView是FrameLayout的子类，它可以被认为是Android视图树的根�
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/09/15/Activity，DecorView，PhoneWindow和ViewRoot的作用和相关关系/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/15/Activity，DecorView，PhoneWindow和ViewRoot的作用和相关关系/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -515,8 +505,11 @@ DecorView是FrameLayout的子类，它可以被认为是Android视图树的根�
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2016/09/15/Activity，DecorView，PhoneWindow和ViewRoot的作用和相关关系/"
-           data-title="window、Activity、DecorView、ViewRoot关系" data-url="http://yoursite.com/2016/09/15/Activity，DecorView，PhoneWindow和ViewRoot的作用和相关关系/">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     </div>
 
@@ -794,37 +787,37 @@ DecorView是FrameLayout的子类，它可以被认为是Android视图树的根�
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"xuyushi"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
+
     
-      
-      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-      <script src="/js/src/hook-duoshuo.js?v=5.1.4"></script>
+
     
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2016/09/15/Activity，DecorView，PhoneWindow和ViewRoot的作用和相关关系/';
+          this.page.identifier = '2016/09/15/Activity，DecorView，PhoneWindow和ViewRoot的作用和相关关系/';
+          this.page.title = 'window、Activity、DecorView、ViewRoot关系';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://xuyushi.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
   
 
 
 
 
+	
+
+
+
+
+
+  
 
 
 
