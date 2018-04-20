@@ -108,9 +108,9 @@
 一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。
 系统中有多于一个的产品族，而每次只使用其中某一产品族。
 属于同一">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14561482662486.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14561492070442.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:updated_time" content="2017-11-05T06:22:03.000Z">
+<meta property="og:image" content="http://yoursite.com/media/14561482662486.png">
+<meta property="og:image" content="http://yoursite.com/media/14561492070442.png">
+<meta property="og:updated_time" content="2016-02-22T14:12:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="适配器模式 Adapter Pattern">
 <meta name="twitter:description" content="[TOC]
@@ -121,7 +121,7 @@
 一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。
 系统中有多于一个的产品族，而每次只使用其中某一产品族。
 属于同一">
-<meta name="twitter:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14561482662486.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta name="twitter:image" content="http://yoursite.com/media/14561482662486.png">
 
 
 
@@ -403,7 +403,7 @@
 <li>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</li>
 <li>系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
 </ul>
-<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14561482662486.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="/media/14561482662486.png" alt=""></p>
 <p>Target：目标抽象类<br>Adapter：适配器类<br>Adaptee：适配者类<br>Client：客户类</p>
 <a id="more"></a>
 <h2 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h2><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Target</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">request</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Adaptee</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sepecialRequset</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Adaptee SepecialRequset"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Adapter</span> <span class="keyword">implements</span> <span class="title">Target</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Adaptee adaptee;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Adapter</span><span class="params">(Adaptee adaptee)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.adaptee = adaptee;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">request</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        adaptee.sepecialRequset();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -411,7 +411,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdapterMain</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"AdapterMain RUNNING"</span>);</span><br><span class="line">        Target target = <span class="keyword">new</span> Adapter(<span class="keyword">new</span> Adaptee());</span><br><span class="line">        target.request();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AdapterMain RUNNING</span><br><span class="line">Adaptee SepecialRequset</span><br></pre></td></tr></table></figure>
-<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14561492070442.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p><img src="/media/14561492070442.png" alt=""></p>
 <h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
 <li>优点<ul>
 <li>将目标类和适配者类解耦，通过引入一个适配器类来重用现有的适配者类，而无须修改原有代码。</li>
@@ -568,7 +568,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">100</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -585,7 +585,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -96,18 +96,18 @@
 <meta property="og:site_name" content="Xu Yushi''s Blog">
 <meta property="og:description" content="转自 http://p.codekk.com/blogs/detail/54cfab086c4761e5001b2542，在原文的基础上做了删减
 总体框架上面是 Volley 的总体设计图，主要是通过两种Dispatch Thread不断从RequestQueue中取出请求，根据是否已缓存调用Cache或Network这两类数据获取接口之一，从内存缓存或是服务器取得请求的数据，然后交由Respon">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14668223056349.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14669054043578.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14669054493954.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14669058350149.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14669060727722.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14669061093224.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:updated_time" content="2017-11-05T06:21:15.000Z">
+<meta property="og:image" content="http://yoursite.com/media/14668223056349.png">
+<meta property="og:image" content="http://yoursite.com/media/14669054043578.png">
+<meta property="og:image" content="http://yoursite.com/media/14669054493954.png">
+<meta property="og:image" content="http://yoursite.com/media/14669058350149.png">
+<meta property="og:image" content="http://yoursite.com/media/14669060727722.png">
+<meta property="og:image" content="http://yoursite.com/media/14669061093224.png">
+<meta property="og:updated_time" content="2016-06-26T02:04:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="volley源码解析">
 <meta name="twitter:description" content="转自 http://p.codekk.com/blogs/detail/54cfab086c4761e5001b2542，在原文的基础上做了删减
 总体框架上面是 Volley 的总体设计图，主要是通过两种Dispatch Thread不断从RequestQueue中取出请求，根据是否已缓存调用Cache或Network这两类数据获取接口之一，从内存缓存或是服务器取得请求的数据，然后交由Respon">
-<meta name="twitter:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14668223056349.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta name="twitter:image" content="http://yoursite.com/media/14668223056349.png">
 
 
 
@@ -380,7 +380,7 @@
 
       
         <p>转自 <a href="http://p.codekk.com/blogs/detail/54cfab086c4761e5001b2542，在原文的基础上做了删减" target="_blank" rel="external">http://p.codekk.com/blogs/detail/54cfab086c4761e5001b2542，在原文的基础上做了删减</a></p>
-<h1 id="总体框架"><a href="#总体框架" class="headerlink" title="总体框架"></a>总体框架</h1><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14668223056349.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""><br>上面是 Volley 的总体设计图，主要是通过两种Dispatch Thread不断从RequestQueue中取出请求，根据是否已缓存调用Cache或Network这两类数据获取接口之一，从内存缓存或是服务器取得请求的数据，然后交由ResponseDelivery去做结果分发及回调处理。</p>
+<h1 id="总体框架"><a href="#总体框架" class="headerlink" title="总体框架"></a>总体框架</h1><p><img src="/media/14668223056349.png" alt=""><br>上面是 Volley 的总体设计图，主要是通过两种Dispatch Thread不断从RequestQueue中取出请求，根据是否已缓存调用Cache或Network这两类数据获取接口之一，从内存缓存或是服务器取得请求的数据，然后交由ResponseDelivery去做结果分发及回调处理。</p>
 <ul>
 <li>Volley：Volley 对外暴露的 API，通过 newRequestQueue(…) 函数新建并启动一个请求队列RequestQueue。</li>
 <li>Request：表示一个请求的抽象类。StringRequest、JsonRequest、ImageRequest 都是它的子类，表示某种类型的请求。</li>
@@ -392,8 +392,8 @@
 <li>Network：调用HttpStack处理请求，并将结果转换为可被ResponseDelivery处理的NetworkResponse。</li>
 <li>Cache：缓存请求结果，Volley 默认使用的是基于 sdcard 的DiskBasedCache。NetworkDispatcher得到请求结果后判断是否需要存储在 Cache，CacheDispatcher会从 Cache 中取缓存结果。</li>
 </ul>
-<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14669054043578.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
-<h2 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h2><h3 id="类关系图"><a href="#类关系图" class="headerlink" title="类关系图"></a>类关系图</h3><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14669054493954.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/media/14669054043578.png" alt=""></p>
+<h2 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h2><h3 id="类关系图"><a href="#类关系图" class="headerlink" title="类关系图"></a>类关系图</h3><p><img src="/media/14669054493954.png" alt=""></p>
 <h2 id="RequestQueue-构造方法"><a href="#RequestQueue-构造方法" class="headerlink" title="RequestQueue 构造方法"></a>RequestQueue 构造方法</h2><p>实例化 <code>RequestQueue</code> 的方法，有以下几个</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RequestQueue <span class="title">newRequestQueue</span><span class="params">(Context context, HttpStack stack, <span class="keyword">int</span> maxDiskCacheBytes)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> RequestQueue <span class="title">newRequestQueue</span><span class="params">(Context context, <span class="keyword">int</span> maxDiskCacheBytes)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> RequestQueue <span class="title">newRequestQueue</span><span class="params">(Context context, HttpStack stack)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> RequestQueue <span class="title">newRequestQueue</span><span class="params">(Context context)</span></span></span><br></pre></td></tr></table></figure>
 <p>最终都会调用到下面这个方法</p>
@@ -403,9 +403,9 @@
 <p>这里先是创建了一个CacheDispatcher的实例，然后调用了它的start()方法，接着在一个for循环里去创建NetworkDispatcher的实例，并分别调用它们的start()方法。这里的线程数量可以自己定义</p>
 <p>调用 <code>add</code>方法可以将网络请求加入队列中</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">Request&lt;T&gt; <span class="title">add</span><span class="params">(Request&lt;T&gt; request)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Tag the request as belonging to this queue and add it to the set of current requests.</span></span><br><span class="line">        request.setRequestQueue(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">synchronized</span> (mCurrentRequests) &#123;</span><br><span class="line">            mCurrentRequests.add(request);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Process requests in the order they are added.</span></span><br><span class="line">        request.setSequence(getSequenceNumber());</span><br><span class="line">        request.addMarker(<span class="string">"add-to-queue"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// If the request is uncacheable, skip the cache queue and go straight to the network.</span></span><br><span class="line">        <span class="keyword">if</span> (!request.shouldCache()) &#123;</span><br><span class="line">            mNetworkQueue.add(request);</span><br><span class="line">            <span class="keyword">return</span> request;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Insert request into stage if there's already a request with the same cache key in flight.</span></span><br><span class="line">        <span class="keyword">synchronized</span> (mWaitingRequests) &#123;</span><br><span class="line">            String cacheKey = request.getCacheKey();</span><br><span class="line">            <span class="keyword">if</span> (mWaitingRequests.containsKey(cacheKey)) &#123;</span><br><span class="line">                <span class="comment">// There is already a request in flight. Queue up.</span></span><br><span class="line">                Queue&lt;Request&lt;?&gt;&gt; stagedRequests = mWaitingRequests.get(cacheKey);</span><br><span class="line">                <span class="keyword">if</span> (stagedRequests == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    stagedRequests = <span class="keyword">new</span> LinkedList&lt;Request&lt;?&gt;&gt;();</span><br><span class="line">                &#125;</span><br><span class="line">                stagedRequests.add(request);</span><br><span class="line">                mWaitingRequests.put(cacheKey, stagedRequests);</span><br><span class="line">                <span class="keyword">if</span> (VolleyLog.DEBUG) &#123;</span><br><span class="line">                    VolleyLog.v(<span class="string">"Request for cacheKey=%s is in flight, putting on hold."</span>, cacheKey);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// Insert 'null' queue for this cacheKey, indicating there is now a request in</span></span><br><span class="line">                <span class="comment">// flight.</span></span><br><span class="line">                mWaitingRequests.put(cacheKey, <span class="keyword">null</span>);</span><br><span class="line">                mCacheQueue.add(request);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> request;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14669058350149.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
-<h3 id="CacheDispatcher"><a href="#CacheDispatcher" class="headerlink" title="CacheDispatcher"></a>CacheDispatcher</h3><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14669060727722.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
-<h3 id="NetworkDispatcher-java"><a href="#NetworkDispatcher-java" class="headerlink" title="NetworkDispatcher.java"></a>NetworkDispatcher.java</h3><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14669061093224.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p><img src="/media/14669058350149.png" alt=""></p>
+<h3 id="CacheDispatcher"><a href="#CacheDispatcher" class="headerlink" title="CacheDispatcher"></a>CacheDispatcher</h3><p><img src="/media/14669060727722.png" alt=""></p>
+<h3 id="NetworkDispatcher-java"><a href="#NetworkDispatcher-java" class="headerlink" title="NetworkDispatcher.java"></a>NetworkDispatcher.java</h3><p><img src="/media/14669061093224.png" alt=""></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
 <p><a href="http://blog.csdn.net/guolin_blog/article/details/17656437" target="_blank" rel="external">http://blog.csdn.net/guolin_blog/article/details/17656437</a><br><a href="http://p.codekk.com/blogs/detail/54cfab086c4761e5001b2542" target="_blank" rel="external">http://p.codekk.com/blogs/detail/54cfab086c4761e5001b2542</a></p>
 </blockquote>
@@ -541,7 +541,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">100</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -558,7 +558,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

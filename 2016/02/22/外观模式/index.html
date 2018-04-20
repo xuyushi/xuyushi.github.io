@@ -104,9 +104,9 @@
 
 使用场景
 当要为一个复杂子系统提供一个简单接口时可以使用外观模式。该接口可以满足大多数用户的">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14561498047745.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14561508985872.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:updated_time" content="2017-11-05T06:21:52.000Z">
+<meta property="og:image" content="http://yoursite.com/media/14561498047745.png">
+<meta property="og:image" content="http://yoursite.com/media/14561508985872.png">
+<meta property="og:updated_time" content="2016-02-22T14:23:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="外观模式 Facade Pattern">
 <meta name="twitter:description" content="[TOC]
@@ -115,7 +115,7 @@
 
 使用场景
 当要为一个复杂子系统提供一个简单接口时可以使用外观模式。该接口可以满足大多数用户的">
-<meta name="twitter:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14561498047745.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta name="twitter:image" content="http://yoursite.com/media/14561498047745.png">
 
 
 
@@ -396,7 +396,7 @@
 <li>客户程序与多个子系统之间存在很大的依赖性。引入外观类将子系统与客户以及其他子系统解耦，可以提高子系统的独立性和可移植性。</li>
 <li>在层次化结构中，可以使用外观模式定义系统中每一层的入口，层与层之间不直接产生联系，而通过外观类建立联系，降低层之间的耦合度。</li>
 </ul>
-<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14561498047745.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="/media/14561498047745.png" alt=""></p>
 <p>Facade: 外观角色<br>SubSystem:子系统角色</p>
 <a id="more"></a>
 <h2 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h2><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SystemA</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operationA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"SystemA"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SystemB</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operationB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"SystemB"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SystemC</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operationC</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"SystemC"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Facade</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> SystemA systemA;</span><br><span class="line">    <span class="keyword">private</span> SystemB systemB;</span><br><span class="line">    <span class="keyword">private</span> SystemC systemC;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Facade</span><span class="params">(SystemA systemA, SystemB systemB, SystemC systemC)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.systemA = systemA;</span><br><span class="line">        <span class="keyword">this</span>.systemB = systemB;</span><br><span class="line">        <span class="keyword">this</span>.systemC = systemC;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        systemA.operationA();</span><br><span class="line">        systemB.operationB();</span><br><span class="line">        systemC.operationC();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -404,7 +404,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FacadeMain</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"FacadeMain RUNNING"</span>);</span><br><span class="line">        Facade facade = <span class="keyword">new</span> Facade(<span class="keyword">new</span> SystemA(), <span class="keyword">new</span> SystemB(), <span class="keyword">new</span> SystemC());</span><br><span class="line">        facade.operation();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FacadeMain RUNNING</span><br><span class="line">SystemA</span><br><span class="line">SystemB</span><br><span class="line">SystemC</span><br></pre></td></tr></table></figure>
-<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14561508985872.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p><img src="/media/14561508985872.png" alt=""></p>
 <h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
 <li>优点<ul>
 <li>对客户屏蔽子系统组件，减少了客户处理的对象数目并使得子系统使用起来更加容易。通过引入外观模式，客户代码将变得很简单，与之关联的对象也很少。</li>
@@ -561,7 +561,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">100</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -578,7 +578,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

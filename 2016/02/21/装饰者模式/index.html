@@ -108,9 +108,9 @@
 在不影响其他对象的情况下，以动态、透明的方式给单个对象添加职责。
 需要动态地给一个对象增加功能，这些功能也可以动态地被撤销。
 当不能采用继承的方式对系统进行扩充或者采用继承不利">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14560246781613.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14560300740064.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:updated_time" content="2017-11-05T06:22:00.000Z">
+<meta property="og:image" content="http://yoursite.com/media/14560246781613.png">
+<meta property="og:image" content="http://yoursite.com/media/14560300740064.png">
+<meta property="og:updated_time" content="2016-02-21T13:10:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="装饰者模式 Decorator Design Pattern">
 <meta name="twitter:description" content="[TOC]
@@ -121,7 +121,7 @@
 在不影响其他对象的情况下，以动态、透明的方式给单个对象添加职责。
 需要动态地给一个对象增加功能，这些功能也可以动态地被撤销。
 当不能采用继承的方式对系统进行扩充或者采用继承不利">
-<meta name="twitter:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14560246781613.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta name="twitter:image" content="http://yoursite.com/media/14560246781613.png">
 
 
 
@@ -402,7 +402,7 @@
 <li>需要动态地给一个对象增加功能，这些功能也可以动态地被撤销。</li>
 <li>当不能采用继承的方式对系统进行扩充或者采用继承不利于系统扩展和维护时。不能采用继承的情况主要有两类：第一类是系统中存在大量独立的扩展，为支持每一种组合将产生大量的子类，使得子类数目呈爆炸性增长；第二类是因为类定义不能继承（如final类）.</li>
 </ul>
-<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14560246781613.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="/media/14560246781613.png" alt=""></p>
 <p>Component: 抽象构件<br>ConcreteComponent: 具体构件<br>Decorator: 抽象装饰类<br>ConcreteDecorator: 具体装饰类</p>
 <a id="more"></a>
 <h2 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
@@ -421,7 +421,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.xuyushi.decorator;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by xuyushi on 16/2/21.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DecoratorMain</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"DecoratorMain RUNNING"</span>);</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        System.out.println(<span class="string">"------------"</span>);</span><br><span class="line">        ConcreteComponent concreteComponent = <span class="keyword">new</span> ConcreteComponent();</span><br><span class="line">        DecoratorA decoratorA = <span class="keyword">new</span> DecoratorA(concreteComponent);</span><br><span class="line">        decoratorA.doIt();</span><br><span class="line">        System.out.println(<span class="string">"------------"</span>);</span><br><span class="line">        DecoratorB decoratorB = <span class="keyword">new</span> DecoratorB(concreteComponent);</span><br><span class="line">        decoratorB.doIt();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DecoratorMain RUNNING</span><br><span class="line">------------</span><br><span class="line">ConcreteComponent Doit</span><br><span class="line">After Doit,DO A!</span><br><span class="line">------------</span><br><span class="line">Before Do it,DO B!</span><br><span class="line">ConcreteComponent Doit</span><br><span class="line"></span><br><span class="line">Process finished with <span class="built_in">exit</span> code 0</span><br></pre></td></tr></table></figure>
-<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14560300740064.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p><img src="/media/14560300740064.png" alt=""></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
 <li>优点<ul>
 <li>装饰模式与继承关系的目的都是要扩展对象的功能，但是装饰模式可以提供比继承更多的灵活性。</li>
@@ -573,7 +573,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">100</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -590,7 +590,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

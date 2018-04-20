@@ -104,9 +104,9 @@
 
 使用场景
 工厂类负责创建的对象比较少：由于创建的对象较少，不会造成工厂方法中">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14560604563955.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14560618582365.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:updated_time" content="2017-11-05T06:21:53.000Z">
+<meta property="og:image" content="http://yoursite.com/media/14560604563955.png">
+<meta property="og:image" content="http://yoursite.com/media/14560618582365.png">
+<meta property="og:updated_time" content="2016-02-21T13:43:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工厂模式 Factory  Pattern">
 <meta name="twitter:description" content="[TOC]
@@ -115,7 +115,7 @@
 
 使用场景
 工厂类负责创建的对象比较少：由于创建的对象较少，不会造成工厂方法中">
-<meta name="twitter:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14560604563955.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta name="twitter:image" content="http://yoursite.com/media/14560604563955.png">
 
 
 
@@ -395,7 +395,7 @@
 <li>工厂类负责创建的对象比较少：由于创建的对象较少，不会造成工厂方法中的业务逻辑太过复杂。</li>
 <li>客户端只知道传入工厂类的参数，对于如何创建对象不关心：客户端既不需要关心创建细节，甚至连类名都不需要记住，只需要知道类型所对应的参数。</li>
 </ul>
-<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14560604563955.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="/media/14560604563955.png" alt=""></p>
 <p>Factory：工厂角色<br>工厂角色负责实现创建所有实例的内部逻辑</p>
 <p>Product：抽象产品角色<br>抽象产品角色是所创建的所有对象的父类，负责描述所有实例所共有的公共接口</p>
 <p>ConcreteProduct：具体产品角色<br>具体产品角色是创建目标，所有创建的对象都充当这个角色的某个具体类的实例。</p>
@@ -411,7 +411,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleFactoryMain</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"SimpleFactoryMain RUNNING"</span>);</span><br><span class="line">        IProduct product = Factory.createProduct(<span class="string">"A"</span>);</span><br><span class="line">        product.use();</span><br><span class="line">        product = Factory.createProduct(<span class="string">"B"</span>);</span><br><span class="line">        product.use();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SimpleFactoryMain RUNNING</span><br><span class="line">ProductA use</span><br><span class="line">ProductB use</span><br></pre></td></tr></table></figure>
-<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14560618582365.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p><img src="/media/14560618582365.png" alt=""></p>
 <h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
 <li>优点<ul>
 <li>工厂类含有必要的判断逻辑，可以决定在什么时候创建哪一个产品类的实例，客户端可以免除直接创建产品对象的责任，而仅仅“消费”产品；简单工厂模式通过这种做法实现了对责任的分割，它提供了专门的工厂类用于创建对象。</li>
@@ -572,7 +572,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">100</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -589,7 +589,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -94,14 +94,14 @@
 <meta property="og:url" content="http://yoursite.com/2016/06/18/Android APP 新框架/index.html">
 <meta property="og:site_name" content="Xu Yushi''s Blog">
 <meta property="og:description" content="最近在 github 上看到一个 android 的框架，结合了 Rxjava + retrofit + dagger2 + mvp，结合了当下比较流行的框架，并且项目层次非常清晰，易于扩展和维护">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14662104756908.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14662116174333.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14662174949328.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:updated_time" content="2017-11-05T06:20:25.000Z">
+<meta property="og:image" content="http://yoursite.com/media/14662104756908.png">
+<meta property="og:image" content="http://yoursite.com/media/14662116174333.png">
+<meta property="og:image" content="http://yoursite.com/media/14662174949328.png">
+<meta property="og:updated_time" content="2016-06-19T04:44:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个很棒的 Android  APP框架">
 <meta name="twitter:description" content="最近在 github 上看到一个 android 的框架，结合了 Rxjava + retrofit + dagger2 + mvp，结合了当下比较流行的框架，并且项目层次非常清晰，易于扩展和维护">
-<meta name="twitter:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14662104756908.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta name="twitter:image" content="http://yoursite.com/media/14662104756908.png">
 
 
 
@@ -376,7 +376,7 @@
         <p>最近在 github 上看到一个 android 的框架，结合了 Rxjava + retrofit + dagger2 + mvp，结合了当下比较流行的框架，并且项目层次非常清晰，易于扩展和维护</p>
 <a id="more"></a>
 <p><a href="https://github.com/ribot/android-boilerplate" target="_blank" rel="external">github 地址</a></p>
-<h1 id="项目总览"><a href="#项目总览" class="headerlink" title="项目总览"></a>项目总览</h1><p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14662104756908.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h1 id="项目总览"><a href="#项目总览" class="headerlink" title="项目总览"></a>项目总览</h1><p><img src="/media/14662104756908.png" alt=""></p>
 <p>可以看到项目采用的 MVP 架构（ <a href="http://xuyushi.github.io/2016/02/28/MVP/" target="_blank" rel="external">http://xuyushi.github.io/2016/02/28/MVP/</a> ）</p>
 <p>与常规的 MVP 不同的是，在 modle 层和 view 层通过EventBus 连接，当数据发生变化时，发出对应的 event，注册了这个 event 的 view会采取对应的措施。举个例子，退出登录用在这样的情形就很合适，在退出登录后，我们可能不止一个 view 会发生变化，如果把这些写在每一个 Presenter 中无疑是很不简洁的代码</p>
 <p>在 modle 层中，抽象出了一个 DataManger，通过DataManger 我们与数据的具体实现进行了解耦，在 P 层我们无需关注数据是来自 DB ,SP 还是网络。我们只关心拿到的数据对象，而在DataManger 和 具体的数据实现中 还有一层 <strong>Helper</strong>层，这层封装了对数据的具体操作，比如 DBHelper、SPHelper、RetrofitServie，有了这一层封装可以很方便我们进行扩展。</p>
@@ -414,9 +414,9 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Inject</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">DataManager</span><span class="params">(RibotsService ribotsService, PreferencesHelper preferencesHelper,</span><br><span class="line">                      DatabaseHelper databaseHelper, EventPosterHelper eventPosterHelper)</span> </span>&#123;</span><br><span class="line">       mRibotsService = ribotsService;</span><br><span class="line">       mPreferencesHelper = preferencesHelper;</span><br><span class="line">       mDatabaseHelper = databaseHelper;</span><br><span class="line">       mEventPoster = eventPosterHelper;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>用<code>@Inject</code>标注了构造方法，当注入了<code>DataManager</code>时，在<code>module</code>中找不到对应的 provide 方法，变会在构造方法中寻找，在递归的找参数中的注入…</p>
 <p>以下用一张图来概括   </p>
-<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14662116174333.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p><img src="/media/14662116174333.png" alt=""></p>
 <h2 id="data"><a href="#data" class="headerlink" title="data"></a>data</h2><p>来看下整体的 data 包</p>
-<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14662174949328.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p><img src="/media/14662174949328.png" alt=""></p>
 <p>分为 local 和 remote、model几个包</p>
 <ul>
 <li>local 主要是 SP、DB 相关</li>
@@ -567,7 +567,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">100</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -584,7 +584,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

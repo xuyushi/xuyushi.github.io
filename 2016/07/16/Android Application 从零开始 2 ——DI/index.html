@@ -98,14 +98,14 @@
 <meta property="og:description" content="看懂这篇文章你需要有 依赖注入 以及 dagger 相关的知识点
 
 为了方便管理，将所有的依赖注入的代码放在一个包，包括Module ，component，注解">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14688514406280.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:updated_time" content="2017-11-05T06:20:26.000Z">
+<meta property="og:image" content="http://yoursite.com/media/14688514406280.png">
+<meta property="og:updated_time" content="2016-07-18T14:59:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Application 从零开始 2 ——DI">
 <meta name="twitter:description" content="看懂这篇文章你需要有 依赖注入 以及 dagger 相关的知识点
 
 为了方便管理，将所有的依赖注入的代码放在一个包，包括Module ，component，注解">
-<meta name="twitter:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14688514406280.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta name="twitter:image" content="http://yoursite.com/media/14688514406280.png">
 
 
 
@@ -380,7 +380,7 @@
         <blockquote>
 <p>看懂这篇文章你需要有 依赖注入 以及 dagger 相关的知识点</p>
 </blockquote>
-<p>为了方便管理，将所有的依赖注入的代码放在一个包，包括Module ，component，注解<br><a id="more"></a><br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14688514406280.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p>为了方便管理，将所有的依赖注入的代码放在一个包，包括Module ，component，注解<br><a id="more"></a><br><img src="/media/14688514406280.png" alt=""></p>
 <h2 id="ApplicationMoudle"><a href="#ApplicationMoudle" class="headerlink" title="ApplicationMoudle"></a>ApplicationMoudle</h2><p>提供全局的注入 ，如 Retrofit 的 service ，DataRepository 等， 其中的@provides 均标记为 @Singleton</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Module</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationModule</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">final</span> Application mApplication;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ApplicationModule</span><span class="params">(Application application)</span> </span>&#123;</span><br><span class="line">        mApplication = application;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Provides</span></span><br><span class="line">    <span class="meta">@Singleton</span></span><br><span class="line">    <span class="function">Application <span class="title">provideApplication</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mApplication;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Provides</span></span><br><span class="line">    <span class="meta">@Singleton</span></span><br><span class="line">    <span class="function">Context <span class="title">provideContext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mApplication;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Provides</span></span><br><span class="line">    <span class="meta">@Singleton</span></span><br><span class="line">    <span class="function">ThreadExecutor <span class="title">provideThreadExecutor</span><span class="params">(JobExecutor jobExecutor)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> jobExecutor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Provides</span></span><br><span class="line">    <span class="meta">@Singleton</span></span><br><span class="line">    <span class="function">PostExecutionThread <span class="title">providePostExecutionThread</span><span class="params">(UIThread uiThread)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> uiThread;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Provides</span></span><br><span class="line">    <span class="meta">@Singleton</span></span><br><span class="line">    <span class="function">JiandanService <span class="title">provideRibotsService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> JiandanService.Creator.newJiandanService();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Provides</span></span><br><span class="line">    <span class="meta">@Singleton</span></span><br><span class="line">    <span class="function">DataRepository <span class="title">provideDataRepository</span><span class="params">(DataManager dataManager)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dataManager;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -537,7 +537,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">100</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -554,7 +554,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -94,18 +94,18 @@
 <meta property="og:url" content="http://yoursite.com/2016/03/03/Activity Mode/index.html">
 <meta property="og:site_name" content="Xu Yushi''s Blog">
 <meta property="og:description" content="Activity Mode应用中的每一个Activity都是进行不同的事物处理。以邮件客户端为例，InboxActivity目的就是为了展示收件箱，这个Activity不建议创建成多个实例。而ComposeMailActivity则是用来撰写邮件，可以实例化多个此Activity对象。合理地设计Activity对象是否使用已有的实例还是多次创建，会使得交互设计更加良好，也能避免很多问题。">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14578356067573.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14578356288051.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14578358141233.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14578359471026.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14578360046122.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14578360479077.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14578360710384.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
-<meta property="og:updated_time" content="2017-11-05T06:20:19.000Z">
+<meta property="og:image" content="http://yoursite.com/media/14578356067573.png">
+<meta property="og:image" content="http://yoursite.com/media/14578356288051.png">
+<meta property="og:image" content="http://yoursite.com/media/14578358141233.png">
+<meta property="og:image" content="http://yoursite.com/media/14578359471026.png">
+<meta property="og:image" content="http://yoursite.com/media/14578360046122.png">
+<meta property="og:image" content="http://yoursite.com/media/14578360479077.png">
+<meta property="og:image" content="http://yoursite.com/media/14578360710384.png">
+<meta property="og:updated_time" content="2017-06-03T11:05:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Activity Mode">
 <meta name="twitter:description" content="Activity Mode应用中的每一个Activity都是进行不同的事物处理。以邮件客户端为例，InboxActivity目的就是为了展示收件箱，这个Activity不建议创建成多个实例。而ComposeMailActivity则是用来撰写邮件，可以实例化多个此Activity对象。合理地设计Activity对象是否使用已有的实例还是多次创建，会使得交互设计更加良好，也能避免很多问题。">
-<meta name="twitter:image" content="http://7xqcjz.com1.z0.glb.clouddn.com/14578356067573.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10">
+<meta name="twitter:image" content="http://yoursite.com/media/14578356067573.png">
 
 
 
@@ -382,13 +382,13 @@
 <h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>使用很简单，只需要在manifest中对应的Activity元素加入android:launchMode属性即可。如下述代码</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span><br><span class="line">    <span class="attr">android:name</span>=<span class="string">".SingleTaskActivity"</span></span><br><span class="line">    <span class="attr">android:label</span>=<span class="string">"singleTask launchMode"</span></span><br><span class="line">    <span class="attr">android:launchMode</span>=<span class="string">"singleTask"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="standard"><a href="#standard" class="headerlink" title="standard"></a>standard</h2><p>这是launchMode的默认值，Activity不包含android:launchMode或者显示设置为standard的Activity就会使用这种模式。</p>
-<h3 id="Android-5-0之前的表现"><a href="#Android-5-0之前的表现" class="headerlink" title="Android 5.0之前的表现"></a>Android 5.0之前的表现</h3><p>这种Activity新生成的实例会放入发送Intent的Task的栈的顶部。下图为启动同一程序内的Activity。<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14578356067573.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h3 id="Android-5-0之前的表现"><a href="#Android-5-0之前的表现" class="headerlink" title="Android 5.0之前的表现"></a>Android 5.0之前的表现</h3><p>这种Activity新生成的实例会放入发送Intent的Task的栈的顶部。下图为启动同一程序内的Activity。<br><img src="/media/14578356067573.png" alt=""></p>
 <p>下面的图片展示跨程序之间调用，新生成的Activity实例会放入发送Intent的Task的栈的顶部，尽管它们属于不同的程序。</p>
-<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14578356288051.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p><img src="/media/14578356288051.png" alt=""></p>
 <h3 id="Android-5-0及之后表现"><a href="#Android-5-0及之后表现" class="headerlink" title="Android 5.0及之后表现"></a>Android 5.0及之后表现</h3><p>对于同一应用内部Activity启动和5.0之前表现一样，变化的就是不同应用之间Activity启动变得合理了。</p>
 <p>跨应用之间启动Activity，会创建一个新的Task，新生成的Activity就会放入刚创建的Task中。如下图</p>
 <h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>standard这种启动模式适合于撰写邮件Activity或者社交网络消息发布Activity。如果你想为每一个intent创建一个Activity处理，那么就是用standard这种模式。</p>
-<h2 id="singleTop"><a href="#singleTop" class="headerlink" title="singleTop"></a>singleTop</h2><p>singleTop其实和standard几乎一样，使用singleTop的Activity也可以创建很多个实例。唯一不同的就是，如果调用的目标Activity已经位于调用者的Task的栈顶，则不创建新实例，而是使用当前的这个Activity实例，并调用这个实例的onNewIntent方法。<br><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14578358141233.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<h2 id="singleTop"><a href="#singleTop" class="headerlink" title="singleTop"></a>singleTop</h2><p>singleTop其实和standard几乎一样，使用singleTop的Activity也可以创建很多个实例。唯一不同的就是，如果调用的目标Activity已经位于调用者的Task的栈顶，则不创建新实例，而是使用当前的这个Activity实例，并调用这个实例的onNewIntent方法。<br><img src="/media/14578358141233.png" alt=""></p>
 <p>在singleTop这种模式下，我们需要处理应用这个模式的Activity的onCreate和onNewIntent两个方法，确保逻辑正常。</p>
 <h3 id="使用场景-1"><a href="#使用场景-1" class="headerlink" title="使用场景"></a>使用场景</h3><p>关于singleTop一个典型的使用场景就是搜索功能。假设有一个搜索框，每次搜索查询都会将我们引导至SearchActivity查看结果，为了更好的交互体验，我们在结果页顶部也放置这样的搜索框。</p>
 <p>假设一下，SearchActivity启动模式为standard，那么每一个搜索都会创建一个新的SearchActivity实例，10次查询就是10个Activity。当我们想要退回到非SearchActivity，我们需要按返回键10次，这显然太不合理了。</p>
@@ -401,13 +401,13 @@
 <h2 id="singleTask"><a href="#singleTask" class="headerlink" title="singleTask"></a>singleTask</h2><p>singleTask这个模式和前面提到的standard和singleTop截然不同。使用singleTask启动模式的Activity在系统中只会存在一个实例。如果这个实例已经存在，intent就会通过onNewIntent传递到这个Activity。否则新的Activity实例被创建。</p>
 <h3 id="同一程序内"><a href="#同一程序内" class="headerlink" title="同一程序内"></a>同一程序内</h3><p>如果系统中不存在singleTask Activity的实例，那么就需要创建这个Activity的实例，并且将这个实例放入和调用者相同的Task中并位于栈顶。</p>
 <p>如果singleTask Activity实例已然存在，那么在Activity回退栈中，所有位于该Activity上面的Activity实例都将被销毁掉（销毁过程会调用Activity生命周期回调），这样使得singleTask Activity实例位于栈顶。与此同时，Intent会通过onNewIntent传递到这个SingleTask Activity实例。</p>
-<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14578359471026.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p><img src="/media/14578359471026.png" alt=""></p>
 <h3 id="跨应用之间"><a href="#跨应用之间" class="headerlink" title="跨应用之间"></a>跨应用之间</h3><p>在跨应用Intent传递时，如果系统中不存在singleTask Activity的实例，那么讲创建一个新的Task，然后创建SingleTask Activity的实例，将其放入新的Task中。Task变化如下。</p>
-<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14578360046122.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p><img src="/media/14578360046122.png" alt=""></p>
 <p>如果singleTask Activity所在的应用进程存在，但是singleTask Activity实例不存在，那么从别的应用启动这个Activity，新的Activity实例会被创建，并放入到所属进程所在的Task中，并位于栈顶位置。</p>
-<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14578360479077.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p><img src="/media/14578360479077.png" alt=""></p>
 <p>更复杂的一种情况，如果singleTask Activity实例存在，从其他程序被启动，那么这个Activity所在的Task会被移到顶部，并且在这个Task中，位于singleTask Activity实例之上的所有Activity将会被正常销毁掉。如果我们按返回键，那么我们首先会回退到这个Task中的其他Activity，<strong>直到当前Task的Activity回退栈为空时，才会返回到调用者的Task</strong>。</p>
-<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/14578360710384.png?watermark/2/text/aHR0cDovL3h1eXVzaGkuZ2l0aHViLmlv/font/5b6u6L2v6ZuF6buR/fontsize/400/fill/IzI2OEJEMg==/dissolve/100/gravity/SouthEast/dx/10/dy/10" alt=""></p>
+<p><img src="/media/14578360710384.png" alt=""></p>
 <p>在上图中，当Task2中的相册启动分享调用Task1中的singleTask Activity，而该Activity实例存在，并位于Task1中回退栈中的第三个位置（从上到下顺序），那么位于该Activity上面的两个Activity实例将会被销毁掉，使得该Activity实例位于栈顶。此时Task1中的回退栈只剩两个Activity，如果点击返回，那么会退到的不是相册应用，而是singleTask Activity栈位置下面的Activity，再次点击返回方可返回相册应用。</p>
 <h3 id="使用场景-2"><a href="#使用场景-2" class="headerlink" title="使用场景"></a>使用场景</h3><p>该模式的使用场景多类似于邮件客户端的收件箱或者社交应用的时间线Activity。上述两种场景需要对应的Activity只保持一个实例即可，但是也要谨慎使用这种模式，因为它可以在用户未感知的情况下销毁掉其他Activity。</p>
 <h2 id="singleInstance"><a href="#singleInstance" class="headerlink" title="singleInstance"></a>singleInstance</h2><p>这个模式和singleTask差不多，因为他们在系统中都只有一份实例。唯一不同的就是<strong>存放singleInstance Activity实例的Task只能存放一个该模式的Activity实例</strong>。如果从singleInstance Activity实例启动另一个Activity，那么这个Activity实例会放入其他的Task中。同理，如果singleInstance Activity被别的Activity启动，它也会放入不同于调用者的Task中</p>
@@ -549,7 +549,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">100</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -566,7 +566,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
