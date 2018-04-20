@@ -1599,7 +1599,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/13/Android 测试 （四）-- 实战分析/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/13/Android 测试 （五）-- 实战分析/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Xu Yushi">
@@ -1624,8 +1624,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/13/Android 测试 （四）-- 实战分析/" itemprop="url">
-                  Android 测试 （四）-- 实战分析
+                <a class="post-title-link" href="/2016/11/13/Android 测试 （五）-- 实战分析/" itemprop="url">
+                  Android 测试 （五）-- 实战分析
                 </a>
               
             
@@ -1673,8 +1673,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/11/13/Android 测试 （四）-- 实战分析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/13/Android 测试 （四）-- 实战分析/" itemprop="commentCount"></span>
+                <a href="/2016/11/13/Android 测试 （五）-- 实战分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/13/Android 测试 （五）-- 实战分析/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1701,23 +1701,12 @@
 
       
         
-          <p>本文通过分析一个完整的项目，来学习如果对一个完整的工程比较好的进行编写测试程序</p>
-<p> <a href="https://github.com/googlesamples/android-architecture">项目地址</a>  ，该项目采用的是 mvp 架构，（关于 mvp 的介绍可以看这里 ），mvp 对于测试的好处就是讲 view 逻辑和业务代码分离，我们可以很方便的对业务代码进行 local unit test 的测试。</p>
-<p><img src="/media/14790068700868.jpg" alt="-w539"></p>
-<h1 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h1><p>可以看到项目的整体结构比较清晰</p>
-<ol>
-<li>项目代码</li>
-<li>Android 测试（Instrumentation test） </li>
-<li>Android 测试 相关 mock</li>
-<li>local unit test</li>
-<li>local unit test 相关 mock
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/13/Android 测试 （四）-- 实战分析/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>通过一个邮箱的开源项目分析如果对一个项目进行 android 测试。</p>
+<p> <a href="https://github.com/ribot/android-boilerplate" target="_blank" rel="external">项目地址</a>  ， <a href="http://xuyushi.github.io/2016/06/18/Android%20APP%20%E6%96%B0%E6%A1%86%E6%9E%B6/" target="_blank" rel="external">我在文章</a>（ <a href="http://xuyushi.github.io/2016/06/18/Android%20APP%20%E6%96%B0%E6%A1%86%E6%9E%B6/" target="_blank" rel="external">http://xuyushi.github.io/2016/06/18/Android%20APP%20%E6%96%B0%E6%A1%86%E6%9E%B6/</a> ）中已经对这个项目的框架进行了解析，不熟悉的可以看这里</p>
+<p>改项目采用的是 Rxjava + retrofit + dagger2 + mvp 的框架。测试采用的是 unit + dagger + robolectric ，unit test 测试 mvp 中 P层的依赖</p>
+
+          
         
       
     </div>
