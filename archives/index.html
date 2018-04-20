@@ -1,15 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
-  
 
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
 
 
 
@@ -29,36 +34,14 @@
 
 
 
+
+
+
+
   
   
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -67,7 +50,22 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -77,11 +75,6 @@
 
 
   <link rel="alternate" href="/atom.xml" title="Xu Yushi''s Blog" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -104,10 +97,12 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '12427169',
       author: 'Author'
@@ -130,19 +125,17 @@
 
 
 
-  <title> 归档 | Xu Yushi''s Blog </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>归档 | Xu Yushi''s Blog</title>
   
+
+
 
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-72857814-1', 'auto');
   ga('send', 'pageview');
 </script>
@@ -151,38 +144,42 @@
 
 
 
+</head>
 
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-archive">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Xu Yushi''s Blog</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xu Yushi''s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">低调、务实、自驱、反思</p>
+      
   </div>
-  <p class="site-subtitle">低调、务实、自驱、反思</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -195,7 +192,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             首页
           </a>
@@ -205,7 +202,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             分类
           </a>
@@ -215,7 +212,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             关于
           </a>
@@ -225,7 +222,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             归档
           </a>
@@ -235,7 +232,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
             标签
           </a>
@@ -260,37 +257,41 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  
+  
+  
+  <div class="post-block archive">
+    <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
 
-    <span class="archive-page-counter">
-      
-      
-       
+      <span class="archive-page-counter">
         
-      很好! 目前共计 103 篇日志。 继续努力。
-    </span>
-
-    
-
-      
-      
-      
-
-      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2018">2018</h2>
-        </div>
-      
-      
+         
+          
+        很好! 目前共计 103 篇日志。 继续努力。
+      </span>
 
       
+
+        
+        
+        
+
+        
+          
+          <div class="collection-title">
+            <h1 class="archive-year" id="archive-year-2018">2018</h1>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2018/04/21/jenkins 平台搭建/" itemprop="url">
               
@@ -298,7 +299,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -313,21 +314,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2018/04/21/Maven 搭建/" itemprop="url">
               
@@ -335,7 +336,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -350,21 +351,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2018/04/21/centos Android sdk 配置/" itemprop="url">
               
@@ -372,7 +373,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -387,21 +388,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2018/04/21/gitlab/" itemprop="url">
               
@@ -409,7 +410,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -424,26 +425,26 @@
 
 
 
-    
-
-      
-      
       
 
-      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
-        </div>
-      
-      
+        
+        
 
-      
+        
+          
+          <div class="collection-title">
+            <h1 class="archive-year" id="archive-year-2017">2017</h1>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/11/05/快速搭建新项目框架3-Kotlin/" itemprop="url">
               
@@ -451,7 +452,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -466,21 +467,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/10/28/快速搭建新项目框架2-mvp 结构/" itemprop="url">
               
@@ -488,7 +489,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -503,21 +504,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/10/28/快速搭建新项目框架1-依赖注入/" itemprop="url">
               
@@ -525,7 +526,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -540,21 +541,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/10/25/快速搭建新项目框架0-前言md/" itemprop="url">
               
@@ -562,7 +563,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -577,21 +578,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/06/30/Room/" itemprop="url">
               
@@ -599,7 +600,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -614,21 +615,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/06/30/Guide to App Architecture/" itemprop="url">
               
@@ -636,7 +637,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -651,21 +652,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/06/25/ViewModel/" itemprop="url">
               
@@ -673,7 +674,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -688,21 +689,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/06/25/Handling Lifecycles/" itemprop="url">
               
@@ -710,7 +711,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -725,21 +726,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/06/25/LiveData/" itemprop="url">
               
@@ -747,7 +748,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -762,21 +763,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/06/03/gradle 插件开发/" itemprop="url">
               
@@ -784,7 +785,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -799,21 +800,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/06/03/media/gradle 插件开发/" itemprop="url">
               
@@ -821,7 +822,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -836,21 +837,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/06/03/Maven 仓库搭建/" itemprop="url">
               
@@ -858,7 +859,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -873,21 +874,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/05/04/NanoHttpd/" itemprop="url">
               
@@ -895,7 +896,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -910,21 +911,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/05/01/java 内存管理/" itemprop="url">
               
@@ -932,7 +933,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -947,21 +948,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2017/04/08/Android CleanArchitecture --Dagger/" itemprop="url">
               
@@ -969,7 +970,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -984,26 +985,26 @@
 
 
 
-    
-
-      
-      
       
 
-      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
+        
+        
 
-      
+        
+          
+          <div class="collection-title">
+            <h1 class="archive-year" id="archive-year-2016">2016</h1>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/11/13/Android 测试 （五）-- 实战分析/" itemprop="url">
               
@@ -1011,7 +1012,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1026,21 +1027,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/11/13/Android 测试 （四）-- 实战分析/" itemprop="url">
               
@@ -1048,7 +1049,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1063,21 +1064,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/11/06/Android 测试 （三）--Local Unit Tests/" itemprop="url">
               
@@ -1085,7 +1086,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1100,21 +1101,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/11/05/Android 测试 （一）--测试总览/" itemprop="url">
               
@@ -1122,7 +1123,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1137,21 +1138,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/11/05/Android 测试 （二）--Instrumented Unit Tests/" itemprop="url">
               
@@ -1159,7 +1160,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1174,58 +1175,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/16/HashMap 的实现原理/" itemprop="url">
-              
-                <span itemprop="name">HashMap 的实现原理</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-16T00:00:00+08:00"
-              content="2016-10-16" >
-          10-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/10/16/hashcode/" itemprop="url">
               
@@ -1233,7 +1197,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1248,21 +1212,58 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2016/10/16/HashMap 的实现原理/" itemprop="url">
+              
+                <span itemprop="name">HashMap 的实现原理</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-10-16T00:00:00+08:00"
+              content="2016-10-16" >
+          10-16
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/09/17/09-17 碎碎念/" itemprop="url">
               
@@ -1270,7 +1271,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1285,21 +1286,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/09/16/Window 和 WindowManager/" itemprop="url">
               
@@ -1307,7 +1308,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1322,21 +1323,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/09/15/Activity，DecorView，PhoneWindow和ViewRoot的作用和相关关系/" itemprop="url">
               
@@ -1344,7 +1345,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1359,21 +1360,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/09/03/AsyncTask/" itemprop="url">
               
@@ -1381,7 +1382,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1396,21 +1397,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/08/21/Runnable、Callable、Future、FutureTask的区别/" itemprop="url">
               
@@ -1418,7 +1419,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1433,21 +1434,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/08/20/HandlerThread/" itemprop="url">
               
@@ -1455,7 +1456,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1470,21 +1471,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/08/20/Looper、Handler、Message 分析/" itemprop="url">
               
@@ -1492,7 +1493,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1507,21 +1508,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/08/14/synchronized/" itemprop="url">
               
@@ -1529,7 +1530,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1544,58 +1545,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/08/14/activity 总结/" itemprop="url">
-              
-                <span itemprop="name">Activity 总结</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-14T00:00:00+08:00"
-              content="2016-08-14" >
-          08-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/08/14/wait:notify:notifyAll/" itemprop="url">
               
@@ -1603,7 +1567,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1618,21 +1582,58 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2016/08/14/activity 总结/" itemprop="url">
+              
+                <span itemprop="name">Activity 总结</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-08-14T00:00:00+08:00"
+              content="2016-08-14" >
+          08-14
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/07/20/Architecting Android…The evolution/" itemprop="url">
               
@@ -1640,7 +1641,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1655,21 +1656,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/07/19/Android clean architecting/" itemprop="url">
               
@@ -1677,7 +1678,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1692,21 +1693,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/07/16/Android Application 从零开始 2 ——DI/" itemprop="url">
               
@@ -1714,7 +1715,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1729,21 +1730,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/07/05/Android Application 从零开始 1 ——Gradle/" itemprop="url">
               
@@ -1751,7 +1752,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1766,21 +1767,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/07/04/Android Application 从零开始 0 ——概述 /" itemprop="url">
               
@@ -1788,7 +1789,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1803,21 +1804,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/06/25/volley源码解析/" itemprop="url">
               
@@ -1825,7 +1826,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1840,21 +1841,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/06/19/ASimpleCache/" itemprop="url">
               
@@ -1862,7 +1863,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1877,21 +1878,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/06/18/Android APP 新框架/" itemprop="url">
               
@@ -1899,7 +1900,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1914,21 +1915,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/06/10/retrofit源码解析2/" itemprop="url">
               
@@ -1936,7 +1937,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1951,21 +1952,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/06/09/retrofit源码解析1/" itemprop="url">
               
@@ -1973,7 +1974,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -1988,21 +1989,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/04/30/地图区域绘制 MVP 实践/" itemprop="url">
               
@@ -2010,7 +2011,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2025,21 +2026,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/04/11/listview crash 分析/" itemprop="url">
               
@@ -2047,7 +2048,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2062,21 +2063,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/03/26/Material Design/" itemprop="url">
               
@@ -2084,7 +2085,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2099,21 +2100,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/03/20/Android 中的 rxjava/" itemprop="url">
               
@@ -2121,7 +2122,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2136,21 +2137,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/03/11/单身汪的自白/" itemprop="url">
               
@@ -2158,7 +2159,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2173,21 +2174,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/03/05/Android MVVM/" itemprop="url">
               
@@ -2195,7 +2196,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2210,21 +2211,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/03/04/Android 单元测试--Robolectric/" itemprop="url">
               
@@ -2232,7 +2233,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2247,21 +2248,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/03/03/Activity Mode/" itemprop="url">
               
@@ -2269,7 +2270,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2284,21 +2285,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/28/MVP/" itemprop="url">
               
@@ -2306,7 +2307,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2321,58 +2322,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/23/组合模式/" itemprop="url">
-              
-                <span itemprop="name">组合模式 Composite Pattern</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-23T00:00:00+08:00"
-              content="2016-02-23" >
-          02-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/23/迭代器模式/" itemprop="url">
               
@@ -2380,7 +2344,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2395,58 +2359,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/23/代理模式/" itemprop="url">
-              
-                <span itemprop="name">代理模式 Proxy Pattern</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-23T00:00:00+08:00"
-              content="2016-02-23" >
-          02-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/23/模板方法模式/" itemprop="url">
               
@@ -2454,7 +2381,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2469,21 +2396,95 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2016/02/23/代理模式/" itemprop="url">
+              
+                <span itemprop="name">代理模式 Proxy Pattern</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-02-23T00:00:00+08:00"
+              content="2016-02-23" >
+          02-23
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2016/02/23/组合模式/" itemprop="url">
+              
+                <span itemprop="name">组合模式 Composite Pattern</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-02-23T00:00:00+08:00"
+              content="2016-02-23" >
+          02-23
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/22/命令模式/" itemprop="url">
               
@@ -2491,7 +2492,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2506,21 +2507,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/22/单例模式/" itemprop="url">
               
@@ -2528,7 +2529,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2543,58 +2544,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/22/外观模式/" itemprop="url">
-              
-                <span itemprop="name">外观模式 Facade Pattern</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-22T00:00:00+08:00"
-              content="2016-02-22" >
-          02-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/22/适配器模式/" itemprop="url">
               
@@ -2602,7 +2566,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2617,21 +2581,58 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2016/02/22/外观模式/" itemprop="url">
+              
+                <span itemprop="name">外观模式 Facade Pattern</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-02-22T00:00:00+08:00"
+              content="2016-02-22" >
+          02-22
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/21/抽象工厂模式/" itemprop="url">
               
@@ -2639,7 +2640,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2654,21 +2655,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/21/工厂方法模式/" itemprop="url">
               
@@ -2676,7 +2677,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2691,21 +2692,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/21/工厂模式/" itemprop="url">
               
@@ -2713,7 +2714,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2728,21 +2729,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/21/装饰者模式/" itemprop="url">
               
@@ -2750,7 +2751,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2765,21 +2766,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/20/观察者模式/" itemprop="url">
               
@@ -2787,7 +2788,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2802,21 +2803,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/17/策略模式/" itemprop="url">
               
@@ -2824,7 +2825,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2839,21 +2840,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/04/2015小结/" itemprop="url">
               
@@ -2861,7 +2862,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2876,21 +2877,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/02/状态模式/" itemprop="url">
               
@@ -2898,7 +2899,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2913,21 +2914,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/02/01/注解/" itemprop="url">
               
@@ -2935,7 +2936,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -2950,58 +2951,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/01/14/内存泄露/" itemprop="url">
-              
-                <span itemprop="name">Android 内存泄露</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-01-14T17:27:00+08:00"
-              content="2016-01-14" >
-          01-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/01/14/Java 引用/" itemprop="url">
               
@@ -3009,7 +2973,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3024,21 +2988,58 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2016/01/14/内存泄露/" itemprop="url">
+              
+                <span itemprop="name">Android 内存泄露</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-01-14T17:27:00+08:00"
+              content="2016-01-14" >
+          01-14
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2016/01/11/IDEA 技巧/" itemprop="url">
               
@@ -3046,7 +3047,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3061,26 +3062,26 @@
 
 
 
-    
-
-      
-      
       
 
-      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
-        </div>
-      
-      
+        
+        
 
-      
+        
+          
+          <div class="collection-title">
+            <h1 class="archive-year" id="archive-year-2015">2015</h1>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/10/27/Media Playback/" itemprop="url">
               
@@ -3088,7 +3089,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3103,21 +3104,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/10/26/Android service/" itemprop="url">
               
@@ -3125,7 +3126,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3140,21 +3141,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/10/24/自定义view/" itemprop="url">
               
@@ -3162,7 +3163,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3177,21 +3178,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/10/11/fragment 源码分析/" itemprop="url">
               
@@ -3199,7 +3200,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3214,21 +3215,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/08/15/Android Studio中进行单元测试/" itemprop="url">
               
@@ -3236,7 +3237,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3251,21 +3252,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/08/15/robolectric/" itemprop="url">
               
@@ -3273,7 +3274,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3288,21 +3289,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/07/15/jni 学习/" itemprop="url">
               
@@ -3310,7 +3311,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3325,21 +3326,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/07/14/Android 触摸事件传递机制/" itemprop="url">
               
@@ -3347,7 +3348,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3362,21 +3363,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/07/14/java 反射学习/" itemprop="url">
               
@@ -3384,7 +3385,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3399,21 +3400,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/07/12/volley学习/" itemprop="url">
               
@@ -3421,7 +3422,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3436,21 +3437,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/07/09/listview的复用机制/" itemprop="url">
               
@@ -3458,7 +3459,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3473,21 +3474,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/07/09/wifi压力测试/" itemprop="url">
               
@@ -3495,7 +3496,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3510,21 +3511,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/07/09/Android View 小结/" itemprop="url">
               
@@ -3532,7 +3533,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3547,21 +3548,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/07/05/loader 总结/" itemprop="url">
               
@@ -3569,7 +3570,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3584,21 +3585,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/07/05/使用命令行查看android sqlite数据库/" itemprop="url">
               
@@ -3606,7 +3607,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3621,58 +3622,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/07/04/aidl 学习/" itemprop="url">
-              
-                <span itemprop="name">Aidl 总结</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-07-04T16:25:00+08:00"
-              content="2015-07-04" >
-          07-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/07/04/Service 总结/" itemprop="url">
               
@@ -3680,7 +3644,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3695,21 +3659,58 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2015/07/04/aidl 学习/" itemprop="url">
+              
+                <span itemprop="name">Aidl 总结</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-07-04T16:25:00+08:00"
+              content="2015-07-04" >
+          07-04
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/07/01/蓝牙学习/" itemprop="url">
               
@@ -3717,7 +3718,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3732,21 +3733,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/06/29/GreenDao学习/" itemprop="url">
               
@@ -3754,7 +3755,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3769,21 +3770,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/06/27/June 27, 2015 8-12 PM/" itemprop="url">
               
@@ -3791,7 +3792,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3806,21 +3807,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/06/27/近期学习计划/" itemprop="url">
               
@@ -3828,7 +3829,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3843,21 +3844,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/06/27/登陆框UI/" itemprop="url">
               
@@ -3865,7 +3866,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3880,21 +3881,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/06/24/git总结/" itemprop="url">
               
@@ -3902,7 +3903,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3917,21 +3918,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/06/22/EventBus学习/" itemprop="url">
               
@@ -3939,7 +3940,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3954,21 +3955,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/06/19/取消软键盘自动弹出 /" itemprop="url">
               
@@ -3976,7 +3977,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -3991,21 +3992,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/06/17/检测手机信号质量/" itemprop="url">
               
@@ -4013,7 +4014,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -4028,21 +4029,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/06/15/GSON 学习/" itemprop="url">
               
@@ -4050,7 +4051,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -4065,21 +4066,21 @@
 
 
 
-    
-
-      
-      
       
 
-      
-      
+        
+        
+        
 
-      
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h1 class="post-title">
+      <h2 class="post-title">
         
             <a class="post-title-link" href="/2015/06/14/hello-world/" itemprop="url">
               
@@ -4087,7 +4088,7 @@
               
             </a>
         
-      </h1>
+      </h2>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -4102,9 +4103,13 @@
 
 
 
-    
+      
 
-  </section>
+    </div>
+  </div>
+  
+  
+  
 
   
 
@@ -4129,71 +4134,85 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg"
-               alt="Xu Yushi" />
-          <p class="site-author-name" itemprop="name">Xu Yushi</p>
-          <p class="site-description motion-element" itemprop="description">安卓 | xuyushi | 许雨石 | Android | java | developer</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">103</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg"
+                alt="Xu Yushi" />
+            
+              <p class="site-author-name" itemprop="name">Xu Yushi</p>
+              <p class="site-description motion-element" itemprop="description">安卓 | xuyushi | 许雨石 | Android | java | developer</p>
           </div>
 
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
           
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">分类</span>
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
               </a>
             </div>
           
 
           
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">64</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
+
+          
           
 
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
           
+          
+
+          
+
         </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
+
+      
 
       
 
@@ -4207,38 +4226,50 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Xu Yushi</span>
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
 
 
         
+
+
+
+
+
+
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
   </div>
 
   
@@ -4261,49 +4292,71 @@
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
 
   
   
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
@@ -4330,7 +4383,7 @@
     
       
       <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.4"></script>
     
     
     <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
@@ -4344,8 +4397,21 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
   
-  
+
+
+
+
 
   
 
@@ -4354,7 +4420,13 @@
   
 
   
+  
 
+  
+
+  
+
+  
 
 </body>
 </html>
