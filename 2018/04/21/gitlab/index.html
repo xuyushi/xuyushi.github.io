@@ -87,7 +87,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/04/21/gitlab/index.html">
 <meta property="og:site_name" content="Xu Yushi's Blog">
 <meta property="og:description" content="gitlab 搭建">
-<meta property="og:updated_time" content="2018-04-20T07:02:22.916Z">
+<meta property="og:updated_time" content="2018-04-22T13:20:51.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitlab 搭建">
 <meta name="twitter:description" content="gitlab 搭建">
@@ -362,9 +362,9 @@
 
       
         <h1 id="gitlab-搭建"><a href="#gitlab-搭建" class="headerlink" title="gitlab 搭建"></a>gitlab 搭建</h1><a id="more"></a>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="_">-s</span>S https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash</span><br><span class="line">yum install gitlab-ce</span><br></pre></td></tr></table></figure>
 <!--<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Retrieving key from https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey</span><br><span class="line">Importing GPG key 0xE15E78F4:</span><br><span class="line"> Userid     : <span class="string">"GitLab B.V. (package repository signing key) &lt;packages@gitlab.com&gt;"</span></span><br><span class="line"> Fingerprint: 1a4c 919d b987 d435 9396 38b9 1421 9a96 e15e 78f4</span><br><span class="line"> From       : https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey</span><br><span class="line">Is this ok [y/N]:</span><br></pre></td></tr></table></figure>
 <p>–&gt;</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="_">-s</span>S https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash</span><br><span class="line">yum install gitlab-ce</span><br></pre></td></tr></table></figure>
 <h1 id="启动-GitLab"><a href="#启动-GitLab" class="headerlink" title="启动 GitLab"></a>启动 GitLab</h1><p>安装完成之后，打开配置文件<code>/etc/gitlab/gitlab.rb</code>将 <code>external_url = &#39;http://git.example.com&#39;</code>修改为自己的 IP 地址：<code>external_url &#39;http://ip_address&#39;</code>，然后执行下面的命令，对 GitLab 进行编译：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
 <h1 id="GitLab-基本配置"><a href="#GitLab-基本配置" class="headerlink" title="GitLab 基本配置"></a>GitLab 基本配置</h1><p>GitLab 的相关参数配置都存在 /etc/gitlab/gitlab.rb 文件里。自 GitLab 7.6 开始的新安装包, 已经默认将所有的参数写入到 /etc/gitlab/gitlab.rb 配置文件中。</p>
@@ -379,7 +379,7 @@
 <h2 id="Credentials"><a href="#Credentials" class="headerlink" title="Credentials"></a>Credentials</h2><ol>
 <li>设置是 需要将开发机私钥设置copy 进jenkins</li>
 <li>开发机共钥放 gitlab</li>
-<li>本地机的  共钥放 gitlab<br><img src="media/15242020277016.jpg" alt=""></li>
+<li>本地机的  共钥放 gitlab<br><img src="/media/15242020277016.jpg" alt=""></li>
 </ol>
 -->
       
@@ -435,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/21/jenkins 平台搭建/" rel="next" title="jenkins 平台搭建">
-                <i class="fa fa-chevron-left"></i> jenkins 平台搭建
+              <a href="/2018/04/21/centos Android sdk 配置/" rel="next" title="Android sdk 搭建">
+                <i class="fa fa-chevron-left"></i> Android sdk 搭建
               </a>
             
           </div>
@@ -444,6 +444,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/21/jenkins 平台搭建/" rel="prev" title="jenkins 平台搭建">
+                jenkins 平台搭建 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -591,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#gitlab-搭建"><span class="nav-number">1.</span> <span class="nav-text">gitlab 搭建</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#gitlab-搭建"><span class="nav-number">1.</span> <span class="nav-text">gitlab 搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li></ol></div>
             
 
           </div>
