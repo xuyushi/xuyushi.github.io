@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/30/Room/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/30/Guide to App Architecture/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xu Yushi">
@@ -291,7 +291,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/30/Room/" itemprop="url">Architecture Components--Room  Persistence Library</a></h1>
+                <a class="post-title-link" href="/2017/06/30/Guide to App Architecture/" itemprop="url">Architecture Components--Guide to App Architecture</a></h1>
         
 
         <div class="post-meta">
@@ -364,12 +364,15 @@
 
       
         
-          <h1 id="Room-Persistence-Library"><a href="#Room-Persistence-Library" class="headerlink" title="Room Persistence Library"></a>Room Persistence Library</h1><p>Room 在 SQLite 之上提供了一个抽象层，以便在利用 SQLite 全部功能的同时能够流畅的访问数据库。</p>
-<p>将数据持久化到本地对于应用程序处理大量结构化数据有非常大的好处。最常见的情况是缓存相关数据。这样，当设备无法访问网络时，用户仍然可以在离线状态下浏览内容。然后，在设备重新上线后，任何用户发起的内容变更都会同步到服务器。</p>
-<p>核心框架提供了内置支持来处理原始的 SQL 内容。虽然这些 API 是强大的，但是它们非常低级并且使用起来需要话费巨大的时间和精力：<br>
+          <h1 id="Architecture-Components-–-Guide-to-App-Architecture"><a href="#Architecture-Components-–-Guide-to-App-Architecture" class="headerlink" title="Architecture Components – Guide to App Architecture"></a>Architecture Components – Guide to App Architecture</h1><h1 id="应用程序架构指南"><a href="#应用程序架构指南" class="headerlink" title="应用程序架构指南"></a>应用程序架构指南</h1><p>本指南使用于具有构建应用程序基础并且想了解构建强大、优质的应用程序的最佳实践和推荐架构的开发人员。</p>
+<blockquote>
+<p>注：本指南假定读者熟悉 Android Framework。如果你是一个应用程序开发的新手，请参阅入门指南系列培训，其中包含了本指南先决条件的相关主题。</p>
+</blockquote>
+<h2 id="应用开发者面临的常见问题"><a href="#应用开发者面临的常见问题" class="headerlink" title="应用开发者面临的常见问题"></a>应用开发者面临的常见问题</h2><p>在大多数情况下，桌面应用程序在启动器快捷方式中有一个单一的入口并且作为单独的独立进程运行，与桌面应用程序不同，Android 应用具有更复杂的结构。一个典型的 Android 应用是由多个应用程序组件构成的，包括 activity，fragment，service，content provider 和 broadcast receiver。</p>
+<p>这些应用程序组件中的大部分声明在由 Android OS 使用的应用程序清单中，用来决定如何将应用融入到用户设备的整体体验中。尽管如前所述，传统的桌面应用程序作为独立进程运行，但是正确的编写 Android 应用程序需要更加灵活，因为用户会同过设备上不同的应用程序组织成自己的方式不断切换流程和任务。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/30/Room/#more" rel="contents">
+            <a class="btn" href="/2017/06/30/Guide to App Architecture/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -569,6 +572,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/LiveData/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Yushi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xu Yushi's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/25/LiveData/" itemprop="url">Architecture Components--LiveData</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T00:00:00+08:00">
+                2017-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="LiveData"><a href="#LiveData" class="headerlink" title="LiveData"></a>LiveData</h1><p><code>LiveData</code> 是一个 data holder  类，持有一个可被观察的值。与普通的observable不同的是，<code>LiveData</code>遵循app 组件的生命周期。它能决定在某个生命周期是否被观察</p>
+<p><code>LiveData</code> 在观察者生命周期的 STARTED 和 RESUMED 状态是可被激活的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocationLiveData</span> <span class="keyword">extends</span> <span class="title">LiveData</span>&lt;<span class="title">Location</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> LocationManager locationManager;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> SimpleLocationListener listener = <span class="keyword">new</span> SimpleLocationListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLocationChanged</span><span class="params">(Location location)</span> </span>&#123;</span><br><span class="line">            setValue(location);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LocationLiveData</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        locationManager = (LocationManager) context.getSystemService(</span><br><span class="line">                Context.LOCATION_SERVICE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, <span class="number">0</span>, <span class="number">0</span>, listener);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onInactive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        locationManager.removeUpdates(listener);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/25/LiveData/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/Handling Lifecycles/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -717,7 +868,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/LiveData/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/03/media/gradle 插件开发/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xu Yushi">
@@ -736,7 +887,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/25/LiveData/" itemprop="url">Architecture Components--LiveData</a></h1>
+                <a class="post-title-link" href="/2017/06/03/media/gradle 插件开发/" itemprop="url">gradle 插件开发</a></h1>
         
 
         <div class="post-meta">
@@ -748,8 +899,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T00:00:00+08:00">
-                2017-06-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-03T00:00:00+08:00">
+                2017-06-03
               </time>
             
 
@@ -771,8 +922,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/gradle/" itemprop="url" rel="index">
+                    <span itemprop="name">gradle</span>
                   </a>
                 </span>
 
@@ -809,12 +960,11 @@
 
       
         
-          <h1 id="LiveData"><a href="#LiveData" class="headerlink" title="LiveData"></a>LiveData</h1><p><code>LiveData</code> 是一个 data holder  类，持有一个可被观察的值。与普通的observable不同的是，<code>LiveData</code>遵循app 组件的生命周期。它能决定在某个生命周期是否被观察</p>
-<p><code>LiveData</code> 在观察者生命周期的 STARTED 和 RESUMED 状态是可被激活的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocationLiveData</span> <span class="keyword">extends</span> <span class="title">LiveData</span>&lt;<span class="title">Location</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> LocationManager locationManager;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> SimpleLocationListener listener = <span class="keyword">new</span> SimpleLocationListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLocationChanged</span><span class="params">(Location location)</span> </span>&#123;</span><br><span class="line">            setValue(location);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LocationLiveData</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        locationManager = (LocationManager) context.getSystemService(</span><br><span class="line">                Context.LOCATION_SERVICE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, <span class="number">0</span>, <span class="number">0</span>, listener);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onInactive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        locationManager.removeUpdates(listener);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h1 id="什么是Gradle插件？"><a href="#什么是Gradle插件？" class="headerlink" title="什么是Gradle插件？"></a>什么是Gradle插件？</h1><p>在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.android.application'</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/25/LiveData/#more" rel="contents">
+            <a class="btn" href="/2017/06/03/media/gradle 插件开发/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -965,153 +1115,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/03/gradle 插件开发/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/03/media/gradle 插件开发/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Xu Yushi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Xu Yushi's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/03/media/gradle 插件开发/" itemprop="url">gradle 插件开发</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-03T00:00:00+08:00">
-                2017-06-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/gradle/" itemprop="url" rel="index">
-                    <span itemprop="name">gradle</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="什么是Gradle插件？"><a href="#什么是Gradle插件？" class="headerlink" title="什么是Gradle插件？"></a>什么是Gradle插件？</h1><p>在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.android.application'</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/03/media/gradle 插件开发/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
