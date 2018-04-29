@@ -1270,7 +1270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/23/模板方法模式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/23/组合模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xu Yushi">
@@ -1289,7 +1289,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/02/23/模板方法模式/" itemprop="url">模板方法模式 Template Method Pattern</a></h1>
+                <a class="post-title-link" href="/2016/02/23/组合模式/" itemprop="url">组合模式 Composite Pattern</a></h1>
         
 
         <div class="post-meta">
@@ -1363,183 +1363,17 @@
       
         
           <p>[TOC]</p>
-<h1 id="模板方法模式-Template-Method-Pattern"><a href="#模板方法模式-Template-Method-Pattern" class="headerlink" title="模板方法模式 Template Method Pattern"></a>模板方法模式 Template Method Pattern</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
-<p>模板方法模式定义了一个算法的步骤，并允许次类别为一个或多个步骤提供其实践方式。让次类别在不改变算法架构的情况下，重新定义算法中的某些步骤。</p>
-</blockquote>
-<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
-<li>一次性实现一个算法的不变部分，把变化部分留给子类去实现。</li>
-<li>各子类间的共同行为需要被提取并集中到一个共同的类中来避免代码的重复。你首先识别出这些现有代码的不同之处，然后把这些不同之处分离到新的操作中。最后，你用一个模板方法调用这些新操作之一来替代原有那些不同的代码。</li>
-<li>控制子类扩展。你能定义一个只在特定点调用 hook 操作的模板方法，以此只允许子类在这些点扩展。</li>
-</ul>
-<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="/media/14562265059090.jpg" alt=""></p>
-<p>AbstractTemplate：抽象模板</p>
+<h1 id="组合模式-Composite-Pattern"><a href="#组合模式-Composite-Pattern" class="headerlink" title="组合模式 Composite Pattern"></a>组合模式 Composite Pattern</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
+<p>代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2></blockquote>
 <ul>
-<li>定义了一个或多个抽象操作，以便让子类实现。这些抽象操作叫做基本操作，它们是一个顶级逻辑的组成步骤。</li>
-<li>定义并实现了一个模板方法。这个模板方法一般是一个具体方法，它给出了一个顶级逻辑的骨架，而逻辑的组成步骤在相应的抽象操作中，推迟到子类实现。顶级逻辑也有可能调用一些具体方法。</li>
+<li>需要表示一个对象整体或部分层次，在具有整体和部分的层次结构中，希望通过一种方式忽略整体与部分的差异，可以一致地对待它们。</li>
+<li>让客户能够忽略不同对象层次的变化，客户端可以针对抽象构件编程，无须关心对象层次结构的细节。</li>
 </ul>
-<p>ConcreteTemplate：具体实现</p>
-<ul>
-<li>实现父类所定义的一个或多个抽象方法，它们是一个顶级逻辑的组成步骤。</li>
-<li>每一个抽象模板角色都可以有任意多个具体模板角色与之对应，而每一个具体模板角色都可以给出这些抽象方法（也就是顶级逻辑的组成步骤）的不同实现，从而使得顶级逻辑的实现各不相同。</li>
-</ul>
+<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="/media/14562390427827.png" alt=""></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/02/23/模板方法模式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/23/迭代器模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Xu Yushi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Xu Yushi's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/02/23/迭代器模式/" itemprop="url">迭代器模式 Iterator Pattern</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-23T00:00:00+08:00">
-                2016-02-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>[TOC]</p>
-<h1 id="迭代器模式-Iterator-Pattern"><a href="#迭代器模式-Iterator-Pattern" class="headerlink" title="迭代器模式 Iterator Pattern"></a>迭代器模式 Iterator Pattern</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
-<p>迭代器模式 Iterator Pattern 提供一个方法顺序访问一个聚合对象中的个个元素，而不是暴露其内部的表示</p>
-</blockquote>
-<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
-<li>访问一个聚合对象的内容而无须暴露它的内部表示。</li>
-<li>需要为聚合对象提供多种遍历方式。</li>
-<li>为遍历不同的聚合结构提供一个统一的接口。<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><img src="/media/14562354344010.jpg" alt=""></li>
-</ul>
-<p>迭代器角色(Iterator)：迭代器角色负责定义访问和遍历元素的接口。<br>具体迭代器角色(Concrete Iterator)：具体迭代器角色要实现迭代器接口，并要记录遍历中的当前位置。<br>容器角色(Container)：容器角色负责提供创建具体迭代器角色的接口。<br>具体容器角色(Concrete Container)：具体容器角色实现创建具体迭代器角色的接口。这个具体迭代器角色与该容器的结构相关。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/02/23/迭代器模式/#more" rel="contents">
+            <a class="btn" href="/2016/02/23/组合模式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1747,7 +1581,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/23/组合模式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/23/迭代器模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xu Yushi">
@@ -1766,7 +1600,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/02/23/组合模式/" itemprop="url">组合模式 Composite Pattern</a></h1>
+                <a class="post-title-link" href="/2016/02/23/迭代器模式/" itemprop="url">迭代器模式 Iterator Pattern</a></h1>
         
 
         <div class="post-meta">
@@ -1840,17 +1674,183 @@
       
         
           <p>[TOC]</p>
-<h1 id="组合模式-Composite-Pattern"><a href="#组合模式-Composite-Pattern" class="headerlink" title="组合模式 Composite Pattern"></a>组合模式 Composite Pattern</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
-<p>代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。</p>
-<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2></blockquote>
-<ul>
-<li>需要表示一个对象整体或部分层次，在具有整体和部分的层次结构中，希望通过一种方式忽略整体与部分的差异，可以一致地对待它们。</li>
-<li>让客户能够忽略不同对象层次的变化，客户端可以针对抽象构件编程，无须关心对象层次结构的细节。</li>
+<h1 id="迭代器模式-Iterator-Pattern"><a href="#迭代器模式-Iterator-Pattern" class="headerlink" title="迭代器模式 Iterator Pattern"></a>迭代器模式 Iterator Pattern</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
+<p>迭代器模式 Iterator Pattern 提供一个方法顺序访问一个聚合对象中的个个元素，而不是暴露其内部的表示</p>
+</blockquote>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
+<li>访问一个聚合对象的内容而无须暴露它的内部表示。</li>
+<li>需要为聚合对象提供多种遍历方式。</li>
+<li>为遍历不同的聚合结构提供一个统一的接口。<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><img src="/media/14562354344010.jpg" alt=""></li>
 </ul>
-<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="/media/14562390427827.png" alt=""></p>
+<p>迭代器角色(Iterator)：迭代器角色负责定义访问和遍历元素的接口。<br>具体迭代器角色(Concrete Iterator)：具体迭代器角色要实现迭代器接口，并要记录遍历中的当前位置。<br>容器角色(Container)：容器角色负责提供创建具体迭代器角色的接口。<br>具体容器角色(Concrete Container)：具体容器角色实现创建具体迭代器角色的接口。这个具体迭代器角色与该容器的结构相关。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/02/23/组合模式/#more" rel="contents">
+            <a class="btn" href="/2016/02/23/迭代器模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/23/模板方法模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Yushi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xu Yushi's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/02/23/模板方法模式/" itemprop="url">模板方法模式 Template Method Pattern</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-23T00:00:00+08:00">
+                2016-02-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>[TOC]</p>
+<h1 id="模板方法模式-Template-Method-Pattern"><a href="#模板方法模式-Template-Method-Pattern" class="headerlink" title="模板方法模式 Template Method Pattern"></a>模板方法模式 Template Method Pattern</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
+<p>模板方法模式定义了一个算法的步骤，并允许次类别为一个或多个步骤提供其实践方式。让次类别在不改变算法架构的情况下，重新定义算法中的某些步骤。</p>
+</blockquote>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
+<li>一次性实现一个算法的不变部分，把变化部分留给子类去实现。</li>
+<li>各子类间的共同行为需要被提取并集中到一个共同的类中来避免代码的重复。你首先识别出这些现有代码的不同之处，然后把这些不同之处分离到新的操作中。最后，你用一个模板方法调用这些新操作之一来替代原有那些不同的代码。</li>
+<li>控制子类扩展。你能定义一个只在特定点调用 hook 操作的模板方法，以此只允许子类在这些点扩展。</li>
+</ul>
+<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><p><img src="/media/14562265059090.jpg" alt=""></p>
+<p>AbstractTemplate：抽象模板</p>
+<ul>
+<li>定义了一个或多个抽象操作，以便让子类实现。这些抽象操作叫做基本操作，它们是一个顶级逻辑的组成步骤。</li>
+<li>定义并实现了一个模板方法。这个模板方法一般是一个具体方法，它给出了一个顶级逻辑的骨架，而逻辑的组成步骤在相应的抽象操作中，推迟到子类实现。顶级逻辑也有可能调用一些具体方法。</li>
+</ul>
+<p>ConcreteTemplate：具体实现</p>
+<ul>
+<li>实现父类所定义的一个或多个抽象方法，它们是一个顶级逻辑的组成步骤。</li>
+<li>每一个抽象模板角色都可以有任意多个具体模板角色与之对应，而每一个具体模板角色都可以给出这些抽象方法（也就是顶级逻辑的组成步骤）的不同实现，从而使得顶级逻辑的实现各不相同。</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/02/23/模板方法模式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
