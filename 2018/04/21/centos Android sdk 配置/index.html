@@ -81,16 +81,16 @@
 
 
 
-<meta name="description" content="Android sdk 搭建">
+<meta name="description" content="Android sdk 搭建Step 1. Download and Install Android SDK.1234567mkdir -p /opt/sdk-tools-linux-3859397cd /opt/sdk-tools-linux-3859397sudo wget https://dl.google.com/android/repository/sdk-tools-linux-385">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android sdk 搭建">
 <meta property="og:url" content="http://yoursite.com/2018/04/21/centos Android sdk 配置/index.html">
 <meta property="og:site_name" content="Xu Yushi's Blog">
-<meta property="og:description" content="Android sdk 搭建">
-<meta property="og:updated_time" content="2018-04-29T06:07:17.399Z">
+<meta property="og:description" content="Android sdk 搭建Step 1. Download and Install Android SDK.1234567mkdir -p /opt/sdk-tools-linux-3859397cd /opt/sdk-tools-linux-3859397sudo wget https://dl.google.com/android/repository/sdk-tools-linux-385">
+<meta property="og:updated_time" content="2018-05-02T14:01:26.855Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android sdk 搭建">
-<meta name="twitter:description" content="Android sdk 搭建">
+<meta name="twitter:description" content="Android sdk 搭建Step 1. Download and Install Android SDK.1234567mkdir -p /opt/sdk-tools-linux-3859397cd /opt/sdk-tools-linux-3859397sudo wget https://dl.google.com/android/repository/sdk-tools-linux-385">
 
 
 
@@ -361,8 +361,8 @@
       
 
       
-        <h1 id="Android-sdk-搭建"><a href="#Android-sdk-搭建" class="headerlink" title="Android sdk 搭建"></a>Android sdk 搭建</h1><a id="more"></a>
-<h2 id="Step-1-Download-and-Install-Android-SDK"><a href="#Step-1-Download-and-Install-Android-SDK" class="headerlink" title="Step 1. Download and Install Android SDK."></a>Step 1. Download and Install Android SDK.</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/sdk-tools-linux-3859397</span><br><span class="line"><span class="built_in">cd</span> /opt/sdk-tools-linux-3859397</span><br><span class="line">sudo wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip</span><br><span class="line">sudo unzip sdk-tools-linux-3859397.zip</span><br><span class="line"><span class="built_in">cd</span> /opt</span><br><span class="line">sudo chown -R root:root sdk-tools-linux-3859397</span><br><span class="line">sudo ln <span class="_">-s</span> sdk-tools-linux-3859397 android-sdk</span><br></pre></td></tr></table></figure>
+        <h1 id="Android-sdk-搭建"><a href="#Android-sdk-搭建" class="headerlink" title="Android sdk 搭建"></a>Android sdk 搭建</h1><h2 id="Step-1-Download-and-Install-Android-SDK"><a href="#Step-1-Download-and-Install-Android-SDK" class="headerlink" title="Step 1. Download and Install Android SDK."></a>Step 1. Download and Install Android SDK.</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/sdk-tools-linux-3859397</span><br><span class="line"><span class="built_in">cd</span> /opt/sdk-tools-linux-3859397</span><br><span class="line">sudo wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip</span><br><span class="line">sudo unzip sdk-tools-linux-3859397.zip</span><br><span class="line"><span class="built_in">cd</span> /opt</span><br><span class="line">sudo chown -R root:root sdk-tools-linux-3859397</span><br><span class="line">sudo ln <span class="_">-s</span> sdk-tools-linux-3859397 android-sdk</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="Step-2-Set-Android-SDK-Environment-Value"><a href="#Step-2-Set-Android-SDK-Environment-Value" class="headerlink" title="Step 2. Set Android SDK Environment Value."></a>Step 2. Set Android SDK Environment Value.</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> sudo vim /etc/profile.d/android-sdk-env.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> ANDROID_HOME=<span class="string">"/opt/android-sdk"</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$ANDROID_HOME</span>/tools:<span class="variable">$ANDROID_HOME</span>/platform-tools:<span class="variable">$PATH</span>"</span></span><br><span class="line"></span><br><span class="line">sudo <span class="built_in">source</span> /etc/profile.d/android-sdk-env.sh</span><br></pre></td></tr></table></figure>
 <h2 id="Step-3-1-Update-Android-SDK"><a href="#Step-3-1-Update-Android-SDK" class="headerlink" title="Step 3.1 Update Android SDK."></a>Step 3.1 Update Android SDK.</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/android-sdk/tools</span><br><span class="line">sudo ./android update sdk --no-ui</span><br></pre></td></tr></table></figure>
 <h2 id="Step-3-2-Update-Android-SDK"><a href="#Step-3-2-Update-Android-SDK" class="headerlink" title="Step 3.2 Update Android SDK."></a>Step 3.2 Update Android SDK.</h2><p>Use Command Line to Update Android SDK</p>
@@ -435,6 +435,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/21/jenkins 平台搭建/" rel="prev" title="jenkins 平台搭建">
+                jenkins 平台搭建 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -520,7 +524,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">104</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

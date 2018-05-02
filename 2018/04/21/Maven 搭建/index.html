@@ -81,19 +81,28 @@
 
 
 
-<meta name="description" content="Maven 搭建">
+<meta name="description" content="Maven 搭建安装下载 
+1wget -P /usr/local http://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.6.0-02-unix.tar.gz
+安装
+123456# cd /usr/local# mkdir nexus# tar -zxvf nexus-3.6.0-02-unix.tar.gz -C nexus">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Maven 搭建">
 <meta property="og:url" content="http://yoursite.com/2018/04/21/Maven 搭建/index.html">
 <meta property="og:site_name" content="Xu Yushi's Blog">
-<meta property="og:description" content="Maven 搭建">
+<meta property="og:description" content="Maven 搭建安装下载 
+1wget -P /usr/local http://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.6.0-02-unix.tar.gz
+安装
+123456# cd /usr/local# mkdir nexus# tar -zxvf nexus-3.6.0-02-unix.tar.gz -C nexus">
 <meta property="og:image" content="http://yoursite.com/media/15242064068383.jpg">
 <meta property="og:image" content="http://yoursite.com/media/15242066550367.jpg">
 <meta property="og:image" content="http://yoursite.com/media/15242067791896.jpg">
-<meta property="og:updated_time" content="2018-04-29T06:07:17.332Z">
+<meta property="og:updated_time" content="2018-05-02T14:01:26.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maven 搭建">
-<meta name="twitter:description" content="Maven 搭建">
+<meta name="twitter:description" content="Maven 搭建安装下载 
+1wget -P /usr/local http://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.6.0-02-unix.tar.gz
+安装
+123456# cd /usr/local# mkdir nexus# tar -zxvf nexus-3.6.0-02-unix.tar.gz -C nexus">
 <meta name="twitter:image" content="http://yoursite.com/media/15242064068383.jpg">
 
 
@@ -365,11 +374,11 @@
       
 
       
-        <h1 id="Maven-搭建"><a href="#Maven-搭建" class="headerlink" title="Maven 搭建"></a>Maven 搭建</h1><a id="more"></a>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载 </p>
+        <h1 id="Maven-搭建"><a href="#Maven-搭建" class="headerlink" title="Maven 搭建"></a>Maven 搭建</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载 </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P /usr/<span class="built_in">local</span> http://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.6.0-02-unix.tar.gz</span><br></pre></td></tr></table></figure>
 <p>安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd /usr/local</span></span><br><span class="line"><span class="comment"># mkdir nexus</span></span><br><span class="line"><span class="comment"># tar -zxvf nexus-3.6.0-02-unix.tar.gz -C nexus //解压缩到nexus文件夹（其中包含nexus-3.6.0-02和sonatype-work）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># cd nexus</span></span><br><span class="line"><span class="comment"># mv nexus-3.6.0-02/ nexus</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>自定义配置虚拟机可打开 nexus.vmoptions 文件进行配置（如果Linux硬件配置比较低的话，建议修改为合适的大小，否则会出现运行崩溃的现象）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim nexus/config/nexus.vmoptions</span><br></pre></td></tr></table></figure>
 <p>修改端口号</p>
@@ -444,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/21/jenkins 平台搭建/" rel="next" title="jenkins 平台搭建">
-                <i class="fa fa-chevron-left"></i> jenkins 平台搭建
+              <a href="/2017/11/05/快速搭建新项目框架3-Kotlin/" rel="next" title="快速搭建新项目框架3-Kotlin">
+                <i class="fa fa-chevron-left"></i> 快速搭建新项目框架3-Kotlin
               </a>
             
           </div>
@@ -542,7 +551,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">104</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
