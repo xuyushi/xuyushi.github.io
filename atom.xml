@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-02T14:17:36.255Z</updated>
+  <updated>2018-05-02T14:23:41.660Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2018/05/02/%E5%86%99%E5%9C%A8%E7%A6%BB%E5%BC%80%E5%8C%97%E4%BA%AC%E7%9A%84%E5%89%8D%E5%A4%95/"/>
     <id>http://yoursite.com/2018/05/02/写在离开北京的前夕/</id>
     <published>2018-05-01T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.255Z</updated>
+    <updated>2018-05-02T14:23:41.660Z</updated>
     
     <content type="html">&lt;p&gt;&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot; src=&quot;//music.163.com/outchain/player?type=2&amp;id=454586242&amp;auto=1&amp;height=66&quot;&gt;&lt;/iframe&gt;&lt;br&gt;已经在北京待了 有三年了吧 ，等到真的要走 ，却有点伤感和失落 &lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/media/15249794589499.png&quot; class=&quot;full-image&quot;&gt;&lt;/p&gt;
@@ -54,7 +54,7 @@
     <link href="http://yoursite.com/2018/04/21/centos%20Android%20sdk%20%E9%85%8D%E7%BD%AE/"/>
     <id>http://yoursite.com/2018/04/21/centos Android sdk 配置/</id>
     <published>2018-04-20T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.256Z</updated>
+    <updated>2018-05-02T14:23:41.662Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Android-sdk-搭建&quot;&gt;&lt;a href=&quot;#Android-sdk-搭建&quot; class=&quot;headerlink&quot; title=&quot;Android sdk 搭建&quot;&gt;&lt;/a&gt;Android sdk 搭建&lt;/h1&gt;&lt;h2 id=&quot;Step-1-Download-and-Install-Android-SDK&quot;&gt;&lt;a href=&quot;#Step-1-Download-and-Install-Android-SDK&quot; class=&quot;headerlink&quot; title=&quot;Step 1. Download and Install Android SDK.&quot;&gt;&lt;/a&gt;Step 1. Download and Install Android SDK.&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mkdir -p /opt/sdk-tools-linux-3859397&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; /opt/sdk-tools-linux-3859397&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo unzip sdk-tools-linux-3859397.zip&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; /opt&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo chown -R root:root sdk-tools-linux-3859397&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo ln &lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt; sdk-tools-linux-3859397 android-sdk&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -87,7 +87,7 @@
     <link href="http://yoursite.com/2018/04/21/Maven%20%E6%90%AD%E5%BB%BA/"/>
     <id>http://yoursite.com/2018/04/21/Maven 搭建/</id>
     <published>2018-04-20T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.199Z</updated>
+    <updated>2018-05-02T14:23:41.599Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Maven-搭建&quot;&gt;&lt;a href=&quot;#Maven-搭建&quot; class=&quot;headerlink&quot; title=&quot;Maven 搭建&quot;&gt;&lt;/a&gt;Maven 搭建&lt;/h1&gt;&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;下载 &lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget -P /usr/&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt; http://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.6.0-02-unix.tar.gz&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -137,7 +137,7 @@
     <link href="http://yoursite.com/2018/04/21/jenkins%20%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/"/>
     <id>http://yoursite.com/2018/04/21/jenkins 平台搭建/</id>
     <published>2018-04-20T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.165Z</updated>
+    <updated>2018-05-02T14:23:41.562Z</updated>
     
     <content type="html">&lt;h1 id=&quot;jenkins-平台搭建&quot;&gt;&lt;a href=&quot;#jenkins-平台搭建&quot; class=&quot;headerlink&quot; title=&quot;jenkins 平台搭建&quot;&gt;&lt;/a&gt;jenkins 平台搭建&lt;/h1&gt;&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;h3 id=&quot;java-环境搭建&quot;&gt;&lt;a href=&quot;#java-环境搭建&quot; class=&quot;headerlink&quot; title=&quot;java 环境搭建&quot;&gt;&lt;/a&gt;java 环境搭建&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;java -version&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;如果显示Java版本号，说明已经正确安装，如果显示没有该命令，需要安装Java：&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -205,7 +205,7 @@
     <link href="http://yoursite.com/2018/04/21/gitlab/"/>
     <id>http://yoursite.com/2018/04/21/gitlab/</id>
     <published>2018-04-20T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.260Z</updated>
+    <updated>2018-05-02T14:23:41.666Z</updated>
     
     <content type="html">&lt;h1 id=&quot;gitlab-搭建&quot;&gt;&lt;a href=&quot;#gitlab-搭建&quot; class=&quot;headerlink&quot; title=&quot;gitlab 搭建&quot;&gt;&lt;/a&gt;gitlab 搭建&lt;/h1&gt;&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;curl &lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt;S https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install gitlab-ce&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -247,7 +247,7 @@
     <link href="http://yoursite.com/2017/11/05/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%96%B0%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B63-Kotlin/"/>
     <id>http://yoursite.com/2017/11/05/快速搭建新项目框架3-Kotlin/</id>
     <published>2017-11-04T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.250Z</updated>
+    <updated>2018-05-02T14:23:41.656Z</updated>
     
     <content type="html">&lt;h2 id=&quot;gradle-修改&quot;&gt;&lt;a href=&quot;#gradle-修改&quot; class=&quot;headerlink&quot; title=&quot;gradle 修改&quot;&gt;&lt;/a&gt;gradle 修改&lt;/h2&gt;&lt;p&gt;加入 kotlin 之后需要使用 kapt,gradle 修改为&lt;/p&gt;
 &lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//kotlin&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//dagger&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger-android:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger-android-support:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kapt &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger-android-processor:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kapt &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger-compiler:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;com.blankj:utilcode:$rootProject.androidUtilsVerson&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//不加无法编译通过&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;org.jetbrains.kotlin:kotlin-stdlib-jre7:$rootProject.kotlin_version&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -282,7 +282,7 @@
     <link href="http://yoursite.com/2017/10/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%96%B0%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B61-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/"/>
     <id>http://yoursite.com/2017/10/28/快速搭建新项目框架1-依赖注入/</id>
     <published>2017-10-27T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.181Z</updated>
+    <updated>2018-05-02T14:23:41.584Z</updated>
     
     <content type="html">&lt;h1 id=&quot;快速搭建新项目框架1-依赖注入&quot;&gt;&lt;a href=&quot;#快速搭建新项目框架1-依赖注入&quot; class=&quot;headerlink&quot; title=&quot;快速搭建新项目框架1-依赖注入&quot;&gt;&lt;/a&gt;快速搭建新项目框架1-依赖注入&lt;/h1&gt;&lt;p&gt;关于依赖注入在 &lt;a href=&quot;http://xuyushi.github.io/2017/04/08/Android%20CleanArchitecture%20--Dagger/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;之前的文章里有详细的分析&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;而最近的 dagger 的更新又再次方便了注入过程 。&lt;br&gt;回顾之前的 dagger 在 Activity 、fragment 等 Android 组件中是如何注入的&lt;/p&gt;
@@ -345,7 +345,7 @@
     <link href="http://yoursite.com/2017/10/28/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%96%B0%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B62-mvp%20%E7%BB%93%E6%9E%84/"/>
     <id>http://yoursite.com/2017/10/28/快速搭建新项目框架2-mvp 结构/</id>
     <published>2017-10-27T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.236Z</updated>
+    <updated>2018-05-02T14:23:41.640Z</updated>
     
     <content type="html">&lt;p&gt;之前有两篇文章已经详细介绍过 mvp  &lt;a href=&quot;http://xuyushi.github.io/2016/02/28/MVP/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android 中的MVP 模式&lt;/a&gt;    &lt;a href=&quot;http://xuyushi.github.io/2016/04/30/%E5%9C%B0%E5%9B%BE%E5%8C%BA%E5%9F%9F%E7%BB%98%E5%88%B6%20MVP%20%E5%AE%9E%E8%B7%B5/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;地图区域绘制 MVP 实践&lt;/a&gt; ，本篇结合上篇的依赖注入使用&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&quot;定义-base-类&quot;&gt;&lt;a href=&quot;#定义-base-类&quot; class=&quot;headerlink&quot; title=&quot;定义 base 类&quot;&gt;&lt;/a&gt;定义 base 类&lt;/h1&gt;&lt;p&gt;定义 view 和 Presenter 的 interface&lt;/p&gt;
@@ -388,7 +388,7 @@
     <link href="http://yoursite.com/2017/10/25/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%96%B0%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B60-%E5%89%8D%E8%A8%80md/"/>
     <id>http://yoursite.com/2017/10/25/快速搭建新项目框架0-前言md/</id>
     <published>2017-10-24T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.205Z</updated>
+    <updated>2018-05-02T14:23:41.604Z</updated>
     
     <content type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;有幸在公司从零开始做一个项目，非常兴奋。也想着在快速开发的过程中如何保持 app 代码结构 clean。由此总结此次代码整体框架的搭建过程，供日后回顾总结&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -420,7 +420,7 @@
     <link href="http://yoursite.com/2017/06/30/Room/"/>
     <id>http://yoursite.com/2017/06/30/Room/</id>
     <published>2017-06-29T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.196Z</updated>
+    <updated>2018-05-02T14:23:41.597Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Room-Persistence-Library&quot;&gt;&lt;a href=&quot;#Room-Persistence-Library&quot; class=&quot;headerlink&quot; title=&quot;Room Persistence Library&quot;&gt;&lt;/a&gt;Room Persistence Library&lt;/h1&gt;&lt;p&gt;Room 在 SQLite 之上提供了一个抽象层，以便在利用 SQLite 全部功能的同时能够流畅的访问数据库。&lt;/p&gt;
 &lt;p&gt;将数据持久化到本地对于应用程序处理大量结构化数据有非常大的好处。最常见的情况是缓存相关数据。这样，当设备无法访问网络时，用户仍然可以在离线状态下浏览内容。然后，在设备重新上线后，任何用户发起的内容变更都会同步到服务器。&lt;/p&gt;
@@ -620,7 +620,7 @@
     <link href="http://yoursite.com/2017/06/30/Guide%20to%20App%20Architecture/"/>
     <id>http://yoursite.com/2017/06/30/Guide to App Architecture/</id>
     <published>2017-06-29T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.266Z</updated>
+    <updated>2018-05-02T14:23:41.672Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Architecture-Components-–-Guide-to-App-Architecture&quot;&gt;&lt;a href=&quot;#Architecture-Components-–-Guide-to-App-Architecture&quot; class=&quot;headerlink&quot; title=&quot;Architecture Components – Guide to App Architecture&quot;&gt;&lt;/a&gt;Architecture Components – Guide to App Architecture&lt;/h1&gt;&lt;h1 id=&quot;应用程序架构指南&quot;&gt;&lt;a href=&quot;#应用程序架构指南&quot; class=&quot;headerlink&quot; title=&quot;应用程序架构指南&quot;&gt;&lt;/a&gt;应用程序架构指南&lt;/h1&gt;&lt;p&gt;本指南使用于具有构建应用程序基础并且想了解构建强大、优质的应用程序的最佳实践和推荐架构的开发人员。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -813,7 +813,7 @@
     <link href="http://yoursite.com/2017/06/25/ViewModel/"/>
     <id>http://yoursite.com/2017/06/25/ViewModel/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.168Z</updated>
+    <updated>2018-05-02T14:23:41.571Z</updated>
     
     <content type="html">&lt;h1 id=&quot;ViewModel&quot;&gt;&lt;a href=&quot;#ViewModel&quot; class=&quot;headerlink&quot; title=&quot;ViewModel&quot;&gt;&lt;/a&gt;ViewModel&lt;/h1&gt;&lt;p&gt;ViewModel 类是被设计用来存储和管理 UI 相关的数据，以便在配置更改（如：屏幕旋转）时数据可以保留下来。&lt;/p&gt;
 &lt;p&gt;应用程序组件（如：activity 和 fragment）具有一个由 Android Framework 管理的生命周期。Framework 可能会完全不受控制的根据某些用户操作或设备事件来决定销毁或重新创建它们。&lt;/p&gt;
@@ -863,7 +863,7 @@
     <link href="http://yoursite.com/2017/06/25/LiveData/"/>
     <id>http://yoursite.com/2017/06/25/LiveData/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.244Z</updated>
+    <updated>2018-05-02T14:23:41.648Z</updated>
     
     <content type="html">&lt;h1 id=&quot;LiveData&quot;&gt;&lt;a href=&quot;#LiveData&quot; class=&quot;headerlink&quot; title=&quot;LiveData&quot;&gt;&lt;/a&gt;LiveData&lt;/h1&gt;&lt;p&gt;&lt;code&gt;LiveData&lt;/code&gt; 是一个 data holder  类，持有一个可被观察的值。与普通的observable不同的是，&lt;code&gt;LiveData&lt;/code&gt;遵循app 组件的生命周期。它能决定在某个生命周期是否被观察&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;LiveData&lt;/code&gt; 在观察者生命周期的 STARTED 和 RESUMED 状态是可被激活的&lt;/p&gt;
@@ -937,7 +937,7 @@
     <link href="http://yoursite.com/2017/06/25/Handling%20Lifecycles/"/>
     <id>http://yoursite.com/2017/06/25/Handling Lifecycles/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.247Z</updated>
+    <updated>2018-05-02T14:23:41.650Z</updated>
     
     <content type="html">&lt;p&gt;通过 &lt;code&gt;android.arch.lifecycle&lt;/code&gt; 包提供的接口和类，我们可以构建出能感知到生命周期的组件。这些组件可以根据当前的Fragment 或者 Activity 的生命周期做出相应的调整&lt;/p&gt;
 &lt;p&gt;大部分有生命周期的 app 组件都定义在了Android 的Framework 层。操作系统和Framework 维护着这些组件的生命周期。这些都是 Android 运行的核心。&lt;/p&gt;
@@ -1104,7 +1104,7 @@
     <link href="http://yoursite.com/2017/06/03/gradle%20%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     <id>http://yoursite.com/2017/06/03/gradle 插件开发/</id>
     <published>2017-06-02T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.258Z</updated>
+    <updated>2018-05-02T14:23:41.663Z</updated>
     
     <content type="html">&lt;h1 id=&quot;什么是Gradle插件？&quot;&gt;&lt;a href=&quot;#什么是Gradle插件？&quot; class=&quot;headerlink&quot; title=&quot;什么是Gradle插件？&quot;&gt;&lt;/a&gt;什么是Gradle插件？&lt;/h1&gt;&lt;p&gt;在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：&lt;/p&gt;
 &lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apply plugin: &lt;span class=&quot;string&quot;&gt;&#39;com.android.application&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -1207,7 +1207,7 @@
     <link href="http://yoursite.com/2017/06/03/Maven%20%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/"/>
     <id>http://yoursite.com/2017/06/03/Maven 仓库搭建/</id>
     <published>2017-06-02T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.233Z</updated>
+    <updated>2018-05-02T14:23:41.637Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Maven-仓库的使用和搭建&quot;&gt;&lt;a href=&quot;#Maven-仓库的使用和搭建&quot; class=&quot;headerlink&quot; title=&quot;Maven 仓库的使用和搭建&quot;&gt;&lt;/a&gt;Maven 仓库的使用和搭建&lt;/h1&gt;&lt;p&gt;Maven项目使用项目对象模型（Project Object Model，POM）来配置。Maven 是一种构建工具，Maven 包是由所谓 POM（Project Object Model）所定义的文件&lt;br&gt;项目对象模型存储在名为 pom.xml 的文件中。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;以下是一个简单的示例：&lt;/p&gt;
 &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;project&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- model version is always 4.0.0 for Maven 2.x POMs --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;modelVersion&lt;/span&gt;&amp;gt;&lt;/span&gt;4.0.0&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;modelVersion&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- project coordinates, i.e. a group of values which&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       uniquely identify this project --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!--包组 id，通常是发布者拥有的域名的反向，以免跟别人的重复--&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;com.mycompany.app&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;my-app&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;1.0&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- library dependencies --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependencies&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- coordinates of the required library --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;junit&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;junit&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;3.8.1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- this dependency is only used for running and compiling tests --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;comment&quot;&gt;&amp;lt;!--比如常用的还有 compile --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;scope&lt;/span&gt;&amp;gt;&lt;/span&gt;test&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;scope&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependencies&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;project&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -1294,7 +1294,7 @@
     <link href="http://yoursite.com/2017/05/04/NanoHttpd/"/>
     <id>http://yoursite.com/2017/05/04/NanoHttpd/</id>
     <published>2017-05-03T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.156Z</updated>
+    <updated>2018-05-02T14:23:41.552Z</updated>
     
     <content type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;在微信 、UC 等 APP 中，无法通过scheme 或者 AppLiks 调起我们的 APP，所以想在APP 内部建立起一个 LocalHttpServer，监听某个端口，web 通过访问本地的这个端口，完成通信，调用起一些服务&lt;/p&gt;
 &lt;p&gt;在 github 上发现了 &lt;a href=&quot;https://github.com/NanoHttpd/nanohttpd&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NanoHttpd&lt;/a&gt; 项目，它仅仅使用一个类，完成了 server 的搭建。它使用的是Socket BIO(阻塞IO)，一个客户端连接分发到一个线程的经典模型，而且具有良好的扩展性.&lt;/p&gt;
@@ -1336,7 +1336,7 @@
     <link href="http://yoursite.com/2017/05/01/java%20%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
     <id>http://yoursite.com/2017/05/01/java 内存管理/</id>
     <published>2017-04-30T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.208Z</updated>
+    <updated>2018-05-02T14:23:41.607Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Java-内存分配策略&quot;&gt;&lt;a href=&quot;#Java-内存分配策略&quot; class=&quot;headerlink&quot; title=&quot;Java 内存分配策略&quot;&gt;&lt;/a&gt;Java 内存分配策略&lt;/h1&gt;&lt;p&gt;Java 程序运行时的内存分配策略有三种,分别是静态分配,栈式分配,和堆式分配，对应的，三种存储策略使用的内存空间主要分别是静态存储区（也称方法区）、栈区和堆区。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1390,7 +1390,7 @@
     <link href="http://yoursite.com/2017/04/08/Android%20CleanArchitecture%20--Dagger/"/>
     <id>http://yoursite.com/2017/04/08/Android CleanArchitecture --Dagger/</id>
     <published>2017-04-07T16:00:00.000Z</published>
-    <updated>2018-05-02T14:17:36.246Z</updated>
+    <updated>2018-05-02T14:23:41.649Z</updated>
     
     <content type="html">&lt;p&gt;为了更好的解耦。&lt;a href=&quot;https://github.com/android10/Android-CleanArchitecture&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;clean 架构&lt;/a&gt; 使用了 Daager2 进行依赖注入。将接口放在了 domain 层。而将具体实现放在了 data 和 Presentation 层。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
