@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="SaHbPoHOxqF4QuVM1TDhfg_Cqik1EY89r1Yt60Bcp5c" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="abtest," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Xu Yushi's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="ABtest 平台项目计划书背景目前输入法内部功能迭代，主要是通过灰度和小渠道的策略，对比新版本和旧版本的数据指标。存在着以下问题
+
+数据可能收到渠道、周期波动等因素的干扰
+缺少聚合对比数据 指标的平台，不方便做决策
+同时上线多个feature 对指标可能互相影响
+新功能存在风险">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maven 搭建">
+<meta property="og:url" content="http://yoursite.com/2018/05/14/ab_plan/index.html">
+<meta property="og:site_name" content="Xu Yushi's Blog">
+<meta property="og:description" content="ABtest 平台项目计划书背景目前输入法内部功能迭代，主要是通过灰度和小渠道的策略，对比新版本和旧版本的数据指标。存在着以下问题
+
+数据可能收到渠道、周期波动等因素的干扰
+缺少聚合对比数据 指标的平台，不方便做决策
+同时上线多个feature 对指标可能互相影响
+新功能存在风险">
+<meta property="og:image" content="http://yoursite.com/media/15264426763763.png">
+<meta property="og:image" content="http://yoursite.com/media/15262797128472.png">
+<meta property="og:updated_time" content="2018-06-24T05:14:34.451Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Maven 搭建">
+<meta name="twitter:description" content="ABtest 平台项目计划书背景目前输入法内部功能迭代，主要是通过灰度和小渠道的策略，对比新版本和旧版本的数据指标。存在着以下问题
+
+数据可能收到渠道、周期波动等因素的干扰
+缺少聚合对比数据 指标的平台，不方便做决策
+同时上线多个feature 对指标可能互相影响
+新功能存在风险">
+<meta name="twitter:image" content="http://yoursite.com/media/15264426763763.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/14/ab_plan/"/>
+
+
+
+
+
+  <title>Maven 搭建 | Xu Yushi's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-72857814-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xu Yushi's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一个理工男的碎碎念</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/14/ab_plan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xu Yushi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xu Yushi's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Maven 搭建</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T00:00:00+08:00">
+                2018-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UG/" itemprop="url" rel="index">
+                    <span itemprop="name">UG</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ABtest-平台项目计划书"><a href="#ABtest-平台项目计划书" class="headerlink" title="ABtest 平台项目计划书"></a>ABtest 平台项目计划书</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>目前输入法内部功能迭代，主要是通过灰度和小渠道的策略，对比新版本和旧版本的数据指标。存在着以下问题</p>
+<ol>
+<li>数据可能收到渠道、周期波动等因素的干扰</li>
+<li>缺少聚合对比数据 指标的平台，不方便做决策</li>
+<li>同时上线多个feature 对指标可能互相影响</li>
+<li><p>新功能存在风险</p>
+<a id="more"></a>
+<h2 id="abtest"><a href="#abtest" class="headerlink" title="abtest"></a>abtest</h2><p>使用abtest 能解决上述问题，并且具有以下优势</p>
+<ol>
+<li>数据共享：不限于端上的需求实验，服务端/前端页/商业化 等都能通过abtest 平台做决策</li>
+<li>实验隔离：使用多层分流结构，可以同时上线多个AB实验，每个实验之间隔离，数据指标互不影响</li>
+<li>风险可控：ab 实验采用动态下发机制，随时控制功能上下线</li>
+<li>指标聚合：核心指标、分类指标数据聚合，易于得出结论，方便做决策</li>
+<li>扩展空间：后续可扩展为消费者BG 的共享平台</li>
+</ol>
+</li>
+</ol>
+<h2 id="A-B测试的三大特性：先验、并行、科学"><a href="#A-B测试的三大特性：先验、并行、科学" class="headerlink" title="A/B测试的三大特性：先验、并行、科学"></a>A/B测试的三大特性：先验、并行、科学</h2><ul>
+<li>先验性： A/B测试结果属于预测型结论，与“后验”的归纳性结论差别巨大。后验的方式是先将版本发布，再通过数据验证效果，而A/B 测试用很少的样本量来推断新版本在全流量下的效果。</li>
+<li>并行性： A/B测试将两个或以上的方案同时在线试验，保证每个版本所处环境的一致性，同时节省了验证的时间，无需在验证完一个版本之后再测试另一个。</li>
+<li>科学性： A/B 测试的正确做法是将相似特征的用户均匀的分配到试验组中，确保每个组别的用户特征的相似性，从而避免辛普森悖论。</li>
+</ul>
+<p>A/B测试试验是产生用户阻力的地方，也是增长前进的核心动力。</p>
+<h2 id="实验流程"><a href="#实验流程" class="headerlink" title="实验流程"></a>实验流程</h2><p><img src="/media/15264426763763.png" alt=""></p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>采用服务端多层分流方案，整体架构包括以下几个部分</p>
+<p><img src="/media/15262797128472.png" alt=""></p>
+<ul>
+<li>AB 实验配置平台：产品经理/研发平时配置新实验</li>
+<li>分流服务：读取 AB 实验配置平台的配置数据，执行具体的分流算法</li>
+<li>集成方应用：客户端通过请求分流服务来获取具体加载哪些实验，上报实验分组和埋点</li>
+<li>数据分析：分析打点数据，通过一定的数据分析算法，得出能够判断版本优劣的报表数据</li>
+<li>AB实验展示平台：图标方式展示处理过的数据，方便人员做决策</li>
+</ul>
+<!--## 人员配置
+* 服务端：1 名（分流策略，处理端上上报数据）
+* 大数据：1 名（数据处理/生成报表数据）
+* 数据分析师：1 名（abtest 数据指标，数据处理策略，实验指标评判标准）
+* 产品经理：1 名 （ab 配置平台，ab 数据平台，端上策略，分流策略，项目管理）
+* Android ：1 名（abtest sdk，输入法接入，数据上报）
+* UI：1 名（内部平台页面设计）
+* QA: 1名 （服务端前段页面，分流策略，客户端逻辑测试）
+
+> 人员暂定，具体时间节点按照排期决定
+-->
+<!--## 时间节点
+
+
+| 时间  | 规划 | 备注  |
+| --- | --- | --- |
+| 05/17 - 05/25 | 产品细则制定，abtest 指标拟定 |  |
+| 05/28 - 05/29 | 需求评审，UI 评估，技术选型，人员排期制定项目计划表 |  |
+| 05/30 - 06/08 | 开发阶段 |  |
+| 06/09 - 06/14 | 测试，bug 修复 |  |
+| 06/15 - 06/18 | 灰度上线 |  |
+
+
+> 时间为预估，具体排期待人力，需求明确后确定
+-->
+<!--
+## 通用参数
+1. 版本号
+2. os version
+3. 地域
+4. 渠道
+5. platform
+-->
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://github.com/xuyushi/xuyushi.github.io/blob/master/media/15252699433269.png?raw=true" alt="Xu Yushi 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/abtest/" rel="tag"># abtest</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/02/写在离开北京的前夕/" rel="next" title="写在离开北京的前夕">
+                <i class="fa fa-chevron-left"></i> 写在离开北京的前夕
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/22/ABtest数据分析/" rel="prev" title="Maven 搭建">
+                Maven 搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTg4Ny8xMjQyMw"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://farm4.staticflickr.com/3898/19134655491_08ecb4a373_b.jpg"
+                alt="Xu Yushi" />
+            
+              <p class="site-author-name" itemprop="name">Xu Yushi</p>
+              <p class="site-description motion-element" itemprop="description">安卓 | xuyushi | 许雨石 | Android | java | developer</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ABtest-平台项目计划书"><span class="nav-number">1.</span> <span class="nav-text">ABtest 平台项目计划书</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abtest"><span class="nav-number">1.2.</span> <span class="nav-text">abtest</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-B测试的三大特性：先验、并行、科学"><span class="nav-number">1.3.</span> <span class="nav-text">A/B测试的三大特性：先验、并行、科学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验流程"><span class="nav-number">1.4.</span> <span class="nav-text">实验流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案"><span class="nav-number">1.5.</span> <span class="nav-text">方案</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xu Yushi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+-- 生产新用户当日使用斗图表情 0 ~ 10次的临时表
+drop table if exists temp_newuser_expressionuse;
+create table temp_newuser_expressionuse as
+select
+   proc_date,
+   uid,
+   useCount
+ from
+   (
+     select
+       a1.proc_date,
+       a1.uid,
+       count(a2.uid) as useCount
+     from
+       (
+         select
+	       proc_date,
+	       uid
+         from
+           ossp_newuserinfo
+         where
+           bizid = '100ime'
+           and osid = 'android'
+           and proc_date = regexp_replace('2018-06-04', '-', '')
+       ) a1
+       left outer join (
+         select
+           uid
+         from
+           ossp_operationlog_inter
+         where
+           bizid = '100ime'
+           and osid = 'android'
+           and pdate = regexp_replace('2018-06-04', '-', '')
+	       and opcode='FT36003'
+       ) a2 on a1.uid = a2.uid
+     group by
+       a1.proc_date,
+       a1.uid
+   ) b1
+ where
+   useCount <= 10
+;
+
+-- 留存计算，如下为+1留存示例
+select
+  t.proc_date as `日期`,
+  t.useCount  as `使用斗图表情次数`,
+  count(t1.uid) / count(t.uid) as `+1留存`
+from
+  temp_newuser_expressionuse t
+left outer join (
+    select
+      distinct uid
+    from
+      ossp_activeuserdetail
+    where
+      bizid = '100ime'
+      and osid = 'android'
+      and proc_date = regexp_replace(date_add('2018-06-04', 1), '-', '')
+  ) t1 on t.uid = t1.uid
+group by
+  t.proc_date,
+  t.useCount
+;
