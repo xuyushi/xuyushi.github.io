@@ -853,7 +853,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/21/Maven 搭建/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/21/centos Android sdk 配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xu Yushi">
@@ -872,7 +872,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/21/Maven 搭建/" itemprop="url">Maven 搭建</a></h1>
+                <a class="post-title-link" href="/2018/04/21/centos Android sdk 配置/" itemprop="url">Android sdk 搭建</a></h1>
         
 
         <div class="post-meta">
@@ -945,13 +945,10 @@
 
       
         
-          <h1 id="Maven-搭建"><a href="#Maven-搭建" class="headerlink" title="Maven 搭建"></a>Maven 搭建</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P /usr/<span class="built_in">local</span> http://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.6.0-02-unix.tar.gz</span><br></pre></td></tr></table></figure>
-<p>安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd /usr/local</span></span><br><span class="line"><span class="comment"># mkdir nexus</span></span><br><span class="line"><span class="comment"># tar -zxvf nexus-3.6.0-02-unix.tar.gz -C nexus //解压缩到nexus文件夹（其中包含nexus-3.6.0-02和sonatype-work）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># cd nexus</span></span><br><span class="line"><span class="comment"># mv nexus-3.6.0-02/ nexus</span></span><br></pre></td></tr></table></figure>
+          <h1 id="Android-sdk-搭建"><a href="#Android-sdk-搭建" class="headerlink" title="Android sdk 搭建"></a>Android sdk 搭建</h1><h2 id="Step-1-Download-and-Install-Android-SDK"><a href="#Step-1-Download-and-Install-Android-SDK" class="headerlink" title="Step 1. Download and Install Android SDK."></a>Step 1. Download and Install Android SDK.</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/sdk-tools-linux-3859397</span><br><span class="line"><span class="built_in">cd</span> /opt/sdk-tools-linux-3859397</span><br><span class="line">sudo wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip</span><br><span class="line">sudo unzip sdk-tools-linux-3859397.zip</span><br><span class="line"><span class="built_in">cd</span> /opt</span><br><span class="line">sudo chown -R root:root sdk-tools-linux-3859397</span><br><span class="line">sudo ln <span class="_">-s</span> sdk-tools-linux-3859397 android-sdk</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/04/21/Maven 搭建/#more" rel="contents">
+            <a class="btn" href="/2018/04/21/centos Android sdk 配置/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1148,7 +1145,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/21/centos Android sdk 配置/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/21/Maven 搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xu Yushi">
@@ -1167,7 +1164,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/21/centos Android sdk 配置/" itemprop="url">Android sdk 搭建</a></h1>
+                <a class="post-title-link" href="/2018/04/21/Maven 搭建/" itemprop="url">Maven 搭建</a></h1>
         
 
         <div class="post-meta">
@@ -1240,10 +1237,13 @@
 
       
         
-          <h1 id="Android-sdk-搭建"><a href="#Android-sdk-搭建" class="headerlink" title="Android sdk 搭建"></a>Android sdk 搭建</h1><h2 id="Step-1-Download-and-Install-Android-SDK"><a href="#Step-1-Download-and-Install-Android-SDK" class="headerlink" title="Step 1. Download and Install Android SDK."></a>Step 1. Download and Install Android SDK.</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/sdk-tools-linux-3859397</span><br><span class="line"><span class="built_in">cd</span> /opt/sdk-tools-linux-3859397</span><br><span class="line">sudo wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip</span><br><span class="line">sudo unzip sdk-tools-linux-3859397.zip</span><br><span class="line"><span class="built_in">cd</span> /opt</span><br><span class="line">sudo chown -R root:root sdk-tools-linux-3859397</span><br><span class="line">sudo ln <span class="_">-s</span> sdk-tools-linux-3859397 android-sdk</span><br></pre></td></tr></table></figure>
+          <h1 id="Maven-搭建"><a href="#Maven-搭建" class="headerlink" title="Maven 搭建"></a>Maven 搭建</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P /usr/<span class="built_in">local</span> http://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.6.0-02-unix.tar.gz</span><br></pre></td></tr></table></figure>
+<p>安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd /usr/local</span></span><br><span class="line"><span class="comment"># mkdir nexus</span></span><br><span class="line"><span class="comment"># tar -zxvf nexus-3.6.0-02-unix.tar.gz -C nexus //解压缩到nexus文件夹（其中包含nexus-3.6.0-02和sonatype-work）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># cd nexus</span></span><br><span class="line"><span class="comment"># mv nexus-3.6.0-02/ nexus</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/04/21/centos Android sdk 配置/#more" rel="contents">
+            <a class="btn" href="/2018/04/21/Maven 搭建/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
