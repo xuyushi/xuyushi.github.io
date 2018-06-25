@@ -326,6 +326,48 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
   </entry>
   
   <entry>
+    <title>gitlab 搭建</title>
+    <link href="http://yoursite.com/2018/04/21/gitlab/"/>
+    <id>http://yoursite.com/2018/04/21/gitlab/</id>
+    <published>2018-04-20T16:00:00.000Z</published>
+    <updated>2018-06-24T05:17:04.529Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;gitlab-搭建&quot;&gt;&lt;a href=&quot;#gitlab-搭建&quot; class=&quot;headerlink&quot; title=&quot;gitlab 搭建&quot;&gt;&lt;/a&gt;gitlab 搭建&lt;/h1&gt;&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;curl &lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt;S https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install gitlab-ce&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;!--&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Retrieving key from https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Importing GPG key 0xE15E78F4:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Userid     : &lt;span class=&quot;string&quot;&gt;&quot;GitLab B.V. (package repository signing key) &amp;lt;packages@gitlab.com&amp;gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Fingerprint: 1a4c 919d b987 d435 9396 38b9 1421 9a96 e15e 78f4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; From       : https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Is this ok [y/N]:&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;–&amp;gt;&lt;/p&gt;
+&lt;h1 id=&quot;启动-GitLab&quot;&gt;&lt;a href=&quot;#启动-GitLab&quot; class=&quot;headerlink&quot; title=&quot;启动 GitLab&quot;&gt;&lt;/a&gt;启动 GitLab&lt;/h1&gt;&lt;p&gt;安装完成之后，打开配置文件&lt;code&gt;/etc/gitlab/gitlab.rb&lt;/code&gt;将 &lt;code&gt;external_url = &amp;#39;http://git.example.com&amp;#39;&lt;/code&gt;修改为自己的 IP 地址：&lt;code&gt;external_url &amp;#39;http://ip_address&amp;#39;&lt;/code&gt;，然后执行下面的命令，对 GitLab 进行编译：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;gitlab-ctl reconfigure&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;GitLab-基本配置&quot;&gt;&lt;a href=&quot;#GitLab-基本配置&quot; class=&quot;headerlink&quot; title=&quot;GitLab 基本配置&quot;&gt;&lt;/a&gt;GitLab 基本配置&lt;/h1&gt;&lt;p&gt;GitLab 的相关参数配置都存在 /etc/gitlab/gitlab.rb 文件里。自 GitLab 7.6 开始的新安装包, 已经默认将所有的参数写入到 /etc/gitlab/gitlab.rb 配置文件中。&lt;/p&gt;
+&lt;h2 id=&quot;配置端口&quot;&gt;&lt;a href=&quot;#配置端口&quot; class=&quot;headerlink&quot; title=&quot;配置端口&quot;&gt;&lt;/a&gt;配置端口&lt;/h2&gt;&lt;p&gt;GitLab 默认使用 80 端口对外提供服务，因为 80 端口被其他服务占用，所以需要更改。打开 /etc/gitlab/gitlab.rb 配置文件，修改 external_url ‘&lt;a href=&quot;http://ip_address&quot;&gt;http://ip_address&lt;/a&gt;‘ 为 external_url ‘&lt;a href=&quot;http://ip_address:new-port&amp;#39;，&quot;&gt;http://ip_address:new-port&amp;#39;，&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;报错 &lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;There was an error running gitlab-ctl reconfigure:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;execute[clear the gitlab-rails cache] (gitlab::gitlab-rails line 390) had an error: Mixlib::ShellOut::ShellCommandFailed: Expected process to &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt; with [0], but received &lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;---- Begin output of /opt/gitlab/bin/gitlab-rake cache:clear ----&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;STDOUT:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;STDERR:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;---- End output of /opt/gitlab/bin/gitlab-rake cache:clear ----&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Ran /opt/gitlab/bin/gitlab-rake cache:clear returned&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;原来是机器内存没达到gitlab的要求，我的机器内存只有1G，gitlab的要求1G ram+1G swap&lt;/p&gt;
+&lt;p&gt;ubuntu下增加swap交换空间参考 &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.huzs.net/?p=1683&quot;&gt;http://www.huzs.net/?p=1683&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Credentials&quot;&gt;&lt;a href=&quot;#Credentials&quot; class=&quot;headerlink&quot; title=&quot;Credentials&quot;&gt;&lt;/a&gt;Credentials&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;设置是 需要将开发机私钥设置copy 进jenkins&lt;/li&gt;
+&lt;li&gt;开发机共钥放 gitlab&lt;/li&gt;
+&lt;li&gt;本地机的  共钥放 gitlab&lt;br&gt;&lt;img src=&quot;/media/15242020277016.jpg&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+--&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;gitlab-搭建&quot;&gt;&lt;a href=&quot;#gitlab-搭建&quot; class=&quot;headerlink&quot; title=&quot;gitlab 搭建&quot;&gt;&lt;/a&gt;gitlab 搭建&lt;/h1&gt;&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;curl &lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt;S https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install gitlab-ce&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+      <category term="vps" scheme="http://yoursite.com/tags/vps/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Maven 搭建</title>
     <link href="http://yoursite.com/2018/04/21/Maven%20%E6%90%AD%E5%BB%BA/"/>
     <id>http://yoursite.com/2018/04/21/Maven 搭建/</id>
@@ -376,48 +418,6 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
   </entry>
   
   <entry>
-    <title>gitlab 搭建</title>
-    <link href="http://yoursite.com/2018/04/21/gitlab/"/>
-    <id>http://yoursite.com/2018/04/21/gitlab/</id>
-    <published>2018-04-20T16:00:00.000Z</published>
-    <updated>2018-06-24T05:17:04.529Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;gitlab-搭建&quot;&gt;&lt;a href=&quot;#gitlab-搭建&quot; class=&quot;headerlink&quot; title=&quot;gitlab 搭建&quot;&gt;&lt;/a&gt;gitlab 搭建&lt;/h1&gt;&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;curl &lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt;S https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install gitlab-ce&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;!--&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Retrieving key from https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Importing GPG key 0xE15E78F4:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Userid     : &lt;span class=&quot;string&quot;&gt;&quot;GitLab B.V. (package repository signing key) &amp;lt;packages@gitlab.com&amp;gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; Fingerprint: 1a4c 919d b987 d435 9396 38b9 1421 9a96 e15e 78f4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; From       : https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Is this ok [y/N]:&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;–&amp;gt;&lt;/p&gt;
-&lt;h1 id=&quot;启动-GitLab&quot;&gt;&lt;a href=&quot;#启动-GitLab&quot; class=&quot;headerlink&quot; title=&quot;启动 GitLab&quot;&gt;&lt;/a&gt;启动 GitLab&lt;/h1&gt;&lt;p&gt;安装完成之后，打开配置文件&lt;code&gt;/etc/gitlab/gitlab.rb&lt;/code&gt;将 &lt;code&gt;external_url = &amp;#39;http://git.example.com&amp;#39;&lt;/code&gt;修改为自己的 IP 地址：&lt;code&gt;external_url &amp;#39;http://ip_address&amp;#39;&lt;/code&gt;，然后执行下面的命令，对 GitLab 进行编译：&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;gitlab-ctl reconfigure&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;GitLab-基本配置&quot;&gt;&lt;a href=&quot;#GitLab-基本配置&quot; class=&quot;headerlink&quot; title=&quot;GitLab 基本配置&quot;&gt;&lt;/a&gt;GitLab 基本配置&lt;/h1&gt;&lt;p&gt;GitLab 的相关参数配置都存在 /etc/gitlab/gitlab.rb 文件里。自 GitLab 7.6 开始的新安装包, 已经默认将所有的参数写入到 /etc/gitlab/gitlab.rb 配置文件中。&lt;/p&gt;
-&lt;h2 id=&quot;配置端口&quot;&gt;&lt;a href=&quot;#配置端口&quot; class=&quot;headerlink&quot; title=&quot;配置端口&quot;&gt;&lt;/a&gt;配置端口&lt;/h2&gt;&lt;p&gt;GitLab 默认使用 80 端口对外提供服务，因为 80 端口被其他服务占用，所以需要更改。打开 /etc/gitlab/gitlab.rb 配置文件，修改 external_url ‘&lt;a href=&quot;http://ip_address&quot;&gt;http://ip_address&lt;/a&gt;‘ 为 external_url ‘&lt;a href=&quot;http://ip_address:new-port&amp;#39;，&quot;&gt;http://ip_address:new-port&amp;#39;，&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;报错 &lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;There was an error running gitlab-ctl reconfigure:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;execute[clear the gitlab-rails cache] (gitlab::gitlab-rails line 390) had an error: Mixlib::ShellOut::ShellCommandFailed: Expected process to &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt; with [0], but received &lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;---- Begin output of /opt/gitlab/bin/gitlab-rake cache:clear ----&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;STDOUT:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;STDERR:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;---- End output of /opt/gitlab/bin/gitlab-rake cache:clear ----&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Ran /opt/gitlab/bin/gitlab-rake cache:clear returned&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;原来是机器内存没达到gitlab的要求，我的机器内存只有1G，gitlab的要求1G ram+1G swap&lt;/p&gt;
-&lt;p&gt;ubuntu下增加swap交换空间参考 &lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.huzs.net/?p=1683&quot;&gt;http://www.huzs.net/?p=1683&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Credentials&quot;&gt;&lt;a href=&quot;#Credentials&quot; class=&quot;headerlink&quot; title=&quot;Credentials&quot;&gt;&lt;/a&gt;Credentials&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;设置是 需要将开发机私钥设置copy 进jenkins&lt;/li&gt;
-&lt;li&gt;开发机共钥放 gitlab&lt;/li&gt;
-&lt;li&gt;本地机的  共钥放 gitlab&lt;br&gt;&lt;img src=&quot;/media/15242020277016.jpg&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;/ol&gt;
---&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;gitlab-搭建&quot;&gt;&lt;a href=&quot;#gitlab-搭建&quot; class=&quot;headerlink&quot; title=&quot;gitlab 搭建&quot;&gt;&lt;/a&gt;gitlab 搭建&lt;/h1&gt;&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;curl &lt;span class=&quot;_&quot;&gt;-s&lt;/span&gt;S https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum install gitlab-ce&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-    
-      <category term="vps" scheme="http://yoursite.com/tags/vps/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Android sdk 搭建</title>
     <link href="http://yoursite.com/2018/04/21/centos%20Android%20sdk%20%E9%85%8D%E7%BD%AE/"/>
     <id>http://yoursite.com/2018/04/21/centos Android sdk 配置/</id>
@@ -452,10 +452,10 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
   
   <entry>
     <title>快速搭建新项目框架3-Kotlin</title>
-    <link href="http://yoursite.com/2017/11/05/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%96%B0%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B63-Kotlin/"/>
-    <id>http://yoursite.com/2017/11/05/快速搭建新项目框架3-Kotlin/</id>
+    <link href="http://yoursite.com/2017/11/05/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%96%B0%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B63-Kotlin%20(1)/"/>
+    <id>http://yoursite.com/2017/11/05/快速搭建新项目框架3-Kotlin (1)/</id>
     <published>2017-11-04T16:00:00.000Z</published>
-    <updated>2018-06-24T05:17:04.517Z</updated>
+    <updated>2018-06-24T05:17:04.432Z</updated>
     
     <content type="html">&lt;h2 id=&quot;gradle-修改&quot;&gt;&lt;a href=&quot;#gradle-修改&quot; class=&quot;headerlink&quot; title=&quot;gradle 修改&quot;&gt;&lt;/a&gt;gradle 修改&lt;/h2&gt;&lt;p&gt;加入 kotlin 之后需要使用 kapt,gradle 修改为&lt;/p&gt;
 &lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//kotlin&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//dagger&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger-android:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger-android-support:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kapt &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger-android-processor:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kapt &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger-compiler:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;com.blankj:utilcode:$rootProject.androidUtilsVerson&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//不加无法编译通过&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;org.jetbrains.kotlin:kotlin-stdlib-jre7:$rootProject.kotlin_version&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -487,10 +487,10 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
   
   <entry>
     <title>快速搭建新项目框架3-Kotlin</title>
-    <link href="http://yoursite.com/2017/11/05/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%96%B0%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B63-Kotlin%20(1)/"/>
-    <id>http://yoursite.com/2017/11/05/快速搭建新项目框架3-Kotlin (1)/</id>
+    <link href="http://yoursite.com/2017/11/05/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%96%B0%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B63-Kotlin/"/>
+    <id>http://yoursite.com/2017/11/05/快速搭建新项目框架3-Kotlin/</id>
     <published>2017-11-04T16:00:00.000Z</published>
-    <updated>2018-06-24T05:17:04.432Z</updated>
+    <updated>2018-06-24T05:17:04.517Z</updated>
     
     <content type="html">&lt;h2 id=&quot;gradle-修改&quot;&gt;&lt;a href=&quot;#gradle-修改&quot; class=&quot;headerlink&quot; title=&quot;gradle 修改&quot;&gt;&lt;/a&gt;gradle 修改&lt;/h2&gt;&lt;p&gt;加入 kotlin 之后需要使用 kapt,gradle 修改为&lt;/p&gt;
 &lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//kotlin&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//dagger&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger-android:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger-android-support:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kapt &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger-android-processor:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;kapt &lt;span class=&quot;string&quot;&gt;&quot;com.google.dagger:dagger-compiler:$rootProject.daggerVersion&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;com.blankj:utilcode:$rootProject.androidUtilsVerson&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//不加无法编译通过&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;org.jetbrains.kotlin:kotlin-stdlib-jre7:$rootProject.kotlin_version&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -1243,16 +1243,17 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
   
   <entry>
     <title>gradle 插件开发</title>
-    <link href="http://yoursite.com/2017/06/03/gradle%20%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
-    <id>http://yoursite.com/2017/06/03/gradle 插件开发/</id>
+    <link href="http://yoursite.com/2017/06/03/media/gradle%20%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <id>http://yoursite.com/2017/06/03/media/gradle 插件开发/</id>
     <published>2017-06-02T16:00:00.000Z</published>
-    <updated>2018-06-24T05:17:04.526Z</updated>
+    <updated>2017-06-03T10:18:45.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;什么是Gradle插件？&quot;&gt;&lt;a href=&quot;#什么是Gradle插件？&quot; class=&quot;headerlink&quot; title=&quot;什么是Gradle插件？&quot;&gt;&lt;/a&gt;什么是Gradle插件？&lt;/h1&gt;&lt;p&gt;在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：&lt;/p&gt;
 &lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apply plugin: &lt;span class=&quot;string&quot;&gt;&#39;com.android.application&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;如果我们创建一个Library的话，就会变成：&lt;/p&gt;
 &lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apply plugin: &lt;span class=&quot;string&quot;&gt;&#39;com.android.library&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;其实这就是在gradle脚本引用android为我们提供的插件，plugin表示插件，’com.android.application’表示我们引用的插件名，通常是以包名来命名。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;其实这就是在gradle脚本引用android为我们提供的插件，plugin表示插件，’com.android.application’表示我们引用的插件名，通常是以包名来命名。&lt;/p&gt;
 &lt;p&gt;这个插件是怎么被引用进来的？我们可以在根目录找到另外一个build.gradle文件，打开可以看到以下代码：&lt;/p&gt;
 &lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;buildscript&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;repositories&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        jcenter()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;dependencies&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;classpath&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;com.android.tools.build:gradle:2.0.0&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// &lt;span class=&quot;doctag&quot;&gt;NOTE:&lt;/span&gt; Do not place your application dependencies here; they belong&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// in the individual module build.gradle files&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;allprojects&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;repositories&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        jcenter()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;ul&gt;
@@ -1329,9 +1330,6 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
     
       &lt;h1 id=&quot;什么是Gradle插件？&quot;&gt;&lt;a href=&quot;#什么是Gradle插件？&quot; class=&quot;headerlink&quot; title=&quot;什么是Gradle插件？&quot;&gt;&lt;/a&gt;什么是Gradle插件？&lt;/h1&gt;&lt;p&gt;在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：&lt;/p&gt;
 &lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apply plugin: &lt;span class=&quot;string&quot;&gt;&#39;com.android.application&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果我们创建一个Library的话，就会变成：&lt;/p&gt;
-&lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apply plugin: &lt;span class=&quot;string&quot;&gt;&#39;com.android.library&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;其实这就是在gradle脚本引用android为我们提供的插件，plugin表示插件，’com.android.application’表示我们引用的插件名，通常是以包名来命名。&lt;br&gt;
     
     </summary>
     
@@ -1433,17 +1431,16 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
   
   <entry>
     <title>gradle 插件开发</title>
-    <link href="http://yoursite.com/2017/06/03/media/gradle%20%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
-    <id>http://yoursite.com/2017/06/03/media/gradle 插件开发/</id>
+    <link href="http://yoursite.com/2017/06/03/gradle%20%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
+    <id>http://yoursite.com/2017/06/03/gradle 插件开发/</id>
     <published>2017-06-02T16:00:00.000Z</published>
-    <updated>2017-06-03T10:18:45.000Z</updated>
+    <updated>2018-06-24T05:17:04.526Z</updated>
     
     <content type="html">&lt;h1 id=&quot;什么是Gradle插件？&quot;&gt;&lt;a href=&quot;#什么是Gradle插件？&quot; class=&quot;headerlink&quot; title=&quot;什么是Gradle插件？&quot;&gt;&lt;/a&gt;什么是Gradle插件？&lt;/h1&gt;&lt;p&gt;在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：&lt;/p&gt;
 &lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apply plugin: &lt;span class=&quot;string&quot;&gt;&#39;com.android.application&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;如果我们创建一个Library的话，就会变成：&lt;/p&gt;
 &lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apply plugin: &lt;span class=&quot;string&quot;&gt;&#39;com.android.library&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;其实这就是在gradle脚本引用android为我们提供的插件，plugin表示插件，’com.android.application’表示我们引用的插件名，通常是以包名来命名。&lt;/p&gt;
+&lt;p&gt;其实这就是在gradle脚本引用android为我们提供的插件，plugin表示插件，’com.android.application’表示我们引用的插件名，通常是以包名来命名。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;这个插件是怎么被引用进来的？我们可以在根目录找到另外一个build.gradle文件，打开可以看到以下代码：&lt;/p&gt;
 &lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;buildscript&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;repositories&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        jcenter()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;dependencies&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;classpath&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;com.android.tools.build:gradle:2.0.0&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// &lt;span class=&quot;doctag&quot;&gt;NOTE:&lt;/span&gt; Do not place your application dependencies here; they belong&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// in the individual module build.gradle files&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;allprojects&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;repositories&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        jcenter()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;ul&gt;
@@ -1520,6 +1517,9 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
     
       &lt;h1 id=&quot;什么是Gradle插件？&quot;&gt;&lt;a href=&quot;#什么是Gradle插件？&quot; class=&quot;headerlink&quot; title=&quot;什么是Gradle插件？&quot;&gt;&lt;/a&gt;什么是Gradle插件？&lt;/h1&gt;&lt;p&gt;在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：&lt;/p&gt;
 &lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apply plugin: &lt;span class=&quot;string&quot;&gt;&#39;com.android.application&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果我们创建一个Library的话，就会变成：&lt;/p&gt;
+&lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apply plugin: &lt;span class=&quot;string&quot;&gt;&#39;com.android.library&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;其实这就是在gradle脚本引用android为我们提供的插件，plugin表示插件，’com.android.application’表示我们引用的插件名，通常是以包名来命名。&lt;br&gt;
     
     </summary>
     
