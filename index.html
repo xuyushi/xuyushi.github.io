@@ -281,7 +281,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/22/ABtest数据分析/" itemprop="url">Maven 搭建</a></h1>
+                <a class="post-title-link" href="/2018/05/22/ABtest数据分析/" itemprop="url">abtest 数据分析</a></h1>
         
 
         <div class="post-meta">
@@ -427,7 +427,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/14/ab_plan/" itemprop="url">Maven 搭建</a></h1>
+                <a class="post-title-link" href="/2018/05/14/ab_plan/" itemprop="url">ABtest 平台项目计划书</a></h1>
         
 
         <div class="post-meta">
@@ -1588,7 +1588,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/28/快速搭建新项目框架2-mvp 结构/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/28/快速搭建新项目框架1-依赖注入/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xu Yushi">
@@ -1607,7 +1607,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/28/快速搭建新项目框架2-mvp 结构/" itemprop="url">快速搭建新项目框架2-mvp 结构</a></h1>
+                <a class="post-title-link" href="/2017/10/28/快速搭建新项目框架1-依赖注入/" itemprop="url">快速搭建新项目框架1-依赖注入</a></h1>
         
 
         <div class="post-meta">
@@ -1680,10 +1680,17 @@
 
       
         
-          <p>之前有两篇文章已经详细介绍过 mvp  <a href="http://xuyushi.github.io/2016/02/28/MVP/">Android 中的MVP 模式</a>    <a href="http://xuyushi.github.io/2016/04/30/%E5%9C%B0%E5%9B%BE%E5%8C%BA%E5%9F%9F%E7%BB%98%E5%88%B6%20MVP%20%E5%AE%9E%E8%B7%B5/">地图区域绘制 MVP 实践</a> ，本篇结合上篇的依赖注入使用<br>
+          <h1 id="快速搭建新项目框架1-依赖注入"><a href="#快速搭建新项目框架1-依赖注入" class="headerlink" title="快速搭建新项目框架1-依赖注入"></a>快速搭建新项目框架1-依赖注入</h1><p>关于依赖注入在 <a href="http://xuyushi.github.io/2017/04/08/Android%20CleanArchitecture%20--Dagger/">之前的文章里有详细的分析</a></p>
+<p>而最近的 dagger 的更新又再次方便了注入过程 。<br>回顾之前的 dagger 在 Activity 、fragment 等 Android 组件中是如何注入的</p>
+<ol>
+<li>在 moduel 中，提供所需注入的元素的构造方法</li>
+<li>构造对应的 <code>Component</code>，包含所需的 <code>module</code>，并将<code>module</code> 中的方法暴露出。并申明对应的inject方法 </li>
+<li>在actvity 中注入</li>
+</ol>
+<p>这样做的弊端是<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/28/快速搭建新项目框架2-mvp 结构/#more" rel="contents">
+            <a class="btn" href="/2017/10/28/快速搭建新项目框架1-依赖注入/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
