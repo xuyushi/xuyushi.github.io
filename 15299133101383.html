@@ -1,0 +1,1169 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  retrofit源码解析2 - Xu Yushi's Blog
+  
+  </title>
+ <meta name="description" content="理工男的碎碎念">
+ <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">Xu Yushi's Blog</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>Android</label></li>
+
+          
+            <li><a title="jenkins 平台搭建" href="15299133099249.html">jenkins 平台搭建</a></li>
+          
+            <li><a title="gitlab 搭建" href="15299133099310.html">gitlab 搭建</a></li>
+          
+            <li><a title="Android sdk 搭建" href="15299133099366.html">Android sdk 搭建</a></li>
+          
+            <li><a title="Maven 搭建" href="15299133099121.html">Maven 搭建</a></li>
+          
+            <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099083.html">快速搭建新项目框架3-Kotlin</a></li>
+          
+            <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099209.html">快速搭建新项目框架3-Kotlin</a></li>
+          
+            <li><a title="快速搭建新项目框架2-mvp 结构" href="15299133100126.html">快速搭建新项目框架2-mvp 结构</a></li>
+          
+            <li><a title="快速搭建新项目框架1-依赖注入" href="15299133100165.html">快速搭建新项目框架1-依赖注入</a></li>
+          
+            <li><a title="快速搭建新项目框架0-前言" href="15299133100210.html">快速搭建新项目框架0-前言</a></li>
+          
+            <li><a title="Architecture Components--Room  Persistence Library" href="15299133101299.html">Architecture Components--Room  Persistence Library</a></li>
+          
+            <li><a title="Architecture Components -- Guide to App Architecture" href="15299133102446.html">Architecture Components -- Guide to App Architecture</a></li>
+          
+            <li><a title="Architecture Components--ViewModel" href="15299133101129.html">Architecture Components--ViewModel</a></li>
+          
+            <li><a title="Architecture Components--LiveData" href="15299133101795.html">Architecture Components--LiveData</a></li>
+          
+            <li><a title="Architecture Components--Lifecycle" href="15299133102342.html">Architecture Components--Lifecycle</a></li>
+          
+            <li><a title="Maven 仓库的使用和搭建" href="15299133101591.html">Maven 仓库的使用和搭建</a></li>
+          
+            <li><a title="gradle 插件开发" href="15299133102596.html">gradle 插件开发</a></li>
+          
+            <li><a title="gradle 插件开发" href="15299133104171.html">gradle 插件开发</a></li>
+          
+            <li><a title="NanoHTTPD源码解析" href="15299133101466.html">NanoHTTPD源码解析</a></li>
+          
+            <li><a title="Android CleanArchitecture --Dagger分析" href="15299133103599.html">Android CleanArchitecture --Dagger分析</a></li>
+          
+            <li><a title="Android 测试 （四）-- 实战分析" href="15299133102936.html">Android 测试 （四）-- 实战分析</a></li>
+          
+            <li><a title="Android 测试 （五）-- 实战分析" href="15299133103011.html">Android 测试 （五）-- 实战分析</a></li>
+          
+            <li><a title="Android 测试 （三）--Local Unit Tests" href="15299133103134.html">Android 测试 （三）--Local Unit Tests</a></li>
+          
+            <li><a title="Android 测试 （二）--Instrumented Unit" href="15299133103076.html">Android 测试 （二）--Instrumented Unit</a></li>
+          
+            <li><a title="Android 测试 （一）--测试总览" href="15299133103196.html">Android 测试 （一）--测试总览</a></li>
+          
+            <li><a title="Window 和 WindowManager" href="15299133100749.html">Window 和 WindowManager</a></li>
+          
+            <li><a title="window、Activity、DecorView、ViewRoot关系" href="15299133103906.html">window、Activity、DecorView、ViewRoot关系</a></li>
+          
+            <li><a title="AsyncTask 源码分析" href="15299133102725.html">AsyncTask 源码分析</a></li>
+          
+            <li><a title="Runnable、Callable、Future、FutureTask的区别" href="15299133101261.html">Runnable、Callable、Future、FutureTask的区别</a></li>
+          
+            <li><a title="Looper、Handler、Message 源码分析" href="15299133101714.html">Looper、Handler、Message 源码分析</a></li>
+          
+            <li><a title="HandlerThread 源码 分析" href="15299133102391.html">HandlerThread 源码 分析</a></li>
+          
+            <li><a title="Activity 总结" href="15299133103948.html">Activity 总结</a></li>
+          
+            <li><a title="Architecting Android…The evolution" href="15299133102798.html">Architecting Android…The evolution</a></li>
+          
+            <li><a title="Android clean architecting" href="15299133103637.html">Android clean architecting</a></li>
+          
+            <li><a title="Android Application 从零开始 2 ——DI" href="15299133103685.html">Android Application 从零开始 2 ——DI</a></li>
+          
+            <li><a title="Android Application 从零开始 1 ——Gradle" href="15299133103723.html">Android Application 从零开始 1 ——Gradle</a></li>
+          
+            <li><a title="Android Application 从零开始 0 ——前言" href="15299133103764.html">Android Application 从零开始 0 ——前言</a></li>
+          
+            <li><a title="volley源码解析" href="15299133100860.html">volley源码解析</a></li>
+          
+            <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+          
+            <li><a title="ASimpleCache缓存源码分析" href="15299133102762.html">ASimpleCache缓存源码分析</a></li>
+          
+            <li><a title="一个很棒的 Android  APP框架" href="15299133103809.html">一个很棒的 Android  APP框架</a></li>
+          
+            <li><a title="retrofit源码解析2" href="15299133101383.html">retrofit源码解析2</a></li>
+          
+            <li><a title="retrofit源码解析1" href="15299133101429.html">retrofit源码解析1</a></li>
+          
+            <li><a title="Service 总结" href="15299133101225.html">Service 总结</a></li>
+          
+            <li><a title="Activity Mode" href="15299133103997.html">Activity Mode</a></li>
+          
+            <li><a title="地图区域绘制 MVP 实践" href="15299133100416.html">地图区域绘制 MVP 实践</a></li>
+          
+            <li><a title="Listview crash 分析" href="15299133101874.html">Listview crash 分析</a></li>
+          
+            <li><a title="robolectric 单元测试" href="15299133103267.html">robolectric 单元测试</a></li>
+          
+            <li><a title="Material Design" href="15299133101643.html">Material Design</a></li>
+          
+            <li><a title="Android 中的 rxjava" href="15299133103337.html">Android 中的 rxjava</a></li>
+          
+            <li><a title="Android MVVM" href="15299133103550.html">Android MVVM</a></li>
+          
+            <li><a title="Android 中的MVP 模式" href="15299133101508.html">Android 中的MVP 模式</a></li>
+          
+            <li><a title="Android 内存泄露" href="15299133100598.html">Android 内存泄露</a></li>
+          
+            <li><a title="IDEA 技巧" href="15299133102120.html">IDEA 技巧</a></li>
+          
+            <li><a title="Android Media Player" href="15299133101552.html">Android Media Player</a></li>
+          
+            <li><a title="Android View 小结（下）" href="15299133099732.html">Android View 小结（下）</a></li>
+          
+            <li><a title="Android service" href="15299133103504.html">Android service</a></li>
+          
+            <li><a title="robolectric" href="15299133101345.html">robolectric</a></li>
+          
+            <li><a title="Android Studio中进行单元测试" href="15299133103442.html">Android Studio中进行单元测试</a></li>
+          
+            <li><a title="AIDL 学习" href="15299133103865.html">AIDL 学习</a></li>
+          
+            <li><a title="蓝牙学习" href="15299133099695.html">蓝牙学习</a></li>
+          
+            <li><a title="title: 手机信号质量检测" href="15299133100046.html">title: 手机信号质量检测</a></li>
+          
+            <li><a title="GreenDao学习" href="15299133102559.html">GreenDao学习</a></li>
+          
+            <li><a title="登陆框 UI" href="15299133099886.html">登陆框 UI</a></li>
+          
+            <li><a title="EventBus 学习" href="15299133102685.html">EventBus 学习</a></li>
+          
+            <li><a title="取消软键盘自动弹出" href="15299133100509.html">取消软键盘自动弹出</a></li>
+          
+            <li><a title="jni 学习" href="15299133101955.html">jni 学习</a></li>
+          
+            <li><a title="GSON 学习" href="15299133102507.html">GSON 学习</a></li>
+          
+            <li><a title="Android 触摸事件传递机制" href="15299133102860.html">Android 触摸事件传递机制</a></li>
+          
+            <li><a title="volley学习" href="15299133100924.html">volley学习</a></li>
+          
+            <li><a title="wifi压力测试" href="15299133100786.html">wifi压力测试</a></li>
+          
+            <li><a title="listview的复用机制" href="15299133101837.html">listview的复用机制</a></li>
+          
+            <li><a title="Android View 小结" href="15299133103394.html">Android View 小结</a></li>
+          
+            <li><a title="使用命令行查看android sqlite数据库" href="15299133100658.html">使用命令行查看android sqlite数据库</a></li>
+          
+            <li><a title="loader 总结" href="15299133101753.html">loader 总结</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>UserGrowth</label></li>
+
+          
+            <li><a title="abtest 数据分析" href="15299133098726.html">abtest 数据分析</a></li>
+          
+            <li><a title="ABtest 平台框架" href="15299133098793.html">ABtest 平台框架</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>balabala</label></li>
+
+          
+            <li><a title="写在离开北京的前夕" href="15299133099414.html">写在离开北京的前夕</a></li>
+          
+            <li><a title="09-17 碎碎念" href="15299133099046.html">09-17 碎碎念</a></li>
+          
+            <li><a title="近期学习计划" href="15299133099560.html">近期学习计划</a></li>
+          
+            <li><a title="单身汪的自白" href="15299133100538.html">单身汪的自白</a></li>
+          
+            <li><a title="2015小结" href="15299133104055.html">2015小结</a></li>
+          
+            <li><a title="日记" href="15299133101912.html">日记</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Java</label></li>
+
+          
+            <li><a title="Java 内存分配策略" href="15299133102065.html">Java 内存分配策略</a></li>
+          
+            <li><a title="HashMap 的实现原理" href="15299133102218.html">HashMap 的实现原理</a></li>
+          
+            <li><a title="hashcode" href="15299133102285.html">hashcode</a></li>
+          
+            <li><a title="wait/notify/notifyAll 总结" href="15299133100823.html">wait/notify/notifyAll 总结</a></li>
+          
+            <li><a title="synchronized 总结" href="15299133101186.html">synchronized 总结</a></li>
+          
+            <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+          
+            <li><a title="代理模式 Proxy Pattern" href="15299133100699.html">代理模式 Proxy Pattern</a></li>
+          
+            <li><a title="迭代器模式 Iterator Pattern" href="15299133099503.html">迭代器模式 Iterator Pattern</a></li>
+          
+            <li><a title="组合模式 Composite Pattern" href="15299133099787.html">组合模式 Composite Pattern</a></li>
+          
+            <li><a title="命令模式 Command Pattern" href="15299133100466.html">命令模式 Command Pattern</a></li>
+          
+            <li><a title="单例模式 Singleton Pattern" href="15299133100569.html">单例模式 Singleton Pattern</a></li>
+          
+            <li><a title="适配器模式 Adapter Pattern" href="15299133099455.html">适配器模式 Adapter Pattern</a></li>
+          
+            <li><a title="简单工厂模式 Factory  Pattern" href="15299133100248.html">简单工厂模式 Factory  Pattern</a></li>
+          
+            <li><a title="工厂方法模式 Factory Method Pattern" href="15299133100311.html">工厂方法模式 Factory Method Pattern</a></li>
+          
+            <li><a title="装饰者模式 Decorator Design Pattern" href="15299133099653.html">装饰者模式 Decorator Design Pattern</a></li>
+          
+            <li><a title="观察者模式 Observer Design Pattern" href="15299133099606.html">观察者模式 Observer Design Pattern</a></li>
+          
+            <li><a title="策略模式 Strategy Pattern" href="15299133099842.html">策略模式 Strategy Pattern</a></li>
+          
+            <li><a title="模板方法模式 Template Method Pattern" href="15299133100005.html">模板方法模式 Template Method Pattern</a></li>
+          
+            <li><a title="状态模式 State Design Pattern" href="15299133099923.html">状态模式 State Design Pattern</a></li>
+          
+            <li><a title="Java注解" href="15299133099968.html">Java注解</a></li>
+          
+            <li><a title="抽象工厂模式 Abstract Factory Pattern" href="15299133100082.html">抽象工厂模式 Abstract Factory Pattern</a></li>
+          
+            <li><a title="强引用、软引用、弱引用、虚引用" href="15299133101993.html">强引用、软引用、弱引用、虚引用</a></li>
+          
+            <li><a title="VIM 技巧" href="15299133099014.html">VIM 技巧</a></li>
+          
+            <li><a title="java 反射学习" href="15299133102029.html">java 反射学习</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>Android</span></li>
+                        
+                          <li><a title="jenkins 平台搭建" href="15299133099249.html">jenkins 平台搭建</a></li>
+                        
+                          <li><a title="gitlab 搭建" href="15299133099310.html">gitlab 搭建</a></li>
+                        
+                          <li><a title="Android sdk 搭建" href="15299133099366.html">Android sdk 搭建</a></li>
+                        
+                          <li><a title="Maven 搭建" href="15299133099121.html">Maven 搭建</a></li>
+                        
+                          <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099083.html">快速搭建新项目框架3-Kotlin</a></li>
+                        
+                          <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099209.html">快速搭建新项目框架3-Kotlin</a></li>
+                        
+                          <li><a title="快速搭建新项目框架2-mvp 结构" href="15299133100126.html">快速搭建新项目框架2-mvp 结构</a></li>
+                        
+                          <li><a title="快速搭建新项目框架1-依赖注入" href="15299133100165.html">快速搭建新项目框架1-依赖注入</a></li>
+                        
+                          <li><a title="快速搭建新项目框架0-前言" href="15299133100210.html">快速搭建新项目框架0-前言</a></li>
+                        
+                          <li><a title="Architecture Components--Room  Persistence Library" href="15299133101299.html">Architecture Components--Room  Persistence Library</a></li>
+                        
+                          <li><a title="Architecture Components -- Guide to App Architecture" href="15299133102446.html">Architecture Components -- Guide to App Architecture</a></li>
+                        
+                          <li><a title="Architecture Components--ViewModel" href="15299133101129.html">Architecture Components--ViewModel</a></li>
+                        
+                          <li><a title="Architecture Components--LiveData" href="15299133101795.html">Architecture Components--LiveData</a></li>
+                        
+                          <li><a title="Architecture Components--Lifecycle" href="15299133102342.html">Architecture Components--Lifecycle</a></li>
+                        
+                          <li><a title="Maven 仓库的使用和搭建" href="15299133101591.html">Maven 仓库的使用和搭建</a></li>
+                        
+                          <li><a title="gradle 插件开发" href="15299133102596.html">gradle 插件开发</a></li>
+                        
+                          <li><a title="gradle 插件开发" href="15299133104171.html">gradle 插件开发</a></li>
+                        
+                          <li><a title="NanoHTTPD源码解析" href="15299133101466.html">NanoHTTPD源码解析</a></li>
+                        
+                          <li><a title="Android CleanArchitecture --Dagger分析" href="15299133103599.html">Android CleanArchitecture --Dagger分析</a></li>
+                        
+                          <li><a title="Android 测试 （四）-- 实战分析" href="15299133102936.html">Android 测试 （四）-- 实战分析</a></li>
+                        
+                          <li><a title="Android 测试 （五）-- 实战分析" href="15299133103011.html">Android 测试 （五）-- 实战分析</a></li>
+                        
+                          <li><a title="Android 测试 （三）--Local Unit Tests" href="15299133103134.html">Android 测试 （三）--Local Unit Tests</a></li>
+                        
+                          <li><a title="Android 测试 （二）--Instrumented Unit" href="15299133103076.html">Android 测试 （二）--Instrumented Unit</a></li>
+                        
+                          <li><a title="Android 测试 （一）--测试总览" href="15299133103196.html">Android 测试 （一）--测试总览</a></li>
+                        
+                          <li><a title="Window 和 WindowManager" href="15299133100749.html">Window 和 WindowManager</a></li>
+                        
+                          <li><a title="window、Activity、DecorView、ViewRoot关系" href="15299133103906.html">window、Activity、DecorView、ViewRoot关系</a></li>
+                        
+                          <li><a title="AsyncTask 源码分析" href="15299133102725.html">AsyncTask 源码分析</a></li>
+                        
+                          <li><a title="Runnable、Callable、Future、FutureTask的区别" href="15299133101261.html">Runnable、Callable、Future、FutureTask的区别</a></li>
+                        
+                          <li><a title="Looper、Handler、Message 源码分析" href="15299133101714.html">Looper、Handler、Message 源码分析</a></li>
+                        
+                          <li><a title="HandlerThread 源码 分析" href="15299133102391.html">HandlerThread 源码 分析</a></li>
+                        
+                          <li><a title="Activity 总结" href="15299133103948.html">Activity 总结</a></li>
+                        
+                          <li><a title="Architecting Android…The evolution" href="15299133102798.html">Architecting Android…The evolution</a></li>
+                        
+                          <li><a title="Android clean architecting" href="15299133103637.html">Android clean architecting</a></li>
+                        
+                          <li><a title="Android Application 从零开始 2 ——DI" href="15299133103685.html">Android Application 从零开始 2 ——DI</a></li>
+                        
+                          <li><a title="Android Application 从零开始 1 ——Gradle" href="15299133103723.html">Android Application 从零开始 1 ——Gradle</a></li>
+                        
+                          <li><a title="Android Application 从零开始 0 ——前言" href="15299133103764.html">Android Application 从零开始 0 ——前言</a></li>
+                        
+                          <li><a title="volley源码解析" href="15299133100860.html">volley源码解析</a></li>
+                        
+                          <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+                        
+                          <li><a title="ASimpleCache缓存源码分析" href="15299133102762.html">ASimpleCache缓存源码分析</a></li>
+                        
+                          <li><a title="一个很棒的 Android  APP框架" href="15299133103809.html">一个很棒的 Android  APP框架</a></li>
+                        
+                          <li><a title="retrofit源码解析2" href="15299133101383.html">retrofit源码解析2</a></li>
+                        
+                          <li><a title="retrofit源码解析1" href="15299133101429.html">retrofit源码解析1</a></li>
+                        
+                          <li><a title="Service 总结" href="15299133101225.html">Service 总结</a></li>
+                        
+                          <li><a title="Activity Mode" href="15299133103997.html">Activity Mode</a></li>
+                        
+                          <li><a title="地图区域绘制 MVP 实践" href="15299133100416.html">地图区域绘制 MVP 实践</a></li>
+                        
+                          <li><a title="Listview crash 分析" href="15299133101874.html">Listview crash 分析</a></li>
+                        
+                          <li><a title="robolectric 单元测试" href="15299133103267.html">robolectric 单元测试</a></li>
+                        
+                          <li><a title="Material Design" href="15299133101643.html">Material Design</a></li>
+                        
+                          <li><a title="Android 中的 rxjava" href="15299133103337.html">Android 中的 rxjava</a></li>
+                        
+                          <li><a title="Android MVVM" href="15299133103550.html">Android MVVM</a></li>
+                        
+                          <li><a title="Android 中的MVP 模式" href="15299133101508.html">Android 中的MVP 模式</a></li>
+                        
+                          <li><a title="Android 内存泄露" href="15299133100598.html">Android 内存泄露</a></li>
+                        
+                          <li><a title="IDEA 技巧" href="15299133102120.html">IDEA 技巧</a></li>
+                        
+                          <li><a title="Android Media Player" href="15299133101552.html">Android Media Player</a></li>
+                        
+                          <li><a title="Android View 小结（下）" href="15299133099732.html">Android View 小结（下）</a></li>
+                        
+                          <li><a title="Android service" href="15299133103504.html">Android service</a></li>
+                        
+                          <li><a title="robolectric" href="15299133101345.html">robolectric</a></li>
+                        
+                          <li><a title="Android Studio中进行单元测试" href="15299133103442.html">Android Studio中进行单元测试</a></li>
+                        
+                          <li><a title="AIDL 学习" href="15299133103865.html">AIDL 学习</a></li>
+                        
+                          <li><a title="蓝牙学习" href="15299133099695.html">蓝牙学习</a></li>
+                        
+                          <li><a title="title: 手机信号质量检测" href="15299133100046.html">title: 手机信号质量检测</a></li>
+                        
+                          <li><a title="GreenDao学习" href="15299133102559.html">GreenDao学习</a></li>
+                        
+                          <li><a title="登陆框 UI" href="15299133099886.html">登陆框 UI</a></li>
+                        
+                          <li><a title="EventBus 学习" href="15299133102685.html">EventBus 学习</a></li>
+                        
+                          <li><a title="取消软键盘自动弹出" href="15299133100509.html">取消软键盘自动弹出</a></li>
+                        
+                          <li><a title="jni 学习" href="15299133101955.html">jni 学习</a></li>
+                        
+                          <li><a title="GSON 学习" href="15299133102507.html">GSON 学习</a></li>
+                        
+                          <li><a title="Android 触摸事件传递机制" href="15299133102860.html">Android 触摸事件传递机制</a></li>
+                        
+                          <li><a title="volley学习" href="15299133100924.html">volley学习</a></li>
+                        
+                          <li><a title="wifi压力测试" href="15299133100786.html">wifi压力测试</a></li>
+                        
+                          <li><a title="listview的复用机制" href="15299133101837.html">listview的复用机制</a></li>
+                        
+                          <li><a title="Android View 小结" href="15299133103394.html">Android View 小结</a></li>
+                        
+                          <li><a title="使用命令行查看android sqlite数据库" href="15299133100658.html">使用命令行查看android sqlite数据库</a></li>
+                        
+                          <li><a title="loader 总结" href="15299133101753.html">loader 总结</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>UserGrowth</span></li>
+                        
+                          <li><a title="abtest 数据分析" href="15299133098726.html">abtest 数据分析</a></li>
+                        
+                          <li><a title="ABtest 平台框架" href="15299133098793.html">ABtest 平台框架</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>balabala</span></li>
+                        
+                          <li><a title="写在离开北京的前夕" href="15299133099414.html">写在离开北京的前夕</a></li>
+                        
+                          <li><a title="09-17 碎碎念" href="15299133099046.html">09-17 碎碎念</a></li>
+                        
+                          <li><a title="近期学习计划" href="15299133099560.html">近期学习计划</a></li>
+                        
+                          <li><a title="单身汪的自白" href="15299133100538.html">单身汪的自白</a></li>
+                        
+                          <li><a title="2015小结" href="15299133104055.html">2015小结</a></li>
+                        
+                          <li><a title="日记" href="15299133101912.html">日记</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Java</span></li>
+                        
+                          <li><a title="Java 内存分配策略" href="15299133102065.html">Java 内存分配策略</a></li>
+                        
+                          <li><a title="HashMap 的实现原理" href="15299133102218.html">HashMap 的实现原理</a></li>
+                        
+                          <li><a title="hashcode" href="15299133102285.html">hashcode</a></li>
+                        
+                          <li><a title="wait/notify/notifyAll 总结" href="15299133100823.html">wait/notify/notifyAll 总结</a></li>
+                        
+                          <li><a title="synchronized 总结" href="15299133101186.html">synchronized 总结</a></li>
+                        
+                          <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+                        
+                          <li><a title="代理模式 Proxy Pattern" href="15299133100699.html">代理模式 Proxy Pattern</a></li>
+                        
+                          <li><a title="迭代器模式 Iterator Pattern" href="15299133099503.html">迭代器模式 Iterator Pattern</a></li>
+                        
+                          <li><a title="组合模式 Composite Pattern" href="15299133099787.html">组合模式 Composite Pattern</a></li>
+                        
+                          <li><a title="命令模式 Command Pattern" href="15299133100466.html">命令模式 Command Pattern</a></li>
+                        
+                          <li><a title="单例模式 Singleton Pattern" href="15299133100569.html">单例模式 Singleton Pattern</a></li>
+                        
+                          <li><a title="适配器模式 Adapter Pattern" href="15299133099455.html">适配器模式 Adapter Pattern</a></li>
+                        
+                          <li><a title="简单工厂模式 Factory  Pattern" href="15299133100248.html">简单工厂模式 Factory  Pattern</a></li>
+                        
+                          <li><a title="工厂方法模式 Factory Method Pattern" href="15299133100311.html">工厂方法模式 Factory Method Pattern</a></li>
+                        
+                          <li><a title="装饰者模式 Decorator Design Pattern" href="15299133099653.html">装饰者模式 Decorator Design Pattern</a></li>
+                        
+                          <li><a title="观察者模式 Observer Design Pattern" href="15299133099606.html">观察者模式 Observer Design Pattern</a></li>
+                        
+                          <li><a title="策略模式 Strategy Pattern" href="15299133099842.html">策略模式 Strategy Pattern</a></li>
+                        
+                          <li><a title="模板方法模式 Template Method Pattern" href="15299133100005.html">模板方法模式 Template Method Pattern</a></li>
+                        
+                          <li><a title="状态模式 State Design Pattern" href="15299133099923.html">状态模式 State Design Pattern</a></li>
+                        
+                          <li><a title="Java注解" href="15299133099968.html">Java注解</a></li>
+                        
+                          <li><a title="抽象工厂模式 Abstract Factory Pattern" href="15299133100082.html">抽象工厂模式 Abstract Factory Pattern</a></li>
+                        
+                          <li><a title="强引用、软引用、弱引用、虚引用" href="15299133101993.html">强引用、软引用、弱引用、虚引用</a></li>
+                        
+                          <li><a title="VIM 技巧" href="15299133099014.html">VIM 技巧</a></li>
+                        
+                          <li><a title="java 反射学习" href="15299133102029.html">java 反射学习</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>retrofit源码解析2</h1>
+
+<h2 id="toc_0">使用</h2>
+
+<h4 id="toc_1">首先定义一个接口</h4>
+
+<pre><code class="language-java">public interface GitHubService {  
+  @GET(&quot;users/{user}/repos&quot;)
+  Call&lt;List&lt;Repo&gt;&gt; listRepos(@Path(&quot;user&quot;) String user);
+}
+</code></pre>
+
+<span id="more"></span><!-- more -->
+
+<h4 id="toc_2">构造Retrofit，实例化接口</h4>
+
+<pre><code class="language-java">Retrofit retrofit = new Retrofit.Builder()
+    .baseUrl(&quot;https://api.github.com/&quot;)
+    .build();
+
+GitHubService service = retrofit.create(GitHubService.class);
+</code></pre>
+
+<p>Retrofit.Builder 是 Retrofit 对象的一个嵌套类，负责用来创建 Retrofit 实例对象，使用『建造者模式』的好处是清晰明了可定制化</p>
+
+<h4 id="toc_3">执行</h4>
+
+<pre><code class="language-java">Call&lt;List&lt;Repo&gt;&gt; repos = service.listRepos(&quot;octocat&quot;);
+</code></pre>
+
+<p>构造出 <code>repos</code>可以同步执行，或者异步</p>
+
+<p>关于 Query &amp; QueryMap URL 配置 Part &amp; PartMap 等可以参考官方文档</p>
+
+<h2 id="toc_4">源码分析</h2>
+
+<h3 id="toc_5">create()</h3>
+
+<p>由入口 <code>retrofit.create()</code>开始分析</p>
+
+<pre><code class="language-java">public &lt;T&gt; T create(final Class&lt;T&gt; service) {
+     //校验 service是否为注解
+    Utils.validateServiceInterface(service);
+    //如果将 validateEagerly 标识设置为 True，那么在我们调用 .eagerlyValidateMethods(service) 方法之前就提前验证并创建好啦。
+    if (validateEagerly) {
+      eagerlyValidateMethods(service);
+    }
+    return (T) Proxy.newProxyInstance(service.getClassLoader(), new Class&lt;?&gt;[] { service },
+        new InvocationHandler() {
+                //得到Platform，这里得到的是Android，主要作用是在主线程的 Looper 并构造了一个 主线程的 Handler，于是在 Android 平台，调用 Callback 时会将该请求 post 到主线程上去执行。
+          private final Platform platform = Platform.get();
+
+          @Override public Object invoke(Object proxy, Method method, Object... args)
+              throws Throwable {
+            // If the method is a method from Object then defer to normal invocation.
+            if (method.getDeclaringClass() == Object.class) {
+              return method.invoke(this, args);
+            }
+            //默认是 false，是定义在接口中有默认的实现，则返回 true
+            if (platform.isDefaultMethod(method)) {
+              return platform.invokeDefaultMethod(method, service, proxy, args);
+            }
+            //在这里构造了一个 call
+            return loadMethodHandler(method).invoke(args);
+          }
+        });
+  }
+</code></pre>
+
+<p>用到了 java 的动态代理，最终调用了 <code>loadMethodHandler(method).invoke(args);</code> 获得了一个<code>call</code>，默认为 <code>OkHttpCall</code>，之后可以用这个<code>call</code> 的<code>enqueue</code>、<code>exctue</code>等等来操作</p>
+
+<h3 id="toc_6">build</h3>
+
+<p>继续看看 <code>retrofit</code> 的 <code>build</code>方法</p>
+
+<pre><code class="language-java">
+public Retrofit build() {
+      if (baseUrl == null) {
+        throw new IllegalStateException(&quot;Base URL required.&quot;);
+      }
+
+      okhttp3.Call.Factory callFactory = this.callFactory;
+      if (callFactory == null) {
+        callFactory = new OkHttpClient();
+      }
+
+      // Make a defensive copy of the adapters and add the default Call adapter.
+      List&lt;CallAdapter.Factory&gt; adapterFactories = new ArrayList&lt;&gt;(this.adapterFactories);
+      adapterFactories.add(Platform.get().defaultCallAdapterFactory(callbackExecutor));
+
+      // Make a defensive copy of the converters.
+      List&lt;Converter.Factory&gt; converterFactories = new ArrayList&lt;&gt;(this.converterFactories);
+
+      return new Retrofit(callFactory, baseUrl, converterFactories, adapterFactories,
+          callbackExecutor, validateEagerly);
+    }
+    
+    
+    
+    public Builder baseUrl(final HttpUrl baseUrl) {
+      checkNotNull(baseUrl, &quot;baseUrl == null&quot;);
+      List&lt;String&gt; pathSegments = baseUrl.pathSegments();
+      if (!&quot;&quot;.equals(pathSegments.get(pathSegments.size() - 1))) {
+        throw new IllegalArgumentException(&quot;baseUrl must end in /: &quot; + baseUrl);
+      }
+      return baseUrl(new BaseUrl() {
+        @Override public HttpUrl url() {
+          return baseUrl;
+        }
+      });
+    }
+
+    /**
+     * Set an API base URL which can change over time.
+     *
+     * @see #baseUrl(HttpUrl)
+     */
+    public Builder baseUrl(BaseUrl baseUrl) {
+      this.baseUrl = checkNotNull(baseUrl, &quot;baseUrl == null&quot;);
+      return this;
+    }
+
+    /** Add converter factory for serialization and deserialization of objects. */
+    public Builder addConverterFactory(Converter.Factory factory) {
+      converterFactories.add(checkNotNull(factory, &quot;factory == null&quot;));
+      return this;
+    }
+
+    /**
+     * Add a call adapter factory for supporting service method return types other than {@link
+     * Call}.
+     */
+    public Builder addCallAdapterFactory(CallAdapter.Factory factory) {
+      adapterFactories.add(checkNotNull(factory, &quot;factory == null&quot;));
+      return this;
+    }
+
+    /**
+     * The executor on which {@link Callback} methods are invoked when returning {@link Call} from
+     * your service method.
+     * &lt;p&gt;
+     * Note: {@code executor} is not used for {@linkplain #addCallAdapterFactory custom method
+     * return types}.
+     */
+    public Builder callbackExecutor(Executor executor) {
+      this.callbackExecutor = checkNotNull(executor, &quot;executor == null&quot;);
+      return this;
+    }
+
+    /**
+     * When calling {@link #create} on the resulting {@link Retrofit} instance, eagerly validate
+     * the configuration of all methods in the supplied interface.
+     */
+    public Builder validateEagerly(boolean validateEagerly) {
+      this.validateEagerly = validateEagerly;
+      return this;
+    }
+    
+
+</code></pre>
+
+<p>在使用Build模式时，将属性 <code>baseUrl</code>、<code>adapterFactories</code>、<code>converterFactories</code>等赋值。在<code>build()</code>时构造出<code>retrofit</code>实例返回</p>
+
+<h3 id="toc_7">loadMethodHandler</h3>
+
+<pre><code class="language-java">
+  MethodHandler loadMethodHandler(Method method) {
+    MethodHandler handler;
+    synchronized (methodHandlerCache) {
+      handler = methodHandlerCache.get(method);
+      if (handler == null) {
+        handler = MethodHandler.create(this, method);
+        methodHandlerCache.put(method, handler);
+      }
+    }
+    return handler;
+  }
+</code></pre>
+
+<p>解析对应的方法（接口方法），创建 MethodHandler 加入到 methodHandlerCache 中，返回得到 MethodHandler。如果缓存里有则在<code>methodHandlerCache</code>拿到<code>MethodHandler</code>，若没有，则通过<code>MethodHandler.create(this, method)</code>得到<code>MethodHandler</code>，并存入缓存</p>
+
+<h3 id="toc_8">MethodHandler</h3>
+
+<p>正如之前所说在<code>retrofit</code>的<code>creat</code>方法中，最终调用的是 <code>MethodHandler</code>的<code>invoke</code>方法得到的一个 call</p>
+
+<pre><code class="language-java">  Object invoke(Object... args) {
+    return callAdapter.adapt(
+        new OkHttpCall&lt;&gt;(callFactory, requestFactory, args, responseConverter));
+  }
+</code></pre>
+
+<p>继续看看 <code>MethodHandler</code> 中其他的方法</p>
+
+<pre><code class="language-java">//MethodHandler 的创建方法，在这个方法里面通过创建 CallAdapter，responseConverter，requestFactory，最后创建 MethodHandler。
+
+  static MethodHandler create(Retrofit retrofit, Method method) {
+    CallAdapter&lt;?&gt; callAdapter = createCallAdapter(method, retrofit);
+    Type responseType = callAdapter.responseType();
+    if (responseType == Response.class || responseType == okhttp3.Response.class) {
+      throw Utils.methodError(method, &quot;&#39;&quot;
+          + Types.getRawType(responseType).getName()
+          + &quot;&#39; is not a valid response body type. Did you mean ResponseBody?&quot;);
+    }
+    Converter&lt;ResponseBody, ?&gt; responseConverter =
+        createResponseConverter(method, retrofit, responseType);
+        
+        //注意这里，RequestFactoryParser.parse根据注解生成 `RequestFactory`    RequestFactory requestFactory = RequestFactoryParser.parse(method, responseType, retrofit);
+    return new MethodHandler(retrofit.callFactory(), requestFactory, callAdapter,
+        responseConverter);
+  }
+
+//通过 retrofit 的 newCallAdapter 创建 CallAdapter
+  private static CallAdapter&lt;?&gt; createCallAdapter(Method method, Retrofit retrofit) {
+    Type returnType = method.getGenericReturnType();
+    if (Utils.hasUnresolvableType(returnType)) {
+      throw Utils.methodError(method,
+          &quot;Method return type must not include a type variable or wildcard: %s&quot;, returnType);
+    }
+    if (returnType == void.class) {
+      throw Utils.methodError(method, &quot;Service methods cannot return void.&quot;);
+    }
+    Annotation[] annotations = method.getAnnotations();
+    try {
+      return retrofit.callAdapter(returnType, annotations);
+    } catch (RuntimeException e) { // Wide exception range because factories are user code.
+      throw Utils.methodError(e, method, &quot;Unable to create call adapter for %s&quot;, returnType);
+    }
+  }
+
+//过 retrofit 的 responseConverter 方法得到 responseConverter
+  private static Converter&lt;ResponseBody, ?&gt; createResponseConverter(Method method,
+      Retrofit retrofit, Type responseType) {
+    Annotation[] annotations = method.getAnnotations();
+    try {
+      return retrofit.responseBodyConverter(responseType, annotations);
+    } catch (RuntimeException e) { // Wide exception range because factories are user code.
+      throw Utils.methodError(e, method, &quot;Unable to create converter for %s&quot;, responseType);
+    }
+  }
+</code></pre>
+
+<p>MethodHandler 是 retrofit 中连接了解析部分，执行部分，转换部分的一个关键的中间类。不过 MethodHandler 的代码量很少。它可以说是连接各个部分的桥梁，也是接口方法的描述类。它有包含了 retrofit，requestFactory，callAdapter，responseConverter 成员变量。主要方法如下</p>
+
+<h3 id="toc_9">callAdapter.adapt</h3>
+
+<p>最终是通过 <code>callAdapter.adapt</code>得到一个 call 的，adapter 通过 adapt 把一种 call 适配成另一种 call供我们使用</p>
+
+<h3 id="toc_10">ExecutorCallAdapterFactory</h3>
+
+<p>举例分析<code>ExecutorCallAdapterFactory</code><br/>
+在<code>get</code>方法时，得到 <code>CallAdapter</code>的实例</p>
+
+<pre><code class="language-java">  @Override
+  public CallAdapter&lt;Call&lt;?&gt;&gt; get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
+    if (getRawType(returnType) != Call.class) {
+      return null;
+    }
+    final Type responseType = Utils.getCallResponseType(returnType);
+    return new CallAdapter&lt;Call&lt;?&gt;&gt;() {
+      @Override public Type responseType() {
+        return responseType;
+      }
+
+      @Override public &lt;R&gt; Call&lt;R&gt; adapt(Call&lt;R&gt; call) {
+        return new ExecutorCallbackCall&lt;&gt;(callbackExecutor, call);
+      }
+    };
+  }
+</code></pre>
+
+<p>注意 <code>CallAdapt</code> 的<code>adapt 方法</code>，这里构造了一个<code>call</code>,</p>
+
+<p><code>return new ExecutorCallbackCall&lt;&gt;(callbackExecutor, call);</code></p>
+
+<p>这里有两个参数，<code>callbackExecutor</code> ，<code>call</code></p>
+
+<ol>
+<li><code>callbackExecutor</code>是<code>platform</code>传入的，目的是为了 callback 能运行在UI 线程，再回来看<code>platform</code>的代码</li>
+</ol>
+
+<pre><code class="language-java">  static class Android extends Platform {
+    @Override CallAdapter.Factory defaultCallAdapterFactory(Executor callbackExecutor) {
+      if (callbackExecutor == null) {
+        callbackExecutor = new MainThreadExecutor();
+      }
+      return new ExecutorCallAdapterFactory(callbackExecutor);
+    }
+
+    static class MainThreadExecutor implements Executor {
+      private final Handler handler = new Handler(Looper.getMainLooper());
+
+      @Override public void execute(Runnable r) {
+        handler.post(r);
+      }
+    }
+  }
+</code></pre>
+
+<p>这个结构体就是我们最后拿到的<code>call</code>，我们来看看他的结构</p>
+
+<pre><code class="language-java">static final class ExecutorCallbackCall&lt;T&gt; implements Call&lt;T&gt; {
+    final Executor callbackExecutor;
+    final Call&lt;T&gt; delegate;
+
+    ExecutorCallbackCall(Executor callbackExecutor, Call&lt;T&gt; delegate) {
+      this.callbackExecutor = callbackExecutor;
+      this.delegate = delegate;
+    }
+
+    @Override public void enqueue(final Callback&lt;T&gt; callback) {
+      delegate.enqueue(new Callback&lt;T&gt;() {
+        @Override public void onResponse(final Call&lt;T&gt; call, final Response&lt;T&gt; response) {
+          callbackExecutor.execute(new Runnable() {
+            @Override public void run() {
+              if (delegate.isCanceled()) {
+                // Emulate OkHttp&#39;s behavior of throwing/delivering an IOException on cancelation
+                callback.onFailure(call, new IOException(&quot;Canceled&quot;));
+              } else {
+                callback.onResponse(call, response);
+              }
+            }
+          });
+        }
+
+        @Override public void onFailure(final Call&lt;T&gt; call, final Throwable t) {
+          callbackExecutor.execute(new Runnable() {
+            @Override public void run() {
+              callback.onFailure(call, t);
+            }
+          });
+        }
+      });
+    }
+
+    @Override public boolean isExecuted() {
+      return delegate.isExecuted();
+    }
+
+    @Override public Response&lt;T&gt; execute() throws IOException {
+      return delegate.execute();
+    }
+
+    @Override public void cancel() {
+      delegate.cancel();
+    }
+
+    @Override public boolean isCanceled() {
+      return delegate.isCanceled();
+    }
+
+    @SuppressWarnings(&quot;CloneDoesntCallSuperClone&quot;) // Performing deep clone.
+    @Override public Call&lt;T&gt; clone() {
+      return new ExecutorCallbackCall&lt;&gt;(callbackExecutor, delegate.clone());
+    }
+
+    @Override public Request request() {
+      return delegate.request();
+    }
+  }
+</code></pre>
+
+<p>正如之前所分析的，在异步执行回调时 <code>onResponse</code>、<code>onFailure</code>，使用了<code>Executor</code>来执行，这样我们的回调就运行在了 UI 线程，我们甚至可以自定义<code>Executor</code>，运行在我们希望的线程</p>
+
+<p>这里的 <code>execute</code>、<code>request</code>等方法都是静态代理模式，直接由构造时传入的<code>call</code>执行<br/>
+那么 call 是哪里传入的？<br/>
+再次回到 <code>create</code>中</p>
+
+<pre><code class="language-java">  Object invoke(Object... args) {
+    return callAdapter.adapt(
+        new OkHttpCall&lt;&gt;(callFactory, requestFactory, args, responseConverter));
+  }
+</code></pre>
+
+<p>可以看到最终执行这些方法的是 <code>new OkHttpCall&lt;&gt;(callFactory, requestFactory, args, responseConverter)</code></p>
+
+<h3 id="toc_11">OkHttpCall</h3>
+
+<p><code>OkHttpCall</code>是<code>call</code>的一个实现，其中 wrapper 了<code>okhttp3.Call</code>，<strong>最终的网络请求是<code>okhttp3</code>去请求的，retrofit 本身没有对网络进行请求的操作</strong></p>
+
+<p>构造方法</p>
+
+<pre><code class="language-java">  OkHttpCall(okhttp3.Call.Factory callFactory, RequestFactory requestFactory, Object[] args,
+      Converter&lt;ResponseBody, T&gt; responseConverter) {
+    this.callFactory = callFactory;
+    this.requestFactory = requestFactory;
+    this.args = args;
+    this.responseConverter = responseConverter;
+  }
+</code></pre>
+
+<p>在构造时<code>requestFactory</code>，<code>responseConverter</code>都已经拿到了</p>
+
+<p>举例分析 <code>execute</code></p>
+
+<pre><code class="language-java">@Override public Response&lt;T&gt; execute() throws IOException {
+    okhttp3.Call call;
+
+    synchronized (this) {
+      if (executed) throw new IllegalStateException(&quot;Already executed.&quot;);
+      executed = true;
+
+      if (creationFailure != null) {
+        if (creationFailure instanceof IOException) {
+          throw (IOException) creationFailure;
+        } else {
+          throw (RuntimeException) creationFailure;
+        }
+      }
+
+      call = rawCall;
+      if (call == null) {
+        try {
+          call = rawCall = createRawCall();
+        } catch (IOException | RuntimeException e) {
+          creationFailure = e;
+          throw e;
+        }
+      }
+    }
+
+    if (canceled) {
+      call.cancel();
+    }
+
+    return parseResponse(call.execute());
+  }
+  
+  
+  -------------
+   private okhttp3.Call createRawCall() throws IOException {
+    okhttp3.Call call = callFactory.newCall(requestFactory.create(args));
+    if (call == null) {
+      throw new NullPointerException(&quot;Call.Factory returned null.&quot;);
+    }
+    return call;
+  }
+</code></pre>
+
+<p><code>createRawCall</code>得到了一个 okhttp 的 call， <code>callFactory</code>在<code>retrofit</code> build 时默认赋值为<code>OkHttpClient</code>，最好执行的是okhttp 的 call 的 excute</p>
+
+<p>继续看执行 excute 后的解析</p>
+
+<pre><code class="language-java">Response&lt;T&gt; parseResponse(okhttp3.Response rawResponse) throws IOException {
+    ResponseBody rawBody = rawResponse.body();
+
+    // Remove the body&#39;s source (the only stateful object) so we can pass the response along.
+    rawResponse = rawResponse.newBuilder()
+        .body(new NoContentResponseBody(rawBody.contentType(), rawBody.contentLength()))
+        .build();
+
+    int code = rawResponse.code();
+    if (code &lt; 200 || code &gt;= 300) {
+      try {
+        // Buffer the entire body to avoid future I/O.
+        ResponseBody bufferedBody = Utils.buffer(rawBody);
+        return Response.error(bufferedBody, rawResponse);
+      } finally {
+        rawBody.close();
+      }
+    }
+
+    if (code == 204 || code == 205) {
+      return Response.success(null, rawResponse);
+    }
+
+    ExceptionCatchingRequestBody catchingBody = new ExceptionCatchingRequestBody(rawBody);
+    try {
+        //这里完成了原始 Response 的解析，T 就是我们想要的结果,使用了responseConverter
+      T body = responseConverter.convert(catchingBody);
+      return Response.success(body, rawResponse);
+    } catch (RuntimeException e) {
+      // If the underlying source threw an exception, propagate that rather than indicating it was
+      // a runtime exception.
+      catchingBody.throwIfCaught();
+      throw e;
+    }
+  }
+
+</code></pre>
+
+<h3 id="toc_12">RxJavaCallAdapterFactory</h3>
+
+<p>看完了<code>ExecutorCallAdapterFactory</code>，继续看看另一种实现<code>RxJavaCallAdapterFactory</code></p>
+
+<p>关键代码</p>
+
+<pre><code class="language-java">private CallAdapter&lt;Observable&lt;?&gt;&gt; getCallAdapter(Type returnType) {
+    Type observableType = getParameterUpperBound(0, (ParameterizedType) returnType);
+    Class&lt;?&gt; rawObservableType = getRawType(observableType);
+    if (rawObservableType == Response.class) {
+      if (!(observableType instanceof ParameterizedType)) {
+        throw new IllegalStateException(&quot;Response must be parameterized&quot;
+            + &quot; as Response&lt;Foo&gt; or Response&lt;? extends Foo&gt;&quot;);
+      }
+      Type responseType = getParameterUpperBound(0, (ParameterizedType) observableType);
+      return new ResponseCallAdapter(responseType);
+    }
+
+    if (rawObservableType == Result.class) {
+      if (!(observableType instanceof ParameterizedType)) {
+        throw new IllegalStateException(&quot;Result must be parameterized&quot;
+            + &quot; as Result&lt;Foo&gt; or Result&lt;? extends Foo&gt;&quot;);
+      }
+      Type responseType = getParameterUpperBound(0, (ParameterizedType) observableType);
+      return new ResultCallAdapter(responseType);
+    }
+
+    return new SimpleCallAdapter(observableType);
+  }
+</code></pre>
+
+<p>根据返回的类型选择不同的CallAdapter,选取<code>SimpleCallAdapter</code>领看看</p>
+
+<pre><code class="language-java">static final class SimpleCallAdapter implements CallAdapter&lt;Observable&lt;?&gt;&gt; {
+    private final Type responseType;
+
+    SimpleCallAdapter(Type responseType) {
+      this.responseType = responseType;
+    }
+
+    @Override public Type responseType() {
+      return responseType;
+    }
+
+    @Override public &lt;R&gt; Observable&lt;R&gt; adapt(Call&lt;R&gt; call) {
+      return Observable.create(new CallOnSubscribe&lt;&gt;(call)) //
+          .flatMap(new Func1&lt;Response&lt;R&gt;, Observable&lt;R&gt;&gt;() {
+            @Override public Observable&lt;R&gt; call(Response&lt;R&gt; response) {
+              if (response.isSuccess()) {
+                return Observable.just(response.body());
+              }
+              return Observable.error(new HttpException(response));
+            }
+          });
+    }
+  }
+</code></pre>
+
+<p>通过一个 flatMap，将 response 中的结构发送出去。，。。最终返回的是一个Observable类型</p>
+
+<p>最好来张图总结下<img src="media/15299133101383/14655396828586.png" alt=""/></p>
+
+<blockquote>
+<p>图片出自  <a href="https://github.com/android-cn/android-open-project-analysis/tree/master/tool-lib/network/retrofit">https://github.com/android-cn/android-open-project-analysis/tree/master/tool-lib/network/retrofit</a></p>
+</blockquote>
+
+<p><img src="media/15299133101383/14655401182421.png" alt=""/></p>
+
+<blockquote>
+<p>图片出自 <a href="http://www.jianshu.com/p/45cb536be2f4">http://www.jianshu.com/p/45cb536be2f4</a></p>
+</blockquote>
+
+<h2 id="toc_13">参考</h2>
+
+<blockquote>
+<p><a href="http://blog.qiji.tech/archives/9546">http://blog.qiji.tech/archives/9546</a><br/>
+<a href="http://www.jianshu.com/p/07dac989272c">http://www.jianshu.com/p/07dac989272c</a><br/>
+<a href="https://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&amp;mid=2653577186&amp;idx=1&amp;sn=1a5f6369faeb22b4b68ea39f25020d28&amp;scene=0&amp;key=f5c31ae61525f82eff1e94d54c4abd1c47958e9f7fe5751f2d201958841a354f0423e4ce98cb895058808f330921bde6&amp;ascene=0&amp;uin=MTYzMjY2MTE1&amp;devicetype=iMac+MacBookPro10%2C1+OSX+OSX+10.11.4+build(15E65)&amp;version=11020201&amp;pass_ticket=rsJxex9Bn1eN7iJgW6FUI2KG3V9O6e3TH42j1U%2Fy5SU%3D">https://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&amp;mid=2653577186&amp;idx=1&amp;sn=1a5f6369faeb22b4b68ea39f25020d28&amp;scene=0&amp;key=f5c31ae61525f82eff1e94d54c4abd1c47958e9f7fe5751f2d201958841a354f0423e4ce98cb895058808f330921bde6&amp;ascene=0&amp;uin=MTYzMjY2MTE1&amp;devicetype=iMac+MacBookPro10%2C1+OSX+OSX+10.11.4+build(15E65)&amp;version=11020201&amp;pass_ticket=rsJxex9Bn1eN7iJgW6FUI2KG3V9O6e3TH42j1U%2Fy5SU%3D</a><br/>
+<strong><a href="https://github.com/android-cn/android-open-project-analysis/tree/master/tool-lib/network/retrofit">https://github.com/android-cn/android-open-project-analysis/tree/master/tool-lib/network/retrofit</a></strong><br/>
+<a href="http://www.tuicool.com/articles/UryUnyF">http://www.tuicool.com/articles/UryUnyF</a><br/>
+<a href="http://www.jianshu.com/p/c1a3a881a144">http://www.jianshu.com/p/c1a3a881a144</a></p>
+</blockquote>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15299133103809.html"  title="Previous Post: 一个很棒的 Android  APP框架">&laquo; 一个很棒的 Android  APP框架</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15299133101429.html" 
+	        title="Next Post: retrofit源码解析1">retrofit源码解析1 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15299133101383.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  </body>
+</html>

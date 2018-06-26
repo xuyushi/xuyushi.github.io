@@ -1,0 +1,812 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Android View 小结 - Xu Yushi's Blog
+  
+  </title>
+ <meta name="description" content="理工男的碎碎念">
+ <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">Xu Yushi's Blog</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>Android</label></li>
+
+          
+            <li><a title="jenkins 平台搭建" href="15299133099249.html">jenkins 平台搭建</a></li>
+          
+            <li><a title="gitlab 搭建" href="15299133099310.html">gitlab 搭建</a></li>
+          
+            <li><a title="Android sdk 搭建" href="15299133099366.html">Android sdk 搭建</a></li>
+          
+            <li><a title="Maven 搭建" href="15299133099121.html">Maven 搭建</a></li>
+          
+            <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099083.html">快速搭建新项目框架3-Kotlin</a></li>
+          
+            <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099209.html">快速搭建新项目框架3-Kotlin</a></li>
+          
+            <li><a title="快速搭建新项目框架2-mvp 结构" href="15299133100126.html">快速搭建新项目框架2-mvp 结构</a></li>
+          
+            <li><a title="快速搭建新项目框架1-依赖注入" href="15299133100165.html">快速搭建新项目框架1-依赖注入</a></li>
+          
+            <li><a title="快速搭建新项目框架0-前言" href="15299133100210.html">快速搭建新项目框架0-前言</a></li>
+          
+            <li><a title="Architecture Components--Room  Persistence Library" href="15299133101299.html">Architecture Components--Room  Persistence Library</a></li>
+          
+            <li><a title="Architecture Components -- Guide to App Architecture" href="15299133102446.html">Architecture Components -- Guide to App Architecture</a></li>
+          
+            <li><a title="Architecture Components--ViewModel" href="15299133101129.html">Architecture Components--ViewModel</a></li>
+          
+            <li><a title="Architecture Components--LiveData" href="15299133101795.html">Architecture Components--LiveData</a></li>
+          
+            <li><a title="Architecture Components--Lifecycle" href="15299133102342.html">Architecture Components--Lifecycle</a></li>
+          
+            <li><a title="Maven 仓库的使用和搭建" href="15299133101591.html">Maven 仓库的使用和搭建</a></li>
+          
+            <li><a title="gradle 插件开发" href="15299133102596.html">gradle 插件开发</a></li>
+          
+            <li><a title="gradle 插件开发" href="15299133104171.html">gradle 插件开发</a></li>
+          
+            <li><a title="NanoHTTPD源码解析" href="15299133101466.html">NanoHTTPD源码解析</a></li>
+          
+            <li><a title="Android CleanArchitecture --Dagger分析" href="15299133103599.html">Android CleanArchitecture --Dagger分析</a></li>
+          
+            <li><a title="Android 测试 （四）-- 实战分析" href="15299133102936.html">Android 测试 （四）-- 实战分析</a></li>
+          
+            <li><a title="Android 测试 （五）-- 实战分析" href="15299133103011.html">Android 测试 （五）-- 实战分析</a></li>
+          
+            <li><a title="Android 测试 （三）--Local Unit Tests" href="15299133103134.html">Android 测试 （三）--Local Unit Tests</a></li>
+          
+            <li><a title="Android 测试 （二）--Instrumented Unit" href="15299133103076.html">Android 测试 （二）--Instrumented Unit</a></li>
+          
+            <li><a title="Android 测试 （一）--测试总览" href="15299133103196.html">Android 测试 （一）--测试总览</a></li>
+          
+            <li><a title="Window 和 WindowManager" href="15299133100749.html">Window 和 WindowManager</a></li>
+          
+            <li><a title="window、Activity、DecorView、ViewRoot关系" href="15299133103906.html">window、Activity、DecorView、ViewRoot关系</a></li>
+          
+            <li><a title="AsyncTask 源码分析" href="15299133102725.html">AsyncTask 源码分析</a></li>
+          
+            <li><a title="Runnable、Callable、Future、FutureTask的区别" href="15299133101261.html">Runnable、Callable、Future、FutureTask的区别</a></li>
+          
+            <li><a title="Looper、Handler、Message 源码分析" href="15299133101714.html">Looper、Handler、Message 源码分析</a></li>
+          
+            <li><a title="HandlerThread 源码 分析" href="15299133102391.html">HandlerThread 源码 分析</a></li>
+          
+            <li><a title="Activity 总结" href="15299133103948.html">Activity 总结</a></li>
+          
+            <li><a title="Architecting Android…The evolution" href="15299133102798.html">Architecting Android…The evolution</a></li>
+          
+            <li><a title="Android clean architecting" href="15299133103637.html">Android clean architecting</a></li>
+          
+            <li><a title="Android Application 从零开始 2 ——DI" href="15299133103685.html">Android Application 从零开始 2 ——DI</a></li>
+          
+            <li><a title="Android Application 从零开始 1 ——Gradle" href="15299133103723.html">Android Application 从零开始 1 ——Gradle</a></li>
+          
+            <li><a title="Android Application 从零开始 0 ——前言" href="15299133103764.html">Android Application 从零开始 0 ——前言</a></li>
+          
+            <li><a title="volley源码解析" href="15299133100860.html">volley源码解析</a></li>
+          
+            <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+          
+            <li><a title="ASimpleCache缓存源码分析" href="15299133102762.html">ASimpleCache缓存源码分析</a></li>
+          
+            <li><a title="一个很棒的 Android  APP框架" href="15299133103809.html">一个很棒的 Android  APP框架</a></li>
+          
+            <li><a title="retrofit源码解析2" href="15299133101383.html">retrofit源码解析2</a></li>
+          
+            <li><a title="retrofit源码解析1" href="15299133101429.html">retrofit源码解析1</a></li>
+          
+            <li><a title="Service 总结" href="15299133101225.html">Service 总结</a></li>
+          
+            <li><a title="Activity Mode" href="15299133103997.html">Activity Mode</a></li>
+          
+            <li><a title="地图区域绘制 MVP 实践" href="15299133100416.html">地图区域绘制 MVP 实践</a></li>
+          
+            <li><a title="Listview crash 分析" href="15299133101874.html">Listview crash 分析</a></li>
+          
+            <li><a title="robolectric 单元测试" href="15299133103267.html">robolectric 单元测试</a></li>
+          
+            <li><a title="Material Design" href="15299133101643.html">Material Design</a></li>
+          
+            <li><a title="Android 中的 rxjava" href="15299133103337.html">Android 中的 rxjava</a></li>
+          
+            <li><a title="Android MVVM" href="15299133103550.html">Android MVVM</a></li>
+          
+            <li><a title="Android 中的MVP 模式" href="15299133101508.html">Android 中的MVP 模式</a></li>
+          
+            <li><a title="Android 内存泄露" href="15299133100598.html">Android 内存泄露</a></li>
+          
+            <li><a title="IDEA 技巧" href="15299133102120.html">IDEA 技巧</a></li>
+          
+            <li><a title="Android Media Player" href="15299133101552.html">Android Media Player</a></li>
+          
+            <li><a title="Android View 小结（下）" href="15299133099732.html">Android View 小结（下）</a></li>
+          
+            <li><a title="Android service" href="15299133103504.html">Android service</a></li>
+          
+            <li><a title="robolectric" href="15299133101345.html">robolectric</a></li>
+          
+            <li><a title="Android Studio中进行单元测试" href="15299133103442.html">Android Studio中进行单元测试</a></li>
+          
+            <li><a title="AIDL 学习" href="15299133103865.html">AIDL 学习</a></li>
+          
+            <li><a title="蓝牙学习" href="15299133099695.html">蓝牙学习</a></li>
+          
+            <li><a title="title: 手机信号质量检测" href="15299133100046.html">title: 手机信号质量检测</a></li>
+          
+            <li><a title="GreenDao学习" href="15299133102559.html">GreenDao学习</a></li>
+          
+            <li><a title="登陆框 UI" href="15299133099886.html">登陆框 UI</a></li>
+          
+            <li><a title="EventBus 学习" href="15299133102685.html">EventBus 学习</a></li>
+          
+            <li><a title="取消软键盘自动弹出" href="15299133100509.html">取消软键盘自动弹出</a></li>
+          
+            <li><a title="jni 学习" href="15299133101955.html">jni 学习</a></li>
+          
+            <li><a title="GSON 学习" href="15299133102507.html">GSON 学习</a></li>
+          
+            <li><a title="Android 触摸事件传递机制" href="15299133102860.html">Android 触摸事件传递机制</a></li>
+          
+            <li><a title="volley学习" href="15299133100924.html">volley学习</a></li>
+          
+            <li><a title="wifi压力测试" href="15299133100786.html">wifi压力测试</a></li>
+          
+            <li><a title="listview的复用机制" href="15299133101837.html">listview的复用机制</a></li>
+          
+            <li><a title="Android View 小结" href="15299133103394.html">Android View 小结</a></li>
+          
+            <li><a title="使用命令行查看android sqlite数据库" href="15299133100658.html">使用命令行查看android sqlite数据库</a></li>
+          
+            <li><a title="loader 总结" href="15299133101753.html">loader 总结</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>UserGrowth</label></li>
+
+          
+            <li><a title="abtest 数据分析" href="15299133098726.html">abtest 数据分析</a></li>
+          
+            <li><a title="ABtest 平台框架" href="15299133098793.html">ABtest 平台框架</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>balabala</label></li>
+
+          
+            <li><a title="写在离开北京的前夕" href="15299133099414.html">写在离开北京的前夕</a></li>
+          
+            <li><a title="09-17 碎碎念" href="15299133099046.html">09-17 碎碎念</a></li>
+          
+            <li><a title="近期学习计划" href="15299133099560.html">近期学习计划</a></li>
+          
+            <li><a title="单身汪的自白" href="15299133100538.html">单身汪的自白</a></li>
+          
+            <li><a title="2015小结" href="15299133104055.html">2015小结</a></li>
+          
+            <li><a title="日记" href="15299133101912.html">日记</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Java</label></li>
+
+          
+            <li><a title="Java 内存分配策略" href="15299133102065.html">Java 内存分配策略</a></li>
+          
+            <li><a title="HashMap 的实现原理" href="15299133102218.html">HashMap 的实现原理</a></li>
+          
+            <li><a title="hashcode" href="15299133102285.html">hashcode</a></li>
+          
+            <li><a title="wait/notify/notifyAll 总结" href="15299133100823.html">wait/notify/notifyAll 总结</a></li>
+          
+            <li><a title="synchronized 总结" href="15299133101186.html">synchronized 总结</a></li>
+          
+            <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+          
+            <li><a title="代理模式 Proxy Pattern" href="15299133100699.html">代理模式 Proxy Pattern</a></li>
+          
+            <li><a title="迭代器模式 Iterator Pattern" href="15299133099503.html">迭代器模式 Iterator Pattern</a></li>
+          
+            <li><a title="组合模式 Composite Pattern" href="15299133099787.html">组合模式 Composite Pattern</a></li>
+          
+            <li><a title="命令模式 Command Pattern" href="15299133100466.html">命令模式 Command Pattern</a></li>
+          
+            <li><a title="单例模式 Singleton Pattern" href="15299133100569.html">单例模式 Singleton Pattern</a></li>
+          
+            <li><a title="适配器模式 Adapter Pattern" href="15299133099455.html">适配器模式 Adapter Pattern</a></li>
+          
+            <li><a title="简单工厂模式 Factory  Pattern" href="15299133100248.html">简单工厂模式 Factory  Pattern</a></li>
+          
+            <li><a title="工厂方法模式 Factory Method Pattern" href="15299133100311.html">工厂方法模式 Factory Method Pattern</a></li>
+          
+            <li><a title="装饰者模式 Decorator Design Pattern" href="15299133099653.html">装饰者模式 Decorator Design Pattern</a></li>
+          
+            <li><a title="观察者模式 Observer Design Pattern" href="15299133099606.html">观察者模式 Observer Design Pattern</a></li>
+          
+            <li><a title="策略模式 Strategy Pattern" href="15299133099842.html">策略模式 Strategy Pattern</a></li>
+          
+            <li><a title="模板方法模式 Template Method Pattern" href="15299133100005.html">模板方法模式 Template Method Pattern</a></li>
+          
+            <li><a title="状态模式 State Design Pattern" href="15299133099923.html">状态模式 State Design Pattern</a></li>
+          
+            <li><a title="Java注解" href="15299133099968.html">Java注解</a></li>
+          
+            <li><a title="抽象工厂模式 Abstract Factory Pattern" href="15299133100082.html">抽象工厂模式 Abstract Factory Pattern</a></li>
+          
+            <li><a title="强引用、软引用、弱引用、虚引用" href="15299133101993.html">强引用、软引用、弱引用、虚引用</a></li>
+          
+            <li><a title="VIM 技巧" href="15299133099014.html">VIM 技巧</a></li>
+          
+            <li><a title="java 反射学习" href="15299133102029.html">java 反射学习</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>Android</span></li>
+                        
+                          <li><a title="jenkins 平台搭建" href="15299133099249.html">jenkins 平台搭建</a></li>
+                        
+                          <li><a title="gitlab 搭建" href="15299133099310.html">gitlab 搭建</a></li>
+                        
+                          <li><a title="Android sdk 搭建" href="15299133099366.html">Android sdk 搭建</a></li>
+                        
+                          <li><a title="Maven 搭建" href="15299133099121.html">Maven 搭建</a></li>
+                        
+                          <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099083.html">快速搭建新项目框架3-Kotlin</a></li>
+                        
+                          <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099209.html">快速搭建新项目框架3-Kotlin</a></li>
+                        
+                          <li><a title="快速搭建新项目框架2-mvp 结构" href="15299133100126.html">快速搭建新项目框架2-mvp 结构</a></li>
+                        
+                          <li><a title="快速搭建新项目框架1-依赖注入" href="15299133100165.html">快速搭建新项目框架1-依赖注入</a></li>
+                        
+                          <li><a title="快速搭建新项目框架0-前言" href="15299133100210.html">快速搭建新项目框架0-前言</a></li>
+                        
+                          <li><a title="Architecture Components--Room  Persistence Library" href="15299133101299.html">Architecture Components--Room  Persistence Library</a></li>
+                        
+                          <li><a title="Architecture Components -- Guide to App Architecture" href="15299133102446.html">Architecture Components -- Guide to App Architecture</a></li>
+                        
+                          <li><a title="Architecture Components--ViewModel" href="15299133101129.html">Architecture Components--ViewModel</a></li>
+                        
+                          <li><a title="Architecture Components--LiveData" href="15299133101795.html">Architecture Components--LiveData</a></li>
+                        
+                          <li><a title="Architecture Components--Lifecycle" href="15299133102342.html">Architecture Components--Lifecycle</a></li>
+                        
+                          <li><a title="Maven 仓库的使用和搭建" href="15299133101591.html">Maven 仓库的使用和搭建</a></li>
+                        
+                          <li><a title="gradle 插件开发" href="15299133102596.html">gradle 插件开发</a></li>
+                        
+                          <li><a title="gradle 插件开发" href="15299133104171.html">gradle 插件开发</a></li>
+                        
+                          <li><a title="NanoHTTPD源码解析" href="15299133101466.html">NanoHTTPD源码解析</a></li>
+                        
+                          <li><a title="Android CleanArchitecture --Dagger分析" href="15299133103599.html">Android CleanArchitecture --Dagger分析</a></li>
+                        
+                          <li><a title="Android 测试 （四）-- 实战分析" href="15299133102936.html">Android 测试 （四）-- 实战分析</a></li>
+                        
+                          <li><a title="Android 测试 （五）-- 实战分析" href="15299133103011.html">Android 测试 （五）-- 实战分析</a></li>
+                        
+                          <li><a title="Android 测试 （三）--Local Unit Tests" href="15299133103134.html">Android 测试 （三）--Local Unit Tests</a></li>
+                        
+                          <li><a title="Android 测试 （二）--Instrumented Unit" href="15299133103076.html">Android 测试 （二）--Instrumented Unit</a></li>
+                        
+                          <li><a title="Android 测试 （一）--测试总览" href="15299133103196.html">Android 测试 （一）--测试总览</a></li>
+                        
+                          <li><a title="Window 和 WindowManager" href="15299133100749.html">Window 和 WindowManager</a></li>
+                        
+                          <li><a title="window、Activity、DecorView、ViewRoot关系" href="15299133103906.html">window、Activity、DecorView、ViewRoot关系</a></li>
+                        
+                          <li><a title="AsyncTask 源码分析" href="15299133102725.html">AsyncTask 源码分析</a></li>
+                        
+                          <li><a title="Runnable、Callable、Future、FutureTask的区别" href="15299133101261.html">Runnable、Callable、Future、FutureTask的区别</a></li>
+                        
+                          <li><a title="Looper、Handler、Message 源码分析" href="15299133101714.html">Looper、Handler、Message 源码分析</a></li>
+                        
+                          <li><a title="HandlerThread 源码 分析" href="15299133102391.html">HandlerThread 源码 分析</a></li>
+                        
+                          <li><a title="Activity 总结" href="15299133103948.html">Activity 总结</a></li>
+                        
+                          <li><a title="Architecting Android…The evolution" href="15299133102798.html">Architecting Android…The evolution</a></li>
+                        
+                          <li><a title="Android clean architecting" href="15299133103637.html">Android clean architecting</a></li>
+                        
+                          <li><a title="Android Application 从零开始 2 ——DI" href="15299133103685.html">Android Application 从零开始 2 ——DI</a></li>
+                        
+                          <li><a title="Android Application 从零开始 1 ——Gradle" href="15299133103723.html">Android Application 从零开始 1 ——Gradle</a></li>
+                        
+                          <li><a title="Android Application 从零开始 0 ——前言" href="15299133103764.html">Android Application 从零开始 0 ——前言</a></li>
+                        
+                          <li><a title="volley源码解析" href="15299133100860.html">volley源码解析</a></li>
+                        
+                          <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+                        
+                          <li><a title="ASimpleCache缓存源码分析" href="15299133102762.html">ASimpleCache缓存源码分析</a></li>
+                        
+                          <li><a title="一个很棒的 Android  APP框架" href="15299133103809.html">一个很棒的 Android  APP框架</a></li>
+                        
+                          <li><a title="retrofit源码解析2" href="15299133101383.html">retrofit源码解析2</a></li>
+                        
+                          <li><a title="retrofit源码解析1" href="15299133101429.html">retrofit源码解析1</a></li>
+                        
+                          <li><a title="Service 总结" href="15299133101225.html">Service 总结</a></li>
+                        
+                          <li><a title="Activity Mode" href="15299133103997.html">Activity Mode</a></li>
+                        
+                          <li><a title="地图区域绘制 MVP 实践" href="15299133100416.html">地图区域绘制 MVP 实践</a></li>
+                        
+                          <li><a title="Listview crash 分析" href="15299133101874.html">Listview crash 分析</a></li>
+                        
+                          <li><a title="robolectric 单元测试" href="15299133103267.html">robolectric 单元测试</a></li>
+                        
+                          <li><a title="Material Design" href="15299133101643.html">Material Design</a></li>
+                        
+                          <li><a title="Android 中的 rxjava" href="15299133103337.html">Android 中的 rxjava</a></li>
+                        
+                          <li><a title="Android MVVM" href="15299133103550.html">Android MVVM</a></li>
+                        
+                          <li><a title="Android 中的MVP 模式" href="15299133101508.html">Android 中的MVP 模式</a></li>
+                        
+                          <li><a title="Android 内存泄露" href="15299133100598.html">Android 内存泄露</a></li>
+                        
+                          <li><a title="IDEA 技巧" href="15299133102120.html">IDEA 技巧</a></li>
+                        
+                          <li><a title="Android Media Player" href="15299133101552.html">Android Media Player</a></li>
+                        
+                          <li><a title="Android View 小结（下）" href="15299133099732.html">Android View 小结（下）</a></li>
+                        
+                          <li><a title="Android service" href="15299133103504.html">Android service</a></li>
+                        
+                          <li><a title="robolectric" href="15299133101345.html">robolectric</a></li>
+                        
+                          <li><a title="Android Studio中进行单元测试" href="15299133103442.html">Android Studio中进行单元测试</a></li>
+                        
+                          <li><a title="AIDL 学习" href="15299133103865.html">AIDL 学习</a></li>
+                        
+                          <li><a title="蓝牙学习" href="15299133099695.html">蓝牙学习</a></li>
+                        
+                          <li><a title="title: 手机信号质量检测" href="15299133100046.html">title: 手机信号质量检测</a></li>
+                        
+                          <li><a title="GreenDao学习" href="15299133102559.html">GreenDao学习</a></li>
+                        
+                          <li><a title="登陆框 UI" href="15299133099886.html">登陆框 UI</a></li>
+                        
+                          <li><a title="EventBus 学习" href="15299133102685.html">EventBus 学习</a></li>
+                        
+                          <li><a title="取消软键盘自动弹出" href="15299133100509.html">取消软键盘自动弹出</a></li>
+                        
+                          <li><a title="jni 学习" href="15299133101955.html">jni 学习</a></li>
+                        
+                          <li><a title="GSON 学习" href="15299133102507.html">GSON 学习</a></li>
+                        
+                          <li><a title="Android 触摸事件传递机制" href="15299133102860.html">Android 触摸事件传递机制</a></li>
+                        
+                          <li><a title="volley学习" href="15299133100924.html">volley学习</a></li>
+                        
+                          <li><a title="wifi压力测试" href="15299133100786.html">wifi压力测试</a></li>
+                        
+                          <li><a title="listview的复用机制" href="15299133101837.html">listview的复用机制</a></li>
+                        
+                          <li><a title="Android View 小结" href="15299133103394.html">Android View 小结</a></li>
+                        
+                          <li><a title="使用命令行查看android sqlite数据库" href="15299133100658.html">使用命令行查看android sqlite数据库</a></li>
+                        
+                          <li><a title="loader 总结" href="15299133101753.html">loader 总结</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>UserGrowth</span></li>
+                        
+                          <li><a title="abtest 数据分析" href="15299133098726.html">abtest 数据分析</a></li>
+                        
+                          <li><a title="ABtest 平台框架" href="15299133098793.html">ABtest 平台框架</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>balabala</span></li>
+                        
+                          <li><a title="写在离开北京的前夕" href="15299133099414.html">写在离开北京的前夕</a></li>
+                        
+                          <li><a title="09-17 碎碎念" href="15299133099046.html">09-17 碎碎念</a></li>
+                        
+                          <li><a title="近期学习计划" href="15299133099560.html">近期学习计划</a></li>
+                        
+                          <li><a title="单身汪的自白" href="15299133100538.html">单身汪的自白</a></li>
+                        
+                          <li><a title="2015小结" href="15299133104055.html">2015小结</a></li>
+                        
+                          <li><a title="日记" href="15299133101912.html">日记</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Java</span></li>
+                        
+                          <li><a title="Java 内存分配策略" href="15299133102065.html">Java 内存分配策略</a></li>
+                        
+                          <li><a title="HashMap 的实现原理" href="15299133102218.html">HashMap 的实现原理</a></li>
+                        
+                          <li><a title="hashcode" href="15299133102285.html">hashcode</a></li>
+                        
+                          <li><a title="wait/notify/notifyAll 总结" href="15299133100823.html">wait/notify/notifyAll 总结</a></li>
+                        
+                          <li><a title="synchronized 总结" href="15299133101186.html">synchronized 总结</a></li>
+                        
+                          <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+                        
+                          <li><a title="代理模式 Proxy Pattern" href="15299133100699.html">代理模式 Proxy Pattern</a></li>
+                        
+                          <li><a title="迭代器模式 Iterator Pattern" href="15299133099503.html">迭代器模式 Iterator Pattern</a></li>
+                        
+                          <li><a title="组合模式 Composite Pattern" href="15299133099787.html">组合模式 Composite Pattern</a></li>
+                        
+                          <li><a title="命令模式 Command Pattern" href="15299133100466.html">命令模式 Command Pattern</a></li>
+                        
+                          <li><a title="单例模式 Singleton Pattern" href="15299133100569.html">单例模式 Singleton Pattern</a></li>
+                        
+                          <li><a title="适配器模式 Adapter Pattern" href="15299133099455.html">适配器模式 Adapter Pattern</a></li>
+                        
+                          <li><a title="简单工厂模式 Factory  Pattern" href="15299133100248.html">简单工厂模式 Factory  Pattern</a></li>
+                        
+                          <li><a title="工厂方法模式 Factory Method Pattern" href="15299133100311.html">工厂方法模式 Factory Method Pattern</a></li>
+                        
+                          <li><a title="装饰者模式 Decorator Design Pattern" href="15299133099653.html">装饰者模式 Decorator Design Pattern</a></li>
+                        
+                          <li><a title="观察者模式 Observer Design Pattern" href="15299133099606.html">观察者模式 Observer Design Pattern</a></li>
+                        
+                          <li><a title="策略模式 Strategy Pattern" href="15299133099842.html">策略模式 Strategy Pattern</a></li>
+                        
+                          <li><a title="模板方法模式 Template Method Pattern" href="15299133100005.html">模板方法模式 Template Method Pattern</a></li>
+                        
+                          <li><a title="状态模式 State Design Pattern" href="15299133099923.html">状态模式 State Design Pattern</a></li>
+                        
+                          <li><a title="Java注解" href="15299133099968.html">Java注解</a></li>
+                        
+                          <li><a title="抽象工厂模式 Abstract Factory Pattern" href="15299133100082.html">抽象工厂模式 Abstract Factory Pattern</a></li>
+                        
+                          <li><a title="强引用、软引用、弱引用、虚引用" href="15299133101993.html">强引用、软引用、弱引用、虚引用</a></li>
+                        
+                          <li><a title="VIM 技巧" href="15299133099014.html">VIM 技巧</a></li>
+                        
+                          <li><a title="java 反射学习" href="15299133102029.html">java 反射学习</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>Android View 小结</h1>
+
+<p>本文介绍了 Android 自定义 View 的基本步骤<br/>
+<span id="more"></span><!-- more --></p>
+
+<h2 id="toc_0">LayoutInflater分析</h2>
+
+<p>功能：加载布局的</p>
+
+<p>Activity中调用setContentView()方法也是调用LayoutInflater()完成加载布局的</p>
+
+<h3 id="toc_1">使用步骤</h3>
+
+<p>-获取LayoutInflater的实例</p>
+
+<p>法1:</p>
+
+<pre><code class="language-java">LayoutInflater layoutInflater = LayoutInflater.from(context);  
+</code></pre>
+
+<p>法2:</p>
+
+<pre><code class="language-java">LayoutInflater layoutInflater = (LayoutInflater) context  
+        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);  
+</code></pre>
+
+<p>-使用inflate()方法加载布局</p>
+
+<pre><code class="language-java">layoutInflater.inflate(resourceId, root);  
+</code></pre>
+
+<p>参数1:需要加载的布局Id</p>
+
+<p>参数2:是指给该布局的外部再嵌套一层父布局，如果不需要就直接传null。这样就成功成功创建了一个布局的实例，之后再将它添加到指定的位置就可以显示出来了。</p>
+
+<h3 id="toc_2">举例</h3>
+
+<h4 id="toc_3">定义一个button_layout.xml</h4>
+
+<pre><code class="language-markup">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;Button xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:text=&quot;button&quot;&gt;
+
+&lt;/Button&gt;
+</code></pre>
+
+<h4 id="toc_4">MainActivity中</h4>
+
+<pre><code class="language-java">
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        mainLayout = (LinearLayout) findViewById(R.id.activity_main);
+        View buttonLayout = layoutInflater.inflate(R.layout.bytton_layout, null);
+        mainLayout.addView(buttonLayout);
+    }
+</code></pre>
+
+<p>此时即可将<code>button_layout.xml</code>加载进来</p>
+
+<p>测试若想调整<code>button_layout.xml</code>的大小，修改<code>android:layout_width</code>是没有效果的，必须将button_layout.xml 放入一个layout中，跳转layout的大小来。</p>
+
+<p>而setContentView()方法中的子控件可以调整大小是因为，Android会自动在布局文件的最外层再嵌套一个FrameLayout，所以layout_width和layout_height属性才会有效果。</p>
+
+<h3 id="toc_5">分析源码</h3>
+
+<p>View inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot):pull解析xml</p>
+
+<pre><code class="language-text">-&gt;View temp = createViewFromTag(name, attrs); 根据节点名来创建View对象的
+
+    -&gt;createView() 创建view实例并且返回
+
+-&gt;rInflate()循环遍历这个根布局下的子元素
+
+    -&gt; rInflate()递归调用，查找这个View下的子元素，每次递归完成后则将这个View添加到父布局当中
+</code></pre>
+
+<h2 id="toc_6">View的绘制过程</h2>
+
+<h3 id="toc_7">onMeasure()</h3>
+
+<p>功能：测量视图的大小的</p>
+
+<p>View系统的绘制流程会从ViewRoot的performTraversals()方法中开始，在其内部调用View的measure()方法。measure()方法接收两个参数，widthMeasureSpec和heightMeasureSpec，这两个值分别用于确定视图的宽度和高度的规格和大小。</p>
+
+<p>MeasureSpec的值由specSize和specMode共同组成的，其中specSize记录的是大小，specMode记录的是规格。specMode一共有三种类型，如下所示：</p>
+
+<p>-EXACTLY</p>
+
+<p>表示父视图希望子视图的大小应该是由specSize的值来决定的，系统默认会按照这个规则来设置子视图的大小，开发人员当然也可以按照自己的意愿设置成任意的大小。</p>
+
+<p>-AT_MOST</p>
+
+<p>表示子视图最多只能是specSize中指定的大小，开发人员应该尽可能小得去设置这个视图，并且保证不会超过specSize。系统默认会按照这个规则来设置子视图的大小，开发人员当然也可以按照自己的意愿设置成任意的大小。</p>
+
+<p>-UNSPECIFIED</p>
+
+<p>表示开发人员可以将视图按照自己的意愿设置成任意的大小，没有任何限制。这种情况比较少见，不太会用到。</p>
+
+<p>widthMeasureSpec和heightMeasureSpec两个值都是由父视图经过计算后传递给子视图的，说明父视图会在一定程度上决定子视图的大小</p>
+
+<p>measure()这个方法是final的，因此我们无法在子类中去重写这个方法，说明Android是不允许我们改变View的measure框架的。然后在第9行调用了onMeasure()方法，这里才是真正去测量并设置View大小的地方，默认会调用getDefaultSize()方法来获取视图的大小，</p>
+
+<p>onMeasure()方法是可以重写的，也就是说，如果你不想使用系统默认的测量方式，可以按照自己的意愿进行定制，比如：</p>
+
+<pre><code class="language-java">public class MyView extends View {  
+  
+    ......  
+      
+    @Override  
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {  
+        setMeasuredDimension(200, 200);  
+    }  
+  
+} 
+</code></pre>
+
+<p>这样的话就把View默认的测量流程覆盖掉了，不管在布局文件中定义MyView这个视图的大小是多少，最终在界面上显示的大小都将会是200*200。</p>
+
+<p>需要注意的是，在setMeasuredDimension()方法调用之后，我们才能使用getMeasuredWidth()和getMeasuredHeight()来获取视图测量出的宽高，以此之前调用这两个方法得到的值都会是0。</p>
+
+<p>由此可见，视图大小的控制是由父视图、布局文件、以及视图本身共同完成的，父视图会提供给子视图参考的大小，而开发人员可以在XML文件中指定视图的大小，然后视图本身会对最终的大小进行拍板。</p>
+
+<h3 id="toc_8">onLayout()</h3>
+
+<p>ViewRoot的performTraversals()方法会在measure结束后继续执行，并调用View的layout()方法来执行此过程</p>
+
+<p>View中的onLayout()方法就是一个空方法，因为onLayout()过程是为了确定视图在布局中所在的位置，而这个操作应该是由布局来完成的，即父视图决定子视图的显示位置。</p>
+
+<h3 id="toc_9">onDraw()</h3>
+
+<p>ViewRoot中的代码会继续执行并创建出一个Canvas对象，然后调用View的draw()方法来执行具体的绘制工作。draw()方法内部的绘制过程总共可以分为六步，其中第二步和第五步在一般情况下很少用到，因此这里我们只分析简化后的绘制过程。代码如下所示：</p>
+
+<pre><code class="language-java">public void draw(Canvas canvas) {  
+    if (ViewDebug.TRACE_HIERARCHY) {  
+        ViewDebug.trace(this, ViewDebug.HierarchyTraceType.DRAW);  
+    }  
+    final int privateFlags = mPrivateFlags;  
+    final boolean dirtyOpaque = (privateFlags &amp; DIRTY_MASK) == DIRTY_OPAQUE &amp;&amp;  
+            (mAttachInfo == null || !mAttachInfo.mIgnoreDirtyState);  
+    mPrivateFlags = (privateFlags &amp; ~DIRTY_MASK) | DRAWN;  
+    // Step 1, draw the background, if needed  
+    int saveCount;  
+    if (!dirtyOpaque) {  
+        final Drawable background = mBGDrawable;  
+        if (background != null) {  
+            final int scrollX = mScrollX;  
+            final int scrollY = mScrollY;  
+            if (mBackgroundSizeChanged) {  
+                background.setBounds(0, 0,  mRight - mLeft, mBottom - mTop);  
+                mBackgroundSizeChanged = false;  
+            }  
+            if ((scrollX | scrollY) == 0) {  
+                background.draw(canvas);  
+            } else {  
+                canvas.translate(scrollX, scrollY);  
+                background.draw(canvas);  
+                canvas.translate(-scrollX, -scrollY);  
+            }  
+        }  
+    }  
+    final int viewFlags = mViewFlags;  
+    boolean horizontalEdges = (viewFlags &amp; FADING_EDGE_HORIZONTAL) != 0;  
+    boolean verticalEdges = (viewFlags &amp; FADING_EDGE_VERTICAL) != 0;  
+    if (!verticalEdges &amp;&amp; !horizontalEdges) {  
+        // Step 3, draw the content  
+        if (!dirtyOpaque) onDraw(canvas);  
+        // Step 4, draw the children  
+        dispatchDraw(canvas);  
+        // Step 6, draw decorations (scrollbars)  
+        onDrawScrollBars(canvas);  
+        // we&#39;re done...  
+        return;  
+    }  
+}
+</code></pre>
+
+<h2 id="toc_10">视图重绘</h2>
+
+<p>调用视图的setVisibility()、setEnabled()、setSelected()等方法时都会导致视图重绘，而如果我们想要手动地强制让视图进行重绘，可以调用invalidate()方法来实现</p>
+
+<p>-&gt; invalidate()</p>
+
+<pre><code class="language-text">-&gt;skipInvalidate()判断是否许重绘
+
+-&gt; invalidateChild()
+
+    -&gt; invalidateChildInParent()
+
+        -&gt; invalidateChild()
+
+            -&gt; scheduleTraversals()
+
+                -&gt; sendEmptyMessage(DO_TRAVERSAL); 
+
+                    handler 接受
+
+                    - &gt; performTraversals() [onmeasure的入口]
+
+    不断地获取当前布局的父布局，并调用它的invalidateChildInParent()方法，当循环到最外层的根布局后，就会调用ViewRoot的invalidateChildInParent()方法了，仅仅是去调用了invalidateChild()方法而
+</code></pre>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15299133101837.html"  title="Previous Post: listview的复用机制">&laquo; listview的复用机制</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15299133100658.html" 
+	        title="Next Post: 使用命令行查看android sqlite数据库">使用命令行查看android sqlite数据库 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15299133103394.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  </body>
+</html>

@@ -1,0 +1,1134 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Android View 小结（下） - Xu Yushi's Blog
+  
+  </title>
+ <meta name="description" content="理工男的碎碎念">
+ <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">Xu Yushi's Blog</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>Android</label></li>
+
+          
+            <li><a title="jenkins 平台搭建" href="15299133099249.html">jenkins 平台搭建</a></li>
+          
+            <li><a title="gitlab 搭建" href="15299133099310.html">gitlab 搭建</a></li>
+          
+            <li><a title="Android sdk 搭建" href="15299133099366.html">Android sdk 搭建</a></li>
+          
+            <li><a title="Maven 搭建" href="15299133099121.html">Maven 搭建</a></li>
+          
+            <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099083.html">快速搭建新项目框架3-Kotlin</a></li>
+          
+            <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099209.html">快速搭建新项目框架3-Kotlin</a></li>
+          
+            <li><a title="快速搭建新项目框架2-mvp 结构" href="15299133100126.html">快速搭建新项目框架2-mvp 结构</a></li>
+          
+            <li><a title="快速搭建新项目框架1-依赖注入" href="15299133100165.html">快速搭建新项目框架1-依赖注入</a></li>
+          
+            <li><a title="快速搭建新项目框架0-前言" href="15299133100210.html">快速搭建新项目框架0-前言</a></li>
+          
+            <li><a title="Architecture Components--Room  Persistence Library" href="15299133101299.html">Architecture Components--Room  Persistence Library</a></li>
+          
+            <li><a title="Architecture Components -- Guide to App Architecture" href="15299133102446.html">Architecture Components -- Guide to App Architecture</a></li>
+          
+            <li><a title="Architecture Components--ViewModel" href="15299133101129.html">Architecture Components--ViewModel</a></li>
+          
+            <li><a title="Architecture Components--LiveData" href="15299133101795.html">Architecture Components--LiveData</a></li>
+          
+            <li><a title="Architecture Components--Lifecycle" href="15299133102342.html">Architecture Components--Lifecycle</a></li>
+          
+            <li><a title="Maven 仓库的使用和搭建" href="15299133101591.html">Maven 仓库的使用和搭建</a></li>
+          
+            <li><a title="gradle 插件开发" href="15299133102596.html">gradle 插件开发</a></li>
+          
+            <li><a title="gradle 插件开发" href="15299133104171.html">gradle 插件开发</a></li>
+          
+            <li><a title="NanoHTTPD源码解析" href="15299133101466.html">NanoHTTPD源码解析</a></li>
+          
+            <li><a title="Android CleanArchitecture --Dagger分析" href="15299133103599.html">Android CleanArchitecture --Dagger分析</a></li>
+          
+            <li><a title="Android 测试 （四）-- 实战分析" href="15299133102936.html">Android 测试 （四）-- 实战分析</a></li>
+          
+            <li><a title="Android 测试 （五）-- 实战分析" href="15299133103011.html">Android 测试 （五）-- 实战分析</a></li>
+          
+            <li><a title="Android 测试 （三）--Local Unit Tests" href="15299133103134.html">Android 测试 （三）--Local Unit Tests</a></li>
+          
+            <li><a title="Android 测试 （二）--Instrumented Unit" href="15299133103076.html">Android 测试 （二）--Instrumented Unit</a></li>
+          
+            <li><a title="Android 测试 （一）--测试总览" href="15299133103196.html">Android 测试 （一）--测试总览</a></li>
+          
+            <li><a title="Window 和 WindowManager" href="15299133100749.html">Window 和 WindowManager</a></li>
+          
+            <li><a title="window、Activity、DecorView、ViewRoot关系" href="15299133103906.html">window、Activity、DecorView、ViewRoot关系</a></li>
+          
+            <li><a title="AsyncTask 源码分析" href="15299133102725.html">AsyncTask 源码分析</a></li>
+          
+            <li><a title="Runnable、Callable、Future、FutureTask的区别" href="15299133101261.html">Runnable、Callable、Future、FutureTask的区别</a></li>
+          
+            <li><a title="Looper、Handler、Message 源码分析" href="15299133101714.html">Looper、Handler、Message 源码分析</a></li>
+          
+            <li><a title="HandlerThread 源码 分析" href="15299133102391.html">HandlerThread 源码 分析</a></li>
+          
+            <li><a title="Activity 总结" href="15299133103948.html">Activity 总结</a></li>
+          
+            <li><a title="Architecting Android…The evolution" href="15299133102798.html">Architecting Android…The evolution</a></li>
+          
+            <li><a title="Android clean architecting" href="15299133103637.html">Android clean architecting</a></li>
+          
+            <li><a title="Android Application 从零开始 2 ——DI" href="15299133103685.html">Android Application 从零开始 2 ——DI</a></li>
+          
+            <li><a title="Android Application 从零开始 1 ——Gradle" href="15299133103723.html">Android Application 从零开始 1 ——Gradle</a></li>
+          
+            <li><a title="Android Application 从零开始 0 ——前言" href="15299133103764.html">Android Application 从零开始 0 ——前言</a></li>
+          
+            <li><a title="volley源码解析" href="15299133100860.html">volley源码解析</a></li>
+          
+            <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+          
+            <li><a title="ASimpleCache缓存源码分析" href="15299133102762.html">ASimpleCache缓存源码分析</a></li>
+          
+            <li><a title="一个很棒的 Android  APP框架" href="15299133103809.html">一个很棒的 Android  APP框架</a></li>
+          
+            <li><a title="retrofit源码解析2" href="15299133101383.html">retrofit源码解析2</a></li>
+          
+            <li><a title="retrofit源码解析1" href="15299133101429.html">retrofit源码解析1</a></li>
+          
+            <li><a title="Service 总结" href="15299133101225.html">Service 总结</a></li>
+          
+            <li><a title="Activity Mode" href="15299133103997.html">Activity Mode</a></li>
+          
+            <li><a title="地图区域绘制 MVP 实践" href="15299133100416.html">地图区域绘制 MVP 实践</a></li>
+          
+            <li><a title="Listview crash 分析" href="15299133101874.html">Listview crash 分析</a></li>
+          
+            <li><a title="robolectric 单元测试" href="15299133103267.html">robolectric 单元测试</a></li>
+          
+            <li><a title="Material Design" href="15299133101643.html">Material Design</a></li>
+          
+            <li><a title="Android 中的 rxjava" href="15299133103337.html">Android 中的 rxjava</a></li>
+          
+            <li><a title="Android MVVM" href="15299133103550.html">Android MVVM</a></li>
+          
+            <li><a title="Android 中的MVP 模式" href="15299133101508.html">Android 中的MVP 模式</a></li>
+          
+            <li><a title="Android 内存泄露" href="15299133100598.html">Android 内存泄露</a></li>
+          
+            <li><a title="IDEA 技巧" href="15299133102120.html">IDEA 技巧</a></li>
+          
+            <li><a title="Android Media Player" href="15299133101552.html">Android Media Player</a></li>
+          
+            <li><a title="Android View 小结（下）" href="15299133099732.html">Android View 小结（下）</a></li>
+          
+            <li><a title="Android service" href="15299133103504.html">Android service</a></li>
+          
+            <li><a title="robolectric" href="15299133101345.html">robolectric</a></li>
+          
+            <li><a title="Android Studio中进行单元测试" href="15299133103442.html">Android Studio中进行单元测试</a></li>
+          
+            <li><a title="AIDL 学习" href="15299133103865.html">AIDL 学习</a></li>
+          
+            <li><a title="蓝牙学习" href="15299133099695.html">蓝牙学习</a></li>
+          
+            <li><a title="title: 手机信号质量检测" href="15299133100046.html">title: 手机信号质量检测</a></li>
+          
+            <li><a title="GreenDao学习" href="15299133102559.html">GreenDao学习</a></li>
+          
+            <li><a title="登陆框 UI" href="15299133099886.html">登陆框 UI</a></li>
+          
+            <li><a title="EventBus 学习" href="15299133102685.html">EventBus 学习</a></li>
+          
+            <li><a title="取消软键盘自动弹出" href="15299133100509.html">取消软键盘自动弹出</a></li>
+          
+            <li><a title="jni 学习" href="15299133101955.html">jni 学习</a></li>
+          
+            <li><a title="GSON 学习" href="15299133102507.html">GSON 学习</a></li>
+          
+            <li><a title="Android 触摸事件传递机制" href="15299133102860.html">Android 触摸事件传递机制</a></li>
+          
+            <li><a title="volley学习" href="15299133100924.html">volley学习</a></li>
+          
+            <li><a title="wifi压力测试" href="15299133100786.html">wifi压力测试</a></li>
+          
+            <li><a title="listview的复用机制" href="15299133101837.html">listview的复用机制</a></li>
+          
+            <li><a title="Android View 小结" href="15299133103394.html">Android View 小结</a></li>
+          
+            <li><a title="使用命令行查看android sqlite数据库" href="15299133100658.html">使用命令行查看android sqlite数据库</a></li>
+          
+            <li><a title="loader 总结" href="15299133101753.html">loader 总结</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>UserGrowth</label></li>
+
+          
+            <li><a title="abtest 数据分析" href="15299133098726.html">abtest 数据分析</a></li>
+          
+            <li><a title="ABtest 平台框架" href="15299133098793.html">ABtest 平台框架</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>balabala</label></li>
+
+          
+            <li><a title="写在离开北京的前夕" href="15299133099414.html">写在离开北京的前夕</a></li>
+          
+            <li><a title="09-17 碎碎念" href="15299133099046.html">09-17 碎碎念</a></li>
+          
+            <li><a title="近期学习计划" href="15299133099560.html">近期学习计划</a></li>
+          
+            <li><a title="单身汪的自白" href="15299133100538.html">单身汪的自白</a></li>
+          
+            <li><a title="2015小结" href="15299133104055.html">2015小结</a></li>
+          
+            <li><a title="日记" href="15299133101912.html">日记</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Java</label></li>
+
+          
+            <li><a title="Java 内存分配策略" href="15299133102065.html">Java 内存分配策略</a></li>
+          
+            <li><a title="HashMap 的实现原理" href="15299133102218.html">HashMap 的实现原理</a></li>
+          
+            <li><a title="hashcode" href="15299133102285.html">hashcode</a></li>
+          
+            <li><a title="wait/notify/notifyAll 总结" href="15299133100823.html">wait/notify/notifyAll 总结</a></li>
+          
+            <li><a title="synchronized 总结" href="15299133101186.html">synchronized 总结</a></li>
+          
+            <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+          
+            <li><a title="代理模式 Proxy Pattern" href="15299133100699.html">代理模式 Proxy Pattern</a></li>
+          
+            <li><a title="迭代器模式 Iterator Pattern" href="15299133099503.html">迭代器模式 Iterator Pattern</a></li>
+          
+            <li><a title="组合模式 Composite Pattern" href="15299133099787.html">组合模式 Composite Pattern</a></li>
+          
+            <li><a title="命令模式 Command Pattern" href="15299133100466.html">命令模式 Command Pattern</a></li>
+          
+            <li><a title="单例模式 Singleton Pattern" href="15299133100569.html">单例模式 Singleton Pattern</a></li>
+          
+            <li><a title="适配器模式 Adapter Pattern" href="15299133099455.html">适配器模式 Adapter Pattern</a></li>
+          
+            <li><a title="简单工厂模式 Factory  Pattern" href="15299133100248.html">简单工厂模式 Factory  Pattern</a></li>
+          
+            <li><a title="工厂方法模式 Factory Method Pattern" href="15299133100311.html">工厂方法模式 Factory Method Pattern</a></li>
+          
+            <li><a title="装饰者模式 Decorator Design Pattern" href="15299133099653.html">装饰者模式 Decorator Design Pattern</a></li>
+          
+            <li><a title="观察者模式 Observer Design Pattern" href="15299133099606.html">观察者模式 Observer Design Pattern</a></li>
+          
+            <li><a title="策略模式 Strategy Pattern" href="15299133099842.html">策略模式 Strategy Pattern</a></li>
+          
+            <li><a title="模板方法模式 Template Method Pattern" href="15299133100005.html">模板方法模式 Template Method Pattern</a></li>
+          
+            <li><a title="状态模式 State Design Pattern" href="15299133099923.html">状态模式 State Design Pattern</a></li>
+          
+            <li><a title="Java注解" href="15299133099968.html">Java注解</a></li>
+          
+            <li><a title="抽象工厂模式 Abstract Factory Pattern" href="15299133100082.html">抽象工厂模式 Abstract Factory Pattern</a></li>
+          
+            <li><a title="强引用、软引用、弱引用、虚引用" href="15299133101993.html">强引用、软引用、弱引用、虚引用</a></li>
+          
+            <li><a title="VIM 技巧" href="15299133099014.html">VIM 技巧</a></li>
+          
+            <li><a title="java 反射学习" href="15299133102029.html">java 反射学习</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>Android</span></li>
+                        
+                          <li><a title="jenkins 平台搭建" href="15299133099249.html">jenkins 平台搭建</a></li>
+                        
+                          <li><a title="gitlab 搭建" href="15299133099310.html">gitlab 搭建</a></li>
+                        
+                          <li><a title="Android sdk 搭建" href="15299133099366.html">Android sdk 搭建</a></li>
+                        
+                          <li><a title="Maven 搭建" href="15299133099121.html">Maven 搭建</a></li>
+                        
+                          <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099083.html">快速搭建新项目框架3-Kotlin</a></li>
+                        
+                          <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099209.html">快速搭建新项目框架3-Kotlin</a></li>
+                        
+                          <li><a title="快速搭建新项目框架2-mvp 结构" href="15299133100126.html">快速搭建新项目框架2-mvp 结构</a></li>
+                        
+                          <li><a title="快速搭建新项目框架1-依赖注入" href="15299133100165.html">快速搭建新项目框架1-依赖注入</a></li>
+                        
+                          <li><a title="快速搭建新项目框架0-前言" href="15299133100210.html">快速搭建新项目框架0-前言</a></li>
+                        
+                          <li><a title="Architecture Components--Room  Persistence Library" href="15299133101299.html">Architecture Components--Room  Persistence Library</a></li>
+                        
+                          <li><a title="Architecture Components -- Guide to App Architecture" href="15299133102446.html">Architecture Components -- Guide to App Architecture</a></li>
+                        
+                          <li><a title="Architecture Components--ViewModel" href="15299133101129.html">Architecture Components--ViewModel</a></li>
+                        
+                          <li><a title="Architecture Components--LiveData" href="15299133101795.html">Architecture Components--LiveData</a></li>
+                        
+                          <li><a title="Architecture Components--Lifecycle" href="15299133102342.html">Architecture Components--Lifecycle</a></li>
+                        
+                          <li><a title="Maven 仓库的使用和搭建" href="15299133101591.html">Maven 仓库的使用和搭建</a></li>
+                        
+                          <li><a title="gradle 插件开发" href="15299133102596.html">gradle 插件开发</a></li>
+                        
+                          <li><a title="gradle 插件开发" href="15299133104171.html">gradle 插件开发</a></li>
+                        
+                          <li><a title="NanoHTTPD源码解析" href="15299133101466.html">NanoHTTPD源码解析</a></li>
+                        
+                          <li><a title="Android CleanArchitecture --Dagger分析" href="15299133103599.html">Android CleanArchitecture --Dagger分析</a></li>
+                        
+                          <li><a title="Android 测试 （四）-- 实战分析" href="15299133102936.html">Android 测试 （四）-- 实战分析</a></li>
+                        
+                          <li><a title="Android 测试 （五）-- 实战分析" href="15299133103011.html">Android 测试 （五）-- 实战分析</a></li>
+                        
+                          <li><a title="Android 测试 （三）--Local Unit Tests" href="15299133103134.html">Android 测试 （三）--Local Unit Tests</a></li>
+                        
+                          <li><a title="Android 测试 （二）--Instrumented Unit" href="15299133103076.html">Android 测试 （二）--Instrumented Unit</a></li>
+                        
+                          <li><a title="Android 测试 （一）--测试总览" href="15299133103196.html">Android 测试 （一）--测试总览</a></li>
+                        
+                          <li><a title="Window 和 WindowManager" href="15299133100749.html">Window 和 WindowManager</a></li>
+                        
+                          <li><a title="window、Activity、DecorView、ViewRoot关系" href="15299133103906.html">window、Activity、DecorView、ViewRoot关系</a></li>
+                        
+                          <li><a title="AsyncTask 源码分析" href="15299133102725.html">AsyncTask 源码分析</a></li>
+                        
+                          <li><a title="Runnable、Callable、Future、FutureTask的区别" href="15299133101261.html">Runnable、Callable、Future、FutureTask的区别</a></li>
+                        
+                          <li><a title="Looper、Handler、Message 源码分析" href="15299133101714.html">Looper、Handler、Message 源码分析</a></li>
+                        
+                          <li><a title="HandlerThread 源码 分析" href="15299133102391.html">HandlerThread 源码 分析</a></li>
+                        
+                          <li><a title="Activity 总结" href="15299133103948.html">Activity 总结</a></li>
+                        
+                          <li><a title="Architecting Android…The evolution" href="15299133102798.html">Architecting Android…The evolution</a></li>
+                        
+                          <li><a title="Android clean architecting" href="15299133103637.html">Android clean architecting</a></li>
+                        
+                          <li><a title="Android Application 从零开始 2 ——DI" href="15299133103685.html">Android Application 从零开始 2 ——DI</a></li>
+                        
+                          <li><a title="Android Application 从零开始 1 ——Gradle" href="15299133103723.html">Android Application 从零开始 1 ——Gradle</a></li>
+                        
+                          <li><a title="Android Application 从零开始 0 ——前言" href="15299133103764.html">Android Application 从零开始 0 ——前言</a></li>
+                        
+                          <li><a title="volley源码解析" href="15299133100860.html">volley源码解析</a></li>
+                        
+                          <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+                        
+                          <li><a title="ASimpleCache缓存源码分析" href="15299133102762.html">ASimpleCache缓存源码分析</a></li>
+                        
+                          <li><a title="一个很棒的 Android  APP框架" href="15299133103809.html">一个很棒的 Android  APP框架</a></li>
+                        
+                          <li><a title="retrofit源码解析2" href="15299133101383.html">retrofit源码解析2</a></li>
+                        
+                          <li><a title="retrofit源码解析1" href="15299133101429.html">retrofit源码解析1</a></li>
+                        
+                          <li><a title="Service 总结" href="15299133101225.html">Service 总结</a></li>
+                        
+                          <li><a title="Activity Mode" href="15299133103997.html">Activity Mode</a></li>
+                        
+                          <li><a title="地图区域绘制 MVP 实践" href="15299133100416.html">地图区域绘制 MVP 实践</a></li>
+                        
+                          <li><a title="Listview crash 分析" href="15299133101874.html">Listview crash 分析</a></li>
+                        
+                          <li><a title="robolectric 单元测试" href="15299133103267.html">robolectric 单元测试</a></li>
+                        
+                          <li><a title="Material Design" href="15299133101643.html">Material Design</a></li>
+                        
+                          <li><a title="Android 中的 rxjava" href="15299133103337.html">Android 中的 rxjava</a></li>
+                        
+                          <li><a title="Android MVVM" href="15299133103550.html">Android MVVM</a></li>
+                        
+                          <li><a title="Android 中的MVP 模式" href="15299133101508.html">Android 中的MVP 模式</a></li>
+                        
+                          <li><a title="Android 内存泄露" href="15299133100598.html">Android 内存泄露</a></li>
+                        
+                          <li><a title="IDEA 技巧" href="15299133102120.html">IDEA 技巧</a></li>
+                        
+                          <li><a title="Android Media Player" href="15299133101552.html">Android Media Player</a></li>
+                        
+                          <li><a title="Android View 小结（下）" href="15299133099732.html">Android View 小结（下）</a></li>
+                        
+                          <li><a title="Android service" href="15299133103504.html">Android service</a></li>
+                        
+                          <li><a title="robolectric" href="15299133101345.html">robolectric</a></li>
+                        
+                          <li><a title="Android Studio中进行单元测试" href="15299133103442.html">Android Studio中进行单元测试</a></li>
+                        
+                          <li><a title="AIDL 学习" href="15299133103865.html">AIDL 学习</a></li>
+                        
+                          <li><a title="蓝牙学习" href="15299133099695.html">蓝牙学习</a></li>
+                        
+                          <li><a title="title: 手机信号质量检测" href="15299133100046.html">title: 手机信号质量检测</a></li>
+                        
+                          <li><a title="GreenDao学习" href="15299133102559.html">GreenDao学习</a></li>
+                        
+                          <li><a title="登陆框 UI" href="15299133099886.html">登陆框 UI</a></li>
+                        
+                          <li><a title="EventBus 学习" href="15299133102685.html">EventBus 学习</a></li>
+                        
+                          <li><a title="取消软键盘自动弹出" href="15299133100509.html">取消软键盘自动弹出</a></li>
+                        
+                          <li><a title="jni 学习" href="15299133101955.html">jni 学习</a></li>
+                        
+                          <li><a title="GSON 学习" href="15299133102507.html">GSON 学习</a></li>
+                        
+                          <li><a title="Android 触摸事件传递机制" href="15299133102860.html">Android 触摸事件传递机制</a></li>
+                        
+                          <li><a title="volley学习" href="15299133100924.html">volley学习</a></li>
+                        
+                          <li><a title="wifi压力测试" href="15299133100786.html">wifi压力测试</a></li>
+                        
+                          <li><a title="listview的复用机制" href="15299133101837.html">listview的复用机制</a></li>
+                        
+                          <li><a title="Android View 小结" href="15299133103394.html">Android View 小结</a></li>
+                        
+                          <li><a title="使用命令行查看android sqlite数据库" href="15299133100658.html">使用命令行查看android sqlite数据库</a></li>
+                        
+                          <li><a title="loader 总结" href="15299133101753.html">loader 总结</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>UserGrowth</span></li>
+                        
+                          <li><a title="abtest 数据分析" href="15299133098726.html">abtest 数据分析</a></li>
+                        
+                          <li><a title="ABtest 平台框架" href="15299133098793.html">ABtest 平台框架</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>balabala</span></li>
+                        
+                          <li><a title="写在离开北京的前夕" href="15299133099414.html">写在离开北京的前夕</a></li>
+                        
+                          <li><a title="09-17 碎碎念" href="15299133099046.html">09-17 碎碎念</a></li>
+                        
+                          <li><a title="近期学习计划" href="15299133099560.html">近期学习计划</a></li>
+                        
+                          <li><a title="单身汪的自白" href="15299133100538.html">单身汪的自白</a></li>
+                        
+                          <li><a title="2015小结" href="15299133104055.html">2015小结</a></li>
+                        
+                          <li><a title="日记" href="15299133101912.html">日记</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Java</span></li>
+                        
+                          <li><a title="Java 内存分配策略" href="15299133102065.html">Java 内存分配策略</a></li>
+                        
+                          <li><a title="HashMap 的实现原理" href="15299133102218.html">HashMap 的实现原理</a></li>
+                        
+                          <li><a title="hashcode" href="15299133102285.html">hashcode</a></li>
+                        
+                          <li><a title="wait/notify/notifyAll 总结" href="15299133100823.html">wait/notify/notifyAll 总结</a></li>
+                        
+                          <li><a title="synchronized 总结" href="15299133101186.html">synchronized 总结</a></li>
+                        
+                          <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+                        
+                          <li><a title="代理模式 Proxy Pattern" href="15299133100699.html">代理模式 Proxy Pattern</a></li>
+                        
+                          <li><a title="迭代器模式 Iterator Pattern" href="15299133099503.html">迭代器模式 Iterator Pattern</a></li>
+                        
+                          <li><a title="组合模式 Composite Pattern" href="15299133099787.html">组合模式 Composite Pattern</a></li>
+                        
+                          <li><a title="命令模式 Command Pattern" href="15299133100466.html">命令模式 Command Pattern</a></li>
+                        
+                          <li><a title="单例模式 Singleton Pattern" href="15299133100569.html">单例模式 Singleton Pattern</a></li>
+                        
+                          <li><a title="适配器模式 Adapter Pattern" href="15299133099455.html">适配器模式 Adapter Pattern</a></li>
+                        
+                          <li><a title="简单工厂模式 Factory  Pattern" href="15299133100248.html">简单工厂模式 Factory  Pattern</a></li>
+                        
+                          <li><a title="工厂方法模式 Factory Method Pattern" href="15299133100311.html">工厂方法模式 Factory Method Pattern</a></li>
+                        
+                          <li><a title="装饰者模式 Decorator Design Pattern" href="15299133099653.html">装饰者模式 Decorator Design Pattern</a></li>
+                        
+                          <li><a title="观察者模式 Observer Design Pattern" href="15299133099606.html">观察者模式 Observer Design Pattern</a></li>
+                        
+                          <li><a title="策略模式 Strategy Pattern" href="15299133099842.html">策略模式 Strategy Pattern</a></li>
+                        
+                          <li><a title="模板方法模式 Template Method Pattern" href="15299133100005.html">模板方法模式 Template Method Pattern</a></li>
+                        
+                          <li><a title="状态模式 State Design Pattern" href="15299133099923.html">状态模式 State Design Pattern</a></li>
+                        
+                          <li><a title="Java注解" href="15299133099968.html">Java注解</a></li>
+                        
+                          <li><a title="抽象工厂模式 Abstract Factory Pattern" href="15299133100082.html">抽象工厂模式 Abstract Factory Pattern</a></li>
+                        
+                          <li><a title="强引用、软引用、弱引用、虚引用" href="15299133101993.html">强引用、软引用、弱引用、虚引用</a></li>
+                        
+                          <li><a title="VIM 技巧" href="15299133099014.html">VIM 技巧</a></li>
+                        
+                          <li><a title="java 反射学习" href="15299133102029.html">java 反射学习</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>Android View 小结（下）</h1>
+
+<h1 id="toc_0">自定义 view</h1>
+
+<p>自定义 view 的主要步骤如下：</p>
+
+<ol>
+<li>自定义 view 属性</li>
+<li>在 view 的构造方法中，加载自定义的属性</li>
+<li>重写 onLayout</li>
+<li>重写 onMeasure</li>
+<li>重写 onDraw</li>
+</ol>
+
+<h2 id="toc_1">自定义 view 属性</h2>
+
+<p>自定义View的属性，首先在res/values/  下建立一个attrs.xml</p>
+
+<span id="more"></span><!-- more -->
+
+<p>stye.xml</p>
+
+<pre><code class="language-markup">&lt;resources&gt;
+
+    &lt;!-- Base application theme. --&gt;
+    &lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.DarkActionBar&quot;&gt;
+        &lt;!-- Customize your theme here. --&gt;
+        &lt;item name=&quot;customViewStyle&quot;&gt;@style/custom_view_style&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name=&quot;text_style&quot;&gt;
+        &lt;item name=&quot;android:text&quot;&gt;text from style&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name=&quot;default_view_style&quot;&gt;
+        &lt;item name=&quot;attr4&quot;&gt;attr4 from default_view_style&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name=&quot;custom_view_style&quot;&gt;
+        &lt;item name=&quot;attr3&quot;&gt;attr3 from custom_view_style&lt;/item&gt;
+        &lt;item name=&quot;attr4&quot;&gt;attr4 from custom_view_style&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name=&quot;xml_style&quot;&gt;
+        &lt;item name=&quot;attr2&quot;&gt;attr2 from xml_style&lt;/item&gt;
+        &lt;item name=&quot;attr3&quot;&gt;attr3 from xml_style&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;attr name=&quot;myViewText&quot; format=&quot;string&quot; /&gt;
+    &lt;attr name=&quot;myViewTextColor&quot; format=&quot;color&quot; /&gt;
+    &lt;attr name=&quot;myViewTextSize&quot; format=&quot;dimension&quot; /&gt;
+
+    &lt;declare-styleable name=&quot;myView&quot;&gt;
+        &lt;attr name=&quot;myViewText&quot; /&gt;
+        &lt;attr name=&quot;myViewTextColor&quot; /&gt;
+        &lt;attr name=&quot;myViewTextSize&quot; /&gt;
+        &lt;attr name=&quot;attr1&quot; format=&quot;string&quot; /&gt;
+        &lt;attr name=&quot;attr2&quot; format=&quot;string&quot; /&gt;
+        &lt;attr name=&quot;attr3&quot; format=&quot;string&quot; /&gt;
+        &lt;attr name=&quot;attr4&quot; format=&quot;string&quot; /&gt;
+        &lt;attr name=&quot;attr5&quot; format=&quot;string&quot; /&gt;
+        &lt;attr name=&quot;attr6&quot; format=&quot;string&quot; /&gt;
+    &lt;/declare-styleable&gt;
+
+    &lt;attr name=&quot;customViewStyle&quot; format=&quot;reference&quot; /&gt;
+
+&lt;/resources&gt;
+
+</code></pre>
+
+<p>在主布局中加载自定义的 view</p>
+
+<pre><code class="language-markup">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    xmlns:custum=&quot;http://schemas.android.com/apk/res-auto&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:paddingBottom=&quot;@dimen/activity_vertical_margin&quot;
+    android:paddingLeft=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingRight=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingTop=&quot;@dimen/activity_vertical_margin&quot;
+    tools:context=&quot;.MainActivity&quot;&gt;
+    &lt;!--注意xmlns导入的是整个工程的包名，不是 view 的包名--&gt;
+    &lt;!-- 在 gradle工程中只需要    xmlns:custum=&quot;http://schemas.android.com/apk/res-auto&quot;
+--&gt;
+
+    &lt;io.github.xuyushi.viewtest.MyView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:padding=&quot;10dp&quot;
+        custum:myViewText=&quot;test&quot;
+        custum:myViewTextColor=&quot;#ffff00&quot;
+        custum:myViewTextSize=&quot;30sp&quot;
+        /&gt;
+
+&lt;/RelativeLayout&gt;
+
+</code></pre>
+
+<p>注意xmlns导入的是整个工程的包名，不是 view 的包名.在 gradle工程中只需要    xmlns:custum=&quot;<a href="http://schemas.android.com/apk/res-auto">http://schemas.android.com/apk/res-auto</a>&quot;</p>
+
+<p>2.自定义 view</p>
+
+<p>自定义 view 继承 view</p>
+
+<pre><code class="language-java">package io.github.xuyushi.viewtest;
+
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.View;
+
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
+/**
+ * Created by xuyushi on 15/10/23.
+ */
+public class MyView extends View {
+    static final String LOG_TAG = &quot;MyView&quot;;
+
+    private String mText;
+    private int mextColor;
+    private int mextSize;
+    private Rect mBound;
+    private Paint mPaint;
+
+    // TODO: 15/10/23 三个构造函数分别什么时候调用
+
+    public MyView(Context context) {
+        this(context, null);
+    }
+
+    public MyView(Context context, AttributeSet attrs) {
+        this(context, attrs, R.attr.customViewStyle);
+    }
+
+    public MyView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        TypedArray array = context.getTheme()
+                .obtainStyledAttributes(attrs, R.styleable.myView, defStyleAttr, R.style.default_view_style);
+        int n = array.getIndexCount();
+
+        Log.d(LOG_TAG, &quot;attr1 =&gt; &quot; + array.getString(R.styleable.myView_attr1));
+        Log.d(LOG_TAG, &quot;attr2 =&gt; &quot; + array.getString(R.styleable.myView_attr2));
+        Log.d(LOG_TAG, &quot;attr3 =&gt; &quot; + array.getString(R.styleable.myView_attr3));
+        Log.d(LOG_TAG, &quot;attr4 =&gt; &quot; + array.getString(R.styleable.myView_attr4));
+        Log.d(LOG_TAG, &quot;attr5 =&gt; &quot; + array.getString(R.styleable.myView_attr5));
+        Log.d(LOG_TAG, &quot;attr6 =&gt; &quot; + array.getString(R.styleable.myView_attr6));
+
+        for (int i = 0; i &lt; n; i++) {
+            int attr = array.getIndex(i);
+            switch (attr) {
+                case R.styleable.myView_myViewText:
+                    mText = array.getString(attr);
+                    break;
+                case R.styleable.myView_myViewTextColor:
+                    mextColor = array.getColor(attr, Color.BLACK);
+                    break;
+                case R.styleable.myView_myViewTextSize:
+                    mextSize = array.getDimensionPixelSize(attr,
+                            getResources().getDimensionPixelSize(R.dimen.textsize));
+                    break;
+            }
+        }
+        array.recycle(); //注意释放
+        mPaint = new Paint();
+        mPaint.setTextSize(mextSize);
+        mBound = new Rect();
+        Log.d(&quot;MyView&quot;, &quot;height&quot; + mBound.height());
+        mPaint.getTextBounds(mText, 0, mText.length(), mBound);
+        //调用getTextBounds 方法之后，会根据mText计算mbound 的大小
+        Log.d(&quot;MyView&quot;, &quot;height&quot; + mBound.height());
+
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mText = randText();
+                //长度改变，需要重新 layout
+                requestLayout();
+                invalidate();
+            }
+        });
+    }
+
+    private String randText() {
+
+        Random random = new Random();
+        Set&lt;Integer&gt; set = new HashSet&lt;Integer&gt;();
+        while (set.size() &lt; 4) {
+            int randomInt = random.nextInt(10);
+            set.add(randomInt);
+        }
+        StringBuffer sb = new StringBuffer();
+        for (Integer i : set) {
+            sb.append(&quot;&quot; + i);
+        }
+
+//        return sb.toString();
+        return &quot;1234567&quot;;
+    }
+
+
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        int width;
+        int height;
+
+        if (widthMode == MeasureSpec.EXACTLY) {
+        //match parent 或者直接写定大小
+            width = widthSize;
+        } else {
+        //wrap content
+            mPaint.setTextSize(mextSize);
+            mPaint.getTextBounds(mText, 0, mText.length(), mBound);
+            float textWidth = mBound.width();
+            int desired = (int) (getPaddingLeft() + textWidth + getPaddingRight());
+            width = desired;
+        }
+
+        if (heightMode == MeasureSpec.EXACTLY) {
+            height = heightSize;
+        } else {
+            mPaint.setTextSize(mextSize);
+            mPaint.getTextBounds(mText, 0, mText.length(), mBound);
+            float textHeight = mBound.height();
+            int desired = (int) (getPaddingTop() + textHeight + getPaddingBottom());
+            height = desired;
+        }
+
+
+        setMeasuredDimension(width, height);
+
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        mPaint.setColor(Color.RED);
+        canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
+        mPaint.setColor(mextColor);
+        canvas.drawText(mText, getWidth() / 2 - mBound.width() / 2,
+                getHeight() / 2 + mBound.height() / 2
+                , mPaint);
+        Log.d(&quot;onDraw&quot;, &quot;height&quot; + mBound.height());
+
+    }
+
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+    }
+}
+
+</code></pre>
+
+<h3 id="toc_2">函数词典</h3>
+
+<pre><code class="language-java">/*
+public void getTextBounds (char[] text, int index, int count, Rect bounds)
+
+Added in API level 1
+Return in bounds (allocated by the caller) the smallest rectangle that encloses all of the characters, with an implied origin at (0,0).
+
+Parameters
+text    Array of chars to measure and return their unioned bounds
+index   Index of the first char in the array to measure
+count   The number of chars, beginning at index, to measure
+bounds  Returns the unioned bounds of all the text. Must be allocated by the caller.
+*/
+</code></pre>
+
+<pre><code class="language-java">/*
+Added in API level 1
+Draw the text, with origin at (x,y), using the specified paint. The origin is interpreted based on the Align setting in the paint.
+
+Parameters
+text    The text to be drawn
+x   The x-coordinate of the origin of the text being drawn
+y   The y-coordinate of the baseline of the text being drawn
+paint   The paint used for the text (e.g. color, size, style)
+*/
+</code></pre>
+
+<h2 id="toc_3">view的构造函数</h2>
+
+<p>可以看到自定义的 view 有三个构造方法</p>
+
+<ol>
+<li>public void MyView(Context context) {}</li>
+<li>public void MyView(Context context, AttributeSet attrs) {}</li>
+<li>public void MyView(Context context, AttributeSet attrs, int defStyle) {}</li>
+</ol>
+
+<p><strong>三个构造方法调用的情况</strong></p>
+
+<ol>
+<li>code动态创建一个view而不使用布局文件xml inflate</li>
+<li>多了一个AttributeSet类型的参数，在通过布局文件xml创建一个view时，这个参数会将xml里设定的属性传递给构造函数。如果你采用xml inflate的方法却没有在code里实现C2，那么运行时就会报错。但是由于编译能顺利通过</li>
+<li>在源码中通常是自己的显示调用</li>
+</ol>
+
+<p>官方文档如下</p>
+
+<blockquote>
+<p>Perform inflation from XML and apply a class-specific base style. This constructor of View allows subclasses to use their own base style when they are inflating. For example, a Button class&#39;s constructor would call this version of the super class constructor and supply R.attr.buttonStyle for defStyle; this allows the theme&#39;s button style to modify all of the base view attributes (in particular its background) as well as the Button class&#39;s attributes.</p>
+</blockquote>
+
+<p>对第三个参数的解释是：</p>
+
+<blockquote>
+<p>An attribute in the current theme that contains a reference to a style resource to apply to this view. If 0, no default style will be applied.</p>
+</blockquote>
+
+<p>代码第<code>40</code>行， **注意传入的参数是0 **</p>
+
+<pre><code class="language-java">TypedArray array = context.getTheme()
+        .obtainStyledAttributes(attrs, R.styleable.myView, defStyleAttr, 0);
+</code></pre>
+
+<p>接着分析<code>obtainStyledAttributes</code><a href="http://developer.android.com/intl/zh-cn/reference/android/content/res/Resources.Theme.html#obtainStyledAttributes(android.util.AttributeSet,%20int%5B%5D,%20int,%20int)">官方文档</a></p>
+
+<pre><code class="language-text">public TypedArray obtainStyledAttributes (AttributeSet set, int[] attrs, int defStyleAttr, int defStyleRes)  
+</code></pre>
+
+<ul>
+<li>set：在XML中明确写出了的属性集合,如<code>android:layout_width</code>， 在本例子中即<code>myView_myViewTextColor</code></li>
+<li>defStyleAttr: 代表需要查询自定义的属性值的 view，在本程序中指<code>myView</code></li>
+<li>defStyleAttr：这是一个定义在attrs.xml文件中的attribute。这个值起作用需要两个条件：1. 值不为0；2. 在Theme中使用了</li>
+<li>defStyleRes：这是在styles.xml文件中定义的一个style。只有当defStyleAttr没有起作用，才会使用到这个值</li>
+</ul>
+
+<blockquote>
+<p>如果在Code中实例化一个View会调用第一个构造函数，如果在xml中定义会调用第二个构造函数，而第三个函数系统是不调用的，要由View（我们自定义的或系统预定义的View，如此处的CustomTextView和Button）显式调用，比如在这里我们在第二个构造函数中调用了第三个构造函数，并将R.attr.CustomizeStyle传给了第三个参数。</p>
+</blockquote>
+
+<p>　　第三个参数的意义就如同它的名字所说的，是默认的Style，只是这里没有说清楚，这里的默认的Style是指它在当前Application或Activity所用的Theme中的默认Style<br/>
+显然，一个属性最终的取值，有一个顺序问题，这个顺序优先级从高到低依次是：</p>
+
+<p><mark>结论</mark></p>
+
+<ol>
+<li>直接在XML文件中定义的。</li>
+<li>在XML文件中通过style这个属性定义的。</li>
+<li>通过defStyleAttr定义的。</li>
+<li>通过defStyleRes定义的。</li>
+<li>直接在当然工程的theme主题下定义的。</li>
+</ol>
+
+<h4 id="toc_4">实现过程</h4>
+
+<h5 id="toc_5">1. 在 view 的 attr 中增加属性</h5>
+
+<pre><code class="language-markup">&lt;declare-styleable name=&quot;myView&quot;&gt;
+    &lt;attr name=&quot;myViewText&quot; /&gt;
+    &lt;attr name=&quot;myViewTextColor&quot; /&gt;
+    &lt;attr name=&quot;myViewTextSize&quot; /&gt;
+    &lt;attr name=&quot;attr1&quot; format=&quot;string&quot; /&gt;
+    &lt;attr name=&quot;attr2&quot; format=&quot;string&quot; /&gt;
+    &lt;attr name=&quot;attr3&quot; format=&quot;string&quot; /&gt;
+    &lt;attr name=&quot;attr4&quot; format=&quot;string&quot; /&gt;
+    &lt;attr name=&quot;attr5&quot; format=&quot;string&quot; /&gt;
+    &lt;attr name=&quot;attr6&quot; format=&quot;string&quot; /&gt;
+&lt;/declare-styleable&gt;
+
+&lt;attr name=&quot;customViewStyle&quot; format=&quot;reference&quot; /&gt;  
+
+</code></pre>
+
+<p><strong>注意要将<code>customViewStyle</code> 的格式为<code>reference</code></strong></p>
+
+<h5 id="toc_6">2. 在 style 中定义custom_view_style</h5>
+
+<pre><code class="language-markup">&lt;style name=&quot;custom_view_style&quot;&gt;
+    &lt;item name=&quot;attr3&quot;&gt;attr3 from custom_view_style&lt;/item&gt;
+    &lt;item name=&quot;attr4&quot;&gt;attr4 from custom_view_style&lt;/item&gt;
+&lt;/style&gt;
+</code></pre>
+
+<h5 id="toc_7">3.在xml 中定义 xml_style</h5>
+
+<pre><code class="language-markup">&lt;style name=&quot;xml_style&quot;&gt;  
+    &lt;item name=&quot;attr2&quot;&gt;attr2 from xml_style&lt;/item&gt;  
+    &lt;item name=&quot;attr3&quot;&gt;attr3 from xml_style&lt;/item&gt;  
+&lt;/style&gt;  
+</code></pre>
+
+<h5 id="toc_8">4. 为了使 theme 生效</h5>
+
+<pre><code class="language-markup">&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.DarkActionBar&quot;&gt;
+    &lt;!— Customize your theme here. —&gt;
+    &lt;item name=&quot;customViewStyle&quot;&gt;@style/custom_view_style&lt;/item&gt;
+    &lt;item name=&quot;attr5&quot;&gt;attr5 from AppTheme&lt;/item&gt;
+    &lt;item name=&quot;attr6&quot;&gt;attr6 from AppTheme&lt;/item&gt;
+&lt;/style&gt;
+</code></pre>
+
+<h5 id="toc_9">5. 布局文件中定义</h5>
+
+<pre><code class="language-markup">&lt;io.github.xuyushi.viewtest.MyView
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:padding=&quot;10dp&quot;
+    custum:myViewText=&quot;test&quot;
+    custum:myViewTextColor=&quot;#ffff00&quot;
+    custum:myViewTextSize=&quot;30sp&quot;
+    custum:attr1=&quot;attr1 from xml&quot;
+    custum:attr2=&quot;attr2 from xml&quot;
+    style=&quot;@style/xml_style&quot; /&gt;
+</code></pre>
+
+<h5 id="toc_10">6. 将最后一个参数由0变为</h5>
+
+<pre><code class="language-java">TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CustomView, defStyle, R.style.default_view_style);  
+
+</code></pre>
+
+<h5 id="toc_11">7. 在 view 的构造函数中获取这些 attr1-6的属性</h5>
+
+<p><strong>log</strong></p>
+
+<pre><code class="language-text">10-24 02:05:37.136    4769-4769/? D/MyView﹕ attr1 =&gt; attr1 from xml
+10-24 02:05:37.136    4769-4769/? D/MyView﹕ attr2 =&gt; attr2 from xml
+10-24 02:05:37.136    4769-4769/? D/MyView﹕ attr3 =&gt; attr3 from xml_style
+10-24 02:05:37.136    4769-4769/? D/MyView﹕ attr4 =&gt; attr4 from default_view_style
+10-24 02:05:37.136    4769-4769/? D/MyView﹕ attr5 =&gt; attr5 from default_view_style
+10-24 02:05:37.136    4769-4769/? D/MyView﹕ attr6 =&gt; null
+</code></pre>
+
+<p>分析结果</p>
+
+<ul>
+<li>attr1只在xml布局文件中设置，所以值为attr1 from xml。</li>
+<li>attr2在xml布局文件和xml style中都设置了，取值为布局文件中设置的值，所以为attr2 from xml。</li>
+<li>attr3没有在xml布局文件中设置，但是在xml style和defStyleAttr定义的style中设置了，取xml style中的值，所以值为attr3 from xml_style。</li>
+<li>attr4只在defStyleAttr定义的style中设置了，所以值为attr4 from custom_view_style。</li>
+<li>attr5和attr6没有在任何地方设置值，所以为null。</li>
+</ul>
+
+<h4 id="toc_12">总结</h4>
+
+<ol>
+<li>直接在XML布局文件中设置的值优先级最高，如果这里设置了值，就不会去取其他地方的值了。</li>
+<li>XML布局文件中有一个叫“style”的属性，它指向一个style，在这个style中设置的属性值优先级次之。</li>
+<li>如果上面两个地方都没有设置值，那么就会根据View带三个参数的构造方法中的第三个参数attribute指向的style设置值，前提是这个attribute的值不为0。</li>
+<li>如果上面的attribute设置为0了，我们就根据obtainStyledAttributes()方法中的最后一个参数指向的style来设置值。</li>
+<li>如果仍然没有设置到值，就会用theme中直接设置的属性值，而不会去管第3步和第4步中是否设置了值。</li>
+</ol>
+
+<blockquote>
+<p>** 参考 <a href="http://www.cnblogs.com/angeldevil/p/3479431.html">http://www.cnblogs.com/angeldevil/p/3479431.html</a> 详细解释**</p>
+</blockquote>
+
+<h2 id="toc_13">onMeasure</h2>
+
+<p>onMeasure 是测量视图的大小的</p>
+
+<p>MeasureSpec的值由specSize和specMode共同组成的，其中specSize记录的是大小，specMode记录的是规格。specMode一共有三种类型</p>
+
+<ul>
+<li>EXACTLY：表示父视图希望子视图的大小应该是由specSize的值来决定的，系统默认会按照这个规则来设置子视图的大小，开发人员当然也可以按照自己的意愿设置成任意的大小。</li>
+<li>AT_MOST：最多只能是specSize中指定的大小，开发人员应该尽可能小得去设置这个视图，并且保证不会超过specSize。系统默认会按照这个规则来设置子视图的大小，开发人员当然也可以按照自己的意愿设置成任意的大小。通常是 wrapcontent</li>
+<li>UNSPECIFIED：表示开发人员可以将视图按照自己的意愿设置成任意的大小，没有任何限制</li>
+</ul>
+
+<p>当设置了WRAP_CONTENT时，我们需要自己进行测量，即重写onMesure</p>
+
+<p>计算长宽 最后调用 <code>setMeasuredDimension(width, height);</code></p>
+
+<h2 id="toc_14">onLayout</h2>
+
+<p>确定视图的位置，主要是在 viewgroup 中使用</p>
+
+<p>ViewGroup中的onLayout()方法是一个抽象方法，这就意味着所有ViewGroup的子类都必须重写这个方法。这个例子 layout 只有一个子 view</p>
+
+<pre><code class="language-java">public class SimpleLayout extends ViewGroup {  
+  
+    public SimpleLayout(Context context, AttributeSet attrs) {  
+        super(context, attrs);  
+    }  
+  
+    @Override  
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {  
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);  
+        if (getChildCount() &gt; 0) {  
+            View childView = getChildAt(0);  
+            measureChild(childView, widthMeasureSpec, heightMeasureSpec);  
+        }  
+    }  
+  
+    @Override  
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {  
+        if (getChildCount() &gt; 0) {  
+            View childView = getChildAt(0);  
+            childView.layout(0, 0, childView.getMeasuredWidth(), childView.getMeasuredHeight());  
+        }  
+    }  
+  
+}  
+</code></pre>
+
+<p>代码非常的简单，我们来看下具体的逻辑吧。你已经知道，onMeasure()方法会在onLayout()方法之前调用，因此这里在onMeasure()方法中判断SimpleLayout中是否有包含一个子视图，如果有的话就调用measureChild()方法来测量出子视图的大小。<br/>
+接着在onLayout()方法中同样判断SimpleLayout是否有包含一个子视图，然后调用这个子视图的layout()方法来确定它在SimpleLayout布局中的位置，这里传入的四个参数依次是0、0、childView.getMeasuredWidth()和childView.getMeasuredHeight()，分别代表着子视图在SimpleLayout中左上右下四个点的坐标。其中，调用childView.getMeasuredWidth()和childView.getMeasuredHeight()方法得到的值就是在onMeasure()方法中测量出的宽和高。</p>
+
+<p><strong>在onLayout()过程结束后，我们就可以调用getWidth()方法和getHeight()方法来获取视图的宽高了，否则得到是 0</strong></p>
+
+<h2 id="toc_15">onDraw</h2>
+
+<h2 id="toc_16">ViewGroup</h2>
+
+<h1 id="toc_17">参考</h1>
+
+<blockquote>
+<p><a href="http://blog.csdn.net/lmj623565791/article/details/24252901">http://blog.csdn.net/lmj623565791/article/details/24252901</a><br/>
+<a href="http://blog.csdn.net/lmj623565791/article/details/38339817">http://blog.csdn.net/lmj623565791/article/details/38339817</a></p>
+</blockquote>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15299133101552.html"  title="Previous Post: Android Media Player">&laquo; Android Media Player</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15299133103504.html" 
+	        title="Next Post: Android service">Android service &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15299133099732.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  </body>
+</html>

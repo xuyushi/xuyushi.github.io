@@ -1,0 +1,953 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  蓝牙学习 - Xu Yushi's Blog
+  
+  </title>
+ <meta name="description" content="理工男的碎碎念">
+ <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">Xu Yushi's Blog</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>Android</label></li>
+
+          
+            <li><a title="jenkins 平台搭建" href="15299133099249.html">jenkins 平台搭建</a></li>
+          
+            <li><a title="gitlab 搭建" href="15299133099310.html">gitlab 搭建</a></li>
+          
+            <li><a title="Android sdk 搭建" href="15299133099366.html">Android sdk 搭建</a></li>
+          
+            <li><a title="Maven 搭建" href="15299133099121.html">Maven 搭建</a></li>
+          
+            <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099083.html">快速搭建新项目框架3-Kotlin</a></li>
+          
+            <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099209.html">快速搭建新项目框架3-Kotlin</a></li>
+          
+            <li><a title="快速搭建新项目框架2-mvp 结构" href="15299133100126.html">快速搭建新项目框架2-mvp 结构</a></li>
+          
+            <li><a title="快速搭建新项目框架1-依赖注入" href="15299133100165.html">快速搭建新项目框架1-依赖注入</a></li>
+          
+            <li><a title="快速搭建新项目框架0-前言" href="15299133100210.html">快速搭建新项目框架0-前言</a></li>
+          
+            <li><a title="Architecture Components--Room  Persistence Library" href="15299133101299.html">Architecture Components--Room  Persistence Library</a></li>
+          
+            <li><a title="Architecture Components -- Guide to App Architecture" href="15299133102446.html">Architecture Components -- Guide to App Architecture</a></li>
+          
+            <li><a title="Architecture Components--ViewModel" href="15299133101129.html">Architecture Components--ViewModel</a></li>
+          
+            <li><a title="Architecture Components--LiveData" href="15299133101795.html">Architecture Components--LiveData</a></li>
+          
+            <li><a title="Architecture Components--Lifecycle" href="15299133102342.html">Architecture Components--Lifecycle</a></li>
+          
+            <li><a title="Maven 仓库的使用和搭建" href="15299133101591.html">Maven 仓库的使用和搭建</a></li>
+          
+            <li><a title="gradle 插件开发" href="15299133102596.html">gradle 插件开发</a></li>
+          
+            <li><a title="gradle 插件开发" href="15299133104171.html">gradle 插件开发</a></li>
+          
+            <li><a title="NanoHTTPD源码解析" href="15299133101466.html">NanoHTTPD源码解析</a></li>
+          
+            <li><a title="Android CleanArchitecture --Dagger分析" href="15299133103599.html">Android CleanArchitecture --Dagger分析</a></li>
+          
+            <li><a title="Android 测试 （四）-- 实战分析" href="15299133102936.html">Android 测试 （四）-- 实战分析</a></li>
+          
+            <li><a title="Android 测试 （五）-- 实战分析" href="15299133103011.html">Android 测试 （五）-- 实战分析</a></li>
+          
+            <li><a title="Android 测试 （三）--Local Unit Tests" href="15299133103134.html">Android 测试 （三）--Local Unit Tests</a></li>
+          
+            <li><a title="Android 测试 （二）--Instrumented Unit" href="15299133103076.html">Android 测试 （二）--Instrumented Unit</a></li>
+          
+            <li><a title="Android 测试 （一）--测试总览" href="15299133103196.html">Android 测试 （一）--测试总览</a></li>
+          
+            <li><a title="Window 和 WindowManager" href="15299133100749.html">Window 和 WindowManager</a></li>
+          
+            <li><a title="window、Activity、DecorView、ViewRoot关系" href="15299133103906.html">window、Activity、DecorView、ViewRoot关系</a></li>
+          
+            <li><a title="AsyncTask 源码分析" href="15299133102725.html">AsyncTask 源码分析</a></li>
+          
+            <li><a title="Runnable、Callable、Future、FutureTask的区别" href="15299133101261.html">Runnable、Callable、Future、FutureTask的区别</a></li>
+          
+            <li><a title="Looper、Handler、Message 源码分析" href="15299133101714.html">Looper、Handler、Message 源码分析</a></li>
+          
+            <li><a title="HandlerThread 源码 分析" href="15299133102391.html">HandlerThread 源码 分析</a></li>
+          
+            <li><a title="Activity 总结" href="15299133103948.html">Activity 总结</a></li>
+          
+            <li><a title="Architecting Android…The evolution" href="15299133102798.html">Architecting Android…The evolution</a></li>
+          
+            <li><a title="Android clean architecting" href="15299133103637.html">Android clean architecting</a></li>
+          
+            <li><a title="Android Application 从零开始 2 ——DI" href="15299133103685.html">Android Application 从零开始 2 ——DI</a></li>
+          
+            <li><a title="Android Application 从零开始 1 ——Gradle" href="15299133103723.html">Android Application 从零开始 1 ——Gradle</a></li>
+          
+            <li><a title="Android Application 从零开始 0 ——前言" href="15299133103764.html">Android Application 从零开始 0 ——前言</a></li>
+          
+            <li><a title="volley源码解析" href="15299133100860.html">volley源码解析</a></li>
+          
+            <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+          
+            <li><a title="ASimpleCache缓存源码分析" href="15299133102762.html">ASimpleCache缓存源码分析</a></li>
+          
+            <li><a title="一个很棒的 Android  APP框架" href="15299133103809.html">一个很棒的 Android  APP框架</a></li>
+          
+            <li><a title="retrofit源码解析2" href="15299133101383.html">retrofit源码解析2</a></li>
+          
+            <li><a title="retrofit源码解析1" href="15299133101429.html">retrofit源码解析1</a></li>
+          
+            <li><a title="Service 总结" href="15299133101225.html">Service 总结</a></li>
+          
+            <li><a title="Activity Mode" href="15299133103997.html">Activity Mode</a></li>
+          
+            <li><a title="地图区域绘制 MVP 实践" href="15299133100416.html">地图区域绘制 MVP 实践</a></li>
+          
+            <li><a title="Listview crash 分析" href="15299133101874.html">Listview crash 分析</a></li>
+          
+            <li><a title="robolectric 单元测试" href="15299133103267.html">robolectric 单元测试</a></li>
+          
+            <li><a title="Material Design" href="15299133101643.html">Material Design</a></li>
+          
+            <li><a title="Android 中的 rxjava" href="15299133103337.html">Android 中的 rxjava</a></li>
+          
+            <li><a title="Android MVVM" href="15299133103550.html">Android MVVM</a></li>
+          
+            <li><a title="Android 中的MVP 模式" href="15299133101508.html">Android 中的MVP 模式</a></li>
+          
+            <li><a title="Android 内存泄露" href="15299133100598.html">Android 内存泄露</a></li>
+          
+            <li><a title="IDEA 技巧" href="15299133102120.html">IDEA 技巧</a></li>
+          
+            <li><a title="Android Media Player" href="15299133101552.html">Android Media Player</a></li>
+          
+            <li><a title="Android View 小结（下）" href="15299133099732.html">Android View 小结（下）</a></li>
+          
+            <li><a title="Android service" href="15299133103504.html">Android service</a></li>
+          
+            <li><a title="robolectric" href="15299133101345.html">robolectric</a></li>
+          
+            <li><a title="Android Studio中进行单元测试" href="15299133103442.html">Android Studio中进行单元测试</a></li>
+          
+            <li><a title="AIDL 学习" href="15299133103865.html">AIDL 学习</a></li>
+          
+            <li><a title="蓝牙学习" href="15299133099695.html">蓝牙学习</a></li>
+          
+            <li><a title="title: 手机信号质量检测" href="15299133100046.html">title: 手机信号质量检测</a></li>
+          
+            <li><a title="GreenDao学习" href="15299133102559.html">GreenDao学习</a></li>
+          
+            <li><a title="登陆框 UI" href="15299133099886.html">登陆框 UI</a></li>
+          
+            <li><a title="EventBus 学习" href="15299133102685.html">EventBus 学习</a></li>
+          
+            <li><a title="取消软键盘自动弹出" href="15299133100509.html">取消软键盘自动弹出</a></li>
+          
+            <li><a title="jni 学习" href="15299133101955.html">jni 学习</a></li>
+          
+            <li><a title="GSON 学习" href="15299133102507.html">GSON 学习</a></li>
+          
+            <li><a title="Android 触摸事件传递机制" href="15299133102860.html">Android 触摸事件传递机制</a></li>
+          
+            <li><a title="volley学习" href="15299133100924.html">volley学习</a></li>
+          
+            <li><a title="wifi压力测试" href="15299133100786.html">wifi压力测试</a></li>
+          
+            <li><a title="listview的复用机制" href="15299133101837.html">listview的复用机制</a></li>
+          
+            <li><a title="Android View 小结" href="15299133103394.html">Android View 小结</a></li>
+          
+            <li><a title="使用命令行查看android sqlite数据库" href="15299133100658.html">使用命令行查看android sqlite数据库</a></li>
+          
+            <li><a title="loader 总结" href="15299133101753.html">loader 总结</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>UserGrowth</label></li>
+
+          
+            <li><a title="abtest 数据分析" href="15299133098726.html">abtest 数据分析</a></li>
+          
+            <li><a title="ABtest 平台框架" href="15299133098793.html">ABtest 平台框架</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>balabala</label></li>
+
+          
+            <li><a title="写在离开北京的前夕" href="15299133099414.html">写在离开北京的前夕</a></li>
+          
+            <li><a title="09-17 碎碎念" href="15299133099046.html">09-17 碎碎念</a></li>
+          
+            <li><a title="近期学习计划" href="15299133099560.html">近期学习计划</a></li>
+          
+            <li><a title="单身汪的自白" href="15299133100538.html">单身汪的自白</a></li>
+          
+            <li><a title="2015小结" href="15299133104055.html">2015小结</a></li>
+          
+            <li><a title="日记" href="15299133101912.html">日记</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Java</label></li>
+
+          
+            <li><a title="Java 内存分配策略" href="15299133102065.html">Java 内存分配策略</a></li>
+          
+            <li><a title="HashMap 的实现原理" href="15299133102218.html">HashMap 的实现原理</a></li>
+          
+            <li><a title="hashcode" href="15299133102285.html">hashcode</a></li>
+          
+            <li><a title="wait/notify/notifyAll 总结" href="15299133100823.html">wait/notify/notifyAll 总结</a></li>
+          
+            <li><a title="synchronized 总结" href="15299133101186.html">synchronized 总结</a></li>
+          
+            <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+          
+            <li><a title="代理模式 Proxy Pattern" href="15299133100699.html">代理模式 Proxy Pattern</a></li>
+          
+            <li><a title="迭代器模式 Iterator Pattern" href="15299133099503.html">迭代器模式 Iterator Pattern</a></li>
+          
+            <li><a title="组合模式 Composite Pattern" href="15299133099787.html">组合模式 Composite Pattern</a></li>
+          
+            <li><a title="命令模式 Command Pattern" href="15299133100466.html">命令模式 Command Pattern</a></li>
+          
+            <li><a title="单例模式 Singleton Pattern" href="15299133100569.html">单例模式 Singleton Pattern</a></li>
+          
+            <li><a title="适配器模式 Adapter Pattern" href="15299133099455.html">适配器模式 Adapter Pattern</a></li>
+          
+            <li><a title="简单工厂模式 Factory  Pattern" href="15299133100248.html">简单工厂模式 Factory  Pattern</a></li>
+          
+            <li><a title="工厂方法模式 Factory Method Pattern" href="15299133100311.html">工厂方法模式 Factory Method Pattern</a></li>
+          
+            <li><a title="装饰者模式 Decorator Design Pattern" href="15299133099653.html">装饰者模式 Decorator Design Pattern</a></li>
+          
+            <li><a title="观察者模式 Observer Design Pattern" href="15299133099606.html">观察者模式 Observer Design Pattern</a></li>
+          
+            <li><a title="策略模式 Strategy Pattern" href="15299133099842.html">策略模式 Strategy Pattern</a></li>
+          
+            <li><a title="模板方法模式 Template Method Pattern" href="15299133100005.html">模板方法模式 Template Method Pattern</a></li>
+          
+            <li><a title="状态模式 State Design Pattern" href="15299133099923.html">状态模式 State Design Pattern</a></li>
+          
+            <li><a title="Java注解" href="15299133099968.html">Java注解</a></li>
+          
+            <li><a title="抽象工厂模式 Abstract Factory Pattern" href="15299133100082.html">抽象工厂模式 Abstract Factory Pattern</a></li>
+          
+            <li><a title="强引用、软引用、弱引用、虚引用" href="15299133101993.html">强引用、软引用、弱引用、虚引用</a></li>
+          
+            <li><a title="VIM 技巧" href="15299133099014.html">VIM 技巧</a></li>
+          
+            <li><a title="java 反射学习" href="15299133102029.html">java 反射学习</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>Android</span></li>
+                        
+                          <li><a title="jenkins 平台搭建" href="15299133099249.html">jenkins 平台搭建</a></li>
+                        
+                          <li><a title="gitlab 搭建" href="15299133099310.html">gitlab 搭建</a></li>
+                        
+                          <li><a title="Android sdk 搭建" href="15299133099366.html">Android sdk 搭建</a></li>
+                        
+                          <li><a title="Maven 搭建" href="15299133099121.html">Maven 搭建</a></li>
+                        
+                          <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099083.html">快速搭建新项目框架3-Kotlin</a></li>
+                        
+                          <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099209.html">快速搭建新项目框架3-Kotlin</a></li>
+                        
+                          <li><a title="快速搭建新项目框架2-mvp 结构" href="15299133100126.html">快速搭建新项目框架2-mvp 结构</a></li>
+                        
+                          <li><a title="快速搭建新项目框架1-依赖注入" href="15299133100165.html">快速搭建新项目框架1-依赖注入</a></li>
+                        
+                          <li><a title="快速搭建新项目框架0-前言" href="15299133100210.html">快速搭建新项目框架0-前言</a></li>
+                        
+                          <li><a title="Architecture Components--Room  Persistence Library" href="15299133101299.html">Architecture Components--Room  Persistence Library</a></li>
+                        
+                          <li><a title="Architecture Components -- Guide to App Architecture" href="15299133102446.html">Architecture Components -- Guide to App Architecture</a></li>
+                        
+                          <li><a title="Architecture Components--ViewModel" href="15299133101129.html">Architecture Components--ViewModel</a></li>
+                        
+                          <li><a title="Architecture Components--LiveData" href="15299133101795.html">Architecture Components--LiveData</a></li>
+                        
+                          <li><a title="Architecture Components--Lifecycle" href="15299133102342.html">Architecture Components--Lifecycle</a></li>
+                        
+                          <li><a title="Maven 仓库的使用和搭建" href="15299133101591.html">Maven 仓库的使用和搭建</a></li>
+                        
+                          <li><a title="gradle 插件开发" href="15299133102596.html">gradle 插件开发</a></li>
+                        
+                          <li><a title="gradle 插件开发" href="15299133104171.html">gradle 插件开发</a></li>
+                        
+                          <li><a title="NanoHTTPD源码解析" href="15299133101466.html">NanoHTTPD源码解析</a></li>
+                        
+                          <li><a title="Android CleanArchitecture --Dagger分析" href="15299133103599.html">Android CleanArchitecture --Dagger分析</a></li>
+                        
+                          <li><a title="Android 测试 （四）-- 实战分析" href="15299133102936.html">Android 测试 （四）-- 实战分析</a></li>
+                        
+                          <li><a title="Android 测试 （五）-- 实战分析" href="15299133103011.html">Android 测试 （五）-- 实战分析</a></li>
+                        
+                          <li><a title="Android 测试 （三）--Local Unit Tests" href="15299133103134.html">Android 测试 （三）--Local Unit Tests</a></li>
+                        
+                          <li><a title="Android 测试 （二）--Instrumented Unit" href="15299133103076.html">Android 测试 （二）--Instrumented Unit</a></li>
+                        
+                          <li><a title="Android 测试 （一）--测试总览" href="15299133103196.html">Android 测试 （一）--测试总览</a></li>
+                        
+                          <li><a title="Window 和 WindowManager" href="15299133100749.html">Window 和 WindowManager</a></li>
+                        
+                          <li><a title="window、Activity、DecorView、ViewRoot关系" href="15299133103906.html">window、Activity、DecorView、ViewRoot关系</a></li>
+                        
+                          <li><a title="AsyncTask 源码分析" href="15299133102725.html">AsyncTask 源码分析</a></li>
+                        
+                          <li><a title="Runnable、Callable、Future、FutureTask的区别" href="15299133101261.html">Runnable、Callable、Future、FutureTask的区别</a></li>
+                        
+                          <li><a title="Looper、Handler、Message 源码分析" href="15299133101714.html">Looper、Handler、Message 源码分析</a></li>
+                        
+                          <li><a title="HandlerThread 源码 分析" href="15299133102391.html">HandlerThread 源码 分析</a></li>
+                        
+                          <li><a title="Activity 总结" href="15299133103948.html">Activity 总结</a></li>
+                        
+                          <li><a title="Architecting Android…The evolution" href="15299133102798.html">Architecting Android…The evolution</a></li>
+                        
+                          <li><a title="Android clean architecting" href="15299133103637.html">Android clean architecting</a></li>
+                        
+                          <li><a title="Android Application 从零开始 2 ——DI" href="15299133103685.html">Android Application 从零开始 2 ——DI</a></li>
+                        
+                          <li><a title="Android Application 从零开始 1 ——Gradle" href="15299133103723.html">Android Application 从零开始 1 ——Gradle</a></li>
+                        
+                          <li><a title="Android Application 从零开始 0 ——前言" href="15299133103764.html">Android Application 从零开始 0 ——前言</a></li>
+                        
+                          <li><a title="volley源码解析" href="15299133100860.html">volley源码解析</a></li>
+                        
+                          <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+                        
+                          <li><a title="ASimpleCache缓存源码分析" href="15299133102762.html">ASimpleCache缓存源码分析</a></li>
+                        
+                          <li><a title="一个很棒的 Android  APP框架" href="15299133103809.html">一个很棒的 Android  APP框架</a></li>
+                        
+                          <li><a title="retrofit源码解析2" href="15299133101383.html">retrofit源码解析2</a></li>
+                        
+                          <li><a title="retrofit源码解析1" href="15299133101429.html">retrofit源码解析1</a></li>
+                        
+                          <li><a title="Service 总结" href="15299133101225.html">Service 总结</a></li>
+                        
+                          <li><a title="Activity Mode" href="15299133103997.html">Activity Mode</a></li>
+                        
+                          <li><a title="地图区域绘制 MVP 实践" href="15299133100416.html">地图区域绘制 MVP 实践</a></li>
+                        
+                          <li><a title="Listview crash 分析" href="15299133101874.html">Listview crash 分析</a></li>
+                        
+                          <li><a title="robolectric 单元测试" href="15299133103267.html">robolectric 单元测试</a></li>
+                        
+                          <li><a title="Material Design" href="15299133101643.html">Material Design</a></li>
+                        
+                          <li><a title="Android 中的 rxjava" href="15299133103337.html">Android 中的 rxjava</a></li>
+                        
+                          <li><a title="Android MVVM" href="15299133103550.html">Android MVVM</a></li>
+                        
+                          <li><a title="Android 中的MVP 模式" href="15299133101508.html">Android 中的MVP 模式</a></li>
+                        
+                          <li><a title="Android 内存泄露" href="15299133100598.html">Android 内存泄露</a></li>
+                        
+                          <li><a title="IDEA 技巧" href="15299133102120.html">IDEA 技巧</a></li>
+                        
+                          <li><a title="Android Media Player" href="15299133101552.html">Android Media Player</a></li>
+                        
+                          <li><a title="Android View 小结（下）" href="15299133099732.html">Android View 小结（下）</a></li>
+                        
+                          <li><a title="Android service" href="15299133103504.html">Android service</a></li>
+                        
+                          <li><a title="robolectric" href="15299133101345.html">robolectric</a></li>
+                        
+                          <li><a title="Android Studio中进行单元测试" href="15299133103442.html">Android Studio中进行单元测试</a></li>
+                        
+                          <li><a title="AIDL 学习" href="15299133103865.html">AIDL 学习</a></li>
+                        
+                          <li><a title="蓝牙学习" href="15299133099695.html">蓝牙学习</a></li>
+                        
+                          <li><a title="title: 手机信号质量检测" href="15299133100046.html">title: 手机信号质量检测</a></li>
+                        
+                          <li><a title="GreenDao学习" href="15299133102559.html">GreenDao学习</a></li>
+                        
+                          <li><a title="登陆框 UI" href="15299133099886.html">登陆框 UI</a></li>
+                        
+                          <li><a title="EventBus 学习" href="15299133102685.html">EventBus 学习</a></li>
+                        
+                          <li><a title="取消软键盘自动弹出" href="15299133100509.html">取消软键盘自动弹出</a></li>
+                        
+                          <li><a title="jni 学习" href="15299133101955.html">jni 学习</a></li>
+                        
+                          <li><a title="GSON 学习" href="15299133102507.html">GSON 学习</a></li>
+                        
+                          <li><a title="Android 触摸事件传递机制" href="15299133102860.html">Android 触摸事件传递机制</a></li>
+                        
+                          <li><a title="volley学习" href="15299133100924.html">volley学习</a></li>
+                        
+                          <li><a title="wifi压力测试" href="15299133100786.html">wifi压力测试</a></li>
+                        
+                          <li><a title="listview的复用机制" href="15299133101837.html">listview的复用机制</a></li>
+                        
+                          <li><a title="Android View 小结" href="15299133103394.html">Android View 小结</a></li>
+                        
+                          <li><a title="使用命令行查看android sqlite数据库" href="15299133100658.html">使用命令行查看android sqlite数据库</a></li>
+                        
+                          <li><a title="loader 总结" href="15299133101753.html">loader 总结</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>UserGrowth</span></li>
+                        
+                          <li><a title="abtest 数据分析" href="15299133098726.html">abtest 数据分析</a></li>
+                        
+                          <li><a title="ABtest 平台框架" href="15299133098793.html">ABtest 平台框架</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>balabala</span></li>
+                        
+                          <li><a title="写在离开北京的前夕" href="15299133099414.html">写在离开北京的前夕</a></li>
+                        
+                          <li><a title="09-17 碎碎念" href="15299133099046.html">09-17 碎碎念</a></li>
+                        
+                          <li><a title="近期学习计划" href="15299133099560.html">近期学习计划</a></li>
+                        
+                          <li><a title="单身汪的自白" href="15299133100538.html">单身汪的自白</a></li>
+                        
+                          <li><a title="2015小结" href="15299133104055.html">2015小结</a></li>
+                        
+                          <li><a title="日记" href="15299133101912.html">日记</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Java</span></li>
+                        
+                          <li><a title="Java 内存分配策略" href="15299133102065.html">Java 内存分配策略</a></li>
+                        
+                          <li><a title="HashMap 的实现原理" href="15299133102218.html">HashMap 的实现原理</a></li>
+                        
+                          <li><a title="hashcode" href="15299133102285.html">hashcode</a></li>
+                        
+                          <li><a title="wait/notify/notifyAll 总结" href="15299133100823.html">wait/notify/notifyAll 总结</a></li>
+                        
+                          <li><a title="synchronized 总结" href="15299133101186.html">synchronized 总结</a></li>
+                        
+                          <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+                        
+                          <li><a title="代理模式 Proxy Pattern" href="15299133100699.html">代理模式 Proxy Pattern</a></li>
+                        
+                          <li><a title="迭代器模式 Iterator Pattern" href="15299133099503.html">迭代器模式 Iterator Pattern</a></li>
+                        
+                          <li><a title="组合模式 Composite Pattern" href="15299133099787.html">组合模式 Composite Pattern</a></li>
+                        
+                          <li><a title="命令模式 Command Pattern" href="15299133100466.html">命令模式 Command Pattern</a></li>
+                        
+                          <li><a title="单例模式 Singleton Pattern" href="15299133100569.html">单例模式 Singleton Pattern</a></li>
+                        
+                          <li><a title="适配器模式 Adapter Pattern" href="15299133099455.html">适配器模式 Adapter Pattern</a></li>
+                        
+                          <li><a title="简单工厂模式 Factory  Pattern" href="15299133100248.html">简单工厂模式 Factory  Pattern</a></li>
+                        
+                          <li><a title="工厂方法模式 Factory Method Pattern" href="15299133100311.html">工厂方法模式 Factory Method Pattern</a></li>
+                        
+                          <li><a title="装饰者模式 Decorator Design Pattern" href="15299133099653.html">装饰者模式 Decorator Design Pattern</a></li>
+                        
+                          <li><a title="观察者模式 Observer Design Pattern" href="15299133099606.html">观察者模式 Observer Design Pattern</a></li>
+                        
+                          <li><a title="策略模式 Strategy Pattern" href="15299133099842.html">策略模式 Strategy Pattern</a></li>
+                        
+                          <li><a title="模板方法模式 Template Method Pattern" href="15299133100005.html">模板方法模式 Template Method Pattern</a></li>
+                        
+                          <li><a title="状态模式 State Design Pattern" href="15299133099923.html">状态模式 State Design Pattern</a></li>
+                        
+                          <li><a title="Java注解" href="15299133099968.html">Java注解</a></li>
+                        
+                          <li><a title="抽象工厂模式 Abstract Factory Pattern" href="15299133100082.html">抽象工厂模式 Abstract Factory Pattern</a></li>
+                        
+                          <li><a title="强引用、软引用、弱引用、虚引用" href="15299133101993.html">强引用、软引用、弱引用、虚引用</a></li>
+                        
+                          <li><a title="VIM 技巧" href="15299133099014.html">VIM 技巧</a></li>
+                        
+                          <li><a title="java 反射学习" href="15299133102029.html">java 反射学习</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>蓝牙学习</h1>
+
+<h2 id="toc_0">权限</h2>
+
+<p>有两种权限，至少需要一种权限</p>
+
+<ol>
+<li><code>BLUETOOTH</code>:执行任何蓝牙通信，例如请求一个连接、接受一个连接以及传输数据</li>
+<li><code>BLUETOOTH_ADMIN</code>：初始化设备查找或控制蓝牙设置</li>
+</ol>
+
+<blockquote>
+<p>如果你使用BLUETOOTH_ADMIN权限，那么必须拥有BLUETOOTH权限。<br/>
+ <span id="more"></span><!-- more --></p>
+</blockquote>
+
+<p>在manifest文件中声明权限</p>
+
+<pre><code class="language-markup">&lt;manifest ... &gt;    
+    &lt;uses-permission android:name=&quot;android.permission.BLUETOOTH&quot; /&gt;    
+    ...  
+&lt;/manifest&gt;  
+</code></pre>
+
+<h2 id="toc_1">设置蓝牙</h2>
+
+<p>在使用蓝牙和其他设备通信之前，要确保本地设备支持蓝牙，并处于打开的状态。</p>
+
+<h3 id="toc_2">获取BluetoothAdapter</h3>
+
+<p>使用getDefaultAdapter方法来获取，如果获取的为null则表示设备不支持蓝牙。</p>
+
+<pre><code class="language-java">BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+if (mBluetoothAdapter == null) {
+    // Device does not support Bluetooth
+}
+</code></pre>
+
+<h3 id="toc_3">开启蓝牙</h3>
+
+<p>用<code>isEnabled()</code>来检测蓝牙是否开启，若没用使用<code>startActivityForResult()</code> 的 <code>ACTION_REQUEST_ENABLE</code>来启动一个activity来提示用户启动蓝牙</p>
+
+<pre><code class="language-java">if (!mBluetoothAdapter.isEnabled()) {
+    Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+    startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+}
+</code></pre>
+
+<p>执行完后，会有一个对话框出现，提示打开蓝牙，如果用户点击 是，系统则会打开蓝牙，返回打开成功/失败的状态</p>
+
+<p>在<code>onActivityResult</code>中接受蓝牙打开的状态</p>
+
+<pre><code class="language-java">@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    //resultCode 是之前startActivityForResult中的REQUEST_ENABLE_BT
+    Log.d(TAG, &quot;requestCode:&quot; + requestCode + &quot;\n resultCode: &quot; + resultCode);
+    if ((requestCode==RESULT_OK)||(requestCode==RESULT_FIRST_USER)) {
+        Log.d(TAG, &quot;；蓝牙开启成功&quot;);
+    }else {
+        Log.d(TAG, &quot;；蓝牙开启失败&quot;);
+    }
+}
+</code></pre>
+
+<h2 id="toc_4">查找设备</h2>
+
+<p>使用<code>BluetoothAdapter</code>发现远程蓝牙设备或者本地已绑定的设备<br/>
+设备查找是一个扫描周围蓝牙设备的过程，在此过程中，周围的蓝牙设备会回应一些信息，例如设备名，类，mac地址等。利用这些信息，发起扫描的设备可以选择一个设备进行连接</p>
+
+<p>一旦第一次连接发起时，配对请求会自动呈现给用户，当设备配对后，设备的基本信息（设备名，mac地址）会被保存，而且可以使用蓝牙的API接口读出来，使用已知的mac地址，不用扫描，连接可以随时建立。<br/>
+配对不等同于连接。配对表示两个设备知道彼此的存在，连接表示两个设备共享一个RFCOMM可以互相发送数据，在进行数据发送之前，设备必须配对。</p>
+
+<h3 id="toc_5">查询已配对的设备</h3>
+
+<pre><code class="language-java">Set&lt;BluetoothDevice&gt; pairedDevices = mBluetoothAdapter.getBondedDevices();
+// If there are paired devices
+if (pairedDevices.size() &gt; 0) {
+    // Loop through paired devices
+    for (BluetoothDevice device : pairedDevices) {
+        // Add the name and address to an array adapter to show in a ListView
+        mArrayAdapter.add(device.getName() + &quot;\n&quot; + device.getAddress());
+    }
+}
+</code></pre>
+
+<h3 id="toc_6">扫描设备</h3>
+
+<pre><code class="language-java"> 
+private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            // When discovery finds a device
+            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                // Get the BluetoothDevice object from the Intent
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                // Add the name and address to an array adapter to show in a ListView
+                mArrayAdapter.add(device.getName() + &quot;\n&quot; + device.getAddress());
+                Log.d(TAG, device.getName() + &quot;\n&quot; + device.getAddress());
+            }
+        }
+    };
+// Register the BroadcastReceiver
+IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+registerReceiver(mReceiver, filter); // Don&#39;t forget to unregister during onDestroy
+</code></pre>
+
+<blockquote>
+<p>SCAN需要BLUETOOTH_ADMIN权限</p>
+</blockquote>
+
+<h3 id="toc_7">可被查找</h3>
+
+<p>弹出一个对话框，用户点允许则可被发现</p>
+
+<pre><code class="language-java">Intent discoverableIntent = new
+Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+startActivity(discoverableIntent);
+</code></pre>
+
+<blockquote>
+<p>如过蓝牙未被开启，用户点击可被发现时，蓝牙被自动开启。</p>
+</blockquote>
+
+<p><code>discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);</code> 最后一个参数是可被查找的时间。设置为0，为一直可被发现。<br/>
+可被查找状态改变时希望获取状态可以有以下实现方式：<br/>
+注册一个<code>ACTION_SCAN_MODE_CHANGED</code>intent其中 extra fields<code>EXTRA_SCAN_MODE</code>and <code>EXTRA_PREVIOUS_SCAN_MODE</code>表示之前状态和现在状态</p>
+
+<h2 id="toc_8">连接设备</h2>
+
+<p>为了在两个设备建立一个连接，需要实现server和clint的接口，一个设备打开server socker，另一个设备开始连接(用server的mac地址连接)，当他们在同一个RFCOMM频道上建立了<code>BluetoothSocket</code>连接时，则认为他们连接上了。此时设备可以获取输入输出流可以开始传输数据，本节描述了两台设备之间初始化连接。</p>
+
+<p>server和client获取<code>BluetoothSocket</code>的方式不同。server在接受连接是会得到BluetoothSocket。client在向服务器端打开一个RFCOMM通道时会得到BluetoothSocket。</p>
+
+<h3 id="toc_9">server端连接</h3>
+
+<p>当你希望连接两台设备，一台设备必须作为server持有并打开<code>BluetoothServerSocket</code>，为了监听接受的连接请求，当一个请求接受后，提供一个<code>BluetoothSocket</code>，<mark>当该<code>BluetoothSocket</code>被<code>BluetoothServerSocket</code>请求时，<code>BluetoothServerSocket</code>可以（而且应当）被舍弃</mark></p>
+
+<p>下面是创建一个服务器socket并且接受一个连接的基本过程：</p>
+
+<ol>
+<li>通过调用 <code>listenUsingRfcommWithServiceRecord(String, UUID)</code>获取一个<code>BluetoothServerSocket</code><br/>
+string 是独一无二的你的server名，系统将会把它写入设备中的一个新的服务发现协议（SDP）数据库条目中（名字是任意的，并且可以只是你应用的名字）。UUID同样被包含在SDP条目中，并且将会成为和客户端设备连接协议的基础。也就是说，<mark>当客户端尝试连接这个设备时，它将会携带一个UUID用于唯一指定它想要连接的服务器。</mark>这些UUIDs必须匹配以便该连接可以被接受（在下一步中）。</li>
+<li>通过调用accept()开始监听连接请求。<br/>
+这一个阻塞调用。在一个连接被接受或一个异常出现时，它将会返回。只有当一个远程设备使用一个UUID发送了一个连接请求，并且该UUID和正在监听的服务器socket注册的UUID相匹配时，一个连接才会被接受。成功后，accept() 将会返回一个已连接的 <code>BluetoothSocket</code>。</li>
+<li> 调用close()，除非你想要接受更多的连接。<br/>
+这将释放服务器socket和它所有的资源，但是不会关闭 accept()返回的已连接的 BluetoothSocket。不同于TCP/IP，RFCOMM仅仅允许每一个通道上在某一时刻只有一个已连接的客户端，因此在大多数情况下在接受一个已连接的socket后，在BluetoothServerSocket上调用 close() 是非常必要的。</li>
+</ol>
+
+<p>accept() 不应该再主活动UI线程上执行，因为它是一个阻塞调用，并且将会阻止任何与应用的交互行为。它通常在你的应用管理的一个新的线程中使用一个BluetoothServerSocket 或 BluetoothSocket 来完成所有工作。为了中止一个阻塞调用，例如accept()，从你的其他线程里在BluetoothServerSocket (或 BluetoothSocket) 上调用 close() ，然后阻塞调用就会立即返回。注意在 BluetoothServerSocket 或 BluetoothSocket 上所有的方法都是线程安全的。</p>
+
+<p>下面是一个简单的线程，用于服务器端接受外来的连接：</p>
+
+<pre><code class="language-java">private class AcceptThread extends Thread {
+    private final BluetoothServerSocket mmServerSocket;
+ 
+    public AcceptThread() {
+        // Use a temporary object that is later assigned to mmServerSocket,
+        // because mmServerSocket is final
+        BluetoothServerSocket tmp = null;
+        try {
+            // MY_UUID is the app&#39;s UUID string, also used by the client code
+            tmp = mBluetoothAdapter.listenUsingRfcommWithServiceRecord(NAME, MY_UUID);
+        } catch (IOException e) { }
+        mmServerSocket = tmp;
+    }
+ 
+    public void run() {
+        BluetoothSocket socket = null;
+        // Keep listening until exception occurs or a socket is returned
+        while (true) {
+            try {
+                socket = mmServerSocket.accept();
+            } catch (IOException e) {
+                break;
+            }
+            // If a connection was accepted
+            if (socket != null) {
+                // Do work to manage the connection (in a separate thread)
+                manageConnectedSocket(socket);
+                mmServerSocket.close();
+                break;
+            }
+        }
+    }
+ 
+    /** Will cancel the listening socket, and cause the thread to finish */
+    public void cancel() {
+        try {
+            mmServerSocket.close();
+        } catch (IOException e) { }
+    }
+}
+</code></pre>
+
+<p>注意当accept()返回一个 BluetoothSocket是，该socket已经被连接了，因此你不应该调用connect().<br/>
+manageConnectedSocket()是一个虚构的方法，它将会初始化线程来传输数据，下下节讨论。<br/>
+当监听到了外来的连接时，通常是关闭<code>BluetoothServerSocket</code>。在这个例子里， 一旦得到了 BluetoothSocket 就会调用close()。</p>
+
+<h3 id="toc_10">客户端连接</h3>
+
+<p>为了和一个远程设备（一个持有服务器socket的设备）初始化一个连接，你必须首先得到一个 <code>BluetoothDevice</code> 对象来表示这个远程设备。（上面的课程Finding Devices讲述了如何得到一个 BluetoothDevice ）。然后你必须使用<code>BluetoothDevice</code>来得到一个<code>BluetoothSocket</code> ，然后初始化该连接。<br/>
+下面是基本的过程：</p>
+
+<ol>
+<li>通过调用createRfcommSocketToServiceRecord(UUID)来得到一个 BluetoothSocket 。</li>
+<li>通过调用connect()初始化一个连接。</li>
+</ol>
+
+<p>下面是初始化一个蓝牙连接的基本例子：</p>
+
+<pre><code class="language-java">private class ConnectThread extends Thread {
+    private final BluetoothSocket mmSocket;
+    private final BluetoothDevice mmDevice;
+ 
+    public ConnectThread(BluetoothDevice device) {
+        // Use a temporary object that is later assigned to mmSocket,
+        // because mmSocket is final
+        BluetoothSocket tmp = null;
+        mmDevice = device;
+ 
+        // Get a BluetoothSocket to connect with the given BluetoothDevice
+        try {
+            // MY_UUID is the app&#39;s UUID string, also used by the server code
+            tmp = device.createRfcommSocketToServiceRecord(MY_UUID);
+        } catch (IOException e) { }
+        mmSocket = tmp;
+    }
+ 
+    public void run() {
+        // Cancel discovery because it will slow down the connection
+        mBluetoothAdapter.cancelDiscovery();
+ 
+        try {
+            // Connect the device through the socket. This will block
+            // until it succeeds or throws an exception
+            mmSocket.connect();
+        } catch (IOException connectException) {
+            // Unable to connect; close the socket and get out
+            try {
+                mmSocket.close();
+            } catch (IOException closeException) { }
+            return;
+        }
+ 
+        // Do work to manage the connection (in a separate thread)
+        manageConnectedSocket(mmSocket);
+    }
+ 
+    /** Will cancel an in-progress connection, and close the socket */
+    public void cancel() {
+        try {
+            mmSocket.close();
+        } catch (IOException e) { }
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>在连接前最好调用cancelDiscovery()。</p>
+</blockquote>
+
+<h2 id="toc_11">管理一个连接</h2>
+
+<p>当你成功连接两个（或更多）设备后，每一个都将有一个已连接的 BluetoothSocket。此时就可以在不同的设备之间共享数据了！</p>
+
+<ol>
+<li>分别通过getInputStream() 和 getOutputStream()来得到 <code>InputStream</code> 和 <code>OutputStream</code> 来控制socket之间的传输。</li>
+<li>使用 read(byte[]) 和 write(byte[])来向数据流中读取和写入数据。</li>
+</ol>
+
+<p>首先并且最重要的是，你应该为所有输入和输出的数据流使用一个专属的线程。这是十分重要的，因为read(byte[]) 和 write(byte[])方法都是阻塞调用。 read(byte[])将会发生阻塞知道送数据流中读取到了一些东西。 write(byte[])不经常发生阻塞，但是当远程设备没有足够迅速地调用 read(byte[])而中间缓冲区已经负载时可以阻塞。因此，你的线程中的主要循环应该是专门从InputStream中读取数据的。一个单独的公共方法可以被用于初始化向 OutputStream 中写入数据。</p>
+
+<pre><code class="language-java">private class ConnectedThread extends Thread {
+    private final BluetoothSocket mmSocket;
+    private final InputStream mmInStream;
+    private final OutputStream mmOutStream;
+ 
+    public ConnectedThread(BluetoothSocket socket) {
+        mmSocket = socket;
+        InputStream tmpIn = null;
+        OutputStream tmpOut = null;
+ 
+        // Get the input and output streams, using temp objects because
+        // member streams are final
+        try {
+            tmpIn = socket.getInputStream();
+            tmpOut = socket.getOutputStream();
+        } catch (IOException e) { }
+ 
+        mmInStream = tmpIn;
+        mmOutStream = tmpOut;
+    }
+ 
+    public void run() {
+        byte[] buffer = new byte[1024];  // buffer store for the stream
+        int bytes; // bytes returned from read()
+ 
+        // Keep listening to the InputStream until an exception occurs
+        while (true) {
+            try {
+                // Read from the InputStream
+                bytes = mmInStream.read(buffer);
+                // Send the obtained bytes to the UI activity
+                mHandler.obtainMessage(MESSAGE_READ, bytes, -1, buffer)
+                        .sendToTarget();
+            } catch (IOException e) {
+                break;
+            }
+        }
+    }
+ 
+    /* Call this from the main activity to send data to the remote device */
+    public void write(byte[] bytes) {
+        try {
+            mmOutStream.write(bytes);
+        } catch (IOException e) { }
+    }
+ 
+    /* Call this from the main activity to shutdown the connection */
+    public void cancel() {
+        try {
+            mmSocket.close();
+        } catch (IOException e) { }
+    }
+}
+</code></pre>
+
+<p>构造器需要必须的数据流，并且一旦执行，线程将会等待InputStream 中来的数据。当 read(byte[]) 返回一些数值时，数据将会使用一个父类的一个成员变量句柄发送给主活动。然后它返回并继续等待更多的数据。</p>
+
+<p>发送数据只需要在主活动中调用线程的 write()方法，并将需要发送数据传递给它即可。这个方法然后调用 write(byte[])来向远程设备发送数据。</p>
+
+<p>线程的cancel() 方法是重要的，以便连接可以在任何时间被中断（通过关闭BluetoothSocket）。这个方法应该在你完成蓝牙连接后总是被调用。</p>
+
+<p>蓝牙sample的例子 ：<a href="http://developer.android.com/samples/index.html">http://developer.android.com/samples/index.html</a></p>
+
+<h2 id="toc_12">使用配置文件</h2>
+
+<p>待续<br/>
+参考</p>
+
+<blockquote>
+<p><a href="http://developer.android.com/guide/topics/connectivity/bluetooth.html">http://developer.android.com/guide/topics/connectivity/bluetooth.html</a><br/>
+<a href="http://blog.csdn.net/candycat1992/article/details/8577927">http://blog.csdn.net/candycat1992/article/details/8577927</a></p>
+</blockquote>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15299133103865.html"  title="Previous Post: AIDL 学习">&laquo; AIDL 学习</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15299133100046.html" 
+	        title="Next Post: title: 手机信号质量检测">title: 手机信号质量检测 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15299133099695.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  </body>
+</html>

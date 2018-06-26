@@ -1,0 +1,956 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Looper、Handler、Message 源码分析 - Xu Yushi's Blog
+  
+  </title>
+ <meta name="description" content="理工男的碎碎念">
+ <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">Xu Yushi's Blog</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>Android</label></li>
+
+          
+            <li><a title="jenkins 平台搭建" href="15299133099249.html">jenkins 平台搭建</a></li>
+          
+            <li><a title="gitlab 搭建" href="15299133099310.html">gitlab 搭建</a></li>
+          
+            <li><a title="Android sdk 搭建" href="15299133099366.html">Android sdk 搭建</a></li>
+          
+            <li><a title="Maven 搭建" href="15299133099121.html">Maven 搭建</a></li>
+          
+            <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099083.html">快速搭建新项目框架3-Kotlin</a></li>
+          
+            <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099209.html">快速搭建新项目框架3-Kotlin</a></li>
+          
+            <li><a title="快速搭建新项目框架2-mvp 结构" href="15299133100126.html">快速搭建新项目框架2-mvp 结构</a></li>
+          
+            <li><a title="快速搭建新项目框架1-依赖注入" href="15299133100165.html">快速搭建新项目框架1-依赖注入</a></li>
+          
+            <li><a title="快速搭建新项目框架0-前言" href="15299133100210.html">快速搭建新项目框架0-前言</a></li>
+          
+            <li><a title="Architecture Components--Room  Persistence Library" href="15299133101299.html">Architecture Components--Room  Persistence Library</a></li>
+          
+            <li><a title="Architecture Components -- Guide to App Architecture" href="15299133102446.html">Architecture Components -- Guide to App Architecture</a></li>
+          
+            <li><a title="Architecture Components--ViewModel" href="15299133101129.html">Architecture Components--ViewModel</a></li>
+          
+            <li><a title="Architecture Components--LiveData" href="15299133101795.html">Architecture Components--LiveData</a></li>
+          
+            <li><a title="Architecture Components--Lifecycle" href="15299133102342.html">Architecture Components--Lifecycle</a></li>
+          
+            <li><a title="Maven 仓库的使用和搭建" href="15299133101591.html">Maven 仓库的使用和搭建</a></li>
+          
+            <li><a title="gradle 插件开发" href="15299133102596.html">gradle 插件开发</a></li>
+          
+            <li><a title="gradle 插件开发" href="15299133104171.html">gradle 插件开发</a></li>
+          
+            <li><a title="NanoHTTPD源码解析" href="15299133101466.html">NanoHTTPD源码解析</a></li>
+          
+            <li><a title="Android CleanArchitecture --Dagger分析" href="15299133103599.html">Android CleanArchitecture --Dagger分析</a></li>
+          
+            <li><a title="Android 测试 （四）-- 实战分析" href="15299133102936.html">Android 测试 （四）-- 实战分析</a></li>
+          
+            <li><a title="Android 测试 （五）-- 实战分析" href="15299133103011.html">Android 测试 （五）-- 实战分析</a></li>
+          
+            <li><a title="Android 测试 （三）--Local Unit Tests" href="15299133103134.html">Android 测试 （三）--Local Unit Tests</a></li>
+          
+            <li><a title="Android 测试 （二）--Instrumented Unit" href="15299133103076.html">Android 测试 （二）--Instrumented Unit</a></li>
+          
+            <li><a title="Android 测试 （一）--测试总览" href="15299133103196.html">Android 测试 （一）--测试总览</a></li>
+          
+            <li><a title="Window 和 WindowManager" href="15299133100749.html">Window 和 WindowManager</a></li>
+          
+            <li><a title="window、Activity、DecorView、ViewRoot关系" href="15299133103906.html">window、Activity、DecorView、ViewRoot关系</a></li>
+          
+            <li><a title="AsyncTask 源码分析" href="15299133102725.html">AsyncTask 源码分析</a></li>
+          
+            <li><a title="Runnable、Callable、Future、FutureTask的区别" href="15299133101261.html">Runnable、Callable、Future、FutureTask的区别</a></li>
+          
+            <li><a title="Looper、Handler、Message 源码分析" href="15299133101714.html">Looper、Handler、Message 源码分析</a></li>
+          
+            <li><a title="HandlerThread 源码 分析" href="15299133102391.html">HandlerThread 源码 分析</a></li>
+          
+            <li><a title="Activity 总结" href="15299133103948.html">Activity 总结</a></li>
+          
+            <li><a title="Architecting Android…The evolution" href="15299133102798.html">Architecting Android…The evolution</a></li>
+          
+            <li><a title="Android clean architecting" href="15299133103637.html">Android clean architecting</a></li>
+          
+            <li><a title="Android Application 从零开始 2 ——DI" href="15299133103685.html">Android Application 从零开始 2 ——DI</a></li>
+          
+            <li><a title="Android Application 从零开始 1 ——Gradle" href="15299133103723.html">Android Application 从零开始 1 ——Gradle</a></li>
+          
+            <li><a title="Android Application 从零开始 0 ——前言" href="15299133103764.html">Android Application 从零开始 0 ——前言</a></li>
+          
+            <li><a title="volley源码解析" href="15299133100860.html">volley源码解析</a></li>
+          
+            <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+          
+            <li><a title="ASimpleCache缓存源码分析" href="15299133102762.html">ASimpleCache缓存源码分析</a></li>
+          
+            <li><a title="一个很棒的 Android  APP框架" href="15299133103809.html">一个很棒的 Android  APP框架</a></li>
+          
+            <li><a title="retrofit源码解析2" href="15299133101383.html">retrofit源码解析2</a></li>
+          
+            <li><a title="retrofit源码解析1" href="15299133101429.html">retrofit源码解析1</a></li>
+          
+            <li><a title="Service 总结" href="15299133101225.html">Service 总结</a></li>
+          
+            <li><a title="Activity Mode" href="15299133103997.html">Activity Mode</a></li>
+          
+            <li><a title="地图区域绘制 MVP 实践" href="15299133100416.html">地图区域绘制 MVP 实践</a></li>
+          
+            <li><a title="Listview crash 分析" href="15299133101874.html">Listview crash 分析</a></li>
+          
+            <li><a title="robolectric 单元测试" href="15299133103267.html">robolectric 单元测试</a></li>
+          
+            <li><a title="Material Design" href="15299133101643.html">Material Design</a></li>
+          
+            <li><a title="Android 中的 rxjava" href="15299133103337.html">Android 中的 rxjava</a></li>
+          
+            <li><a title="Android MVVM" href="15299133103550.html">Android MVVM</a></li>
+          
+            <li><a title="Android 中的MVP 模式" href="15299133101508.html">Android 中的MVP 模式</a></li>
+          
+            <li><a title="Android 内存泄露" href="15299133100598.html">Android 内存泄露</a></li>
+          
+            <li><a title="IDEA 技巧" href="15299133102120.html">IDEA 技巧</a></li>
+          
+            <li><a title="Android Media Player" href="15299133101552.html">Android Media Player</a></li>
+          
+            <li><a title="Android View 小结（下）" href="15299133099732.html">Android View 小结（下）</a></li>
+          
+            <li><a title="Android service" href="15299133103504.html">Android service</a></li>
+          
+            <li><a title="robolectric" href="15299133101345.html">robolectric</a></li>
+          
+            <li><a title="Android Studio中进行单元测试" href="15299133103442.html">Android Studio中进行单元测试</a></li>
+          
+            <li><a title="AIDL 学习" href="15299133103865.html">AIDL 学习</a></li>
+          
+            <li><a title="蓝牙学习" href="15299133099695.html">蓝牙学习</a></li>
+          
+            <li><a title="title: 手机信号质量检测" href="15299133100046.html">title: 手机信号质量检测</a></li>
+          
+            <li><a title="GreenDao学习" href="15299133102559.html">GreenDao学习</a></li>
+          
+            <li><a title="登陆框 UI" href="15299133099886.html">登陆框 UI</a></li>
+          
+            <li><a title="EventBus 学习" href="15299133102685.html">EventBus 学习</a></li>
+          
+            <li><a title="取消软键盘自动弹出" href="15299133100509.html">取消软键盘自动弹出</a></li>
+          
+            <li><a title="jni 学习" href="15299133101955.html">jni 学习</a></li>
+          
+            <li><a title="GSON 学习" href="15299133102507.html">GSON 学习</a></li>
+          
+            <li><a title="Android 触摸事件传递机制" href="15299133102860.html">Android 触摸事件传递机制</a></li>
+          
+            <li><a title="volley学习" href="15299133100924.html">volley学习</a></li>
+          
+            <li><a title="wifi压力测试" href="15299133100786.html">wifi压力测试</a></li>
+          
+            <li><a title="listview的复用机制" href="15299133101837.html">listview的复用机制</a></li>
+          
+            <li><a title="Android View 小结" href="15299133103394.html">Android View 小结</a></li>
+          
+            <li><a title="使用命令行查看android sqlite数据库" href="15299133100658.html">使用命令行查看android sqlite数据库</a></li>
+          
+            <li><a title="loader 总结" href="15299133101753.html">loader 总结</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>UserGrowth</label></li>
+
+          
+            <li><a title="abtest 数据分析" href="15299133098726.html">abtest 数据分析</a></li>
+          
+            <li><a title="ABtest 平台框架" href="15299133098793.html">ABtest 平台框架</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>balabala</label></li>
+
+          
+            <li><a title="写在离开北京的前夕" href="15299133099414.html">写在离开北京的前夕</a></li>
+          
+            <li><a title="09-17 碎碎念" href="15299133099046.html">09-17 碎碎念</a></li>
+          
+            <li><a title="近期学习计划" href="15299133099560.html">近期学习计划</a></li>
+          
+            <li><a title="单身汪的自白" href="15299133100538.html">单身汪的自白</a></li>
+          
+            <li><a title="2015小结" href="15299133104055.html">2015小结</a></li>
+          
+            <li><a title="日记" href="15299133101912.html">日记</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Java</label></li>
+
+          
+            <li><a title="Java 内存分配策略" href="15299133102065.html">Java 内存分配策略</a></li>
+          
+            <li><a title="HashMap 的实现原理" href="15299133102218.html">HashMap 的实现原理</a></li>
+          
+            <li><a title="hashcode" href="15299133102285.html">hashcode</a></li>
+          
+            <li><a title="wait/notify/notifyAll 总结" href="15299133100823.html">wait/notify/notifyAll 总结</a></li>
+          
+            <li><a title="synchronized 总结" href="15299133101186.html">synchronized 总结</a></li>
+          
+            <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+          
+            <li><a title="代理模式 Proxy Pattern" href="15299133100699.html">代理模式 Proxy Pattern</a></li>
+          
+            <li><a title="迭代器模式 Iterator Pattern" href="15299133099503.html">迭代器模式 Iterator Pattern</a></li>
+          
+            <li><a title="组合模式 Composite Pattern" href="15299133099787.html">组合模式 Composite Pattern</a></li>
+          
+            <li><a title="命令模式 Command Pattern" href="15299133100466.html">命令模式 Command Pattern</a></li>
+          
+            <li><a title="单例模式 Singleton Pattern" href="15299133100569.html">单例模式 Singleton Pattern</a></li>
+          
+            <li><a title="适配器模式 Adapter Pattern" href="15299133099455.html">适配器模式 Adapter Pattern</a></li>
+          
+            <li><a title="简单工厂模式 Factory  Pattern" href="15299133100248.html">简单工厂模式 Factory  Pattern</a></li>
+          
+            <li><a title="工厂方法模式 Factory Method Pattern" href="15299133100311.html">工厂方法模式 Factory Method Pattern</a></li>
+          
+            <li><a title="装饰者模式 Decorator Design Pattern" href="15299133099653.html">装饰者模式 Decorator Design Pattern</a></li>
+          
+            <li><a title="观察者模式 Observer Design Pattern" href="15299133099606.html">观察者模式 Observer Design Pattern</a></li>
+          
+            <li><a title="策略模式 Strategy Pattern" href="15299133099842.html">策略模式 Strategy Pattern</a></li>
+          
+            <li><a title="模板方法模式 Template Method Pattern" href="15299133100005.html">模板方法模式 Template Method Pattern</a></li>
+          
+            <li><a title="状态模式 State Design Pattern" href="15299133099923.html">状态模式 State Design Pattern</a></li>
+          
+            <li><a title="Java注解" href="15299133099968.html">Java注解</a></li>
+          
+            <li><a title="抽象工厂模式 Abstract Factory Pattern" href="15299133100082.html">抽象工厂模式 Abstract Factory Pattern</a></li>
+          
+            <li><a title="强引用、软引用、弱引用、虚引用" href="15299133101993.html">强引用、软引用、弱引用、虚引用</a></li>
+          
+            <li><a title="VIM 技巧" href="15299133099014.html">VIM 技巧</a></li>
+          
+            <li><a title="java 反射学习" href="15299133102029.html">java 反射学习</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>Android</span></li>
+                        
+                          <li><a title="jenkins 平台搭建" href="15299133099249.html">jenkins 平台搭建</a></li>
+                        
+                          <li><a title="gitlab 搭建" href="15299133099310.html">gitlab 搭建</a></li>
+                        
+                          <li><a title="Android sdk 搭建" href="15299133099366.html">Android sdk 搭建</a></li>
+                        
+                          <li><a title="Maven 搭建" href="15299133099121.html">Maven 搭建</a></li>
+                        
+                          <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099083.html">快速搭建新项目框架3-Kotlin</a></li>
+                        
+                          <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099209.html">快速搭建新项目框架3-Kotlin</a></li>
+                        
+                          <li><a title="快速搭建新项目框架2-mvp 结构" href="15299133100126.html">快速搭建新项目框架2-mvp 结构</a></li>
+                        
+                          <li><a title="快速搭建新项目框架1-依赖注入" href="15299133100165.html">快速搭建新项目框架1-依赖注入</a></li>
+                        
+                          <li><a title="快速搭建新项目框架0-前言" href="15299133100210.html">快速搭建新项目框架0-前言</a></li>
+                        
+                          <li><a title="Architecture Components--Room  Persistence Library" href="15299133101299.html">Architecture Components--Room  Persistence Library</a></li>
+                        
+                          <li><a title="Architecture Components -- Guide to App Architecture" href="15299133102446.html">Architecture Components -- Guide to App Architecture</a></li>
+                        
+                          <li><a title="Architecture Components--ViewModel" href="15299133101129.html">Architecture Components--ViewModel</a></li>
+                        
+                          <li><a title="Architecture Components--LiveData" href="15299133101795.html">Architecture Components--LiveData</a></li>
+                        
+                          <li><a title="Architecture Components--Lifecycle" href="15299133102342.html">Architecture Components--Lifecycle</a></li>
+                        
+                          <li><a title="Maven 仓库的使用和搭建" href="15299133101591.html">Maven 仓库的使用和搭建</a></li>
+                        
+                          <li><a title="gradle 插件开发" href="15299133102596.html">gradle 插件开发</a></li>
+                        
+                          <li><a title="gradle 插件开发" href="15299133104171.html">gradle 插件开发</a></li>
+                        
+                          <li><a title="NanoHTTPD源码解析" href="15299133101466.html">NanoHTTPD源码解析</a></li>
+                        
+                          <li><a title="Android CleanArchitecture --Dagger分析" href="15299133103599.html">Android CleanArchitecture --Dagger分析</a></li>
+                        
+                          <li><a title="Android 测试 （四）-- 实战分析" href="15299133102936.html">Android 测试 （四）-- 实战分析</a></li>
+                        
+                          <li><a title="Android 测试 （五）-- 实战分析" href="15299133103011.html">Android 测试 （五）-- 实战分析</a></li>
+                        
+                          <li><a title="Android 测试 （三）--Local Unit Tests" href="15299133103134.html">Android 测试 （三）--Local Unit Tests</a></li>
+                        
+                          <li><a title="Android 测试 （二）--Instrumented Unit" href="15299133103076.html">Android 测试 （二）--Instrumented Unit</a></li>
+                        
+                          <li><a title="Android 测试 （一）--测试总览" href="15299133103196.html">Android 测试 （一）--测试总览</a></li>
+                        
+                          <li><a title="Window 和 WindowManager" href="15299133100749.html">Window 和 WindowManager</a></li>
+                        
+                          <li><a title="window、Activity、DecorView、ViewRoot关系" href="15299133103906.html">window、Activity、DecorView、ViewRoot关系</a></li>
+                        
+                          <li><a title="AsyncTask 源码分析" href="15299133102725.html">AsyncTask 源码分析</a></li>
+                        
+                          <li><a title="Runnable、Callable、Future、FutureTask的区别" href="15299133101261.html">Runnable、Callable、Future、FutureTask的区别</a></li>
+                        
+                          <li><a title="Looper、Handler、Message 源码分析" href="15299133101714.html">Looper、Handler、Message 源码分析</a></li>
+                        
+                          <li><a title="HandlerThread 源码 分析" href="15299133102391.html">HandlerThread 源码 分析</a></li>
+                        
+                          <li><a title="Activity 总结" href="15299133103948.html">Activity 总结</a></li>
+                        
+                          <li><a title="Architecting Android…The evolution" href="15299133102798.html">Architecting Android…The evolution</a></li>
+                        
+                          <li><a title="Android clean architecting" href="15299133103637.html">Android clean architecting</a></li>
+                        
+                          <li><a title="Android Application 从零开始 2 ——DI" href="15299133103685.html">Android Application 从零开始 2 ——DI</a></li>
+                        
+                          <li><a title="Android Application 从零开始 1 ——Gradle" href="15299133103723.html">Android Application 从零开始 1 ——Gradle</a></li>
+                        
+                          <li><a title="Android Application 从零开始 0 ——前言" href="15299133103764.html">Android Application 从零开始 0 ——前言</a></li>
+                        
+                          <li><a title="volley源码解析" href="15299133100860.html">volley源码解析</a></li>
+                        
+                          <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+                        
+                          <li><a title="ASimpleCache缓存源码分析" href="15299133102762.html">ASimpleCache缓存源码分析</a></li>
+                        
+                          <li><a title="一个很棒的 Android  APP框架" href="15299133103809.html">一个很棒的 Android  APP框架</a></li>
+                        
+                          <li><a title="retrofit源码解析2" href="15299133101383.html">retrofit源码解析2</a></li>
+                        
+                          <li><a title="retrofit源码解析1" href="15299133101429.html">retrofit源码解析1</a></li>
+                        
+                          <li><a title="Service 总结" href="15299133101225.html">Service 总结</a></li>
+                        
+                          <li><a title="Activity Mode" href="15299133103997.html">Activity Mode</a></li>
+                        
+                          <li><a title="地图区域绘制 MVP 实践" href="15299133100416.html">地图区域绘制 MVP 实践</a></li>
+                        
+                          <li><a title="Listview crash 分析" href="15299133101874.html">Listview crash 分析</a></li>
+                        
+                          <li><a title="robolectric 单元测试" href="15299133103267.html">robolectric 单元测试</a></li>
+                        
+                          <li><a title="Material Design" href="15299133101643.html">Material Design</a></li>
+                        
+                          <li><a title="Android 中的 rxjava" href="15299133103337.html">Android 中的 rxjava</a></li>
+                        
+                          <li><a title="Android MVVM" href="15299133103550.html">Android MVVM</a></li>
+                        
+                          <li><a title="Android 中的MVP 模式" href="15299133101508.html">Android 中的MVP 模式</a></li>
+                        
+                          <li><a title="Android 内存泄露" href="15299133100598.html">Android 内存泄露</a></li>
+                        
+                          <li><a title="IDEA 技巧" href="15299133102120.html">IDEA 技巧</a></li>
+                        
+                          <li><a title="Android Media Player" href="15299133101552.html">Android Media Player</a></li>
+                        
+                          <li><a title="Android View 小结（下）" href="15299133099732.html">Android View 小结（下）</a></li>
+                        
+                          <li><a title="Android service" href="15299133103504.html">Android service</a></li>
+                        
+                          <li><a title="robolectric" href="15299133101345.html">robolectric</a></li>
+                        
+                          <li><a title="Android Studio中进行单元测试" href="15299133103442.html">Android Studio中进行单元测试</a></li>
+                        
+                          <li><a title="AIDL 学习" href="15299133103865.html">AIDL 学习</a></li>
+                        
+                          <li><a title="蓝牙学习" href="15299133099695.html">蓝牙学习</a></li>
+                        
+                          <li><a title="title: 手机信号质量检测" href="15299133100046.html">title: 手机信号质量检测</a></li>
+                        
+                          <li><a title="GreenDao学习" href="15299133102559.html">GreenDao学习</a></li>
+                        
+                          <li><a title="登陆框 UI" href="15299133099886.html">登陆框 UI</a></li>
+                        
+                          <li><a title="EventBus 学习" href="15299133102685.html">EventBus 学习</a></li>
+                        
+                          <li><a title="取消软键盘自动弹出" href="15299133100509.html">取消软键盘自动弹出</a></li>
+                        
+                          <li><a title="jni 学习" href="15299133101955.html">jni 学习</a></li>
+                        
+                          <li><a title="GSON 学习" href="15299133102507.html">GSON 学习</a></li>
+                        
+                          <li><a title="Android 触摸事件传递机制" href="15299133102860.html">Android 触摸事件传递机制</a></li>
+                        
+                          <li><a title="volley学习" href="15299133100924.html">volley学习</a></li>
+                        
+                          <li><a title="wifi压力测试" href="15299133100786.html">wifi压力测试</a></li>
+                        
+                          <li><a title="listview的复用机制" href="15299133101837.html">listview的复用机制</a></li>
+                        
+                          <li><a title="Android View 小结" href="15299133103394.html">Android View 小结</a></li>
+                        
+                          <li><a title="使用命令行查看android sqlite数据库" href="15299133100658.html">使用命令行查看android sqlite数据库</a></li>
+                        
+                          <li><a title="loader 总结" href="15299133101753.html">loader 总结</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>UserGrowth</span></li>
+                        
+                          <li><a title="abtest 数据分析" href="15299133098726.html">abtest 数据分析</a></li>
+                        
+                          <li><a title="ABtest 平台框架" href="15299133098793.html">ABtest 平台框架</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>balabala</span></li>
+                        
+                          <li><a title="写在离开北京的前夕" href="15299133099414.html">写在离开北京的前夕</a></li>
+                        
+                          <li><a title="09-17 碎碎念" href="15299133099046.html">09-17 碎碎念</a></li>
+                        
+                          <li><a title="近期学习计划" href="15299133099560.html">近期学习计划</a></li>
+                        
+                          <li><a title="单身汪的自白" href="15299133100538.html">单身汪的自白</a></li>
+                        
+                          <li><a title="2015小结" href="15299133104055.html">2015小结</a></li>
+                        
+                          <li><a title="日记" href="15299133101912.html">日记</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Java</span></li>
+                        
+                          <li><a title="Java 内存分配策略" href="15299133102065.html">Java 内存分配策略</a></li>
+                        
+                          <li><a title="HashMap 的实现原理" href="15299133102218.html">HashMap 的实现原理</a></li>
+                        
+                          <li><a title="hashcode" href="15299133102285.html">hashcode</a></li>
+                        
+                          <li><a title="wait/notify/notifyAll 总结" href="15299133100823.html">wait/notify/notifyAll 总结</a></li>
+                        
+                          <li><a title="synchronized 总结" href="15299133101186.html">synchronized 总结</a></li>
+                        
+                          <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
+                        
+                          <li><a title="代理模式 Proxy Pattern" href="15299133100699.html">代理模式 Proxy Pattern</a></li>
+                        
+                          <li><a title="迭代器模式 Iterator Pattern" href="15299133099503.html">迭代器模式 Iterator Pattern</a></li>
+                        
+                          <li><a title="组合模式 Composite Pattern" href="15299133099787.html">组合模式 Composite Pattern</a></li>
+                        
+                          <li><a title="命令模式 Command Pattern" href="15299133100466.html">命令模式 Command Pattern</a></li>
+                        
+                          <li><a title="单例模式 Singleton Pattern" href="15299133100569.html">单例模式 Singleton Pattern</a></li>
+                        
+                          <li><a title="适配器模式 Adapter Pattern" href="15299133099455.html">适配器模式 Adapter Pattern</a></li>
+                        
+                          <li><a title="简单工厂模式 Factory  Pattern" href="15299133100248.html">简单工厂模式 Factory  Pattern</a></li>
+                        
+                          <li><a title="工厂方法模式 Factory Method Pattern" href="15299133100311.html">工厂方法模式 Factory Method Pattern</a></li>
+                        
+                          <li><a title="装饰者模式 Decorator Design Pattern" href="15299133099653.html">装饰者模式 Decorator Design Pattern</a></li>
+                        
+                          <li><a title="观察者模式 Observer Design Pattern" href="15299133099606.html">观察者模式 Observer Design Pattern</a></li>
+                        
+                          <li><a title="策略模式 Strategy Pattern" href="15299133099842.html">策略模式 Strategy Pattern</a></li>
+                        
+                          <li><a title="模板方法模式 Template Method Pattern" href="15299133100005.html">模板方法模式 Template Method Pattern</a></li>
+                        
+                          <li><a title="状态模式 State Design Pattern" href="15299133099923.html">状态模式 State Design Pattern</a></li>
+                        
+                          <li><a title="Java注解" href="15299133099968.html">Java注解</a></li>
+                        
+                          <li><a title="抽象工厂模式 Abstract Factory Pattern" href="15299133100082.html">抽象工厂模式 Abstract Factory Pattern</a></li>
+                        
+                          <li><a title="强引用、软引用、弱引用、虚引用" href="15299133101993.html">强引用、软引用、弱引用、虚引用</a></li>
+                        
+                          <li><a title="VIM 技巧" href="15299133099014.html">VIM 技巧</a></li>
+                        
+                          <li><a title="java 反射学习" href="15299133102029.html">java 反射学习</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>Looper、Handler、Message 源码分析</h1>
+
+<h2 id="toc_0">Looper</h2>
+
+<p>文档这么介绍这个类的 </p>
+
+<blockquote>
+<ul>
+<li>Class used to run a message loop for a thread.  Threads by default do
+<ul>
+<li>not have a message loop associated with them; to create one, call</li>
+<li>{@link #prepare} in the thread that is to run the loop, and then</li>
+<li>{@link #loop} to have it process messages until the loop is stopped.</li>
+</ul></li>
+</ul>
+</blockquote>
+
+<p>通常在线程中是这样使用</p>
+
+<span id="more"></span><!-- more -->
+
+<pre><code class="language-java">class LooperThread extends Thread {
+     public Handler mHandler;
+
+      public void run() {
+          Looper.prepare();
+
+          mHandler = new Handler() {
+              public void handleMessage(Message msg) {
+                  // process incoming messages here
+              }
+          };
+          Looper.loop();
+      }
+</code></pre>
+
+<p>首先调用了 <code>Looper.prepare()</code> 接着调用了<code>Looper.loop();</code>，具体来看看这两个函数<br/>
+<!-- more --></p>
+
+<p>继续看看 <code>Lopper</code> 中的主要成员变量</p>
+
+<pre><code class="language-java"> // sThreadLocal.get() will return null unless you&#39;ve called prepare().
+ //在prepare 的时候 set 的值
+    static final ThreadLocal&lt;Looper&gt; sThreadLocal = new ThreadLocal&lt;Looper&gt;();
+    private static Looper sMainLooper;  // guarded by Looper.class
+//消息队列
+    final MessageQueue mQueue;
+    final Thread mThread;
+</code></pre>
+
+<blockquote>
+<p>而ThreadLocal类为每一个线程都维护了自己独有的变量拷贝。每个线程都拥有了自己独立的一个变量，竞争条件被彻底消除了，那就没有任何必要对这些线程进行同步，它们也能最大限度的由CPU调度，并发执行。并且由于每个线程在访问该变量时，读取和修改的，都是自己独有的那一份变量拷贝，变量被彻底封闭在每个访问的线程中，并发错误出现的可能也完全消除了。对比前一种方案，这是一种以空间来换取线程安全性的策略。<br/>
+ <a href="http://my.oschina.net/lichhao/blog/111362">具体 可参看这里</a></p>
+</blockquote>
+
+<h3 id="toc_1">prepare()</h3>
+
+<pre><code class="language-java">public static void prepare() {
+    prepare(true);
+}
+
+private static void prepare(boolean quitAllowed) {
+    if (sThreadLocal.get() != null) {
+        throw new RuntimeException(&quot;Only one Looper may be created per thread&quot;);
+    }
+    sThreadLocal.set(new Looper(quitAllowed));
+}
+</code></pre>
+
+<p>prepare 比较简单，只是初始化了 sThreadLocal的值。一个 Looper 只能有一个 ThreadLoacl 对象，当<code>sThreadLocal.get() != null</code>抛出异常</p>
+
+<blockquote>
+<p><strong>ThreadLocal对象保证每个线程中的 Looper 实例互不相同</strong><br/>
+** 一句话概括 prepare()，对于每个 thread 准备一个 Looper 变量，并保证每个Looper在每个线程中独一无二**</p>
+</blockquote>
+
+<h3 id="toc_2">loop()</h3>
+
+<pre><code class="language-java">public static void loop() {
+    //这里得到的 Looper，就是prepare 中 set 的，一个线程对应一个 Looper
+        final Looper me = myLooper();
+        if (me == null) {
+            throw new RuntimeException(&quot;No Looper; Looper.prepare() wasn&#39;t called on this thread.&quot;);
+        }
+        final MessageQueue queue = me.mQueue;
+
+        // Make sure the identity of this thread is that of the local process,
+        // and keep track of what that identity token actually is.
+        Binder.clearCallingIdentity();
+        final long ident = Binder.clearCallingIdentity();
+
+    //循环从 MessageQueue 取出消息执行，MessageQueue在 Looper 的构造函数中被创建
+        for (;;) {
+        // 如果没有消息则阻塞。
+            Message msg = queue.next(); // might block
+            if (msg == null) {
+                // No message indicates that the message queue is quitting.
+                return;
+            }
+
+            // This must be in a local variable, in case a UI event sets the logger
+            Printer logging = me.mLogging;
+            if (logging != null) {
+                logging.println(&quot;&gt;&gt;&gt;&gt;&gt; Dispatching to &quot; + msg.target + &quot; &quot; +
+                        msg.callback + &quot;: &quot; + msg.what);
+            }
+
+        //MessageQueue中 取出的 msg，交给target.dispatchMessage 处理
+            msg.target.dispatchMessage(msg);
+
+            if (logging != null) {
+                logging.println(&quot;&lt;&lt;&lt;&lt;&lt; Finished to &quot; + msg.target + &quot; &quot; + msg.callback);
+            }
+
+            // Make sure that during the course of dispatching the
+            // identity of the thread wasn&#39;t corrupted.
+            final long newIdent = Binder.clearCallingIdentity();
+            if (ident != newIdent) {
+                Log.wtf(TAG, &quot;Thread identity changed from 0x&quot;
+                        + Long.toHexString(ident) + &quot; to 0x&quot;
+                        + Long.toHexString(newIdent) + &quot; while dispatching to &quot;
+                        + msg.target.getClass().getName() + &quot; &quot;
+                        + msg.callback + &quot; what=&quot; + msg.what);
+            }
+
+            msg.recycle();
+        }
+    }
+</code></pre>
+
+<h3 id="toc_3">mylooper()</h3>
+
+<pre><code class="language-java">    public static Looper myLooper() {
+        return sThreadLocal.get();
+    }
+</code></pre>
+
+<p>直接返回ThreadLocal中存储的 Looper 变量。<br/>
+然后取出 looper 中的 Queue，并且循环取出队列中的 message，交给<code>msg.target.dispatchMessage(msg);</code>处理</p>
+
+<blockquote>
+<p>target 是 handler 后面会讲到</p>
+</blockquote>
+
+<pre><code class="language-java">public void dispatchMessage(Message msg) {  
+        if (msg.callback != null) {  
+        //post 的回调
+            handleCallback(msg);  
+        } else {  
+            if (mCallback != null) {  
+                if (mCallback.handleMessage(msg)) {  
+                    return;  
+                }  
+            }  
+            handleMessage(msg);  
+        }  
+    } 
+</code></pre>
+
+<p><code>handleMessage(msg)</code>是一个空方法，我们在创建 handler 实例时，复写这个方法。然后根据msg.what进行消息处理</p>
+
+<h2 id="toc_4">Handler</h2>
+
+<pre><code class="language-java">public Handler(Callback callback, boolean async) {
+        if (FIND_POTENTIAL_LEAKS) {
+            final Class&lt;? extends Handler&gt; klass = getClass();
+            if ((klass.isAnonymousClass() || klass.isMemberClass() || klass.isLocalClass()) &amp;&amp;
+                    (klass.getModifiers() &amp; Modifier.STATIC) == 0) {
+                Log.w(TAG, &quot;The following Handler class should be static or leaks might occur: &quot; +
+                    klass.getCanonicalName());
+            }
+        }
+
+    //通过Looper.myLooper()获取了当前线程保存的Looper实例，        mLooper = Looper.myLooper();
+        if (mLooper == null) {
+            throw new RuntimeException(
+                &quot;Can&#39;t create handler inside thread that has not called Looper.prepare()&quot;);
+        }
+        // 获取了这个Looper实例中保存的MessageQueue（消息队列），这样就保证了handler的实例与我们Looper实例中MessageQueue关联上了。
+        mQueue = mLooper.mQueue;
+        mCallback = callback;
+        mAsynchronous = async;
+    }
+</code></pre>
+
+<p>同样，通过<code>Looper.myLooper()</code>获取当前线程中的 Looper 对象，并且得到其中的 Queue</p>
+
+<p>所有 <code>sendMessage</code>、<code>sendMessageDelayed</code>、<code>sendEmptyMessageDelayed</code>等，最终都调用</p>
+
+<pre><code class="language-java">     public boolean sendMessageAtTime(Message msg, long uptimeMillis) {
+        MessageQueue queue = mQueue;
+        if (queue == null) {
+            RuntimeException e = new RuntimeException(
+                    this + &quot; sendMessageAtTime() called with no mQueue&quot;);
+            Log.w(&quot;Looper&quot;, e.getMessage(), e);
+            return false;
+        }
+        return enqueueMessage(queue, msg, uptimeMillis);
+    }
+    
+        private boolean enqueueMessage(MessageQueue queue, Message msg, long uptimeMillis) {
+        //Looper的loop方法会取出每个msg然后交给msg,target.dispatchMessage(msg)去处理消息
+        msg.target = this;
+        if (mAsynchronous) {
+            msg.setAsynchronous(true);
+        }
+        return queue.enqueueMessage(msg, uptimeMillis);
+    }
+    
+</code></pre>
+
+<p>最终会将msg 加入到 queue 的队列中</p>
+
+<h4 id="toc_5">MessageQueue</h4>
+
+<pre><code class="language-java">boolean enqueueMessage(Message msg, long when) {
+        if (msg.isInUse()) {
+            throw new AndroidRuntimeException(msg + &quot; This message is already in use.&quot;);
+        }
+        if (msg.target == null) {
+            throw new AndroidRuntimeException(&quot;Message must have a target.&quot;);
+        }
+
+        synchronized (this) {
+            if (mQuitting) {
+                RuntimeException e = new RuntimeException(
+                        msg.target + &quot; sending message to a Handler on a dead thread&quot;);
+                Log.w(&quot;MessageQueue&quot;, e.getMessage(), e);
+                return false;
+            }
+
+            msg.when = when;
+            Message p = mMessages;
+            boolean needWake;
+            if (p == null || when == 0 || when &lt; p.when) {
+                // New head, wake up the event queue if blocked.
+                msg.next = p;
+                mMessages = msg;
+                needWake = mBlocked;
+            } else {
+                // Inserted within the middle of the queue.  Usually we don&#39;t have to wake
+                // up the event queue unless there is a barrier at the head of the queue
+                // and the message is the earliest asynchronous message in the queue.
+                needWake = mBlocked &amp;&amp; p.target == null &amp;&amp; msg.isAsynchronous();
+                Message prev;
+                for (;;) {
+                    prev = p;
+                    p = p.next;
+                    if (p == null || when &lt; p.when) {
+                        break;
+                    }
+                    if (needWake &amp;&amp; p.isAsynchronous()) {
+                        needWake = false;
+                    }
+                }
+                msg.next = p; // invariant: p == prev.next
+                prev.next = msg;
+            }
+
+            // We can assume mPtr != 0 because mQuitting is false.
+            if (needWake) {
+                nativeWake(mPtr);
+            }
+        }
+        return true;
+    }
+</code></pre>
+
+<h2 id="toc_6">Handler post</h2>
+
+<p>eg</p>
+
+<pre><code class="language-java">mHandler.post(new Runnable()  
+        {  
+            @Override  
+            public void run()  
+            {  
+                //do something 在 handler 线程
+            }  
+        }); 
+</code></pre>
+
+<pre><code class="language-java">public final boolean post(Runnable r)  
+   {  
+      return  sendMessageDelayed(getPostMessage(r), 0);  
+   }  
+   
+   
+    private static Message getPostMessage(Runnable r) {
+        Message m = Message.obtain();
+        m.callback = r;
+        return m;
+    }
+</code></pre>
+
+<p>在getPostMessage中，得到了一个Message对象，然后将我们创建的Runable对象作为callback属性，赋值给了此message.</p>
+
+<blockquote>
+<p>产生一个Message对象，可以new  ，也可以使用Message.obtain()方法；两者都可以，但是更建议使用obtain方法，因为Message内部维护了一个Message池用于Message的复用，避免使用new 重新分配内存。</p>
+</blockquote>
+
+<p>最终还是会调用<code>enqueueMessage</code></p>
+
+<p>在 dispathMessage 的过程中</p>
+
+<pre><code class="language-java">public void dispatchMessage(Message msg) {  
+       if (msg.callback != null) {  
+           handleCallback(msg);  
+       } else {  
+           if (mCallback != null) {  
+               if (mCallback.handleMessage(msg)) {  
+                   return;  
+               }  
+           }  
+           handleMessage(msg);  
+       }  
+   }  
+</code></pre>
+
+<p>在<code>getPostMessage</code>中，将post 中的<code>Runnable</code>赋值给了<code>Message.callback</code><br/>
+所以，会执行<code>handleCallback(msg)</code></p>
+
+<pre><code class="language-java">private static void handleCallback(Message message) {
+        message.callback.run();
+    }
+</code></pre>
+
+<p>即执行 Post 中的Runnable</p>
+
+<p><strong>其实这个Runnable并没有创建什么线程，而是发送了一条消息</strong></p>
+
+<h1 id="toc_7">总结</h1>
+
+<p>到此，这个流程已经解释完毕，让我们首先总结一下</p>
+
+<ol>
+<li>首先Looper.prepare()在本线程中保存一个Looper实例，然后该实例中保存一个MessageQueue对象；因为Looper.prepare()在一个线程中只能调用一次，所以MessageQueue在一个线程中只会存在一个。</li>
+<li>Looper.loop()会让当前线程进入一个无限循环，不端从MessageQueue的实例中读取消息，然后回调msg.target.dispatchMessage(msg)方法。</li>
+<li>Handler的构造方法，会首先得到当前线程中保存的Looper实例，进而与Looper实例中的MessageQueue想关联。</li>
+<li>Handler的sendMessage方法，会给msg的target赋值为handler自身，然后加入MessageQueue中。</li>
+<li>在构造Handler实例时，我们会重写handleMessage方法，也就是msg.target.dispatchMessage(msg)最终调用的方法。</li>
+<li>Activity的启动代码中，已经在当前UI线程调用了Looper.prepare()和Looper.loop()方法。</li>
+</ol>
+
+<h1 id="toc_8">参考</h1>
+
+<blockquote>
+<p><a href="http://blog.csdn.net/lmj623565791/article/details/38377229">http://blog.csdn.net/lmj623565791/article/details/38377229</a></p>
+</blockquote>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15299133101261.html"  title="Previous Post: Runnable、Callable、Future、FutureTask的区别">&laquo; Runnable、Callable、Future、FutureTask的区别</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15299133102391.html" 
+	        title="Next Post: HandlerThread 源码 分析">HandlerThread 源码 分析 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15299133101714.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  </body>
+</html>
