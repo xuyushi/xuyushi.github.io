@@ -8,17 +8,23 @@
   Xu Yushi's Blog
   
   </title>
- <meta name="description" content="理工男的碎碎念">
- <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+  
+  
+  <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
-
     <script src="asset/js/vendor/modernizr.js"></script>
     <script src="asset/js/vendor/jquery.js"></script>
-    <script src="asset/highlightjs/highlight.pack.js"></script>
-    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <script>hljs.initHighlightingOnLoad();</script>
-    
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
   </head>
   <body class="antialiased hide-extras">
     
@@ -28,11 +34,34 @@
 
 <nav class="top-bar docs-bar hide-for-small" data-topbar>
 
-<div id="header">
-    <h1><a href="index.html">Xu Yushi's Blog</a></h1>
-</div>
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
 
 </nav>
+
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
     <span> &nbsp; Xu Yushi's Blog</span>
@@ -41,1201 +70,787 @@
 
 <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
-      <li><a href="index.html">Home</a></li>
-      
-        <li class="divider"></li>
-        <li><label>UserGrowth</label></li>
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
 
-          
-            <li><a title="abtest 数据分析" href="15299133098726.html">abtest 数据分析</a></li>
-          
-            <li><a title="ABtest 平台框架" href="15299133098793.html">ABtest 平台框架</a></li>
-          
+    <li><label>Categories</label></li>
 
-      
-        <li class="divider"></li>
-        <li><label>Android</label></li>
+        
+            <li><a href="UserGrowth.html">UserGrowth</a></li>
+        
+            <li><a href="Android.html">Android</a></li>
+        
+            <li><a href="Java.html">Java</a></li>
+        
+            <li><a href="balabala.html">balabala</a></li>
+         
 
-          
-            <li><a title="jenkins 平台搭建" href="15299133099249.html">jenkins 平台搭建</a></li>
-          
-            <li><a title="gitlab 搭建" href="15299133099310.html">gitlab 搭建</a></li>
-          
-            <li><a title="Android sdk 搭建" href="15299133099366.html">Android sdk 搭建</a></li>
-          
-            <li><a title="Maven 搭建" href="15299133099121.html">Maven 搭建</a></li>
-          
-            <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099083.html">快速搭建新项目框架3-Kotlin</a></li>
-          
-            <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099209.html">快速搭建新项目框架3-Kotlin</a></li>
-          
-            <li><a title="快速搭建新项目框架2-mvp 结构" href="15299133100126.html">快速搭建新项目框架2-mvp 结构</a></li>
-          
-            <li><a title="快速搭建新项目框架1-依赖注入" href="15299133100165.html">快速搭建新项目框架1-依赖注入</a></li>
-          
-            <li><a title="快速搭建新项目框架0-前言" href="15299133100210.html">快速搭建新项目框架0-前言</a></li>
-          
-            <li><a title="Architecture Components--Room  Persistence Library" href="15299133101299.html">Architecture Components--Room  Persistence Library</a></li>
-          
-            <li><a title="Architecture Components -- Guide to App Architecture" href="15299133102446.html">Architecture Components -- Guide to App Architecture</a></li>
-          
-            <li><a title="Architecture Components--ViewModel" href="15299133101129.html">Architecture Components--ViewModel</a></li>
-          
-            <li><a title="Architecture Components--LiveData" href="15299133101795.html">Architecture Components--LiveData</a></li>
-          
-            <li><a title="Architecture Components--Lifecycle" href="15299133102342.html">Architecture Components--Lifecycle</a></li>
-          
-            <li><a title="Maven 仓库的使用和搭建" href="15299133101591.html">Maven 仓库的使用和搭建</a></li>
-          
-            <li><a title="gradle 插件开发" href="15299133102596.html">gradle 插件开发</a></li>
-          
-            <li><a title="gradle 插件开发" href="15299133104171.html">gradle 插件开发</a></li>
-          
-            <li><a title="NanoHTTPD源码解析" href="15299133101466.html">NanoHTTPD源码解析</a></li>
-          
-            <li><a title="Android CleanArchitecture --Dagger分析" href="15299133103599.html">Android CleanArchitecture --Dagger分析</a></li>
-          
-            <li><a title="Android 测试 （四）-- 实战分析" href="15299133102936.html">Android 测试 （四）-- 实战分析</a></li>
-          
-            <li><a title="Android 测试 （五）-- 实战分析" href="15299133103011.html">Android 测试 （五）-- 实战分析</a></li>
-          
-            <li><a title="Android 测试 （三）--Local Unit Tests" href="15299133103134.html">Android 测试 （三）--Local Unit Tests</a></li>
-          
-            <li><a title="Android 测试 （二）--Instrumented Unit" href="15299133103076.html">Android 测试 （二）--Instrumented Unit</a></li>
-          
-            <li><a title="Android 测试 （一）--测试总览" href="15299133103196.html">Android 测试 （一）--测试总览</a></li>
-          
-            <li><a title="Window 和 WindowManager" href="15299133100749.html">Window 和 WindowManager</a></li>
-          
-            <li><a title="window、Activity、DecorView、ViewRoot关系" href="15299133103906.html">window、Activity、DecorView、ViewRoot关系</a></li>
-          
-            <li><a title="AsyncTask 源码分析" href="15299133102725.html">AsyncTask 源码分析</a></li>
-          
-            <li><a title="Runnable、Callable、Future、FutureTask的区别" href="15299133101261.html">Runnable、Callable、Future、FutureTask的区别</a></li>
-          
-            <li><a title="Looper、Handler、Message 源码分析" href="15299133101714.html">Looper、Handler、Message 源码分析</a></li>
-          
-            <li><a title="HandlerThread 源码 分析" href="15299133102391.html">HandlerThread 源码 分析</a></li>
-          
-            <li><a title="Activity 总结" href="15299133103948.html">Activity 总结</a></li>
-          
-            <li><a title="Architecting Android…The evolution" href="15299133102798.html">Architecting Android…The evolution</a></li>
-          
-            <li><a title="Android clean architecting" href="15299133103637.html">Android clean architecting</a></li>
-          
-            <li><a title="Android Application 从零开始 2 ——DI" href="15299133103685.html">Android Application 从零开始 2 ——DI</a></li>
-          
-            <li><a title="Android Application 从零开始 1 ——Gradle" href="15299133103723.html">Android Application 从零开始 1 ——Gradle</a></li>
-          
-            <li><a title="Android Application 从零开始 0 ——前言" href="15299133103764.html">Android Application 从零开始 0 ——前言</a></li>
-          
-            <li><a title="volley源码解析" href="15299133100860.html">volley源码解析</a></li>
-          
-            <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
-          
-            <li><a title="ASimpleCache缓存源码分析" href="15299133102762.html">ASimpleCache缓存源码分析</a></li>
-          
-            <li><a title="一个很棒的 Android  APP框架" href="15299133103809.html">一个很棒的 Android  APP框架</a></li>
-          
-            <li><a title="retrofit源码解析2" href="15299133101383.html">retrofit源码解析2</a></li>
-          
-            <li><a title="retrofit源码解析1" href="15299133101429.html">retrofit源码解析1</a></li>
-          
-            <li><a title="Service 总结" href="15299133101225.html">Service 总结</a></li>
-          
-            <li><a title="Activity Mode" href="15299133103997.html">Activity Mode</a></li>
-          
-            <li><a title="地图区域绘制 MVP 实践" href="15299133100416.html">地图区域绘制 MVP 实践</a></li>
-          
-            <li><a title="Listview crash 分析" href="15299133101874.html">Listview crash 分析</a></li>
-          
-            <li><a title="robolectric 单元测试" href="15299133103267.html">robolectric 单元测试</a></li>
-          
-            <li><a title="Material Design" href="15299133101643.html">Material Design</a></li>
-          
-            <li><a title="Android 中的 rxjava" href="15299133103337.html">Android 中的 rxjava</a></li>
-          
-            <li><a title="Android MVVM" href="15299133103550.html">Android MVVM</a></li>
-          
-            <li><a title="Android 中的MVP 模式" href="15299133101508.html">Android 中的MVP 模式</a></li>
-          
-            <li><a title="Android 内存泄露" href="15299133100598.html">Android 内存泄露</a></li>
-          
-            <li><a title="IDEA 技巧" href="15299133102120.html">IDEA 技巧</a></li>
-          
-            <li><a title="Android Media Player" href="15299133101552.html">Android Media Player</a></li>
-          
-            <li><a title="Android View 小结（下）" href="15299133099732.html">Android View 小结（下）</a></li>
-          
-            <li><a title="Android service" href="15299133103504.html">Android service</a></li>
-          
-            <li><a title="robolectric" href="15299133101345.html">robolectric</a></li>
-          
-            <li><a title="Android Studio中进行单元测试" href="15299133103442.html">Android Studio中进行单元测试</a></li>
-          
-            <li><a title="AIDL 学习" href="15299133103865.html">AIDL 学习</a></li>
-          
-            <li><a title="蓝牙学习" href="15299133099695.html">蓝牙学习</a></li>
-          
-            <li><a title="title: 手机信号质量检测" href="15299133100046.html">title: 手机信号质量检测</a></li>
-          
-            <li><a title="GreenDao学习" href="15299133102559.html">GreenDao学习</a></li>
-          
-            <li><a title="登陆框 UI" href="15299133099886.html">登陆框 UI</a></li>
-          
-            <li><a title="EventBus 学习" href="15299133102685.html">EventBus 学习</a></li>
-          
-            <li><a title="取消软键盘自动弹出" href="15299133100509.html">取消软键盘自动弹出</a></li>
-          
-            <li><a title="jni 学习" href="15299133101955.html">jni 学习</a></li>
-          
-            <li><a title="GSON 学习" href="15299133102507.html">GSON 学习</a></li>
-          
-            <li><a title="Android 触摸事件传递机制" href="15299133102860.html">Android 触摸事件传递机制</a></li>
-          
-            <li><a title="volley学习" href="15299133100924.html">volley学习</a></li>
-          
-            <li><a title="wifi压力测试" href="15299133100786.html">wifi压力测试</a></li>
-          
-            <li><a title="listview的复用机制" href="15299133101837.html">listview的复用机制</a></li>
-          
-            <li><a title="Android View 小结" href="15299133103394.html">Android View 小结</a></li>
-          
-            <li><a title="使用命令行查看android sqlite数据库" href="15299133100658.html">使用命令行查看android sqlite数据库</a></li>
-          
-            <li><a title="loader 总结" href="15299133101753.html">loader 总结</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>Java</label></li>
-
-          
-            <li><a title="Java 内存分配策略" href="15299133102065.html">Java 内存分配策略</a></li>
-          
-            <li><a title="HashMap 的实现原理" href="15299133102218.html">HashMap 的实现原理</a></li>
-          
-            <li><a title="hashcode" href="15299133102285.html">hashcode</a></li>
-          
-            <li><a title="wait/notify/notifyAll 总结" href="15299133100823.html">wait/notify/notifyAll 总结</a></li>
-          
-            <li><a title="synchronized 总结" href="15299133101186.html">synchronized 总结</a></li>
-          
-            <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
-          
-            <li><a title="代理模式 Proxy Pattern" href="15299133100699.html">代理模式 Proxy Pattern</a></li>
-          
-            <li><a title="迭代器模式 Iterator Pattern" href="15299133099503.html">迭代器模式 Iterator Pattern</a></li>
-          
-            <li><a title="组合模式 Composite Pattern" href="15299133099787.html">组合模式 Composite Pattern</a></li>
-          
-            <li><a title="命令模式 Command Pattern" href="15299133100466.html">命令模式 Command Pattern</a></li>
-          
-            <li><a title="单例模式 Singleton Pattern" href="15299133100569.html">单例模式 Singleton Pattern</a></li>
-          
-            <li><a title="适配器模式 Adapter Pattern" href="15299133099455.html">适配器模式 Adapter Pattern</a></li>
-          
-            <li><a title="简单工厂模式 Factory  Pattern" href="15299133100248.html">简单工厂模式 Factory  Pattern</a></li>
-          
-            <li><a title="工厂方法模式 Factory Method Pattern" href="15299133100311.html">工厂方法模式 Factory Method Pattern</a></li>
-          
-            <li><a title="装饰者模式 Decorator Design Pattern" href="15299133099653.html">装饰者模式 Decorator Design Pattern</a></li>
-          
-            <li><a title="观察者模式 Observer Design Pattern" href="15299133099606.html">观察者模式 Observer Design Pattern</a></li>
-          
-            <li><a title="策略模式 Strategy Pattern" href="15299133099842.html">策略模式 Strategy Pattern</a></li>
-          
-            <li><a title="模板方法模式 Template Method Pattern" href="15299133100005.html">模板方法模式 Template Method Pattern</a></li>
-          
-            <li><a title="状态模式 State Design Pattern" href="15299133099923.html">状态模式 State Design Pattern</a></li>
-          
-            <li><a title="Java注解" href="15299133099968.html">Java注解</a></li>
-          
-            <li><a title="抽象工厂模式 Abstract Factory Pattern" href="15299133100082.html">抽象工厂模式 Abstract Factory Pattern</a></li>
-          
-            <li><a title="强引用、软引用、弱引用、虚引用" href="15299133101993.html">强引用、软引用、弱引用、虚引用</a></li>
-          
-            <li><a title="VIM 技巧" href="15299133099014.html">VIM 技巧</a></li>
-          
-            <li><a title="java 反射学习" href="15299133102029.html">java 反射学习</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>balabala</label></li>
-
-          
-            <li><a title="写在离开北京的前夕" href="15299133099414.html">写在离开北京的前夕</a></li>
-          
-            <li><a title="09-17 碎碎念" href="15299133099046.html">09-17 碎碎念</a></li>
-          
-            <li><a title="近期学习计划" href="15299133099560.html">近期学习计划</a></li>
-          
-            <li><a title="单身汪的自白" href="15299133100538.html">单身汪的自白</a></li>
-          
-            <li><a title="2015小结" href="15299133104055.html">2015小结</a></li>
-          
-            <li><a title="日记" href="15299133101912.html">日记</a></li>
-          
-
-      
       </ul>
     </aside>
 
 <a class="exit-off-canvas" href="#"></a>
 
+
         <section id="main-content" role="main" class="scroll-container">
+        
+       
 
-          <div class="row">
-            <div class="large-3 medium-3 columns">
-              <div class="hide-for-small">
-                <div class="sidebar">
-                <nav>
-                  <ul id="side-nav" class="side-nav">
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15299133103550.html">
+                
+                  <h1>Android MVVM</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在上一篇博文中介绍了 <img src="http://xuyushi.github.io/2016/02/28/MVP/" alt="Android的MVP模式"/>。MVVM 是从 MVP 的进一步发展与规范，MVP 隔离了 M 与 V 的直接联系后，靠 Presenter 来中转，所以使用 MVP 时 P 是直接调用 View 的接口来实现对视图的操作的，M 与 V是隔离了，方便测试了，但代码还不够优雅简洁啊，所以 MVVM 就弥补了这些缺陷。</p>
 
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133103550.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/3/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133101508.html">
+                
+                  <h1>Android 中的MVP 模式</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>MVP模式的核心思想：</p>
+
+<blockquote>
+<p>MVP把Activity中的UI逻辑抽象成View接口，把业务逻辑抽象成功接口，Model类还是原来的Model。</p>
+</blockquote>
+
+<h2 id="toc_0">MVC</h2>
+
+<p><img src="media/15299133101508/14566254770300.png" alt=""/></p>
+
+<ul>
+<li>其中View层其实就是程序的UI界面，用于向用户展示数据以及接收用户的输入</li>
+<li>而Model层就是JavaBean实体类，用于保存实例数据</li>
+<li>Controller控制器用于更新UI界面和数据实例</li>
+</ul>
+
+<p>View层接受用户的输入，然后通过Controller修改对应的Model实例；同时，当Model实例的数据发生变化的时候，需要修改UI界面，可以通过Controller更新界面。View层也可以直接更新Model实例的数据，而不用每次都通过Controller，这样对于一些简单的数据更新工作会变得方便许多。</p>
+
+<h2 id="toc_1">MVP</h2>
+
+<p>MVP与MVC最不同的一点是<strong>M与V是不直接关联的也是就Model与View不存在直接关系，这两者之间间隔着的是Presenter层</strong><br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133101508.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133100699.html">
+                
+                  <h1>代理模式 Proxy Pattern</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">定义</h2>
+
+<blockquote>
+<p>代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。</p>
+
+<h2 id="toc_1">使用场景</h2>
+</blockquote>
+
+<ul>
+<li>一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。</li>
+<li>系统中有多于一个的产品族，而每次只使用其中某一产品族。</li>
+<li>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</li>
+<li>系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
+</ul>
+
+<h2 id="toc_2">UML 图</h2>
+
+<p><img src="media/15299133100699/14562373472577.png" alt=""/></p>
+
+<p>Subject: 抽象主题角色<br/>
+Proxy: 代理主题角色<br/>
+RealSubject: 真实主题角色</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133100699.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133099503.html">
+                
+                  <h1>迭代器模式 Iterator Pattern</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">定义</h2>
+
+<blockquote>
+<p>迭代器模式 Iterator Pattern 提供一个方法顺序访问一个聚合对象中的个个元素，而不是暴露其内部的表示</p>
+</blockquote>
+
+<h2 id="toc_1">使用场景</h2>
+
+<ul>
+<li>访问一个聚合对象的内容而无须暴露它的内部表示。</li>
+<li>需要为聚合对象提供多种遍历方式。</li>
+<li>为遍历不同的聚合结构提供一个统一的接口。<br/>
+## UML 图
+<img src="media/15299133099503/14562354344010.jpg" alt=""/></li>
+</ul>
+
+<p>迭代器角色(Iterator)：迭代器角色负责定义访问和遍历元素的接口。<br/>
+具体迭代器角色(Concrete Iterator)：具体迭代器角色要实现迭代器接口，并要记录遍历中的当前位置。<br/>
+容器角色(Container)：容器角色负责提供创建具体迭代器角色的接口。<br/>
+具体容器角色(Concrete Container)：具体容器角色实现创建具体迭代器角色的接口。这个具体迭代器角色与该容器的结构相关。<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133099503.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133099787.html">
+                
+                  <h1>组合模式 Composite Pattern</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">定义</h2>
+
+<blockquote>
+<p>代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。</p>
+
+<h2 id="toc_1">使用场景</h2>
+</blockquote>
+
+<ul>
+<li>需要表示一个对象整体或部分层次，在具有整体和部分的层次结构中，希望通过一种方式忽略整体与部分的差异，可以一致地对待它们。</li>
+<li>让客户能够忽略不同对象层次的变化，客户端可以针对抽象构件编程，无须关心对象层次结构的细节。</li>
+</ul>
+
+<h2 id="toc_2">UML 图</h2>
+
+<p><img src="media/15299133099787/14562390427827.png" alt=""/></p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133099787.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133100361.html">
+                
+                  <h1>外观模式 Facade Pattern</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">定义</h2>
+
+<blockquote>
+<p>外观模式(Facade Pattern)：外部与一个子系统的通信必须通过一个统一的外观对象进行，为子系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。外观模式又称为门面模式，它是一种对象结构型模式。</p>
+</blockquote>
+
+<h2 id="toc_1">使用场景</h2>
+
+<ul>
+<li>当要为一个复杂子系统提供一个简单接口时可以使用外观模式。该接口可以满足大多数用户的需求，而且用户也可以越过外观类直接访问子系统。</li>
+<li>客户程序与多个子系统之间存在很大的依赖性。引入外观类将子系统与客户以及其他子系统解耦，可以提高子系统的独立性和可移植性。</li>
+<li>在层次化结构中，可以使用外观模式定义系统中每一层的入口，层与层之间不直接产生联系，而通过外观类建立联系，降低层之间的耦合度。</li>
+</ul>
+
+<h2 id="toc_2">UML 图</h2>
+
+<p><img src="media/15299133100361/14561498047745.png" alt=""/></p>
+
+<p>Facade: 外观角色<br/>
+SubSystem:子系统角色</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133100361.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/22</span>
                     
-                      <li class="side-title"><span>UserGrowth</span></li>
-                        
-                          <li><a title="abtest 数据分析" href="15299133098726.html">abtest 数据分析</a></li>
-                        
-                          <li><a title="ABtest 平台框架" href="15299133098793.html">ABtest 平台框架</a></li>
-                        
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-                    
-                      <li class="side-title"><span>Android</span></li>
-                        
-                          <li><a title="jenkins 平台搭建" href="15299133099249.html">jenkins 平台搭建</a></li>
-                        
-                          <li><a title="gitlab 搭建" href="15299133099310.html">gitlab 搭建</a></li>
-                        
-                          <li><a title="Android sdk 搭建" href="15299133099366.html">Android sdk 搭建</a></li>
-                        
-                          <li><a title="Maven 搭建" href="15299133099121.html">Maven 搭建</a></li>
-                        
-                          <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099083.html">快速搭建新项目框架3-Kotlin</a></li>
-                        
-                          <li><a title="快速搭建新项目框架3-Kotlin" href="15299133099209.html">快速搭建新项目框架3-Kotlin</a></li>
-                        
-                          <li><a title="快速搭建新项目框架2-mvp 结构" href="15299133100126.html">快速搭建新项目框架2-mvp 结构</a></li>
-                        
-                          <li><a title="快速搭建新项目框架1-依赖注入" href="15299133100165.html">快速搭建新项目框架1-依赖注入</a></li>
-                        
-                          <li><a title="快速搭建新项目框架0-前言" href="15299133100210.html">快速搭建新项目框架0-前言</a></li>
-                        
-                          <li><a title="Architecture Components--Room  Persistence Library" href="15299133101299.html">Architecture Components--Room  Persistence Library</a></li>
-                        
-                          <li><a title="Architecture Components -- Guide to App Architecture" href="15299133102446.html">Architecture Components -- Guide to App Architecture</a></li>
-                        
-                          <li><a title="Architecture Components--ViewModel" href="15299133101129.html">Architecture Components--ViewModel</a></li>
-                        
-                          <li><a title="Architecture Components--LiveData" href="15299133101795.html">Architecture Components--LiveData</a></li>
-                        
-                          <li><a title="Architecture Components--Lifecycle" href="15299133102342.html">Architecture Components--Lifecycle</a></li>
-                        
-                          <li><a title="Maven 仓库的使用和搭建" href="15299133101591.html">Maven 仓库的使用和搭建</a></li>
-                        
-                          <li><a title="gradle 插件开发" href="15299133102596.html">gradle 插件开发</a></li>
-                        
-                          <li><a title="gradle 插件开发" href="15299133104171.html">gradle 插件开发</a></li>
-                        
-                          <li><a title="NanoHTTPD源码解析" href="15299133101466.html">NanoHTTPD源码解析</a></li>
-                        
-                          <li><a title="Android CleanArchitecture --Dagger分析" href="15299133103599.html">Android CleanArchitecture --Dagger分析</a></li>
-                        
-                          <li><a title="Android 测试 （四）-- 实战分析" href="15299133102936.html">Android 测试 （四）-- 实战分析</a></li>
-                        
-                          <li><a title="Android 测试 （五）-- 实战分析" href="15299133103011.html">Android 测试 （五）-- 实战分析</a></li>
-                        
-                          <li><a title="Android 测试 （三）--Local Unit Tests" href="15299133103134.html">Android 测试 （三）--Local Unit Tests</a></li>
-                        
-                          <li><a title="Android 测试 （二）--Instrumented Unit" href="15299133103076.html">Android 测试 （二）--Instrumented Unit</a></li>
-                        
-                          <li><a title="Android 测试 （一）--测试总览" href="15299133103196.html">Android 测试 （一）--测试总览</a></li>
-                        
-                          <li><a title="Window 和 WindowManager" href="15299133100749.html">Window 和 WindowManager</a></li>
-                        
-                          <li><a title="window、Activity、DecorView、ViewRoot关系" href="15299133103906.html">window、Activity、DecorView、ViewRoot关系</a></li>
-                        
-                          <li><a title="AsyncTask 源码分析" href="15299133102725.html">AsyncTask 源码分析</a></li>
-                        
-                          <li><a title="Runnable、Callable、Future、FutureTask的区别" href="15299133101261.html">Runnable、Callable、Future、FutureTask的区别</a></li>
-                        
-                          <li><a title="Looper、Handler、Message 源码分析" href="15299133101714.html">Looper、Handler、Message 源码分析</a></li>
-                        
-                          <li><a title="HandlerThread 源码 分析" href="15299133102391.html">HandlerThread 源码 分析</a></li>
-                        
-                          <li><a title="Activity 总结" href="15299133103948.html">Activity 总结</a></li>
-                        
-                          <li><a title="Architecting Android…The evolution" href="15299133102798.html">Architecting Android…The evolution</a></li>
-                        
-                          <li><a title="Android clean architecting" href="15299133103637.html">Android clean architecting</a></li>
-                        
-                          <li><a title="Android Application 从零开始 2 ——DI" href="15299133103685.html">Android Application 从零开始 2 ——DI</a></li>
-                        
-                          <li><a title="Android Application 从零开始 1 ——Gradle" href="15299133103723.html">Android Application 从零开始 1 ——Gradle</a></li>
-                        
-                          <li><a title="Android Application 从零开始 0 ——前言" href="15299133103764.html">Android Application 从零开始 0 ——前言</a></li>
-                        
-                          <li><a title="volley源码解析" href="15299133100860.html">volley源码解析</a></li>
-                        
-                          <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
-                        
-                          <li><a title="ASimpleCache缓存源码分析" href="15299133102762.html">ASimpleCache缓存源码分析</a></li>
-                        
-                          <li><a title="一个很棒的 Android  APP框架" href="15299133103809.html">一个很棒的 Android  APP框架</a></li>
-                        
-                          <li><a title="retrofit源码解析2" href="15299133101383.html">retrofit源码解析2</a></li>
-                        
-                          <li><a title="retrofit源码解析1" href="15299133101429.html">retrofit源码解析1</a></li>
-                        
-                          <li><a title="Service 总结" href="15299133101225.html">Service 总结</a></li>
-                        
-                          <li><a title="Activity Mode" href="15299133103997.html">Activity Mode</a></li>
-                        
-                          <li><a title="地图区域绘制 MVP 实践" href="15299133100416.html">地图区域绘制 MVP 实践</a></li>
-                        
-                          <li><a title="Listview crash 分析" href="15299133101874.html">Listview crash 分析</a></li>
-                        
-                          <li><a title="robolectric 单元测试" href="15299133103267.html">robolectric 单元测试</a></li>
-                        
-                          <li><a title="Material Design" href="15299133101643.html">Material Design</a></li>
-                        
-                          <li><a title="Android 中的 rxjava" href="15299133103337.html">Android 中的 rxjava</a></li>
-                        
-                          <li><a title="Android MVVM" href="15299133103550.html">Android MVVM</a></li>
-                        
-                          <li><a title="Android 中的MVP 模式" href="15299133101508.html">Android 中的MVP 模式</a></li>
-                        
-                          <li><a title="Android 内存泄露" href="15299133100598.html">Android 内存泄露</a></li>
-                        
-                          <li><a title="IDEA 技巧" href="15299133102120.html">IDEA 技巧</a></li>
-                        
-                          <li><a title="Android Media Player" href="15299133101552.html">Android Media Player</a></li>
-                        
-                          <li><a title="Android View 小结（下）" href="15299133099732.html">Android View 小结（下）</a></li>
-                        
-                          <li><a title="Android service" href="15299133103504.html">Android service</a></li>
-                        
-                          <li><a title="robolectric" href="15299133101345.html">robolectric</a></li>
-                        
-                          <li><a title="Android Studio中进行单元测试" href="15299133103442.html">Android Studio中进行单元测试</a></li>
-                        
-                          <li><a title="AIDL 学习" href="15299133103865.html">AIDL 学习</a></li>
-                        
-                          <li><a title="蓝牙学习" href="15299133099695.html">蓝牙学习</a></li>
-                        
-                          <li><a title="title: 手机信号质量检测" href="15299133100046.html">title: 手机信号质量检测</a></li>
-                        
-                          <li><a title="GreenDao学习" href="15299133102559.html">GreenDao学习</a></li>
-                        
-                          <li><a title="登陆框 UI" href="15299133099886.html">登陆框 UI</a></li>
-                        
-                          <li><a title="EventBus 学习" href="15299133102685.html">EventBus 学习</a></li>
-                        
-                          <li><a title="取消软键盘自动弹出" href="15299133100509.html">取消软键盘自动弹出</a></li>
-                        
-                          <li><a title="jni 学习" href="15299133101955.html">jni 学习</a></li>
-                        
-                          <li><a title="GSON 学习" href="15299133102507.html">GSON 学习</a></li>
-                        
-                          <li><a title="Android 触摸事件传递机制" href="15299133102860.html">Android 触摸事件传递机制</a></li>
-                        
-                          <li><a title="volley学习" href="15299133100924.html">volley学习</a></li>
-                        
-                          <li><a title="wifi压力测试" href="15299133100786.html">wifi压力测试</a></li>
-                        
-                          <li><a title="listview的复用机制" href="15299133101837.html">listview的复用机制</a></li>
-                        
-                          <li><a title="Android View 小结" href="15299133103394.html">Android View 小结</a></li>
-                        
-                          <li><a title="使用命令行查看android sqlite数据库" href="15299133100658.html">使用命令行查看android sqlite数据库</a></li>
-                        
-                          <li><a title="loader 总结" href="15299133101753.html">loader 总结</a></li>
-                        
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133100466.html">
+                
+                  <h1>命令模式 Command Pattern</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">定义</h2>
 
-                    
-                      <li class="side-title"><span>Java</span></li>
-                        
-                          <li><a title="Java 内存分配策略" href="15299133102065.html">Java 内存分配策略</a></li>
-                        
-                          <li><a title="HashMap 的实现原理" href="15299133102218.html">HashMap 的实现原理</a></li>
-                        
-                          <li><a title="hashcode" href="15299133102285.html">hashcode</a></li>
-                        
-                          <li><a title="wait/notify/notifyAll 总结" href="15299133100823.html">wait/notify/notifyAll 总结</a></li>
-                        
-                          <li><a title="synchronized 总结" href="15299133101186.html">synchronized 总结</a></li>
-                        
-                          <li><a title="Git 总结" href="15299133102646.html">Git 总结</a></li>
-                        
-                          <li><a title="代理模式 Proxy Pattern" href="15299133100699.html">代理模式 Proxy Pattern</a></li>
-                        
-                          <li><a title="迭代器模式 Iterator Pattern" href="15299133099503.html">迭代器模式 Iterator Pattern</a></li>
-                        
-                          <li><a title="组合模式 Composite Pattern" href="15299133099787.html">组合模式 Composite Pattern</a></li>
-                        
-                          <li><a title="命令模式 Command Pattern" href="15299133100466.html">命令模式 Command Pattern</a></li>
-                        
-                          <li><a title="单例模式 Singleton Pattern" href="15299133100569.html">单例模式 Singleton Pattern</a></li>
-                        
-                          <li><a title="适配器模式 Adapter Pattern" href="15299133099455.html">适配器模式 Adapter Pattern</a></li>
-                        
-                          <li><a title="简单工厂模式 Factory  Pattern" href="15299133100248.html">简单工厂模式 Factory  Pattern</a></li>
-                        
-                          <li><a title="工厂方法模式 Factory Method Pattern" href="15299133100311.html">工厂方法模式 Factory Method Pattern</a></li>
-                        
-                          <li><a title="装饰者模式 Decorator Design Pattern" href="15299133099653.html">装饰者模式 Decorator Design Pattern</a></li>
-                        
-                          <li><a title="观察者模式 Observer Design Pattern" href="15299133099606.html">观察者模式 Observer Design Pattern</a></li>
-                        
-                          <li><a title="策略模式 Strategy Pattern" href="15299133099842.html">策略模式 Strategy Pattern</a></li>
-                        
-                          <li><a title="模板方法模式 Template Method Pattern" href="15299133100005.html">模板方法模式 Template Method Pattern</a></li>
-                        
-                          <li><a title="状态模式 State Design Pattern" href="15299133099923.html">状态模式 State Design Pattern</a></li>
-                        
-                          <li><a title="Java注解" href="15299133099968.html">Java注解</a></li>
-                        
-                          <li><a title="抽象工厂模式 Abstract Factory Pattern" href="15299133100082.html">抽象工厂模式 Abstract Factory Pattern</a></li>
-                        
-                          <li><a title="强引用、软引用、弱引用、虚引用" href="15299133101993.html">强引用、软引用、弱引用、虚引用</a></li>
-                        
-                          <li><a title="VIM 技巧" href="15299133099014.html">VIM 技巧</a></li>
-                        
-                          <li><a title="java 反射学习" href="15299133102029.html">java 反射学习</a></li>
-                        
+<blockquote>
+<p>将一个请求封装为一个对象，从而使我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。</p>
+</blockquote>
 
-                    
-                      <li class="side-title"><span>balabala</span></li>
-                        
-                          <li><a title="写在离开北京的前夕" href="15299133099414.html">写在离开北京的前夕</a></li>
-                        
-                          <li><a title="09-17 碎碎念" href="15299133099046.html">09-17 碎碎念</a></li>
-                        
-                          <li><a title="近期学习计划" href="15299133099560.html">近期学习计划</a></li>
-                        
-                          <li><a title="单身汪的自白" href="15299133100538.html">单身汪的自白</a></li>
-                        
-                          <li><a title="2015小结" href="15299133104055.html">2015小结</a></li>
-                        
-                          <li><a title="日记" href="15299133101912.html">日记</a></li>
-                        
+<h2 id="toc_1">使用场景</h2>
 
-                    
-                  </ul>
-                </nav>
+<ul>
+<li>系统需要将请求调用者和请求接收者解耦，使得调用者和接收者不直接交互。</li>
+<li>系统需要在不同的时间指定请求、将请求排队和执行请求。</li>
+<li>系统需要支持命令的撤销(Undo)操作和恢复(Redo)操作。</li>
+<li>系统需要将一组操作组合在一起，即支持宏命令</li>
+</ul>
+
+<h2 id="toc_2">UML 图</h2>
+
+<p><img src="media/15299133100466/14561465850883.png" alt=""/></p>
+
+<p>AbstractFactory：抽象工厂<br/>
+ConcreteFactory：具体工厂<br/>
+AbstractProduct：抽象产品<br/>
+Product：具体产品</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133100466.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/22</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133100569.html">
+                
+                  <h1>单例模式 Singleton Pattern</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">定义</h2>
+
+<blockquote>
+<p>单例模式(Singleton Pattern)：单例模式确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。</p>
+</blockquote>
+
+<h2 id="toc_1">使用场景</h2>
+
+<ul>
+<li>系统只需要一个实例对象，如系统要求提供一个唯一的序列号生成器，或者需要考虑资源消耗太大而只允许创建一个对象。</li>
+<li>客户调用类的单个实例只允许使用一个公共访问点，除了该公共访问点，不能通过其他途径访问该实例</li>
+</ul>
+
+<h2 id="toc_2">简单实现</h2>
+
+<pre><code class="language-java">package io.github.xuyushi.singleton;
+
+/**
+ * Created by xuyushi on 16/2/22.
+ */
+public class Singleton {
+    private volatile static Singleton instance;
+
+    private Singleton() {
+
+    }
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+}
+
+
+</code></pre>
+
+<h2 id="toc_3">优缺点</h2>
+
+<ul>
+<li>优点
+<ul>
+<li>提供了对唯一实例的受控访问。因为单例类封装了它的唯一实例，所以它可以严格控制客户怎样以及何时访问它，并为设计及开发团队提供了共享的概念。</li>
+<li>由于在系统内存中只存在一个对象，因此可以节约系统资源，对于一些需要频繁创建和销毁的对象，单例模式无疑可以提高系统的性能</li>
+</ul></li>
+<li>缺点
+<ul>
+<li>由于单例模式中没有抽象层，因此单例类的扩展有很大的困难。</li>
+<li>单例类的职责过重，在一定程度上违背了“单一职责原则”。因为单例类既充当了工厂角色，提供了工厂方法，同时又充当了产品角色，包含一些业务方法，将产品的创建和产品的本身的功能融合到一起。</li>
+<li>滥用单例将带来一些负面问题，如为了节省资源将数据库连接池对象设计为单例类，可能会导致共享连接池对象的程序过多而出现连接池溢出；现在很多面向对象语言(如Java、C#)的运行环境都提供了自动垃圾回收的技术，因此，如果实例化的对象长时间不被利用，系统会认为它是垃圾，会自动销毁并回收资源，下次利用时又将重新实例化，这将导致对象状态的丢失。<br/>
+## 总结</li>
+</ul></li>
+<li>单例模式只包含一个单例角色：在单例类的内部实现只生成一个实例，同时它提供一个静态的工厂方法，让客户可以使用它的唯一实例；<strong>为了防止在外部对其实例化，将其构造函数设计为私有</strong>。</li>
+<li>单例模式的目的是保证一个类仅有一个实例，并提供一个访问它的全局访问点。单例类拥有一个私有构造函数，确保用户无法通过new关键字直接实例化它。除此之外，该模式中包含一个静态私有成员变量与静态公有的工厂方法。该工厂方法负责检验实例的存在性并实例化自己，然后存储在静态成员变量中，以确保只有一个实例被创建。</li>
+<li>单例模式的主要优点在于提供了对唯一实例的受控访问并可以节约系统资源；其主要缺点在于因为缺少抽象层而难以扩展，且单例类职责过重。</li>
+<li>单例模式适用情况包括：系统只需要一个实例对象；客户调用类的单个实例只允许使用一个公共访问点。</li>
+</ul>
+
+<h2 id="toc_4">参考</h2>
+
+<blockquote>
+<p><a href="http://design-patterns.readthedocs.org/zh_CN/latest/creational_patterns/abstract_factory.html">http://design-patterns.readthedocs.org/zh_CN/latest/creational_patterns/abstract_factory.html</a><br/>
+『head first 设计模式』</p>
+</blockquote>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/2/22</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133099455.html">
+                
+                  <h1>适配器模式 Adapter Pattern</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">定义</h2>
+
+<blockquote>
+<p>适配器模式(Adapter Pattern) ：将一个接口转换成客户希望的另一个接口，适配器模式使接口不兼容的那些类可以一起工作，其别名为包装器(Wrapper)。</p>
+
+<h2 id="toc_1">使用场景</h2>
+</blockquote>
+
+<ul>
+<li>一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。</li>
+<li>系统中有多于一个的产品族，而每次只使用其中某一产品族。</li>
+<li>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</li>
+<li>系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
+</ul>
+
+<h2 id="toc_2">UML 图</h2>
+
+<p><img src="media/15299133099455/14561482662486.png" alt=""/></p>
+
+<p>Target：目标抽象类<br/>
+Adapter：适配器类<br/>
+Adaptee：适配者类<br/>
+Client：客户类</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133099455.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/22</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133100248.html">
+                
+                  <h1>简单工厂模式 Factory  Pattern</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">定义</h2>
+
+<blockquote>
+<p>简单工厂模式(Simple Factory Pattern)：又称为静态工厂方法(Static Factory Method)模式，它属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类。</p>
+</blockquote>
+
+<h2 id="toc_1">使用场景</h2>
+
+<ul>
+<li>工厂类负责创建的对象比较少：由于创建的对象较少，不会造成工厂方法中的业务逻辑太过复杂。</li>
+<li>客户端只知道传入工厂类的参数，对于如何创建对象不关心：客户端既不需要关心创建细节，甚至连类名都不需要记住，只需要知道类型所对应的参数。</li>
+</ul>
+
+<h2 id="toc_2">UML 图</h2>
+
+<p><img src="media/15299133100248/14560604563955.png" alt=""/></p>
+
+<p>Factory：工厂角色<br/>
+工厂角色负责实现创建所有实例的内部逻辑</p>
+
+<p>Product：抽象产品角色<br/>
+抽象产品角色是所创建的所有对象的父类，负责描述所有实例所共有的公共接口</p>
+
+<p>ConcreteProduct：具体产品角色<br/>
+具体产品角色是创建目标，所有创建的对象都充当这个角色的某个具体类的实例。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133100248.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="all_5.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="all_7.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Xu Yushi's Blog</h1>
+                <div class="site-des">理工男的碎碎念</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
+        
+            <a href="Android.html"><strong>Android</strong></a>
+        
+            <a href="Java.html"><strong>Java</strong></a>
+        
+            <a href="balabala.html"><strong>balabala</strong></a>
+         
+        </p>
+
+
                 </div>
               </div>
-            </div>
-            <div class="large-9 medium-9 columns">
 
- 
-
-
-	
-		<div class="markdown-body">
-		<h1>Android MVVM</h1>
-
-		<p>在上一篇博文中介绍了 <img src="http://xuyushi.github.io/2016/02/28/MVP/" alt="Android的MVP模式"/>。MVVM 是从 MVP 的进一步发展与规范，MVP 隔离了 M 与 V 的直接联系后，靠 Presenter 来中转，所以使用 MVP 时 P 是直接调用 View 的接口来实现对视图的操作的，M 与 V是隔离了，方便测试了，但代码还不够优雅简洁啊，所以 MVVM 就弥补了这些缺陷。</p>
-
-<span id="more"></span><!-- more -->
-
-<h3 id="toc_0">概述</h3>
-
-<p>MVVM模式包含了三个部分：</p>
-
-<ul>
-<li>Model :基本业务逻辑</li>
-<li>View  :视图内容<br/>
-ViewModel: 将前面两者联系在一起的对象</li>
-</ul>
-
-<p>当View有用户输入后，ViewModel通知Model更新数据，同理Model数据更新后，ViewModel通知View更新。</p>
-
-<h2 id="toc_1">MVP MVVM区别</h2>
-
-<p><img src="media/15299133103550/14571436111163.png" alt=""/></p>
-
-<p><img src="media/15299133103550/14571436267721.png" alt=""/></p>
-
-<p>可以看到 ViewModel 承担了 Presenter 中与 view和 Model 交互的职责，与 MVP模式不同的是，VM与 V 之间是通过 Datebingding 实现的，而 P是持有 View 的对象，直接调用 View 中的一些接口方法来实现。ViewModel可以理解成是View的数据模型和Presenter的合体。**它通过双向绑定(松耦合)解决了MVP中Presenter与View联系比较紧密的问题。 **</p>
-
-<h2 id="toc_2">环境搭建</h2>
-
-<h3 id="toc_3">Android 的 Gradle 插件版本不低于 1.5.0-alpha1：</h3>
-
-<pre><code class="language-gradle">classpath &#39;com.android.tools.build:gradle:1.5.0&#39;
-</code></pre>
-
-<h3 id="toc_4">然后修改对应模块（Module）的 build.gradle：</h3>
-
-<pre><code class="language-gradle">android {
-    ....
-    dataBinding {
-        enabled = true
-    }
-}
-</code></pre>
-
-<p><strong>注：Android stuido 的版本要大于1.3</strong><br/>
-<strong>Android Studio目前对binding对象没有自动代码提示，只会在编译时进行检查。</strong></p>
-
-<h2 id="toc_5">基础入门</h2>
-
-<h3 id="toc_6">布局问文件</h3>
-
-<p>相比传统的 xml，根节点编程了<code>layout</code>，里面包括了<code>data</code>节点 和传统的视图。<code>data</code>节点就像是连接 View 和 Modle 的桥梁。在<code>data</code>节点中声明一个<code>variable</code>变量，使其可以在这个layout中使用</p>
-
-<pre><code class="language-markup">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
-    &lt;data&gt;
-        &lt;variable name=&quot;user&quot;type=&quot;com.example.User&quot;/&gt;
-    &lt;/data&gt;
-    &lt;!--原先的根节点（Root Element）--&gt;
-    &lt;LinearLayout&gt;
-    ....
-    &lt;/LinearLayout&gt;
-&lt;/layout&gt;
-</code></pre>
-
-<p>例如在 TextView 中使用</p>
-
-<pre><code class="language-markup">&lt;TextView android:layout_width=&quot;wrap_content&quot;
-android:layout_height=&quot;wrap_content&quot;          android:text=&quot;@{user.firstName}&quot;/&gt;
-</code></pre>
-
-<h3 id="toc_7">数据对象</h3>
-
-<p>定义一个 User java bean 类</p>
-
-<pre><code class="language-java">public class User {
-    private final String firstName;
-    private final String lastName;
-
-    public User(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-}
-</code></pre>
-
-<p>在<code>layout</code>中定义<code>User</code>中的对象，然后把它跟布局文件中声明的变量进行绑定</p>
-
-<h3 id="toc_8">定义 Variable</h3>
-
-<pre><code class="language-markup">    &lt;data&gt;
-
-        &lt;variable
-            name=&quot;user&quot;
-            type=&quot;io.github.xuyushi.androidmvvmdemo.User&quot; /&gt;
-    &lt;/data&gt;
-</code></pre>
-
-<ul>
-<li>变量名为<code>user</code></li>
-<li>变量类型为<code>&quot;io.github.xuyushi.androidmvvmdemo.User&quot;</code></li>
-</ul>
-
-<p><code>data</code>也支持 <code>import</code></p>
-
-<pre><code class="language-markup">&lt;data&gt;
-   &lt;import type=&quot;io.github.xuyushi.androidmvvmdemo.User&quot;/&gt;
-   &lt;variable
-       name=&quot;user&quot;
-       type=&quot;User&quot; /&gt;
-&lt;/data&gt;
-</code></pre>
-
-<p><strong>注意坑</strong><br/>
-import 并不能和 <code>java</code> 一样可以 <code>import xx.xxx.*</code>，必须具体写明每个要导入的类名，如</p>
-
-<pre><code class="language-markup">&lt;import type=&quot;io.github.xuyushi.androidmvvmdemo.User&quot;/&gt;
-&lt;import type=&quot;io.github.xuyushi.androidmvvmdemo.MyHandler&quot;/&gt;
-
-
-// this is WRONG
-&lt;import type=&quot;io.github.xuyushi.androidmvvmdemo.*&quot;/&gt;
-</code></pre>
-
-<p>编译之后，插件会根据 xml 的命名（activity_main），在 <code>output</code>会生成<code>ActivityMainBinding</code>类</p>
-
-<blockquote>
-<p><code>java.lang.*</code> 包中的类会被自动导入，可以直接使用，例如要定义一个 String 类型的变量：<br/>
-<code>&lt;variable name=&quot;firstName&quot; type=&quot;String&quot; /&gt;</code></p>
-</blockquote>
-
-<h3 id="toc_9">绑定 Variable</h3>
-
-<p>修改<code>MainActivity</code>中的<code>onCreate</code>，用 <code>DatabindingUtil.setContentView()</code> 来替换掉 <code>setContentView()</code>，然后创建一个 <code>user</code> 对象，通过 <code>binding.setUser(user)</code> 与 variable 进行绑定。</p>
-
-<pre><code class="language-java">public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        User user = new User(&quot;testFirst&quot;, &quot;testLast&quot;);
-        binding.setUser(user);
-    }
-}
-</code></pre>
-
-<p>如果使用的 <code>ListView</code> 或者<code>RecyclerView</code>可以使用这个</p>
-
-<pre><code class="language-java">ListItemBinding binding = ListItemBinding.inflate(layoutInflater, viewGroup, false);
-//or
-ListItemBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item, viewGroup, false);
-</code></pre>
-
-<p>有时候不能预先知道 Bingding 类的种类，这时候可以使用<code>DataBindingUtil</code> 类:</p>
-
-<pre><code class="language-java">ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater, layoutId,
-    parent, attachToParent);
-ViewDataBinding binding = DataBindingUtil.bindTo(viewRoot, layoutId);
-</code></pre>
-
-<h4 id="toc_10">支持的语法</h4>
-
-<pre><code class="language-bash">Mathematical + - / * %
-String concatenation +
-Logical &amp;&amp; ||
-Binary &amp; | ^
-Unary + - ! ~
-Shift &gt;&gt; &gt;&gt;&gt; &lt;&lt;
-Comparison == &gt; &lt; &gt;= &lt;=
-instanceof
-Grouping ()
-Literals - character, String, numeric, null
-Cast
-Method calls
-Field access
-Array access []
-Ternary operator ?:
-
-</code></pre>
-
-<h4 id="toc_11">不支持的语法</h4>
-
-<pre><code class="language-java">this
-super
-new
-
-</code></pre>
-
-<p><code>ActivityMainBinding</code>类是自动生成的，所有的 set 方法也是根据 variable 名称生成的。例如，我们定义了两个变量。</p>
-
-<pre><code class="language-markup">&lt;data&gt;
-    &lt;variable name=&quot;firstName&quot; type=&quot;String&quot; /&gt;
-    &lt;variable name=&quot;lastName&quot; type=&quot;String&quot; /&gt;
-&lt;/data&gt;
-</code></pre>
-
-<p>那么会生成两个 <code>set</code>方法</p>
-
-<pre><code class="language-java">setFirstName(String firstName);
-setLastName(String lastName);
-</code></pre>
-
-<h3 id="toc_12">使用Variable</h3>
-
-<p>数据与 Variable 绑定之后，xml 的 UI 元素就可以直接使用了</p>
-
-<pre><code class="language-markup">&lt;TextView
-  android:text=&quot;@{user.firstName}&quot;
-  android:layout_width=&quot;wrap_content&quot;
-  android:layout_height=&quot;wrap_content&quot; /&gt;
-
-&lt;TextView
-  android:text=&quot;@{user.lastName}&quot;
-  android:layout_width=&quot;wrap_content&quot;
-  android:layout_height=&quot;wrap_content&quot; /&gt;
-</code></pre>
-
-<h3 id="toc_13">绑定事件</h3>
-
-<p>可以直接在 xml 导入<code>android.view.View.OnClickListener</code>，并制定其点击事件</p>
-
-<pre><code class="language-markup">&lt;variable
-  name=&quot;clickListener&quot;
-  type=&quot;android.view.View.OnClickListener&quot; /&gt;
-  
- ...
- android:onClick=&quot;@{clickListener}&quot;
- ...
-</code></pre>
-
-<pre><code class="language-java"> holder.binding.setClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            //do something
-        });
-</code></pre>
-
-<h2 id="toc_14">进阶用法</h2>
-
-<h3 id="toc_15">使用类的方法</h3>
-
-<p>//Error:(27, 29) cannot find method addSomeThing in class io.github.xuyushi.androidmvvmdemo.MyUtill </p>
-
-<h3 id="toc_16">类的别名</h3>
-
-<p>如果导入不同的包中有相同的类名，使用<code>import</code> 中的 <code>alias</code> 属性。</p>
-
-<pre><code class="language-markup">&lt;import type=&quot;com.example.home.data.User&quot; /&gt;
-&lt;import type=&quot;com.examle.detail.data.User&quot; alias=&quot;DetailUser&quot; /&gt;
-&lt;variable name=&quot;user&quot; type=&quot;DetailUser&quot; /&gt;
-</code></pre>
-
-<h2 id="toc_17">数据绑定</h2>
-
-<p>直接修改数据对象并不能直接更新 UI，Android的Data Binding模块给提供了通知机制，有3种类型，分别对应于类(Observable)，字段(ObservableField)，集合类型（Observable Collections）。</p>
-
-<p>Android的Data Binding模块给提供了通知机制，有3种类型，分别对应于类(Observable)，字段(ObservableField)，集合类型（Observable Collections）。</p>
-
-<h3 id="toc_18">Observable Objects</h3>
-
-<p>目前 DataBinding 暂时只支持单向绑定。</p>
-
-<p>要实现 Observable Binding，首先得有一个 <code>implement</code> 了接口<code>android.databinding.Observable</code>的类，为了方便，Android 原生提供了已经封装好的一个类 - <code>BaseObservable</code>，并且实现了监听器的注册机制</p>
-
-<pre><code class="language-java">public class User extends BaseObservable {
-    private String firstName;
-    private String lastName;
-    @Bindable
-    public String getFirstName() {
-        return this.firstName;
-    }
-    @Bindable
-    public String getLastName() {
-        return this.lastName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-        notifyPropertyChanged(io.github.xuyushi.androidmvvmdemo.BR.firstName);
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-        notifyPropertyChanged(io.github.xuyushi.androidmvvmdemo.BR.lastName);
-    }
-}
-</code></pre>
-
-<blockquote>
-<p>The Bindable annotation should be applied to any getter accessor method of an {@link Observable} class. Bindable will generate a field in the BR class to identify the field that has changed.</p>
-</blockquote>
-
-<p><code>Bindable</code>注解是为了在编程的时候生成 BR 类，<code>Bindable</code>会在 BR 类中生成一个域变量 ，来表明这个域有木有被改变。通过代码可以看出，当数据发生变化时还是需要手动发出通知。 通过调用 <code>notifyPropertyChanged(BR.firstName)</code> 可以通知系统 BR.firstName 这个 entry 的数据已经发生变化，需要更新 UI。</p>
-
-<h3 id="toc_19">ObservableFields</h3>
-
-<p>具体到成员变量,这种方式无需继承 <code>BaseObservable</code><br/>
-如果变量比较少，都是简单的数据类型是时，可以用<code>ObservableFields</code> ， <code>ObservableFields</code> 自包含具有单个字段的observable对象。它有所有基本类型和一个是引用类型。要使用它需要在data对象中创建<code>public final</code>字段：</p>
-
-<pre><code class="language-java">private static class User extends BaseObservable {
-   public final ObservableField&lt;String&gt; firstName =
-       new ObservableField&lt;&gt;();
-   public final ObservableField&lt;String&gt; lastName =
-       new ObservableField&lt;&gt;();
-   public final ObservableInt age = new ObservableInt();
-}
-</code></pre>
-
-<p><strong>注意</strong></p>
-
-<ul>
-<li>可以在 java bean 中定义，也可以在 activity 中 或者bind 出定义</li>
-<li>使用<code>ObservableFields</code> 在 Model 中的 @Bindable get set 方法都可以去掉</li>
-<li>当<code>firstName</code>、<code>lastName</code>变化时，UI 会得到通知，使用的赋值语句为<code>user.firstName.set(&quot;Google&quot;);</code></li>
-</ul>
-
-<h3 id="toc_20">Observable 集合</h3>
-
-<p>一些app使用更多的动态结构来保存数据。Observable集合允许键控访问这些data对象。ObservableArrayMap用于键是引用类型,如String。</p>
-
-<pre><code class="language-java">ObservableArrayMap&lt;String, Object&gt; user = new ObservableArrayMap&lt;&gt;();
-user.put(&quot;firstName&quot;, &quot;Google&quot;);
-user.put(&quot;lastName&quot;, &quot;Inc.&quot;);
-user.put(&quot;age&quot;, 17);
-</code></pre>
-
-<p>在layout文件中，通过String键可以访问map</p>
-
-<pre><code class="language-markup">&lt;data&gt;
-    &lt;import type=&quot;android.databinding.ObservableMap&quot;/&gt;
-    &lt;variable name=&quot;user&quot; type=&quot;ObservableMap&lt;String, Object&gt;&quot;/&gt;
-&lt;/data&gt;
-…
-&lt;TextView
-   android:text=&#39;@{user[&quot;lastName&quot;]}&#39;
-   android:layout_width=&quot;wrap_content&quot;
-   android:layout_height=&quot;wrap_content&quot;/&gt;
-&lt;TextView
-   android:text=&#39;@{String.valueOf(1 + (Integer)user[&quot;age&quot;])}&#39;
-   android:layout_width=&quot;wrap_content&quot;
-   android:layout_height=&quot;wrap_content&quot;/&gt;
-</code></pre>
-
-<p>当 key 是 inter 是， <code>ObservableArrayList</code> 比较适用</p>
-
-<pre><code class="language-java">ObservableArrayList&lt;Object&gt; user = new ObservableArrayList&lt;&gt;();
-user.add(&quot;Google&quot;);
-user.add(&quot;Inc.&quot;);
-user.add(17);
-</code></pre>
-
-<pre><code class="language-markup">&lt;data&gt;
-    &lt;import type=&quot;android.databinding.ObservableList&quot;/&gt;
-    &lt;import type=&quot;com.example.my.app.Fields&quot;/&gt;
-    &lt;variable name=&quot;user&quot; type=&quot;ObservableList&amp;lt;Object&gt;&quot;/&gt;
-&lt;/data&gt;
-…
-&lt;TextView
-   android:text=&#39;@{user[Fields.LAST_NAME]}&#39;
-   android:layout_width=&quot;wrap_content&quot;
-   android:layout_height=&quot;wrap_content&quot;/&gt;
-&lt;TextView
-   android:text=&#39;@{String.valueOf(1 + (Integer)user[Fields.AGE])}&#39;
-   android:layout_width=&quot;wrap_content&quot;
-   android:layout_height=&quot;wrap_content&quot;/&gt;
-</code></pre>
-
-<h2 id="toc_21">binding 生成</h2>
-
-<p>binding 类连接了 layout中的variables与Views。，所生成的Binding类都扩展了<code>android.databinding.ViewDataBinding</code></p>
-
-<h3 id="toc_22">创建</h3>
-
-<p>Binding应在inflation之后就立马创建，以确保View层次结构没被改变。</p>
-
-<p>首先 inflate</p>
-
-<pre><code class="language-java">MyLayoutBinding binding = MyLayoutBinding.inflate(layoutInflater);
-MyLayoutBinding binding = MyLayoutBinding.inflate(LayoutInflater, viewGroup, false);
-</code></pre>
-
-<h2 id="toc_23">带 ID 的 View</h2>
-
-<p>同步 bind 我们可以不需要 view 实例，但是玩意需要也可以有</p>
-
-<pre><code class="language-java">&lt;TextView
-    android:id=&quot;@+id/firstName&quot;
-    android:layout_width=&quot;wrap_content&quot;
-    android:layout_height=&quot;wrap_content&quot; /&gt;
-</code></pre>
-
-<p>上面代码中定义了一个 ID 为 <code>firstName</code> 的 TextView，那么它对应的变量就是<br/>
-public final TextView firstName;</p>
-
-<pre><code class="language-java">    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_view_with_ids);
-    }
-
-    public void showMyName(View view) {
-        binding.firstName.setText(&quot;liang&quot;);
-        binding.lastName.setText(&quot;fei&quot;);
-    }
-</code></pre>
-
-<p>这样就免去了些 <code>findViewById</code> 了</p>
-
-<h2 id="toc_24">ViewStubs</h2>
-
-<p>ViewStubs跟正常的Views略有不同。他们开始时是不可见的，当他们要么设置为可见或被明确告知要载入时，它们通过载入另外一个layout取代了自己。</p>
-
-<p>当载入另一个layout，为新的布局必需创建一个Binding。因此，ViewStubProxy必需监听ViewStub的OnInflateListener监听器并在那个时候建立Binding。因为只有一个可以存在，ViewStubProxy允许开发者在其上设置一个OnInflateListener它会在建立Binding后调用。</p>
-
-<pre><code class="language-markup">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
-    &lt;LinearLayout
-        ...&gt;
-        &lt;ViewStub
-            android:id=&quot;@+id/view_stub&quot;
-            android:layout=&quot;@layout/view_stub&quot;
-            ... /&gt;
-    &lt;/LinearLayout&gt;
-&lt;/layout&gt;
-</code></pre>
-
-<p>在 Java 代码中获取 binding 实例，ViewStubProy 注册ViewStub.OnInflateListener 事件：</p>
-
-<pre><code class="language-java">binding = DataBindingUtil.setContentView(this, R.layout.activity_view_stub);
-binding.viewStub.setOnInflateListener(new ViewStub.OnInflateListener() {
-    @Override
-    public void onInflate(ViewStub stub, View inflated) {
-        ViewStubBinding binding = DataBindingUtil.bind(inflated);
-        User user = new User(&quot;fee&quot;, &quot;lang&quot;);
-        binding.setUser(user);
-    }
-});
-</code></pre>
-
-<h2 id="toc_25">动态 Variables</h2>
-
-<p>有时候不止具体绑定的对象，以 <code>RecyclerView</code> 为例，Adapter 的 DataBinding 需要动态生成，因此我们可以在 <code>onCreateViewHolder</code> 的时候创建这个 DataBinding，然后在 <code>onBindViewHolder</code> 中获取这个 DataBinding。</p>
-
-<pre><code class="language-java">public static class BindingHolder extends RecyclerView.ViewHolder {
-    private ViewDataBinding binding;
-
-    public BindingHolder(View itemView) {
-        super(itemView);
-    }
-
-    public ViewDataBinding getBinding() {
-        return binding;
-    }
-
-    public void setBinding(ViewDataBinding binding) {
-        this.binding = binding;
-    }
-}
-
-@Override
-public BindingHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-    ViewDataBinding binding = DataBindingUtil.inflate(
-            LayoutInflater.from(viewGroup.getContext()),
-            R.layout.list_item,
-            viewGroup,
-            false);
-    BindingHolder holder = new BindingHolder(binding.getRoot());
-    holder.setBinding(binding);
-    return holder;
-}
-
-@Override
-public void onBindViewHolder(BindingHolder holder, int position) {
-    User user = users.get(position);
-    holder.getBinding().setVariable(BR.user, user);
-    holder.getBinding().executePendingBindings();
-}
-</code></pre>
-
-<h2 id="toc_26">属性 Setter</h2>
-
-<p>每当绑定值的变化，生成的Binding类必须调用setter方法​​。Data Binding框架有可以自定义赋值的方法。</p>
-
-<h3 id="toc_27">自动Setters</h3>
-
-<p>对于一个属性，Data Binding试图找到setAttribute方法。<strong>与该属性的namespace并不什么关系，仅仅与属性本身名称有关</strong>。</p>
-
-<p>例如，有关TextView的<code>android:text</code>属性的表达式会寻找一个setText(String)的方法。如果表达式中的参量是一个int，Data Binding会搜索的setText(int)方法。注意：要表达式返回正确的类型，如果需要的话使用转型。Data Binding仍会运行即使没有给定名称的属性存在。然后，您可以通过Data Binding轻松地为任何setter“创造”属性。例如，DrawerLayout没有任何属性，但可以有很多的setters。您可以使用其中的一个setters。</p>
-
-<pre><code class="language-markup">&lt;android.support.v4.widget.DrawerLayout
-    android:layout_width=&quot;wrap_content&quot;
-    android:layout_height=&quot;wrap_content&quot;
-    app:scrimColor=&quot;@{@color/scrim}&quot;
-    app:drawerListener=&quot;@{fragment.drawerListener}&quot;/&gt;
-</code></pre>
-
-<p>这里我们增加了一个命名空间app，并且注意<code>DrawerLayout</code>的<code>app:scrimColor</code>属性，这里和我们自定义view时自定义的属性一样，但是这里并不需要我们去重写<code>DrawerLayout</code>,此时，我们可以自己定义<code>setTcrimColor</code>、<code>setDrawerListener</code>的方法</p>
-
-<h3 id="toc_28">重命名的Setters</h3>
-
-<p>一些有setters的属性按名称并不匹配。对于这些方法，属性可以通过BindingMethods注解相关联。这必须与一个包含BindingMethod注解的类相关联，每一个用于一个重命名的方法。例如，android:tint属性与setImageTintList相关联，而不与setTint相关。</p>
-
-<pre><code class="language-java">@BindingMethods({
-       @BindingMethod(type = &quot;android.widget.ImageView&quot;,
-                      attribute = &quot;android:tint&quot;,
-                      method = &quot;setImageTintList&quot;),
-})
-
-</code></pre>
-
-<h3 id="toc_29">自定义Setters</h3>
-
-<p>有些属性需要自定义绑定逻辑。例如，对于<code>android:paddingLeft</code>属性并没有相关setter。相反，<code>setPadding(left, top, right, bottom)</code>是存在在。一个带有BindingAdapter注解的静态绑定适配器方法允许开发者自定义setter如何对于一个属性的调用。</p>
-
-<p>Android的属性已经创造了BindingAdapters。举例来说，对于paddingLeft：</p>
-
-<pre><code class="language-java">@BindingAdapter(&quot;android:paddingLeft&quot;)
-public static void setPaddingLeft(View view, int padding) {
-   view.setPadding(padding,
-                   view.getPaddingTop(),
-                   view.getPaddingRight(),
-                   view.getPaddingBottom());
-}
-</code></pre>
-
-<p>Binding适配器对其他定制类型非常有用。例如，自定义loader可以用来异步载入图像。<br/>
-当有冲突时，开发人员创建的Binding适配器将覆盖Data Binding默认适配器。<br/>
-您也可以创建可以接收多个参数的适配器。</p>
-
-<pre><code class="language-java">@BindingAdapter({&quot;bind:imageUrl&quot;, &quot;bind:error&quot;})
-public static void loadImage(ImageView view, String url, Drawable error) {
-   Picasso.with(view.getContext()).load(url).error(error).into(view);
-}
-</code></pre>
-
-<p>loadImage 可以放在任意类中，该类中只有一个静态的方法imageLoader，该方法有3个参数，一个是需要设置数据的view， 一个是我们需要的url、有个个是错误加载的图像，值得注意的是那个BindingAdapter注解，看看他的参数，是一个数组，内容只有一个bind:imageUrl，仅仅几行代码，我们不需要 手工调用 （类 xxxxxxx）中的loadImage，也不需要知道loadImage方法定义到哪了，一个网络图片加载就搞定了这里面起关键作用的就是BindingAdapter 注解，这里要遵循一定的规则,、</p>
-
-<p><strong>以bind:开头，接着书写你在控件中使用的自定义属性名称。</strong></p>
-
-<h2 id="toc_30">转换器</h2>
-
-<p>在 xml 中为属性赋值时，如果变量的类型与属性不一致，通过 DataBinding 可以进行转换</p>
-
-<p>例如，下面代码中如果要为属性 android:background 赋值一个 int 型的 color 变量：</p>
-
-<pre><code class="language-java">&lt;View
-    android:background=&quot;@{isError.get() ? @color/red : @color/white}&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;wrap_content&quot;
-    app:layout_height=&quot;@{height}&quot; /&gt;
-</code></pre>
-
-<p>只需要定义一个标记了 @BindingConversion 的静态方法即可（方法的定义位置可以随意）：</p>
-
-<pre><code class="language-java">@BindingConversion
-public static ColorDrawable convertColorToDrawable(int color) {
-    return new ColorDrawable(color);
-}
-</code></pre>
-
-<p>再举个栗子 ，假如你的控件需要一个格式化好的时间，但是你只有一个Date类型的变量。可以转化完成后在设置，此时更适合使用 conver</p>
-
-<pre><code class="language-markup">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
-    &lt;data class=&quot;.Custom&quot;&gt;
-        &lt;variable
-            name=&quot;time&quot;
-            type=&quot;java.util.Date&quot; /&gt;
-    &lt;/data&gt;
-
-    &lt;TextView
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;@{time}&quot;/&gt;
-&lt;/layout&gt;
-</code></pre>
-
-<pre><code class="language-java">binding.setTime(new Date());
-</code></pre>
-
-<p>看看 conver</p>
-
-<pre><code class="language-java">public class ConvertUtil {
-    @BindingConversion
-    public static String convertDate(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
-        return sdf.format(date);
-    }
-}
-
-</code></pre>
-
-<p><strong>注</strong>：convert 可以放在任意包中，只要写明注解，已经被转换和转换成的类型，所以注意不要重复定义类型相同的 convert，使用 Converter 一定要保证它不会影响到其他的属性。举个栗子，int -&gt; int 的 convert 就影响到了<code>android:visibility</code></p>
-
-<h2 id="toc_31">Android stuido 的预览支持</h2>
-
-<p>类似于 <code>tools:text</code> ,代码如下</p>
-
-<pre><code class="language-java">&lt;TextView
-            style=&quot;@style/TextAppearance.AppCompat.Large&quot;
-            android:text=&quot;@{user.firstName,default=PLACEHOLDER}&quot;
-            android:layout_width=&quot;wrap_content&quot;
-            android:layout_height=&quot;wrap_content&quot; /&gt;
-</code></pre>
-
-<h2 id="toc_32">举个例子</h2>
-
-<p><img src="media/15299133103550/mvvm0310.gif" alt=""/></p>
-
-<p>工程分为两个部分</p>
-
-<ul>
-<li>第一个简单的例子，点击事件产生后，直接改变了，user 的数据，并没有对 view 操作的逻辑，但是 databinding 已经帮我们完成了一切</li>
-<li>第二个例子是一个 recycleVIew 的例子，点击每个 cardview 增加一点数据</li>
-</ul>
-
-<p>代码不贴了，放 github了 <br/>
-<a href="https://github.com/xuyushi/AndroidMVVMDemo">https://github.com/xuyushi/AndroidMVVMDemo</a></p>
-
-<h2 id="toc_33">参考</h2>
-
-<blockquote>
-<p><a href="https://www.zhihu.com/question/30976423">https://www.zhihu.com/question/30976423</a><br/>
-<a href="https://developer.android.com/intl/zh-cn/tools/data-binding/guide.html#generated_binding">https://developer.android.com/intl/zh-cn/tools/data-binding/guide.html#generated_binding</a><br/>
-<a href="https://segmentfault.com/a/1190000002876984">https://segmentfault.com/a/1190000002876984</a><br/>
-<a href="http://tech.vg.no/2015/07/17/android-databinding-goodbye-presenter-hello-viewmodel/">http://tech.vg.no/2015/07/17/android-databinding-goodbye-presenter-hello-viewmodel/</a><br/>
-<a href="http://www.jianshu.com/p/4e3220a580f6">http://www.jianshu.com/p/4e3220a580f6</a><br/>
-<a href="https://github.com/LyndonChin/MasteringAndroidDataBinding">https://github.com/LyndonChin/MasteringAndroidDataBinding</a><br/>
-<strong><a href="http://www.cnblogs.com/dxy1982/p/3793895.html">http://www.cnblogs.com/dxy1982/p/3793895.html</a></strong><br/>
-<strong><a href="https://realm.io/cn/news/data-binding-android-boyar-mount/?utm_source=tuicool&amp;utm_medium=referral">https://realm.io/cn/news/data-binding-android-boyar-mount/?utm_source=tuicool&amp;utm_medium=referral</a></strong><br/>
-<a href="https://www.aswifter.com/2015/07/04/android-data-binding-1/">https://www.aswifter.com/2015/07/04/android-data-binding-1/</a><br/>
-<a href="http://blog.csdn.net/qibin0506/article/details/47720125">http://blog.csdn.net/qibin0506/article/details/47720125</a></p>
-</blockquote>
-
-
-		</div>
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
-</div></div>
-
-
-<div class="page-bottom">
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15299133098726.html">abtest 数据分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133098793.html">ABtest 平台框架</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099249.html">jenkins 平台搭建</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099310.html">gitlab 搭建</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
   <div class="row">
-  <hr />
-  <div class="small-9 columns">
-  <p class="copyright">Copyright &copy; 2015
+   <p class="copyright">Copyright &copy; 2015
 Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
 Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
-  </div>
-  <div class="small-3 columns">
-  <p class="copyright text-right"><a href="#header">TOP</a></p>
-  </div>
-   
   </div>
 </div>
 
         </section>
       </div>
     </div>
+
+  
     
-    
+
     <script src="asset/js/foundation.min.js"></script>
-    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
     <script>
       $(document).foundation();
-
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
      
     </script>
+
     <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
 
   </body>
 </html>
