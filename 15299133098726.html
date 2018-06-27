@@ -8,7 +8,7 @@
   abtest 数据分析 - Xu Yushi's Blog
   
   </title>
-  
+  <meta name="keywords" content="abtest" />
   
   <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
@@ -110,6 +110,8 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
+              <div class="f-img"><img src="http://uxren.cn/wp-content/uploads/2017/02/abtest-ur-method-00.png" /></div>
+          
           <h1>abtest 数据分析</h1>
      
         <div class="read-more clearfix">
@@ -158,11 +160,11 @@
 
 <p>正态分布是一种应用非常广泛的概率分布，正态分布的密度曲线是一条关于 x=μ 对称的钟形曲线，方差 σ2 决定了曲线中峰的陡峭程度。其中，μ 是正态分布的数学期望，\(σ^2\)是正态分布的方差，正态分布记为 X∼N(μ,\(σ^2\))。μ=0 且 \(σ^2\)=1 时的正态分布称为标准正态分布，记为 X∼N(0,1)。</p>
 
-<p><img src="media/15299133098726/15269536482648.png" alt=""/></p>
+<p><img src="media/15299133098726/15269536482648.png" alt="" class="mw_img_center" style="display: block; clear:both; margin: 0 auto;"/></p>
 
 <p>根据中心极限定理，一个变量如果是由大量微小的、独立的随机因素叠加的结果，那么当样本量足够大的时候，这个变量近似服从正态分布。</p>
 
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/06/De_moivre-laplace.gif" alt=""/></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/06/De_moivre-laplace.gif" alt="" class="mw_img_center" style="display: block; clear:both; margin: 0 auto;"/></p>
 
 <h3 id="toc_5">t分布</h3>
 
@@ -170,7 +172,7 @@
 
 <p>分布曲线和标准正态分布曲线非常接近，t分布的最大值比标准正态分布略小，尾部的概率比标准正态分布大一些。样本量越大，t分布的越接近标准正态分布，当样本量充分大的时候，t分布可以近似看作是标准正态分布。</p>
 
-<p><img src="media/15299133098726/15269537711881.png" alt=""/></p>
+<p><img src="media/15299133098726/15269537711881.png" alt="" class="mw_img_center" style="display: block; clear:both; margin: 0 auto;"/></p>
 
 <h2 id="toc_6">参数估计</h2>
 
@@ -187,7 +189,7 @@
 
 <p>置信区间是区间估计的一种，是指在样本量不变的前提下，我们重复抽样，用同样的方法构造置信区间，有95%的置信区间会包含真实值，所以当我们只构造一次置信区间的时候，我们也认为这个区间是可信的，是包含了总体参数真实值的。这个概率也被称为置信度。置信度越高，结果的可靠性也就越高，但是置信度的提高往往伴随着区间的扩大。</p>
 
-<p><img src="media/15299133098726/15269540524945.png" alt=""/></p>
+<p><img src="media/15299133098726/15269540524945.png" alt="" class="mw_img_center" style="display: block; clear:both; margin: 0 auto;"/></p>
 
 <h2 id="toc_8">假设检验</h2>
 
@@ -220,7 +222,7 @@
 <li>单侧检验：如果备择假设具有特定的方向性，这样的检验称为单侧检验，对于正态分布而言，拒绝域在曲线的一侧</li>
 </ul>
 
-<p><img src="media/15299133098726/15269547975976.jpg" alt=""/></p>
+<p><img src="media/15299133098726/15269547975976.jpg" alt="" class="mw_img_center" style="display: block; clear:both; margin: 0 auto;"/></p>
 
 <h3 id="toc_11">检验方法</h3>
 
@@ -510,9 +512,19 @@ Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
      
     </script>
 
-    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
-
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PVXXRVH');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVXXRVH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
   </body>
 </html>
