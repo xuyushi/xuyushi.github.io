@@ -1,0 +1,941 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Android 触摸事件传递机制 - Xu Yushi's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:xuyushi.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="UserGrowth.html">UserGrowth</a></li>
+        
+            <li><a href="Android.html">Android</a></li>
+        
+            <li><a href="Java.html">Java</a></li>
+        
+            <li><a href="balabala.html">balabala</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>Android 触摸事件传递机制</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2015/6/14</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Android.html'>Android</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递</p>
+
+<h2 id="toc_0">View</h2>
+
+<h3 id="toc_1">常用监听方法</h3>
+
+<p>view表示没有子空间的布局，例如textview、button等，MotionEvent分为三种</p>
+
+<ul>
+<li>MotionEvent.ACTION_DOWN：按下时候</li>
+<li>MotionEvent.ACTION_MOVE：滑动时</li>
+<li>MotionEvent.ACTION_UP：抬起时</li>
+</ul>
+
+<p>常用两种监听事件</p>
+
+<span id="more"></span><!-- more -->
+
+<pre><code class="language-java">******.setOnClickListener(new View.OnClickListener() {      
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+*******.setOnTouchListener(new View.OnTouchListener() {
+            
+            @Override
+            public boolean onTouch(View v, MotionEvent event){
+                // TODO Auto-generated method stub
+    
+                return false;
+            }
+        });
+</code></pre>
+
+<blockquote>
+<p>注：setOnTouchListener中最后返回的是false</p>
+</blockquote>
+
+<p>通常一个按键触发的顺序是：</p>
+
+<ol>
+<li>onClick-&gt;MotionEvent.ACTION_DOWN</li>
+<li>onClick-&gt;MotionEvent.ACTION_UP</li>
+<li>OnClickListener</li>
+</ol>
+
+<p>若在setOnTouchListener返回true，则不会执行OnClickListener方法</p>
+
+<h3 id="toc_2">分析源码</h3>
+
+<p>在Button中并未发现dispatchTouchEvent代码，向上寻找，Button-&gt;TextVIew-&gt;View，在view中发现dispatchTouchEvent函数</p>
+
+<pre><code class="language-java">/**
+     * Pass the touch screen motion event down to the target view, or this
+     * view if it is the target.
+     *
+     * @param event The motion event to be dispatched.
+     * @return True if the event was handled by the view, false otherwise.
+     */
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        // If the event should be handled by accessibility focus first.
+        if (event.isTargetAccessibilityFocus()) {
+            // We don&#39;t have focus or no virtual descendant has it, do not handle the event.
+            if (!isAccessibilityFocusedViewOrHost()) {
+                return false;
+            }
+            // We have focus and got the event, then use normal event dispatch.
+            event.setTargetAccessibilityFocus(false);
+        }
+
+        boolean result = false;
+
+        if (mInputEventConsistencyVerifier != null) {
+            mInputEventConsistencyVerifier.onTouchEvent(event, 0);
+        }
+
+        final int actionMasked = event.getActionMasked();
+        if (actionMasked == MotionEvent.ACTION_DOWN) {
+            // Defensive cleanup for new gesture
+            stopNestedScroll();
+        }
+
+        if (onFilterTouchEventForSecurity(event)) {
+            //noinspection SimplifiableIfStatement
+            ListenerInfo li = mListenerInfo;
+            if (li != null &amp;&amp; li.mOnTouchListener != null
+                    &amp;&amp; (mViewFlags &amp; ENABLED_MASK) == ENABLED
+                    &amp;&amp; li.mOnTouchListener.onTouch(this, event)) {
+                result = true;
+            }
+
+            if (!result &amp;&amp; onTouchEvent(event)) {
+                result = true;
+            }
+        }
+
+...
+
+        return result;
+    }
+</code></pre>
+
+<p>注意 if (li != null &amp;&amp; <strong>li.mOnTouchListener != null</strong>                    &amp;&amp; (mViewFlags &amp; ENABLED_MASK) == ENABLED                    &amp;&amp; li.mOnTouchListener.onTouch(this, event)) {</p>
+
+<p>mOnTouchListener即注册的touch监听事件。</p>
+
+<p>当li.mOnTouchListener 返回true时，result = true</p>
+
+<p>在onTouchEvent中依次调用performClick()-&gt;li.mOnClickListener.onClick(this);</p>
+
+<p>最终会回调用户注册的onclick函数</p>
+
+<p>d</p>
+
+<h3 id="toc_3">测试代码</h3>
+
+<h4 id="toc_4">主Activity</h4>
+
+<pre><code class="language-java">package io.github.xuyushi.toucheventtest;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+
+
+public class MainActivity extends ActionBarActivity {
+
+    private static final String TAG = &quot;TouchEventTest&quot;;
+
+    private MyButton button;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button = (MyButton) findViewById(R.id.button_id);
+
+        button.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        Log.d(TAG, &quot;MainActivity-&gt;&quot; + &quot;OnTouchListener()-&gt;&quot; + &quot;ACTION_DOWN&quot;);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        Log.d(TAG, &quot;MainActivity-&gt;&quot; + &quot;OnTouchListener()-&gt;&quot; + &quot;ACTION_UP&quot;);
+                        break;
+                    default:
+                        break;
+                }
+                return false;
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, &quot;MainActivity-&gt;&quot; + &quot;OnClickListener()-&gt;&quot;);
+
+            }
+        });
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, &quot;MainActivity-&gt;&quot; + &quot;dispatchTouchEvent()-&gt;&quot;+&quot;ACTION_DOWN&quot;);
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG, &quot;MainActivity-&gt;&quot; + &quot;dispatchTouchEvent()-&gt;&quot;+ &quot;ACTION_UP&quot;);
+                break;
+            default:
+                break;
+        }
+
+
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, &quot;MainActivity-&gt;&quot; + &quot;onTouchEvent()-&gt;&quot;+&quot;ACTION_DOWN&quot;);
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG, &quot;MainActivity-&gt;&quot; + &quot;onTouchEvent()-&gt;&quot;+ &quot;ACTION_UP&quot;);
+                break;
+            default:
+                break;
+        }
+        return super.onTouchEvent(event);
+    }
+
+ 
+}
+
+</code></pre>
+
+<h4 id="toc_5">自定义Button</h4>
+
+<pre><code class="language-java">package io.github.xuyushi.toucheventtest;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.widget.Button;
+
+/**
+ * Created by xuyushi on 15/8/2.
+ */
+public class MyButton extends Button {
+    private static final String TAG = &quot;TouchEventTest&quot;;
+
+
+    //注意 这里第二个参数不能省略，否则会导致崩溃，之后有时间学习研究
+    public MyButton(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, &quot;MyButton-&gt;&quot; + &quot;onTouchEvent-&gt;&quot; + &quot;ACTION_DOWN&quot;);
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG, &quot;MyButton-&gt;&quot; + &quot;onTouchEvent-&gt;&quot; + &quot;ACTION_UP&quot;);
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
+
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, &quot;MyButton-&gt;&quot; + &quot;dispatchTouchEvent-&gt;&quot; + &quot;ACTION_DOWN&quot;);
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG, &quot;MyButton-&gt;&quot; + &quot;dispatchTouchEvent-&gt;&quot; + &quot;ACTION_UP&quot;);
+                break;
+            default:
+                break;
+        }
+        return super.dispatchTouchEvent(event);
+    }
+
+}
+</code></pre>
+
+<h4 id="toc_6">布局文件</h4>
+
+<pre><code class="language-markup">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot; android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot; android:paddingLeft=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingRight=&quot;@dimen/activity_horizontal_margin&quot;
+    android:paddingTop=&quot;@dimen/activity_vertical_margin&quot;
+    android:paddingBottom=&quot;@dimen/activity_vertical_margin&quot; tools:context=&quot;.MainActivity&quot;&gt;
+
+
+    &lt;io.github.xuyushi.toucheventtest.MyButton
+        android:id=&quot;@+id/button_id&quot;
+        android:text=&quot;button&quot;
+        android:textSize=&quot;30dp&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot; /&gt;
+
+&lt;/LinearLayout&gt;
+
+</code></pre>
+
+<h4 id="toc_7">log</h4>
+
+<pre><code class="language-bash">D/TouchEventTest﹕ MainActivity-&gt;dispatchTouchEvent()-&gt;ACTION_DOWN
+D/TouchEventTest﹕ MyButton-&gt;dispatchTouchEvent-&gt;ACTION_DOWN
+D/TouchEventTest﹕ MainActivity-&gt;OnTouchListener()-&gt;ACTION_DOWN
+D/TouchEventTest﹕ MyButton-&gt;onTouchEvent-&gt;ACTION_DOWN
+D/TouchEventTest﹕ MainActivity-&gt;dispatchTouchEvent()-&gt;ACTION_UP
+D/TouchEventTest﹕ MyButton-&gt;dispatchTouchEvent-&gt;ACTION_UP
+D/TouchEventTest﹕ MainActivity-&gt;OnTouchListener()-&gt;ACTION_UP
+D/TouchEventTest﹕ MyButton-&gt;onTouchEvent-&gt;ACTION_UP
+D/TouchEventTest﹕ MainActivity-&gt;OnClickListener()-&gt;
+</code></pre>
+
+<h4 id="toc_8">若修改MyButton dispatchTouchEvent返回值为true时</h4>
+
+<pre><code class="language-bash">D/TouchEventTest﹕ MainActivity-&gt;dispatchTouchEvent()-&gt;ACTION_DOWN
+D/TouchEventTest﹕ MyButton-&gt;dispatchTouchEvent-&gt;ACTION_DOWN
+D/TouchEventTest﹕ MainActivity-&gt;dispatchTouchEvent()-&gt;ACTION_UP
+D/TouchEventTest﹕ MyButton-&gt;dispatchTouchEvent-&gt;ACTION_UP
+</code></pre>
+
+<p>事件先由Activity的dispatchTouchEvent进行分发，然后TestButton的dispatchTouchEvent进行分发，接着执行onTouch监听，然后执行onTouchEvent。第二次UP动作的时候，在onTouchEvent里又执行了onClick监听</p>
+
+<h4 id="toc_9">若修改MyButton onTouchEvent返回值为true时</h4>
+
+<pre><code class="language-bash">D/TouchEventTest﹕ MainActivity-&gt;dispatchTouchEvent()-&gt;ACTION_DOWN
+D/TouchEventTest﹕ MyButton-&gt;dispatchTouchEvent-&gt;ACTION_DOWN
+D/TouchEventTest﹕ MainActivity-&gt;OnTouchListener()-&gt;ACTION_DOWN
+D/TouchEventTest﹕ MyButton-&gt;onTouchEvent-&gt;ACTION_DOWN
+D/TouchEventTest﹕ MainActivity-&gt;dispatchTouchEvent()-&gt;ACTION_UP
+D/TouchEventTest﹕ MyButton-&gt;dispatchTouchEvent-&gt;ACTION_UP
+D/TouchEventTest﹕ MainActivity-&gt;OnTouchListener()-&gt;ACTION_UP
+D/TouchEventTest﹕ MyButton-&gt;onTouchEvent-&gt;ACTION_UP
+</code></pre>
+
+<blockquote>
+<p>注：这里和参考博客的结果不一样，因为在dispatchTouchEvent源码中，进行之前做** if (li != null &amp;&amp; <strong>li.mOnTouchListener != null</strong>                    &amp;&amp; (mViewFlags &amp; ENABLED_MASK) == ENABLED                    &amp;&amp; li.mOnTouchListener.onTouch(this, event)) {**判断后，执行的是<code>result = true;</code>并不是 <code>return true;</code> 所以<code>onTouchEvent</code> 依然会执行</p>
+</blockquote>
+
+<p>所以只少一个 OnClickListener未执行</p>
+
+<h2 id="toc_10">ViewGroup</h2>
+
+<p>ViewGroup比View多一个onInterceptTouchEvent方法，此方法是用来拦截事件，拦截之后ViewGroup中的子布局是接受不到事件了。</p>
+
+<h3 id="toc_11">源码修改</h3>
+
+<h4 id="toc_12">自定义布局</h4>
+
+<pre><code class="language-java">package io.github.xuyushi.toucheventtest;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.widget.LinearLayout;
+
+/**
+ * Created by xuyushi on 15/8/2.
+ */
+public class MyLinearLayout extends LinearLayout {
+
+    private static final String TAG = &quot;TouchEventTest&quot;;
+
+    public MyLinearLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        // TODO Auto-generated method stub
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.i(TAG, &quot;MyLinearLayout-&gt;&quot;+&quot;dispatchTouchEvent-&gt;ACTION_DOWN&quot;);
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.i(TAG, &quot;MyLinearLayout-&gt;&quot;+&quot;dispatchTouchEvent-&gt;ACTION_UP&quot;);
+
+                break;
+            default:
+                break;
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        // TODO Auto-generated method stub
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.i(TAG, &quot;MyLinearLayout-&gt;&quot;+&quot;onInterceptTouchEvent-&gt;ACTION_DOWN&quot;);
+
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.i(TAG, &quot;MyLinearLayout-&gt;&quot;+&quot;onInterceptTouchEvent-&gt;ACTION_UP&quot;);
+
+                break;
+            default:
+                break;
+        }
+        return super.onInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // TODO Auto-generated method stub
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.i(TAG, &quot;MyLinearLayout-&gt;&quot;+&quot;onTouchEvent-&gt;ACTION_DOWN&quot;);
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.i(TAG, &quot;MyLinearLayout-&gt;&quot;+&quot;onTouchEvent-&gt;ACTION_UP&quot;);
+                break;
+            default:
+                break;
+        }
+        return super.onTouchEvent(event);
+    }
+
+}
+
+</code></pre>
+
+<h4 id="toc_13">主activity增加监听</h4>
+
+<pre><code class="language-java">mylayout.setOnTouchListener(new View.OnTouchListener() {
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        // TODO Auto-generated method stub
+        switch(event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, &quot;MainActivity-&gt;&quot; + &quot;setOnTouchListener()-&gt;&quot; + &quot;ACTION_DOWN&quot;);
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG, &quot;MainActivity-&gt;&quot; + &quot;setOnTouchListener()-&gt;&quot; + &quot;ACTION_UP&quot;);
+                break;
+            default:break;
+
+        }
+        return false;
+    }
+});
+
+mylayout.setOnClickListener(new View.OnClickListener() {
+
+    @Override
+    public void onClick(View v) {
+        // TODO Auto-generated method stub
+        Log.i(TAG, &quot;MainActivity--mylayout-onClick...&quot;);
+    }
+});
+</code></pre>
+
+<h4 id="toc_14">LOG</h4>
+
+<pre><code class="language-bash">MainActivity-&gt;dispatchTouchEvent()-&gt;ACTION_DOWN
+MyLinearLayout-&gt;dispatchTouchEvent-&gt;ACTION_DOWN
+MyLinearLayout-&gt;onInterceptTouchEvent-&gt;ACTION_DOWN
+MyButton-&gt;dispatchTouchEvent-&gt;ACTION_DOWN
+MainActivity-&gt;OnTouchListener()-&gt;ACTION_DOWN
+MyButton-&gt;onTouchEvent-&gt;ACTION_DOWN
+MainActivity-&gt;dispatchTouchEvent()-&gt;ACTION_UP
+MyLinearLayout-&gt;dispatchTouchEvent-&gt;ACTION_UP
+MyLinearLayout-&gt;onInterceptTouchEvent-&gt;ACTION_UP
+MyButton-&gt;dispatchTouchEvent-&gt;ACTION_UP
+MainActivity-&gt;OnTouchListener()-&gt;ACTION_UP
+MyButton-&gt;onTouchEvent-&gt;ACTION_UP
+MyButton-&gt;testBtn---onClick
+MainActivity-&gt;OnClickListener()
+</code></pre>
+
+<p>如果将Linearlayout的onInterceptTouchEvent 改成return true</p>
+
+<pre><code class="language-bash">MainActivity-&gt;dispatchTouchEvent()-&gt;ACTION_DOWN
+MyLinearLayout-&gt;dispatchTouchEvent-&gt;ACTION_DOWN
+MyLinearLayout-&gt;onInterceptTouchEvent-&gt;ACTION_DOWN
+MainActivity-&gt;OnTouchListener()-&gt;ACTION_DOWN
+MainActivity-&gt;dispatchTouchEvent()-&gt;ACTION_UP
+MyLinearLayout-&gt;dispatchTouchEvent-&gt;ACTION_UP
+MyLinearLayout-&gt;onInterceptTouchEvent-&gt;ACTION_UP
+MainActivity-&gt;OnTouchListener()-&gt;ACTION_UP
+MainActivity--mylayout-onClick...
+</code></pre>
+
+<p>由此可见，当onInterceptTouchEvent 返回ture之后，button接受不到事件了，只执行MyLinearLayout中的OnTouch 和OnClick了</p>
+
+<h2 id="toc_15">总结</h2>
+
+<p>1、如果是自定义复合控件，如图片+文字，我再Activity里给你注册了onClick监听，期望点击它执行。那么最简单的方法就是将图片+文字的父布局，也即让其容器ViewGroup的秘书将事件拦下，这样父亲就可以执行onClick了。这时候的父亲就像一个独立的孩子一样了(View)，再也不用管它的孩子了,可以正常onClick onTouch.</p>
+
+<p>2、如果希望一个View只onTouch而不onClick，在onTouch里return true就ok了。</p>
+
+<p>3、dispatch是为了onTouch监听，onTouchEvent是为了onClick监听。</p>
+
+<p>4、自定义布局时，一般情况下：</p>
+
+<p>@Override</p>
+
+<pre><code class="language-text">public boolean onTouchEvent(MotionEvent event) {return super.onTouchEvent(event);}  
+</code></pre>
+
+<p>@Override</p>
+
+<pre><code class="language-text">public boolean dispatchTouchEvent(MotionEvent event) {return super.dispatchTouchEvent(event);
+
+我们可以复写，但是最后的super.***是万万不能少滴。如果少了，表示连dispatch*** onTouchEvent压根就不调用了，事件就此打住。
+</code></pre>
+
+<h1 id="toc_16">Android 事件分发机制结论</h1>
+
+<h2 id="toc_17">View</h2>
+
+<p>不管是DOWN，MOVE，UP都会按照下面的顺序执行：</p>
+
+<ol>
+<li>dispatchTouchEvent  （view中）</li>
+<li>setOnTouchListener的onTouch （监听事件设置 activity 中）</li>
+<li>onTouchEvent （view中）</li>
+</ol>
+
+<p>在dispatchTouchEvent中会进行OnTouchListener的判断，如果OnTouchListener不为null且返回true，则表示事件被消费，onTouchEvent不会被执行；否则执行onTouchEvent。</p>
+
+<h2 id="toc_18">ViewGroup</h2>
+
+<p>可以看到大体的事件流程为：<br/>
+MyLinearLayout的dispatchTouchEvent -&gt; MyLinearLayout的onInterceptTouchEvent -&gt; MyButton的dispatchTouchEvent -&gt;Mybutton的onTouchEvent </p>
+
+<p>可以看出，在View上触发事件，最先捕获到事件的为View所在的ViewGroup，然后才会到View自身~</p>
+
+<h3 id="toc_19">事件拦截</h3>
+
+<p>ViewGroup 与 View 不同的是，可以对事件进行拦截，使子 view 是否能接受到事件。<br/>
+复写ViewGroup的onInterceptTouchEvent方法：</p>
+
+<pre><code class="language-java">@Override  
+public boolean onInterceptTouchEvent(MotionEvent ev)  
+{  
+    int action = ev.getAction();  
+    switch (action)  
+    {  
+    case MotionEvent.ACTION_DOWN:  
+        //如果你觉得需要拦截  
+        return true ;   
+    case MotionEvent.ACTION_MOVE:  
+        //如果你觉得需要拦截  
+        return true ;   
+    case MotionEvent.ACTION_UP:  
+        //如果你觉得需要拦截  
+        return true ;   
+    }  
+      
+    return false;  
+}  
+    
+</code></pre>
+
+<p>默认是不拦截的，即返回false；如果你需要拦截，只要return true就行了，这要该事件就不会往子View传递了，并且如果你在DOWN retrun true ，则DOWN,MOVE,UP子View都不会捕获事件；如果你在MOVE return true , 则子View在MOVE和UP都不会捕获事件。</p>
+
+<h3 id="toc_20">如何不被拦截</h3>
+
+<p>如果ViewGroup的onInterceptTouchEvent(ev) 当ACTION_MOVE时return true ，即拦截了子View的MOVE以及UP事件；</p>
+
+<p>此时子View希望依然能够响应MOVE和UP时该咋办呢？</p>
+
+<p>Android给我们提供了一个方法：requestDisallowInterceptTouchEvent(boolean) 用于设置是否允许拦截，我们在子View的dispatchTouchEvent中直接这么写：</p>
+
+<pre><code class="language-java">@Override  
+    public boolean dispatchTouchEvent(MotionEvent event)  
+    {  
+        getParent().requestDisallowInterceptTouchEvent(true);    
+        int action = event.getAction();  
+  
+        switch (action)  
+        {  
+        case MotionEvent.ACTION_DOWN:  
+            Log.e(TAG, &quot;dispatchTouchEvent ACTION_DOWN&quot;);  
+            break;  
+        case MotionEvent.ACTION_MOVE:  
+            Log.e(TAG, &quot;dispatchTouchEvent ACTION_MOVE&quot;);  
+            break;  
+        case MotionEvent.ACTION_UP:  
+            Log.e(TAG, &quot;dispatchTouchEvent ACTION_UP&quot;);  
+            break;  
+  
+        default:  
+            break;  
+        }  
+        return super.dispatchTouchEvent(event);  
+    }  
+
+</code></pre>
+
+<p>getParent().requestDisallowInterceptTouchEvent(true);  这样即使ViewGroup在MOVE的时候return true，子View依然可以捕获到MOVE以及UP事件。</p>
+
+<ol>
+<li>如果ViewGroup找到了能够处理该事件的View，则直接交给子View处理，自己的onTouchEvent不会被触发；</li>
+<li>可以通过复写onInterceptTouchEvent(ev)方法，拦截子View的事件（即return true），把事件交给自己处理，则会执行自己对应的onTouchEvent方法</li>
+<li>子View可以通过调用getParent().requestDisallowInterceptTouchEvent(true);  阻止ViewGroup对其MOVE或者UP事件进行拦截；</li>
+</ol>
+
+<blockquote>
+<p>比如你需要写一个类似slidingmenu的左侧隐藏menu，主Activity上有个Button、ListView或者任何可以响应点击的View，你在当前View上死命的滑动，菜单栏也出不来；因为MOVE事件被子View处理了~ 你需要这么做：在ViewGroup的dispatchTouchEvent中判断用户是不是想显示菜单，如果是，则在onInterceptTouchEvent(ev)拦截子View的事件；自己进行处理，这样自己的onTouchEvent就可以顺利展现出菜单栏了~~</p>
+</blockquote>
+
+<h1 id="toc_21">参考</h1>
+
+<blockquote>
+<p><a href="http://blog.csdn.net/yanzi1225627/article/details/22592831">http://blog.csdn.net/yanzi1225627/article/details/22592831</a> <br/>
+<a href="http://blog.csdn.net/guolin_blog/article/details/9097463">http://blog.csdn.net/guolin_blog/article/details/9097463</a><br/>
+<a href="http://www.cnblogs.com/sunzn/archive/2013/05/10/3064129.html">http://www.cnblogs.com/sunzn/archive/2013/05/10/3064129.html</a></p>
+</blockquote>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15299133102029.html" 
+          title="Previous Post: java 反射学习">&laquo; java 反射学习</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15299133100924.html" 
+          title="Next Post: volley学习">volley学习 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Xu Yushi's Blog</h1>
+                <div class="site-des">理工男的碎碎念</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:xmy166@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
+        
+            <a href="Android.html"><strong>Android</strong></a>
+        
+            <a href="Java.html"><strong>Java</strong></a>
+        
+            <a href="balabala.html"><strong>balabala</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15299133098726.html">abtest 数据分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133098793.html">ABtest 平台框架</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099249.html">jenkins 平台搭建</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099310.html">gitlab 搭建</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121470881-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121470881-1');
+</script>
+
+
+  </body>
+</html>

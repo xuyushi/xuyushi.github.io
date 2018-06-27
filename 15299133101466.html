@@ -1,0 +1,757 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  NanoHTTPD源码解析 - Xu Yushi's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:xuyushi.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="UserGrowth.html">UserGrowth</a></li>
+        
+            <li><a href="Android.html">Android</a></li>
+        
+            <li><a href="Java.html">Java</a></li>
+        
+            <li><a href="balabala.html">balabala</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>NanoHTTPD源码解析</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2017/5/4</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Android.html'>Android</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h1 id="toc_0">前言</h1>
+
+<p>在微信 、UC 等 APP 中，无法通过scheme 或者 AppLiks 调起我们的 APP，所以想在APP 内部建立起一个 LocalHttpServer，监听某个端口，web 通过访问本地的这个端口，完成通信，调用起一些服务</p>
+
+<p>在 github 上发现了 <a href="https://github.com/NanoHttpd/nanohttpd">NanoHttpd</a> 项目，它仅仅使用一个类，完成了 server 的搭建。它使用的是Socket BIO(阻塞IO)，一个客户端连接分发到一个线程的经典模型，而且具有良好的扩展性.</p>
+
+<span id="more"></span><!-- more -->
+
+<h1 id="toc_1">使用方法</h1>
+
+<p>使用比较简单。继承 &#39;NanoHTTPD&#39; ， 复写&#39;serve()&#39; , 在该函数内处理。调用 start() 启动服务 。stop() 关闭服务</p>
+
+<h1 id="toc_2">源码解析</h1>
+
+<p>从调用的入口 start() 开始分析</p>
+
+<pre><code class="language-java">    /**
+     * Start the server.
+     *
+     * @throws IOException
+     *             if the socket is in use.
+     */
+    public void start() throws IOException {
+        //建立 ServerSocket ，并且 bind 对应的 host 和端口号
+        myServerSocket = new ServerSocket();
+        myServerSocket.bind((hostname != null) ? new InetSocketAddress(hostname, myPort)
+                : new InetSocketAddress(myPort));
+
+        //开启一个线程监听这个端口
+        myThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int requestCount = 0;
+                do {
+                    try {
+                        //阻塞方法，直到有 socket 链接
+                        final Socket finalAccept = myServerSocket.accept();
+                        ++requestCount;
+                        //register ，存入一个 set ，方便统一管理 。
+                        registerConnection(finalAccept);
+                        finalAccept.setSoTimeout(SOCKET_READ_TIMEOUT);
+                        //从 socket 中拿到InputStream，客户端发送的数据都在这里
+                        final InputStream inputStream = finalAccept.getInputStream();
+                        final int finalRequestCount = requestCount;
+                        //再开启一个线程单独处理这个 socket 
+                        asyncRunner.exec(new Runnable() {
+                            @Override
+                            public void run() {
+                                Thread.currentThread().setName(&quot;NanoHttpd Request Processor (#&quot; + finalRequestCount + &quot;)&quot;);
+                                OutputStream outputStream = null;
+                                try {
+                                    outputStream = finalAccept.getOutputStream();
+                                    TempFileManager tempFileManager = tempFileManagerFactory.create();
+                                    //通过 inputStream ，outputStream 最终得到一个 HTTPSession
+                                    HTTPSession session = new HTTPSession(tempFileManager, inputStream, outputStream,
+                                            finalAccept.getInetAddress());
+                                    while (!finalAccept.isClosed()) {
+                                        //最终调用session.execute 来处理
+                                        session.execute();
+                                    }
+                                } catch (Exception e) {
+                                    // When the socket is closed by the client,
+                                    // we throw our own SocketException
+                                    // to break the &quot;keep alive&quot; loop above.
+                                    if (!(e instanceof SocketException &amp;&amp; &quot;NanoHttpd Shutdown&quot;.equals(e.getMessage()))) {
+                                        e.printStackTrace();
+                                    }
+                                } finally {
+                                    safeClose(outputStream);
+                                    safeClose(inputStream);
+                                    safeClose(finalAccept);
+                                    unRegisterConnection(finalAccept);
+                                }
+                            }
+                        });
+                    } catch (Throwable t) {
+                    }
+                } while (!myServerSocket.isClosed());
+            }
+        });
+        myThread.setDaemon(true);
+        myThread.setName(&quot;NanoHttpd Main Listener&quot;);
+        myThread.start();
+    }
+</code></pre>
+
+<p>可以看到所有数据的处理都在HTTPSession,excute()中 ，接着看下 HTTPSession 数据结构。他是<code>NanoHTTPD</code> 的内部类</p>
+
+<pre><code class="language-java">    protected class HTTPSession implements IHTTPSession {
+        public static final int BUFSIZE = 8192;
+        private final TempFileManager tempFileManager;
+        private final OutputStream outputStream;
+        private PushbackInputStream inputStream;
+        private int splitbyte;
+        private int rlen;
+        private String uri;
+        private Method method;
+        private Map&lt;String, String&gt; parms;
+        private Map&lt;String, String&gt; headers;
+        private CookieHandler cookies;
+        private String queryParameterString;
+        ....
+        
+        
+        
+</code></pre>
+
+<p>实现了 <code>IHTTPSession</code> 这样一个借口</p>
+
+<pre><code class="language-java">    /**
+     * Handles one session, i.e. parses the HTTP request and returns the
+     * response.
+     */
+    public interface IHTTPSession {
+        void execute() throws IOException;
+
+        Map&lt;String, String&gt; getParms();
+
+        Map&lt;String, String&gt; getHeaders();
+
+        /**
+         * @return the path part of the URL.
+         */
+        String getUri();
+
+        String getQueryParameterString();
+
+        Method getMethod();
+
+        InputStream getInputStream();
+
+        CookieHandler getCookies();
+
+        /**
+         * Adds the files in the request body to the files map.
+         *
+         * @arg files - map to modify
+         */
+        void parseBody(Map&lt;String, String&gt; files) throws IOException, ResponseException;
+    }
+</code></pre>
+
+<p>类似于getMethod() ，getInputStream()，getParms()，都提供了。<br/>
+具体看下 execute方法</p>
+
+<pre><code class="language-java">@Override
+public void execute() throws IOException {
+  try {
+      // Read the first 8192 bytes.
+      // The full header should fit in here.
+      // Apache&#39;s default header limit is 8KB.
+      // Do NOT assume that a single read will get the entire header
+      // at once!
+      //header 最大为8k，所以一次读取8k 的大小
+      byte[] buf = new byte[BUFSIZE];
+      splitbyte = 0;
+      rlen = 0;
+      {
+          int read = -1;
+          try {
+              read = inputStream.read(buf, 0, BUFSIZE);
+          } catch (Exception e) {
+              safeClose(inputStream);
+              safeClose(outputStream);
+              throw new SocketException(&quot;NanoHttpd Shutdown&quot;);
+          }
+          if (read == -1) {
+              // socket was been closed
+              safeClose(inputStream);
+              safeClose(outputStream);
+              throw new SocketException(&quot;NanoHttpd Shutdown&quot;);
+          }
+          while (read &gt; 0) {
+              rlen += read;
+              //找到 head 结束，也就是两个换行的位置，存入splitbyte ，后面解析的时候用到
+              splitbyte = findHeaderEnd(buf, rlen);
+              if (splitbyte &gt; 0)
+                  break;
+              read = inputStream.read(buf, rlen, BUFSIZE - rlen);
+          }
+      }
+
+    //为了避免 inputStream 被破坏，将读取的数据在回退到 inputStream 中
+      if (splitbyte &lt; rlen) {
+          inputStream.unread(buf, splitbyte, rlen - splitbyte);
+      }
+
+      parms = new HashMap&lt;String, String&gt;();
+      if (null == headers) {
+          headers = new HashMap&lt;String, String&gt;();
+      }
+
+      // Create a BufferedReader for parsing the header.
+      BufferedReader hin = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(buf, 0, rlen)));
+
+      // Decode the header into parms and header java properties
+      Map&lt;String, String&gt; pre = new HashMap&lt;String, String&gt;();
+      //把 header 中的参数 等解析出来
+      decodeHeader(hin, pre, parms, headers);
+
+      method = Method.lookup(pre.get(&quot;method&quot;));
+      if (method == null) {
+          throw new ResponseException(Response.Status.BAD_REQUEST, &quot;BAD REQUEST: Syntax error.&quot;);
+      }
+
+      uri = pre.get(&quot;uri&quot;);
+
+      cookies = new CookieHandler(headers);
+
+      // Ok, now do the serve()
+      //这里是回调，HTTPSession 本身实现了 IHTTPSession 接口 
+      Response r = serve(this);
+      if (r == null) {
+          throw new ResponseException(Response.Status.INTERNAL_ERROR,
+                  &quot;SERVER INTERNAL ERROR: Serve() returned a null response.&quot;);
+      } else {
+          cookies.unloadQueue(r);
+          r.setRequestMethod(method);
+          r.send(outputStream);
+      }
+  } catch (SocketException e) {
+      // throw it out to close socket object (finalAccept)
+      throw e;
+  } catch (SocketTimeoutException ste) {
+      throw ste;
+  } catch (IOException ioe) {
+      Response r = new Response(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT,
+              &quot;SERVER INTERNAL ERROR: IOException: &quot; + ioe.getMessage());
+      r.send(outputStream);
+      safeClose(outputStream);
+  } catch (ResponseException re) {：
+      Response r = new Response(re.getStatus(), MIME_PLAINTEXT, re.getMessage());
+      r.send(outputStream);
+      safeClose(outputStream);
+  } finally {
+      tempFileManager.clear();
+  }
+}
+</code></pre>
+
+<pre><code class="language-java">//解析 header
+/**
+* Decodes the sent headers and loads the data into Key/value pairs
+*/
+private void decodeHeader(BufferedReader in, Map&lt;String, String&gt; pre, Map&lt;String, String&gt; parms,
+      Map&lt;String, String&gt; headers) throws ResponseException {
+  try {
+      // Read the request line
+      //首先读取请求行 并解析
+      String inLine = in.readLine();
+      if (inLine == null) {
+          return;
+      }
+
+    //通过StringTokenizer 将首行安装空格分割
+      StringTokenizer st = new StringTokenizer(inLine);
+      if (!st.hasMoreTokens()) {
+          throw new ResponseException(Response.Status.BAD_REQUEST,
+                  &quot;BAD REQUEST: Syntax error. Usage: GET /example/file.html&quot;);
+      }
+
+    //根据下图的 http 结构可以看出。首先读取的是 methos
+      pre.put(&quot;method&quot;, st.nextToken());
+
+      if (!st.hasMoreTokens()) {
+          throw new ResponseException(Response.Status.BAD_REQUEST,
+                  &quot;BAD REQUEST: Missing URI. Usage: GET /example/file.html&quot;);
+      }
+
+    //其次是 url
+      String uri = st.nextToken();
+
+      // Decode parameters from the URI
+      int qmi = uri.indexOf(&#39;?&#39;);
+      if (qmi &gt;= 0) {
+          decodeParms(uri.substring(qmi + 1), parms);
+          uri = decodePercent(uri.substring(0, qmi));
+      } else {
+          uri = decodePercent(uri);
+      }
+
+      // If there&#39;s another token, it&#39;s protocol version,
+      // followed by HTTP headers. Ignore version but parse headers.
+      // NOTE: this now forces header names lowercase since they are
+      // case insensitive and vary by client.
+      //解析请求头部，头部的参数是通过 ： 分割
+      if (st.hasMoreTokens()) {
+          String line = in.readLine();
+          while (line != null &amp;&amp; line.trim().length() &gt; 0) {
+              int p = line.indexOf(&#39;:&#39;);
+              if (p &gt;= 0)
+                  headers.put(line.substring(0, p).trim().toLowerCase(Locale.US), line.substring(p + 1)
+                          .trim());
+              line = in.readLine();
+          }
+      }
+
+      pre.put(&quot;uri&quot;, uri);
+  } catch (IOException ioe) {
+      throw new ResponseException(Response.Status.INTERNAL_ERROR, &quot;SERVER INTERNAL ERROR: IOException: &quot;
+              + ioe.getMessage(), ioe);
+  }
+}
+</code></pre>
+
+<p><img src="media/15299133101466/14938697821290.jpg" alt=""/></p>
+
+<p>session.parseBody(files) ，是解析出请求数据用的 。</p>
+
+<pre><code class="language-java">       @Override
+        public void parseBody(Map&lt;String, String&gt; files) throws IOException, ResponseException {
+            RandomAccessFile randomAccessFile = null;
+            BufferedReader in = null;
+            try {
+            //通过 tempFileManager 得到一个 RandomAccessFile
+                randomAccessFile = getTmpBucket();
+
+                long size;
+                //如果 header 中有content-length ，那么 size 用这个。否则用之前找到 header 结束的位置来算
+                if (headers.containsKey(&quot;content-length&quot;)) {
+                    size = Integer.parseInt(headers.get(&quot;content-length&quot;));
+                } else if (splitbyte &lt; rlen) {
+                    size = rlen - splitbyte;
+                } else {
+                    size = 0;
+                }
+
+                // Now read all the body and write it to f
+                //把 body 写入 tempfile 中
+                byte[] buf = new byte[512];
+                while (rlen &gt;= 0 &amp;&amp; size &gt; 0) {
+                    rlen = inputStream.read(buf, 0, (int) Math.min(size, 512));
+                    size -= rlen;
+                    if (rlen &gt; 0) {
+                        randomAccessFile.write(buf, 0, rlen);
+                    }
+                }
+
+                // Get the raw body as a byte []
+                ByteBuffer fbuf = randomAccessFile.getChannel().map(FileChannel.MapMode.READ_ONLY, 0,
+                        randomAccessFile.length());
+                randomAccessFile.seek(0);
+
+                // Create a BufferedReader for easily reading it as string.
+                InputStream bin = new FileInputStream(randomAccessFile.getFD());
+                in = new BufferedReader(new InputStreamReader(bin));
+
+                // If the method is POST, there may be parameters
+                // in data section, too, read it:
+                if (Method.POST.equals(method)) {
+                    String contentType = &quot;&quot;;
+                    String contentTypeHeader = headers.get(&quot;content-type&quot;);
+
+                    StringTokenizer st = null;
+                    if (contentTypeHeader != null) {
+                        st = new StringTokenizer(contentTypeHeader, &quot;,; &quot;);
+                        if (st.hasMoreTokens()) {
+                            contentType = st.nextToken();
+                        }
+                    }
+
+                    if (&quot;multipart/form-data&quot;.equalsIgnoreCase(contentType)) {
+                        // Handle multipart/form-data
+                        if (!st.hasMoreTokens()) {
+                            throw new ResponseException(Response.Status.BAD_REQUEST,
+                                    &quot;BAD REQUEST: Content type is multipart/form-data but boundary missing. Usage: GET /example/file.html&quot;);
+                        }
+
+                        String boundaryStartString = &quot;boundary=&quot;;
+                        int boundaryContentStart = contentTypeHeader.indexOf(boundaryStartString)
+                                + boundaryStartString.length();
+                        String boundary = contentTypeHeader.substring(boundaryContentStart, contentTypeHeader.length());
+                        if (boundary.startsWith(&quot;\&quot;&quot;) &amp;&amp; boundary.endsWith(&quot;\&quot;&quot;)) {
+                            boundary = boundary.substring(1, boundary.length() - 1);
+                        }
+
+                        decodeMultipartData(boundary, fbuf, in, parms, files);
+                    } else {
+                        String postLine = &quot;&quot;;
+                        StringBuilder postLineBuffer = new StringBuilder();
+                        char pbuf[] = new char[512];
+                        int read = in.read(pbuf);
+                        while (read &gt;= 0 &amp;&amp; !postLine.endsWith(&quot;\r\n&quot;)) {
+                            postLine = String.valueOf(pbuf, 0, read);
+                            postLineBuffer.append(postLine);
+                            read = in.read(pbuf);
+                        }
+                        postLine = postLineBuffer.toString().trim();
+                        // Handle application/x-www-form-urlencoded
+                        if (&quot;application/x-www-form-urlencoded&quot;.equalsIgnoreCase(contentType)) {
+                            decodeParms(postLine, parms);
+                        } else if (postLine.length() != 0) {
+                            // Special case for raw POST data =&gt; create a
+                            // special files entry &quot;postData&quot; with raw content
+                            // data
+                            files.put(&quot;postData&quot;, postLine);
+                        }
+                    }
+                } else if (Method.PUT.equals(method)) {
+                    //最终 file 放在 这个 map 里
+                    files.put(&quot;content&quot;, saveTmpFile(fbuf, 0, fbuf.limit()));
+                }
+            } finally {
+                safeClose(randomAccessFile);
+                safeClose(in);
+            }
+        }
+</code></pre>
+
+<h1 id="toc_3">参考</h1>
+
+<blockquote>
+<p><a href="http://shensy.iteye.com/blog/1880381">http://shensy.iteye.com/blog/1880381</a><br/>
+<a href="http://www.voidcn.com/blog/mrtitan/article/p-3280792.html">http://www.voidcn.com/blog/mrtitan/article/p-3280792.html</a></p>
+</blockquote>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15299133104171.html" 
+          title="Previous Post: gradle 插件开发">&laquo; gradle 插件开发</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15299133102065.html" 
+          title="Next Post: Java 内存分配策略">Java 内存分配策略 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Xu Yushi's Blog</h1>
+                <div class="site-des">理工男的碎碎念</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:xmy166@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
+        
+            <a href="Android.html"><strong>Android</strong></a>
+        
+            <a href="Java.html"><strong>Java</strong></a>
+        
+            <a href="balabala.html"><strong>balabala</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15299133098726.html">abtest 数据分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133098793.html">ABtest 平台框架</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099249.html">jenkins 平台搭建</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099310.html">gitlab 搭建</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121470881-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121470881-1');
+</script>
+
+
+  </body>
+</html>

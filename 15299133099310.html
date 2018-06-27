@@ -1,0 +1,404 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  gitlab 搭建 - Xu Yushi's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:xuyushi.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="UserGrowth.html">UserGrowth</a></li>
+        
+            <li><a href="Android.html">Android</a></li>
+        
+            <li><a href="Java.html">Java</a></li>
+        
+            <li><a href="balabala.html">balabala</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>gitlab 搭建</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2018/4/21</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Android.html'>Android</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h1 id="toc_0">安装</h1>
+
+<pre><code class="language-bash">curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+yum install gitlab-ce
+</code></pre>
+
+<span id="more"></span><!-- more -->
+
+<!--```bash
+Retrieving key from https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey
+Importing GPG key 0xE15E78F4:
+ Userid     : "GitLab B.V. (package repository signing key) <packages@gitlab.com>"
+ Fingerprint: 1a4c 919d b987 d435 9396 38b9 1421 9a96 e15e 78f4
+ From       : https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey
+Is this ok [y/N]:
+```
+-->
+
+<h1 id="toc_1">启动 GitLab</h1>
+
+<p>安装完成之后，打开配置文件<code>/etc/gitlab/gitlab.rb</code>将 <code>external_url = &#39;http://git.example.com&#39;</code>修改为自己的 IP 地址：<code>external_url &#39;http://ip_address&#39;</code>，然后执行下面的命令，对 GitLab 进行编译：</p>
+
+<pre><code class="language-bash">gitlab-ctl reconfigure
+</code></pre>
+
+<h1 id="toc_2">GitLab 基本配置</h1>
+
+<p>GitLab 的相关参数配置都存在 /etc/gitlab/gitlab.rb 文件里。自 GitLab 7.6 开始的新安装包, 已经默认将所有的参数写入到 /etc/gitlab/gitlab.rb 配置文件中。</p>
+
+<h2 id="toc_3">配置端口</h2>
+
+<p>GitLab 默认使用 80 端口对外提供服务，因为 80 端口被其他服务占用，所以需要更改。打开 /etc/gitlab/gitlab.rb 配置文件，修改 external_url &#39;http://ip_address&#39; 为 external_url &#39;http://ip_address:new-port&#39;，</p>
+
+<p>报错 </p>
+
+<pre><code class="language-bash">There was an error running gitlab-ctl reconfigure:
+
+execute[clear the gitlab-rails cache] (gitlab::gitlab-rails line 390) had an error: Mixlib::ShellOut::ShellCommandFailed: Expected process to exit with [0], but received &#39;&#39;
+---- Begin output of /opt/gitlab/bin/gitlab-rake cache:clear ----
+STDOUT:
+STDERR:
+---- End output of /opt/gitlab/bin/gitlab-rake cache:clear ----
+Ran /opt/gitlab/bin/gitlab-rake cache:clear returned
+
+</code></pre>
+
+<p>原来是机器内存没达到gitlab的要求，我的机器内存只有1G，gitlab的要求1G ram+1G swap</p>
+
+<p>ubuntu下增加swap交换空间参考 </p>
+
+<blockquote>
+<p><a href="http://www.huzs.net/?p=1683">http://www.huzs.net/?p=1683</a></p>
+</blockquote>
+
+<h2 id="toc_4">Credentials</h2>
+
+<ol>
+<li>设置是 需要将开发机私钥设置copy 进jenkins</li>
+<li>开发机共钥放 gitlab</li>
+<li>本地机的  共钥放 gitlab
+<img src="media/15299133099310/15242020277016.jpg" alt=""/></li>
+</ol>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15299133099249.html" 
+          title="Previous Post: jenkins 平台搭建">&laquo; jenkins 平台搭建</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15299133099366.html" 
+          title="Next Post: Android sdk 搭建">Android sdk 搭建 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Xu Yushi's Blog</h1>
+                <div class="site-des">理工男的碎碎念</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:xmy166@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
+        
+            <a href="Android.html"><strong>Android</strong></a>
+        
+            <a href="Java.html"><strong>Java</strong></a>
+        
+            <a href="balabala.html"><strong>balabala</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15299133098726.html">abtest 数据分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133098793.html">ABtest 平台框架</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099249.html">jenkins 平台搭建</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099310.html">gitlab 搭建</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121470881-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121470881-1');
+</script>
+
+
+  </body>
+</html>

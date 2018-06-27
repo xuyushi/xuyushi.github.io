@@ -1,0 +1,494 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Android 测试 （一）--测试总览 - Xu Yushi's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:xuyushi.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="UserGrowth.html">UserGrowth</a></li>
+        
+            <li><a href="Android.html">Android</a></li>
+        
+            <li><a href="Java.html">Java</a></li>
+        
+            <li><a href="balabala.html">balabala</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>Android 测试 （一）--测试总览</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2016/11/5</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Android.html'>Android</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>android 测试基于 Junit，我们既可以在 JVM 运行单元测试，也可以在 Android 设备上运行功能测试</p>
+
+<h1 id="toc_0">测试类型</h1>
+
+<p>当使用 Android studio 来写测试程序时，你的代码必须放在两个指定的文件夹中。</p>
+
+<h2 id="toc_1">Local unit testsWARNING: No manifest file found at ./AndroidManifest.xml.</h2>
+
+<p>Falling back to the Android OS resources only.<br/>
+To remove this warning, annotate your test class with @Config(manifest=Config.NONE).<br/>
+位于 module-name/src/test/java/.<br/>
+这些测试时运行在本地 JVM，没有运行 Android framework API的权限<br/>
+<span id="more"></span><!-- more --><br/>
+<a href="https://developer.android.com/training/testing/unit-testing/local-unit-tests.html">可以参考这个</a></p>
+
+<h2 id="toc_2">Instrumented test</h2>
+
+<blockquote>
+<p>Instrumented Unit test 是允许在真机或者模拟器上的，而不是运行在本地环境下的虚拟机中。如果在测试时需要使用 instrumentation information(例如 app Context),或者你需要获取 Android 框架的组件(例如 SharedPrederences），这时候你就可以创建一个 instrumented unit test。使用 Instrumented unit test 可以帮助减少编写模拟环境的代码。当然你也可以使用一些 mock 框架。使用 Instrumented unit test 可以很好的利用 Android framework api 和 supporting API。</p>
+</blockquote>
+
+<p>位于 module-name/src/androidTest/java/.<br/>
+测试运行在 Android 设备上或者 Android 模拟器上<br/>
+在测试过程中，这些测试代码会被编译成 apk 运行在设备上。系统会将这个测试程序 和待测程序运行在同一个进程中，所以测试程序能调用待测程序的方法。</p>
+
+<p>更多例子</p>
+
+<ul>
+<li><a href="https://developer.android.com/training/testing/unit-testing/instrumented-unit-tests.html">Building Instrumented Unit Tests</a> 不使用 mock 对象满足 Android 依赖的情况下，构建复杂的 unit test</li>
+<li><a href="https://developer.android.com/training/testing/ui-testing/index.html">Automating User Interface Tests</a> 创建测试，以验证用户界面正确行为对单个应用程序内或跨多个应用程序的交互用户交互。</li>
+<li><a href="https://developer.android.com/training/testing/integration-testing/index.html">Testing App Component Integrations</a> 验证用户不直接与交互的组件行为，例如service或Content Provider</li>
+</ul>
+
+<p><img src="media/15299133103196/14783352877941.png" alt=""/></p>
+
+<p>然而，unit test和instrumented test 只是形式来帮助区分，从Android平台（硬件设备或仿真器上）上运行测试和在本地JVM上运行测试。<br/>
+构建完整的测试套件的时候，你应该明白真正的测试类型如下表所述。</p>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th> 子类型</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Unit tests</td>
+<td>Local Unit Tests</td>
+<td>只在 JVM上运行，当没有 Android framework 的相关依赖，或者 mock 了这部分依赖时，这部分测试运行的会非常快</td>
+</tr>
+<tr>
+<td></td>
+<td>Instrumented unit tests<span class="Apple-tab-span" style="white-space:pre"></span></td>
+<td>这些测试运行在 Android 设备或者 Android 模拟器上。这些测试有获取 Instrumentation 信息的权限，比如获取当前的 context。当你 mock 的对象满足不了 Android 的依赖时，可以使用这个测试</td>
+</tr>
+<tr>
+<td>Integration Tests（集成测试）</td>
+<td>组件在一个 app 中</td>
+<td>这种类型的测试验证目标应用程序的行为，当用户执行特定的操作，还是在进入活动特定的输入如预期。举个栗子，当用户做一些交互动作是，他可以用来验证程序返回正确的UI响应。 Espresso的UI测试框架允许你以编程方式模拟用户操作和测试复杂的内部应用程序的用户交互。</td>
+</tr>
+<tr>
+<td></td>
+<td>组件在不同的 app 中</td>
+<td>这种类型的测试验证不同的用户应用程序之间或用户应用程序和系统应用之间的相互作用正确的行为。比如，当用户执行 Android 的设置菜单操作时，你可能想测试你程序的行为。此类的框架有  UI Automator</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="toc_3">测试 API</h1>
+
+<p>以下都是在 Android 测试中常用的 api。</p>
+
+<h2 id="toc_4">JUnit</h2>
+
+<p>你可以采用类似 JUnit 4 的方式来写单元测试或者集成测试。framework提供了一种很方便的方式来帮我们设置 、去除、断言</p>
+
+<p>一个基本JUnit 4测试类是包含一个或多个测试方法的Java类。一种测试方法始于@Test注释，其中包含的代码验证一个单独的功能（即一个逻辑单元）</p>
+
+<p>下面例子是使用<code>Espresso APIs</code>（UI 测试框架）的一个集成测试，用来测试点击一个 UI 组件，检查字符串得到相应的显示</p>
+
+<pre><code class="language-java">@RunWith(AndroidJUnit4.class)
+@LargeTest
+public class MainActivityInstrumentationTest {
+
+    @Rule
+    public ActivityTestRule mActivityRule = new ActivityTestRule&lt;&gt;(
+            MainActivity.class);
+
+    @Test
+    public void sayHello(){
+        onView(withText(&quot;Say hello!&quot;)).perform(click());
+
+        onView(withId(R.id.textView)).check(matches(withText(&quot;Hello, World!&quot;)));
+    }
+}
+</code></pre>
+
+<p>在JUnit 4测试类，你可以通过以下注释召唤出在特殊处理你的测试代码段：</p>
+
+<ul>
+<li>@Before：主要是测试代码的一些设置。每段@test 执行之前都会先执行 @Before注解 的方法。你可以有多个@Before方法，但在测试类调用这些方法不能保证的顺序。</li>
+<li>@After:主要是一些释放资源的操作。每段@test 执行之后都会执行 @After注解 的方法。你可以有多个@After方法，用来释放内存中的资源</li>
+<li>@Test: 表示这个方法是测试代码。每个测试类可以有多个测试方法。每个方法都要标明这个注解</li>
+<li>@Rule: 可以通过 Rule 灵活的添加和重复使用测试方法。在 Android 测试中，如ActivityTestRule或ServiceTestRule（这些都在 support 包中）</li>
+<li>@BeforeClass: 为每个测试类指定静态方法。每个测试类之后调用这个一次。比如连接到数据库的操作可以使用这个注解</li>
+<li>@AfterClass：使用此批注指定静态方法的测试类类中的所有测试都运行之后才调用。该测试步骤是释放在@BeforeClass块分配的资源</li>
+<li>@Test(timeout=): 如果测试启动，但给定的超时期限内没有完成，它会自动失败。你必须以毫秒为单位指定超时周期</li>
+</ul>
+
+<p>更多的注解可以查看文档 <a href="http://junit.sourceforge.net/javadoc/org/junit/package-summary.html">junit 注解</a> 和 <a href="https://developer.android.com/reference/android/support/annotation/package-summary.html">android 注解</a></p>
+
+<h2 id="toc_5">Android Testing Support Library</h2>
+
+<p>Android Testing Support Library 提供了一系列 api 来帮助我们app快速构建测试代码。包括 JUnit 4 和 UI 测试。</p>
+
+<ul>
+<li>AndroidJUnitRunner：一个JUnit 4兼容的测试运行为Android。</li>
+<li>Espresso：一个UI测试框架;适用于应用程序内的功能UI测试。</li>
+<li>UI Automator：适用于系统和安装的应用程序之间的交叉应用功能UI测试的UI测试框架。</li>
+</ul>
+
+<h2 id="toc_6">Assertion classes</h2>
+
+<p>由于Android测试支持库API继承自JUnit，您可以使用断言方法来显示测试的结果。断言方法比较测试返回值和实际值，并且如果该比较测试失败抛出AssertionException。使用断言比记录更方便，并提供更好的测试性能。</p>
+
+<p>为了简化测试开发，你应该使用Hamcrest库，它可以让你创建使用Hamcrest匹配器的API更加灵活的测试。</p>
+
+<h2 id="toc_7">Monkey and monkeyrunner</h2>
+
+<p>Android SDK提供了两种功能测试工具</p>
+
+<h3 id="toc_8">Monkey</h3>
+
+<p>这是一个命令行工具。发出按键，触摸和手势的随机流命令。可以使用ADB工具来运行它，并用它来做压力测试，汇报遇到的错误的 </p>
+
+<h1 id="toc_9">测试系列博客目录</h1>
+
+<ul>
+<li><a href="http://xuyushi.github.io/2016/11/05/Android%20%E6%B5%8B%E8%AF%95%20%EF%BC%88%E4%B8%80%EF%BC%89--%E6%B5%8B%E8%AF%95%E6%80%BB%E8%A7%88/">Android 测试 （一）--测试总览</a> <a href="http://xuyushi.github.io/2016/11/05/Android%20%E6%B5%8B%E8%AF%95%20%EF%BC%88%E4%B8%80%EF%BC%89--%E6%B5%8B%E8%AF%95%E6%80%BB%E8%A7%88/">http://xuyushi.github.io/2016/11/05/Android%20%E6%B5%8B%E8%AF%95%20%EF%BC%88%E4%B8%80%EF%BC%89--%E6%B5%8B%E8%AF%95%E6%80%BB%E8%A7%88/</a></li>
+<li><a href="http://xuyushi.github.io/2016/11/05/Android%20%E6%B5%8B%E8%AF%95%20%EF%BC%88%E4%BA%8C%EF%BC%89--Instrumented%20Unit%20Tests/">Android 测试 （二）--Instrumented Unit Tests</a> <a href="http://xuyushi.github.io/2016/11/05/Android%20%E6%B5%8B%E8%AF%95%20%EF%BC%88%E4%BA%8C%EF%BC%89--Instrumented%20Unit%20Tests/">http://xuyushi.github.io/2016/11/05/Android%20%E6%B5%8B%E8%AF%95%20%EF%BC%88%E4%BA%8C%EF%BC%89--Instrumented%20Unit%20Tests/</a></li>
+<li><a href="http://xuyushi.github.io/2016/11/06/Android%20%E6%B5%8B%E8%AF%95%20%EF%BC%88%E4%B8%89%EF%BC%89--Local%20Unit%20Tests/">Android 测试 （三）--Local Unit Tests</a> <a href="http://xuyushi.github.io/2016/11/06/Android%20%E6%B5%8B%E8%AF%95%20%EF%BC%88%E4%B8%89%EF%BC%89--Local%20Unit%20Tests/">http://xuyushi.github.io/2016/11/06/Android%20%E6%B5%8B%E8%AF%95%20%EF%BC%88%E4%B8%89%EF%BC%89--Local%20Unit%20Tests/</a></li>
+<li><a href="http://xuyushi.github.io/2016/11/13/Android%20%E6%B5%8B%E8%AF%95%20%EF%BC%88%E5%9B%9B%EF%BC%89--%20%E5%AE%9E%E6%88%98%E5%88%86%E6%9E%90/">Android 测试 （四）-- 实战分析</a> <a href="http://xuyushi.github.io/2016/11/13/Android%20%E6%B5%8B%E8%AF%95%20%EF%BC%88%E5%9B%9B%EF%BC%89--%20%E5%AE%9E%E6%88%98%E5%88%86%E6%9E%90/">http://xuyushi.github.io/2016/11/13/Android%20%E6%B5%8B%E8%AF%95%20%EF%BC%88%E5%9B%9B%EF%BC%89--%20%E5%AE%9E%E6%88%98%E5%88%86%E6%9E%90/</a></li>
+</ul>
+
+<h1 id="toc_10">翻译自（有增删  2016-11-05）</h1>
+
+<blockquote>
+<p><a href="https://developer.android.com/training/testing/start/index.html">https://developer.android.com/training/testing/start/index.html</a></p>
+</blockquote>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15299133103076.html" 
+          title="Previous Post: Android 测试 （二）--Instrumented Unit">&laquo; Android 测试 （二）--Instrumented Unit</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15299133102218.html" 
+          title="Next Post: HashMap 的实现原理">HashMap 的实现原理 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Xu Yushi's Blog</h1>
+                <div class="site-des">理工男的碎碎念</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:xmy166@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
+        
+            <a href="Android.html"><strong>Android</strong></a>
+        
+            <a href="Java.html"><strong>Java</strong></a>
+        
+            <a href="balabala.html"><strong>balabala</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15299133098726.html">abtest 数据分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133098793.html">ABtest 平台框架</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099249.html">jenkins 平台搭建</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099310.html">gitlab 搭建</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121470881-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121470881-1');
+</script>
+
+
+  </body>
+</html>

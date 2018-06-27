@@ -1,0 +1,513 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  策略模式 Strategy Pattern - Xu Yushi's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:xuyushi.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="UserGrowth.html">UserGrowth</a></li>
+        
+            <li><a href="Android.html">Android</a></li>
+        
+            <li><a href="Java.html">Java</a></li>
+        
+            <li><a href="balabala.html">balabala</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>策略模式 Strategy Pattern</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2016/2/13</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Java.html'>Java</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h2 id="toc_0">定义</h2>
+
+<blockquote>
+<p><strong>策略模式</strong>定义了算法簇，分别封装起来，让它们之间可以互相替代，此模式让算法的变化独立于使用算法的客户</p>
+</blockquote>
+
+<h2 id="toc_1">使用场景</h2>
+
+<ul>
+<li>针对同一类型问题的多种处理方式，仅仅是具体行为有差别时。</li>
+<li>需要安全的封装多种同一类型的操作时。</li>
+<li>出现同一抽象多个子类，而又需要使用if-else 或者 switch-case来选择时。</li>
+</ul>
+
+<h2 id="toc_2">UML 图</h2>
+
+<p><img src="media/15299133099842/14557164239727.png" alt=""/></p>
+
+<ul>
+<li>Context：用来操作策略的上下文环境。</li>
+<li>Strategy : 策略的抽象</li>
+<li>ImplementationOne、ImplementationTwo：具体策略的实现</li>
+</ul>
+
+<span id="more"></span><!-- more -->
+
+<h2 id="toc_3">简单实现</h2>
+
+<p>通常如果一个问题有多个解决方案或者稍有区别的操作时，最简单的方式就是利用if-else or switch-case方式来解决，对于简单的解决方案这样做无疑是比较简单、方便、快捷的，但是如果解决方案中包括大量的处理逻辑需要封装，或者处理方式变动较大的时候则就显得混乱、复杂，而策略模式则很好的解决了这样的问题，它将各种方案分离开来，让操作者根据具体的需求来动态的选择不同的策略方案。</p>
+
+<h3 id="toc_4">步骤</h3>
+
+<ol>
+<li>定义Strategy接口</li>
+<li>具体的算法 实现Strategy接口</li>
+<li>客户端调用Strategy接口</li>
+</ol>
+
+<h3 id="toc_5">例子</h3>
+
+<p>定义Strategy接口</p>
+
+<pre><code class="language-java">package io.github.xuyushi.strategy;
+
+/**
+ * Created by xuyushi on 16/2/17.
+ */
+public interface Strategy {
+    void doSomething();
+}
+
+</code></pre>
+
+<p>具体的算法 实现</p>
+
+<pre><code class="language-java">package io.github.xuyushi.strategy;
+
+/**
+ * Created by xuyushi on 16/2/17.
+ */
+public class StrategyA implements Strategy {
+    @Override
+    public void doSomething() {
+        System.out.println(&quot;This is StrategyA&quot;);
+    }
+}
+</code></pre>
+
+<pre><code class="language-java">package io.github.xuyushi.state;
+
+/**
+ * Created by xuyushi on 16/1/29.
+ */
+public class StateB extends State {
+
+    @Override
+    public void next(Wrapper wrapper) {
+        wrapper.setState(new StateC());
+    }
+
+    @Override
+    public void pre(Wrapper wrapper) {
+        wrapper.setState(new StateA());
+
+    }
+}
+
+</code></pre>
+
+<p>定义 context</p>
+
+<pre><code class="language-java">package io.github.xuyushi.strategy;
+
+/**
+ * Created by xuyushi on 16/2/17.
+ */
+public class Context {
+    private Strategy strategy;
+
+    public Context(Strategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void setStrategy(Strategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void doStrategy() {
+        strategy.doSomething();
+    }
+}
+
+</code></pre>
+
+<p>客户端调用</p>
+
+<pre><code class="language-java">package io.github.xuyushi.strategy;
+
+/**
+ * Created by xuyushi on 16/2/17.
+ */
+public class strategyMain {
+    public static void main(String[] args) {
+        System.out.println(&quot;StateMain RUNNING&quot;);
+        // write your code here
+        Context context = new Context(new StrategyA());
+        context.doStrategy();
+        context.setStrategy(new StrategyB());
+        context.doStrategy();
+
+    }
+}
+
+</code></pre>
+
+<p>结果</p>
+
+<pre><code class="language-bash">StateMain RUNNING
+This is StrategyA
+This is StrategyB
+</code></pre>
+
+<p>例子的 UML 图 </p>
+
+<p><img src="media/15299133099842/14557189438038.png" alt=""/></p>
+
+<h2 id="toc_6">总结</h2>
+
+<p>策略模式主要用来分离算法，根据相同的行为抽象来做不同的具体策略实现。<br/>
+通过以上也可以看出策略模式的优缺点：<br/>
+<strong>优点：</strong></p>
+
+<ul>
+<li>结构清晰明了、使用简单直观。</li>
+<li>耦合度相对而言较低，扩展方便。</li>
+<li>操作封装也更为彻底，数据更为安全。</li>
+</ul>
+
+<p><strong>缺点：</strong></p>
+
+<ul>
+<li>随着策略的增加，子类也会变得繁多。</li>
+</ul>
+
+<h2 id="toc_7">参考</h2>
+
+<blockquote>
+<p><a href="https://sourcemaking.com/design_patterns/strategy">https://sourcemaking.com/design_patterns/strategy</a><br/>
+<a href="https://github.com/simple-android-framework/android_design_patterns_analysis/tree/master/strategy/gkerison">https://github.com/simple-android-framework/android_design_patterns_analysis/tree/master/strategy/gkerison</a><br/>
+『head first 设计模式』</p>
+</blockquote>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15299133099606.html" 
+          title="Previous Post: 观察者模式 Observer Design Pattern">&laquo; 观察者模式 Observer Design Pattern</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15299133104055.html" 
+          title="Next Post: 2015小结">2015小结 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Xu Yushi's Blog</h1>
+                <div class="site-des">理工男的碎碎念</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:xmy166@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
+        
+            <a href="Android.html"><strong>Android</strong></a>
+        
+            <a href="Java.html"><strong>Java</strong></a>
+        
+            <a href="balabala.html"><strong>balabala</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15299133098726.html">abtest 数据分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133098793.html">ABtest 平台框架</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099249.html">jenkins 平台搭建</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099310.html">gitlab 搭建</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121470881-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121470881-1');
+</script>
+
+
+  </body>
+</html>

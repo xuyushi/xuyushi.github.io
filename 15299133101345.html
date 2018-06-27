@@ -1,0 +1,489 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  robolectric - Xu Yushi's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:xuyushi.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="UserGrowth.html">UserGrowth</a></li>
+        
+            <li><a href="Android.html">Android</a></li>
+        
+            <li><a href="Java.html">Java</a></li>
+        
+            <li><a href="balabala.html">balabala</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>robolectric</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2015/8/15</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Android.html'>Android</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h2 id="toc_0">环境搭建</h2>
+
+<p>环境 : Android Studio 1.2.1.1+ Android Gradle Plugin 1.2.3+ Gradle 2.2.1+</p>
+
+<p>gradle中加入：</p>
+
+<pre><code class="language-java">  dependencies {
+    ...
+    testCompile &#39;org.robolectric:robolectric:3.0&#39;
+  }
+
+</code></pre>
+
+<p>确认在Build Variants窗口内的Test Artifact中选择了&quot;Unit Tests&quot;。</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-ab4402443ad7dc5f.png" alt=""/></p>
+
+<p>然后，在工程的src文件夹内创建test和test/java文件夹。需要注意的是，你不能在Android视图下进行这些操作，要么在系统的文件管理器内创建，要么在工程窗口左上方点击下拉菜单选择Project视图。最终的工程结构应该是这样的：</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/580359-9e098817f6fcca44.png" alt=""/></p>
+
+<blockquote>
+<p>配置成功之后<code>java</code>文件夹的颜色是绿色的</p>
+</blockquote>
+
+<p><code>**重要重要**</code><br/>
+Run -&gt; Edit Configurations -&gt; Defaults -&gt; Junit<br/>
+设置如下  <strong>\(MODULE_DIR\).</strong><br/>
+<img src="https://camo.githubusercontent.com/b6776bd8da529df04410b6c6d5d6a6a63ebce717/687474703a2f2f726f626f6c6563747269632e6f72672f696d616765732f616e64726f69642d73747564696f2d636f6e6669677572652d64656661756c74732d34626634383430322e706e67" alt=""/></p>
+
+<p>gradle 同步</p>
+
+<blockquote>
+<p>注意Robolectric目前不支持android 5.1 API level 22，编译时 sdk = 21 或者以下。</p>
+</blockquote>
+
+<span id="more"></span><!-- more -->
+
+<h2 id="toc_1">单元测试写法</h2>
+
+<p><strong>@Config(constants = BuildConfig.class)</strong><br/>
+记得加入</p>
+
+<pre><code class="language-java">//省略import
+@RunWith(RobolectricGradleTestRunner.class)
+
+public class MainActivityTest {
+    private MainActivity activity;
+
+    @Before
+    public void setup() throws Exception {
+        //执行初始化操作
+    }
+
+    @Test
+    public void validateTextViewContent() throws Exception {
+         //执行各种测试逻辑判断
+        }
+</code></pre>
+
+<h3 id="toc_2">Activity</h3>
+
+<h4 id="toc_3">Activity的创建</h4>
+
+<pre><code class="language-java">Activity activity = Robolectric.buildActivity(MyAwesomeActivity.class).create().get();
+</code></pre>
+
+<p>会创建一个<code>MyAwesomeActivity</code>实例，然后调用它的onCreat()方法</p>
+
+<p>如果只想验证其onResume()方法，可以如下</p>
+
+<pre><code class="language-java">ActivityController controller = Robolectric.buildActivity(MyAwesomeActivity.class).create().start();
+Activity activity = controller.get();
+// assert that something hasn&#39;t happened
+activityController.resume();
+// assert it happened!
+</code></pre>
+
+<p>如果想测试整个activity 的生命周期可以</p>
+
+<pre><code class="language-java">Activity activity = Robolectric.buildActivity(MyAwesomeActivity.class).create().start().resume().visible().get();
+</code></pre>
+
+<blockquote>
+<p>等你需要在activity中，对view进行一些操作时候，比如<code>Robolectric.clickOn()</code>，这时候你需要在<code>create()</code>后加入<code>visible()</code></p>
+</blockquote>
+
+<h4 id="toc_4">举例</h4>
+
+<p>我在工程中建立了三个Activity分别为 MainActivity，AnotherActivity，ThridActivity<br/>
+在MainActivity加入按键跳转到AnotherActivity中，</p>
+
+<pre><code class="language-java">   public void startAnotherActivity(View view) {
+        startActivity(new Intent(MainActivity.this, AnotherActivity.class));
+    }
+</code></pre>
+
+<p>增加单元测试用例判断跳转的是否正确</p>
+
+<pre><code class="language-java">    @Test
+    public void clickingLogin_shouldStartLoginActivity() {
+        Button button = (Button) activity.findViewById(R.id.button);
+        assertTrue(button.isEnabled());
+        button.performClick();
+
+        Intent expectedIntent = new Intent(activity, ThridActivity.class);
+        assertEquals(expectedIntent,shadowOf(activity).getNextStartedActivity() );
+
+    }
+</code></pre>
+
+<p>1.通过 activity.findViewById 找到button<br/>
+2.判断button是否可以点击<br/>
+3.点击button<br/>
+4.构造一个intent（从MainActivity跳转到ThridActivity）<br/>
+5.判断实际跳转的和构造的是否一直</p>
+
+<p>结构不一致报错</p>
+
+<pre><code class="language-bash">java.lang.AssertionError: 
+Expected :Intent{componentName=ComponentInfo{io.github.xuyushi.robolectric/io.github.xuyushi.robolectric.ThridActivity}, extras=Bundle[{}]}
+Actual   :Intent{componentName=ComponentInfo{io.github.xuyushi.robolectric/io.github.xuyushi.robolectric.AnotherActivity}, extras=Bundle[{}]}
+ &lt;Click to see difference&gt;
+    at org.junit.Assert.fail(Assert.java:91)
+    at org.junit.Assert.failNotEquals(Assert.java:645)
+    at org.junit.Assert.assertEquals(Assert.java:126)
+    at org.junit.Assert.assertEquals(Assert.java:145)
+
+</code></pre>
+
+<p>可以很清楚的定位到错误</p>
+
+<h3 id="toc_5">Dialog验证</h3>
+
+<h3 id="toc_6">Toast验证</h3>
+
+<h3 id="toc_7">response写法</h3>
+
+<h3 id="toc_8">Shodaw</h3>
+
+<h2 id="toc_9">参考</h2>
+
+<blockquote>
+<p><a href="http://hkliya.gitbooks.io/unit-test-android-with-robolectric/content/2-api-explained.html">http://hkliya.gitbooks.io/unit-test-android-with-robolectric/content/2-api-explained.html</a><br/>
+<a href="http://robolectric.org">http://robolectric.org</a><br/>
+<a href="http://chriszou.com/android-unit-testing-with-robolectric">http://chriszou.com/android-unit-testing-with-robolectric</a></p>
+</blockquote>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15299133103504.html" 
+          title="Previous Post: Android service">&laquo; Android service</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15299133103442.html" 
+          title="Next Post: Android Studio中进行单元测试">Android Studio中进行单元测试 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Xu Yushi's Blog</h1>
+                <div class="site-des">理工男的碎碎念</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:xmy166@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
+        
+            <a href="Android.html"><strong>Android</strong></a>
+        
+            <a href="Java.html"><strong>Java</strong></a>
+        
+            <a href="balabala.html"><strong>balabala</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15299133098726.html">abtest 数据分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133098793.html">ABtest 平台框架</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099249.html">jenkins 平台搭建</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099310.html">gitlab 搭建</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121470881-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121470881-1');
+</script>
+
+
+  </body>
+</html>

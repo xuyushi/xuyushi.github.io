@@ -1,0 +1,820 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  地图区域绘制 MVP 实践 - Xu Yushi's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:xuyushi.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="UserGrowth.html">UserGrowth</a></li>
+        
+            <li><a href="Android.html">Android</a></li>
+        
+            <li><a href="Java.html">Java</a></li>
+        
+            <li><a href="balabala.html">balabala</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>地图区域绘制 MVP 实践</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2016/4/30</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Android.html'>Android</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>最近在做一个地图区域绘制的一个需求，如下</p>
+
+<ol>
+<li>在地图区域内戳点绘制范围</li>
+<li>在点击初始点连成区域</li>
+<li>绘制过程中可撤销，绘点过程中有提示文案展示<br/>
+......</li>
+</ol>
+
+<p>结合最近学习的 MVP 模式做了一个 demo</p>
+
+<p><img src="media/15299133100416/2016043001.gif" alt=""/></p>
+
+<span id="more"></span><!-- more -->
+
+<h2 id="toc_0">项目结构</h2>
+
+<p><img src="media/15299133100416/14620027424014.png" alt=""/></p>
+
+<ol>
+<li>MainActivity 是初始化界面，没有逻辑，直接跳转到地图页面</li>
+<li>在 base 中定义了 BasePresenter 和 BaseView</li>
+<li>MapContract 定义了 MVP 中 V 和 P 的接口</li>
+<li>MapActivity 为 View 的具体实现</li>
+<li>MapPresenter 为 P 的具体实现</li>
+</ol>
+
+<h2 id="toc_1">base</h2>
+
+<pre><code class="language-java">public interface BasePresenter {
+
+    void start();
+
+}
+
+public interface BaseView&lt;T&gt; {
+
+    void setPresenter(T presenter);
+
+}
+
+</code></pre>
+
+<p>View 和 Presenter 是互相持有的，在 baseVIew 中定义了setPresenter方法</p>
+
+<p>BasePresenter 中的start方法通常是在 activity 或者 fragment 的 resume onstart中调用，来做一些数据和 view 的初始化</p>
+
+<h2 id="toc_2">P 和 V 是如何关联上的</h2>
+
+<ol>
+<li>在 MapActivity 中新建了一个 Presenter </li>
+</ol>
+
+<pre><code class="language-java">new MapPresenter(this);
+</code></pre>
+
+<ol>
+<li>MapPresenter的构造函数中</li>
+</ol>
+
+<pre><code class="language-java">    public MapPresenter(@NonNull MapContract.View mMapView) {
+        this.mMapView = mMapView;
+        mMapView.setPresenter(this);
+    }
+
+</code></pre>
+
+<p><strong>将 Presenter 中持有的 view 赋值，并调用 View 中的 setPresenter 方法，次方法中将 VIew 中持有的 Presenter 赋值</strong></p>
+
+<p>由此 P 和 V 关联起来了</p>
+
+<h2 id="toc_3">如何运作</h2>
+
+<p>当收到用户的操作时，会触发 View 的一系列监听事件，这些事件的处理中并不会直接调用 Model 层的方法，而是调用 Presenter 来处理，P中持有 Moudle 和 View，P层修改Moudle ，并将结构反应到 View 上。Presenter 对 view 的修改也不是直接修改空间，而是只有一个 view 接口，通过这个接口来实现对 view 的操作 </p>
+
+<h2 id="toc_4">code</h2>
+
+<h3 id="toc_5">关联层（Presenter 和 view 的接口定义）</h3>
+
+<pre><code class="language-java">/**
+ * Created by xuyushi on 16/4/22.
+ */
+public interface MapContract {
+    interface View extends BaseView&lt;Presenter&gt; {
+        Marker showFirstMarker(LatLng latLng);
+
+        Marker showMarker(LatLng latLng);
+
+        void removeMarker(Marker marker);
+
+        Polyline showPolyline(LatLng latLngA, LatLng latLngB);
+
+        void removePolyline(Polyline polyline);
+
+        Polygon showPolygon(Iterable&lt;LatLng&gt; latLngs);
+
+        void removePolygon(Polygon polygon);
+
+        void editPolygon(Polygon polygon, Iterable&lt;LatLng&gt; latLngs);
+
+        void showTipView(String mesg);
+
+    }
+
+    interface Presenter extends BasePresenter {
+        int MODE_TOUCH_POINT = 0;
+        int MODE_EDIT_POYGON = 1;
+
+        int getDrawMode();
+
+        void undo();
+
+        void drawLineAndShowMarker(LatLng latLng);
+
+        void showPolygon();
+
+        void removeAllPolyline();
+
+        void updatePolygon(Marker marker);
+
+        boolean isFirstMarker(Marker marker);
+    }
+}
+</code></pre>
+
+<h3 id="toc_6">Mainactivity</h3>
+
+<pre><code class="language-java">public class MapActivity extends AppCompatActivity implements MapContract.View{
+
+    public static final String TAG = &quot;MapActivity&quot;;
+    MapContract.Presenter mMapPresenter;
+
+    private MapView mapView;
+    private AMap aMap;
+    private TextView tips;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.basicmap_activity);
+        mapView = (MapView) findViewById(R.id.map);
+        mapView.onCreate(savedInstanceState);// 此方法必须重写
+        tips = (TextView) findViewById(R.id.tv_tips);
+        new MapPresenter(this);
+        init();
+        initTouchEvent();
+    }
+
+    private void initTouchEvent() {
+        //地图触摸事件
+        aMap.setOnMapClickListener(new AMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                if (mMapPresenter.getDrawMode() == MapPresenter.MODE_TOUCH_POINT){
+                    mMapPresenter.drawLineAndShowMarker(latLng);
+                }
+            }
+        });
+
+        //Marker 点击事件
+        aMap.setOnMarkerClickListener(new AMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                if (mMapPresenter.isFirstMarker(marker)) {
+                    //画多边形
+                    mMapPresenter.removeAllPolyline();
+                    mMapPresenter.showPolygon();
+                    Log.e(TAG, &quot;is first marker: &quot;);
+                }
+                return false;
+            }
+        });
+
+        //Marker 拖动
+        aMap.setOnMarkerDragListener(new AMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDragStart(Marker marker) {
+
+            }
+
+            @Override
+            public void onMarkerDrag(Marker marker) {
+                mMapPresenter.updatePolygon(marker);
+            }
+
+            @Override
+            public void onMarkerDragEnd(Marker marker) {
+                mMapPresenter.updatePolygon(marker);
+            }
+        });
+
+    }
+
+    /**
+     * 初始化AMap对象
+     */
+    private void init() {
+        if (aMap == null) {
+            aMap = mapView.getMap();
+
+        }
+
+    }
+
+    /**
+     * 方法必须重写
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mapView.onResume();
+        mMapPresenter.start();
+    }
+
+
+    /**
+     * 方法必须重写
+     */
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    /**
+     * 方法必须重写
+     */
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
+    }
+
+    /**
+     * 方法必须重写
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+
+
+    /**
+     * View 接口实现
+     */
+    @Override
+    public Marker showFirstMarker(LatLng latLng) {
+        //文字显示标注，可以设置显示内容，位置，字体大小颜色，背景色旋转角度,Z值等
+        TextOptions textOptions = new TextOptions().position(latLng)
+                .backgroundColor(Color.RED).fontSize(30).rotate(20).align(Text.ALIGN_CENTER_HORIZONTAL, Text.ALIGN_CENTER_VERTICAL)
+                .zIndex(1.f).typeface(Typeface.DEFAULT_BOLD);
+        aMap.addText(textOptions);
+
+        return aMap.addMarker(new MarkerOptions().anchor(0.5f, 0.5f)
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher))
+                .position(latLng).title(&quot;title&quot;)
+                .snippet(&quot;message&quot;).draggable(true));
+    }
+
+    @Override
+    public Marker showMarker(LatLng latLng) {
+        //文字显示标注，可以设置显示内容，位置，字体大小颜色，背景色旋转角度,Z值等
+        TextOptions textOptions = new TextOptions().position(latLng)
+//                .text(&quot;Text&quot;).fontColor(Color.BLACK)
+                .backgroundColor(Color.RED).fontSize(30).rotate(20).align(Text.ALIGN_CENTER_HORIZONTAL, Text.ALIGN_CENTER_VERTICAL)
+                .zIndex(1.f).typeface(Typeface.DEFAULT_BOLD);
+        aMap.addText(textOptions);
+
+        return aMap.addMarker(new MarkerOptions().anchor(0.5f, 0.5f)
+                .position(latLng).title(&quot;title&quot;)
+                .snippet(&quot;message&quot;).draggable(true));
+
+    }
+
+    @Override
+    public void removeMarker(Marker marker) {
+        marker.remove();
+        aMap.postInvalidate();
+    }
+
+    @Override
+    public Polyline showPolyline(LatLng latLngA, LatLng latLngB) {
+        PolylineOptions mPolylineOptions = new PolylineOptions(); //draw line
+        mPolylineOptions.add(latLngA);
+        mPolylineOptions.add(latLngB);
+        mPolylineOptions.color(Color.RED);
+        //返回Polyline
+        return aMap.addPolyline(mPolylineOptions);
+    }
+
+    @Override
+    public void removePolyline(Polyline polyline) {
+        polyline.remove();
+        aMap.postInvalidate();
+    }
+
+    @Override
+    public Polygon showPolygon(Iterable&lt;LatLng&gt;latLngs) {
+        PolygonOptions polygonOptions = new PolygonOptions();
+        polygonOptions.addAll(latLngs).fillColor(0x99CCCCCC);
+        return aMap.addPolygon(polygonOptions);
+    }
+
+    @Override
+    public void removePolygon(Polygon polygon) {
+        polygon.remove();
+    }
+
+    @Override
+    public void editPolygon(Polygon polygon, Iterable&lt;LatLng&gt; latLngs) {
+        //Collection to list
+        List&lt;LatLng&gt; list = new ArrayList&lt;&gt;();
+        for (LatLng item : latLngs) {
+            list.add(item);
+        }
+        polygon.setPoints(list);
+
+    }
+
+    @Override
+    public void showTipView(String mesg) {
+        tips.setText(mesg);
+    }
+
+    @Override
+    public void setPresenter(MapContract.Presenter presenter) {
+        mMapPresenter = presenter;
+    }
+
+    public void undo(View view) {
+        Log.d(TAG, &quot;undo:&quot;);
+        mMapPresenter.undo();
+    }
+}
+
+</code></pre>
+
+<h2 id="toc_7">Presenter</h2>
+
+<pre><code class="language-java">public class MapPresenter implements MapContract.Presenter {
+    public static final String TAG = &quot;gaode_map&quot;;
+    public int mMode = MODE_TOUCH_POINT;
+    private MapContract.View mMapView;
+    private int pointNumber;
+    List&lt;LatLng&gt; mLatLngs = new ArrayList&lt;&gt;();         //多边形的点坐标集
+    List&lt;Polyline&gt; polylines = new ArrayList&lt;&gt;();      //所有线段
+    Map&lt;Marker, LatLng&gt; mMapLatLngMarker = new HashMap&lt;&gt;();
+    private Marker mFirstMarker;
+    private Polygon polygon;
+    private Marker preMarker;
+
+    public MapPresenter(@NonNull MapContract.View mMapView) {
+        this.mMapView = mMapView;
+        mMapView.setPresenter(this);
+    }
+
+    @Override
+    public int getDrawMode() {
+        return mMode;
+    }
+
+    @Override
+    public void undo() {
+        if (getDrawMode() == MODE_TOUCH_POINT) {
+            //删除marker
+            if (mMapLatLngMarker.size() &gt; 0) {
+                //改变 marker 中点坐标
+                Iterator&lt;Marker&gt; itr = mMapLatLngMarker.keySet().iterator();
+                Marker deleteItem = null;
+                while (itr.hasNext()) {
+                    Marker item = itr.next();
+                    if (item.getPosition().equals(mLatLngs.get(mLatLngs.size()-1))) {
+                        //map 中存的点是准确的
+                        LatLng latLng = mMapLatLngMarker.get(item);
+                        for (LatLng polygonLatLng : mLatLngs) {
+                            if (latLng.equals(polygonLatLng)) {
+                                Log.e(TAG, &quot;find: success~!!!!!!!!!!!!!&quot;);
+                                deleteItem = item;
+                            }
+                        }
+                    }
+                }
+                if (deleteItem != null) {
+                    mMapView.removeMarker(deleteItem);
+                    mMapLatLngMarker.remove(deleteItem);
+                }
+                //删除保存的点
+                mLatLngs.remove(mLatLngs.size() - 1);
+                pointNumber--;
+            }
+            //移除线段
+            if (polylines.size() &gt; 0) {
+                mMapView.removePolyline(polylines.get(polylines.size()- 1));
+                polylines.remove(polylines.size() - 1);
+            }
+        }
+
+    }
+
+    @Override
+    public void drawLineAndShowMarker(LatLng latLng) {
+        mLatLngs.add(latLng);
+        if (pointNumber == 0) {
+            mFirstMarker = mMapView.showFirstMarker(latLng);
+            mMapLatLngMarker.put(mFirstMarker, latLng);
+        } else {
+            preMarker = mMapView.showMarker(latLng);
+            mMapLatLngMarker.put(preMarker, latLng);
+            Polyline polyline = mMapView.showPolyline(getPreLatLng(), latLng);
+            polylines.add(polyline);
+            mMapView.showTipView(&quot;点击初始点结束绘制&quot;);
+        }
+        pointNumber++;
+    }
+
+    private LatLng getPreLatLng() {
+        return mLatLngs.get(mLatLngs.size() - 2);
+    }
+
+    @Override
+    public void showPolygon() {
+        polygon = mMapView.showPolygon(mLatLngs);
+        mMode = MODE_EDIT_POYGON;
+        mMapView.showTipView(&quot;长按拖动节点&quot;);
+
+
+    }
+
+    @Override
+    public void removeAllPolyline() {
+        for (Polyline polyline : polylines) {
+            polyline.remove();
+        }
+    }
+
+    @Override
+    public void updatePolygon(Marker marker) {
+        //改变 marker 中点坐标
+        Iterator&lt;Marker&gt; itr = mMapLatLngMarker.keySet().iterator();
+        while (itr.hasNext()) {
+            Marker item = itr.next();
+            if (item.equals(marker)) {
+                //map 中存的点是准确的
+                LatLng latLng = mMapLatLngMarker.get(item);
+                for (LatLng polygonLatLng : mLatLngs) {
+                    if (latLng.equals(polygonLatLng)) {
+                        Log.e(TAG, &quot;find: success~!!!!!!!!!!!!!&quot;);
+                        mMapLatLngMarker.put(item, marker.getPosition());
+                        mLatLngs.set(mLatLngs.indexOf(polygonLatLng), marker.getPosition());
+                    }
+                }
+            }
+        }
+
+        mMapView.editPolygon(polygon, mLatLngs);
+    }
+
+    @Override
+    public boolean isFirstMarker(Marker marker) {
+        return marker.equals(mFirstMarker);
+    }
+
+    @Override
+    public void start() {
+        Log.e(TAG, &quot;presenter start: &quot;);
+    }
+}
+
+</code></pre>
+
+<h2 id="toc_8">MVP后续的思考</h2>
+
+<ol>
+<li>view Presenter 的复用？</li>
+<li> M V P 三层解耦的必要性？</li>
+</ol>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15299133103997.html" 
+          title="Previous Post: Activity Mode">&laquo; Activity Mode</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15299133101874.html" 
+          title="Next Post: Listview crash 分析">Listview crash 分析 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Xu Yushi's Blog</h1>
+                <div class="site-des">理工男的碎碎念</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:xmy166@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
+        
+            <a href="Android.html"><strong>Android</strong></a>
+        
+            <a href="Java.html"><strong>Java</strong></a>
+        
+            <a href="balabala.html"><strong>balabala</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15299133098726.html">abtest 数据分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133098793.html">ABtest 平台框架</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099249.html">jenkins 平台搭建</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099310.html">gitlab 搭建</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121470881-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121470881-1');
+</script>
+
+
+  </body>
+</html>

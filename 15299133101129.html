@@ -1,0 +1,446 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Architecture Components--ViewModel - Xu Yushi's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:xuyushi.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="UserGrowth.html">UserGrowth</a></li>
+        
+            <li><a href="Android.html">Android</a></li>
+        
+            <li><a href="Java.html">Java</a></li>
+        
+            <li><a href="balabala.html">balabala</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>Architecture Components--ViewModel</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2017/6/25</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Android.html'>Android</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h1 id="toc_0">ViewModel</h1>
+
+<p>ViewModel 类是被设计用来存储和管理 UI 相关的数据，以便在配置更改（如：屏幕旋转）时数据可以保留下来。</p>
+
+<p>应用程序组件（如：activity 和 fragment）具有一个由 Android Framework 管理的生命周期。Framework 可能会完全不受控制的根据某些用户操作或设备事件来决定销毁或重新创建它们。</p>
+
+<p>由于这些对象有可能被操作系统销毁或重新创建，所以保存在它们中的任何数据都会丢失。例如：如果 activity 中有一个用户列表，当 activity 因为配置更改而重新创建时，新的 activity 必须重新获取用户列表。对于简单的数据，activity 可以使用 onSaveInstanceState() 方法从 onCreate() 中的 bundle 里恢复数据，但是这种方式只适用于少量数据（如：UI 状态），不适用于大量数据（如：用户列表）。</p>
+
+<p>另一个问题是，这些 UI 控制器（activity，fragment 等）经常需要发起一些需要一定时间才能返回的异步调用。UI 控制器需要管理这些调用并且在其被销毁时清理它们避免潜在的内存泄漏。这需要大量的维护工作，并且在由于配置更改导致对象被重新创建的情况下十分浪费资源，因为需要重新发起相同的请求。<br/>
+<span id="more"></span><!-- more --></p>
+
+<p>这些 UI 控制器已经需要完成响应用户操作和处理操作系统通信的工作了。当它们还需要手动处理其资源时，将会使类变的臃肿，创造“万能 activity”（或“万能 fragment”）；也就是说，一个单独的类视图自己处理应用程序的所有工作，而不是将工作委派给其它类。这将会使测试非常困难。</p>
+
+<p>将视图数据的所有权从 UI 控制器的逻辑中分离出来是简单高效的。Lifecycle 提供了一个叫 ViewModel 的新类，一个 UI 控制器的帮助类，用来为 UI 准备数据。在配置更改期间，ViewModel 会自动保留，以便其保存的数据能够立即提供给下一个 activity 或 fragment 实例。在我们上面提到的例子中，获取并持有数据是 ViewModel 的责任，而不是 activity 或 fragment 的。</p>
+
+<pre><code class="language-java">public class MyViewModel extends ViewModel {
+    private MutableLiveData&lt;List&lt;User&gt;&gt; users;
+    public LiveData&lt;List&lt;User&gt;&gt; getUsers() {
+        if (users == null) {
+            users = new MutableLiveData&lt;List&lt;Users&gt;&gt;();
+            loadUsers();
+        }
+        return users;
+    }
+
+    private void loadUsers() {
+        // 执行异步操作获取用户
+    }
+}
+</code></pre>
+
+<p>现在 activity 可以像下面这样访问列表：</p>
+
+<pre><code class="language-java">public class MyActivity extends AppCompatActivity {
+    public void onCreate(Bundle savedInstanceState) {
+        MyViewModel model = ViewModelProviders.of(this).get(MyViewModel.class);
+        model.getUsers().observe(this, users -&gt; {
+            // 更新 UI
+        });
+    }
+}
+</code></pre>
+
+<p>如果 activity 被重新创建，它将会收到由之前 activity 创建的同一个 MyViewModel 实例。当所有者 activity 结束后，Framework 会调用 ViewModel 的 onCleared() 方法来清理资源。</p>
+
+<blockquote>
+<p>注：由于 ViewModel 存活的比个别的 activity 和 fragment 实例，所以它决不能引用 View，或任何持有 activity context 的引用的类。如果 ViewModel 需要 Application 的 context（如：调用系统服务），可以继承 AndroidViewModel 类，可以在构造函数中接受 Application（因为 Application 继承了 Context）。</p>
+</blockquote>
+
+<h2 id="toc_1">在 Fragment 之间共享数据</h2>
+
+<p>activity 中的两个或多个 fragment 需要相互通信是很常见的。这不是个简单的事情，所有的 fragment 都需要定义一些接口描述，并且拥有它们的 activity 必须将两者绑定在一起。另外，所有的 fragment 必须处理其它的 fragment 没有被创建或不可见的情况。</p>
+
+<p>使用 ViewModel 可以解决这个常见的痛点。假设一个主从式 fragment 的常见情况，用户从一个 fragment 的列表里选中一项，另一个 fragment 显示所选项的内容。</p>
+
+<p>这些 fragment 可以使用其 activity 限定的 ViewModel 来处理该通讯</p>
+
+<pre><code class="language-java">public class SharedViewModel extends ViewModel {
+    private final MutableLiveData&lt;Item&gt; selected = new MutableLiveData&lt;Item&gt;();
+
+    public void select(Item item) {
+        selected.setValue(item);
+    }
+
+    public LiveData&lt;Item&gt; getSelected() {
+        return selected;
+    }
+}
+
+public class MasterFragment extends Fragment {
+    private SharedViewModel model;
+    public void onActivityCreated() {
+        model = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
+        itemSelector.setOnClickListener(item -&gt; {
+            model.select(item);
+        });
+    }
+}
+
+public class DetailFragment extends LifecycleFragment {
+    public void onActivityCreated() {
+        SharedViewModel model = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
+        model.getSelected().observe(this, { item -&gt;
+           // 更新 UI
+        });
+    }
+}
+</code></pre>
+
+<p>请注意，在获取 ViewModelProvider 时两个 fragment 都使用 getActivity() 方法。这意味着它们都将会收到被 activity 限定的同一个 SharedViewModel 实例。</p>
+
+<p>这种方式的优点有：</p>
+
+<p>activity 不需要做或知道关于该通讯的任何事情。</p>
+
+<ul>
+<li>除了 SharedViewModel 协议之外 fragment 不需要了解彼此。如果其中一个消失，另一个会照常工作。</li>
+<li>每个 fragment 有自己的生命周期，并且不受其它 fragment 的生命周期影响。实际上，在 UI 中一个 fragment 替换另一个 fragment，UI 的运行没有任何问题。</li>
+</ul>
+
+<h2 id="toc_2">ViewModel 的生命周期</h2>
+
+<p>在获取 ViewModel 时，ViewModel 对象被传递给 ViewModelProvider 的 Lifecycle 限定。ViewModel 保留在内存中，直到限定它的 Lifecycle 永久消失（当 activity 结束或 fragment 被分离）。<br/>
+<img src="media/15299133101129/14983677008413.png" alt=""/></p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15299133102446.html" 
+          title="Previous Post: Architecture Components -- Guide to App Architecture">&laquo; Architecture Components -- Guide to App Architecture</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15299133101795.html" 
+          title="Next Post: Architecture Components--LiveData">Architecture Components--LiveData &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Xu Yushi's Blog</h1>
+                <div class="site-des">理工男的碎碎念</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:xmy166@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
+        
+            <a href="Android.html"><strong>Android</strong></a>
+        
+            <a href="Java.html"><strong>Java</strong></a>
+        
+            <a href="balabala.html"><strong>balabala</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15299133098726.html">abtest 数据分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133098793.html">ABtest 平台框架</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099249.html">jenkins 平台搭建</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099310.html">gitlab 搭建</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121470881-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121470881-1');
+</script>
+
+
+  </body>
+</html>

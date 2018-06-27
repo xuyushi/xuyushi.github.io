@@ -1,0 +1,606 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  window、Activity、DecorView、ViewRoot关系 - Xu Yushi's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:xuyushi.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="UserGrowth.html">UserGrowth</a></li>
+        
+            <li><a href="Android.html">Android</a></li>
+        
+            <li><a href="Java.html">Java</a></li>
+        
+            <li><a href="balabala.html">balabala</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>window、Activity、DecorView、ViewRoot关系</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2016/9/15</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Android.html'>Android</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h1 id="toc_0">简介</h1>
+
+<ul>
+<li><p>Activity并不负责视图控制，它只是控制生命周期和处理事件，真正控制视图的是Window。一个Activity包含了一个Window，Window才是真正代表一个窗口，Window 中持有一个 DecorView，而这个DecorView才是 view 的根布局</p></li>
+<li><p>DecorView是FrameLayout的子类，它可以被认为是Android视图树的根节点视图。DecorView作为顶级View，一般情况下它内部包含一个竖直方向的LinearLayout，在这个LinearLayout里面有上下两个部分（具体情况和Android版本及主体有关），上面的是标题栏，下面的是内容栏。在Activity中通过setContentView所设置的布局文件其实就是被加到内容栏之中的，而内容栏的id是content，在代码中可以通过ViewGroup content = （ViewGroup)findViewById(R.android.id.content)来得到content对应的layout。 </p></li>
+<li><span id="more"></span><!-- more --></li>
+<li><p>ViewRoot对应<strong>ViewRootImpl类，它是连接WindowManagerService和DecorView的纽带</strong>，View的三大流程(测量（measure），布局（layout），绘制（draw）)均通过ViewRoot来完成。ViewRoot并不属于View树的一份子。从源码实现上来看，它既非View的子类，也非View的父类，但是，<strong>它实现了ViewParent接口，这让它可以作为View的名义上的父视图</strong>。RootView继承了Handler类，可以接收事件并分发，Android的所有触屏事件、按键事件、界面刷新等事件都是通过ViewRoot进行分发的。ViewRoot可以被理解为“View树的管理者”——它有一个mView成员变量，它指向的对象和上文中Window和Activity的mDecor指向的对象是同一个对象。</p></li>
+</ul>
+
+<h1 id="toc_1">从 setContentView 分析起</h1>
+
+<p>众所周知，在 activity 中，setContentView方法可以设置我们需要的布局，那么就从这个作为切入点开始分析</p>
+
+<pre><code class="language-java">//activity
+    public void setContentView(View view, ViewGroup.LayoutParams params) {
+        getWindow().setContentView(view, params);
+        initWindowDecorActionBar();
+    }
+
+    /**
+     * Retrieve the current {@link android.view.Window} for the activity.
+     * This can be used to directly access parts of the Window API that
+     * are not available through Activity/Screen.
+     *
+     * @return Window The current window, or null if the activity is not
+     *         visual.
+     */
+    public Window getWindow() {
+        return mWindow;
+    }
+
+
+</code></pre>
+
+<p>继续寻找 mWindow 的赋值时机</p>
+
+<pre><code class="language-java"> final void attach(Context context, ActivityThread aThread,
+...
+        mWindow = new PhoneWindow(this);
+        mWindow.setCallback(this);//当window接收系统发送给它的IO输入事件时,例如键盘和触摸屏事件,就可以转发给相应的Activity
+        mWindow.setOnWindowDismissedCallback(this);
+        mWindow.getLayoutInflater().setPrivateFactory(this);
+        if (info.softInputMode != WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED) {
+            mWindow.setSoftInputMode(info.softInputMode);
+        }
+</code></pre>
+
+<p>可以看到在attach，实例化了一个PhoneWindow对象（window 的实现），继续看 window 中 setContentView的实现</p>
+
+<pre><code class="language-java">@Override
+public void setContentView(int layoutResID) {
+   // Note: FEATURE_CONTENT_TRANSITIONS may be set in the process of installing the window
+   // decor, when theme attributes and the like are crystalized. Do not check the feature
+   // before this happens.
+   if (mContentParent == null) {
+       installDecor();//[window]如何没有DecorView,那么就新建一个
+   } else if (!hasFeature(FEATURE_CONTENT_TRANSITIONS)) {
+       mContentParent.removeAllViews();
+   }
+
+   if (hasFeature(FEATURE_CONTENT_TRANSITIONS)) {
+       final Scene newScene = Scene.getSceneForLayout(mContentParent, layoutResID,
+               getContext());
+       transitionTo(newScene);
+   } else {
+       mLayoutInflater.inflate(layoutResID, mContentParent); //[window]第二步,将layout添加到mContentParent
+   }
+   mContentParent.requestApplyInsets();
+   final Callback cb = getCallback();
+   if (cb != null &amp;&amp; !isDestroyed()) {
+       cb.onContentChanged();
+   }
+}
+
+//注意 mContentParent的注释，后续做分析
+    // This is the view in which the window contents are placed. It is either
+    // mDecor itself, or a child of mDecor where the contents go.
+    private ViewGroup mContentParent;
+</code></pre>
+
+<h1 id="toc_2">创建DecorView</h1>
+
+<p>继续看 PhoneWindow 中的installDecor() 方法</p>
+
+<pre><code class="language-java">    private void installDecor() {
+        if (mDecor == null) {
+            mDecor = generateDecor(); //DecorView 被赋值
+    mDecor.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
+            mDecor.setIsRootNamespace(true);
+            if (!mInvalidatePanelMenuPosted &amp;&amp; mInvalidatePanelMenuFeatures != 0) {
+                mDecor.postOnAnimation(mInvalidatePanelMenuRunnable);
+            }
+        }
+        if (mContentParent == null) {
+            mContentParent = generateLayout(mDecor);
+
+...
+
+protected DecorView generateDecor() {
+    return new DecorView(getContext(), -1);
+}
+
+protected ViewGroup generateLayout(DecorView decor) {
+        // Apply data from current theme.
+        // 从主题文件中获取样式信息
+        TypedArray a = getWindowStyle();
+
+        ...
+
+        if (a.getBoolean(R.styleable.Window_windowNoTitle, false)) {
+            requestFeature(FEATURE_NO_TITLE);
+        } else if (a.getBoolean(R.styleable.Window_windowActionBar, false)) {
+            // Don&#39;t allow an action bar if there is no title.
+            requestFeature(FEATURE_ACTION_BAR);
+        }
+
+        if(...){
+            ...
+        }
+//[window] 以上都是根据不同的style生成不同的decorview
+        // Inflate the window decor.
+        // 加载窗口布局
+        int layoutResource;
+        int features = getLocalFeatures();
+        // System.out.println(&quot;Features: 0x&quot; + Integer.toHexString(features));
+        if ((features &amp; (1 &lt;&lt; FEATURE_SWIPE_TO_DISMISS)) != 0) {
+            layoutResource = R.layout.screen_swipe_dismiss;
+        } else if(...){
+            ...
+        }
+
+        View in = mLayoutInflater.inflate(layoutResource, null);    //加载layoutResource
+        decor.addView(in, new ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)); //往DecorView中添加子View，即mContentParent，// 加入到deco中,所以应该是其第一个child
+        mContentRoot = (ViewGroup) in;
+
+        ViewGroup contentParent = (ViewGroup)findViewById(ID_ANDROID_CONTENT); // 这里获取的就是mContentParent
+        if (contentParent == null) {
+            throw new RuntimeException(&quot;Window couldn&#39;t find content container view&quot;);
+        }
+
+        if ((features &amp; (1 &lt;&lt; FEATURE_INDETERMINATE_PROGRESS)) != 0) {
+            ProgressBar progress = getCircularProgressBar(false);
+            if (progress != null) {
+                progress.setIndeterminate(true);
+            }
+        }
+
+        if ((features &amp; (1 &lt;&lt; FEATURE_SWIPE_TO_DISMISS)) != 0) {
+            registerSwipeCallbacks();
+        }
+
+        // Remaining setup -- of background and title -- that only applies
+        // to top-level windows.
+        ...
+
+        return contentParent;
+    }
+</code></pre>
+
+<p>由以上代码可以看出，该方法还是做了相当多的工作的，首先根据设置的主题样式来设置DecorView的风格，比如说有没有titlebar之类的，接着为DecorView添加子View，而这里的子View则是上面提到的mContentParent，如果上面设置了FEATURE_NO_ACTIONBAR，那么DecorView就只有mContentParent一个子View，这也解释了上面的注释：<strong>mContentParent是DecorView本身或者是DecorView的一个子元素。</strong></p>
+
+<p><img src="media/15299133103906/14734879949802.png" alt=""/></p>
+
+<h2 id="toc_3">小结：</h2>
+
+<ul>
+<li>DecorView是顶级View，<strong>内部有titlebar和contentParent两个子元素，contentParent的id是content，而我们设置的main.xml布局则是contentParent里面的一个子元素。</strong></li>
+<li>在DecorView创建完毕后，让我们回到PhoneWindow#setContentView方法，LayoutInflater.inflate(layoutResID, mContentParent);这里加载了我们设置的main.xml布局文件，并且设置mContentParent为main.xml的父布局，</li>
+</ul>
+
+<p>到目前为止，通过setContentView方法，创建了DecorView和加载了我们提供的布局，但是这时，我们的View还是不可见的，因为我们仅仅是加载了布局，并没有对View进行任何的测量、布局、绘制工作。在View进行测量流程之前，还要进行一个步骤，那就是把DecorView添加至window中，然后经过一系列过程触发ViewRootImpl#performTraversals方法，在该方法内部会正式开始测量、布局、绘制这三大流程。</p>
+
+<h2 id="toc_4">将DecorView添加至Window</h2>
+
+<p>每一个Activity组件都有一个关联的Window对象，用来描述一个应用程序窗口。每一个应用程序窗口内部又包含有一个View对象，用来描述应用程序窗口的视图。上文分析了创建DecorView的过程，现在则要把DecorView添加到Window对象中。而要了解这个过程，我们首先要简单先了解一下Activity的创建过程：<br/>
+首先，在ActivityThread#handleLaunchActivity中启动Activity，在这里面会调用到Activity#onCreate方法，从而完成上面所述的DecorView创建动作，当onCreate()方法执行完毕，在handleLaunchActivity方法会继续调用到ActivityThread#handleResumeActivity方法，</p>
+
+<pre><code class="language-java">final void handleResumeActivity(IBinder token, boolean clearHide, boolean isForward) { 
+    //...
+    ActivityClientRecord r = performResumeActivity(token, clearHide); // 这里会调用到onResume()方法
+
+    if (r != null) {
+        final Activity a = r.activity;
+
+        //...
+        if (r.window == null &amp;&amp; !a.mFinished &amp;&amp; willBeVisible) {
+            r.window = r.activity.getWindow(); // 获得window对象
+            View decor = r.window.getDecorView(); // 获得DecorView对象
+            decor.setVisibility(View.INVISIBLE);
+            ViewManager wm = a.getWindowManager(); // 获得windowManager对象
+            WindowManager.LayoutParams l = r.window.getAttributes();
+            a.mDecor = decor;
+            l.type = WindowManager.LayoutParams.TYPE_BASE_APPLICATION;
+            l.softInputMode |= forwardBit;
+            if (a.mVisibleFromClient) {
+                a.mWindowAdded = true;
+                wm.addView(decor, l); // 调用addView方法
+            }
+            //...
+        }
+    }
+}
+</code></pre>
+
+<p>在该方法内部，获取该activity所关联的window对象，DecorView对象，以及windowManager对象，而WindowManager是抽象类，它的实现类是WindowManagerImpl，所以后面调用的是WindowManagerImpl#addView方法，我们看看源码：</p>
+
+<pre><code class="language-java">public final class WindowManagerImpl implements WindowManager {    
+    private final WindowManagerGlobal mGlobal = WindowManagerGlobal.getInstance();
+    ...
+    @Override
+    public void addView(View view, ViewGroup.LayoutParams params) {
+        mGlobal.addView(view, params, mDisplay, mParentWindow);
+    }
+}
+</code></pre>
+
+<p>接着调用了mGlobal的成员函数，而mGlobal则是WindowManagerGlobal的一个实例，那么我们接着看WindowManagerGlobal#addView方法</p>
+
+<pre><code class="language-java">public void addView(View view, ViewGroup.LayoutParams params,
+            Display display, Window parentWindow) {
+        ...
+
+        ViewRootImpl root;
+        View panelParentView = null;
+
+        synchronized (mLock) {
+            ...
+
+            root = new ViewRootImpl(view.getContext(), display); // 1
+
+            view.setLayoutParams(wparams);
+
+            mViews.add(view);
+            mRoots.add(root);
+            mParams.add(wparams);
+        }
+
+        // do this last because it fires off messages to start doing things
+        try {
+            root.setView(view, wparams, panelParentView); // 2
+        } catch (RuntimeException e) {
+            // BadTokenException or InvalidDisplayException, clean up.
+            synchronized (mLock) {
+                final int index = findViewLocked(view, false);
+                if (index &gt;= 0) {
+                    removeViewLocked(index, true);
+                }
+            }
+            throw e;
+        }
+    }
+</code></pre>
+
+<p>先看①号代码处，实例化了ViewRootImpl类，接着，在②号代码处，调用ViewRootImpl#setView方法，并把DecorView作为参数传递进去，在这个方法内部，会通过跨进程的方式向WMS（WindowManagerService）发起一个调用，从而将DecorView最终添加到Window上，在这个过程中，ViewRootImpl、DecorView和WMS会彼此关联，至于详细过程这里不展开来说了。<br/>
+最后通过WMS调用ViewRootImpl#performTraverals方法开始View的测量、布局、绘制流程</p>
+
+<p><strong>更多 Android 博文请关注 xuyushi.github.io</strong></p>
+
+<h1 id="toc_5">参考</h1>
+
+<blockquote>
+<p><a href="http://gold.xitu.io/entry/571338c7c4c9710054cea455">http://gold.xitu.io/entry/571338c7c4c9710054cea455</a><br/>
+<a href="http://www.jianshu.com/p/687010ccad66">http://www.jianshu.com/p/687010ccad66</a></p>
+</blockquote>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15299133100749.html" 
+          title="Previous Post: Window 和 WindowManager">&laquo; Window 和 WindowManager</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15299133102725.html" 
+          title="Next Post: AsyncTask 源码分析">AsyncTask 源码分析 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Xu Yushi's Blog</h1>
+                <div class="site-des">理工男的碎碎念</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:xmy166@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
+        
+            <a href="Android.html"><strong>Android</strong></a>
+        
+            <a href="Java.html"><strong>Java</strong></a>
+        
+            <a href="balabala.html"><strong>balabala</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15299133098726.html">abtest 数据分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133098793.html">ABtest 平台框架</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099249.html">jenkins 平台搭建</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099310.html">gitlab 搭建</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121470881-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121470881-1');
+</script>
+
+
+  </body>
+</html>

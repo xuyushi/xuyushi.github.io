@@ -1,0 +1,548 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Android Application 从零开始 1 ——Gradle - Xu Yushi's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:xuyushi.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="UserGrowth.html">UserGrowth</a></li>
+        
+            <li><a href="Android.html">Android</a></li>
+        
+            <li><a href="Java.html">Java</a></li>
+        
+            <li><a href="balabala.html">balabala</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>Android Application 从零开始 1 ——Gradle</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2016/7/5</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Android.html'>Android</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>本节主要介绍了 app 的 gradle 的构建<br/>
+<span id="more"></span><!-- more --></p>
+
+<p><img src="media/15299133103723/14676149876044.png" alt="" style="width:233px;"/></p>
+
+<h2 id="toc_0">settings.gradle</h2>
+
+<p>首先看看整个项目的结构，整个项目被分成了三个部分。presentation、domain、data<br/>
+所以在 Project Setting 的 gradle 要做的事就是把这三个 module 包进来</p>
+
+<pre><code class="language-gradle">include &#39;:presentation&#39;, &#39;:data&#39;, &#39;:domain&#39;
+</code></pre>
+
+<h2 id="toc_1">Project : buildl.gradle</h2>
+
+<p>整个工程的全局定义，把 versionCode 、versionName等全局定义了，在后续的其他的 gradle 中会用到</p>
+
+<pre><code class="language-gradle">allprojects {
+    repositories {
+        jcenter()
+    }
+    ext {
+        androidApplicationId = &#39;io.github.xuyushi.jiandan.presentation&#39;
+        androidVersionCode = 1
+        androidVersionName = &quot;1.0&quot;
+    }
+
+}
+
+</code></pre>
+
+<h2 id="toc_2">dependencies.gradle</h2>
+
+<p>项目中一般都会引用很多第三方库 ，为了方便修改这些第三方库的依赖，把这些库和库的版本号全部定义在<code>dependencies.gradle</code>中，在需要引用的 gradle 的文件中 <code>apply from: &#39;dependencies.gradle&#39;</code>即可</p>
+
+<p>在 dependence.gradle 也对三个不同的包做了管理</p>
+
+<pre><code class="language-gradle">presentationDependencies = [
+            daggerCompiler:     &quot;com.google.dagger:dagger-compiler:${daggerVersion}&quot;,
+            dagger:             &quot;com.google.dagger:dagger:${daggerVersion}&quot;,
+            butterKnife:        &quot;com.jakewharton:butterknife:${butterKnifeVersion}&quot;,
+            recyclerView:       &quot;com.android.support:recyclerview-v7:${recyclerViewVersion}&quot;,
+            rxJava:             &quot;io.reactivex:rxjava:${rxJavaVersion}&quot;,
+            rxAndroid:          &quot;io.reactivex:rxandroid:${rxAndroidVersion}&quot;,
+            javaxAnnotation:    &quot;javax.annotation:jsr250-api:${javaxAnnotationVersion}&quot;,
+            glide:              &quot;com.github.bumptech.glide:glide:${glideVersion}&quot;,
+            logger:             &quot;com.orhanobut:logger:${loggerVersion}&quot;,
+            appcompatV7:        &quot;com.android.support:appcompat-v7:${appcompatV7}&quot;,
+            design:             &quot;com.android.support:design:${design}&quot;
+    ]
+
+    domainDependencies = [
+            daggerCompiler:     &quot;com.google.dagger:dagger-compiler:${daggerVersion}&quot;,
+            dagger:             &quot;com.google.dagger:dagger:${daggerVersion}&quot;,
+            javaxAnnotation:    &quot;javax.annotation:jsr250-api:${javaxAnnotationVersion}&quot;,
+            rxJava:             &quot;io.reactivex:rxjava:${rxJavaVersion}&quot;,
+            logger:             &quot;com.orhanobut:logger:${loggerVersion}&quot;
+    ]
+
+    dataDependencies = [
+            daggerCompiler:     &quot;com.google.dagger:dagger-compiler:${daggerVersion}&quot;,
+            dagger:             &quot;com.google.dagger:dagger:${daggerVersion}&quot;,
+            okHttp:             &quot;com.squareup.okhttp:okhttp:${okHttpVersion}&quot;,
+            gson:               &quot;com.google.code.gson:gson:${gsonVersion}&quot;,
+            rxJava:             &quot;io.reactivex:rxjava:${rxJavaVersion}&quot;,
+            rxAndroid:          &quot;io.reactivex:rxandroid:${rxAndroidVersion}&quot;,
+            javaxAnnotation:    &quot;javax.annotation:jsr250-api:${javaxAnnotationVersion}&quot;,
+            androidAnnotations: &quot;com.android.support:support-annotations:${androidAnnotationsVersion}&quot;,
+            logger:             &quot;com.orhanobut:logger:${loggerVersion}&quot;,
+            sugar:              &quot;com.github.satyan:sugar:${sugarVersion}&quot;,
+            retrofit:           &quot;com.squareup.retrofit2:retrofit:${retrofitVersion}&quot;,
+            retrofitConvertGson:&quot;com.squareup.retrofit2:converter-gson:${retrofitVersion}&quot;,
+            retrofitAdapter:     &quot;com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}&quot;
+    ]
+</code></pre>
+
+<p>版本号也做了统一的管理</p>
+
+<pre><code class="language-gradle">//Android
+    androidBuildToolsVersion = &quot;23.0.3&quot;
+    androidMinSdkVersion = 15
+    androidTargetSdkVersion = 23
+    androidCompileSdkVersion = 23
+
+    //Libraries
+    daggerVersion = &#39;2.0.2&#39;
+    butterKnifeVersion = &#39;7.0.1&#39;
+    recyclerViewVersion = &#39;21.0.3&#39;
+    rxJavaVersion = &#39;1.0.14&#39;
+    rxAndroidVersion = &#39;1.0.1&#39;
+    javaxAnnotationVersion = &#39;1.0&#39;
+    gsonVersion = &#39;2.3&#39;
+    okHttpVersion = &#39;2.5.0&#39;
+    androidAnnotationsVersion = &#39;21.0.3&#39;
+    retrofitVersion = &#39;2.1.0&#39;
+    loggerVersion = &#39;1.14&#39;
+    glideVersion = &#39;3.7.0&#39;
+    sugarVersion = &#39;1.4&#39;
+    appcompatV7 = &#39;23.4.0&#39;
+    design = &#39;23.4.0&#39;
+
+</code></pre>
+
+<h2 id="toc_3">presentation</h2>
+
+<p>这个是要编译成 apk 的，所以首行必然是 <code>apply plugin: &#39;com.android.application&#39;<br/>
+</code></p>
+
+<pre><code class="language-gradle">android {
+    def globalConfiguration = rootProject.extensions.getByName(&quot;ext&quot;)
+
+    compileSdkVersion globalConfiguration.getAt(&quot;androidCompileSdkVersion&quot;)
+    buildToolsVersion globalConfiguration.getAt(&quot;androidBuildToolsVersion&quot;)
+
+    defaultConfig {
+        minSdkVersion globalConfiguration.getAt(&quot;androidMinSdkVersion&quot;)
+        targetSdkVersion globalConfiguration.getAt(&quot;androidTargetSdkVersion&quot;)
+
+        applicationId globalConfiguration.getAt(&quot;androidApplicationId&quot;)
+        versionCode globalConfiguration.getAt(&quot;androidVersionCode&quot;)
+        versionName globalConfiguration.getAt(&quot;androidVersionName&quot;)
+        multiDexEnabled true
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
+        }
+    }
+    //支持lint warning 检查机制
+    lintOptions {
+        disable &#39;InvalidPackage&#39;
+    }
+
+    packagingOptions {
+        exclude &#39;LICENSE.txt&#39;
+        exclude &#39;META-INF/DEPENDENCIES&#39;
+        exclude &#39;META-INF/ASL2.0&#39;
+        exclude &#39;META-INF/NOTICE&#39;
+        exclude &#39;META-INF/LICENSE&#39;
+    }
+}
+
+dependencies {
+    def presentationDependencies = rootProject.ext.presentationDependencies
+    compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
+    compile project(&#39;:data&#39;)
+    compile project(&#39;:domain&#39;)
+
+    apt presentationDependencies.daggerCompiler
+    compile presentationDependencies.dagger
+    compile presentationDependencies.butterKnife
+    compile presentationDependencies.recyclerView
+    compile presentationDependencies.rxJava
+    compile presentationDependencies.rxAndroid
+    provided presentationDependencies.javaxAnnotation
+    compile presentationDependencies.glide
+    compile presentationDependencies.logger
+    compile presentationDependencies.design
+    compile presentationDependencies.appcompatV7
+
+}
+
+</code></pre>
+
+<p>可以看到在<code>dependencies</code>中，直接读出了 <code>dependencies.gradle</code>中的设置，</p>
+
+<h2 id="toc_4">data</h2>
+
+<p>data Module 同上。不同的 data Module 是作为一个 Android library 的，所以首行因为</p>
+
+<pre><code class="language-gradle">apply plugin: &#39;com.android.library&#39;
+</code></pre>
+
+<h2 id="toc_5">domain</h2>
+
+<p>domain 比较特殊，它是一个纯 java 的 module，完全独立于其他两个层，通过接口与另外两个层联系</p>
+
+<pre><code class="language-gradle">apply plugin: &#39;java&#39;
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+    }
+}
+
+dependencies {
+    def domainDependencies = rootProject.ext.domainDependencies
+    compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
+
+    provided domainDependencies.daggerCompiler
+    provided domainDependencies.javaxAnnotation
+
+    compile domainDependencies.dagger
+    compile domainDependencies.rxJava
+}
+</code></pre>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15299133103685.html" 
+          title="Previous Post: Android Application 从零开始 2 ——DI">&laquo; Android Application 从零开始 2 ——DI</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15299133103764.html" 
+          title="Next Post: Android Application 从零开始 0 ——前言">Android Application 从零开始 0 ——前言 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Xu Yushi's Blog</h1>
+                <div class="site-des">理工男的碎碎念</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:xmy166@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
+        
+            <a href="Android.html"><strong>Android</strong></a>
+        
+            <a href="Java.html"><strong>Java</strong></a>
+        
+            <a href="balabala.html"><strong>balabala</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15299133098726.html">abtest 数据分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133098793.html">ABtest 平台框架</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099249.html">jenkins 平台搭建</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099310.html">gitlab 搭建</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121470881-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121470881-1');
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,666 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Maven 仓库的使用和搭建 - Xu Yushi's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:xuyushi.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="UserGrowth.html">UserGrowth</a></li>
+        
+            <li><a href="Android.html">Android</a></li>
+        
+            <li><a href="Java.html">Java</a></li>
+        
+            <li><a href="balabala.html">balabala</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>Maven 仓库的使用和搭建</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2017/6/3</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Android.html'>Android</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>Maven项目使用项目对象模型（Project Object Model，POM）来配置。Maven 是一种构建工具，Maven 包是由所谓 POM（Project Object Model）所定义的文件<br/>
+项目对象模型存储在名为 pom.xml 的文件中。<br/>
+<span id="more"></span><!-- more --><br/>
+以下是一个简单的示例：</p>
+
+<pre><code class="language-markup">&lt;project&gt;
+  &lt;!-- model version is always 4.0.0 for Maven 2.x POMs --&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  
+  &lt;!-- project coordinates, i.e. a group of values which
+       uniquely identify this project --&gt;
+  
+&lt;!--包组 id，通常是发布者拥有的域名的反向，以免跟别人的重复--&gt;
+  &lt;groupId&gt;com.mycompany.app&lt;/groupId&gt;
+  &lt;artifactId&gt;my-app&lt;/artifactId&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+
+  &lt;!-- library dependencies --&gt;
+  
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+    
+      &lt;!-- coordinates of the required library --&gt;
+      
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;3.8.1&lt;/version&gt;
+      
+      &lt;!-- this dependency is only used for running and compiling tests --&gt;
+      &lt;!--比如常用的还有 compile --&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+      
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+
+<p>对于一个合符规范的 Maven Package，pom 文件、aar（或者 jar） 文件是必须的。</p>
+
+<h2 id="toc_0">设置 maven 仓库</h2>
+
+<p>在Android 项目中通常是是在根目录的 build.gradle 中设置 maven 仓库的地址</p>
+
+<pre><code class="language-gradle">buildscript {
+    repositories {
+        maven {
+            url &#39;https://xxxxxxxx/nexus/content/repositories/ss_app_android&#39;
+        }
+
+        maven {
+            url &#39;https://xxxxxxx/nexus/content/repositories/central&#39;
+        }
+        
+        // 这两个是 maven 的中央仓库
+        jcenter()
+        mavenCentral()
+    }
+}
+
+</code></pre>
+
+<p><code>maven { url }</code> 除了可以添加远程仓库，还能添加本地的 maven 仓库</p>
+
+<pre><code class="language-gradle">maven {
+    url &#39;file:///xxxxAndroid/repo/&#39;
+}
+</code></pre>
+
+<h2 id="toc_1">发布 Maven 包</h2>
+
+<p>可以通过 gradle 插件 快速发布 maven 仓库</p>
+
+<h3 id="toc_2">lolcalmaven 发布</h3>
+
+<ul>
+<li>新建lolcalmaven module</li>
+<li>修改gradle.properties </li>
+</ul>
+
+<pre><code class="language-gradle">PROJ_NAME=localrepo
+PROJ_ARTIFACTID=localrepo
+PROJ_POM_NAME=Local Repository
+LOCAL_REPO_URL=file:///Users/your-user-name/Documents/Android/repo/
+#以上是 Mac 的本地路径，如果是 Windows，则是类似：
+#LOCAL_REPO_URL=file:///C:/Users/cadmanager/Documents/repo/
+
+</code></pre>
+
+<ul>
+<li>在lolcalmaven 的 build.gradle 中增加和配置 maven plugin</li>
+</ul>
+
+<pre><code class="language-gradle">apply plugin: &#39;maven&#39;
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: LOCAL_REPO_URL)
+        pom.groupId = PROJ_GROUP
+        pom.artifactId = PROJ_ARTIFACTID
+        pom.version = PROJ_VERSION      }
+}
+</code></pre>
+
+<ul>
+<li>控制台运行 </li>
+</ul>
+
+<pre><code class="language-bash">./gradlew -p localrepo clean build uploadArchives --info
+</code></pre>
+
+<p>生成的文件</p>
+
+<pre><code class="language-bash">.
+├── localrepo-1.0.0.aar
+├── localrepo-1.0.0.aar.md5
+├── localrepo-1.0.0.aar.sha1
+├── localrepo-1.0.0.pom
+├── localrepo-1.0.0.pom.md5
+└── localrepo-1.0.0.pom.sha1
+
+</code></pre>
+
+<p>生成的 pom 文件</p>
+
+<pre><code class="language-markup">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot; xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;io.github.xuyushi&lt;/groupId&gt;
+  &lt;artifactId&gt;localrepo&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;packaging&gt;aar&lt;/packaging&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;com.android.support&lt;/groupId&gt;
+      &lt;artifactId&gt;appcompat-v7&lt;/artifactId&gt;
+      &lt;version&gt;25.3.0&lt;/version&gt;
+      &lt;scope&gt;compile&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+
+<ul>
+<li>在新的项目工程中使用，在根目录的 gradle 中添加本地仓库</li>
+</ul>
+
+<pre><code class="language-java">allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url &#39;file:///Users/xuyushi/Documents/Android/repo/&#39;
+        }
+    }
+}
+</code></pre>
+
+<ul>
+<li>在 app moudle的 build.gradle 中增加依赖
+<code>compile &#39;io.github.xuyushi:localrepo:1.0.0&#39;</code></li>
+</ul>
+
+<p>这样就可以在项目中使用 本地仓库中的库了</p>
+
+<h3 id="toc_3">发布 jcenter 远程仓库</h3>
+
+<h4 id="toc_4">注册账号</h4>
+
+<p><a href="https://bintray.com/">Jcenter</a> 注册账号<br/>
+ Bintray是jcenter的托管商，因此你必须注册一个Bintray账号，注册完账号后记下你的用户名以及API Key。</p>
+
+<p>登陆后在首页右上角点击用户名进入个人主页，然后点击用户名下面的Edit进入个人信息编辑页面，接下来点击页面左边列表的最后一项API Key</p>
+
+<h4 id="toc_5">配置插件</h4>
+
+<p>在项目的根目录 build.gradle 中添加 dependencies</p>
+
+<pre><code class="language-gradle">    dependencies {
+        classpath &#39;com.android.tools.build:gradle:2.2.2&#39;
+        classpath &#39;com.github.dcendents:android-maven-gradle-plugin:1.5&#39;
+        classpath &#39;com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.2&#39;
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+</code></pre>
+
+<h3 id="toc_6">配置 local.properties</h3>
+
+<p>配置在本地文件中 ，不计入版本管理</p>
+
+<pre><code class="language-bash">bintray.user=xxxx
+bintray.apikey=your keys
+</code></pre>
+
+<h3 id="toc_7">修改需要上传的 module 的 gradle 文件</h3>
+
+<p>apply 插件 </p>
+
+<pre><code class="language-gradle">apply plugin: &#39;com.github.dcendents.android-maven&#39;
+apply plugin: &#39;com.jfrog.bintray&#39;
+</code></pre>
+
+<pre><code class="language-gradle">// This is the library version used when deploying the artifact
+version = &quot;1.0.0&quot;
+
+def siteUrl = &#39;http://xuyushi.github.io&#39;      // 项目的主页
+def gitUrl = &#39;http://xuyushi.github.io&#39;   // Git仓库的url
+group = &quot;io.github.xuyushi&quot;                                        // Maven Group ID for the artifact，一般填你唯一的包名
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging &#39;aar&#39;
+                // Add your description here
+                name &#39;multi-format 1D/2D barcode image processing use zxing.&#39;
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name &#39;The Apache Software License, Version 2.0&#39;
+                        url &#39;http://www.apache.org/licenses/LICENSE-2.0.txt&#39;
+                    }
+                }
+                developers {
+                    developer {
+                        id &#39;xuyushi&#39;        //填写的一些基本信息
+                        name &#39;xuyushi&#39;
+                        email &#39;xmy166@gmail.com&#39;
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = &#39;sources&#39;
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = &#39;javadoc&#39;
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+Properties properties = new Properties()
+properties.load(project.rootProject.file(&#39;local.properties&#39;).newDataInputStream())
+bintray {
+    user = properties.getProperty(&quot;bintray.user&quot;)
+    key = properties.getProperty(&quot;bintray.apikey&quot;)
+    configurations = [&#39;archives&#39;]
+    pkg {
+        repo = &quot;maven&quot;
+        name = &quot;maventest&quot;    //发布到JCenter上的项目名字
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = [&quot;Apache-2.0&quot;]
+        publish = true
+    }
+}
+javadoc { //jav doc采用utf-8编码否则会报“GBK的不可映射字符”错误
+    options{
+        encoding &quot;UTF-8&quot;
+        charSet &#39;UTF-8&#39;
+    }
+}
+</code></pre>
+
+<h3 id="toc_8">在 jcenter 中新建 maven 仓库</h3>
+
+<h3 id="toc_9">上传命令</h3>
+
+<pre><code class="language-bash">./gradlew jcentermaven:bintrayUpload
+</code></pre>
+
+<h3 id="toc_10">将提交到Bintray的项目发布到JCenter</h3>
+
+<p>完成上述的步骤只是将项目提交到bintray，还无法使用该项目库，因为还没有发布到JCenter。<br/>
+登入Bintray网站，进入个人中心，在右侧的Owned Repositories区域点击Maven的图标，进入你的Maven项目列表。</p>
+
+<p>如果已经上传成功了，在这里就能看到你的项目，进入项目详情，在右下角的Linked To区域点击Add to JCenter，然后在Comments输入框里随便填写下信息，最后点Send提交请求即可。一般情况下当天就会审核，审核通过后会给你发邮件通知你，并且以后更新项目就不需要再审核了。<br/>
+审核成功后就可以使用你发布到JCenter上的项目了。<br/>
+使用你发布到JCenter上的项目<br/>
+在Bintray的搜索输入框中输入你的项目：</p>
+
+<h3 id="toc_11">总结</h3>
+
+<ul>
+<li>既然要上传到Jcenter上，自然要去<a href="https://bintray.com">https://bintray.com</a> 中注册账号</li>
+<li>根据自己的需求创建maven的Repository</li>
+<li>把项目分离成Module</li>
+<li>在项目根目录的build.gradle中添加bintray插件</li>
+<li>在local.properties中添加bintray认证</li>
+<li>修改Module中的build.gradle中的配置</li>
+<li>在Android Studio终端使用./gradlew xxx上传</li>
+<li>最后在JFrog Bintray中同步到Jcenter中</li>
+</ul>
+
+<h2 id="toc_12">本地 maven 仓库搭建</h2>
+
+<p>todo</p>
+
+<blockquote>
+<p><a href="http://www.jianshu.com/p/9740778b154f">http://www.jianshu.com/p/9740778b154f</a></p>
+</blockquote>
+
+<h1 id="toc_13">参考</h1>
+
+<blockquote>
+<p><a href="http://kvh.io/cn/embrace-android-studio-maven-deploy.html">http://kvh.io/cn/embrace-android-studio-maven-deploy.html</a><br/>
+<a href="https://zh.wikipedia.org/wiki/Apache_Maven">https://zh.wikipedia.org/wiki/Apache_Maven</a></p>
+</blockquote>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15299133102342.html" 
+          title="Previous Post: Architecture Components--Lifecycle">&laquo; Architecture Components--Lifecycle</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15299133102596.html" 
+          title="Next Post: gradle 插件开发">gradle 插件开发 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Xu Yushi's Blog</h1>
+                <div class="site-des">理工男的碎碎念</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:xmy166@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
+        
+            <a href="Android.html"><strong>Android</strong></a>
+        
+            <a href="Java.html"><strong>Java</strong></a>
+        
+            <a href="balabala.html"><strong>balabala</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15299133098726.html">abtest 数据分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133098793.html">ABtest 平台框架</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099249.html">jenkins 平台搭建</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099310.html">gitlab 搭建</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121470881-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121470881-1');
+</script>
+
+
+  </body>
+</html>

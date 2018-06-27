@@ -1,0 +1,976 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Android MVVM - Xu Yushi's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Xu Yushi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:xuyushi.github.io ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Xu Yushi's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="http://xuyushi.github.io/15299979292486.html">AboutMe</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="UserGrowth.html">UserGrowth</a></li>
+        
+            <li><a href="Android.html">Android</a></li>
+        
+            <li><a href="Java.html">Java</a></li>
+        
+            <li><a href="balabala.html">balabala</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>Android MVVM</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2016/3/5</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Android.html'>Android</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>在上一篇博文中介绍了 <img src="http://xuyushi.github.io/2016/02/28/MVP/" alt="Android的MVP模式"/>。MVVM 是从 MVP 的进一步发展与规范，MVP 隔离了 M 与 V 的直接联系后，靠 Presenter 来中转，所以使用 MVP 时 P 是直接调用 View 的接口来实现对视图的操作的，M 与 V是隔离了，方便测试了，但代码还不够优雅简洁啊，所以 MVVM 就弥补了这些缺陷。</p>
+
+<span id="more"></span><!-- more -->
+
+<h3 id="toc_0">概述</h3>
+
+<p>MVVM模式包含了三个部分：</p>
+
+<ul>
+<li>Model :基本业务逻辑</li>
+<li>View  :视图内容<br/>
+ViewModel: 将前面两者联系在一起的对象</li>
+</ul>
+
+<p>当View有用户输入后，ViewModel通知Model更新数据，同理Model数据更新后，ViewModel通知View更新。</p>
+
+<h2 id="toc_1">MVP MVVM区别</h2>
+
+<p><img src="media/15299133103550/14571436111163.png" alt=""/></p>
+
+<p><img src="media/15299133103550/14571436267721.png" alt=""/></p>
+
+<p>可以看到 ViewModel 承担了 Presenter 中与 view和 Model 交互的职责，与 MVP模式不同的是，VM与 V 之间是通过 Datebingding 实现的，而 P是持有 View 的对象，直接调用 View 中的一些接口方法来实现。ViewModel可以理解成是View的数据模型和Presenter的合体。**它通过双向绑定(松耦合)解决了MVP中Presenter与View联系比较紧密的问题。 **</p>
+
+<h2 id="toc_2">环境搭建</h2>
+
+<h3 id="toc_3">Android 的 Gradle 插件版本不低于 1.5.0-alpha1：</h3>
+
+<pre><code class="language-gradle">classpath &#39;com.android.tools.build:gradle:1.5.0&#39;
+</code></pre>
+
+<h3 id="toc_4">然后修改对应模块（Module）的 build.gradle：</h3>
+
+<pre><code class="language-gradle">android {
+    ....
+    dataBinding {
+        enabled = true
+    }
+}
+</code></pre>
+
+<p><strong>注：Android stuido 的版本要大于1.3</strong><br/>
+<strong>Android Studio目前对binding对象没有自动代码提示，只会在编译时进行检查。</strong></p>
+
+<h2 id="toc_5">基础入门</h2>
+
+<h3 id="toc_6">布局问文件</h3>
+
+<p>相比传统的 xml，根节点编程了<code>layout</code>，里面包括了<code>data</code>节点 和传统的视图。<code>data</code>节点就像是连接 View 和 Modle 的桥梁。在<code>data</code>节点中声明一个<code>variable</code>变量，使其可以在这个layout中使用</p>
+
+<pre><code class="language-markup">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;data&gt;
+        &lt;variable name=&quot;user&quot;type=&quot;com.example.User&quot;/&gt;
+    &lt;/data&gt;
+    &lt;!--原先的根节点（Root Element）--&gt;
+    &lt;LinearLayout&gt;
+    ....
+    &lt;/LinearLayout&gt;
+&lt;/layout&gt;
+</code></pre>
+
+<p>例如在 TextView 中使用</p>
+
+<pre><code class="language-markup">&lt;TextView android:layout_width=&quot;wrap_content&quot;
+android:layout_height=&quot;wrap_content&quot;          android:text=&quot;@{user.firstName}&quot;/&gt;
+</code></pre>
+
+<h3 id="toc_7">数据对象</h3>
+
+<p>定义一个 User java bean 类</p>
+
+<pre><code class="language-java">public class User {
+    private final String firstName;
+    private final String lastName;
+
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+}
+</code></pre>
+
+<p>在<code>layout</code>中定义<code>User</code>中的对象，然后把它跟布局文件中声明的变量进行绑定</p>
+
+<h3 id="toc_8">定义 Variable</h3>
+
+<pre><code class="language-markup">    &lt;data&gt;
+
+        &lt;variable
+            name=&quot;user&quot;
+            type=&quot;io.github.xuyushi.androidmvvmdemo.User&quot; /&gt;
+    &lt;/data&gt;
+</code></pre>
+
+<ul>
+<li>变量名为<code>user</code></li>
+<li>变量类型为<code>&quot;io.github.xuyushi.androidmvvmdemo.User&quot;</code></li>
+</ul>
+
+<p><code>data</code>也支持 <code>import</code></p>
+
+<pre><code class="language-markup">&lt;data&gt;
+   &lt;import type=&quot;io.github.xuyushi.androidmvvmdemo.User&quot;/&gt;
+   &lt;variable
+       name=&quot;user&quot;
+       type=&quot;User&quot; /&gt;
+&lt;/data&gt;
+</code></pre>
+
+<p><strong>注意坑</strong><br/>
+import 并不能和 <code>java</code> 一样可以 <code>import xx.xxx.*</code>，必须具体写明每个要导入的类名，如</p>
+
+<pre><code class="language-markup">&lt;import type=&quot;io.github.xuyushi.androidmvvmdemo.User&quot;/&gt;
+&lt;import type=&quot;io.github.xuyushi.androidmvvmdemo.MyHandler&quot;/&gt;
+
+
+// this is WRONG
+&lt;import type=&quot;io.github.xuyushi.androidmvvmdemo.*&quot;/&gt;
+</code></pre>
+
+<p>编译之后，插件会根据 xml 的命名（activity_main），在 <code>output</code>会生成<code>ActivityMainBinding</code>类</p>
+
+<blockquote>
+<p><code>java.lang.*</code> 包中的类会被自动导入，可以直接使用，例如要定义一个 String 类型的变量：<br/>
+<code>&lt;variable name=&quot;firstName&quot; type=&quot;String&quot; /&gt;</code></p>
+</blockquote>
+
+<h3 id="toc_9">绑定 Variable</h3>
+
+<p>修改<code>MainActivity</code>中的<code>onCreate</code>，用 <code>DatabindingUtil.setContentView()</code> 来替换掉 <code>setContentView()</code>，然后创建一个 <code>user</code> 对象，通过 <code>binding.setUser(user)</code> 与 variable 进行绑定。</p>
+
+<pre><code class="language-java">public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        User user = new User(&quot;testFirst&quot;, &quot;testLast&quot;);
+        binding.setUser(user);
+    }
+}
+</code></pre>
+
+<p>如果使用的 <code>ListView</code> 或者<code>RecyclerView</code>可以使用这个</p>
+
+<pre><code class="language-java">ListItemBinding binding = ListItemBinding.inflate(layoutInflater, viewGroup, false);
+//or
+ListItemBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item, viewGroup, false);
+</code></pre>
+
+<p>有时候不能预先知道 Bingding 类的种类，这时候可以使用<code>DataBindingUtil</code> 类:</p>
+
+<pre><code class="language-java">ViewDataBinding binding = DataBindingUtil.inflate(LayoutInflater, layoutId,
+    parent, attachToParent);
+ViewDataBinding binding = DataBindingUtil.bindTo(viewRoot, layoutId);
+</code></pre>
+
+<h4 id="toc_10">支持的语法</h4>
+
+<pre><code class="language-bash">Mathematical + - / * %
+String concatenation +
+Logical &amp;&amp; ||
+Binary &amp; | ^
+Unary + - ! ~
+Shift &gt;&gt; &gt;&gt;&gt; &lt;&lt;
+Comparison == &gt; &lt; &gt;= &lt;=
+instanceof
+Grouping ()
+Literals - character, String, numeric, null
+Cast
+Method calls
+Field access
+Array access []
+Ternary operator ?:
+
+</code></pre>
+
+<h4 id="toc_11">不支持的语法</h4>
+
+<pre><code class="language-java">this
+super
+new
+
+</code></pre>
+
+<p><code>ActivityMainBinding</code>类是自动生成的，所有的 set 方法也是根据 variable 名称生成的。例如，我们定义了两个变量。</p>
+
+<pre><code class="language-markup">&lt;data&gt;
+    &lt;variable name=&quot;firstName&quot; type=&quot;String&quot; /&gt;
+    &lt;variable name=&quot;lastName&quot; type=&quot;String&quot; /&gt;
+&lt;/data&gt;
+</code></pre>
+
+<p>那么会生成两个 <code>set</code>方法</p>
+
+<pre><code class="language-java">setFirstName(String firstName);
+setLastName(String lastName);
+</code></pre>
+
+<h3 id="toc_12">使用Variable</h3>
+
+<p>数据与 Variable 绑定之后，xml 的 UI 元素就可以直接使用了</p>
+
+<pre><code class="language-markup">&lt;TextView
+  android:text=&quot;@{user.firstName}&quot;
+  android:layout_width=&quot;wrap_content&quot;
+  android:layout_height=&quot;wrap_content&quot; /&gt;
+
+&lt;TextView
+  android:text=&quot;@{user.lastName}&quot;
+  android:layout_width=&quot;wrap_content&quot;
+  android:layout_height=&quot;wrap_content&quot; /&gt;
+</code></pre>
+
+<h3 id="toc_13">绑定事件</h3>
+
+<p>可以直接在 xml 导入<code>android.view.View.OnClickListener</code>，并制定其点击事件</p>
+
+<pre><code class="language-markup">&lt;variable
+  name=&quot;clickListener&quot;
+  type=&quot;android.view.View.OnClickListener&quot; /&gt;
+  
+ ...
+ android:onClick=&quot;@{clickListener}&quot;
+ ...
+</code></pre>
+
+<pre><code class="language-java"> holder.binding.setClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            //do something
+        });
+</code></pre>
+
+<h2 id="toc_14">进阶用法</h2>
+
+<h3 id="toc_15">使用类的方法</h3>
+
+<p>//Error:(27, 29) cannot find method addSomeThing in class io.github.xuyushi.androidmvvmdemo.MyUtill </p>
+
+<h3 id="toc_16">类的别名</h3>
+
+<p>如果导入不同的包中有相同的类名，使用<code>import</code> 中的 <code>alias</code> 属性。</p>
+
+<pre><code class="language-markup">&lt;import type=&quot;com.example.home.data.User&quot; /&gt;
+&lt;import type=&quot;com.examle.detail.data.User&quot; alias=&quot;DetailUser&quot; /&gt;
+&lt;variable name=&quot;user&quot; type=&quot;DetailUser&quot; /&gt;
+</code></pre>
+
+<h2 id="toc_17">数据绑定</h2>
+
+<p>直接修改数据对象并不能直接更新 UI，Android的Data Binding模块给提供了通知机制，有3种类型，分别对应于类(Observable)，字段(ObservableField)，集合类型（Observable Collections）。</p>
+
+<p>Android的Data Binding模块给提供了通知机制，有3种类型，分别对应于类(Observable)，字段(ObservableField)，集合类型（Observable Collections）。</p>
+
+<h3 id="toc_18">Observable Objects</h3>
+
+<p>目前 DataBinding 暂时只支持单向绑定。</p>
+
+<p>要实现 Observable Binding，首先得有一个 <code>implement</code> 了接口<code>android.databinding.Observable</code>的类，为了方便，Android 原生提供了已经封装好的一个类 - <code>BaseObservable</code>，并且实现了监听器的注册机制</p>
+
+<pre><code class="language-java">public class User extends BaseObservable {
+    private String firstName;
+    private String lastName;
+    @Bindable
+    public String getFirstName() {
+        return this.firstName;
+    }
+    @Bindable
+    public String getLastName() {
+        return this.lastName;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+        notifyPropertyChanged(io.github.xuyushi.androidmvvmdemo.BR.firstName);
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+        notifyPropertyChanged(io.github.xuyushi.androidmvvmdemo.BR.lastName);
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>The Bindable annotation should be applied to any getter accessor method of an {@link Observable} class. Bindable will generate a field in the BR class to identify the field that has changed.</p>
+</blockquote>
+
+<p><code>Bindable</code>注解是为了在编程的时候生成 BR 类，<code>Bindable</code>会在 BR 类中生成一个域变量 ，来表明这个域有木有被改变。通过代码可以看出，当数据发生变化时还是需要手动发出通知。 通过调用 <code>notifyPropertyChanged(BR.firstName)</code> 可以通知系统 BR.firstName 这个 entry 的数据已经发生变化，需要更新 UI。</p>
+
+<h3 id="toc_19">ObservableFields</h3>
+
+<p>具体到成员变量,这种方式无需继承 <code>BaseObservable</code><br/>
+如果变量比较少，都是简单的数据类型是时，可以用<code>ObservableFields</code> ， <code>ObservableFields</code> 自包含具有单个字段的observable对象。它有所有基本类型和一个是引用类型。要使用它需要在data对象中创建<code>public final</code>字段：</p>
+
+<pre><code class="language-java">private static class User extends BaseObservable {
+   public final ObservableField&lt;String&gt; firstName =
+       new ObservableField&lt;&gt;();
+   public final ObservableField&lt;String&gt; lastName =
+       new ObservableField&lt;&gt;();
+   public final ObservableInt age = new ObservableInt();
+}
+</code></pre>
+
+<p><strong>注意</strong></p>
+
+<ul>
+<li>可以在 java bean 中定义，也可以在 activity 中 或者bind 出定义</li>
+<li>使用<code>ObservableFields</code> 在 Model 中的 @Bindable get set 方法都可以去掉</li>
+<li>当<code>firstName</code>、<code>lastName</code>变化时，UI 会得到通知，使用的赋值语句为<code>user.firstName.set(&quot;Google&quot;);</code></li>
+</ul>
+
+<h3 id="toc_20">Observable 集合</h3>
+
+<p>一些app使用更多的动态结构来保存数据。Observable集合允许键控访问这些data对象。ObservableArrayMap用于键是引用类型,如String。</p>
+
+<pre><code class="language-java">ObservableArrayMap&lt;String, Object&gt; user = new ObservableArrayMap&lt;&gt;();
+user.put(&quot;firstName&quot;, &quot;Google&quot;);
+user.put(&quot;lastName&quot;, &quot;Inc.&quot;);
+user.put(&quot;age&quot;, 17);
+</code></pre>
+
+<p>在layout文件中，通过String键可以访问map</p>
+
+<pre><code class="language-markup">&lt;data&gt;
+    &lt;import type=&quot;android.databinding.ObservableMap&quot;/&gt;
+    &lt;variable name=&quot;user&quot; type=&quot;ObservableMap&lt;String, Object&gt;&quot;/&gt;
+&lt;/data&gt;
+…
+&lt;TextView
+   android:text=&#39;@{user[&quot;lastName&quot;]}&#39;
+   android:layout_width=&quot;wrap_content&quot;
+   android:layout_height=&quot;wrap_content&quot;/&gt;
+&lt;TextView
+   android:text=&#39;@{String.valueOf(1 + (Integer)user[&quot;age&quot;])}&#39;
+   android:layout_width=&quot;wrap_content&quot;
+   android:layout_height=&quot;wrap_content&quot;/&gt;
+</code></pre>
+
+<p>当 key 是 inter 是， <code>ObservableArrayList</code> 比较适用</p>
+
+<pre><code class="language-java">ObservableArrayList&lt;Object&gt; user = new ObservableArrayList&lt;&gt;();
+user.add(&quot;Google&quot;);
+user.add(&quot;Inc.&quot;);
+user.add(17);
+</code></pre>
+
+<pre><code class="language-markup">&lt;data&gt;
+    &lt;import type=&quot;android.databinding.ObservableList&quot;/&gt;
+    &lt;import type=&quot;com.example.my.app.Fields&quot;/&gt;
+    &lt;variable name=&quot;user&quot; type=&quot;ObservableList&amp;lt;Object&gt;&quot;/&gt;
+&lt;/data&gt;
+…
+&lt;TextView
+   android:text=&#39;@{user[Fields.LAST_NAME]}&#39;
+   android:layout_width=&quot;wrap_content&quot;
+   android:layout_height=&quot;wrap_content&quot;/&gt;
+&lt;TextView
+   android:text=&#39;@{String.valueOf(1 + (Integer)user[Fields.AGE])}&#39;
+   android:layout_width=&quot;wrap_content&quot;
+   android:layout_height=&quot;wrap_content&quot;/&gt;
+</code></pre>
+
+<h2 id="toc_21">binding 生成</h2>
+
+<p>binding 类连接了 layout中的variables与Views。，所生成的Binding类都扩展了<code>android.databinding.ViewDataBinding</code></p>
+
+<h3 id="toc_22">创建</h3>
+
+<p>Binding应在inflation之后就立马创建，以确保View层次结构没被改变。</p>
+
+<p>首先 inflate</p>
+
+<pre><code class="language-java">MyLayoutBinding binding = MyLayoutBinding.inflate(layoutInflater);
+MyLayoutBinding binding = MyLayoutBinding.inflate(LayoutInflater, viewGroup, false);
+</code></pre>
+
+<h2 id="toc_23">带 ID 的 View</h2>
+
+<p>同步 bind 我们可以不需要 view 实例，但是玩意需要也可以有</p>
+
+<pre><code class="language-java">&lt;TextView
+    android:id=&quot;@+id/firstName&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot; /&gt;
+</code></pre>
+
+<p>上面代码中定义了一个 ID 为 <code>firstName</code> 的 TextView，那么它对应的变量就是<br/>
+public final TextView firstName;</p>
+
+<pre><code class="language-java">    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_view_with_ids);
+    }
+
+    public void showMyName(View view) {
+        binding.firstName.setText(&quot;liang&quot;);
+        binding.lastName.setText(&quot;fei&quot;);
+    }
+</code></pre>
+
+<p>这样就免去了些 <code>findViewById</code> 了</p>
+
+<h2 id="toc_24">ViewStubs</h2>
+
+<p>ViewStubs跟正常的Views略有不同。他们开始时是不可见的，当他们要么设置为可见或被明确告知要载入时，它们通过载入另外一个layout取代了自己。</p>
+
+<p>当载入另一个layout，为新的布局必需创建一个Binding。因此，ViewStubProxy必需监听ViewStub的OnInflateListener监听器并在那个时候建立Binding。因为只有一个可以存在，ViewStubProxy允许开发者在其上设置一个OnInflateListener它会在建立Binding后调用。</p>
+
+<pre><code class="language-markup">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;LinearLayout
+        ...&gt;
+        &lt;ViewStub
+            android:id=&quot;@+id/view_stub&quot;
+            android:layout=&quot;@layout/view_stub&quot;
+            ... /&gt;
+    &lt;/LinearLayout&gt;
+&lt;/layout&gt;
+</code></pre>
+
+<p>在 Java 代码中获取 binding 实例，ViewStubProy 注册ViewStub.OnInflateListener 事件：</p>
+
+<pre><code class="language-java">binding = DataBindingUtil.setContentView(this, R.layout.activity_view_stub);
+binding.viewStub.setOnInflateListener(new ViewStub.OnInflateListener() {
+    @Override
+    public void onInflate(ViewStub stub, View inflated) {
+        ViewStubBinding binding = DataBindingUtil.bind(inflated);
+        User user = new User(&quot;fee&quot;, &quot;lang&quot;);
+        binding.setUser(user);
+    }
+});
+</code></pre>
+
+<h2 id="toc_25">动态 Variables</h2>
+
+<p>有时候不止具体绑定的对象，以 <code>RecyclerView</code> 为例，Adapter 的 DataBinding 需要动态生成，因此我们可以在 <code>onCreateViewHolder</code> 的时候创建这个 DataBinding，然后在 <code>onBindViewHolder</code> 中获取这个 DataBinding。</p>
+
+<pre><code class="language-java">public static class BindingHolder extends RecyclerView.ViewHolder {
+    private ViewDataBinding binding;
+
+    public BindingHolder(View itemView) {
+        super(itemView);
+    }
+
+    public ViewDataBinding getBinding() {
+        return binding;
+    }
+
+    public void setBinding(ViewDataBinding binding) {
+        this.binding = binding;
+    }
+}
+
+@Override
+public BindingHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    ViewDataBinding binding = DataBindingUtil.inflate(
+            LayoutInflater.from(viewGroup.getContext()),
+            R.layout.list_item,
+            viewGroup,
+            false);
+    BindingHolder holder = new BindingHolder(binding.getRoot());
+    holder.setBinding(binding);
+    return holder;
+}
+
+@Override
+public void onBindViewHolder(BindingHolder holder, int position) {
+    User user = users.get(position);
+    holder.getBinding().setVariable(BR.user, user);
+    holder.getBinding().executePendingBindings();
+}
+</code></pre>
+
+<h2 id="toc_26">属性 Setter</h2>
+
+<p>每当绑定值的变化，生成的Binding类必须调用setter方法​​。Data Binding框架有可以自定义赋值的方法。</p>
+
+<h3 id="toc_27">自动Setters</h3>
+
+<p>对于一个属性，Data Binding试图找到setAttribute方法。<strong>与该属性的namespace并不什么关系，仅仅与属性本身名称有关</strong>。</p>
+
+<p>例如，有关TextView的<code>android:text</code>属性的表达式会寻找一个setText(String)的方法。如果表达式中的参量是一个int，Data Binding会搜索的setText(int)方法。注意：要表达式返回正确的类型，如果需要的话使用转型。Data Binding仍会运行即使没有给定名称的属性存在。然后，您可以通过Data Binding轻松地为任何setter“创造”属性。例如，DrawerLayout没有任何属性，但可以有很多的setters。您可以使用其中的一个setters。</p>
+
+<pre><code class="language-markup">&lt;android.support.v4.widget.DrawerLayout
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    app:scrimColor=&quot;@{@color/scrim}&quot;
+    app:drawerListener=&quot;@{fragment.drawerListener}&quot;/&gt;
+</code></pre>
+
+<p>这里我们增加了一个命名空间app，并且注意<code>DrawerLayout</code>的<code>app:scrimColor</code>属性，这里和我们自定义view时自定义的属性一样，但是这里并不需要我们去重写<code>DrawerLayout</code>,此时，我们可以自己定义<code>setTcrimColor</code>、<code>setDrawerListener</code>的方法</p>
+
+<h3 id="toc_28">重命名的Setters</h3>
+
+<p>一些有setters的属性按名称并不匹配。对于这些方法，属性可以通过BindingMethods注解相关联。这必须与一个包含BindingMethod注解的类相关联，每一个用于一个重命名的方法。例如，android:tint属性与setImageTintList相关联，而不与setTint相关。</p>
+
+<pre><code class="language-java">@BindingMethods({
+       @BindingMethod(type = &quot;android.widget.ImageView&quot;,
+                      attribute = &quot;android:tint&quot;,
+                      method = &quot;setImageTintList&quot;),
+})
+
+</code></pre>
+
+<h3 id="toc_29">自定义Setters</h3>
+
+<p>有些属性需要自定义绑定逻辑。例如，对于<code>android:paddingLeft</code>属性并没有相关setter。相反，<code>setPadding(left, top, right, bottom)</code>是存在在。一个带有BindingAdapter注解的静态绑定适配器方法允许开发者自定义setter如何对于一个属性的调用。</p>
+
+<p>Android的属性已经创造了BindingAdapters。举例来说，对于paddingLeft：</p>
+
+<pre><code class="language-java">@BindingAdapter(&quot;android:paddingLeft&quot;)
+public static void setPaddingLeft(View view, int padding) {
+   view.setPadding(padding,
+                   view.getPaddingTop(),
+                   view.getPaddingRight(),
+                   view.getPaddingBottom());
+}
+</code></pre>
+
+<p>Binding适配器对其他定制类型非常有用。例如，自定义loader可以用来异步载入图像。<br/>
+当有冲突时，开发人员创建的Binding适配器将覆盖Data Binding默认适配器。<br/>
+您也可以创建可以接收多个参数的适配器。</p>
+
+<pre><code class="language-java">@BindingAdapter({&quot;bind:imageUrl&quot;, &quot;bind:error&quot;})
+public static void loadImage(ImageView view, String url, Drawable error) {
+   Picasso.with(view.getContext()).load(url).error(error).into(view);
+}
+</code></pre>
+
+<p>loadImage 可以放在任意类中，该类中只有一个静态的方法imageLoader，该方法有3个参数，一个是需要设置数据的view， 一个是我们需要的url、有个个是错误加载的图像，值得注意的是那个BindingAdapter注解，看看他的参数，是一个数组，内容只有一个bind:imageUrl，仅仅几行代码，我们不需要 手工调用 （类 xxxxxxx）中的loadImage，也不需要知道loadImage方法定义到哪了，一个网络图片加载就搞定了这里面起关键作用的就是BindingAdapter 注解，这里要遵循一定的规则,、</p>
+
+<p><strong>以bind:开头，接着书写你在控件中使用的自定义属性名称。</strong></p>
+
+<h2 id="toc_30">转换器</h2>
+
+<p>在 xml 中为属性赋值时，如果变量的类型与属性不一致，通过 DataBinding 可以进行转换</p>
+
+<p>例如，下面代码中如果要为属性 android:background 赋值一个 int 型的 color 变量：</p>
+
+<pre><code class="language-java">&lt;View
+    android:background=&quot;@{isError.get() ? @color/red : @color/white}&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    app:layout_height=&quot;@{height}&quot; /&gt;
+</code></pre>
+
+<p>只需要定义一个标记了 @BindingConversion 的静态方法即可（方法的定义位置可以随意）：</p>
+
+<pre><code class="language-java">@BindingConversion
+public static ColorDrawable convertColorToDrawable(int color) {
+    return new ColorDrawable(color);
+}
+</code></pre>
+
+<p>再举个栗子 ，假如你的控件需要一个格式化好的时间，但是你只有一个Date类型的变量。可以转化完成后在设置，此时更适合使用 conver</p>
+
+<pre><code class="language-markup">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;data class=&quot;.Custom&quot;&gt;
+        &lt;variable
+            name=&quot;time&quot;
+            type=&quot;java.util.Date&quot; /&gt;
+    &lt;/data&gt;
+
+    &lt;TextView
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;@{time}&quot;/&gt;
+&lt;/layout&gt;
+</code></pre>
+
+<pre><code class="language-java">binding.setTime(new Date());
+</code></pre>
+
+<p>看看 conver</p>
+
+<pre><code class="language-java">public class ConvertUtil {
+    @BindingConversion
+    public static String convertDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
+        return sdf.format(date);
+    }
+}
+
+</code></pre>
+
+<p><strong>注</strong>：convert 可以放在任意包中，只要写明注解，已经被转换和转换成的类型，所以注意不要重复定义类型相同的 convert，使用 Converter 一定要保证它不会影响到其他的属性。举个栗子，int -&gt; int 的 convert 就影响到了<code>android:visibility</code></p>
+
+<h2 id="toc_31">Android stuido 的预览支持</h2>
+
+<p>类似于 <code>tools:text</code> ,代码如下</p>
+
+<pre><code class="language-java">&lt;TextView
+            style=&quot;@style/TextAppearance.AppCompat.Large&quot;
+            android:text=&quot;@{user.firstName,default=PLACEHOLDER}&quot;
+            android:layout_width=&quot;wrap_content&quot;
+            android:layout_height=&quot;wrap_content&quot; /&gt;
+</code></pre>
+
+<h2 id="toc_32">举个例子</h2>
+
+<p><img src="media/15299133103550/mvvm0310.gif" alt=""/></p>
+
+<p>工程分为两个部分</p>
+
+<ul>
+<li>第一个简单的例子，点击事件产生后，直接改变了，user 的数据，并没有对 view 操作的逻辑，但是 databinding 已经帮我们完成了一切</li>
+<li>第二个例子是一个 recycleVIew 的例子，点击每个 cardview 增加一点数据</li>
+</ul>
+
+<p>代码不贴了，放 github了 <br/>
+<a href="https://github.com/xuyushi/AndroidMVVMDemo">https://github.com/xuyushi/AndroidMVVMDemo</a></p>
+
+<h2 id="toc_33">参考</h2>
+
+<blockquote>
+<p><a href="https://www.zhihu.com/question/30976423">https://www.zhihu.com/question/30976423</a><br/>
+<a href="https://developer.android.com/intl/zh-cn/tools/data-binding/guide.html#generated_binding">https://developer.android.com/intl/zh-cn/tools/data-binding/guide.html#generated_binding</a><br/>
+<a href="https://segmentfault.com/a/1190000002876984">https://segmentfault.com/a/1190000002876984</a><br/>
+<a href="http://tech.vg.no/2015/07/17/android-databinding-goodbye-presenter-hello-viewmodel/">http://tech.vg.no/2015/07/17/android-databinding-goodbye-presenter-hello-viewmodel/</a><br/>
+<a href="http://www.jianshu.com/p/4e3220a580f6">http://www.jianshu.com/p/4e3220a580f6</a><br/>
+<a href="https://github.com/LyndonChin/MasteringAndroidDataBinding">https://github.com/LyndonChin/MasteringAndroidDataBinding</a><br/>
+<strong><a href="http://www.cnblogs.com/dxy1982/p/3793895.html">http://www.cnblogs.com/dxy1982/p/3793895.html</a></strong><br/>
+<strong><a href="https://realm.io/cn/news/data-binding-android-boyar-mount/?utm_source=tuicool&amp;utm_medium=referral">https://realm.io/cn/news/data-binding-android-boyar-mount/?utm_source=tuicool&amp;utm_medium=referral</a></strong><br/>
+<a href="https://www.aswifter.com/2015/07/04/android-data-binding-1/">https://www.aswifter.com/2015/07/04/android-data-binding-1/</a><br/>
+<a href="http://blog.csdn.net/qibin0506/article/details/47720125">http://blog.csdn.net/qibin0506/article/details/47720125</a></p>
+</blockquote>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15299133100538.html" 
+          title="Previous Post: 单身汪的自白">&laquo; 单身汪的自白</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15299133101508.html" 
+          title="Next Post: Android 中的MVP 模式">Android 中的MVP 模式 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Xu Yushi's Blog</h1>
+                <div class="site-des">理工男的碎碎念</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="email" href="mailto:xmy166@gmail.com" title="Email">Email</a>
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
+        
+            <a href="Android.html"><strong>Android</strong></a>
+        
+            <a href="Java.html"><strong>Java</strong></a>
+        
+            <a href="balabala.html"><strong>balabala</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15299133098726.html">abtest 数据分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133098793.html">ABtest 平台框架</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099249.html">jenkins 平台搭建</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15299133099310.html">gitlab 搭建</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121470881-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121470881-1');
+</script>
+
+
+  </body>
+</html>
