@@ -4,7 +4,7 @@
   <title><![CDATA[Xu Yushi's Blog]]></title>
   <link href="xuyushi.github.io/atom.xml" rel="self"/>
   <link href="xuyushi.github.io/"/>
-  <updated>2018-06-27T16:24:21+08:00</updated>
+  <updated>2018-06-30T10:38:00+08:00</updated>
   <id>xuyushi.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -224,17 +224,21 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
 <li>数据可能收到渠道、周期波动等因素的干扰</li>
 <li>缺少聚合对比数据 指标的平台，不方便做决策</li>
 <li>同时上线多个feature 对指标可能互相影响</li>
-<li><p>新功能存在风险<br/>
-<span id="more"></span><!-- more --></p>
-<h2 id="toc_1">abtest</h2>
-<p>使用abtest 能解决上述问题，并且具有以下优势</p>
+<li>新功能存在风险</li>
+</ol>
+
+<span id="more"></span><!-- more -->
+
+<h2 id="toc_1">ABtest</h2>
+
+<p>使用abtest平台能解决上述问题，并且具有以下优势</p>
+
 <ol>
 <li>数据共享：不限于端上的需求实验，服务端/前端页/商业化 等都能通过abtest 平台做决策</li>
 <li>实验隔离：使用多层分流结构，可以同时上线多个AB实验，每个实验之间隔离，数据指标互不影响</li>
 <li>风险可控：ab 实验采用动态下发机制，随时控制功能上下线</li>
 <li>指标聚合：核心指标、分类指标数据聚合，易于得出结论，方便做决策</li>
 <li>扩展空间：后续可扩展为消费者BG 的共享平台</li>
-</ol></li>
 </ol>
 
 <h2 id="toc_2">A/B测试的三大特性：先验、并行、科学</h2>
@@ -265,6 +269,8 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
 <li>AB实验展示平台：图标方式展示处理过的数据，方便人员做决策</li>
 </ul>
 
+<h1 id="toc_5">ABtest sdk 需求文档见附件</h1>
+
 <!--## 人员配置
 * 服务端：1 名（分流策略，处理端上上报数据）
 * 大数据：1 名（数据处理/生成报表数据）
@@ -273,7 +279,6 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
 * Android ：1 名（abtest sdk，输入法接入，数据上报）
 * UI：1 名（内部平台页面设计）
 * QA: 1名 （服务端前段页面，分流策略，客户端逻辑测试）
-
 > 人员暂定，具体时间节点按照排期决定
 -->
 
@@ -310,10 +315,8 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
     <updated>2018-06-25T15:55:09+08:00</updated>
     <id>xuyushi.github.io/15299133099414.html</id>
     <content type="html"><![CDATA[
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=454586242&auto=1&height=66"></iframe>
+<p><img src="media/15299133099414/15249794589499.png" alt="15249794589499"/></p>
 
-<p>已经在北京待了 有三年了吧 ，等到真的要走 ，却有点伤感和失落 </p>
-<img src="/media/15249794589499.png" class="full-image" />
 <span id="more"></span><!-- more -->
 
 <h1 id="toc_0">git init</h1>
@@ -324,8 +327,9 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
 
 <p>在学校画pcb写单片机的我，确实没想过日后能从事互联网的工作。非常庆幸能在美团遇到这样一个机遇，还遇到一群这么好的同事。觉得每一天都很充实，海绵一样汲取着知识。渐渐的在这个城市有了朋友，可以和朋友一起跑步，狼人杀，撸串。。<br/>
 北京是一个包容性很强的城市，无论你是什么妖魔鬼怪，你总能找到你的栖息地。<br/>
-如果说美团是梦想起飞的地方，那么头条就像是一把火，用激情点燃梦想。 来头条一年多收获的很多，也很享受何和一群牛逼的同事做着改变世界的事情。<br/>
-<img src="/media/15250202451953.png" class="full-image" /></p>
+如果说美团是梦想起飞的地方，那么头条就像是一把火，用激情点燃梦想。 来头条一年多收获的很多，也很享受何和一群牛逼的同事做着改变世界的事情。</p>
+
+<p><img src="media/15299133099414/15250202451953.png" alt="15250202451953"/></p>
 
 <h1 id="toc_2">git commit</h1>
 
@@ -340,7 +344,11 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
 <p>还有不到24小时离开北京，没有太多的遗憾，只是有些不舍，舍不得的不是北京这座城，而是我的朋友们。愿我们未来一切都好。</p>
 
 <blockquote class="blockquote-center">北京的小伙伴们，再见了，有缘的话。</blockquote>
-<img src="/media/15249794854372.png" class="full-image" /><img src="/media/15250146162808.png" class="full-image" />
+
+<p><img src="media/15299133099414/15249794854372.png" alt="15249794854372"/></p>
+
+<p><img src="media/15299133099414/15250146162808.png" alt="15250146162808"/></p>
+
 ]]></content>
   </entry>
   
