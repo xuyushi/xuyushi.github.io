@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86.html">产品经理</a></li>
+        
             <li><a href="UserGrowth.html">UserGrowth</a></li>
         
             <li><a href="Android.html">Android</a></li>
@@ -109,6 +111,101 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15299133103865.html">
+                
+                  <h1>AIDL 学习</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">AIDL的作用</h2>
+
+<p>AIDL (Android Interface Definition Language) 是一种IDL 语言，用于生成可以在Android设备上两个进程之间进行进程间通信(interprocess communication, IPC)的代码。如果在一个进程中（例如Activity）要调用另一个进程中（例如Service）对象的操作，就可以使用AIDL生成可序列化的参数。</p>
+
+<h2 id="toc_1">选择AIDL的使用场合</h2>
+
+<p>官方文档特别提醒我们何时使用AIDL是必要的：只有你允许客户端从不同的应用程序为了进程间的通信而去访问你的service，以及想在你的service处理多线程。</p>
+
+<p>如果不需要进行不同应用程序间的并发通信(IPC)，you should create your interface by implementing a Binder；或者你想进行IPC，但不需要处理多线程的，则implement your interface using a Messenger。</p>
+
+<h2 id="toc_2">如何使用AIDL</h2>
+
+<h3 id="toc_3">先建立一个android工程，用作服务端</h3>
+
+<p>创建一个android工程，用来充当跨进程通信的服务端。</p>
+
+<h3 id="toc_4">2.创建一个包名用来存放aidl文件</h3>
+
+<p>创建一个包名用来存放aidl文件，在里面新建IMyService.aidl文件，如果需要访问自定义对象，还需要建立对象的aidl文件，这里我们由于使用了自定义对象Student，所以，还需要创建Student.aidl和Student.java。注意，这三个文件，需要都放在aidl文件夹下com.example.xuyushi.aidltest包里。下面描述如何写这三个文件。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133103865.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2015/7/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133099695.html">
+                
+                  <h1>蓝牙学习</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">权限</h2>
+
+<p>有两种权限，至少需要一种权限</p>
+
+<ol>
+<li><code>BLUETOOTH</code>:执行任何蓝牙通信，例如请求一个连接、接受一个连接以及传输数据</li>
+<li><code>BLUETOOTH_ADMIN</code>：初始化设备查找或控制蓝牙设置</li>
+</ol>
+
+<blockquote>
+<p>如果你使用BLUETOOTH_ADMIN权限，那么必须拥有BLUETOOTH权限。<br/>
+ 
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133099695.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2015/7/1</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15299133100046.html">
                 
@@ -640,307 +737,6 @@ APP_ABI := x86 armeabi </p></li>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133102029.html">
-                
-                  <h1>java 反射学习</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">概要</h2>
-
-<p>反射就是能够根据你给出类名实例化出一个实实在在的对象。所以，对象的实例化就不是写死的了，我们可以根据传入的类名不同，从而可以实例化出不同的对象。这种方式可以和工厂设计模式很好的结合，从而可以更加灵活的创建对象</p>
-
-<h2 id="toc_1">测试用例</h2>
-
-<h3 id="toc_2">定义一个类</h3>
-
-<p>定义一个类，用反射来调用他的成员，方法，构造函数等</p>
-
-<pre><code class="language-java">package com.example.xuyushi.reflecttest;
-
-import android.util.Log;
-
-/**
- * Created by xuyushi on 15/7/14.
- */
-public class student {
-    static final String TAG = &quot;student&quot;;
-    private int age;
-    private String name;
-    private String addresss;
-
-    public student() {
-        Log.d(TAG, &quot;none parameter student constructor&quot;);
-    }
-
-    public student(int age, String name, String addresss) {
-        this.age = age;
-        this.name = name;
-        this.addresss = addresss;
-        Log.d(TAG, &quot;3 parameters student constructor&quot;);
-
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddresss() {
-        return addresss;
-    }
-
-    public void setAddresss(String addresss) {
-        this.addresss = addresss;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
-    public void printMessage(int age,String name,String adress){
-        Log.d(TAG, &quot;name=&quot; + name + &quot;,age=&quot; + age + &quot;,adress=&quot; + adress);
-    }
-}
-
-</code></pre>
-
-<h3 id="toc_3">测试用例</h3>
-
-<pre><code class="language-java">public class MainActivity extends Activity {
-    static final String TAG = &quot;student&quot;;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        testReflect();
-    }
-
-    private void testReflect() {
-        try {
-            /**
-             * 1 反射出无参的构造方法并得到对象
-             * 注意:
-             *      1 在Class.forName()中应该传入含有包名的类全名
-             *      2 newInstance()方法的本质是调用类的无参Public构造方法
-             */
-            String className1=&quot;com.example.xuyushi.reflecttest.student&quot;;
-            Class clazz1=Class.forName(className1);
-            Object object1=clazz1.newInstance();
-
-
-            /**
-             * 2 反射出带参数的构造方法并得到对象
-             */
-            String className2=&quot;com.example.xuyushi.reflecttest.student&quot;;
-            Class clazz2=Class.forName(className2);
-            Constructor constructor1=clazz2.getConstructor(int.class,String.class,String.class);
-            Object object2=constructor1.newInstance(18,&quot;zhangsan&quot;,&quot;beijing&quot;);
-            Log.d(TAG, object2.toString());
-            /**
-             * 3 获取类的私有字段
-             * 注意:
-             *      获取共有字段应调用clazz3.getField(name)方法
-             */
-            String className3=&quot;com.example.xuyushi.reflecttest.student&quot;;
-            Class clazz3=Class.forName(className3);
-            Field ageField1=clazz3.getDeclaredField(&quot;age&quot;);
-            Log.d(TAG,&quot;ageField1=&quot; + ageField1);
-
-            /**
-             * 4 获取和更改某个对象的私有字段
-             *   即模拟get()和set()方法
-             */
-            String className4=&quot;com.example.xuyushi.reflecttest.student&quot;;
-            Class clazz4=Class.forName(className4);
-            Field ageField2=clazz4.getDeclaredField(&quot;age&quot;);
-            Object object4=constructor1.newInstance(19,&quot;wangwu&quot;,&quot;shanghai&quot;);
-            //取消访问私有字段的合法性检查
-            ageField2.setAccessible(true);
-            //获取对象的私有字段
-            Object ageObject4=ageField2.get(object4);
-            Log.d(TAG, &quot;ageObject4=&quot; + ageObject4);
-
-            //再更改对象的私有字段的值
-            ageField2.set(object4, 27);
-            //重新获得
-            Object ageObject5=ageField2.get(object4);
-            Log.d(TAG, &quot;ageObject5=&quot; + ageObject5);
-
-            /**
-             * 5 调用对象的带参数的方法
-             */
-            String className5=&quot;com.example.xuyushi.reflecttest.student&quot;;
-            Class clazz5=Class.forName(className5);
-            Method method=clazz5.getMethod(&quot;printMessage&quot;,int.class,String.class,String.class);
-            Object object5=clazz5.newInstance();
-            method.invoke(object5,50, &quot;lisi&quot;,&quot;hangzhou&quot;);
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-}
-</code></pre>
-
-<h2 id="toc_4">实际用例</h2>
-
-<p>开关移动流量需要用到sdk中的隐藏函数，需要利用到反射机制实现</p>
-
-<pre><code class="language-java">public void toggleMobileData(Context context, boolean enabled) {
-        ConnectivityManager conMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        Class&lt;?&gt; conMgrClass = null; // ConnectivityManager类
-        Field iConMgrField = null; // ConnectivityManager类中的字段
-        Object iConMgr = null; // IConnectivityManager类的引用
-        Class&lt;?&gt; iConMgrClass = null; // IConnectivityManager类
-        Method setMobileDataEnabledMethod = null; // setMobileDataEnabled方法
-
-        try {
-            // 取得ConnectivityManager类
-            conMgrClass = Class.forName(conMgr.getClass().getName());
-            // 取得ConnectivityManager类中的对象mService
-            iConMgrField = conMgrClass.getDeclaredField(&quot;mService&quot;);
-            // 设置mService可访问
-            iConMgrField.setAccessible(true);
-            // 取得mService的实例化类IConnectivityManager
-            iConMgr = iConMgrField.get(conMgr);
-            // 取得IConnectivityManager类
-            iConMgrClass = Class.forName(iConMgr.getClass().getName());
-            // 取得IConnectivityManager类中的setMobileDataEnabled(boolean)方法
-            setMobileDataEnabledMethod = iConMgrClass.getDeclaredMethod(&quot;setMobileDataEnabled&quot;, Boolean.TYPE);
-            // 设置setMobileDataEnabled方法可访问
-            setMobileDataEnabledMethod.setAccessible(true);
-            // 调用setMobileDataEnabled方法
-            setMobileDataEnabledMethod.invoke(iConMgr, enabled);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
-    }
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2015/6/14</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133102860.html">
-                
-                  <h1>Android 触摸事件传递机制</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>之前在设置监听事件遇到了一些问题，今天参考学习了一些文档和博客，记录总结view和viewgroup的触摸事件传递</p>
-
-<h2 id="toc_0">View</h2>
-
-<h3 id="toc_1">常用监听方法</h3>
-
-<p>view表示没有子空间的布局，例如textview、button等，MotionEvent分为三种</p>
-
-<ul>
-<li>MotionEvent.ACTION_DOWN：按下时候</li>
-<li>MotionEvent.ACTION_MOVE：滑动时</li>
-<li>MotionEvent.ACTION_UP：抬起时</li>
-</ul>
-
-<p>常用两种监听事件</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133102860.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2015/6/14</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -993,6 +789,8 @@ public class student {
 
       	<p class="cat-list">
         
+            <a href="%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86.html"><strong>产品经理</strong></a>
+        
             <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
         
             <a href="Android.html"><strong>Android</strong></a>
@@ -1016,6 +814,18 @@ public class student {
 	      
 		      
 			      <li class="post">
+			        <a href="15316240502263.html">用户调研</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15316220023386.html">用户反馈发现问题</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15299133098726.html">abtest 数据分析</a>
 			      </li>
 		     
@@ -1029,18 +839,6 @@ public class student {
 		      
 			      <li class="post">
 			        <a href="15299133099414.html">写在离开北京的前夕</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15299133099249.html">jenkins 平台搭建</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15299133099310.html">gitlab 搭建</a>
 			      </li>
 		     
 		  

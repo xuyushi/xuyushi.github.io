@@ -4,13 +4,214 @@
   <title><![CDATA[Xu Yushi's Blog]]></title>
   <link href="xuyushi.github.io/atom.xml" rel="self"/>
   <link href="xuyushi.github.io/"/>
-  <updated>2018-07-11T11:10:47+08:00</updated>
+  <updated>2018-07-15T20:28:52+08:00</updated>
   <id>xuyushi.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[用户调研]]></title>
+    <link href="xuyushi.github.io/15316240502263.html"/>
+    <updated>2018-07-15T11:07:30+08:00</updated>
+    <id>xuyushi.github.io/15316240502263.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">用户调研全过程</h2>
+
+<ol>
+<li>明确背景和目的</li>
+<li>选择目标用户</li>
+<li>分析用户和问题</li>
+<li>准备调研内容</li>
+<li>现场调研</li>
+<li>总结报告</li>
+</ol>
+
+<span id="more"></span><!-- more -->
+
+<h3 id="toc_1">用户调研全过程</h3>
+
+<ul>
+<li>背景：什么情况下发起的调研?是否必须通过调研来解决？</li>
+<li>目的：通过用户调研希望得到的结果是什么？</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>bad</th>
+<th>原因</th>
+<th>good</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>对本站用户 做针对性调研</td>
+<td>目的不明确</td>
+<td>* 在支付阶段用户流失原因调研分析 * 用户在不同在线学习平台学习过程调研</td>
+</tr>
+<tr>
+<td>做北京地区女性用户使用情况调研</td>
+<td>背景不明确</td>
+<td>北京地区女性下单转化率很高，调研其在平台购买路径分析</td>
+</tr>
+<tr>
+<td>O2O 行业用户使用习惯调研</td>
+<td>大而全</td>
+<td>* 京东到家超市业务白领女性消费习惯调研 </td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_2">选择目标用户</h3>
+
+<ul>
+<li>典型用户：通过简单的用户画像，找出典型用户</li>
+<li>目标用户：时间、地点、配合程度</li>
+<li>邀约用户：直接说明目的，并告知可能发生的情况</li>
+<li>用户数量：不宜扫网式，一般5-10个</li>
+</ul>
+
+<h3 id="toc_3">猜测用户问题 设定题目</h3>
+
+<ul>
+<li>用户可能的问题：用户的使用行为表现</li>
+<li>可能的解决方案：猜测解决用户问题的手段</li>
+<li>确定访问提纲：聚焦且开放的问题</li>
+<li>问题数量：线上10-20，线下5-10 展开</li>
+</ul>
+
+<h3 id="toc_4">准备调研内容</h3>
+
+<ul>
+<li>本品已知问题：用户操作习惯、消费习惯和过程，原因</li>
+<li>本品未知问题：用户的痛点是什么？哪些操作用户很烦，用户愿意掏钱做什么？</li>
+<li>竞品已知问题：用户直观感知两者区别，竞品使用差异</li>
+<li>竞品已知问题：如果从竞品移入，用户放弃理由。从本品移到竞品，原因？ </li>
+</ul>
+
+<p><img src="media/15316240502263/15316441642224.jpg" alt="" style="width:737px;"/></p>
+
+<h3 id="toc_5">现场调研</h3>
+
+<ul>
+<li>了解用户使用的过程：最好观察用户的行为</li>
+<li>提问：对关键行为、预设问题进行提问</li>
+<li>反馈：对有效的信息反馈给用户，并深究</li>
+</ul>
+
+<h3 id="toc_6">调研报告</h3>
+
+<ul>
+<li>单个用户：记录单用户调研情况</li>
+<li>整体情况：汇总用户调研的过程和结论</li>
+<li>行动计划：分享并提出行动计划</li>
+</ul>
+
+<blockquote>
+<p>误区</p>
+
+<ul>
+<li>为了调研而调研，需要 带着目的</li>
+<li>问用户有什么需求</li>
+<li>试图说服用户</li>
+<li>求全求量</li>
+<li>依赖调查问卷</li>
+</ul>
+</blockquote>
+
+<h2 id="toc_7">设计改善措施</h2>
+
+<p><img src="media/15316240502263/15316452423278.jpg" alt=""/></p>
+
+<ul>
+<li>认知缺口：产品经理不知道用户想要的是什么。若出现了认知缺口，则首先是让产品经理清楚知道用户流失的真正原因。</li>
+<li>执行缺口：产品经理知道用户想要什么，但实际做出来的产品与设计中的不一致。若出现了执行缺口，则要了解具体哪个执行步骤出现问题，是资源的欠缺还是技术难以实现。</li>
+<li>传递缺口：产品的宣传和指引不能让用户对产品真正认知了解若出现了传递缺口，则要了解用户现在的感知是怎么样的，在哪些宣传和指引上出现了问题。</li>
+<li>流失缺口：用户体验到的产品和期望的不一样。</li>
+</ul>
+
+<h1 id="toc_8">拓展</h1>
+
+<blockquote>
+<p><a href="http://cdc.tencent.com/2013/07/03/%E7%94%A8%E6%88%B7%E6%B5%81%E5%A4%B1%E5%8E%9F%E5%9B%A0%E8%B0%83%E7%A0%94%E5%9B%9B%E6%AD%A5%E7%BB%8F/">用户流失原因调研四步经</a> <br/>
+<a href="https://www.zhihu.com/question/20345655/answer/19110604">如何去做用户访谈和用户调研</a><br/>
+<a href="http://blog.sanjieke.cn/article/144538.html">如何做好用户调研</a><br/>
+<a href="http://www.yunzhan365.com/59771541.html">如何做一次完美的用户调研</a></p>
+</blockquote>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[用户反馈发现问题]]></title>
+    <link href="xuyushi.github.io/15316220023386.html"/>
+    <updated>2018-07-15T10:33:22+08:00</updated>
+    <id>xuyushi.github.io/15316220023386.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">关注什么问题</h2>
+
+<ul>
+<li>自身产品的问题</li>
+<li>竞品的问题</li>
+<li>可能的机会点</li>
+</ul>
+
+<h2 id="toc_1">渠道</h2>
+
+<h3 id="toc_2">渠道类型</h3>
+
+<ul>
+<li>公开渠道：apple store，微博，贴吧，第三方应用商城</li>
+<li>半公开渠道：微信，朋友圈，用户评价</li>
+<li>内部渠道：用户投诉，电话录音
+<span id="more"></span><!-- more -->
+### 处理策略</li>
+<li>公开渠道：勤搜索、关键词订阅、自动化监控</li>
+<li>半公开渠道：定期搜索关键字、定期分析用户评论<br/>
+### 内部渠道</li>
+<li>整合内部用户反馈渠道</li>
+<li>定期与一线同事沟通</li>
+<li>到一线去</li>
+</ul>
+
+<h2 id="toc_3">主流应用商店与常用工具</h2>
+
+<ul>
+<li>iOS：AppStore</li>
+<li>Android：360手机助手、安卓市场、百度手机助手 、小米/华为、oppo 等商城、豌豆荚</li>
+<li>常用工具：AppAnnie、应用雷达、ASO114、七麦</li>
+</ul>
+
+<h3 id="toc_4">应用商城监控</h3>
+
+<ul>
+<li>低分差评：重点看1-3 分</li>
+<li>有效评论：重点看有实际描述的评论</li>
+<li>异常行为：比如水军刷榜、恶意评价</li>
+<li>竞品变化：监控竞对的应用变化</li>
+</ul>
+
+<h2 id="toc_5">主流社交平台与常用工具</h2>
+
+<ul>
+<li>主流平台：微博、贴吧、知乎、雪球等</li>
+<li>工具：关键字、收藏夹、微博企业版、百度、google</li>
+</ul>
+
+<h2 id="toc_6">用户点评看什么</h2>
+
+<ul>
+<li>差评：为什么差评？原因、现象是什么</li>
+<li>描述：重点看有实际描述的评论</li>
+<li>异常行为：刷榜、恶意评价</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[abtest 数据分析]]></title>
@@ -179,7 +380,7 @@ $$Z=\frac{p_t-p_c}{\sqrt{(\frac{p_t(1-p_t)}{n_t}+\frac{p_c(1-p_c)}{n_c})}}$$
 
 <p>根据中心极限定理可知，\(P_a\)和\(P_b\)均可认为近似服从正态分布：\[A～N(N,P_a(1-P_a)/N_a)\] \[B～N(N,P_b(1-P_b)/N_b)\]</p>
 
-<p>所以根据正态分布的性质 \[X=P_b - P_a = N( P_b - P_a, (\frac{P_a(1-P_a)}{N_a}) + (\frac{P_b(1-P_b)}{N_b})  )\]</p>
+<p>所以根据正态分布的性质 \[X=P_b - P_a = N( P_b - P_a, (\frac{P_a(1-P_a)}{N_a}) + (\frac{P_b(1-P_b)}{N_b}))\]</p>
 
 <h3 id="toc_17">建立原假设和备择假设</h3>
 
@@ -3580,665 +3781,6 @@ javadoc { //jav doc采用utf-8编码否则会报“GBK的不可映射字符”�
 <blockquote>
 <p><a href="http://kvh.io/cn/embrace-android-studio-maven-deploy.html">http://kvh.io/cn/embrace-android-studio-maven-deploy.html</a><br/>
 <a href="https://zh.wikipedia.org/wiki/Apache_Maven">https://zh.wikipedia.org/wiki/Apache_Maven</a></p>
-</blockquote>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[gradle 插件开发]]></title>
-    <link href="xuyushi.github.io/15299133102596.html"/>
-    <updated>2018-06-25T15:55:10+08:00</updated>
-    <id>xuyushi.github.io/15299133102596.html</id>
-    <content type="html"><![CDATA[
-<h1 id="toc_0">什么是Gradle插件？</h1>
-
-<p>在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：</p>
-
-<pre><code class="language-gradle">apply plugin: &#39;com.android.application&#39;
-</code></pre>
-
-<p>如果我们创建一个Library的话，就会变成：</p>
-
-<pre><code class="language-gradle">apply plugin: &#39;com.android.library&#39;
-</code></pre>
-
-<p>其实这就是在gradle脚本引用android为我们提供的插件，plugin表示插件，&#39;com.android.application’表示我们引用的插件名，通常是以包名来命名。<br/>
-<span id="more"></span><!-- more --></p>
-
-<p>这个插件是怎么被引用进来的？我们可以在根目录找到另外一个build.gradle文件，打开可以看到以下代码：</p>
-
-<pre><code class="language-gradle">buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath &#39;com.android.tools.build:gradle:2.0.0&#39;
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-    }
-}
-
-</code></pre>
-
-<ul>
-<li>buildscript方法是定义了全局的相关属性</li>
-<li>repositories定义了jcenter作为仓库。一个仓库代表着你的依赖包的来源，例如maven仓库。</li>
-<li>dependencies用来定义构建过程。</li>
-<li>classpath &#39;com.android.tools.build:gradle:2.0.0&#39;，就是将远程的插件下载到本地并将其构建到我们工程当中。</li>
-</ul>
-
-<h1 id="toc_1">Gradle 插件开发</h1>
-
-<pre><code class="language-gradle">apply plugin: &#39;com.android.library&#39;
-apply plugin: &#39;com.android.application&#39;
-</code></pre>
-
-<p>这些都是插件 ，我们可以自己定义一些插件方便构建项目<br/>
-<a href="https://docs.gradle.org/current/userguide/custom_plugins.html">官网介绍</a></p>
-
-<h2 id="toc_2">插件打包方式</h2>
-
-<p>Gradle 的插件有三种打包方式，主要是按照复杂程度和可见性来划分：</p>
-
-<p>Build script</p>
-
-<p>把插件写在 build.gradle 文件中，一般用于简单的逻辑，只在该 build.gradle 文件中可见</p>
-
-<p>buildSrc 项目</p>
-
-<p>将插件源代码放在 rootProjectDir/buildSrc/src/main/groovy 中，只对该项目中可见，适用于逻辑较为复杂，但又不需要外部可见的插件</p>
-
-<p><strong>独立项目</strong></p>
-
-<p>一个独立的 Groovy 和 Java 项目，可以把这个项目打包成 Jar 文件包，一个 Jar 文件包还可以包含多个插件入口，将文件包发布到托管平台上，供其他人使用。本文将着重介绍此类。</p>
-
-<h2 id="toc_3">Build script 插件</h2>
-
-<p>在 build.gradle 直接加入</p>
-
-<pre><code class="language-gradle">class ApkDistPlugin implements Plugin&lt;Project&gt; {
-//创建一个Plugin就需要实现Plugin接口，并且重写它的apply方法，这个类当中就是用来实现插件的逻辑的，比如创建task，获取外部的参数都需要在这里面完成。
-    @Override
-    void apply(Project project) {
-        project.task(&#39;apkdist&#39;) &lt;&lt; {
-            println &#39;hello, world!&#39;
-        }
-    }
-}
-
-apply plugin: ApkDistPlugin
-</code></pre>
-
-<p>命令行运行</p>
-
-<pre><code class="language-bash">$ ./gradlew -p app/ apkdist
-:app:apkdist
-hello, world!
-
-</code></pre>
-
-<p>插件是一个类，继承自 org.gradle.api.Plugin 接口，重写 void apply(Project project) 方法，这个方法将会传入使用这个插件的 project 的实例，这是一个重要的 context</p>
-
-<h3 id="toc_4">接受外部参数</h3>
-
-<p>这个参数的结构 收到 ApkDistExtension的约束</p>
-
-<pre><code class="language-java">apkdistconf {
-    nameMap { name -&gt;
-        println &#39;hello,&#39; + name
-        return name
-    }
-    destDir &#39;your-distribution-dir&#39;
-}
-</code></pre>
-
-<p>接受一个插件 name ，和目标路径</p>
-
-<p>参数的内容后面继续完善。那这两个参数怎么传到插件内呢？</p>
-
-<p>org.gradle.api.Project 有一个 ExtensionContainer getExtensions() 方法，可以用来实现这个传递。</p>
-
-<h3 id="toc_5">声明参数类</h3>
-
-<p>声明一个 Groovy 类，有两个默认值为 null 的成员变量：</p>
-
-<pre><code class="language-java">class ApkDistExtension {
-Closure nameMap = null;
-String destDir = null;
-}
-</code></pre>
-
-<h3 id="toc_6">接受参数</h3>
-
-<pre><code class="language-java">project.extensions.create(&#39;apkdistconf&#39;, ApkDistExtension);
-</code></pre>
-
-<p>要注意，create 方法的第一个参数就是你在 build.gradle 文件中的进行<strong>参数配置的 dsl 的名字</strong>，必须一致；第二个参数，就是参数类的名字。</p>
-
-<h3 id="toc_7">获取和使用参数</h3>
-
-<p>在 create 了 extension 之后，如果传入了参数，则会携带在 project 实例中，</p>
-
-<pre><code class="language-java">def closure = project[&#39;apkdistconf&#39;].nameMap;
-closure(&#39;wow!&#39;);
-
-println project[&#39;apkdistconf&#39;].destDir
-</code></pre>
-
-<h2 id="toc_8">独立项目插件</h2>
-
-<h3 id="toc_9">创建项目</h3>
-
-<p>在 Android Studio 中新建 Java Library module “plugin”。</p>
-
-<h3 id="toc_10">修改 build.gradle 文件</h3>
-
-<p>添加 Groovy 插件和对应的两个依赖。</p>
-
-<pre><code class="language-gradle">//removed java plugin 
-apply plugin: &#39;groovy&#39;
-
-dependencies {
-    compile gradleApi()//gradle sdk
-    compile localGroovy()//groovy sdk
-    compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
-}
-</code></pre>
-
-<h3 id="toc_11">修改项目文件夹</h3>
-
-<p>src/main 项目文件下：</p>
-
-<ul>
-<li>移除 java 文件夹，因为在这个项目中用不到 java 代码</li>
-<li>添加 groovy 文件夹，主要的代码文件放在这里</li>
-<li>添加 resources 文件夹，存放用于标识 gradle 插件的 meta-data</li>
-</ul>
-
-<h3 id="toc_12">建立对应文件</h3>
-
-<pre><code class="language-bash">
-</code></pre>
-
-<blockquote>
-<p>注意：</p>
-
-<p>groovy 文件夹中的类，一定要修改成 .groovy 后缀，IDE 才会正常识别。<br/>
-resources/META-INF/gradle-plugins 这个文件夹结构是强制要求的，否则不能识别成插件。</p>
-</blockquote>
-
-<h3 id="toc_13">io.github.xuyushi.properties 文件</h3>
-
-<p>如果写过 Java 的同学会知道，这是一个 Java 的 properties 文件，是 key=value 的格式。这个文件内容如下：</p>
-
-<pre><code class="language-bash">implementation-class=io.github.xuyushi.ApkDistPlugin
-
-</code></pre>
-
-<p>按其语义推断，是指定这个插件的入口类。</p>
-
-<ul>
-<li>英文敏感的同学可能会问了，为什么这个文件的承载文件夹是叫做 gradle-plugins，使用复数？没错，这里可以指定多个 properties 文件，定义多个插件，扩展性一流，可以参考 linkedin 的插件的组织方式。</li>
-<li>使用这个插件的时候，将会是这样：</li>
-</ul>
-
-<pre><code class="language-bash">apply plugin:&#39;io.github.xuyushi.apkdist&#39;
-</code></pre>
-
-<p>因此，<code>com.asgradle.apkdist</code> 这个字符串在这里，又称为这个插件的 id，不允许跟别的插件重复，取你拥有的域名的反向就不会错。</p>
-
-<blockquote>
-<p>id 为properties 的名称</p>
-</blockquote>
-
-<p>现在项目结构为</p>
-
-<pre><code class="language-bash">├── build.gradle
-├── libs
-├── plugin.iml
-└── src
-    └── main
-        ├── groovy
-        │   └── io
-        │       └── github
-        │           └── xuyushi
-        │               ├── ApkDistExtension.groovy
-        │               └── ApkDistPlugin.groovy
-        └── resources
-            └── META-INF
-                └── gradle-plugins
-                    └── io.github.xuyushi.properties
-
-
-</code></pre>
-
-<h3 id="toc_14">将 plugin module 传到本地 maven 仓库</h3>
-
-<h4 id="toc_15">添加 gradle.properties</h4>
-
-<pre><code class="language-bash">PROJ_NAME=gradleplugin
-PROJ_ARTIFACTID=gradleplugin
-PROJ_POM_NAME=Local Repository
-
-LOCAL_REPO_URL=file:///Users/xuyushi/Documents/Android/repo/
-
-PROJ_GROUP=io.github.xuyushi.gradleplugin_test
-
-PROJ_VERSION=1.0.0
-PROJ_VERSION_CODE=1
-
-PROJ_WEBSITEURL=http://xuyushi.github.io
-PROJ_ISSUETRACKERURL=http://xuyushi.github.io
-PROJ_VCSURL=http://xuyushi.github.io
-PROJ_DESCRIPTION=demo apps for embracing android studio
-
-PROJ_LICENCE_NAME=The Apache Software License, Version 2.0
-PROJ_LICENCE_URL=http://www.apache.org/licenses/LICENSE-2.0.txt
-PROJ_LICENCE_DEST=repo
-
-DEVELOPER_ID=xuyushi
-DEVELOPER_NAME=xuyushi
-DEVELOPER_EMAIL=xmuy166@gmail.com
-</code></pre>
-
-<h4 id="toc_16">在 build.gradle 添加上传功能</h4>
-
-<pre><code class="language-java">apply plugin: &#39;maven&#39;
-
-uploadArchives {
-    repositories.mavenDeployer {
-        repository(url: LOCAL_REPO_URL)
-        pom.groupId = PROJ_GROUP
-        pom.artifactId = PROJ_ARTIFACTID
-        pom.version = PROJ_VERSION
-    }
-}
-</code></pre>
-
-<h3 id="toc_17">在 app module 中使用插件</h3>
-
-<p>在项目的 buildscript 添加插件作为 classpath</p>
-
-<pre><code class="language-gradle">buildscript {
-    repositories {
-        maven{
-            url &#39;file:///Users/your-user-name/Documents/Android/repo/&#39;
-        }
-        jcenter()
-    }
-    dependencies {
-        classpath &#39;com.android.tools.build:gradle:2.1.0-alpha3&#39;        
-        classpath &#39;com.as-gradle.demo:gradleplugin:1.0.0&#39;
-    }
-}
-</code></pre>
-
-<h3 id="toc_18">在 app module 中使用插件</h3>
-
-<pre><code class="language-gradle">apply plugin: &#39;com.asgradle.apkdist&#39;
-
-</code></pre>
-
-<p>加 app gradle 文件中加上项目需要的参数结构</p>
-
-<pre><code class="language-gradle">apkdistconf {
-    nameMap { name -&gt;
-        println &#39;hello,&#39; + name
-        return name
-    }
-    destDir &#39;your-distribution-dir&#39;
-}
-</code></pre>
-
-<p>命令行运行</p>
-
-<pre><code class="language-gradle">$ ./gradlew -p app apkdist
-:app:apkdist
-hello, world!
-hello, wow!
-your-distribution-directory
-</code></pre>
-
-<blockquote>
-<p><a href="http://www.jianshu.com/p/7e8ae21b093a">http://www.jianshu.com/p/7e8ae21b093a</a><br/>
-<a href="http://kvh.io/cn/embrace-android-studio-gradle-plugin.html">http://kvh.io/cn/embrace-android-studio-gradle-plugin.html</a></p>
-</blockquote>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[gradle 插件开发]]></title>
-    <link href="xuyushi.github.io/15299133104171.html"/>
-    <updated>2018-06-25T15:55:10+08:00</updated>
-    <id>xuyushi.github.io/15299133104171.html</id>
-    <content type="html"><![CDATA[
-<h1 id="toc_0">什么是Gradle插件？</h1>
-
-<p>在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：</p>
-
-<pre><code class="language-gradle">apply plugin: &#39;com.android.application&#39;
-</code></pre>
-
-<span id="more"></span><!-- more -->
-
-<p>如果我们创建一个Library的话，就会变成：</p>
-
-<pre><code class="language-gradle">apply plugin: &#39;com.android.library&#39;
-</code></pre>
-
-<p>其实这就是在gradle脚本引用android为我们提供的插件，plugin表示插件，&#39;com.android.application’表示我们引用的插件名，通常是以包名来命名。</p>
-
-<p>这个插件是怎么被引用进来的？我们可以在根目录找到另外一个build.gradle文件，打开可以看到以下代码：</p>
-
-<pre><code class="language-gradle">buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath &#39;com.android.tools.build:gradle:2.0.0&#39;
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-    }
-}
-
-</code></pre>
-
-<ul>
-<li>buildscript方法是定义了全局的相关属性</li>
-<li>repositories定义了jcenter作为仓库。一个仓库代表着你的依赖包的来源，例如maven仓库。</li>
-<li>dependencies用来定义构建过程。</li>
-<li>classpath &#39;com.android.tools.build:gradle:2.0.0&#39;，就是将远程的插件下载到本地并将其构建到我们工程当中。</li>
-</ul>
-
-<h1 id="toc_1">Gradle 插件开发</h1>
-
-<pre><code class="language-gradle">apply plugin: &#39;com.android.library&#39;
-apply plugin: &#39;com.android.application&#39;
-</code></pre>
-
-<p>这些都是插件 ，我们可以自己定义一些插件方便构建项目<br/>
-<a href="https://docs.gradle.org/current/userguide/custom_plugins.html">官网介绍</a></p>
-
-<h2 id="toc_2">插件打包方式</h2>
-
-<p>Gradle 的插件有三种打包方式，主要是按照复杂程度和可见性来划分：</p>
-
-<p>Build script</p>
-
-<p>把插件写在 build.gradle 文件中，一般用于简单的逻辑，只在该 build.gradle 文件中可见</p>
-
-<p>buildSrc 项目</p>
-
-<p>将插件源代码放在 rootProjectDir/buildSrc/src/main/groovy 中，只对该项目中可见，适用于逻辑较为复杂，但又不需要外部可见的插件</p>
-
-<p><strong>独立项目</strong></p>
-
-<p>一个独立的 Groovy 和 Java 项目，可以把这个项目打包成 Jar 文件包，一个 Jar 文件包还可以包含多个插件入口，将文件包发布到托管平台上，供其他人使用。本文将着重介绍此类。</p>
-
-<h2 id="toc_3">Build script 插件</h2>
-
-<p>在 build.gradle 直接加入</p>
-
-<pre><code class="language-gradle">class ApkDistPlugin implements Plugin&lt;Project&gt; {
-//创建一个Plugin就需要实现Plugin接口，并且重写它的apply方法，这个类当中就是用来实现插件的逻辑的，比如创建task，获取外部的参数都需要在这里面完成。
-    @Override
-    void apply(Project project) {
-        project.task(&#39;apkdist&#39;) &lt;&lt; {
-            println &#39;hello, world!&#39;
-        }
-    }
-}
-
-apply plugin: ApkDistPlugin
-</code></pre>
-
-<p>命令行运行</p>
-
-<pre><code class="language-bash">$ ./gradlew -p app/ apkdist
-:app:apkdist
-hello, world!
-
-</code></pre>
-
-<p>插件是一个类，继承自 org.gradle.api.Plugin 接口，重写 void apply(Project project) 方法，这个方法将会传入使用这个插件的 project 的实例，这是一个重要的 context</p>
-
-<h3 id="toc_4">接受外部参数</h3>
-
-<p>这个参数的结构 收到 ApkDistExtension的约束</p>
-
-<pre><code class="language-java">apkdistconf {
-    nameMap { name -&gt;
-        println &#39;hello,&#39; + name
-        return name
-    }
-    destDir &#39;your-distribution-dir&#39;
-}
-</code></pre>
-
-<p>接受一个插件 name ，和目标路径</p>
-
-<p>参数的内容后面继续完善。那这两个参数怎么传到插件内呢？</p>
-
-<p>org.gradle.api.Project 有一个 ExtensionContainer getExtensions() 方法，可以用来实现这个传递。</p>
-
-<h3 id="toc_5">声明参数类</h3>
-
-<p>声明一个 Groovy 类，有两个默认值为 null 的成员变量：</p>
-
-<pre><code class="language-java">class ApkDistExtension {
-Closure nameMap = null;
-String destDir = null;
-}
-</code></pre>
-
-<h3 id="toc_6">接受参数</h3>
-
-<pre><code class="language-java">project.extensions.create(&#39;apkdistconf&#39;, ApkDistExtension);
-</code></pre>
-
-<p>要注意，create 方法的第一个参数就是你在 build.gradle 文件中的进行<strong>参数配置的 dsl 的名字</strong>，必须一致；第二个参数，就是参数类的名字。</p>
-
-<h3 id="toc_7">获取和使用参数</h3>
-
-<p>在 create 了 extension 之后，如果传入了参数，则会携带在 project 实例中，</p>
-
-<pre><code class="language-java">def closure = project[&#39;apkdistconf&#39;].nameMap;
-closure(&#39;wow!&#39;);
-
-println project[&#39;apkdistconf&#39;].destDir
-</code></pre>
-
-<h2 id="toc_8">独立项目插件</h2>
-
-<h3 id="toc_9">创建项目</h3>
-
-<p>在 Android Studio 中新建 Java Library module “plugin”。</p>
-
-<h3 id="toc_10">修改 build.gradle 文件</h3>
-
-<p>添加 Groovy 插件和对应的两个依赖。</p>
-
-<pre><code class="language-gradle">//removed java plugin 
-apply plugin: &#39;groovy&#39;
-
-dependencies {
-    compile gradleApi()//gradle sdk
-    compile localGroovy()//groovy sdk
-    compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
-}
-</code></pre>
-
-<h3 id="toc_11">修改项目文件夹</h3>
-
-<p>src/main 项目文件下：</p>
-
-<ul>
-<li>移除 java 文件夹，因为在这个项目中用不到 java 代码</li>
-<li>添加 groovy 文件夹，主要的代码文件放在这里</li>
-<li>添加 resources 文件夹，存放用于标识 gradle 插件的 meta-data</li>
-</ul>
-
-<h3 id="toc_12">建立对应文件</h3>
-
-<pre><code class="language-bash">
-</code></pre>
-
-<blockquote>
-<p>注意：</p>
-
-<p>groovy 文件夹中的类，一定要修改成 .groovy 后缀，IDE 才会正常识别。<br/>
-resources/META-INF/gradle-plugins 这个文件夹结构是强制要求的，否则不能识别成插件。</p>
-</blockquote>
-
-<h3 id="toc_13">io.github.xuyushi.properties 文件</h3>
-
-<p>如果写过 Java 的同学会知道，这是一个 Java 的 properties 文件，是 key=value 的格式。这个文件内容如下：</p>
-
-<pre><code class="language-bash">implementation-class=io.github.xuyushi.ApkDistPlugin
-
-</code></pre>
-
-<p>按其语义推断，是指定这个插件的入口类。</p>
-
-<ul>
-<li>英文敏感的同学可能会问了，为什么这个文件的承载文件夹是叫做 gradle-plugins，使用复数？没错，这里可以指定多个 properties 文件，定义多个插件，扩展性一流，可以参考 linkedin 的插件的组织方式。</li>
-<li>使用这个插件的时候，将会是这样：</li>
-</ul>
-
-<pre><code class="language-bash">apply plugin:&#39;io.github.xuyushi.apkdist&#39;
-</code></pre>
-
-<p>因此，<code>com.asgradle.apkdist</code> 这个字符串在这里，又称为这个插件的 id，不允许跟别的插件重复，取你拥有的域名的反向就不会错。</p>
-
-<blockquote>
-<p>id 为properties 的名称</p>
-</blockquote>
-
-<p>现在项目结构为</p>
-
-<pre><code class="language-bash">├── build.gradle
-├── libs
-├── plugin.iml
-└── src
-    └── main
-        ├── groovy
-        │   └── io
-        │       └── github
-        │           └── xuyushi
-        │               ├── ApkDistExtension.groovy
-        │               └── ApkDistPlugin.groovy
-        └── resources
-            └── META-INF
-                └── gradle-plugins
-                    └── io.github.xuyushi.properties
-
-
-</code></pre>
-
-<h3 id="toc_14">将 plugin module 传到本地 maven 仓库</h3>
-
-<h4 id="toc_15">添加 gradle.properties</h4>
-
-<pre><code class="language-bash">PROJ_NAME=gradleplugin
-PROJ_ARTIFACTID=gradleplugin
-PROJ_POM_NAME=Local Repository
-
-LOCAL_REPO_URL=file:///Users/xuyushi/Documents/Android/repo/
-
-PROJ_GROUP=io.github.xuyushi.gradleplugin_test
-
-PROJ_VERSION=1.0.0
-PROJ_VERSION_CODE=1
-
-PROJ_WEBSITEURL=http://xuyushi.github.io
-PROJ_ISSUETRACKERURL=http://xuyushi.github.io
-PROJ_VCSURL=http://xuyushi.github.io
-PROJ_DESCRIPTION=demo apps for embracing android studio
-
-PROJ_LICENCE_NAME=The Apache Software License, Version 2.0
-PROJ_LICENCE_URL=http://www.apache.org/licenses/LICENSE-2.0.txt
-PROJ_LICENCE_DEST=repo
-
-DEVELOPER_ID=xuyushi
-DEVELOPER_NAME=xuyushi
-DEVELOPER_EMAIL=xmuy166@gmail.com
-</code></pre>
-
-<h4 id="toc_16">在 build.gradle 添加上传功能</h4>
-
-<pre><code class="language-java">apply plugin: &#39;maven&#39;
-
-uploadArchives {
-    repositories.mavenDeployer {
-        repository(url: LOCAL_REPO_URL)
-        pom.groupId = PROJ_GROUP
-        pom.artifactId = PROJ_ARTIFACTID
-        pom.version = PROJ_VERSION
-    }
-}
-</code></pre>
-
-<h3 id="toc_17">在 app module 中使用插件</h3>
-
-<p>在项目的 buildscript 添加插件作为 classpath</p>
-
-<pre><code class="language-gradle">buildscript {
-    repositories {
-        maven{
-            url &#39;file:///Users/your-user-name/Documents/Android/repo/&#39;
-        }
-        jcenter()
-    }
-    dependencies {
-        classpath &#39;com.android.tools.build:gradle:2.1.0-alpha3&#39;        
-        classpath &#39;com.as-gradle.demo:gradleplugin:1.0.0&#39;
-    }
-}
-</code></pre>
-
-<h3 id="toc_18">在 app module 中使用插件</h3>
-
-<pre><code class="language-gradle">apply plugin: &#39;com.asgradle.apkdist&#39;
-
-</code></pre>
-
-<p>加 app gradle 文件中加上项目需要的参数结构</p>
-
-<pre><code class="language-gradle">apkdistconf {
-    nameMap { name -&gt;
-        println &#39;hello,&#39; + name
-        return name
-    }
-    destDir &#39;your-distribution-dir&#39;
-}
-</code></pre>
-
-<p>命令行运行</p>
-
-<pre><code class="language-gradle">$ ./gradlew -p app apkdist
-:app:apkdist
-hello, world!
-hello, wow!
-your-distribution-directory
-</code></pre>
-
-<blockquote>
-<p><a href="http://www.jianshu.com/p/7e8ae21b093a">http://www.jianshu.com/p/7e8ae21b093a</a><br/>
-<a href="http://kvh.io/cn/embrace-android-studio-gradle-plugin.html">http://kvh.io/cn/embrace-android-studio-gradle-plugin.html</a></p>
 </blockquote>
 
 ]]></content>

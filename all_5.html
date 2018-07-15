@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86.html">产品经理</a></li>
+        
             <li><a href="UserGrowth.html">UserGrowth</a></li>
         
             <li><a href="Android.html">Android</a></li>
@@ -109,6 +111,81 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15299133102762.html">
+                
+                  <h1>ASimpleCache缓存源码分析</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>ASimpleCache 是一个为android制定的 轻量级的 开源缓存框架。轻量到只有一个java文件（由十几个类精简而来）<br/>
+仓库地址：<a href="https://github.com/yangfuhai/ASimpleCache">https://github.com/yangfuhai/ASimpleCache</a></p>
+
+<h1 id="toc_0">官方介绍</h1>
+
+<h2 id="toc_1">1、它可以缓存什么东西？</h2>
+
+<p>普通的字符串、JsonObject、JsonArray、Bitmap、Drawable、序列化的java对象，和 byte数据。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133102762.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/6/19</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133103809.html">
+                
+                  <h1>一个很棒的 Android  APP框架</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>最近在 github 上看到一个 android 的框架，结合了 Rxjava + retrofit + dagger2 + mvp，结合了当下比较流行的框架，并且项目层次非常清晰，易于扩展和维护</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133103809.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/6/18</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15299133101383.html">
                 
@@ -682,495 +759,6 @@ if (mItemCount == 0) {
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133103337.html">
-                
-                  <h1>Android 中的 rxjava</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>介绍 rxjava之前要先明白一个前置概念 <strong>ReactiveX</strong></p>
-
-<h2 id="toc_0">ReactiveX定义</h2>
-
-<blockquote>
-<p>ReactiveX is an API that focuses on asynchronous composition and manipulation of observable streams of data or events by using a combination of the Observer pattern, Iterator pattern, and features of Functional Programming. Handling real-time data is a common occurrence, and having an efficient, clean, and extensible approach to handling these scenarios is important. Using Observables and operators to manipulate them, ReactiveX offers a composable and flexible API to create and act on streams of data while simplifying the normal concerns of asynchronous programming like thread creation and concurrency issues.</p>
-
-<ul>
-<li><a href="http://reactivex.io/intro.html">http://reactivex.io/intro.html</a></li>
-</ul>
-</blockquote>
-
-<p>ReactiveX是Reactive Extensions的缩写，一般简写为Rx</p>
-
-<p>ReactiveX 是一个使用可观察数据流进行异步编程的编程接口，ReactiveX结合了观察者模式、迭代器模式和函数式编程的精华</p>
-
-<h2 id="toc_1">RX模式</h2>
-
-<h3 id="toc_2">使用观察者模式</h3>
-
-<ul>
-<li>创建：Rx可以方便的创建事件流和数据流</li>
-<li>组合：Rx使用查询式的操作符组合和变换数据流</li>
-<li>监听：Rx可以订阅任何可观察的数据流并执行操作</li>
-</ul>
-
-<h3 id="toc_3">简化代码</h3>
-
-<ul>
-<li>函数式风格：对可观察数据流使用无副作用的输入输出函数，避免了程序里错综复杂的状态</li>
-<li>简化代码：Rx的操作符通通常可以将复杂的难题简化为很少的几行代码</li>
-<li>异步错误处理：传统的try/catch没办法处理异步计算，Rx提供了合适的错误处理机制</li>
-<li>轻松使用并发：Rx的Observables和Schedulers让开发者可以摆脱底层的线程同步和各种并发问题</li>
-<li>使用Observable的优势</li>
-</ul>
-
-<p>Rx扩展了观察者模式用于支持数据和事件序列，添加了一些操作符，它让你可以声明式的组合这些序列，而无需关注底层的实现：如线程、同步、线程安全、并发数据结构和非阻塞IO。</p>
-
-<h3 id="toc_4">响应式编程</h3>
-
-<p>Rx提供了一系列的操作符，你可以使用它们来过滤(filter)、选择(select)、变换(transform)、结合(combine)和组合(compose)多个Observable，这些操作符让执行和复合变得非常高效。</p>
-
-<p><strong>以上对RX 介绍来自RX官方的中文文档，比较抽象，可以先看具体代码，回头再看定义会比较容易理解</strong></p>
-
-<h2 id="toc_5">Rxjava</h2>
-
-<p>RxJava是目前在Android开发者中新兴热门的函数库。</p>
-
-<h3 id="toc_6">基本概念</h3>
-
-<p><strong>观察者模式</strong>不细说了，详见 <a href="http://xuyushi.github.io/2016/02/20/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">http://xuyushi.github.io/2016/02/20/观察者模式/</a></p>
-
-<p>响应式代码的基本组成部分是Observables和Subscribers（事实上Observer才是最小的构建块，但实践中使用最多的是Subscriber，因为Subscriber才是和Observables的对应的。）。Observable发送消息，而Subscriber则用于消费消息。</p>
-
-<p>消息的发送是有固定模式的。Observable可以发送任意数量的消息（包括空消息），当消息被成功处理或者出错时，流程结束。Observable会调用它的每个Subscriber的Subscriber.onNext()函数，并最终以Subscriber.onComplete()或者Subscriber.onError()结束。</p>
-
-<p>这看起来像标准的观察者模式， 但不同的一个关键点是：Observables一般只有等到有Subscriber订阅它，才会开始发送消息（术语上讲就是热启动Observable和冷启动Observable。热启动Observable任何时候都会发送消息，即使没有任何观察者监听它。冷启动Observable只有在至少有一个订阅者的时候才会发送消息。换句话说，<strong>如果没有订阅者观察它，那么将不会起什么作用。</strong></p>
-
-<h3 id="toc_7">Hello,World！</h3>
-
-<p>喜闻乐见的 hello world 时间~</p>
-
-<p>gradle 加入</p>
-
-<pre><code class="language-gradle">compile &#39;io.reactivex:rxandroid:1.1.0&#39;
-compile &#39;io.reactivex:rxjava:x.y.z&#39;
-</code></pre>
-
-<p>创建一个基本的Observable，被观察的对象，事件的发起者</p>
-
-<pre><code class="language-java">Observable&lt;String&gt; myObservable = Observable.create(
-                new Observable.OnSubscribe&lt;String&gt;() {
-                    @Override
-                    public void call(Subscriber&lt;? super String&gt; sub) {
-                        sub.onNext(&quot;Hello, world!&quot;);
-                        sub.onCompleted();
-                    }
-                }
-        );
-</code></pre>
-
-<p>创建事件的观察者，接受事件，<code>onNext</code>是接受到事件的回调，<code>onCompleted</code>是<code>Observable</code>发送完一系列时间结束的回调，<code>onError</code>是出错的回调</p>
-
-<pre><code class="language-java">   Subscriber&lt;String&gt; mySubscriber = new Subscriber&lt;String&gt;() {
-       @Override
-       public void onNext(String s) {
-           Log.d(TAG, &quot;onNext: &quot; + s);
-       }
-
-       @Override
-       public void onCompleted() {
-           Log.d(TAG, &quot;onCompleted: &quot;);
-       }
-
-       @Override
-       public void onError(Throwable e) {
-           Log.d(TAG, &quot;onError: &quot; + e.toString());
-       }
-   };
-</code></pre>
-
-<p>此时是不会打印出 log 的，原因是我们没有将<code>mySubscriber</code>订阅到<code>Observable</code>中</p>
-
-<pre><code class="language-java">myObservable.subscribe(mySubscriber);
-</code></pre>
-
-<p>LOG</p>
-
-<pre><code class="language-bash">D/MainActivity: onNext: Hello, world!
-D/MainActivity: onCompleted: 
-</code></pre>
-
-<h3 id="toc_8">更简洁的代码</h3>
-
-<p>RxJava为常见任务提供了很多内建的Observable创建函数。在以下这个例子中，Observable.just()发送一个消息然后完成，功能类似上面的代码</p>
-
-<pre><code class="language-java">Observable&lt;String&gt; myObservable =
-    Observable.just(&quot;Hello, world!&quot;);
-</code></pre>
-
-<p>在<code>Subscriber</code>中，我们并不需要关心<code>onCompleted</code>和<code>onError</code><br/>
-的情况，我们可以简化代码</p>
-
-<pre><code class="language-java">Action1&lt;String&gt; onNextAction = new Action1&lt;String&gt;() {
-    @Override
-    public void call(String s) {
-        Log.d(TAG, &quot;onNext: &quot; + s);
-    }
-};
-</code></pre>
-
-<p>我们来看看 <code>Action1</code>是什么鬼 </p>
-
-<pre><code class="language-java">/**
- * A one-argument action.
- */
-public interface Action1&lt;T&gt; extends Action {
-    void call(T t);
-}
-
-</code></pre>
-
-<p><code>Action1</code> 是一个接口，里面只有一个带泛华参数的<code>call</code>方法<br/>
-这个方法是无参无返回值的；由于<code>onCompleted()</code> 方法也是无参无返回值的，因此 <code>Action1</code> 可以被当成一个包装对象，将 <code>onCompleted()</code> 的内容打包起来将自己作为一个参数传入 <code>subscribe()</code> 以实现不完整定义的回调。</p>
-
-<p>同理 <code>onError</code> 和<code>onComplete</code></p>
-
-<pre><code class="language-java">Action1&lt;String&gt; onNextAction = new Action1&lt;String&gt;() {
-    // onNext()
-    @Override
-    public void call(String s) {
-        Log.d(tag, s);
-    }
-};
-Action1&lt;Throwable&gt; onErrorAction = new Action1&lt;Throwable&gt;() {
-    // onError()
-    @Override
-    public void call(Throwable throwable) {
-        // Error handling
-    }
-};
-Action0 onCompletedAction = new Action0() {
-    // onCompleted()
-    @Override
-    public void call() {
-        Log.d(tag, &quot;completed&quot;);
-    }
-};
-
-// 自动创建 Subscriber ，并使用 onNextAction 来定义 onNext()
-observable.subscribe(onNextAction);
-// 自动创建 Subscriber ，并使用 onNextAction 和 onErrorAction 来定义 onNext() 和 onError()
-observable.subscribe(onNextAction, onErrorAction);
-// 自动创建 Subscriber ，并使用 onNextAction、 onErrorAction 和 onCompletedAction 来定义 onNext()、 onError() 和 onCompleted()
-observable.subscribe(onNextAction, onErrorAction, onCompletedAction);
-</code></pre>
-
-<p><strong><code>ActionX</code> X 表示参数的个数，可以为0</strong></p>
-
-<h3 id="toc_9">线程控制</h3>
-
-<p>在不指定线程的情况下， RxJava 遵循的是线程不变的原则，即：在哪个线程调用 subscribe()，就在哪个线程生产事件；在哪个线程生产事件，就在哪个线程消费事件。如果需要切换线程，就需要用到 Scheduler （调度器）。</p>
-
-<p>我们可以随意控制 <code>Observable</code> 和<code>Subscriber</code>执行的线程</p>
-
-<ul>
-<li>subscribeOn(): 指定 subscribe() 所发生的线程，即 Observable.OnSubscribe 被激活时所处的线程。或者叫做事件产生的线程。</li>
-<li><p>observeOn(): 指定 Subscriber 所运行在的线程。或者叫做事件消费的线程。</p></li>
-<li><p>Schedulers.immediate(): 直接在当前线程运行，相当于不指定线程。这是默认的 Scheduler。</p></li>
-<li><p>Schedulers.newThread(): 总是启用新线程，并在新线程执行操作。</p></li>
-<li><p>Schedulers.io(): I/O 操作（读写文件、读写数据库、网络信息交互等）所使用的 Scheduler。行为模式和 newThread() 差不多，区别在于 io() 的内部实现是是用一个无数量上限的线程池，可以重用空闲的线程，因此多数情况下 io() 比 newThread() 更有效率。不要把计算工作放在 io() 中，可以避免创建不必要的线程。</p></li>
-<li><p>Schedulers.computation(): 计算所使用的 Scheduler。这个计算指的是 CPU 密集型计算，即不会被 I/O 等操作限制性能的操作，例如图形的计算。这个 Scheduler 使用的固定的线程池，大小为 CPU 核数。不要把 I/O 操作放在 computation() 中，否则 I/O 操作的等待时间会浪费 CPU。</p></li>
-<li><p>AndroidSchedulers.mainThread()，它指定的操作将在 Android 主线程运行。</p></li>
-</ul>
-
-<h2 id="toc_10">变换</h2>
-
-<p>比如我想在 hello world 中，添加一些字符串，我们可以在 Observable 发送的时候添加</p>
-
-<pre><code class="language-java">Observable.just(&quot;Hello, world! add someting.&quot;)
-    .subscribe(s -&gt; Log,d(&quot;TAG&quot;,s));
-</code></pre>
-
-<p>或者在接收的时候添加 </p>
-
-<pre><code class="language-java">Observable.just(&quot;Hello, world!&quot;)
-    .subscribe(s -&gt; Log,d(&quot;TAG&quot;,s + &quot;add someting.&quot;));
-</code></pre>
-
-<blockquote>
-<p>这里使用了 <code>lambda</code>表达式，使得语句更精简,Android N 即将开放对<code>lambda</code>表达式表达式的支持，目前 IDEA 已经支持了 <code>lambda</code></p>
-</blockquote>
-
-<p>但是这样代码就失去了通用性</p>
-
-<h3 id="toc_11">Operators</h3>
-
-<p>Operators在消息发送者Observable和消息消费者Subscriber之间起到操纵消息的作用。RxJava拥有大量的opetators</p>
-
-<h4 id="toc_12">map</h4>
-
-<p>map() operator可以被用于将已被发送的消息转换成另外一种形式</p>
-
-<pre><code class="language-java">Observable.just(&quot;Hello, world!&quot;)
-    .map(new Func1&lt;String, String&gt;() {
-        @Override
-        public String call(String s) {
-            return s + &quot;add someting.&quot;;
-        }
-    })
-    .subscribe(s -&gt; Log.d(&quot;TAG&quot;,s));
-</code></pre>
-
-<h4 id="toc_13">扩展</h4>
-
-<p>Observable和Subscriber能完成任何事情。</p>
-
-<p>Observable可以是一个数据库查询，Subscriber获得查询结果然后将其显示在屏幕上。你的Observable可以是屏幕上的一个点击，Subscriber响应该事件。你的Observable可以从网络上读取一个字节流，Subscriber将其写入本地磁盘中。 这是一个可以处理任何事情的通用框架。</p>
-
-<p>Observable和Subscriber与它们之间的一系列转换步骤是相互独立的。</p>
-
-<p>我们可以在消息发送者Observable和消息消费者Subscriber之间加入任意多个想要的map()函数。这个系统是高度可组合的：它很容易对数据进行操纵。只要operators符合输入输出的数据类型，那么我可以得到一个无穷尽的调用链。</p>
-
-<h4 id="toc_14">flatMap</h4>
-
-<p>假如我们现在有这样一个方法<br/>
- <code>Observable&lt;List&lt;String&gt;&gt; query(String text);</code></p>
-
-<p>我们希望打印出这些 string</p>
-
-<pre><code class="language-java"> query(&quot;Hello, world!&quot;)
-    .subscribe(urls -&gt; {
-        for (String url : urls) {
-            System.out.println(url);
-        }
-    });
-</code></pre>
-
-<p>毫无疑问这样的代码是丑陋的，我们失去了对数据流进行变幻的机会</p>
-
-<p>我们也可以在事件分发钱对 String list 做拆分，比如</p>
-
-<pre><code class="language-java">query(&quot;Hello, world!&quot;)
-    .subscribe(urls -&gt; {
-        Observable.from(urls)
-            .subscribe(url -&gt; System.out.println(url));
-    });
-</code></pre>
-
-<p>迷之缩进又出来了，我们更希望看到的应该是链式的调用的关系</p>
-
-<p>我们可以使用<code>Observable.flatMap()</code> 接受一个<code>Observable</code>然后分发成其他的<code>Observable</code></p>
-
-<pre><code class="language-java">query(&quot;Hello, world!&quot;)
-    .flatMap(new Func1&lt;List&lt;String&gt;, Observable&lt;String&gt;&gt;() {
-        @Override
-        public Observable&lt;String&gt; call(List&lt;String&gt; urls) {
-            return Observable.from(urls);
-        }
-    })
-    .subscribe(url -&gt; System.out.println(url));
- ```
- 
-### 更多的Operators
- Operators 可以将负责的逻辑分解为多段的链式调用，`Subscriber`并不需要知道这负责的链式关系，只管接受处理最后转换完成的事件
- 
- https://github.com/ReactiveX/RxJava/wiki/Alphabetical-List-of-Observable-Operators
-
-### 结束处理
-
-`onComplete()` 和 `onError()`表示分发事件的结束，两者是互斥的，在`Subscriber`可是监听是`onComplete()` 和 `onError()`
-
-* `onComplete()`：事件队列完结。RxJava 不仅把每个事件单独处理，还会把它们看做一个队列。RxJava 规定，当不会再有新的 onNext() 发出时，需要触发 onCompleted() 方法作为标志。
-* 
-
-
-```java
-Observable.just(&quot;Hello, world!&quot;)
-    .map(s -&gt; potentialException(s))
-    .map(s -&gt; anotherPotentialException(s))
-    .subscribe(new Subscriber&lt;String&gt;() {
-        @Override
-        public void onNext(String s) { System.out.println(s); }
-
-        @Override
-        public void onCompleted() { System.out.println(&quot;Completed!&quot;); }
-
-        @Override
-        public void onError(Throwable e) { System.out.println(&quot;Ouch!&quot;); }
-    });
-</code></pre>
-
-<ol>
-<li>当<code>Exception</code>被抛出时，<code>onError()</code>就会被调用</li>
-<li>在<code>operators</code>不需要处理<code>Exception</code>，只需要在<code>Subscriber</code>中处理就可以了</li>
-</ol>
-
-<h3 id="toc_15">Subscriptions</h3>
-
-<p>当我们调用<code>Observable.subscribe()</code>时，会返回<code>Subscription</code>，它表示<code>Observable</code> 和 <code>Subscriber</code> 的链接</p>
-
-<pre><code class="language-java">Subscription subscription = Observable.just(&quot;Hello, World!&quot;)
-    .subscribe(s -&gt; System.out.println(s));
-</code></pre>
-
-<p>可以通过 <code>Subscription</code>来断开链接</p>
-
-<pre><code class="language-java">subscription.unsubscribe();
-</code></pre>
-
-<h2 id="toc_16">Android 中的 rxjava</h2>
-
-<h2 id="toc_17">参考</h2>
-
-<blockquote>
-<p><a href="http://www.captechconsulting.com/blogs/getting-started-with-rxjava-and-android">http://www.captechconsulting.com/blogs/getting-started-with-rxjava-and-android</a><br/>
-<a href="http://reactivex.io/intro.html">http://reactivex.io/intro.html</a><br/>
-<a href="https://asce1885.gitbooks.io/android-rd-senior-advanced/content/che_di_le_jie_rxjava_ff08_yi_ff09_ji_chu_zhi_shi.html">https://asce1885.gitbooks.io/android-rd-senior-advanced/content/che_di_le_jie_rxjava_ff08_yi_ff09_ji_chu_zhi_shi.html</a><br/>
-<strong><a href="http://gank.io/post/560e15be2dca930e00da1083">http://gank.io/post/560e15be2dca930e00da1083</a></strong><br/>
-<a href="http://blog.danlew.net/2014/09/22/grokking-rxjava-part-2/">http://blog.danlew.net/2014/09/22/grokking-rxjava-part-2/</a><br/>
-<a href="http://blog.alexwan1989.com/2016/02/23/RxJava%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0(%E4%B8%80)/">http://blog.alexwan1989.com/2016/02/23/RxJava读书笔记(一)/</a></p>
-</blockquote>
-
-<p>unsubscribe(): 这是 Subscriber 所实现的另一个接口 Subscription 的方法，用于取消订阅。在这个方法被调用后，Subscriber 将不再接收事件。一般在这个方法调用前，可以使用 isUnsubscribed() 先判断一下状态。 unsubscribe() 这个方法很重要，因为在 subscribe() 之后， Observable 会持有 Subscriber 的引用，这个引用如果不能及时被释放，将有内存泄露的风险。所以最好保持一个原则：要在不再使用的时候尽快在合适的地方（例如 onPause() onStop() 等方法中）调用 unsubscribe() 来解除引用关系，以避免内存泄露的发生。</p>
-
-<p>传统的嵌套请求需要使用嵌套的 Callback 来实现。而通过 flatMap() ，可以把嵌套的请求写在一条链中，从而保持程序逻辑的清晰。</p>
-
-<p>defer()中的代码直到被订阅才会执行。</p>
-
-<p>1、just()<br/>
-指定特定的对象<br/>
-2、repeat()<br/>
-指定重复的次数<br/>
-3、defer()<br/>
-指定订阅的时机<br/>
-4、range()<br/>
-指定指定起始点和个数<br/>
-5、interval()<br/>
-指定间隔时间和对应的时间单位<br/>
-6、timer()<br/>
-指定延迟执行<br/>
-五、过滤Observer<br/>
-1、filter()<br/>
-过滤我们观测序列中不想要的值<br/>
-2、take()<br/>
-过滤指定前几个返回值<br/>
-3、takeLast()<br/>
-过滤指定后几个返回值，仅可用于完成的序列。<br/>
-4、distinct()<br/>
-去掉重复值<br/>
-5、distinctUntilChanged()<br/>
-执行去重，直到值发生变化时。<br/>
-6、first()<br/>
-获取第一个元素<br/>
-7、last()<br/>
-获取最后一个元素<br/>
-8、skip()<br/>
-与take()相反：跳过前几个元素<br/>
-9、skipLast()<br/>
-与takeLast()相反：跳过后几个元素<br/>
-10、elementAt()<br/>
-返回指定位置的元素<br/>
-11、elementAtOrDefault()<br/>
-返回指定位置元素，不存在时返回默认<br/>
-12、sample()<br/>
-指定的时间间隔里由Observable返回最近一次的数值：指定时间间隔，时间单位<br/>
-13、throttleFirst()<br/>
-指定的时间间隔里由Observable返回第一个的数值：指定时间间隔，时间单位<br/>
-14、timeout()<br/>
-设定的时间间隔内如果没有得到一个值则返回一个错误，超时获取到的元素不会被发送。<br/>
-15、Debounce()<br/>
-过滤掉由Observable发送的速率过快的元素，如果在一个指定的时间间隔过去了仍旧没有发射一个，那么它将发射最后的那个。<br/>
-六、转换Observables<br/>
-1、*map<br/>
-    •   map()<br/>
-    •   flatMap()<br/>
-    •   concatMap()<br/>
-    •   flatMapIterable()<br/>
-    •   switchMap()<br/>
-    •   scan()<br/>
-（1）、map()<br/>
-指定Func对元素进行操作<br/>
-（2）、flatMap()<br/>
-不能保证最终的顺序与源值顺序一致，在处理大量的Observable时，任意的Observable发生错误时，flatMap都会调用自己的onError()，并放弃整条链。<br/>
-（3）、cancatMap()<br/>
-解决flatMap()交叉问题，提供能够将发送的元素连续flat的函数，而不是合并。<br/>
-（4）、flatMapIterable()<br/>
-将源数据两两结合生成Iterable<br/>
-（5）、switchMap()<br/>
-每当源Observable发射一个新的数据项（Observable）时，它将取消订阅并停止监视之前那个数据项产生的Observable<br/>
-（6）、scan()<br/>
-指定函数来累加计算最终结果值，类似累加器。<br/>
-2、groupby()<br/>
-从列表中按照指定的规则：groupBy()来分组元素<br/>
-3、buffer()<br/>
-将源Observable变换一个新的Observable，新的Observable为指定count数的列表。指定count数时，还可带一个skip参数指定skip后返回count个的一个列表。同时还有一个timespan参数，指定间隔多少时间，来发送指定的列表。<br/>
-4、window()<br/>
-与buffer()相似，与buffer不同的是，它发送的是Observale对象。window(skip = 3 , count = 2).Observables中的每一个都发射原始Observable数据的一个子集，数量由count指定,最后发射一个onCompleted()结束.正如buffer()一样,window()也有一个skip参数。<br/>
-5、cast()<br/>
-源Observable中的每一项数据都转换为新的类型，把它变成了不同的类型</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/3/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133100538.html">
-                
-                  <h1>单身汪的自白</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>3.5期的项目终于要告一段落了， 解 bug 的心情如下</p>
-
-<p><img src="media/15299133100538/62caff97gw1f1p84nw5jig20dc07inpd.gif" alt=""/></p>
-
-<p><strong>是时候思考一波哲学问题了，我为什么单身？</strong><br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133100538.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/3/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='balabala.html'>balabala</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1223,6 +811,8 @@ Observable.just(&quot;Hello, world!&quot;)
 
       	<p class="cat-list">
         
+            <a href="%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86.html"><strong>产品经理</strong></a>
+        
             <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
         
             <a href="Android.html"><strong>Android</strong></a>
@@ -1246,6 +836,18 @@ Observable.just(&quot;Hello, world!&quot;)
 	      
 		      
 			      <li class="post">
+			        <a href="15316240502263.html">用户调研</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15316220023386.html">用户反馈发现问题</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15299133098726.html">abtest 数据分析</a>
 			      </li>
 		     
@@ -1259,18 +861,6 @@ Observable.just(&quot;Hello, world!&quot;)
 		      
 			      <li class="post">
 			        <a href="15299133099414.html">写在离开北京的前夕</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15299133099249.html">jenkins 平台搭建</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15299133099310.html">gitlab 搭建</a>
 			      </li>
 		     
 		  

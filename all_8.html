@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86.html">产品经理</a></li>
+        
             <li><a href="UserGrowth.html">UserGrowth</a></li>
         
             <li><a href="Android.html">Android</a></li>
@@ -109,6 +111,108 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15299133100082.html">
+                
+                  <h1>抽象工厂模式 Abstract Factory Pattern</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">定义</h2>
+
+<blockquote>
+<p>抽象工厂模式 Abstract Factory Pattern：提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。</p>
+</blockquote>
+
+<h2 id="toc_1">使用场景</h2>
+
+<ul>
+<li>一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。</li>
+<li>系统中有多于一个的产品族，而每次只使用其中某一产品族。</li>
+<li>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</li>
+<li>系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
+</ul>
+
+<h2 id="toc_2">UML 图</h2>
+
+<p><img src="media/15299133100082/14560648848499.png" alt=""/></p>
+
+<p>AbstractFactory：抽象工厂<br/>
+ConcreteFactory：具体工厂<br/>
+AbstractProduct：抽象产品<br/>
+Product：具体产品</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133100082.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/1</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133101993.html">
+                
+                  <h1>强引用、软引用、弱引用、虚引用</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">强引用 StrongReference</h2>
+
+<blockquote>
+<p>只要某个对象有强引用与之关联，JVM必定不会回收这个对象，即使在内存不足的情况下，JVM宁愿抛出OutOfMemory错误也不会回收这种对象</p>
+</blockquote>
+
+<p>若需要 jvm 回收此对象，可以将对象复制为 null</p>
+
+<pre><code class="language-java">Object o = new Object();   //  强引用  
+o = null;     // 帮助垃圾收集器回收此对象  
+</code></pre>
+
+<p><strong>但是如果这个o是全局的变量时，就需要在不用这个对象时赋值为null，因为强引用不会被垃圾回收。</strong></p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133101993.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/1/24</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15299133100598.html">
                 
@@ -551,101 +655,6 @@ Run -&gt; Edit Configurations -&gt; Defaults -&gt; Junit<br/>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133103865.html">
-                
-                  <h1>AIDL 学习</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">AIDL的作用</h2>
-
-<p>AIDL (Android Interface Definition Language) 是一种IDL 语言，用于生成可以在Android设备上两个进程之间进行进程间通信(interprocess communication, IPC)的代码。如果在一个进程中（例如Activity）要调用另一个进程中（例如Service）对象的操作，就可以使用AIDL生成可序列化的参数。</p>
-
-<h2 id="toc_1">选择AIDL的使用场合</h2>
-
-<p>官方文档特别提醒我们何时使用AIDL是必要的：只有你允许客户端从不同的应用程序为了进程间的通信而去访问你的service，以及想在你的service处理多线程。</p>
-
-<p>如果不需要进行不同应用程序间的并发通信(IPC)，you should create your interface by implementing a Binder；或者你想进行IPC，但不需要处理多线程的，则implement your interface using a Messenger。</p>
-
-<h2 id="toc_2">如何使用AIDL</h2>
-
-<h3 id="toc_3">先建立一个android工程，用作服务端</h3>
-
-<p>创建一个android工程，用来充当跨进程通信的服务端。</p>
-
-<h3 id="toc_4">2.创建一个包名用来存放aidl文件</h3>
-
-<p>创建一个包名用来存放aidl文件，在里面新建IMyService.aidl文件，如果需要访问自定义对象，还需要建立对象的aidl文件，这里我们由于使用了自定义对象Student，所以，还需要创建Student.aidl和Student.java。注意，这三个文件，需要都放在aidl文件夹下com.example.xuyushi.aidltest包里。下面描述如何写这三个文件。</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133103865.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2015/7/4</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133099695.html">
-                
-                  <h1>蓝牙学习</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">权限</h2>
-
-<p>有两种权限，至少需要一种权限</p>
-
-<ol>
-<li><code>BLUETOOTH</code>:执行任何蓝牙通信，例如请求一个连接、接受一个连接以及传输数据</li>
-<li><code>BLUETOOTH_ADMIN</code>：初始化设备查找或控制蓝牙设置</li>
-</ol>
-
-<blockquote>
-<p>如果你使用BLUETOOTH_ADMIN权限，那么必须拥有BLUETOOTH权限。<br/>
- 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133099695.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2015/7/1</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -698,6 +707,8 @@ Run -&gt; Edit Configurations -&gt; Defaults -&gt; Junit<br/>
 
       	<p class="cat-list">
         
+            <a href="%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86.html"><strong>产品经理</strong></a>
+        
             <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
         
             <a href="Android.html"><strong>Android</strong></a>
@@ -721,6 +732,18 @@ Run -&gt; Edit Configurations -&gt; Defaults -&gt; Junit<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15316240502263.html">用户调研</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15316220023386.html">用户反馈发现问题</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15299133098726.html">abtest 数据分析</a>
 			      </li>
 		     
@@ -734,18 +757,6 @@ Run -&gt; Edit Configurations -&gt; Defaults -&gt; Junit<br/>
 		      
 			      <li class="post">
 			        <a href="15299133099414.html">写在离开北京的前夕</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15299133099249.html">jenkins 平台搭建</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15299133099310.html">gitlab 搭建</a>
 			      </li>
 		     
 		  

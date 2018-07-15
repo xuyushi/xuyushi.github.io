@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86.html">产品经理</a></li>
+        
             <li><a href="UserGrowth.html">UserGrowth</a></li>
         
             <li><a href="Android.html">Android</a></li>
@@ -109,6 +111,89 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15299133099209.html">
+                
+                  <h1>快速搭建新项目框架3-Kotlin</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">gradle 修改</h2>
+
+<p>加入 kotlin 之后需要使用 kapt,gradle 修改为</p>
+
+<pre><code class="language-gradle">    //kotlin
+    //dagger
+    compile &quot;com.google.dagger:dagger:$rootProject.daggerVersion&quot;
+    compile &quot;com.google.dagger:dagger-android:$rootProject.daggerVersion&quot;
+    compile &quot;com.google.dagger:dagger-android-support:$rootProject.daggerVersion&quot;
+    kapt &quot;com.google.dagger:dagger-android-processor:$rootProject.daggerVersion&quot;
+    kapt &quot;com.google.dagger:dagger-compiler:$rootProject.daggerVersion&quot;
+
+    compile &quot;com.blankj:utilcode:$rootProject.androidUtilsVerson&quot;
+    //不加无法编译通过
+    compile &quot;org.jetbrains.kotlin:kotlin-stdlib-jre7:$rootProject.kotlin_version&quot;
+
+</code></pre>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133099209.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2017/11/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133100126.html">
+                
+                  <h1>快速搭建新项目框架2-mvp 结构</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>之前有两篇文章已经详细介绍过 mvp  <a href="http://xuyushi.github.io/2016/02/28/MVP/">Android 中的MVP 模式</a>    <a href="http://xuyushi.github.io/2016/04/30/%E5%9C%B0%E5%9B%BE%E5%8C%BA%E5%9F%9F%E7%BB%98%E5%88%B6%20MVP%20%E5%AE%9E%E8%B7%B5/">地图区域绘制 MVP 实践</a> ，本篇结合上篇的依赖注入使用<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133100126.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2017/10/29</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15299133100165.html">
                 
@@ -450,90 +535,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133102596.html">
-                
-                  <h1>gradle 插件开发</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">什么是Gradle插件？</h1>
-
-<p>在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：</p>
-
-<pre><code class="language-gradle">apply plugin: &#39;com.android.application&#39;
-</code></pre>
-
-<p>如果我们创建一个Library的话，就会变成：</p>
-
-<pre><code class="language-gradle">apply plugin: &#39;com.android.library&#39;
-</code></pre>
-
-<p>其实这就是在gradle脚本引用android为我们提供的插件，plugin表示插件，&#39;com.android.application’表示我们引用的插件名，通常是以包名来命名。<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133102596.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2017/6/3</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133104171.html">
-                
-                  <h1>gradle 插件开发</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">什么是Gradle插件？</h1>
-
-<p>在使用Android Studio进行开发的时候，我们创建一个Android工程，会默认生成一个build.gradle脚本，打开脚本你会看到以下代码：</p>
-
-<pre><code class="language-gradle">apply plugin: &#39;com.android.application&#39;
-</code></pre>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133104171.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2017/6/3</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -586,6 +587,8 @@
 
       	<p class="cat-list">
         
+            <a href="%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86.html"><strong>产品经理</strong></a>
+        
             <a href="UserGrowth.html"><strong>UserGrowth</strong></a>
         
             <a href="Android.html"><strong>Android</strong></a>
@@ -609,6 +612,18 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15316240502263.html">用户调研</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15316220023386.html">用户反馈发现问题</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15299133098726.html">abtest 数据分析</a>
 			      </li>
 		     
@@ -622,18 +637,6 @@
 		      
 			      <li class="post">
 			        <a href="15299133099414.html">写在离开北京的前夕</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15299133099249.html">jenkins 平台搭建</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15299133099310.html">gitlab 搭建</a>
 			      </li>
 		     
 		  
