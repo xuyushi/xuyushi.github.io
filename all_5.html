@@ -112,6 +112,359 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15299133103723.html">
+                
+                  <h1>Android Application 从零开始 1 ——Gradle</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>本节主要介绍了 app 的 gradle 的构建<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133103723.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/7/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133103764.html">
+                
+                  <h1>Android Application 从零开始 0 ——前言</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h1 id="toc_0">叨叨叨</h1>
+
+<p>有没有想过在没有业务的压力，没有项目接手时一堆繁杂代码的困扰，没有产品天马行空奇葩的需求，一个理想的 Android APP 是怎样一种架构。</p>
+
+<p>从2016年起，我一直在持续学习 Android 的各种框架，力求使得项目更清晰，更易于扩展。从mvp 到 mvvm，到之后的依赖注入、rxjava、clean 架构。每一次都让我惊叹，原来代码可以写的这么解耦。<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133103764.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/7/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133099560.html">
+                
+                  <h1>近期学习计划</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 学习android优秀的开源库</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 学习一门脚本语言</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 熟悉常见命令行</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 学习Web基础（HTML/CSS/JS/html5)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 学习数据库相关</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> Git工具管理</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 《java编程思想》</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/6/27</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='balabala.html'>balabala</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133100860.html">
+                
+                  <h1>volley源码解析</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h1 id="toc_0">总体框架</h1>
+
+<p><img src="media/15299133100860/14668223056349.png" alt=""/><br/>
+上面是 Volley 的总体设计图，主要是通过两种Dispatch Thread不断从RequestQueue中取出请求，根据是否已缓存调用Cache或Network这两类数据获取接口之一，从内存缓存或是服务器取得请求的数据，然后交由ResponseDelivery去做结果分发及回调处理。</p>
+
+<ul>
+<li>Volley：Volley 对外暴露的 API，通过 newRequestQueue(…) 函数新建并启动一个请求队列RequestQueue。</li>
+<li>Request：表示一个请求的抽象类。StringRequest、JsonRequest、ImageRequest 都是它的子类，表示某种类型的请求。</li>
+<li>RequestQueue：表示请求队列，<strong>里面包含一个CacheDispatcher(用于处理走缓存请求的调度线程)</strong>、<strong>NetworkDispatcher数组(用于处理走网络请求的调度线程)</strong>，<strong>一个ResponseDelivery(返回结果分发接口)</strong>，通过 start() 函数启动时会启动CacheDispatcher和NetworkDispatchers。</li>
+<li>CacheDispatcher：一个线程，用于调度处理走缓存的请求。启动后会不断从缓存请求队列中取请求处理，队列为空则等待，请求处理结束则将结果传递给ResponseDelivery去执行后续处理。当结果未缓存过、缓存失效或缓存需要刷新的情况下，该请求都需要重新进入NetworkDispatcher去调度处理。</li>
+<li>NetworkDispatcher：一个线程，用于调度处理走网络的请求。启动后会不断从网络请求队列中取请求处理，队列为空则等待，请求处理结束则将结果传递给ResponseDelivery去执行后续处理，并判断结果是否要进行缓存。</li>
+<li>ResponseDelivery：返回结果分发接口，目前只有基于ExecutorDelivery的在入参 handler 对应线程内进行分发。</li>
+<li>HttpStack：处理 Http 请求，返回请求结果。目前 Volley 中有基于 HttpURLConnection 的HurlStack和 基于 Apache HttpClient 的HttpClientStack。</li>
+<li>Network：调用HttpStack处理请求，并将结果转换为可被ResponseDelivery处理的NetworkResponse。</li>
+<li>Cache：缓存请求结果，Volley 默认使用的是基于 sdcard 的DiskBasedCache。NetworkDispatcher得到请求结果后判断是否需要存储在 Cache，CacheDispatcher会从 Cache 中取缓存结果。</li>
+</ul>
+
+<h2 id="toc_1">流程图</h2>
+
+<p><img src="media/15299133100860/14669054043578.png" alt=""/></p>
+
+<h2 id="toc_2">详细设计</h2>
+
+<h3 id="toc_3">类关系图</h3>
+
+<p><img src="media/15299133100860/14669054493954.png" alt=""/></p>
+
+<h2 id="toc_4">RequestQueue 构造方法</h2>
+
+<p>实例化 <code>RequestQueue</code> 的方法，有以下几个</p>
+
+<pre><code class="language-java">public static RequestQueue newRequestQueue(Context context, HttpStack stack, int maxDiskCacheBytes)
+public static RequestQueue newRequestQueue(Context context, int maxDiskCacheBytes)
+public static RequestQueue newRequestQueue(Context context, HttpStack stack)
+public static RequestQueue newRequestQueue(Context context)
+</code></pre>
+
+<p>最终都会调用到下面这个方法</p>
+
+<pre><code class="language-java">public static RequestQueue newRequestQueue(Context context, HttpStack stack, int maxDiskCacheBytes) {
+    //创建出缓存目录
+        File cacheDir = new File(context.getCacheDir(), DEFAULT_CACHE_DIR);
+
+        String userAgent = &quot;volley/0&quot;;
+        try {
+            String packageName = context.getPackageName();
+            PackageInfo info = context.getPackageManager().getPackageInfo(packageName, 0);
+            userAgent = packageName + &quot;/&quot; + info.versionCode;
+        } catch (NameNotFoundException e) {
+        }
+
+    //如果外面没指定stack 那么安装默认，根据 sdk 的版本决定
+        if (stack == null) {
+            if (Build.VERSION.SDK_INT &gt;= 9) {
+                stack = new HurlStack();
+            } else {
+                // Prior to Gingerbread, HttpUrlConnection was unreliable.
+                // See: http://android-developers.blogspot.com/2011/09/androids-http-clients.html
+                stack = new HttpClientStack(AndroidHttpClient.newInstance(userAgent));
+            }
+        }
+        //注意
+        Network network = new BasicNetwork(stack);
+        
+        RequestQueue queue;
+        //更具最大缓存大小实例化出，RequestQueue
+        if (maxDiskCacheBytes &lt;= -1)
+        {
+            // No maximum size specified
+            queue = new RequestQueue(new DiskBasedCache(cacheDir), network);
+        }
+        else
+        {
+            // Disk cache size specified
+            queue = new RequestQueue(new DiskBasedCache(cacheDir, maxDiskCacheBytes), network);
+        }
+
+        queue.start();
+
+        return queue;
+    }
+
+</code></pre>
+
+<p>在最后调用了 <code>queue.start();</code></p>
+
+<pre><code class="language-java"> public void start() {
+        stop();  // Make sure any currently running dispatchers are stopped.
+        // Create the cache dispatcher and start it.
+        mCacheDispatcher = new CacheDispatcher(mCacheQueue, mNetworkQueue, mCache, mDelivery);
+        mCacheDispatcher.start();
+
+        // Create network dispatchers (and corresponding threads) up to the pool size.
+        for (int i = 0; i &lt; mDispatchers.length; i++) {
+            NetworkDispatcher networkDispatcher = new NetworkDispatcher(mNetworkQueue, mNetwork,
+                    mCache, mDelivery);
+            mDispatchers[i] = networkDispatcher;
+            networkDispatcher.start();
+        }
+    }
+</code></pre>
+
+<p>这里先是创建了一个CacheDispatcher的实例，然后调用了它的start()方法，接着在一个for循环里去创建NetworkDispatcher的实例，并分别调用它们的start()方法。这里的线程数量可以自己定义</p>
+
+<p>调用 <code>add</code>方法可以将网络请求加入队列中</p>
+
+<pre><code class="language-java">public &lt;T&gt; Request&lt;T&gt; add(Request&lt;T&gt; request) {
+        // Tag the request as belonging to this queue and add it to the set of current requests.
+        request.setRequestQueue(this);
+        synchronized (mCurrentRequests) {
+            mCurrentRequests.add(request);
+        }
+
+        // Process requests in the order they are added.
+        request.setSequence(getSequenceNumber());
+        request.addMarker(&quot;add-to-queue&quot;);
+
+        // If the request is uncacheable, skip the cache queue and go straight to the network.
+        if (!request.shouldCache()) {
+            mNetworkQueue.add(request);
+            return request;
+        }
+
+        // Insert request into stage if there&#39;s already a request with the same cache key in flight.
+        synchronized (mWaitingRequests) {
+            String cacheKey = request.getCacheKey();
+            if (mWaitingRequests.containsKey(cacheKey)) {
+                // There is already a request in flight. Queue up.
+                Queue&lt;Request&lt;?&gt;&gt; stagedRequests = mWaitingRequests.get(cacheKey);
+                if (stagedRequests == null) {
+                    stagedRequests = new LinkedList&lt;Request&lt;?&gt;&gt;();
+                }
+                stagedRequests.add(request);
+                mWaitingRequests.put(cacheKey, stagedRequests);
+                if (VolleyLog.DEBUG) {
+                    VolleyLog.v(&quot;Request for cacheKey=%s is in flight, putting on hold.&quot;, cacheKey);
+                }
+            } else {
+                // Insert &#39;null&#39; queue for this cacheKey, indicating there is now a request in
+                // flight.
+                mWaitingRequests.put(cacheKey, null);
+                mCacheQueue.add(request);
+            }
+            return request;
+        }
+    }
+</code></pre>
+
+<p><img src="media/15299133100860/14669058350149.png" alt=""/></p>
+
+<h3 id="toc_5">CacheDispatcher</h3>
+
+<p><img src="media/15299133100860/14669060727722.png" alt=""/></p>
+
+<h3 id="toc_6">NetworkDispatcher.java</h3>
+
+<p><img src="media/15299133100860/14669061093224.png" alt=""/></p>
+
+<h1 id="toc_7">参考</h1>
+
+<blockquote>
+<p><a href="http://blog.csdn.net/guolin_blog/article/details/17656437">http://blog.csdn.net/guolin_blog/article/details/17656437</a><br/>
+<a href="http://p.codekk.com/blogs/detail/54cfab086c4761e5001b2542">http://p.codekk.com/blogs/detail/54cfab086c4761e5001b2542</a></p>
+</blockquote>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/6/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133102646.html">
+                
+                  <h1>Git 总结</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">创建版本</h2>
+
+<h3 id="toc_1">创建本地仓库</h3>
+
+<pre><code class="language-bash">$ git init
+</code></pre>
+
+<pre><code class="language-bash">提示：Initialized empty Git repository in
+/Users/xuyushi/Downloads/.git/`
+</code></pre>
+
+<p>会在本地生成 .git 文件<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133102646.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/6/24</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15299133102762.html">
                 
                   <h1>ASimpleCache缓存源码分析</h1>
@@ -418,347 +771,6 @@ startService的时候调用</li>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133103997.html">
-                
-                  <h1>Activity Mode</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>应用中的每一个Activity都是进行不同的事物处理。以邮件客户端为例，InboxActivity目的就是为了展示收件箱，这个Activity不建议创建成多个实例。而ComposeMailActivity则是用来撰写邮件，可以实例化多个此Activity对象。合理地设计Activity对象是否使用已有的实例还是多次创建，会使得交互设计更加良好，也能避免很多问题。</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133103997.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/6/3</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133100416.html">
-                
-                  <h1>地图区域绘制 MVP 实践</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>最近在做一个地图区域绘制的一个需求，如下</p>
-
-<ol>
-<li>在地图区域内戳点绘制范围</li>
-<li>在点击初始点连成区域</li>
-<li>绘制过程中可撤销，绘点过程中有提示文案展示<br/>
-......</li>
-</ol>
-
-<p>结合最近学习的 MVP 模式做了一个 demo</p>
-
-<p><img src="media/15299133100416/2016043001.gif" alt=""/></p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133100416.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/4/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133101874.html">
-                
-                  <h1>Listview crash 分析</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>灰度的时候出的 crash</p>
-
-<pre><code class="language-text">java.lang.IllegalStateException: The content of the adapter has changed but ListView did not receive a notification. Make sure the content of your adapter is not modified from a background thread, but only from the UI thread. Make sure your adapter calls notifyDataSetChanged() when its content changes. [in ListView(2131624042, class android.widget.ListView) with Adapter(class com.sankuai.meituan.meituanwaimaibusiness.modules.order.adapter.j)]
-    at android.widget.ListView.layoutChildren(ListView.java:1572)
-    at android.widget.AbsListView.onLayout(AbsListView.java:2586)
-    at android.view.View.layout(View.java:15752)
-    at android.view.ViewGroup.layout(ViewGroup.java:4932)
-    at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1692)
-    at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1534)
-    at android.widget.LinearLayout.onLayout(LinearLayout.java:1443)
-    at android.view.View.layout(View.java:15752)
-    at android.view.ViewGroup.layout(ViewGroup.java:4932)
-    at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1692)
-    at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1534)
-    at android.widget.LinearLayout.onLayout(LinearLayout.java:1443)
-    at android.view.View.layout(View.java:15752)
-    at android.view.ViewGroup.layout(ViewGroup.java:4932)
-    at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)
-    at android.widget.FrameLayout.onLayout(FrameLayout.java:388)
-    at android.view.View.layout(View.java:15752)
-    at android.view.ViewGroup.layout(ViewGroup.java:4932)
-    at com.android.internal.widget.ActionBarOverlayLayout.onLayout(ActionBarOverlayLayout.java:464)
-    at android.view.View.layout(View.java:15752)
-    at android.view.ViewGroup.layout(ViewGroup.java:4932)
-    at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)
-    at android.widget.FrameLayout.onLayout(FrameLayout.java:388)
-    at android.view.View.layout(View.java:15752)
-    at android.view.ViewGroup.layout(ViewGroup.java:4932)
-    at android.view.ViewRootImpl.performLayout(ViewRootImpl.java:2410)
-    at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:2125)
-    at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1292)
-    at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:6678)
-    at android.view.Choreographer$CallbackRecord.run(Choreographer.java:813)
-    at android.view.Choreographer.doCallbacks(Choreographer.java:613)
-    at android.view.Choreographer.doFrame(Choreographer.java:583)
-    at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:799)
-    at android.os.Handler.handleCallback(Handler.java:733)
-    at android.os.Handler.dispatchMessage(Handler.java:95)
-    at android.os.Looper.loop(Looper.java:146)
-    at android.app.ActivityThread.main(ActivityThread.java:5752)
-    at java.lang.reflect.Method.invokeNative(Native Method)
-    at java.lang.reflect.Method.invoke(Method.java:515)
-    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1291)
-    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1107)
-    at dalvik.system.NativeStart.main(Native Method)
-</code></pre>
-
-<blockquote>
-<p>The content of the adapter has changed but ListView did not receive a notification. Make sure the content of your adapter is not modified from a background thread, but only from the UI thread. Make sure your adapter calls notifyDataSetChanged() when its content changes.</p>
-</blockquote>
-
-<p>大概的意思是当 adapter 的数据改变时要及时调用<code>notifyDataSetChanged()</code>，并且是在 UI 线程进行的，检查了<code>OrderAdpater</code>的<code>setData()</code>调用处，均在 UI 线程</p>
-
-<p>查看 ListView 源码，找到抛出异常的地方</p>
-
-<pre><code class="language-java">// Handle the empty set by removing all views that are visible
-// and calling it a day
-if (mItemCount == 0) {
- resetList();
- invokeOnItemScrollListener();
- return;
-} else if (mItemCount != mAdapter.getCount()) {
- throw new IllegalStateException(&quot;The content of the adapter has changed but &quot;
-         + &quot;ListView did not receive a notification. Make sure the content of &quot;
-         + &quot;your adapter is not modified from a background thread, but only from &quot;
-         + &quot;the UI thread. Make sure your adapter calls notifyDataSetChanged() &quot;
-         + &quot;when its content changes. [in ListView(&quot; + getId() + &quot;, &quot; + getClass()
-         + &quot;) with Adapter(&quot; + mAdapter.getClass() + &quot;)]&quot;);
-}
-
-</code></pre>
-
-<p>可以看出 <code>mItemCount != mAdapter.getCount()</code>导致的。</p>
-
-<p><code>mAdapter.getCount()</code> 很好理解，就是我们复写Adapter 的 <code>getCount()</code>方法。</p>
-
-<p>的调用处有2个地方</p>
-
-<ol>
-<li><p>在 <code>public void setAdapter(ListAdapter adapter)</code>中 <br/>
-<code>mItemCount = mAdapter.getCount();</code></p></li>
-<li><p>在<code>onMeasure()</code>时<br/>
-<code>mItemCount = mAdapter == null ? 0 : mAdapter.getCount();</code></p>
-<blockquote>
-<p>所以有时没有调用<code>notify</code>并不会引起崩溃</p>
-</blockquote></li>
-<li><p>还有一个地方比较隐蔽，在<code>ListView</code>的父类的父类<code>AdapterView</code>中,在<code>notifyDataSetChanged()</code>时调用</p></li>
-</ol>
-
-<pre><code class="language-java">        @Override
-        public void onChanged() {
-            mDataChanged = true;
-            mOldItemCount = mItemCount;
-            mItemCount = getAdapter().getCount();
-
-            // Detect the case where a cursor that was previously invalidated has
-            // been repopulated with new data.
-            if (AdapterView.this.getAdapter().hasStableIds() &amp;&amp; mInstanceState != null
-                    &amp;&amp; mOldItemCount == 0 &amp;&amp; mItemCount &gt; 0) {
-                AdapterView.this.onRestoreInstanceState(mInstanceState);
-                mInstanceState = null;
-            } else {
-                rememberSyncState();
-            }
-            checkFocus();
-            requestLayout();
-        }
-</code></pre>
-
-<p><strong>所以崩溃的原因就是list 的数据变化时，没有及时<code>notifyDataSetChanged()</code>或者<code>onMeasure()</code>导致<code>mItemCount</code>和<code>getCount()</code>的数据不一致</strong></p>
-
-<p>在检查我们的adapter 的 <code>setData()</code> 方法</p>
-
-<pre><code class="language-text">    public void setData(ArrayList&lt;Order&gt; data) {
-        this.mOrderList = data;
-        notifyDataSetChanged();
-    }
-    
-        public void notifyDataSetChanged() {
-        mHandler.removeMessages(MSG_NOTIFY_DATA_CHANGED);
-        mHandler.sendMessage(mHandler.obtainMessage(MSG_NOTIFY_DATA_CHANGED));
-    }
-    
-    public OrderAdapter(Context context, String page, boolean autoRefresh) {
-        mContext = context;
-        mOrderViewBinder = new OrderViewBinder(context, page);
-        mAutoRefreshable = autoRefresh;
-        mHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                int what = msg.what;
-                switch (what) {
-                    case MSG_NOTIFY_DATA_CHANGED:
-                        OrderAdapter.super.notifyDataSetChanged();
-
-                        if (mAutoRefreshable) {
-                            Message refreshMsg = mHandler.obtainMessage(MSG_NOTIFY_DATA_CHANGED);
-                            mHandler.sendMessageDelayed(refreshMsg, REFRESH_FREQ);
-                        }
-                    default:
-                        return;
-                }
-            }
-        };
-    }
-
-</code></pre>
-
-<p>在改变数据之后并没有及时的<code>notifyDataSetChanged()</code>，而是发了一个 message ，在 handler中在调用<code>notifyDataSetChanged</code>，在数据改变之后，可能 handler 还没收到消息，导致<code>mItemCount</code>和<code>getCount()</code>的数据不一致</p>
-
-<h3 id="toc_0">解决办法</h3>
-
-<ol>
-<li>在<code>handler</code>中在对数据赋值并notify</li>
-<li>在 <code>setdata</code>之后立即notify</li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/4/11</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133103267.html">
-                
-                  <h1>robolectric 单元测试</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>[TOC]<br/>
-<img src="media/15299133103267/638283-f57c55ef447541aa.png" alt=""/></p>
-
-<p>robolectric的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133103267.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/4/3</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133101643.html">
-                
-                  <h1>Material Design</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">吐槽</h2>
-
-<p>作为一个 Android developer，没有什么比拿着 UI 设计的一堆 iOS 风格的设计 来做需求更恶心的了，基本所有空间都要照着 iOS 来画一遍，Material Design 辣么酷炫 为什么 UI在设计的阶段不设计成 Material Design风格呢？</p>
-
-<p>今天试了几个比较Support包中比较典型的Material Design控件，后期会在学习下Material Design的设计思想和理念，希望能拉着 UI 做一次Material Design 分享，改变我们 APP 的 iOS 风格啊。<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133101643.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/3/26</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -836,31 +848,31 @@ if (mItemCount == 0) {
 	      
 		      
 			      <li class="post">
-			        <a href="15316240502263.html">用户调研</a>
+			        <a href="15318371632829.html">业务流程设计</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15316220023386.html">用户反馈发现问题</a>
+			        <a href="15318354800090.html">完整功能点设计</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133098726.html">abtest 数据分析</a>
+			        <a href="15318107329806.html">产品调研</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133098793.html">ABtest 平台框架</a>
+			        <a href="15316593971293.html">用思维导图梳理用户需求</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			        <a href="15317376170439.html">需求优先级</a>
 			      </li>
 		     
 		  

@@ -112,6 +112,347 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15299133103997.html">
+                
+                  <h1>Activity Mode</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>应用中的每一个Activity都是进行不同的事物处理。以邮件客户端为例，InboxActivity目的就是为了展示收件箱，这个Activity不建议创建成多个实例。而ComposeMailActivity则是用来撰写邮件，可以实例化多个此Activity对象。合理地设计Activity对象是否使用已有的实例还是多次创建，会使得交互设计更加良好，也能避免很多问题。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133103997.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/6/3</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133100416.html">
+                
+                  <h1>地图区域绘制 MVP 实践</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>最近在做一个地图区域绘制的一个需求，如下</p>
+
+<ol>
+<li>在地图区域内戳点绘制范围</li>
+<li>在点击初始点连成区域</li>
+<li>绘制过程中可撤销，绘点过程中有提示文案展示<br/>
+......</li>
+</ol>
+
+<p>结合最近学习的 MVP 模式做了一个 demo</p>
+
+<p><img src="media/15299133100416/2016043001.gif" alt=""/></p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133100416.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/4/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133101874.html">
+                
+                  <h1>Listview crash 分析</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>灰度的时候出的 crash</p>
+
+<pre><code class="language-text">java.lang.IllegalStateException: The content of the adapter has changed but ListView did not receive a notification. Make sure the content of your adapter is not modified from a background thread, but only from the UI thread. Make sure your adapter calls notifyDataSetChanged() when its content changes. [in ListView(2131624042, class android.widget.ListView) with Adapter(class com.sankuai.meituan.meituanwaimaibusiness.modules.order.adapter.j)]
+    at android.widget.ListView.layoutChildren(ListView.java:1572)
+    at android.widget.AbsListView.onLayout(AbsListView.java:2586)
+    at android.view.View.layout(View.java:15752)
+    at android.view.ViewGroup.layout(ViewGroup.java:4932)
+    at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1692)
+    at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1534)
+    at android.widget.LinearLayout.onLayout(LinearLayout.java:1443)
+    at android.view.View.layout(View.java:15752)
+    at android.view.ViewGroup.layout(ViewGroup.java:4932)
+    at android.widget.LinearLayout.setChildFrame(LinearLayout.java:1692)
+    at android.widget.LinearLayout.layoutVertical(LinearLayout.java:1534)
+    at android.widget.LinearLayout.onLayout(LinearLayout.java:1443)
+    at android.view.View.layout(View.java:15752)
+    at android.view.ViewGroup.layout(ViewGroup.java:4932)
+    at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)
+    at android.widget.FrameLayout.onLayout(FrameLayout.java:388)
+    at android.view.View.layout(View.java:15752)
+    at android.view.ViewGroup.layout(ViewGroup.java:4932)
+    at com.android.internal.widget.ActionBarOverlayLayout.onLayout(ActionBarOverlayLayout.java:464)
+    at android.view.View.layout(View.java:15752)
+    at android.view.ViewGroup.layout(ViewGroup.java:4932)
+    at android.widget.FrameLayout.layoutChildren(FrameLayout.java:453)
+    at android.widget.FrameLayout.onLayout(FrameLayout.java:388)
+    at android.view.View.layout(View.java:15752)
+    at android.view.ViewGroup.layout(ViewGroup.java:4932)
+    at android.view.ViewRootImpl.performLayout(ViewRootImpl.java:2410)
+    at android.view.ViewRootImpl.performTraversals(ViewRootImpl.java:2125)
+    at android.view.ViewRootImpl.doTraversal(ViewRootImpl.java:1292)
+    at android.view.ViewRootImpl$TraversalRunnable.run(ViewRootImpl.java:6678)
+    at android.view.Choreographer$CallbackRecord.run(Choreographer.java:813)
+    at android.view.Choreographer.doCallbacks(Choreographer.java:613)
+    at android.view.Choreographer.doFrame(Choreographer.java:583)
+    at android.view.Choreographer$FrameDisplayEventReceiver.run(Choreographer.java:799)
+    at android.os.Handler.handleCallback(Handler.java:733)
+    at android.os.Handler.dispatchMessage(Handler.java:95)
+    at android.os.Looper.loop(Looper.java:146)
+    at android.app.ActivityThread.main(ActivityThread.java:5752)
+    at java.lang.reflect.Method.invokeNative(Native Method)
+    at java.lang.reflect.Method.invoke(Method.java:515)
+    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1291)
+    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1107)
+    at dalvik.system.NativeStart.main(Native Method)
+</code></pre>
+
+<blockquote>
+<p>The content of the adapter has changed but ListView did not receive a notification. Make sure the content of your adapter is not modified from a background thread, but only from the UI thread. Make sure your adapter calls notifyDataSetChanged() when its content changes.</p>
+</blockquote>
+
+<p>大概的意思是当 adapter 的数据改变时要及时调用<code>notifyDataSetChanged()</code>，并且是在 UI 线程进行的，检查了<code>OrderAdpater</code>的<code>setData()</code>调用处，均在 UI 线程</p>
+
+<p>查看 ListView 源码，找到抛出异常的地方</p>
+
+<pre><code class="language-java">// Handle the empty set by removing all views that are visible
+// and calling it a day
+if (mItemCount == 0) {
+ resetList();
+ invokeOnItemScrollListener();
+ return;
+} else if (mItemCount != mAdapter.getCount()) {
+ throw new IllegalStateException(&quot;The content of the adapter has changed but &quot;
+         + &quot;ListView did not receive a notification. Make sure the content of &quot;
+         + &quot;your adapter is not modified from a background thread, but only from &quot;
+         + &quot;the UI thread. Make sure your adapter calls notifyDataSetChanged() &quot;
+         + &quot;when its content changes. [in ListView(&quot; + getId() + &quot;, &quot; + getClass()
+         + &quot;) with Adapter(&quot; + mAdapter.getClass() + &quot;)]&quot;);
+}
+
+</code></pre>
+
+<p>可以看出 <code>mItemCount != mAdapter.getCount()</code>导致的。</p>
+
+<p><code>mAdapter.getCount()</code> 很好理解，就是我们复写Adapter 的 <code>getCount()</code>方法。</p>
+
+<p>的调用处有2个地方</p>
+
+<ol>
+<li><p>在 <code>public void setAdapter(ListAdapter adapter)</code>中 <br/>
+<code>mItemCount = mAdapter.getCount();</code></p></li>
+<li><p>在<code>onMeasure()</code>时<br/>
+<code>mItemCount = mAdapter == null ? 0 : mAdapter.getCount();</code></p>
+<blockquote>
+<p>所以有时没有调用<code>notify</code>并不会引起崩溃</p>
+</blockquote></li>
+<li><p>还有一个地方比较隐蔽，在<code>ListView</code>的父类的父类<code>AdapterView</code>中,在<code>notifyDataSetChanged()</code>时调用</p></li>
+</ol>
+
+<pre><code class="language-java">        @Override
+        public void onChanged() {
+            mDataChanged = true;
+            mOldItemCount = mItemCount;
+            mItemCount = getAdapter().getCount();
+
+            // Detect the case where a cursor that was previously invalidated has
+            // been repopulated with new data.
+            if (AdapterView.this.getAdapter().hasStableIds() &amp;&amp; mInstanceState != null
+                    &amp;&amp; mOldItemCount == 0 &amp;&amp; mItemCount &gt; 0) {
+                AdapterView.this.onRestoreInstanceState(mInstanceState);
+                mInstanceState = null;
+            } else {
+                rememberSyncState();
+            }
+            checkFocus();
+            requestLayout();
+        }
+</code></pre>
+
+<p><strong>所以崩溃的原因就是list 的数据变化时，没有及时<code>notifyDataSetChanged()</code>或者<code>onMeasure()</code>导致<code>mItemCount</code>和<code>getCount()</code>的数据不一致</strong></p>
+
+<p>在检查我们的adapter 的 <code>setData()</code> 方法</p>
+
+<pre><code class="language-text">    public void setData(ArrayList&lt;Order&gt; data) {
+        this.mOrderList = data;
+        notifyDataSetChanged();
+    }
+    
+        public void notifyDataSetChanged() {
+        mHandler.removeMessages(MSG_NOTIFY_DATA_CHANGED);
+        mHandler.sendMessage(mHandler.obtainMessage(MSG_NOTIFY_DATA_CHANGED));
+    }
+    
+    public OrderAdapter(Context context, String page, boolean autoRefresh) {
+        mContext = context;
+        mOrderViewBinder = new OrderViewBinder(context, page);
+        mAutoRefreshable = autoRefresh;
+        mHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                int what = msg.what;
+                switch (what) {
+                    case MSG_NOTIFY_DATA_CHANGED:
+                        OrderAdapter.super.notifyDataSetChanged();
+
+                        if (mAutoRefreshable) {
+                            Message refreshMsg = mHandler.obtainMessage(MSG_NOTIFY_DATA_CHANGED);
+                            mHandler.sendMessageDelayed(refreshMsg, REFRESH_FREQ);
+                        }
+                    default:
+                        return;
+                }
+            }
+        };
+    }
+
+</code></pre>
+
+<p>在改变数据之后并没有及时的<code>notifyDataSetChanged()</code>，而是发了一个 message ，在 handler中在调用<code>notifyDataSetChanged</code>，在数据改变之后，可能 handler 还没收到消息，导致<code>mItemCount</code>和<code>getCount()</code>的数据不一致</p>
+
+<h3 id="toc_0">解决办法</h3>
+
+<ol>
+<li>在<code>handler</code>中在对数据赋值并notify</li>
+<li>在 <code>setdata</code>之后立即notify</li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/4/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133103267.html">
+                
+                  <h1>robolectric 单元测试</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>[TOC]<br/>
+<img src="media/15299133103267/638283-f57c55ef447541aa.png" alt=""/></p>
+
+<p>robolectric的最大特别是运行测试程序时不需要设备或者模拟器，在电脑中进行就可以了，自然测试程序的运行效率可以大大提升。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133103267.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/4/3</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133101643.html">
+                
+                  <h1>Material Design</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">吐槽</h2>
+
+<p>作为一个 Android developer，没有什么比拿着 UI 设计的一堆 iOS 风格的设计 来做需求更恶心的了，基本所有空间都要照着 iOS 来画一遍，Material Design 辣么酷炫 为什么 UI在设计的阶段不设计成 Material Design风格呢？</p>
+
+<p>今天试了几个比较Support包中比较典型的Material Design控件，后期会在学习下Material Design的设计思想和理念，希望能拉着 UI 做一次Material Design 分享，改变我们 APP 的 iOS 风格啊。<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133101643.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/3/26</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15299133103337.html">
                 
                   <h1>Android 中的 rxjava</h1>
@@ -742,315 +1083,6 @@ RealSubject: 真实主题角色</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133099503.html">
-                
-                  <h1>迭代器模式 Iterator Pattern</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">定义</h2>
-
-<blockquote>
-<p>迭代器模式 Iterator Pattern 提供一个方法顺序访问一个聚合对象中的个个元素，而不是暴露其内部的表示</p>
-</blockquote>
-
-<h2 id="toc_1">使用场景</h2>
-
-<ul>
-<li>访问一个聚合对象的内容而无须暴露它的内部表示。</li>
-<li>需要为聚合对象提供多种遍历方式。</li>
-<li>为遍历不同的聚合结构提供一个统一的接口。<br/>
-## UML 图
-<img src="media/15299133099503/14562354344010.jpg" alt=""/></li>
-</ul>
-
-<p>迭代器角色(Iterator)：迭代器角色负责定义访问和遍历元素的接口。<br/>
-具体迭代器角色(Concrete Iterator)：具体迭代器角色要实现迭代器接口，并要记录遍历中的当前位置。<br/>
-容器角色(Container)：容器角色负责提供创建具体迭代器角色的接口。<br/>
-具体容器角色(Concrete Container)：具体容器角色实现创建具体迭代器角色的接口。这个具体迭代器角色与该容器的结构相关。<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133099503.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/2/23</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133099787.html">
-                
-                  <h1>组合模式 Composite Pattern</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">定义</h2>
-
-<blockquote>
-<p>代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。</p>
-
-<h2 id="toc_1">使用场景</h2>
-</blockquote>
-
-<ul>
-<li>需要表示一个对象整体或部分层次，在具有整体和部分的层次结构中，希望通过一种方式忽略整体与部分的差异，可以一致地对待它们。</li>
-<li>让客户能够忽略不同对象层次的变化，客户端可以针对抽象构件编程，无须关心对象层次结构的细节。</li>
-</ul>
-
-<h2 id="toc_2">UML 图</h2>
-
-<p><img src="media/15299133099787/14562390427827.png" alt=""/></p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133099787.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/2/23</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133100361.html">
-                
-                  <h1>外观模式 Facade Pattern</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">定义</h2>
-
-<blockquote>
-<p>外观模式(Facade Pattern)：外部与一个子系统的通信必须通过一个统一的外观对象进行，为子系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。外观模式又称为门面模式，它是一种对象结构型模式。</p>
-</blockquote>
-
-<h2 id="toc_1">使用场景</h2>
-
-<ul>
-<li>当要为一个复杂子系统提供一个简单接口时可以使用外观模式。该接口可以满足大多数用户的需求，而且用户也可以越过外观类直接访问子系统。</li>
-<li>客户程序与多个子系统之间存在很大的依赖性。引入外观类将子系统与客户以及其他子系统解耦，可以提高子系统的独立性和可移植性。</li>
-<li>在层次化结构中，可以使用外观模式定义系统中每一层的入口，层与层之间不直接产生联系，而通过外观类建立联系，降低层之间的耦合度。</li>
-</ul>
-
-<h2 id="toc_2">UML 图</h2>
-
-<p><img src="media/15299133100361/14561498047745.png" alt=""/></p>
-
-<p>Facade: 外观角色<br/>
-SubSystem:子系统角色</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133100361.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/2/22</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133100466.html">
-                
-                  <h1>命令模式 Command Pattern</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">定义</h2>
-
-<blockquote>
-<p>将一个请求封装为一个对象，从而使我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。</p>
-</blockquote>
-
-<h2 id="toc_1">使用场景</h2>
-
-<ul>
-<li>系统需要将请求调用者和请求接收者解耦，使得调用者和接收者不直接交互。</li>
-<li>系统需要在不同的时间指定请求、将请求排队和执行请求。</li>
-<li>系统需要支持命令的撤销(Undo)操作和恢复(Redo)操作。</li>
-<li>系统需要将一组操作组合在一起，即支持宏命令</li>
-</ul>
-
-<h2 id="toc_2">UML 图</h2>
-
-<p><img src="media/15299133100466/14561465850883.png" alt=""/></p>
-
-<p>AbstractFactory：抽象工厂<br/>
-ConcreteFactory：具体工厂<br/>
-AbstractProduct：抽象产品<br/>
-Product：具体产品</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133100466.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/2/22</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133100569.html">
-                
-                  <h1>单例模式 Singleton Pattern</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">定义</h2>
-
-<blockquote>
-<p>单例模式(Singleton Pattern)：单例模式确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。</p>
-</blockquote>
-
-<h2 id="toc_1">使用场景</h2>
-
-<ul>
-<li>系统只需要一个实例对象，如系统要求提供一个唯一的序列号生成器，或者需要考虑资源消耗太大而只允许创建一个对象。</li>
-<li>客户调用类的单个实例只允许使用一个公共访问点，除了该公共访问点，不能通过其他途径访问该实例</li>
-</ul>
-
-<h2 id="toc_2">简单实现</h2>
-
-<pre><code class="language-java">package io.github.xuyushi.singleton;
-
-/**
- * Created by xuyushi on 16/2/22.
- */
-public class Singleton {
-    private volatile static Singleton instance;
-
-    private Singleton() {
-
-    }
-
-    public static Singleton getInstance() {
-        if (instance == null) {
-            synchronized (Singleton.class) {
-                if (instance == null) {
-                    instance = new Singleton();
-                }
-            }
-        }
-        return instance;
-    }
-}
-
-
-</code></pre>
-
-<h2 id="toc_3">优缺点</h2>
-
-<ul>
-<li>优点
-<ul>
-<li>提供了对唯一实例的受控访问。因为单例类封装了它的唯一实例，所以它可以严格控制客户怎样以及何时访问它，并为设计及开发团队提供了共享的概念。</li>
-<li>由于在系统内存中只存在一个对象，因此可以节约系统资源，对于一些需要频繁创建和销毁的对象，单例模式无疑可以提高系统的性能</li>
-</ul></li>
-<li>缺点
-<ul>
-<li>由于单例模式中没有抽象层，因此单例类的扩展有很大的困难。</li>
-<li>单例类的职责过重，在一定程度上违背了“单一职责原则”。因为单例类既充当了工厂角色，提供了工厂方法，同时又充当了产品角色，包含一些业务方法，将产品的创建和产品的本身的功能融合到一起。</li>
-<li>滥用单例将带来一些负面问题，如为了节省资源将数据库连接池对象设计为单例类，可能会导致共享连接池对象的程序过多而出现连接池溢出；现在很多面向对象语言(如Java、C#)的运行环境都提供了自动垃圾回收的技术，因此，如果实例化的对象长时间不被利用，系统会认为它是垃圾，会自动销毁并回收资源，下次利用时又将重新实例化，这将导致对象状态的丢失。<br/>
-## 总结</li>
-</ul></li>
-<li>单例模式只包含一个单例角色：在单例类的内部实现只生成一个实例，同时它提供一个静态的工厂方法，让客户可以使用它的唯一实例；<strong>为了防止在外部对其实例化，将其构造函数设计为私有</strong>。</li>
-<li>单例模式的目的是保证一个类仅有一个实例，并提供一个访问它的全局访问点。单例类拥有一个私有构造函数，确保用户无法通过new关键字直接实例化它。除此之外，该模式中包含一个静态私有成员变量与静态公有的工厂方法。该工厂方法负责检验实例的存在性并实例化自己，然后存储在静态成员变量中，以确保只有一个实例被创建。</li>
-<li>单例模式的主要优点在于提供了对唯一实例的受控访问并可以节约系统资源；其主要缺点在于因为缺少抽象层而难以扩展，且单例类职责过重。</li>
-<li>单例模式适用情况包括：系统只需要一个实例对象；客户调用类的单个实例只允许使用一个公共访问点。</li>
-</ul>
-
-<h2 id="toc_4">参考</h2>
-
-<blockquote>
-<p><a href="http://design-patterns.readthedocs.org/zh_CN/latest/creational_patterns/abstract_factory.html">http://design-patterns.readthedocs.org/zh_CN/latest/creational_patterns/abstract_factory.html</a><br/>
-『head first 设计模式』</p>
-</blockquote>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/2/22</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1128,31 +1160,31 @@ public class Singleton {
 	      
 		      
 			      <li class="post">
-			        <a href="15316240502263.html">用户调研</a>
+			        <a href="15318371632829.html">业务流程设计</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15316220023386.html">用户反馈发现问题</a>
+			        <a href="15318354800090.html">完整功能点设计</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133098726.html">abtest 数据分析</a>
+			        <a href="15318107329806.html">产品调研</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133098793.html">ABtest 平台框架</a>
+			        <a href="15316593971293.html">用思维导图梳理用户需求</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			        <a href="15317376170439.html">需求优先级</a>
 			      </li>
 		     
 		  

@@ -112,6 +112,226 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15299133099249.html">
+                
+                  <h1>jenkins 平台搭建</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">安装</h2>
+
+<h3 id="toc_1">java 环境搭建</h3>
+
+<pre><code class="language-bash">java -version
+</code></pre>
+
+<p>如果显示Java版本号，说明已经正确安装，如果显示没有该命令，需要安装Java：<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133099249.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/4/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133099310.html">
+                
+                  <h1>gitlab 搭建</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h1 id="toc_0">安装</h1>
+
+<pre><code class="language-bash">curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+yum install gitlab-ce
+</code></pre>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133099310.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/4/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133099366.html">
+                
+                  <h1>Android sdk 搭建</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">Step 1. Download and Install Android SDK.</h2>
+
+<pre><code class="language-bash">mkdir -p /opt/sdk-tools-linux-3859397
+cd /opt/sdk-tools-linux-3859397
+sudo wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
+sudo unzip sdk-tools-linux-3859397.zip
+cd /opt
+sudo chown -R root:root sdk-tools-linux-3859397
+sudo ln -s sdk-tools-linux-3859397 android-sdk
+</code></pre>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133099366.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/4/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133099121.html">
+                
+                  <h1>Maven 搭建</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">安装</h2>
+
+<p>下载 </p>
+
+<pre><code class="language-bash">wget -P /usr/local http://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.6.0-02-unix.tar.gz
+</code></pre>
+
+<p>安装</p>
+
+<pre><code class="language-bash"># cd /usr/local
+# mkdir nexus
+# tar -zxvf nexus-3.6.0-02-unix.tar.gz -C nexus //解压缩到nexus文件夹（其中包含nexus-3.6.0-02和sonatype-work）
+
+# cd nexus
+# mv nexus-3.6.0-02/ nexus
+</code></pre>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133099121.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2018/4/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133099083.html">
+                
+                  <h1>快速搭建新项目框架3-Kotlin</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">gradle 修改</h2>
+
+<p>加入 kotlin 之后需要使用 kapt,gradle 修改为</p>
+
+<pre><code class="language-gradle">    //kotlin
+    //dagger
+    compile &quot;com.google.dagger:dagger:$rootProject.daggerVersion&quot;
+    compile &quot;com.google.dagger:dagger-android:$rootProject.daggerVersion&quot;
+    compile &quot;com.google.dagger:dagger-android-support:$rootProject.daggerVersion&quot;
+    kapt &quot;com.google.dagger:dagger-android-processor:$rootProject.daggerVersion&quot;
+    kapt &quot;com.google.dagger:dagger-compiler:$rootProject.daggerVersion&quot;
+
+    compile &quot;com.blankj:utilcode:$rootProject.androidUtilsVerson&quot;
+    //不加无法编译通过
+    compile &quot;org.jetbrains.kotlin:kotlin-stdlib-jre7:$rootProject.kotlin_version&quot;
+
+</code></pre>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133099083.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2017/11/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15299133099209.html">
                 
                   <h1>快速搭建新项目框架3-Kotlin</h1>
@@ -313,228 +533,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133102446.html">
-                
-                  <h1>Architecture Components -- Guide to App Architecture</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">应用程序架构指南</h1>
-
-<p>本指南使用于具有构建应用程序基础并且想了解构建强大、优质的应用程序的最佳实践和推荐架构的开发人员。</p>
-
-<blockquote>
-<p>注：本指南假定读者熟悉 Android Framework。如果你是一个应用程序开发的新手，请参阅入门指南系列培训，其中包含了本指南先决条件的相关主题。</p>
-</blockquote>
-
-<h2 id="toc_1">应用开发者面临的常见问题</h2>
-
-<p>在大多数情况下，桌面应用程序在启动器快捷方式中有一个单一的入口并且作为单独的独立进程运行，与桌面应用程序不同，Android 应用具有更复杂的结构。一个典型的 Android 应用是由多个应用程序组件构成的，包括 activity，fragment，service，content provider 和 broadcast receiver。</p>
-
-<p>这些应用程序组件中的大部分声明在由 Android OS 使用的应用程序清单中，用来决定如何将应用融入到用户设备的整体体验中。尽管如前所述，传统的桌面应用程序作为独立进程运行，但是正确的编写 Android 应用程序需要更加灵活，因为用户会同过设备上不同的应用程序组织成自己的方式不断切换流程和任务。<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133102446.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2017/6/30</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133101129.html">
-                
-                  <h1>Architecture Components--ViewModel</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">ViewModel</h1>
-
-<p>ViewModel 类是被设计用来存储和管理 UI 相关的数据，以便在配置更改（如：屏幕旋转）时数据可以保留下来。</p>
-
-<p>应用程序组件（如：activity 和 fragment）具有一个由 Android Framework 管理的生命周期。Framework 可能会完全不受控制的根据某些用户操作或设备事件来决定销毁或重新创建它们。</p>
-
-<p>由于这些对象有可能被操作系统销毁或重新创建，所以保存在它们中的任何数据都会丢失。例如：如果 activity 中有一个用户列表，当 activity 因为配置更改而重新创建时，新的 activity 必须重新获取用户列表。对于简单的数据，activity 可以使用 onSaveInstanceState() 方法从 onCreate() 中的 bundle 里恢复数据，但是这种方式只适用于少量数据（如：UI 状态），不适用于大量数据（如：用户列表）。</p>
-
-<p>另一个问题是，这些 UI 控制器（activity，fragment 等）经常需要发起一些需要一定时间才能返回的异步调用。UI 控制器需要管理这些调用并且在其被销毁时清理它们避免潜在的内存泄漏。这需要大量的维护工作，并且在由于配置更改导致对象被重新创建的情况下十分浪费资源，因为需要重新发起相同的请求。<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133101129.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2017/6/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133101795.html">
-                
-                  <h1>Architecture Components--LiveData</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">LiveData</h1>
-
-<p><code>LiveData</code> 是一个 data holder  类，持有一个可被观察的值。与普通的observable不同的是，<code>LiveData</code>遵循app 组件的生命周期。它能决定在某个生命周期是否被观察</p>
-
-<p><code>LiveData</code> 在观察者生命周期的 STARTED 和 RESUMED 状态是可被激活的</p>
-
-<pre><code class="language-java">public class LocationLiveData extends LiveData&lt;Location&gt; {
-    private LocationManager locationManager;
-
-    private SimpleLocationListener listener = new SimpleLocationListener() {
-        @Override
-        public void onLocationChanged(Location location) {
-            setValue(location);
-        }
-    };
-
-    public LocationLiveData(Context context) {
-        locationManager = (LocationManager) context.getSystemService(
-                Context.LOCATION_SERVICE);
-    }
-
-    @Override
-    protected void onActive() {
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
-    }
-
-    @Override
-    protected void onInactive() {
-        locationManager.removeUpdates(listener);
-    }
-}
-</code></pre>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133101795.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2017/6/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133102342.html">
-                
-                  <h1>Architecture Components--Lifecycle</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>通过 <code>android.arch.lifecycle</code> 包提供的接口和类，我们可以构建出能感知到生命周期的组件。这些组件可以根据当前的Fragment 或者 Activity 的生命周期做出相应的调整</p>
-
-<p>大部分有生命周期的 app 组件都定义在了Android 的Framework 层。操作系统和Framework 维护着这些组件的生命周期。这些都是 Android 运行的核心。</p>
-
-<p>如果想要在一个Activity 中显示设备的地理位置。通常代码是这样的<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133102342.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2017/6/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133101591.html">
-                
-                  <h1>Maven 仓库的使用和搭建</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>Maven项目使用项目对象模型（Project Object Model，POM）来配置。Maven 是一种构建工具，Maven 包是由所谓 POM（Project Object Model）所定义的文件<br/>
-项目对象模型存储在名为 pom.xml 的文件中。<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133101591.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2017/6/3</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -612,31 +610,31 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15316240502263.html">用户调研</a>
+			        <a href="15318371632829.html">业务流程设计</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15316220023386.html">用户反馈发现问题</a>
+			        <a href="15318354800090.html">完整功能点设计</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133098726.html">abtest 数据分析</a>
+			        <a href="15318107329806.html">产品调研</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133098793.html">ABtest 平台框架</a>
+			        <a href="15316593971293.html">用思维导图梳理用户需求</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			        <a href="15317376170439.html">需求优先级</a>
 			      </li>
 		     
 		  

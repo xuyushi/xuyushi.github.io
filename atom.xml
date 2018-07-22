@@ -4,7 +4,7 @@
   <title><![CDATA[Xu Yushi's Blog]]></title>
   <link href="xuyushi.github.io/atom.xml" rel="self"/>
   <link href="xuyushi.github.io/"/>
-  <updated>2018-07-15T20:28:52+08:00</updated>
+  <updated>2018-07-15T20:29:31+08:00</updated>
   <id>xuyushi.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -13,12 +13,571 @@
   <generator uri="http://www.mweb.im/">MWeb</generator>
   
   <entry>
+    <title type="html"><![CDATA[业务流程设计]]></title>
+    <link href="xuyushi.github.io/15318371632829.html"/>
+    <updated>2018-07-17T22:19:23+08:00</updated>
+    <id>xuyushi.github.io/15318371632829.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">业务流程图</h2>
+
+<ul>
+<li>产品设计的过程文件，类似于建筑图纸</li>
+<li>产品设计，就是流程设计</li>
+<li>凡是产品需求必有流程图</li>
+</ul>
+
+<h2 id="toc_1">做产品就是做流程</h2>
+
+<ul>
+<li>流程对了，后面的原型，需求文档，评审都容易了</li>
+<li>传承，让你自己、同事、后续接手的人很容易交接</li>
+<li>让参与者明确知道业务是如何运作的，快速开展工作</li>
+<li>明确产品优化的过程与收益，设置考核指标更合理</li>
+</ul>
+
+<span id="more"></span><!-- more -->
+
+<h2 id="toc_2">不同阶段，业务流程的作用</h2>
+
+<ul>
+<li><strong>功能优化：</strong>看之前的业务流程，找改进点</li>
+<li><strong>独立功能设计：</strong>单通道流程图，看用户，信息的流向</li>
+<li><strong>独立产品设计：</strong>泳道图，复杂的用户，信息交互处理</li>
+<li><strong>原型交互设计：</strong>页面流程图，规定页面的交互方向</li>
+</ul>
+
+<h2 id="toc_3">基本业务流程图包含什么</h2>
+
+<ul>
+<li><strong>事项：</strong>要完成的事情是什么？</li>
+<li><strong>用户：</strong>分别有哪些人会参与到流程中</li>
+<li><strong>信息：</strong>数据是怎么流转的</li>
+<li><strong>异常：</strong>异常处理</li>
+</ul>
+
+<pre><code class="language-mermaid">graph TD
+op1[明确用户与任务]
+op2[开始与结束]
+op3[明确顺序]
+op4[异常情况]
+op5[优化调整]
+op6[输出]
+
+op1 --&gt; op2
+op2 --&gt; op3
+op3--&gt; op4
+op4--&gt; op5
+op5 --&gt; op6
+
+</code></pre>
+
+<h2 id="toc_4">单通道的业务流程技巧</h2>
+
+<ul>
+<li><strong>主线清晰：</strong>关键路径、关键任务一目了然</li>
+<li><strong>先主后次：</strong>先搞定关键路径，再补充细节</li>
+<li><strong>优化调整：</strong>先把最长的路径想到，再合并操作流程</li>
+</ul>
+
+<h2 id="toc_5">业务流程图能力</h2>
+
+<ul>
+<li><strong>多看：</strong>多调研，体验各同类功能点</li>
+<li><strong>多想：</strong>用产品的视角想想为什么是这样的设计</li>
+<li><strong>多画：</strong></li>
+<li><strong>多交流：</strong>多和功底好的同事交流</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[完整功能点设计]]></title>
+    <link href="xuyushi.github.io/15318354800090.html"/>
+    <updated>2018-07-17T21:51:20+08:00</updated>
+    <id>xuyushi.github.io/15318354800090.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">所有产品都是由小功能构成的</h2>
+
+<ul>
+<li>产品经理不是功能经理，好的产品经理一定能做好功能</li>
+<li>产品早期，功能为主，产品成熟后，对原有功能的迭代为主</li>
+<li>完整的功能，一般需要经过简单的评审才能提交研发</li>
+</ul>
+
+<span id="more"></span><!-- more -->
+
+<h2 id="toc_1">明确功能目的</h2>
+
+<p><strong>对用户</strong>对哪类用户具体有什么好处？有没有受影响的用户</p>
+
+<ul>
+<li>增加内容，提升准确度（如选择标签）</li>
+<li>减少操作，提升便利性（推荐入口）</li>
+<li>功能补充，提升体验</li>
+</ul>
+
+<h2 id="toc_2">目的性如何定</h2>
+
+<h3 id="toc_3">对平台（内）</h3>
+
+<p>对内部数据、操作人员是否提升的效率</p>
+
+<ul>
+<li>增加渠道，引入新用户</li>
+<li>减少重复操作</li>
+<li>数据分层，提升精准度</li>
+</ul>
+
+<h3 id="toc_4">商业</h3>
+
+<p>是提高收入？还是提升了转化率</p>
+
+<ul>
+<li>拉倒付费转化率</li>
+<li>增加新产品，创造心收入点</li>
+<li>对原有数做重新组合，提高转化率</li>
+</ul>
+
+<h2 id="toc_5">制定功能方案</h2>
+
+<ul>
+<li>可能的解决方案有哪些</li>
+<li>梳理每个方案的简要业务流程</li>
+<li>针对性的分析，选择合适的方案</li>
+<li>开发难度/见效/用户场景</li>
+</ul>
+
+<h2 id="toc_6">方案细化</h2>
+
+<ul>
+<li><strong>流程细化：</strong>梳理业务流程，增加异常情况</li>
+<li><strong>考核指标：</strong>上线后如何评定功能点的效果</li>
+</ul>
+
+<h2 id="toc_7">原型和文档</h2>
+
+<p>略</p>
+
+<h2 id="toc_8">运营推广方案</h2>
+
+<ul>
+<li>找位置：用户的关键路径</li>
+<li>定内容：匹配用户和场景，制定文案和推广形式</li>
+<li>要效果：运营的转化效果，后续的计划</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[产品调研]]></title>
+    <link href="xuyushi.github.io/15318107329806.html"/>
+    <updated>2018-07-17T14:58:52+08:00</updated>
+    <id>xuyushi.github.io/15318107329806.html</id>
+    <content type="html"><![CDATA[
+<p>功能调研何产品调研有什么区别</p>
+
+<ul>
+<li>共同点
+<ul>
+<li>目的性明确</li>
+<li>注重底层逻辑流程</li>
+<li>用户需求如何被满足</li>
+</ul></li>
+<li>不同点
+<ul>
+<li>功能调研
+<ul>
+<li>重业务流程</li>
+<li>交互体验</li>
+<li>突出亮点</li>
+</ul></li>
+<li>产品调研
+<ul>
+<li>重功能迭代过程</li>
+<li>重产品结构</li>
+<li>运营逻辑</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<span id="more"></span><!-- more -->    
+
+<h2 id="toc_0">功能点调研</h2>
+
+<h3 id="toc_1">明确调研目的</h3>
+
+<table>
+<thead>
+<tr>
+<th>调研的类型</th>
+<th>目的</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>竞争对手上了新功能</td>
+<td>能不能抄？要不要抄？调研后给播送 作决策依据</td>
+</tr>
+<tr>
+<td>准备上的新功能，先看看别人怎么做的</td>
+<td>哪个好？怎么抄？缩短产品设计的过程</td>
+</tr>
+<tr>
+<td>以自我成长学习为目的</td>
+<td>为什么这么做？判断自己的分析能力和判断力</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_2">数据表现</h3>
+
+<ul>
+<li>覆盖率</li>
+<li>发布量</li>
+<li>成交量</li>
+</ul>
+
+<h3 id="toc_3">对于自己的产品来说的意义</h3>
+
+<ul>
+<li>要不要抄：和用户群是否符合？数据情况如何 </li>
+<li>能不能抄：是否有技术壁垒？是否有特殊门槛</li>
+<li>结论是什么</li>
+</ul>
+
+<h3 id="toc_4">核心问题</h3>
+
+<ul>
+<li>新的功能点有哪些？最关键（你准备调研）的是哪个</li>
+<li>用户、需求、场景是否被满足了</li>
+<li>底层逻辑、产品流程大概是什么样</li>
+<li>产品的亮点是什么？为什么</li>
+<li>数据表现</li>
+</ul>
+
+<h3 id="toc_5">功能调研的误区</h3>
+
+<ul>
+<li>没结论</li>
+<li>不愿意做</li>
+<li>杂</li>
+<li>费要提改进意见</li>
+</ul>
+
+<h2 id="toc_6">针对产品的调研</h2>
+
+<ul>
+<li>了解产品功能，看产品的表现</li>
+<li>通过迭代的过程，看产品实现的逻辑</li>
+<li>透过一个产品，看穿一个行业</li>
+</ul>
+
+<h3 id="toc_7">针对独立产品的调研怎么做</h3>
+
+<ul>
+<li>用户：有哪些类型的用户</li>
+<li>场景：不同类型的用户，分别在什么场景下会使用</li>
+<li>需求：产品满足了哪些需求 </li>
+</ul>
+
+<h3 id="toc_8">产品逻辑</h3>
+
+<ul>
+<li>用户的流向：都有哪些用户，怎么发生联系的</li>
+<li>数据的流向：产生的数据流是如何运转的</li>
+<li>汇合点：用户、数据的在哪个关键页面回合</li>
+<li>关键路径：用户操作的关键功能、页面是什么</li>
+</ul>
+
+<h3 id="toc_9">通过迭代路径找到关键点</h3>
+
+<h3 id="toc_10">产品的表现如何</h3>
+
+<ul>
+<li>数据表现：使用数据、排名数据、评分数据</li>
+<li>用户表现：用户点评、产品点评</li>
+</ul>
+
+<h3 id="toc_11">多个相同的产品调研</h3>
+
+<ul>
+<li>找相同 找不同</li>
+<li>关键功能的差异</li>
+</ul>
+
+<h3 id="toc_12">出结论</h3>
+
+<ul>
+<li>相比优点、缺点、亮点</li>
+<li>如果要抄，抄什么？怎么抄？</li>
+</ul>
+
+<h3 id="toc_13">明确目的比功能全面更重要</h3>
+
+<ul>
+<li>目标：用来做什么？期望</li>
+<li>成本：如果自己做，能用 是如何 的？</li>
+<li>关联性：第三方产品和你完成目标之间的关联</li>
+<li>其他：价格、服务、会不会倒闭等</li>
+</ul>
+
+<h1 id="toc_14">产品调研 的误区</h1>
+
+<ul>
+<li>产品调研 不等于行业调研</li>
+<li>二三手数据不能证明你正确</li>
+<li>非得加改进建议</li>
+<li>大而全</li>
+<li>强烈的个人倾向</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[用思维导图梳理用户需求]]></title>
+    <link href="xuyushi.github.io/15316593971293.html"/>
+    <updated>2018-07-15T20:56:37+08:00</updated>
+    <id>xuyushi.github.io/15316593971293.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">产品设计的核心三要素</h2>
+
+<p>产品设计就是不断解决用户在特定场景下的需求，增加、减少需求并非最关键，关键是能不能解决用户的问题</p>
+
+<ul>
+<li>用户</li>
+<li>场景</li>
+<li>需求</li>
+</ul>
+
+<span id="more"></span><!-- more -->
+
+<h2 id="toc_1">思维导图的思考方式</h2>
+
+<ul>
+<li>用户：当想到一个功能，先不用考虑怎么实现，而应该想谁会用</li>
+<li>场景：用户分别在什么情况下会用（感兴趣）</li>
+<li>问题：用户<strong>分别</strong>在上述场景下，会遇到什么问题挑战</li>
+<li>方案：用户现在的解决方案是什么</li>
+</ul>
+
+<h2 id="toc_2">举个例子</h2>
+
+<p>输入法的面对面翻译功能</p>
+
+<blockquote>
+<p>类似于翻译机的实时翻译功能</p>
+</blockquote>
+
+<p><img src="media/15316593971293/15317283713594.jpg" alt=""/></p>
+
+<h3 id="toc_3">潜在的用户有哪些</h3>
+
+<ul>
+<li>谁会面对面翻译感兴趣</li>
+<li>思维导图列出所有感兴趣的人</li>
+<li>不用思考行不行，把能想到的穷举</li>
+</ul>
+
+<h3 id="toc_4">不同的用户分别碰到什么问题</h3>
+
+<ul>
+<li><strong>分别</strong>！！ 不要怕重复</li>
+<li>不同的群体，不同的场景，问题是不同的</li>
+<li>区分“问题”和“中性次”，如时间，价格，要写成时间短，价格高等</li>
+</ul>
+
+<h3 id="toc_5">现在的解决方案是</h3>
+
+<ul>
+<li>是用户现有的解决方案 ，而不是你要做的功能解决方案</li>
+<li>有很多用户也没有解决方案</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[需求优先级]]></title>
+    <link href="xuyushi.github.io/15317376170439.html"/>
+    <updated>2018-07-16T18:40:17+08:00</updated>
+    <id>xuyushi.github.io/15317376170439.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">四象限看用户量与发生频率</h2>
+
+<ul>
+<li>优先解决大量用户的高频问题，基础体验</li>
+<li>最后解决少量用户的低频问题，超好体验
+<span id="more"></span><!-- more --></li>
+</ul>
+
+<h3 id="toc_1">案例 某垂直电商平台</h3>
+
+<ol>
+<li>订单流程、商品详情页</li>
+<li>设置、个人资料</li>
+<li>商家入驻、商家管理后台</li>
+<li>发票</li>
+</ol>
+
+<h2 id="toc_2">看开发难度和效果</h2>
+
+<ul>
+<li>优先见效快开发难度不大的，迭代</li>
+<li>最后做费劲见效慢的，可能是未来的机会</li>
+</ul>
+
+<h2 id="toc_3">看产品价值</h2>
+
+<ul>
+<li>迫切程度：用户是不是真的非常需要？还是空想的？</li>
+<li>付费意愿：用户是否会为了解决问题而付费</li>
+<li>ARPU:如果开发出来，用户会为之付多少钱</li>
+</ul>
+
+<h2 id="toc_4">看对目标群体的熟悉程度</h2>
+
+<ul>
+<li>你是否深入了解用户使用场景</li>
+<li>你对用户群体的理解是否足够深入</li>
+<li>如果不熟悉，就相伴法熟悉，否则不要动手</li>
+</ul>
+
+<h2 id="toc_5">总结结论</h2>
+
+<ul>
+<li><strong>用户：</strong>这个功能，第一批的核心用户是谁</li>
+<li><strong>场景：</strong>这个用户在什么场景下会使用</li>
+<li><strong>问题：</strong>解决了这个用户最大的痛点是什么</li>
+<li><strong>对比：</strong>和用户现在的解决方案比，体验/效率提升有多大</li>
+</ul>
+
+<h2 id="toc_6">其他</h2>
+
+<ul>
+<li>优先级需求的定义要基于当时的环境和实际情况</li>
+<li>用户的需求是一个动态变化的过程</li>
+<li>产品和运营不分家，再确保满足基本型需求的同时，也要适当考虑满足用户期望型和兴奋型需求</li>
+</ul>
+
+<h2 id="toc_7">用户需求重要性的判断标准：</h2>
+
+<ul>
+<li>用户基数</li>
+<li>使用频率</li>
+<li>类别重要性
+<ul>
+<li>基本型：产品的性能，安全，兼容性等，具有最高优先级</li>
+<li>期望型：功能渗透率 x 人均使用次数 x 类别重要性百分比</li>
+<li>兴奋型</li>
+</ul></li>
+</ul>
+
+<h1 id="toc_8">思考题</h1>
+
+<p>【作业题目】给以下需求优先级排序滴滴打车早期第一版核心打车功能已上线，需要对下列功能优先级排序</p>
+
+<ol>
+<li>新增“愿等时间”，多等司机一会儿，提高打车成功率</li>
+<li>电量优化，叫车更省电</li>
+<li>优先文字叫车，更容易更快打到车</li>
+<li>定位信号弱时，可自己设置上车点</li>
+<li>支付时默认选车券，省钱便捷</li>
+<li>即时聊天开放，沟通更方便</li>
+</ol>
+
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>用户量</th>
+<th>频率</th>
+<th>价值</th>
+<th>需求类别</th>
+<th>开发成本</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1 新增“愿等时间”，多等司机一会儿，提高打车成功率</td>
+<td>较多</td>
+<td>较多</td>
+<td>高</td>
+<td>基本</td>
+<td>低</td>
+</tr>
+<tr>
+<td>2 电量优化，叫车更省电</td>
+<td>很少</td>
+<td>很少</td>
+<td>低</td>
+<td>兴奋</td>
+<td>高</td>
+</tr>
+<tr>
+<td>3 优先文字叫车，更容易更快打到车</td>
+<td>多</td>
+<td>较多</td>
+<td>高</td>
+<td>基本</td>
+<td>中</td>
+</tr>
+<tr>
+<td>4 定位信号弱时，可自己设置上车点</td>
+<td>中</td>
+<td>中</td>
+<td>高</td>
+<td>基本</td>
+<td>中</td>
+</tr>
+<tr>
+<td>5 支付时默认选车券，省钱便捷</td>
+<td>多</td>
+<td>中</td>
+<td>低</td>
+<td>期望</td>
+<td>低</td>
+</tr>
+<tr>
+<td>6 即时聊天开放，沟通更方便</td>
+<td>低</td>
+<td>低</td>
+<td>低</td>
+<td>兴奋</td>
+<td>高</td>
+</tr>
+</tbody>
+</table>
+
+<p>1-&gt;3-&gt;4-&gt;6-&gt;2-&gt;5</p>
+
+<blockquote>
+<p>值得注意的是<code>5 支付时默认选车券，省钱便捷</code> ，处于支付阶段，用户已经基本完成打车流程，价格敏感的用户会自己勾选，不敏感的用户可以节约运营成本 ，忘记勾选的用户增加了用户粘性</p>
+</blockquote>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[用户调研]]></title>
     <link href="xuyushi.github.io/15316240502263.html"/>
     <updated>2018-07-15T11:07:30+08:00</updated>
     <id>xuyushi.github.io/15316240502263.html</id>
     <content type="html"><![CDATA[
-<h2 id="toc_0">用户调研全过程</h2>
+<h2 id="toc_0">为什么要用户调研</h2>
+
+<ul>
+<li>了解用户对产品的使用过程</li>
+<li>了解目标用户群使用场景和过程</li>
+<li>总结用户的问题和流程</li>
+<li>提出最合理的解决方案 </li>
+</ul>
+
+<h2 id="toc_1">用户调研全过程</h2>
 
 <ol>
 <li>明确背景和目的</li>
@@ -31,11 +590,13 @@
 
 <span id="more"></span><!-- more -->
 
-<h3 id="toc_1">用户调研全过程</h3>
+<h3 id="toc_2">用户调研全过程</h3>
 
 <ul>
 <li>背景：什么情况下发起的调研?是否必须通过调研来解决？</li>
 <li>目的：通过用户调研希望得到的结果是什么？</li>
+<li>忌大而全：调研的方向越聚焦，越有价值</li>
+<li>忌家大空：针对行业用户的调研 ，针对满意度的调研，价值都不大</li>
 </ul>
 
 <table>
@@ -66,7 +627,7 @@
 </tbody>
 </table>
 
-<h3 id="toc_2">选择目标用户</h3>
+<h3 id="toc_3">选择目标用户</h3>
 
 <ul>
 <li>典型用户：通过简单的用户画像，找出典型用户</li>
@@ -75,7 +636,7 @@
 <li>用户数量：不宜扫网式，一般5-10个</li>
 </ul>
 
-<h3 id="toc_3">猜测用户问题 设定题目</h3>
+<h3 id="toc_4">猜测用户问题 设定题目</h3>
 
 <ul>
 <li>用户可能的问题：用户的使用行为表现</li>
@@ -84,7 +645,7 @@
 <li>问题数量：线上10-20，线下5-10 展开</li>
 </ul>
 
-<h3 id="toc_4">准备调研内容</h3>
+<h3 id="toc_5">准备调研内容</h3>
 
 <ul>
 <li>本品已知问题：用户操作习惯、消费习惯和过程，原因</li>
@@ -95,7 +656,7 @@
 
 <p><img src="media/15316240502263/15316441642224.jpg" alt="" style="width:737px;"/></p>
 
-<h3 id="toc_5">现场调研</h3>
+<h3 id="toc_6">现场调研</h3>
 
 <ul>
 <li>了解用户使用的过程：最好观察用户的行为</li>
@@ -103,7 +664,7 @@
 <li>反馈：对有效的信息反馈给用户，并深究</li>
 </ul>
 
-<h3 id="toc_6">调研报告</h3>
+<h3 id="toc_7">调研报告</h3>
 
 <ul>
 <li>单个用户：记录单用户调研情况</li>
@@ -111,19 +672,26 @@
 <li>行动计划：分享并提出行动计划</li>
 </ul>
 
-<blockquote>
-<p>误区</p>
+<h2 id="toc_8">用户调研的常见误区</h2>
 
 <ul>
-<li>为了调研而调研，需要 带着目的</li>
-<li>问用户有什么需求</li>
-<li>试图说服用户</li>
-<li>求全求量</li>
-<li>依赖调查问卷</li>
+<li>指望从用户调研中获取需求是产品经理懒惰的表现</li>
+<li>用户调研不等于用户访谈，访谈只是其中的一种方式</li>
+<li>把个体当整体</li>
+<li>从用户调研中找自我感觉的证明</li>
+<li>用户调研的结论不要谈占比</li>
 </ul>
-</blockquote>
 
-<h2 id="toc_7">设计改善措施</h2>
+<h2 id="toc_9">忌讳</h2>
+
+<ul>
+<li>直接问用户想要什么，有什么需求</li>
+<li>直接问用户有没有用，好不好用</li>
+<li>快速打断用户</li>
+<li>说服用户</li>
+</ul>
+
+<h2 id="toc_10">设计改善措施</h2>
 
 <p><img src="media/15316240502263/15316452423278.jpg" alt=""/></p>
 
@@ -134,7 +702,7 @@
 <li>流失缺口：用户体验到的产品和期望的不一样。</li>
 </ul>
 
-<h1 id="toc_8">拓展</h1>
+<h1 id="toc_11">拓展</h1>
 
 <blockquote>
 <p><a href="http://cdc.tencent.com/2013/07/03/%E7%94%A8%E6%88%B7%E6%B5%81%E5%A4%B1%E5%8E%9F%E5%9B%A0%E8%B0%83%E7%A0%94%E5%9B%9B%E6%AD%A5%E7%BB%8F/">用户流失原因调研四步经</a> <br/>
@@ -168,17 +736,22 @@
 <li>公开渠道：apple store，微博，贴吧，第三方应用商城</li>
 <li>半公开渠道：微信，朋友圈，用户评价</li>
 <li>内部渠道：用户投诉，电话录音
-<span id="more"></span><!-- more -->
-### 处理策略</li>
+<span id="more"></span><!-- more --></li>
+</ul>
+
+<h3 id="toc_3">处理策略</h3>
+
+<ul>
 <li>公开渠道：勤搜索、关键词订阅、自动化监控</li>
-<li>半公开渠道：定期搜索关键字、定期分析用户评论<br/>
+<li>半公开渠道：定期搜索关键字、定期分析用户评论</li>
+<li><br/>
 ### 内部渠道</li>
 <li>整合内部用户反馈渠道</li>
 <li>定期与一线同事沟通</li>
 <li>到一线去</li>
 </ul>
 
-<h2 id="toc_3">主流应用商店与常用工具</h2>
+<h2 id="toc_4">主流应用商店与常用工具</h2>
 
 <ul>
 <li>iOS：AppStore</li>
@@ -186,7 +759,7 @@
 <li>常用工具：AppAnnie、应用雷达、ASO114、七麦</li>
 </ul>
 
-<h3 id="toc_4">应用商城监控</h3>
+<h3 id="toc_5">应用商城监控</h3>
 
 <ul>
 <li>低分差评：重点看1-3 分</li>
@@ -195,14 +768,14 @@
 <li>竞品变化：监控竞对的应用变化</li>
 </ul>
 
-<h2 id="toc_5">主流社交平台与常用工具</h2>
+<h2 id="toc_6">主流社交平台与常用工具</h2>
 
 <ul>
 <li>主流平台：微博、贴吧、知乎、雪球等</li>
 <li>工具：关键字、收藏夹、微博企业版、百度、google</li>
 </ul>
 
-<h2 id="toc_6">用户点评看什么</h2>
+<h2 id="toc_7">用户点评看什么</h2>
 
 <ul>
 <li>差评：为什么差评？原因、现象是什么</li>
@@ -2277,1510 +2850,6 @@ public class SimpleEntityReadWriteTest {
 
 <blockquote>
 <p>转自 <a href="https://juejin.im/post/593df980ac502e006c049607">https://juejin.im/post/593df980ac502e006c049607</a></p>
-</blockquote>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Architecture Components -- Guide to App Architecture]]></title>
-    <link href="xuyushi.github.io/15299133102446.html"/>
-    <updated>2018-06-25T15:55:10+08:00</updated>
-    <id>xuyushi.github.io/15299133102446.html</id>
-    <content type="html"><![CDATA[
-<h1 id="toc_0">应用程序架构指南</h1>
-
-<p>本指南使用于具有构建应用程序基础并且想了解构建强大、优质的应用程序的最佳实践和推荐架构的开发人员。</p>
-
-<blockquote>
-<p>注：本指南假定读者熟悉 Android Framework。如果你是一个应用程序开发的新手，请参阅入门指南系列培训，其中包含了本指南先决条件的相关主题。</p>
-</blockquote>
-
-<h2 id="toc_1">应用开发者面临的常见问题</h2>
-
-<p>在大多数情况下，桌面应用程序在启动器快捷方式中有一个单一的入口并且作为单独的独立进程运行，与桌面应用程序不同，Android 应用具有更复杂的结构。一个典型的 Android 应用是由多个应用程序组件构成的，包括 activity，fragment，service，content provider 和 broadcast receiver。</p>
-
-<p>这些应用程序组件中的大部分声明在由 Android OS 使用的应用程序清单中，用来决定如何将应用融入到用户设备的整体体验中。尽管如前所述，传统的桌面应用程序作为独立进程运行，但是正确的编写 Android 应用程序需要更加灵活，因为用户会同过设备上不同的应用程序组织成自己的方式不断切换流程和任务。<br/>
-<span id="more"></span><!-- more --></p>
-
-<p>例如，考虑下在你喜欢的社交网络应用中分享照片时会发生什么。该应用会触发一个启动相机的 intent，从该 intent 中 Android OS 会启动一个相机应用来处理这个请求。在此刻，用户离开社交网络应用但是用户的体验是无缝的。相机应用转而可能会触发其它的 intent，例如启动文件选择器，这可能会启动另一个应用。最终用户回到社交网络应用并且分享照片。此外，在这个过程中的任何时刻用户都有可能会被一个电话打断，并且在结束通话后再回来继续分享照片。</p>
-
-<p>在 Android 中，这种应用切换行为很常见，所以你的应用程序必须正确处理这些流程。记住，移动设备的资源是有限的，所以在任何时候，操作系统都可能会杀死一些应用为新的应用腾出空间。</p>
-
-<p>其中的重点是应用程序组件可能会被单独和无序的启动，并且可能会被用户或系统在任何时候销毁。因为应用程序组件是短暂的，并且其声明周期（什么时候被创建和销毁）不受你控制，<strong>所以不应该在应用程序组件中存储任何应用数据或状态，同时应用程序组件不应该相互依赖</strong>。</p>
-
-<h2 id="toc_2">常见的架构原则</h2>
-
-<p>如果不能在应用程序组件中存储应用数据和状态，那么应该如何构建应用？</p>
-
-<p>最重要的是在应用中要专注于关注点分离。一个常见的错误是在 Activity 或 Fragment 中编写所有的代码。任何不是处理 UI 或 操作系统交互的代码都不应该在这些类中。保持它们尽可能的精简可以避免许多与生命周期有关的问题。不要忘记你不拥有这些类，它们只是体现了 OS 和 应用之间协议的粘合类。Android OS 可能会因为用户交互或其他因素（如低内存）的原因在任何时候销毁它们。最好尽量减少对它们的依赖以提供一个稳固的用户体验。</p>
-
-<p>第二个重要的原则是应该<strong>用 Model 驱动 UI，最好是持久化的 Model</strong>。持久化是最佳的原因有两个：一是如果 OS 销毁应用释放资源，用户不用担心丢失数据；二是即使网络连接不可靠或者是断开的，应用仍将继续运行。Model 是负责处理应用数据的组件。Modle 独立于应用中的 View 和应用程序组件，因此 Model 和这些组件的生命周期问题隔离开了。保持 UI 代码精简并且摒除应用的逻辑使其更易于管理。<strong>基于 Model 类构建的应用程序其管理数据的职责明确，使应用程序可测试并且稳定</strong>。</p>
-
-<h2 id="toc_3">推荐的应用程序架构</h2>
-
-<p>在本节中，我们将通过一个用例来演示如何使用 Architecture Components 构建应用程序。</p>
-
-<blockquote>
-<p>注：不可能有一种应用程序的编写方式对于每种情况都是最好的。话虽如此，这个推荐的架构应该是大多数用例的良好起点。如果你已经有一种很好的应用程序编写方式则不需要改变。</p>
-</blockquote>
-
-<p>假设我们正在构建一个显示用户个人信息的 UI。用户的个人信息将使用 REST API 从我们自己的私有后端获取。</p>
-
-<h3 id="toc_4">构建用户界面</h3>
-
-<p>UI 包含一个 fragment 文件 UserProfileFragment.java 和其布局文件 user_profile_layout.xml。</p>
-
-<p>为了驱动 UI，数据模型需要持有两个数据元素。</p>
-
-<ul>
-<li>用户 ID ：用户的标识符。最好使用 fragment 的参数将用户 ID 传到 fragment 中。如果 Android OS 销毁进程，该 ID 将会被保存，以便下次应用重启时该 ID 可用。</li>
-<li>用户对象：保存用户数据的普通 Java 对象（POJO）。</li>
-</ul>
-
-<p>我们将会基于 ViewModel 来创建一个 UserProfileViewModel 来保存这些信息。</p>
-
-<p>ViewModel 为指定的 UI 组件（如：fragment 或 activity）提供数据，并且负责与数据处理的业务部分的交互，例如：调用其它组件获取数据或转发用户的操作。ViewModel 对于 View 并不了解并且不受配置改变（如：由于旋转导致 activity 的重新创建）的影响</p>
-
-<p>现在有 3 个文件</p>
-
-<ul>
-<li>user_profile.xml：屏幕上的 UI 定义。</li>
-<li>UserProfileViewModel.java：为 UI 准备数据的类。</li>
-<li>UserProfileFragment.java：用于在 ViewModel 中显示数据并对用户交互做出反应的 UI 控制器。</li>
-</ul>
-
-<p>下面是我们的初始实现（简单起见省略布局文件）：</p>
-
-<pre><code class="language-java">public class UserProfileViewModel extends ViewModel {
-    private String userId;
-    private User user;
-
-    public void init(String userId) {
-        this.userId = userId;
-    }
-    public User getUser() {
-        return user;
-    }
-}
-</code></pre>
-
-<pre><code class="language-java">public class UserProfileFragment extends LifecycleFragment {
-    private static final String UID_KEY = &quot;uid&quot;;
-    private UserProfileViewModel viewModel;
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        String userId = getArguments().getString(UID_KEY);
-        viewModel = ViewModelProviders.of(this).get(UserProfileViewModel.class);
-        viewModel.init(userId);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater,
-                @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.user_profile, container, false);
-    }
-}
-</code></pre>
-
-<blockquote>
-<p>注：上面的例子继承了 LifecycleFragment 而不是 Fragment 类。在 Architecture Components 中的生命周期 API 稳定后， Android 支持包中的 Fragment 类将会实现 LifecycleOwner 接口。</p>
-</blockquote>
-
-<p>现在我们有了 3 个代码模块，怎样连接它们？最后，当 ViewModel 的用户字段被设置时，需要一种方式来通知 UI。这正是 LiveData 的用武之地。</p>
-
-<blockquote>
-<p>LiveData 是一个可观察的数据持有者。它允许应用程序中的组件观察 LiveData 进行改变，而不会在组件之间创建显示的，固定的依赖。另外，LiveData 还遵守应用程序组件（如：activity，fragment，service）的生命周期状态，并且防止对象泄漏使应用不会消耗更多的内存。</p>
-
-<p>注：如果你已经再使用像 RxJava 或 Agera 的库，你可以继续使用它们而不用换成 LiveData。但是当使用它们或其它的方式时，请确保正确处理生命周期，如：当相关 LifecycleOwner 停止时暂停数据流或在 LifecycleOwner 被销毁时销毁数据流。可以添加 android.arch.lifecycle:reactivestreams 工具，和其它的响应流库（如：RxJava2）一起使用 LiveData。</p>
-</blockquote>
-
-<p>将 UserProfileViewModel 中的 User 字段替换为 LiveData ，以便在更新数据时可以通知 fragment。 LiveData 的好处在于它是生命周期感知的，并且可以在不再被需要的时候自动清除引用。</p>
-
-<pre><code class="language-java">public class UserProfileViewModel extends ViewModel {
-    ...
-    // private User user;
-    private LiveData&lt;User&gt; user;
-    public LiveData&lt;User&gt; getUser() {
-        return user;
-    }
-}
-</code></pre>
-
-<p>修改 UserprofileFragment 来观察数据并更新 UI。</p>
-
-<pre><code class="language-java">@Override
-public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-    super.onActivityCreated(savedInstanceState);
-    viewModel.getUser().observe(this, user -&gt; {
-      // 更新 UI
-    });
-}
-</code></pre>
-
-<p>每次更新用户数据时，将会调用 onChange) 回调并且更新 UI。</p>
-
-<p>如果你熟悉其它库的可观察回调的使用，可能已经意识到我们没有重写 fragment 的 onStop() 方法来停止观察数据。这对于 LiveData 来说是不必要的，因为 LiveData 是证明周期感知的，这意味着除非 fragment 处于活动状态（收到了 onStart() 但还没有收到 onStop()），否则它不会调用回调。当 fragment 收到 onDestroy() 时 LiveData 会自动移除观察者。</p>
-
-<p>我们没有做任何事情来特别是处理配置的变化（如：用户旋转屏幕）。当配置发生变化时 ViewModel 将会自动恢复，所以，只要新的 fragment 启动，它将会收到属于 ViewModel 的相同实例，并且使用最新的数据立即调用回调。这就是为什么 ViewModel 不应该直接引用 View，ViewModel 可能存活的比 View 的生命周期长。请参阅 ViewModel 的生命周期。</p>
-
-<h3 id="toc_5">获取数据</h3>
-
-<p>我们已经将 ViewModel 链接到了 fragment，但是 ViewModel 怎样获取数据呢？这个例子中，假设我们的后端提供了一个 REST API。我们将会使用 Retrofit 库来访问后端，你也可以自由的使用其它库来达到同样的目的。</p>
-
-<p>这是 retrofit 的 Webservice 类，用于和后端通讯：</p>
-
-<pre><code class="language-java">public interface Webservice {
-    /**
-     * @GET declares an HTTP GET request
-     * @Path(&quot;user&quot;) annotation on the userId parameter marks it as a
-     * replacement for the {user} placeholder in the @GET path
-     */
-    @GET(&quot;/users/{user}&quot;)
-    Call&lt;User&gt; getUser(@Path(&quot;user&quot;) String userId);
-}
-</code></pre>
-
-<p>一个简单的 ViewModel 实现可以直接调用 Webservice 获取数据并将其分配给用户对象。即使这样可以使用，但是应用程序将会随着增长而难以维护。将太多的职责交给 ViewModel 这违反了我们前面提到的关注点分离的原则。此外，ViewModel 的作用域依赖于 Activity 或 Fragment 的生命周期，因此在 Activity 或 Fragment 的生命周期结束时丢失所有的数据是一种不好的用户体验。故而，我们的 ViewModel 将把这项工作委托给一个新的 Repository 模块。</p>
-
-<p>Repository 模块负责处理数据操作。它们为应用程序的其它部分提供了一个干净的 API。它们知道在数据更新时从哪里获取数据和调用哪些 API。可以将其视为不同数据源（持久化模型，Web 服务，缓存等）之间的中间层。</p>
-
-<p>下面的 UserRepository 类使用 WebService 来获取用户数据。</p>
-
-<pre><code class="language-java">public class UserRepository {
-    private Webservice webservice;
-    // ...
-    public LiveData&lt;User&gt; getUser(int userId) {
-        // 这是最佳的实现，下面会有解释
-        final MutableLiveData&lt;User&gt; data = new MutableLiveData&lt;&gt;();
-        webservice.getUser(userId).enqueue(new Callback&lt;User&gt;() {
-            @Override
-            public void onResponse(Call&lt;User&gt; call, Response&lt;User&gt; response) {
-                // 为了简单起见省略错误的情况
-                data.setValue(response.body());
-            }
-        });
-        return data;
-    }
-}
-</code></pre>
-
-<p>虽然 Repository 模块看起来是不必要的，但是它起着一个重要的作用；它抽象了应用程序其它部分的数据源。现在 ViewModel 不知道数据是由 Webservice 获取的，这意味着可以根据需求将其切换为其它实现。</p>
-
-<blockquote>
-<p>注：为了简单起见，我们忽略了网络错误的情况。有关于暴露错误和加载状态的可选实现方式，请参阅附录：。<a href="https://developer.android.com/topic/libraries/architecture/guide.html#addendum">暴露网络状态</a></p>
-</blockquote>
-
-<h4 id="toc_6">管理组件之间的依赖</h4>
-
-<p>上面的 UserRepository 类需要一个 Webservice 的实例来完成其工作。可以简单的创建 Webservice，但是这需要知道 Webservice 的依赖来构造它。这将会显著的使代码复杂和重复（例如：需要 Webservice 实例的每个类都需要知道如何使用它的依赖来构造它）。另外，UserRepostory 可能不是唯一需要 Webservice 的类。如果每个类都创建一个新的 Webservice，这将会造成非常大的资源负担。</p>
-
-<p>有两种模式可以解决这个问题：</p>
-
-<ul>
-<li>依赖注入：依赖注入允许类定义其依赖而不构造它们。在运行时，另一个类负责提供这些依赖。推荐使用 Google 的 Dagger 2 库在 Android 应用中实现依赖注入。Dagger 2 通过遍历依赖关系树自动构建对象并为依赖提供编译时保障。</li>
-<li>服务定位：服务定位提供了一个注册表，类可以从中获取它们的依赖关系，而不是构造它们。与依赖注入（DI）相比，服务定位实现起来相对容易，所以如果不熟悉 DI，请使用服务定位代替。</li>
-</ul>
-
-<p>这些模式允许你扩展代码，因为它们提供清晰的模式来管理依赖关系，而不会重复代码或增加复杂性。两者都允许替换实现进行测试；这是使用它们的主要好处之一。</p>
-
-<p>在这个例子中，我们将使用 Dagger 2 来管理依赖。</p>
-
-<h3 id="toc_7">连接 ViewModel 和 Repository</h3>
-
-<p>修改 UserProfileViewModel 以使用 Repository。</p>
-
-<pre><code class="language-java">public class UserProfileViewModel extends ViewModel {
-    private LiveData&lt;User&gt; user;
-    private UserRepository userRepo;
-
-    @Inject // UserRepository 参数由 Dagger 2 提供
-    public UserProfileViewModel(UserRepository userRepo) {
-        this.userRepo = userRepo;
-    }
-
-    public void init(String userId) {
-        if (this.user != null) {
-            // ViewModel 是由 Fragment 创建的
-            // 所以我们知道 userId 不会改变
-            return;
-        }
-        user = userRepo.getUser(userId);
-    }
-
-    public LiveData&lt;User&gt; getUser() {
-        return this.user;
-    }
-}
-</code></pre>
-
-<h3 id="toc_8">缓存数据</h3>
-
-<p>上述 Repository 的实现对于抽象调用 Web 服务是很好的，但是因为它仅依赖于一个数据源所以不是很实用。</p>
-
-<p>上述 UserRepository 的实现的问题是在获取到数据之后没有把数据保存下来。如果用户离开 UserProfileFragment 然后返回回来，应用将会重新获取数据。这样是很不好的，原因有两个：一是浪费了宝贵的网络带宽；二是迫使用户等待新的查询完成。为了解决这个问题，我们将在 UserRepository 中添加一个新的数据源，用以在内存中缓存 User 对象。</p>
-
-<pre><code class="language-java">@Singleton  // 告诉 Dagger 这个类只应该构造一次
-public class UserRepository {
-    private Webservice webservice;
-    // 简单的内存缓存，为了简单忽略相关细节
-    private UserCache userCache;
-    public LiveData&lt;User&gt; getUser(String userId) {
-        LiveData&lt;User&gt; cached = userCache.get(userId);
-        if (cached != null) {
-            return cached;
-        }
-
-        final MutableLiveData&lt;User&gt; data = new MutableLiveData&lt;&gt;();
-        userCache.put(userId, data);
-        // 这还不是最好的但比以前的好。
-        // 一个完整的实现必须处理错误的情况。
-        webservice.getUser(userId).enqueue(new Callback&lt;User&gt;() {
-            @Override
-            public void onResponse(Call&lt;User&gt; call, Response&lt;User&gt; response) {
-                data.setValue(response.body());
-            }
-        });
-        return data;
-    }
-}
-</code></pre>
-
-<h3 id="toc_9">持久化数据</h3>
-
-<p>在当前的实现中，如果用户旋转屏幕或离开并返回应用，已存在的 UI 将会立即可见，因为 Repository 从内存缓存中取回数据。但是，如果用户离开应用并在几个小时后（Android OS 已经杀死进程后）返回又会发生什么？</p>
-
-<p>如果是目前的实现，将会需要再次从网络获取数据。这不仅是一个不好的用户体验，并且也是浪费，因为这将会使用移动数据重新获取同样的数据。可以通过缓存 Web 请求来简单的解决这个问题，但是这会导致新的问题。如果相同的用户数据来自另一种请求并显示（例如：获取朋友列表）将会怎样？这时应用会显示不一致的数据，这是最令人困惑的用户体验。例如：相同用户的数据可能会显示的不同，因为朋友列表的请求和用户个人信息的请求可能会在不同的时间执行。应用程序需要合并它们以避免显示不一致的数据。</p>
-
-<p>解决这个问题的正确方法是使用持久化模型。这就是持久化库 Room 的用武之地了。</p>
-
-<p>Room 是一个以最少的样板代码提供本地数据持久化的对象映射库。在编译时，它会根据模式验证每个查询，所以损坏的 SQL 查询只会导致编译时错误，而不是运行时崩溃。Room 抽象出一些使用原始 SQL 表查询的底层实现细节。它还允许观察数据库数据（包括集合和连接查询）的变化，并通过 LiveData 对象暴露这些变化。另外，它明确定义了线程约束以解决常见问题（如在主线程访问存储）。</p>
-
-<p>使用 Room，需要定义我们的局部模式。首先，用 @Entity 注释 User 类，将其标记为数据库中的一个表。</p>
-
-<pre><code class="language-java">@Entity
-class User {
-  @PrimaryKey
-  private int id;
-  private String name;
-  private String lastName;
-  // 字段的 get 和 set 方法
-}
-</code></pre>
-
-<p>然后，通过继承 RoomDatabase 为应用创建一个数据库。</p>
-
-<pre><code class="language-java">@Database(entities = {User.class}, version = 1)
-public abstract class MyDatabase extends RoomDatabase {
-}
-</code></pre>
-
-<p>请注意，MyDatabase 是抽象类，Room 会自动提供其实现类。详细信息请参阅 Room 的文档。</p>
-
-<p>现在需要一种方法来将用户数据插入数据库。为此，我们将创建一个数据库访问对象（ DAO ）。</p>
-
-<pre><code class="language-java">@Dao
-public interface UserDao {
-    @Insert(onConflict = REPLACE)
-    void save(User user);
-    @Query(&quot;SELECT * FROM user WHERE id = :userId&quot;)
-    LiveData&lt;User&gt; load(String userId);
-}
-</code></pre>
-
-<p>然后，在数据库类中引用 DAO。</p>
-
-<pre><code class="language-java">@Database(entities = {User.class}, version = 1)
-public abstract class MyDatabase extends RoomDatabase {
-    public abstract UserDao userDao();
-}
-</code></pre>
-
-<p>请注意，load 方法的返回值是 LiveData。Room 知道数据库何时被修改，当数据发生变化时，它会通知所有处于活动状态的观察者。使用 LiveData 是高效的是因为它只有在至少有一个处于活动状态的观察者时才会更新数据。</p>
-
-<p>现在修改 UserRepository 来整合 Room 的数据源。</p>
-
-<pre><code class="language-java">@Singleton
-public class UserRepository {
-    private final Webservice webservice;
-    private final UserDao userDao;
-    private final Executor executor;
-
-    @Inject
-    public UserRepository(Webservice webservice, UserDao userDao, Executor executor) {
-        this.webservice = webservice;
-        this.userDao = userDao;
-        this.executor = executor;
-    }
-
-    public LiveData&lt;User&gt; getUser(String userId) {
-        refreshUser(userId);
-        // 直接从数据库返回一个 LiveData。
-        return userDao.load(userId);
-    }
-
-    private void refreshUser(final String userId) {
-        executor.execute(() -&gt; {
-            // 在后台线程中运行
-            // 检查最近是否获取过 user
-            boolean userExists = userDao.hasUser(FRESH_TIMEOUT);
-            if (!userExists) {
-                // 刷新数据
-                Response response = webservice.getUser(userId).execute();
-                // TODO 检查错误等。
-                // 更新数据库。LiveData 将会自动刷新
-                // 所以除了更新数据库外不需要任何操作。
-                userDao.save(response.body());
-            }
-        });
-    }
-}
-</code></pre>
-
-<p>请注意，即使我们更改了 UserRepository 中的数据来源，我们也不需要更改 UserProfileViewModel 或 UserProfileFragment。这是抽象带来的灵活性。这样也非常易于测试，因为在测试 UserProfileViewModel 可以提供一个假的 UserRepository。</p>
-
-<p>现在我们的代码是完整的，如果用户日后再回到相同的 UI，他们会立即看到用户信息，因为我们已经将其持久化了。同时，如果数据过期，Repository 将会在后台更新数据。当然，根据你的用例，如果持久化的数据太旧你可能不希望显示它们。</p>
-
-<p>在一些用例中，如下拉刷新，在进行网络操作时显示用户数据对于 UI 来说非常重要。将 UI 操作从实际数据中分离是一个很好的做法，因为其可能由于各种原因而被更新（例如：如果获取一个朋友列表，用户可能会再次获取到相同数据并触发 LiveData 更新）。从 UI 的角度来看，动态请求实际上只是另一个数据点，类似其它任何数据片段（如：User 对象）</p>
-
-<p>这种用例有两种常见的解决方案：</p>
-
-<ul>
-<li>更改 getUser 以返回包含网络操作状态的 LiveData。在附录：暴露网络状态部分提供了一个实现例子。</li>
-<li>在 Repository 类中提供一个可以返回 User 刷新状态的公共方法。如果只是为了响应明确的用户操作而在 UI 中显示网络状态（如：下拉刷新），则这种方式是更好的选择。</li>
-</ul>
-
-<h4 id="toc_10">单一数据源</h4>
-
-<p>不同的 REST API 接口返回相同的数据是很常见的。例如，如果后端有另一个返回朋友列表的接口，相同的用户对象（也许是不同的粒度）可能来自两个不同的 API 接口。如果 UserRepository 把从 Webservice 请求获取到的响应原样返回，码么 UI 可能会显示不一致的数据，因为在这些请求之间数据可能在服务端发生了改变。这就是为什么在 UserRepository 的实现中 Web 服务的回调只是将数据保存到了数据库。然后，对数据库的更改将会触发处于活动状态的 LiveData 对象上的回调。</p>
-
-<p>在这个模型中，数据库服务作为单一数据源，应用程序的其它部分通过 Repository 来访问它。无论是否是否磁盘缓存，建议 Repository 指定一个数据源作为应用程序其它部分的单一数据源。</p>
-
-<h3 id="toc_11">测试</h3>
-
-<p>我们已经提到分离的好处之一是可测试性。让我们看看如何测试每个代码模块。</p>
-
-<ul>
-<li><p>用户界面或用户交互：这将是唯一一次需要 Android UI Instrumentation test。测试 UI 代码的最佳方式是创建一个 Espresso 测试。可以创建一个 fragment 并为其提供一个模拟的 ViewModel。因为 fragment 只和 ViewModel 交互，随意模拟 ViewModel 足以完全测是 UI。</p></li>
-<li><p>ViewModel：可以使用 JUnit test 来测试 ViewModel。只需要模拟 UserRepository 来测试它。</p></li>
-<li><p>UserRepository：也可以使用 JUnit test 来测试 UserRepository。需要模拟 Webservice 和 DAO。可以测试 UserRepository 是否进行了正确的 Web 服务调用，将结构保存到数据库，如果数据被缓存且是最新的，则不会发起任何不必要的请求。因为 WebService 和 UserDao 都是接口，所以可以模拟它们或者为更复杂的测试用例创建假的实现。</p></li>
-<li><p>UserDao：推荐使用 Instrumentation 测试的方式测试 DAO 类。因为 Instrumentation 测试不需要任何 UI，它们会运行的很快。对于每个测试，可以创建一个内存数据库以确保测试没有任何副作用（例如：改变磁盘上的数据库文件）。</p></li>
-</ul>
-
-<p>Room 还允许指定数据库实现，所以可以通过向其提供 SupportSQLiteOpenHelper 的 JUnit 实现来测试它。通常不推荐这种方式，因为设备上运行的 SQLite 版本可能和主机上的 SQLite 版本不同。</p>
-
-<ul>
-<li><p>Webservice：重点是使测试相对于外部独立，所以 Webservice 的测试要避免通过网络调用后端。有许多库可以帮助完成该测试。例如：MockWebServer 是一个很好的库，可以帮助为测试创建一个假的本地服务。</p></li>
-<li><p>测试工件架构组件提供了一个 maven 工件来控制其后台线程。在 android.arch.core:core-testing 工件中，有两个 JUnit 规则：</p>
-<ul>
-<li><p>InstantTaskExecutorRule：该规则可用于强制架构组件立即执行调用线程上的任何后台操作。</p></li>
-<li><p>CountingTaskExecutorRule：该规则可用于 Instrumentation 测试，以等待架构组件的后台操作，或将其连接到 Espresso 作为闲置资源。</p></li>
-</ul></li>
-</ul>
-
-<h3 id="toc_12">最终的架构</h3>
-
-<p>下图显示了推荐架构中的所有模块以及它们如何互相交互：</p>
-
-<p><img src="media/15299133102446/14985551550676.png" alt=""/></p>
-
-<h2 id="toc_13">指导原则</h2>
-
-<p>编程是一个创作领域，构建 Android 应用也不例外。有许多方法来解决问题，无论是在多个 activity 或 fragment 之间传递数据，是获取远程数据并为了离线模式将其持久化到本地，还是特殊应用遭遇的其它常见情况。</p>
-
-<p>虽然一下建议不是强制性的，但是以我们的经验，从长远来看，遵循这些建议将会使代码库更健壮，易测试和易维护。</p>
-
-<ul>
-<li><p>在 manifest 中定义的入口点，如：acitivy，fragment，broadcast receiver 等，不是数据源。相反，它们应该只是协调与该入口点相关的数据子集。由于每个应用程序组件的存活时间很短，这取决于用户与其设备的交互以及运行时的总体状况，所以任何入口点都不应该成为数据源。</p></li>
-<li><p>严格的在应用程序的各个模块之间创建明确的责任界限。例如：不在代码库中的多个类或包中扩散从网络加载数据的代码。同样，不要将无关的责任（如：数据缓存和数据绑定）放到同一个类中。</p></li>
-<li><p>每个模块尽可能少的暴露出来。不要视图创建暴露模块内部实现细节的“只一个”的快捷方式。你可能会在短期内节省一些时间，但是随着代码库的发展，你将会多次偿还更多的基数债务。</p></li>
-<li><p>当定义模块间的交互时，请考虑如何让每个模块可以独立的测试。例如，拥有一个用于从网络获取数据且定义良好的 API 的模块，将会使其更易于测试在本地数据库中持久化数据。相反，如果将两个模块的逻辑放在一个地方，或者将网络代码扩散到整个代码库，测试将会变的非常困难（并非不可能）。</p></li>
-<li><p>应用程序的核心是使其脱颖而出。不要花费时间重复造轮子或一次又一次的编写相同的样板代码。相反，将精力集中在使应用程序独一无二上，让 Android Architecture Components 和其它的优秀的库来处理重复的样板代码。</p></li>
-<li><p>持久化尽可能多的相关最新数据，以便应用程序在设备处于离线模式时还可以使用。即使你可以享用稳定高速的网络连接，但是你的用户可能无法享用。</p></li>
-<li><p>Repository 应该指定一个数据源作为单一数据源。每当应用程序需要访问数据时，数据应该始终来源于单一数据源。有关更多信息，请参阅单一数据源</p></li>
-</ul>
-
-<h2 id="toc_14">附录：暴露网络状态</h2>
-
-<p>在上面推荐的应用程序架构部分，为了保持示例简单我们故意忽略网络错误和加载状态。在本节中，我们演示一种通过 Resource 类暴露网络状态来封装数据和其状态。</p>
-
-<p>以下是一个实现的例子：</p>
-
-<pre><code class="language-java">// 描述数据和其状态的类
-public class Resource&lt;T&gt; {
-    @NonNull public final Status status;
-    @Nullable public final T data;
-    @Nullable public final String message;
-    private Resource(@NonNull Status status, @Nullable T data, @Nullable String message) {
-        this.status = status;
-        this.data = data;
-        this.message = message;
-    }
-
-    public static &lt;T&gt; Resource&lt;T&gt; success(@NonNull T data) {
-        return new Resource&lt;&gt;(SUCCESS, data, null);
-    }
-
-    public static &lt;T&gt; Resource&lt;T&gt; error(String msg, @Nullable T data) {
-        return new Resource&lt;&gt;(ERROR, data, msg);
-    }
-
-    public static &lt;T&gt; Resource&lt;T&gt; loading(@Nullable T data) {
-        return new Resource&lt;&gt;(LOADING, data, null);
-    }
-}
-</code></pre>
-
-<p>因为从磁盘中获取并显示数据同时再从网络获取数据是一种常见的用例。我们将创建一个可以在多个地方使用的帮助类 NetworkBoundResource。下面是 NetworkBoundResource 的决策树。</p>
-
-<p><img src="media/15299133102446/14985554809848.png" alt=""/></p>
-
-<p>它通过观察资源的数据库。当首次从数据库加载条目时，NetworkBoundResource 检查返回结果是否足够好可以被发送和（或）应该从网络获取数据。请注意，他们可能同时发生，因为你可能会希望在显示缓存数据的同时从网络更新数据。</p>
-
-<p>如果网络调用成功，则将返回数据保存到数据库中并重新初始化数据流。如果网络请求失败，直接发送一个错误。</p>
-
-<blockquote>
-<p>注：将新的数据保存到磁盘后，要从数据库重新初始化数据流，但是通常不需要这样做，因为数据库将会发送变更。另一方面，依赖数据库发送变更会有一些不好的副作用，因为在数据没有变化时如果数据库会避免发送更改将会使其中断。我们也不希望发送从网络返回的结果，因为这违背的单一数据源原则（即使在数据库中有触发器会改变保存值）。我们也不希望在没有新数据的时候发送 SUCCESS，因为这会给客户端发送错误信息。</p>
-</blockquote>
-
-<p>以下是 NetworkBoundResource 类为其子类提供的公共 API：</p>
-
-<pre><code class="language-java">// ResultType: Resource 数据的类型
-// RequestType: API 响应的类型
-public abstract class NetworkBoundResource&lt;ResultType, RequestType&gt; {
-    // 调用该方法将 API 响应的结果保存到数据库中。
-    @WorkerThread
-    protected abstract void saveCallResult(@NonNull RequestType item);
-
-    // 调用该方法判断数据库中的数据是否应该从网络获取并更新。
-    @MainThread
-    protected abstract boolean shouldFetch(@Nullable ResultType data);
-
-    // 调用该方法从数据库中获取缓存数据。
-    @NonNull @MainThread
-    protected abstract LiveData&lt;ResultType&gt; loadFromDb();
-
-    // 调用该方法创建 API 请求。
-    @NonNull @MainThread
-    protected abstract LiveData&lt;ApiResponse&lt;RequestType&gt;&gt; createCall();
-
-    // 获取失败时调用。
-    // 子类可能需要充值组件（如：速率限制器）。
-    @MainThread
-    protected void onFetchFailed() {
-    }
-
-    // 返回一个代表 Resource 的 LiveData。
-    public final LiveData&lt;Resource&lt;ResultType&gt;&gt; getAsLiveData() {
-        return result;
-    }
-}
-</code></pre>
-
-<p>请注意，上述类定义了两个类型参数（ResultType，RequestType），因为从 API 返回的数据类型可能和本地使用的数据类型不同。</p>
-
-<p>还要注意，上述代码使用 ApiResponse 作为网络请求，ApiResponse 是对于 Retrofit2.Call 类的简单封装，用以将其响应转换为 LiveData。</p>
-
-<p>以下是 NetworkBoundResource 类的其余实现部分。</p>
-
-<pre><code class="language-java">public abstract class NetworkBoundResource&lt;ResultType, RequestType&gt; {
-    private final MediatorLiveData&lt;Resource&lt;ResultType&gt;&gt; result = new MediatorLiveData&lt;&gt;();
-
-    @MainThread
-    NetworkBoundResource() {
-        result.setValue(Resource.loading(null));
-        LiveData&lt;ResultType&gt; dbSource = loadFromDb();
-        result.addSource(dbSource, data -&gt; {
-            result.removeSource(dbSource);
-            if (shouldFetch(data)) {
-                fetchFromNetwork(dbSource);
-            } else {
-                result.addSource(dbSource,
-                        newData -&gt; result.setValue(Resource.success(newData)));
-            }
-        });
-    }
-
-    private void fetchFromNetwork(final LiveData&lt;ResultType&gt; dbSource) {
-        LiveData&lt;ApiResponse&lt;RequestType&gt;&gt; apiResponse = createCall();
-        // 重新附加 dbSource 作为新的来源,
-        // 它将会迅速发送最新的值。
-        result.addSource(dbSource,
-                newData -&gt; result.setValue(Resource.loading(newData)));
-        result.addSource(apiResponse, response -&gt; {
-            result.removeSource(apiResponse);
-            result.removeSource(dbSource);
-            //noinspection ConstantConditions
-            if (response.isSuccessful()) {
-                saveResultAndReInit(response);
-            } else {
-                onFetchFailed();
-                result.addSource(dbSource,
-                        newData -&gt; result.setValue(
-                                Resource.error(response.errorMessage, newData)));
-            }
-        });
-    }
-
-    @MainThread
-    private void saveResultAndReInit(ApiResponse&lt;RequestType&gt; response) {
-        new AsyncTask&lt;Void, Void, Void&gt;() {
-
-            @Override
-            protected Void doInBackground(Void... voids) {
-                saveCallResult(response.body);
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                // 指定请求一个最新的实时数据。
-                // 否则，会得到最新的缓存数据，并且可能不会由从网络获取的最新数据更新。
-                result.addSource(loadFromDb(),
-                        newData -&gt; result.setValue(Resource.success(newData)));
-            }
-        }.execute();
-    }
-}
-</code></pre>
-
-<p>现在，可以使用 NetworkBoundResource 在 Repository 中编写磁盘和网络绑定 User 的实现。</p>
-
-<pre><code class="language-java">class UserRepository {
-    Webservice webservice;
-    UserDao userDao;
-
-    public LiveData&lt;Resource&lt;User&gt;&gt; loadUser(final String userId) {
-        return new NetworkBoundResource&lt;User,User&gt;() {
-            @Override
-            protected void saveCallResult(@NonNull User item) {
-                userDao.insert(item);
-            }
-
-            @Override
-            protected boolean shouldFetch(@Nullable User data) {
-                return rateLimiter.canFetch(userId) &amp;&amp; (data == null || !isFresh(data));
-            }
-
-            @NonNull @Override
-            protected LiveData&lt;User&gt; loadFromDb() {
-                return userDao.load(userId);
-            }
-
-            @NonNull @Override
-            protected LiveData&lt;ApiResponse&lt;User&gt;&gt; createCall() {
-                return webservice.getUser(userId);
-            }
-        }.getAsLiveData();
-    }
-}
-</code></pre>
-
-<blockquote>
-<p>转自 <a href="https://juejin.im/post/5937b1d7a22b9d005810b877">https://juejin.im/post/5937b1d7a22b9d005810b877</a></p>
-</blockquote>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Architecture Components--ViewModel]]></title>
-    <link href="xuyushi.github.io/15299133101129.html"/>
-    <updated>2018-06-25T15:55:10+08:00</updated>
-    <id>xuyushi.github.io/15299133101129.html</id>
-    <content type="html"><![CDATA[
-<h1 id="toc_0">ViewModel</h1>
-
-<p>ViewModel 类是被设计用来存储和管理 UI 相关的数据，以便在配置更改（如：屏幕旋转）时数据可以保留下来。</p>
-
-<p>应用程序组件（如：activity 和 fragment）具有一个由 Android Framework 管理的生命周期。Framework 可能会完全不受控制的根据某些用户操作或设备事件来决定销毁或重新创建它们。</p>
-
-<p>由于这些对象有可能被操作系统销毁或重新创建，所以保存在它们中的任何数据都会丢失。例如：如果 activity 中有一个用户列表，当 activity 因为配置更改而重新创建时，新的 activity 必须重新获取用户列表。对于简单的数据，activity 可以使用 onSaveInstanceState() 方法从 onCreate() 中的 bundle 里恢复数据，但是这种方式只适用于少量数据（如：UI 状态），不适用于大量数据（如：用户列表）。</p>
-
-<p>另一个问题是，这些 UI 控制器（activity，fragment 等）经常需要发起一些需要一定时间才能返回的异步调用。UI 控制器需要管理这些调用并且在其被销毁时清理它们避免潜在的内存泄漏。这需要大量的维护工作，并且在由于配置更改导致对象被重新创建的情况下十分浪费资源，因为需要重新发起相同的请求。<br/>
-<span id="more"></span><!-- more --></p>
-
-<p>这些 UI 控制器已经需要完成响应用户操作和处理操作系统通信的工作了。当它们还需要手动处理其资源时，将会使类变的臃肿，创造“万能 activity”（或“万能 fragment”）；也就是说，一个单独的类视图自己处理应用程序的所有工作，而不是将工作委派给其它类。这将会使测试非常困难。</p>
-
-<p>将视图数据的所有权从 UI 控制器的逻辑中分离出来是简单高效的。Lifecycle 提供了一个叫 ViewModel 的新类，一个 UI 控制器的帮助类，用来为 UI 准备数据。在配置更改期间，ViewModel 会自动保留，以便其保存的数据能够立即提供给下一个 activity 或 fragment 实例。在我们上面提到的例子中，获取并持有数据是 ViewModel 的责任，而不是 activity 或 fragment 的。</p>
-
-<pre><code class="language-java">public class MyViewModel extends ViewModel {
-    private MutableLiveData&lt;List&lt;User&gt;&gt; users;
-    public LiveData&lt;List&lt;User&gt;&gt; getUsers() {
-        if (users == null) {
-            users = new MutableLiveData&lt;List&lt;Users&gt;&gt;();
-            loadUsers();
-        }
-        return users;
-    }
-
-    private void loadUsers() {
-        // 执行异步操作获取用户
-    }
-}
-</code></pre>
-
-<p>现在 activity 可以像下面这样访问列表：</p>
-
-<pre><code class="language-java">public class MyActivity extends AppCompatActivity {
-    public void onCreate(Bundle savedInstanceState) {
-        MyViewModel model = ViewModelProviders.of(this).get(MyViewModel.class);
-        model.getUsers().observe(this, users -&gt; {
-            // 更新 UI
-        });
-    }
-}
-</code></pre>
-
-<p>如果 activity 被重新创建，它将会收到由之前 activity 创建的同一个 MyViewModel 实例。当所有者 activity 结束后，Framework 会调用 ViewModel 的 onCleared() 方法来清理资源。</p>
-
-<blockquote>
-<p>注：由于 ViewModel 存活的比个别的 activity 和 fragment 实例，所以它决不能引用 View，或任何持有 activity context 的引用的类。如果 ViewModel 需要 Application 的 context（如：调用系统服务），可以继承 AndroidViewModel 类，可以在构造函数中接受 Application（因为 Application 继承了 Context）。</p>
-</blockquote>
-
-<h2 id="toc_1">在 Fragment 之间共享数据</h2>
-
-<p>activity 中的两个或多个 fragment 需要相互通信是很常见的。这不是个简单的事情，所有的 fragment 都需要定义一些接口描述，并且拥有它们的 activity 必须将两者绑定在一起。另外，所有的 fragment 必须处理其它的 fragment 没有被创建或不可见的情况。</p>
-
-<p>使用 ViewModel 可以解决这个常见的痛点。假设一个主从式 fragment 的常见情况，用户从一个 fragment 的列表里选中一项，另一个 fragment 显示所选项的内容。</p>
-
-<p>这些 fragment 可以使用其 activity 限定的 ViewModel 来处理该通讯</p>
-
-<pre><code class="language-java">public class SharedViewModel extends ViewModel {
-    private final MutableLiveData&lt;Item&gt; selected = new MutableLiveData&lt;Item&gt;();
-
-    public void select(Item item) {
-        selected.setValue(item);
-    }
-
-    public LiveData&lt;Item&gt; getSelected() {
-        return selected;
-    }
-}
-
-public class MasterFragment extends Fragment {
-    private SharedViewModel model;
-    public void onActivityCreated() {
-        model = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
-        itemSelector.setOnClickListener(item -&gt; {
-            model.select(item);
-        });
-    }
-}
-
-public class DetailFragment extends LifecycleFragment {
-    public void onActivityCreated() {
-        SharedViewModel model = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
-        model.getSelected().observe(this, { item -&gt;
-           // 更新 UI
-        });
-    }
-}
-</code></pre>
-
-<p>请注意，在获取 ViewModelProvider 时两个 fragment 都使用 getActivity() 方法。这意味着它们都将会收到被 activity 限定的同一个 SharedViewModel 实例。</p>
-
-<p>这种方式的优点有：</p>
-
-<p>activity 不需要做或知道关于该通讯的任何事情。</p>
-
-<ul>
-<li>除了 SharedViewModel 协议之外 fragment 不需要了解彼此。如果其中一个消失，另一个会照常工作。</li>
-<li>每个 fragment 有自己的生命周期，并且不受其它 fragment 的生命周期影响。实际上，在 UI 中一个 fragment 替换另一个 fragment，UI 的运行没有任何问题。</li>
-</ul>
-
-<h2 id="toc_2">ViewModel 的生命周期</h2>
-
-<p>在获取 ViewModel 时，ViewModel 对象被传递给 ViewModelProvider 的 Lifecycle 限定。ViewModel 保留在内存中，直到限定它的 Lifecycle 永久消失（当 activity 结束或 fragment 被分离）。<br/>
-<img src="media/15299133101129/14983677008413.png" alt=""/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Architecture Components--LiveData]]></title>
-    <link href="xuyushi.github.io/15299133101795.html"/>
-    <updated>2018-06-25T15:55:10+08:00</updated>
-    <id>xuyushi.github.io/15299133101795.html</id>
-    <content type="html"><![CDATA[
-<h1 id="toc_0">LiveData</h1>
-
-<p><code>LiveData</code> 是一个 data holder  类，持有一个可被观察的值。与普通的observable不同的是，<code>LiveData</code>遵循app 组件的生命周期。它能决定在某个生命周期是否被观察</p>
-
-<p><code>LiveData</code> 在观察者生命周期的 STARTED 和 RESUMED 状态是可被激活的</p>
-
-<pre><code class="language-java">public class LocationLiveData extends LiveData&lt;Location&gt; {
-    private LocationManager locationManager;
-
-    private SimpleLocationListener listener = new SimpleLocationListener() {
-        @Override
-        public void onLocationChanged(Location location) {
-            setValue(location);
-        }
-    };
-
-    public LocationLiveData(Context context) {
-        locationManager = (LocationManager) context.getSystemService(
-                Context.LOCATION_SERVICE);
-    }
-
-    @Override
-    protected void onActive() {
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
-    }
-
-    @Override
-    protected void onInactive() {
-        locationManager.removeUpdates(listener);
-    }
-}
-</code></pre>
-
-<span id="more"></span><!-- more -->
-
-<ul>
-<li><code>onActive()</code>：当<code>LiveData</code>增加了一个observer 时被调用。这表示开始监听设备的location </li>
-<li>onInactive()：当<code>LiveData</code>没有一个observer 时被调用。没有observer监听所以没必要去连接LocationManager service.</li>
-<li>setValue()：更新<code>LiveData</code>中value，并通知激活状态下的observers</li>
-</ul>
-
-<pre><code class="language-java">public class MyFragment extends LifecycleFragment {
-    public void onActivityCreated (Bundle savedInstanceState) {
-        LiveData&lt;Location&gt; myLocationListener = ...;
-        Util.checkUserStatus(result -&gt; {
-            if (result) {
-                myLocationListener.addObserver(this, location -&gt; {
-                    // update UI
-                });
-            }
-        });
-    }
-}
-</code></pre>
-
-<p><code>addObserver()</code> 方法第一个参数是 <code>LifecycleOwner</code>，这以为着这个 LiveData 被绑定到 LifeCycle 上</p>
-
-<ul>
-<li>如果Lifecycle 不在 STARTED or RESUMED 状态，当value 变化是 observer 不会被通知</li>
-<li>如果 Lifecycle 销毁了，observer 会自动移除</li>
-</ul>
-
-<p>我们可以通过 LiveData  在 Activity 和 fragment 直接共享数据，比如</p>
-
-<pre><code class="language-java">public class LocationLiveData extends LiveData&lt;Location&gt; {
-    // 单例模式
-    private static LocationLiveData sInstance;
-    private LocationManager locationManager;
-
-    @MainThread
-    public static LocationLiveData get(Context context) {
-        if (sInstance == null) {
-            sInstance = new LocationLiveData(context.getApplicationContext());
-        }
-        return sInstance;
-    }
-
-    private SimpleLocationListener listener = new SimpleLocationListener() {
-        @Override
-        public void onLocationChanged(Location location) {
-            setValue(location);
-        }
-    };
-
-    private LocationLiveData(Context context) {
-        locationManager = (LocationManager) context.getSystemService(
-                Context.LOCATION_SERVICE);
-    }
-
-    @Override
-    protected void onActive() {
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
-    }
-
-    @Override
-    protected void onInactive() {
-        locationManager.removeUpdates(listener);
-    }
-}
-</code></pre>
-
-<p>fragment 如下</p>
-
-<pre><code class="language-java">public class MyFragment extends LifecycleFragment {
-    public void onActivityCreated (Bundle savedInstanceState) {
-        Util.checkUserStatus(result -&gt; {
-            if (result) {
-                LocationLiveData.get(getActivity()).observe(this, location -&gt; {
-                   // update UI
-                });
-            }
-        });
-  }
-}
-</code></pre>
-
-<p>这样就可以多个 fragment Activity 观察<code>MyLocationListener实例</code>，LiveData 可以比较优雅的管理这些 obverser</p>
-
-<p>LiveData 还有以下几个优势</p>
-
-<ul>
-<li><strong>没有内存泄露</strong>：因为<code>Observer</code>被关联在了 <code>Lifecycle</code>对象中，所以他们能在生命周期 destory 的时候自动解除关联</li>
-<li><strong>没有因为 Activity stop 而产生的 crash</strong> ：如果<code>Observer</code> 的<code>Lifecycle</code>不在激活的生命周期内。</li>
-<li><strong>始终保持最新的数据</strong>：如果 <code>Lifecycle</code>重新启动（比如 Activity 重新start），会重新收到数据</li>
-<li><strong>正确的config更改</strong>：如果由于配置更改（如设备旋转）而重新创建Activity或fragment，则会立即接收最后一个可用位置数据。</li>
-<li><strong>共享资源</strong>：可以只保留一个<code>MyLocationListener</code>的实例只需连接系统服务一次，就可以支持应用内所有的observers</li>
-<li><strong>不需要手动处理生命周期</strong>：fragment 只在需要的时候观察数据，不用担心被stop或在stop后开始观察。因为fragment 在观察时提供了其生命周期，LiveData自动管理所有这一切</li>
-</ul>
-
-<h2 id="toc_1">Transformations of LiveData</h2>
-
-<p>有时候，您可能需要在将其分配给观察者之前对LiveData值进行更改，否则可能需要根据另一个LiveData实例返回不同的LiveData实例</p>
-
-<p>Lifecycle包提供了一个Transformations类，其中包含这些操作的帮助方法（类似于 Rxjava map）。</p>
-
-<h3 id="toc_2">Transformations.map()</h3>
-
-<p>应用一个函数作用在LiveData上，并将结果传播到下游。</p>
-
-<pre><code class="language-java">LiveData&lt;User&gt; userLiveData = ...;
-LiveData&lt;String&gt; userName = Transformations.map(userLiveData, user -&gt; {
-    user.name + &quot; &quot; + user.lastName
-});
-</code></pre>
-
-<h3 id="toc_3">Transformations.switchMap()</h3>
-
-<p>与map（）类似，将一个函数应用于该值并展开并将结果分派到下游。传递给switchMap（）的函数必须返回一个<code>Lifecycle</code></p>
-
-<pre><code class="language-java">private LiveData&lt;User&gt; getUser(String id) {
-  ...;
-}
-
-LiveData&lt;String&gt; userId = ...;
-LiveData&lt;User&gt; user = Transformations.switchMap(userId, id -&gt; getUser(id) );
-</code></pre>
-
-<p>map 是把一个数据类型变换为另外一个数据类型。<br/>
-switchMap 是把一个数据变化为另外一个 LiveData </p>
-
-<p>使用这些转换允许在整个调用链中携带观察者的 Lifecycle 信息，以便只有在观察者观察到 LiveData 的返回时才运算这些转换。转换的这种惰性运算性质允许隐式的传递生命周期相关行为，而不必添加显式的调用或依赖。<br/>
-<!--todo 没太理解--></p>
-
-<p>每当您认为在ViewModel中需要一个Lifecycle对象时，转换可能就是解决方案。</p>
-
-<p>例如：假设有一个 UI，用户输入一个地址然后会收到该地址的邮政编码。该 UI 简单的 ViewModel 可能像这样：</p>
-
-<pre><code class="language-java">class MyViewModel extends ViewModel {
-    private final PostalCodeRepository repository;
-    public MyViewModel(PostalCodeRepository repository) {
-       this.repository = repository;
-    }
-
-    private LiveData&lt;String&gt; getPostalCode(String address) {
-       // DON&#39;T DO THIS
-       return repository.getPostCode(address);
-    }
-}
-</code></pre>
-
-<p>如果这是实现，UI将需要从先前的LiveData注销，并在每次调用getPostalCode（）时重新注册到新的实例。此外，如果UI被重新创建，它会触发对repository.getPostCode（）的另一个调用，而不是使用以前的调用结果。</p>
-
-<p>而不是使用这种方法，您可以实现邮政编码信息作为地址输入的转换：</p>
-
-<pre><code class="language-java">class MyViewModel extends ViewModel {
-    private final PostalCodeRepository repository;
-    private final MutableLiveData&lt;String&gt; addressInput = new MutableLiveData();
-    public final LiveData&lt;String&gt; postalCode =
-            Transformations.switchMap(addressInput, (address) -&gt; {
-                return repository.getPostCode(address);
-             });
-
-  public MyViewModel(PostalCodeRepository repository) {
-      this.repository = repository
-  }
-
-  private void setInput(String address) {
-      addressInput.setValue(address);
-  }
-}
-</code></pre>
-
-<p>我们甚至使邮政编码字段为public final，因为它永远不会更改。postalCode 被定义为addressInput的转换，所以当addressInput更改时，如果存在活动的观察者，则会调用repository.getPostCode（）。如果在调用时没有处于活动状态的观察者，在添加观察者之前不会进行任何运算。</p>
-
-<p>该机制允许以较少的资源根据需要惰性运算来创建 LiveData。ViewModel 可以轻松获取到 LiveData 并在它们上面定义转换规则。</p>
-
-<p>创建新的转换</p>
-
-<p>在应用程序中可能会用到十几种不同的特定转换，但是默认是不提供的。可以使用 MediatorLiveData 实现自己的转换，MediatorLiveData 是为了用来正确的监听其它 LiveData 实例并处理它们发出的事件而特别创建的。MediatorLiveData 需要特别注意正确的向源 LiveData 传递其处于活动/闲置状态。有关详细信息，请参阅 Transformations 类。</p>
-
-<h1 id="toc_4">参考</h1>
-
-<blockquote>
-<p><a href="https://juejin.im/post/5937e402a0bb9f005808d00e">https://juejin.im/post/5937e402a0bb9f005808d00e</a><br/>
-<a href="https://developer.android.com/topic/libraries/architecture/livedata.html#transformations_of_livedata">https://developer.android.com/topic/libraries/architecture/livedata.html#transformations_of_livedata</a></p>
-</blockquote>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Architecture Components--Lifecycle]]></title>
-    <link href="xuyushi.github.io/15299133102342.html"/>
-    <updated>2018-06-25T15:55:10+08:00</updated>
-    <id>xuyushi.github.io/15299133102342.html</id>
-    <content type="html"><![CDATA[
-<p>通过 <code>android.arch.lifecycle</code> 包提供的接口和类，我们可以构建出能感知到生命周期的组件。这些组件可以根据当前的Fragment 或者 Activity 的生命周期做出相应的调整</p>
-
-<p>大部分有生命周期的 app 组件都定义在了Android 的Framework 层。操作系统和Framework 维护着这些组件的生命周期。这些都是 Android 运行的核心。</p>
-
-<p>如果想要在一个Activity 中显示设备的地理位置。通常代码是这样的<br/>
-<span id="more"></span><!-- more --></p>
-
-<pre><code class="language-java">class MyLocationListener {
-    public MyLocationListener(Context context, Callback callback) {
-        // ...
-    }
-
-    void start() {
-        // connect to system location service
-    }
-
-    void stop() {
-        // disconnect from system location service
-    }
-}
-
-class MyActivity extends AppCompatActivity {
-    private MyLocationListener myLocationListener;
-
-    public void onCreate(...) {
-        myLocationListener = new MyLocationListener(this, (location) -&gt; {
-            // update UI
-        });
-  }
-
-    public void onStart() {
-        super.onStart();
-        myLocationListener.start();
-    }
-
-    public void onStop() {
-        super.onStop();
-        myLocationListener.stop();
-    }
-}
-</code></pre>
-
-<p>目前看起来还不错，但是在实际的工程项目中。生命周期的这些回调方法，比如<code>onStart()</code>  <code>onStop()</code> 会变得非常大</p>
-
-<p>而且有些组件还不是简单在<code>onStart()</code>方法中启动。还需要在启动前检查一些设置。比如检查 Activity 是否已经被 stop 或者 finish 掉。</p>
-
-<p>代码可能会是这样</p>
-
-<pre><code class="language-java">class MyActivity extends AppCompatActivity {
-    private MyLocationListener myLocationListener;
-
-    public void onCreate(...) {
-        myLocationListener = new MyLocationListener(this, location -&gt; {
-            // update UI
-        });
-    }
-
-    public void onStart() {
-        super.onStart();
-        Util.checkUserStatus(result -&gt; {
-            // what if this callback is invoked AFTER activity is stopped?
-            if (result) {
-                myLocationListener.start();
-            }
-        });
-    }
-
-    public void onStop() {
-        super.onStop();
-        myLocationListener.stop();
-    }
-}
-</code></pre>
-
-<p><code>android.arch.lifecycle</code> 包会提供有弹性和解耦的解决方法</p>
-
-<h2 id="toc_0">Lifecycle</h2>
-
-<p><code>Lifecycle</code> 类持有组件（例如 fragment Activity）的生命周期状态信息，允许其他类 observe 这个状态</p>
-
-<p><code>Lifecycle</code> 使用两个主要枚举来跟踪其关联组件的生命周期状态</p>
-
-<h3 id="toc_1">Event</h3>
-
-<p>framework 和 Lifecycle class. 发出 lifecycle events 。这些event 被映射到 fragment 和 Activity 的的回调中</p>
-
-<h3 id="toc_2">State</h3>
-
-<p>当面组件的生命周期状态</p>
-
-<p><img src="media/15299133102342/14982024870658.jpg" alt=""/></p>
-
-<p>可以吧这些state视为节点。而 event 是这些节点的连线</p>
-
-<p>类可以通过向其方法添加注解来监视组件的生命周期状态。</p>
-
-<pre><code class="language-java">public class MyObserver implements LifecycleObserver {
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    public void onResume() {
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-    public void onPause() {
-    }
-}
-aLifecycleOwner.getLifecycle().addObserver(new MyObserver());
-
-</code></pre>
-
-<h2 id="toc_3">LifecycleOwner</h2>
-
-<p><code>LifecycleOwner</code> 是一个接口，只有一个方法——<code>getLifecycle(),</code> ，返回<code>Lifecycle</code> 。这个接口表示这个类具有一个<code>Lifecycle</code>。</p>
-
-<p>这个类从每个拥有生命周期的独立类（比如fragment Activity ）中抽象出<code>Lifecycle</code>的所有权。这样组件就可以通用的使用<code>Lifecycle</code></p>
-
-<blockquote>
-<p>注意<br/>
-Architecture Components 仍在测试阶段，所以 <code>Fragment</code> and <code>AppCompatActivity</code>没有实现这个接口。<br/>
-<code>LifecycleActivity</code> and <code>LifecycleFragment</code> 实现了这个接口。等到<code>Lifecycles</code> 到了正式拜。support library 中的 fragment 和 Activity 会实现这个接口。 LifecycleActivity and LifecycleFragment会deprecated。</p>
-</blockquote>
-
-<p>我们可以把<code>MyLocationListener</code> 实现 <code>LifecycleObserver</code> 接口，并在<code>Lifecycle</code> onCreate 时初始化。这样就可以<code>MyLocationListener</code>自给自足自己做初始化 clean 等</p>
-
-<pre><code class="language-java">public class LifeCycleTestActivity extends LifecycleActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_life_cycle_test);
-        MyLocationListener listener = new MyLocationListener(this, getLifecycle());
-        listener.enable();
-        getLifecycle().addObserver(listener);
-
-    }
-}    
-
-
-public class MyLocationListener implements LifecycleObserver {
-    private static final String TAG = &quot;MyLocationListener&quot;;
-    private boolean enabled = false;
-    private Context mContext;
-    private Lifecycle mLifecycle;
-
-    public MyLocationListener(Context context, Lifecycle lifecycle) {
-        mLifecycle = lifecycle;
-        mContext = context;
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    void start() {
-        if (enabled) {
-            // connect
-            Log.d(TAG, &quot;Lifecycle.Event.ON_START&quot;);
-        }
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    void resume() {
-        if (enabled) {
-            // connect
-            Log.d(TAG, &quot;Lifecycle.Event.ON_RESUME&quot;);
-        }
-    }
-
-    public void enable() {
-        enabled = true;
-        if ( mLifecycle.getCurrentState().isAtLeast(Lifecycle.State.STARTED)) {
-            // connect if not connected
-        }
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    void stop() {
-        // disconnect if connected
-        Log.d(TAG, &quot;Lifecycle.Event.ON_STOP&quot;);
-    }
-}
-</code></pre>
-
-<p>当 addObserver 之后，MyLocationListener能接受到 Activity 的生命周期的回调。它能在自己的类做初始化和 清理，解耦了与 Activity 的关系， 从而保持 Activity 代码的整洁</p>
-
-<p>这些能和<code>Lifecycle</code>关联的组件被称为<code>lifecycle-aware components</code>。我们鼓励库提供这类组件。这样客户可以不用手动管理这些组件的生命周期</p>
-
-<p>LiveData是生命周期感知组件的示例。与ViewModel一起使用LiveData可以在遵循Android生命周期的情况下，更容易地使用数据填充UI。</p>
-
-<h2 id="toc_4">Best practices for Lifecycles</h2>
-
-<ul>
-<li>保持UI controllers(activities and fragments)  尽可能简洁。他们不应该去获取数据，应该使用<code>ViewModel</code>获取。然后通过观察 <code>ViewModel</code> 的变化，映射到 views 中</li>
-<li>尽可能使数据来驱动 UI，UI controller 的责任是当数据变化时去更新,或者将用户事件传递给<code>ViewModel</code></li>
-<li>把数据的逻辑放入<code>ViewModel</code>类中。<code>ViewModel</code>是连接 UI controller 和其他部分。<strong>注意 <code>ViewModel</code>的责任不是去获取数据，他的责任是调用合适的组件来做。然后吧结果返回给 UI controller</strong></li>
-<li>使用<code>Data Binding</code> 解耦 view 和 UI controller</li>
-<li>如果 UI 太复杂可以考虑加一个 Presenter 来处理 UI 变化</li>
-<li>不用在 <code>ViewModel</code> 中持有 <code>View</code> 或者<code>Activity</code>。如果 ViewModel 的生命周期比 Activity 长 有可能会导致内存泄露</li>
-</ul>
-
-<h2 id="toc_5">Addendum</h2>
-
-<h3 id="toc_6">自定义 fragment Activity 实现LifecycleOwner</h3>
-
-<p>自定义 fragment Activity 可以通过构造 <code>LifecycleRegistryOwner</code> 实现<code>LifecycleOwner</code></p>
-
-<pre><code class="language-java">public class MyFragment extends Fragment implements LifecycleRegistryOwner {
-    LifecycleRegistry lifecycleRegistry = new LifecycleRegistry(this);
-
-    @Override
-    public LifecycleRegistry getLifecycle() {
-        return lifecycleRegistry;
-    }
-}
-</code></pre>
-
-<h1 id="toc_7">参考</h1>
-
-<blockquote>
-<p><a href="https://developer.android.com/topic/libraries/architecture/lifecycle.html#lco">https://developer.android.com/topic/libraries/architecture/lifecycle.html#lco</a></p>
-</blockquote>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Maven 仓库的使用和搭建]]></title>
-    <link href="xuyushi.github.io/15299133101591.html"/>
-    <updated>2018-06-25T15:55:10+08:00</updated>
-    <id>xuyushi.github.io/15299133101591.html</id>
-    <content type="html"><![CDATA[
-<p>Maven项目使用项目对象模型（Project Object Model，POM）来配置。Maven 是一种构建工具，Maven 包是由所谓 POM（Project Object Model）所定义的文件<br/>
-项目对象模型存储在名为 pom.xml 的文件中。<br/>
-<span id="more"></span><!-- more --><br/>
-以下是一个简单的示例：</p>
-
-<pre><code class="language-markup">&lt;project&gt;
-  &lt;!-- model version is always 4.0.0 for Maven 2.x POMs --&gt;
-  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-  
-  &lt;!-- project coordinates, i.e. a group of values which
-       uniquely identify this project --&gt;
-  
-&lt;!--包组 id，通常是发布者拥有的域名的反向，以免跟别人的重复--&gt;
-  &lt;groupId&gt;com.mycompany.app&lt;/groupId&gt;
-  &lt;artifactId&gt;my-app&lt;/artifactId&gt;
-  &lt;version&gt;1.0&lt;/version&gt;
-
-  &lt;!-- library dependencies --&gt;
-  
-  &lt;dependencies&gt;
-    &lt;dependency&gt;
-    
-      &lt;!-- coordinates of the required library --&gt;
-      
-      &lt;groupId&gt;junit&lt;/groupId&gt;
-      &lt;artifactId&gt;junit&lt;/artifactId&gt;
-      &lt;version&gt;3.8.1&lt;/version&gt;
-      
-      &lt;!-- this dependency is only used for running and compiling tests --&gt;
-      &lt;!--比如常用的还有 compile --&gt;
-      &lt;scope&gt;test&lt;/scope&gt;
-      
-    &lt;/dependency&gt;
-  &lt;/dependencies&gt;
-&lt;/project&gt;
-</code></pre>
-
-<p>对于一个合符规范的 Maven Package，pom 文件、aar（或者 jar） 文件是必须的。</p>
-
-<h2 id="toc_0">设置 maven 仓库</h2>
-
-<p>在Android 项目中通常是是在根目录的 build.gradle 中设置 maven 仓库的地址</p>
-
-<pre><code class="language-gradle">buildscript {
-    repositories {
-        maven {
-            url &#39;https://xxxxxxxx/nexus/content/repositories/ss_app_android&#39;
-        }
-
-        maven {
-            url &#39;https://xxxxxxx/nexus/content/repositories/central&#39;
-        }
-        
-        // 这两个是 maven 的中央仓库
-        jcenter()
-        mavenCentral()
-    }
-}
-
-</code></pre>
-
-<p><code>maven { url }</code> 除了可以添加远程仓库，还能添加本地的 maven 仓库</p>
-
-<pre><code class="language-gradle">maven {
-    url &#39;file:///xxxxAndroid/repo/&#39;
-}
-</code></pre>
-
-<h2 id="toc_1">发布 Maven 包</h2>
-
-<p>可以通过 gradle 插件 快速发布 maven 仓库</p>
-
-<h3 id="toc_2">lolcalmaven 发布</h3>
-
-<ul>
-<li>新建lolcalmaven module</li>
-<li>修改gradle.properties </li>
-</ul>
-
-<pre><code class="language-gradle">PROJ_NAME=localrepo
-PROJ_ARTIFACTID=localrepo
-PROJ_POM_NAME=Local Repository
-LOCAL_REPO_URL=file:///Users/your-user-name/Documents/Android/repo/
-#以上是 Mac 的本地路径，如果是 Windows，则是类似：
-#LOCAL_REPO_URL=file:///C:/Users/cadmanager/Documents/repo/
-
-</code></pre>
-
-<ul>
-<li>在lolcalmaven 的 build.gradle 中增加和配置 maven plugin</li>
-</ul>
-
-<pre><code class="language-gradle">apply plugin: &#39;maven&#39;
-
-uploadArchives {
-    repositories.mavenDeployer {
-        repository(url: LOCAL_REPO_URL)
-        pom.groupId = PROJ_GROUP
-        pom.artifactId = PROJ_ARTIFACTID
-        pom.version = PROJ_VERSION      }
-}
-</code></pre>
-
-<ul>
-<li>控制台运行 </li>
-</ul>
-
-<pre><code class="language-bash">./gradlew -p localrepo clean build uploadArchives --info
-</code></pre>
-
-<p>生成的文件</p>
-
-<pre><code class="language-bash">.
-├── localrepo-1.0.0.aar
-├── localrepo-1.0.0.aar.md5
-├── localrepo-1.0.0.aar.sha1
-├── localrepo-1.0.0.pom
-├── localrepo-1.0.0.pom.md5
-└── localrepo-1.0.0.pom.sha1
-
-</code></pre>
-
-<p>生成的 pom 文件</p>
-
-<pre><code class="language-markup">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;project xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot; xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
-    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
-  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-  &lt;groupId&gt;io.github.xuyushi&lt;/groupId&gt;
-  &lt;artifactId&gt;localrepo&lt;/artifactId&gt;
-  &lt;version&gt;1.0.0&lt;/version&gt;
-  &lt;packaging&gt;aar&lt;/packaging&gt;
-  &lt;dependencies&gt;
-    &lt;dependency&gt;
-      &lt;groupId&gt;com.android.support&lt;/groupId&gt;
-      &lt;artifactId&gt;appcompat-v7&lt;/artifactId&gt;
-      &lt;version&gt;25.3.0&lt;/version&gt;
-      &lt;scope&gt;compile&lt;/scope&gt;
-    &lt;/dependency&gt;
-  &lt;/dependencies&gt;
-&lt;/project&gt;
-</code></pre>
-
-<ul>
-<li>在新的项目工程中使用，在根目录的 gradle 中添加本地仓库</li>
-</ul>
-
-<pre><code class="language-java">allprojects {
-    repositories {
-        jcenter()
-        maven {
-            url &#39;file:///Users/xuyushi/Documents/Android/repo/&#39;
-        }
-    }
-}
-</code></pre>
-
-<ul>
-<li>在 app moudle的 build.gradle 中增加依赖
-<code>compile &#39;io.github.xuyushi:localrepo:1.0.0&#39;</code></li>
-</ul>
-
-<p>这样就可以在项目中使用 本地仓库中的库了</p>
-
-<h3 id="toc_3">发布 jcenter 远程仓库</h3>
-
-<h4 id="toc_4">注册账号</h4>
-
-<p><a href="https://bintray.com/">Jcenter</a> 注册账号<br/>
- Bintray是jcenter的托管商，因此你必须注册一个Bintray账号，注册完账号后记下你的用户名以及API Key。</p>
-
-<p>登陆后在首页右上角点击用户名进入个人主页，然后点击用户名下面的Edit进入个人信息编辑页面，接下来点击页面左边列表的最后一项API Key</p>
-
-<h4 id="toc_5">配置插件</h4>
-
-<p>在项目的根目录 build.gradle 中添加 dependencies</p>
-
-<pre><code class="language-gradle">    dependencies {
-        classpath &#39;com.android.tools.build:gradle:2.2.2&#39;
-        classpath &#39;com.github.dcendents:android-maven-gradle-plugin:1.5&#39;
-        classpath &#39;com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.2&#39;
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-</code></pre>
-
-<h3 id="toc_6">配置 local.properties</h3>
-
-<p>配置在本地文件中 ，不计入版本管理</p>
-
-<pre><code class="language-bash">bintray.user=xxxx
-bintray.apikey=your keys
-</code></pre>
-
-<h3 id="toc_7">修改需要上传的 module 的 gradle 文件</h3>
-
-<p>apply 插件 </p>
-
-<pre><code class="language-gradle">apply plugin: &#39;com.github.dcendents.android-maven&#39;
-apply plugin: &#39;com.jfrog.bintray&#39;
-</code></pre>
-
-<pre><code class="language-gradle">// This is the library version used when deploying the artifact
-version = &quot;1.0.0&quot;
-
-def siteUrl = &#39;http://xuyushi.github.io&#39;      // 项目的主页
-def gitUrl = &#39;http://xuyushi.github.io&#39;   // Git仓库的url
-group = &quot;io.github.xuyushi&quot;                                        // Maven Group ID for the artifact，一般填你唯一的包名
-
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging &#39;aar&#39;
-                // Add your description here
-                name &#39;multi-format 1D/2D barcode image processing use zxing.&#39;
-                url siteUrl
-                // Set your license
-                licenses {
-                    license {
-                        name &#39;The Apache Software License, Version 2.0&#39;
-                        url &#39;http://www.apache.org/licenses/LICENSE-2.0.txt&#39;
-                    }
-                }
-                developers {
-                    developer {
-                        id &#39;xuyushi&#39;        //填写的一些基本信息
-                        name &#39;xuyushi&#39;
-                        email &#39;xmy166@gmail.com&#39;
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
-            }
-        }
-    }
-}
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = &#39;sources&#39;
-}
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = &#39;javadoc&#39;
-    from javadoc.destinationDir
-}
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-Properties properties = new Properties()
-properties.load(project.rootProject.file(&#39;local.properties&#39;).newDataInputStream())
-bintray {
-    user = properties.getProperty(&quot;bintray.user&quot;)
-    key = properties.getProperty(&quot;bintray.apikey&quot;)
-    configurations = [&#39;archives&#39;]
-    pkg {
-        repo = &quot;maven&quot;
-        name = &quot;maventest&quot;    //发布到JCenter上的项目名字
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = [&quot;Apache-2.0&quot;]
-        publish = true
-    }
-}
-javadoc { //jav doc采用utf-8编码否则会报“GBK的不可映射字符”错误
-    options{
-        encoding &quot;UTF-8&quot;
-        charSet &#39;UTF-8&#39;
-    }
-}
-</code></pre>
-
-<h3 id="toc_8">在 jcenter 中新建 maven 仓库</h3>
-
-<h3 id="toc_9">上传命令</h3>
-
-<pre><code class="language-bash">./gradlew jcentermaven:bintrayUpload
-</code></pre>
-
-<h3 id="toc_10">将提交到Bintray的项目发布到JCenter</h3>
-
-<p>完成上述的步骤只是将项目提交到bintray，还无法使用该项目库，因为还没有发布到JCenter。<br/>
-登入Bintray网站，进入个人中心，在右侧的Owned Repositories区域点击Maven的图标，进入你的Maven项目列表。</p>
-
-<p>如果已经上传成功了，在这里就能看到你的项目，进入项目详情，在右下角的Linked To区域点击Add to JCenter，然后在Comments输入框里随便填写下信息，最后点Send提交请求即可。一般情况下当天就会审核，审核通过后会给你发邮件通知你，并且以后更新项目就不需要再审核了。<br/>
-审核成功后就可以使用你发布到JCenter上的项目了。<br/>
-使用你发布到JCenter上的项目<br/>
-在Bintray的搜索输入框中输入你的项目：</p>
-
-<h3 id="toc_11">总结</h3>
-
-<ul>
-<li>既然要上传到Jcenter上，自然要去<a href="https://bintray.com">https://bintray.com</a> 中注册账号</li>
-<li>根据自己的需求创建maven的Repository</li>
-<li>把项目分离成Module</li>
-<li>在项目根目录的build.gradle中添加bintray插件</li>
-<li>在local.properties中添加bintray认证</li>
-<li>修改Module中的build.gradle中的配置</li>
-<li>在Android Studio终端使用./gradlew xxx上传</li>
-<li>最后在JFrog Bintray中同步到Jcenter中</li>
-</ul>
-
-<h2 id="toc_12">本地 maven 仓库搭建</h2>
-
-<p>todo</p>
-
-<blockquote>
-<p><a href="http://www.jianshu.com/p/9740778b154f">http://www.jianshu.com/p/9740778b154f</a></p>
-</blockquote>
-
-<h1 id="toc_13">参考</h1>
-
-<blockquote>
-<p><a href="http://kvh.io/cn/embrace-android-studio-maven-deploy.html">http://kvh.io/cn/embrace-android-studio-maven-deploy.html</a><br/>
-<a href="https://zh.wikipedia.org/wiki/Apache_Maven">https://zh.wikipedia.org/wiki/Apache_Maven</a></p>
 </blockquote>
 
 ]]></content>

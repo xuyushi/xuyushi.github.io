@@ -112,6 +112,203 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15299133102936.html">
+                
+                  <h1>Android 测试 （四）-- 实战分析</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>本文通过分析一个完整的项目，来学习如果对一个完整的工程比较好的进行编写测试程序</p>
+
+<p><a href="https://github.com/googlesamples/android-architecture">项目地址</a>  ，该项目采用的是 mvp 架构，（关于 mvp 的介绍可以看这里 ），mvp 对于测试的好处就是讲 view 逻辑和业务代码分离，我们可以很方便的对业务代码进行 local unit test 的测试。</p>
+
+<p><img src="media/15299133102936/14790068700868.jpg" alt="" style="width:539px;"/></p>
+
+<h1 id="toc_0">项目结构</h1>
+
+<p>可以看到项目的整体结构比较清晰</p>
+
+<ol>
+<li>项目代码</li>
+<li>Android 测试（Instrumentation test） </li>
+<li>Android 测试 相关 mock</li>
+<li>local unit test</li>
+<li>local unit test 相关 mock
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133102936.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/11/13</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133103011.html">
+                
+                  <h1>Android 测试 （五）-- 实战分析</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>通过一个邮箱的开源项目分析如果对一个项目进行 android 测试。</p>
+
+<p><a href="https://github.com/ribot/android-boilerplate">项目地址</a>  ， <a href="http://xuyushi.github.io/2016/06/18/Android%20APP%20%E6%96%B0%E6%A1%86%E6%9E%B6/">我在文章</a>（ <a href="http://xuyushi.github.io/2016/06/18/Android%20APP%20%E6%96%B0%E6%A1%86%E6%9E%B6/">http://xuyushi.github.io/2016/06/18/Android%20APP%20%E6%96%B0%E6%A1%86%E6%9E%B6/</a> ）中已经对这个项目的框架进行了解析，不熟悉的可以看这里</p>
+
+<p>改项目采用的是 Rxjava + retrofit + dagger2 + mvp 的框架。测试采用的是 unit + dagger + robolectric ，unit test 测试 mvp 中 P层的依赖</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/11/13</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133103134.html">
+                
+                  <h1>Android 测试 （三）--Local Unit Tests</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>如果你的单测程序没有或者只有少量的 Android 依赖，你应该在你的本地开发环境中运行你的测试程序。因为这种方法可以避免每次将测试代码加载到物理设备或者模拟器上运行，所以测试效率比较高。执行单元测试的时间大大减少。你可以使用 mock 框架比如 Mockito 来解决一些依赖关系<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133103134.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/11/6</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133103076.html">
+                
+                  <h1>Android 测试 （二）--Instrumented Unit</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Instrumented 单元测试运行在物理设备或者模拟器上。他能使用 Android api 和一些 support api，例如 Android  Testing Support Library。如果需要获取 instrumentation 信息（例如需要 app 的 context）或者需要 Android 框架里的一些组件（比如 Parcelable 或 SharedPreferences 对象），可以使用Instrumented 单测</p>
+
+<p><em>使用Instrumented单元测试也有助于减少编写和维护mock 代码的工作量。如果你选择mock 的话，可以使用一个模仿的框架来mock 任何依赖关系。</em><br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133103076.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/11/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133103196.html">
+                
+                  <h1>Android 测试 （一）--测试总览</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>android 测试基于 Junit，我们既可以在 JVM 运行单元测试，也可以在 Android 设备上运行功能测试</p>
+
+<h1 id="toc_0">测试类型</h1>
+
+<p>当使用 Android studio 来写测试程序时，你的代码必须放在两个指定的文件夹中。</p>
+
+<h2 id="toc_1">Local unit testsWARNING: No manifest file found at ./AndroidManifest.xml.</h2>
+
+<p>Falling back to the Android OS resources only.<br/>
+To remove this warning, annotate your test class with @Config(manifest=Config.NONE).<br/>
+位于 module-name/src/test/java/.<br/>
+这些测试时运行在本地 JVM，没有运行 Android framework API的权限<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133103196.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/11/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15299133102218.html">
                 
                   <h1>HashMap 的实现原理</h1>
@@ -308,220 +505,6 @@ hashCode 的常规协定是：<br/><br/>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133102725.html">
-                
-                  <h1>AsyncTask 源码分析</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">简介</h1>
-
-<p>AsyncTask enables proper and easy use of the UI thread. This class allows to perform background operations and publish results on the UI thread without having to manipulate threads and/or handlers.<br/>
-主要是为了在后台线程中做操作时更新 UI 的<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133102725.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/9/3</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133101261.html">
-                
-                  <h1>Runnable、Callable、Future、FutureTask的区别</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">Runnable（interface）</h1>
-
-<pre><code class="language-java">/**
- * Represents a command that can be executed. Often used to run code in a
- * different {@link Thread}.
- */
-public interface Runnable {
-
-    /**
-     * Starts executing the active part of the class&#39; code. This method is
-     * called when a thread is started that has been created with a class which
-     * implements {@code Runnable}.
-     */
-    public void run();
-}
-
-</code></pre>
-
-<p>run()方法返回值为void类型，所以在执行完任务之后无法返回任何结果。<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133101261.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/8/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133101714.html">
-                
-                  <h1>Looper、Handler、Message 源码分析</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">Looper</h2>
-
-<p>文档这么介绍这个类的 </p>
-
-<blockquote>
-<ul>
-<li>Class used to run a message loop for a thread.  Threads by default do
-<ul>
-<li>not have a message loop associated with them; to create one, call</li>
-<li>{@link #prepare} in the thread that is to run the loop, and then</li>
-<li>{@link #loop} to have it process messages until the loop is stopped.</li>
-</ul></li>
-</ul>
-</blockquote>
-
-<p>通常在线程中是这样使用</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133101714.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/8/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133102391.html">
-                
-                  <h1>HandlerThread 源码 分析</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">HandlerThread</h1>
-
-<p>首先文档对这个类的介绍</p>
-
-<blockquote>
-<p>Handy class for starting a new thread that has a looper. The looper can then be used to create handler classes. Note that start() must still be called.</p>
-</blockquote>
-
-<p>如果我有一个耗时的任务需要放在非 UI 线程处理，一般情况下是 new 出一个 thread 来执行，然而，这样就存在一个性能问题：多次创建和销毁线程是很耗系统资源的。<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133102391.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/8/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133100823.html">
-                
-                  <h1>wait/notify/notifyAll 总结</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">概述</h2>
-
-<p>在Java中，可以通过配合调用Object对象的wait（）方法和notify（）方法或notifyAll（）方法来实现线程间的通信。在线程中调用wait（）方法，将阻塞等待其他线程的通知（其他线程调用notify（）方法或notifyAll（）方法），在线程中调用notify（）方法或notifyAll（）方法，将通知其他线程从wait（）方法处返回。</p>
-
-<p>Object是所有类的超类，它有5个方法组成了等待/通知机制的核心：notify（）、notifyAll（）、wait（）、wait（long）和wait（long，int）。在Java中，所有的类都从Object继承而来，因此，所有的类都拥有这些共有方法可供使用。而且，由于他们都被声明为final，因此在子类中不能覆写任何一个方法。<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133100823.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/8/14</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -599,31 +582,31 @@ public interface Runnable {
 	      
 		      
 			      <li class="post">
-			        <a href="15316240502263.html">用户调研</a>
+			        <a href="15318371632829.html">业务流程设计</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15316220023386.html">用户反馈发现问题</a>
+			        <a href="15318354800090.html">完整功能点设计</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133098726.html">abtest 数据分析</a>
+			        <a href="15318107329806.html">产品调研</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133098793.html">ABtest 平台框架</a>
+			        <a href="15316593971293.html">用思维导图梳理用户需求</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			        <a href="15317376170439.html">需求优先级</a>
 			      </li>
 		     
 		  

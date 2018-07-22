@@ -112,6 +112,220 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15299133102725.html">
+                
+                  <h1>AsyncTask 源码分析</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h1 id="toc_0">简介</h1>
+
+<p>AsyncTask enables proper and easy use of the UI thread. This class allows to perform background operations and publish results on the UI thread without having to manipulate threads and/or handlers.<br/>
+主要是为了在后台线程中做操作时更新 UI 的<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133102725.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/9/3</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133101261.html">
+                
+                  <h1>Runnable、Callable、Future、FutureTask的区别</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h1 id="toc_0">Runnable（interface）</h1>
+
+<pre><code class="language-java">/**
+ * Represents a command that can be executed. Often used to run code in a
+ * different {@link Thread}.
+ */
+public interface Runnable {
+
+    /**
+     * Starts executing the active part of the class&#39; code. This method is
+     * called when a thread is started that has been created with a class which
+     * implements {@code Runnable}.
+     */
+    public void run();
+}
+
+</code></pre>
+
+<p>run()方法返回值为void类型，所以在执行完任务之后无法返回任何结果。<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133101261.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/8/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133101714.html">
+                
+                  <h1>Looper、Handler、Message 源码分析</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">Looper</h2>
+
+<p>文档这么介绍这个类的 </p>
+
+<blockquote>
+<ul>
+<li>Class used to run a message loop for a thread.  Threads by default do
+<ul>
+<li>not have a message loop associated with them; to create one, call</li>
+<li>{@link #prepare} in the thread that is to run the loop, and then</li>
+<li>{@link #loop} to have it process messages until the loop is stopped.</li>
+</ul></li>
+</ul>
+</blockquote>
+
+<p>通常在线程中是这样使用</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133101714.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/8/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133102391.html">
+                
+                  <h1>HandlerThread 源码 分析</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h1 id="toc_0">HandlerThread</h1>
+
+<p>首先文档对这个类的介绍</p>
+
+<blockquote>
+<p>Handy class for starting a new thread that has a looper. The looper can then be used to create handler classes. Note that start() must still be called.</p>
+</blockquote>
+
+<p>如果我有一个耗时的任务需要放在非 UI 线程处理，一般情况下是 new 出一个 thread 来执行，然而，这样就存在一个性能问题：多次创建和销毁线程是很耗系统资源的。<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133102391.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/8/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133100823.html">
+                
+                  <h1>wait/notify/notifyAll 总结</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">概述</h2>
+
+<p>在Java中，可以通过配合调用Object对象的wait（）方法和notify（）方法或notifyAll（）方法来实现线程间的通信。在线程中调用wait（）方法，将阻塞等待其他线程的通知（其他线程调用notify（）方法或notifyAll（）方法），在线程中调用notify（）方法或notifyAll（）方法，将通知其他线程从wait（）方法处返回。</p>
+
+<p>Object是所有类的超类，它有5个方法组成了等待/通知机制的核心：notify（）、notifyAll（）、wait（）、wait（long）和wait（long，int）。在Java中，所有的类都从Object继承而来，因此，所有的类都拥有这些共有方法可供使用。而且，由于他们都被声明为final，因此在子类中不能覆写任何一个方法。<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133100823.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/8/14</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15299133101186.html">
                 
                   <h1>synchronized 总结</h1>
@@ -304,359 +518,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133103723.html">
-                
-                  <h1>Android Application 从零开始 1 ——Gradle</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>本节主要介绍了 app 的 gradle 的构建<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133103723.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/7/5</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133103764.html">
-                
-                  <h1>Android Application 从零开始 0 ——前言</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">叨叨叨</h1>
-
-<p>有没有想过在没有业务的压力，没有项目接手时一堆繁杂代码的困扰，没有产品天马行空奇葩的需求，一个理想的 Android APP 是怎样一种架构。</p>
-
-<p>从2016年起，我一直在持续学习 Android 的各种框架，力求使得项目更清晰，更易于扩展。从mvp 到 mvvm，到之后的依赖注入、rxjava、clean 架构。每一次都让我惊叹，原来代码可以写的这么解耦。<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133103764.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/7/4</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133099560.html">
-                
-                  <h1>近期学习计划</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 学习android优秀的开源库</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 学习一门脚本语言</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 熟悉常见命令行</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 学习Web基础（HTML/CSS/JS/html5)</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 学习数据库相关</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> Git工具管理</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 《java编程思想》</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/6/27</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='balabala.html'>balabala</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133100860.html">
-                
-                  <h1>volley源码解析</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">总体框架</h1>
-
-<p><img src="media/15299133100860/14668223056349.png" alt=""/><br/>
-上面是 Volley 的总体设计图，主要是通过两种Dispatch Thread不断从RequestQueue中取出请求，根据是否已缓存调用Cache或Network这两类数据获取接口之一，从内存缓存或是服务器取得请求的数据，然后交由ResponseDelivery去做结果分发及回调处理。</p>
-
-<ul>
-<li>Volley：Volley 对外暴露的 API，通过 newRequestQueue(…) 函数新建并启动一个请求队列RequestQueue。</li>
-<li>Request：表示一个请求的抽象类。StringRequest、JsonRequest、ImageRequest 都是它的子类，表示某种类型的请求。</li>
-<li>RequestQueue：表示请求队列，<strong>里面包含一个CacheDispatcher(用于处理走缓存请求的调度线程)</strong>、<strong>NetworkDispatcher数组(用于处理走网络请求的调度线程)</strong>，<strong>一个ResponseDelivery(返回结果分发接口)</strong>，通过 start() 函数启动时会启动CacheDispatcher和NetworkDispatchers。</li>
-<li>CacheDispatcher：一个线程，用于调度处理走缓存的请求。启动后会不断从缓存请求队列中取请求处理，队列为空则等待，请求处理结束则将结果传递给ResponseDelivery去执行后续处理。当结果未缓存过、缓存失效或缓存需要刷新的情况下，该请求都需要重新进入NetworkDispatcher去调度处理。</li>
-<li>NetworkDispatcher：一个线程，用于调度处理走网络的请求。启动后会不断从网络请求队列中取请求处理，队列为空则等待，请求处理结束则将结果传递给ResponseDelivery去执行后续处理，并判断结果是否要进行缓存。</li>
-<li>ResponseDelivery：返回结果分发接口，目前只有基于ExecutorDelivery的在入参 handler 对应线程内进行分发。</li>
-<li>HttpStack：处理 Http 请求，返回请求结果。目前 Volley 中有基于 HttpURLConnection 的HurlStack和 基于 Apache HttpClient 的HttpClientStack。</li>
-<li>Network：调用HttpStack处理请求，并将结果转换为可被ResponseDelivery处理的NetworkResponse。</li>
-<li>Cache：缓存请求结果，Volley 默认使用的是基于 sdcard 的DiskBasedCache。NetworkDispatcher得到请求结果后判断是否需要存储在 Cache，CacheDispatcher会从 Cache 中取缓存结果。</li>
-</ul>
-
-<h2 id="toc_1">流程图</h2>
-
-<p><img src="media/15299133100860/14669054043578.png" alt=""/></p>
-
-<h2 id="toc_2">详细设计</h2>
-
-<h3 id="toc_3">类关系图</h3>
-
-<p><img src="media/15299133100860/14669054493954.png" alt=""/></p>
-
-<h2 id="toc_4">RequestQueue 构造方法</h2>
-
-<p>实例化 <code>RequestQueue</code> 的方法，有以下几个</p>
-
-<pre><code class="language-java">public static RequestQueue newRequestQueue(Context context, HttpStack stack, int maxDiskCacheBytes)
-public static RequestQueue newRequestQueue(Context context, int maxDiskCacheBytes)
-public static RequestQueue newRequestQueue(Context context, HttpStack stack)
-public static RequestQueue newRequestQueue(Context context)
-</code></pre>
-
-<p>最终都会调用到下面这个方法</p>
-
-<pre><code class="language-java">public static RequestQueue newRequestQueue(Context context, HttpStack stack, int maxDiskCacheBytes) {
-    //创建出缓存目录
-        File cacheDir = new File(context.getCacheDir(), DEFAULT_CACHE_DIR);
-
-        String userAgent = &quot;volley/0&quot;;
-        try {
-            String packageName = context.getPackageName();
-            PackageInfo info = context.getPackageManager().getPackageInfo(packageName, 0);
-            userAgent = packageName + &quot;/&quot; + info.versionCode;
-        } catch (NameNotFoundException e) {
-        }
-
-    //如果外面没指定stack 那么安装默认，根据 sdk 的版本决定
-        if (stack == null) {
-            if (Build.VERSION.SDK_INT &gt;= 9) {
-                stack = new HurlStack();
-            } else {
-                // Prior to Gingerbread, HttpUrlConnection was unreliable.
-                // See: http://android-developers.blogspot.com/2011/09/androids-http-clients.html
-                stack = new HttpClientStack(AndroidHttpClient.newInstance(userAgent));
-            }
-        }
-        //注意
-        Network network = new BasicNetwork(stack);
-        
-        RequestQueue queue;
-        //更具最大缓存大小实例化出，RequestQueue
-        if (maxDiskCacheBytes &lt;= -1)
-        {
-            // No maximum size specified
-            queue = new RequestQueue(new DiskBasedCache(cacheDir), network);
-        }
-        else
-        {
-            // Disk cache size specified
-            queue = new RequestQueue(new DiskBasedCache(cacheDir, maxDiskCacheBytes), network);
-        }
-
-        queue.start();
-
-        return queue;
-    }
-
-</code></pre>
-
-<p>在最后调用了 <code>queue.start();</code></p>
-
-<pre><code class="language-java"> public void start() {
-        stop();  // Make sure any currently running dispatchers are stopped.
-        // Create the cache dispatcher and start it.
-        mCacheDispatcher = new CacheDispatcher(mCacheQueue, mNetworkQueue, mCache, mDelivery);
-        mCacheDispatcher.start();
-
-        // Create network dispatchers (and corresponding threads) up to the pool size.
-        for (int i = 0; i &lt; mDispatchers.length; i++) {
-            NetworkDispatcher networkDispatcher = new NetworkDispatcher(mNetworkQueue, mNetwork,
-                    mCache, mDelivery);
-            mDispatchers[i] = networkDispatcher;
-            networkDispatcher.start();
-        }
-    }
-</code></pre>
-
-<p>这里先是创建了一个CacheDispatcher的实例，然后调用了它的start()方法，接着在一个for循环里去创建NetworkDispatcher的实例，并分别调用它们的start()方法。这里的线程数量可以自己定义</p>
-
-<p>调用 <code>add</code>方法可以将网络请求加入队列中</p>
-
-<pre><code class="language-java">public &lt;T&gt; Request&lt;T&gt; add(Request&lt;T&gt; request) {
-        // Tag the request as belonging to this queue and add it to the set of current requests.
-        request.setRequestQueue(this);
-        synchronized (mCurrentRequests) {
-            mCurrentRequests.add(request);
-        }
-
-        // Process requests in the order they are added.
-        request.setSequence(getSequenceNumber());
-        request.addMarker(&quot;add-to-queue&quot;);
-
-        // If the request is uncacheable, skip the cache queue and go straight to the network.
-        if (!request.shouldCache()) {
-            mNetworkQueue.add(request);
-            return request;
-        }
-
-        // Insert request into stage if there&#39;s already a request with the same cache key in flight.
-        synchronized (mWaitingRequests) {
-            String cacheKey = request.getCacheKey();
-            if (mWaitingRequests.containsKey(cacheKey)) {
-                // There is already a request in flight. Queue up.
-                Queue&lt;Request&lt;?&gt;&gt; stagedRequests = mWaitingRequests.get(cacheKey);
-                if (stagedRequests == null) {
-                    stagedRequests = new LinkedList&lt;Request&lt;?&gt;&gt;();
-                }
-                stagedRequests.add(request);
-                mWaitingRequests.put(cacheKey, stagedRequests);
-                if (VolleyLog.DEBUG) {
-                    VolleyLog.v(&quot;Request for cacheKey=%s is in flight, putting on hold.&quot;, cacheKey);
-                }
-            } else {
-                // Insert &#39;null&#39; queue for this cacheKey, indicating there is now a request in
-                // flight.
-                mWaitingRequests.put(cacheKey, null);
-                mCacheQueue.add(request);
-            }
-            return request;
-        }
-    }
-</code></pre>
-
-<p><img src="media/15299133100860/14669058350149.png" alt=""/></p>
-
-<h3 id="toc_5">CacheDispatcher</h3>
-
-<p><img src="media/15299133100860/14669060727722.png" alt=""/></p>
-
-<h3 id="toc_6">NetworkDispatcher.java</h3>
-
-<p><img src="media/15299133100860/14669061093224.png" alt=""/></p>
-
-<h1 id="toc_7">参考</h1>
-
-<blockquote>
-<p><a href="http://blog.csdn.net/guolin_blog/article/details/17656437">http://blog.csdn.net/guolin_blog/article/details/17656437</a><br/>
-<a href="http://p.codekk.com/blogs/detail/54cfab086c4761e5001b2542">http://p.codekk.com/blogs/detail/54cfab086c4761e5001b2542</a></p>
-</blockquote>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/6/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133102646.html">
-                
-                  <h1>Git 总结</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">创建版本</h2>
-
-<h3 id="toc_1">创建本地仓库</h3>
-
-<pre><code class="language-bash">$ git init
-</code></pre>
-
-<pre><code class="language-bash">提示：Initialized empty Git repository in
-/Users/xuyushi/Downloads/.git/`
-</code></pre>
-
-<p>会在本地生成 .git 文件<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133102646.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/6/24</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				  
-          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -734,31 +595,31 @@ public static RequestQueue newRequestQueue(Context context)
 	      
 		      
 			      <li class="post">
-			        <a href="15316240502263.html">用户调研</a>
+			        <a href="15318371632829.html">业务流程设计</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15316220023386.html">用户反馈发现问题</a>
+			        <a href="15318354800090.html">完整功能点设计</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133098726.html">abtest 数据分析</a>
+			        <a href="15318107329806.html">产品调研</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133098793.html">ABtest 平台框架</a>
+			        <a href="15316593971293.html">用思维导图梳理用户需求</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15299133099414.html">写在离开北京的前夕</a>
+			        <a href="15317376170439.html">需求优先级</a>
 			      </li>
 		     
 		  
