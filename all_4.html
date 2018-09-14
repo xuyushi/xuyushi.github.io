@@ -112,6 +112,84 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15299133100749.html">
+                
+                  <h1>Window 和 WindowManager</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">概述</h2>
+
+<h1 id="toc_1">window</h1>
+
+<ul>
+<li><code>window</code> 是一个抽象类，具体实现是<code>PhoneWindow</code></li>
+<li><code>window</code> 也是一个抽象的概念，每个 window 内对应这一个 <code>DecorView</code> 和一个 <code>ViewRootImpl</code>，<code>window</code> 和<code>DecorView</code> 通过<code>ViewRootImpl</code>联系。
+# WindowManager
+<code>WindowManager</code> 是 外界访问 <code>Window</code> 的入口
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133100749.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/9/16</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133103906.html">
+                
+                  <h1>window、Activity、DecorView、ViewRoot关系</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h1 id="toc_0">简介</h1>
+
+<ul>
+<li><p>Activity并不负责视图控制，它只是控制生命周期和处理事件，真正控制视图的是Window。一个Activity包含了一个Window，Window才是真正代表一个窗口，Window 中持有一个 DecorView，而这个DecorView才是 view 的根布局</p></li>
+<li><p>DecorView是FrameLayout的子类，它可以被认为是Android视图树的根节点视图。DecorView作为顶级View，一般情况下它内部包含一个竖直方向的LinearLayout，在这个LinearLayout里面有上下两个部分（具体情况和Android版本及主体有关），上面的是标题栏，下面的是内容栏。在Activity中通过setContentView所设置的布局文件其实就是被加到内容栏之中的，而内容栏的id是content，在代码中可以通过ViewGroup content = （ViewGroup)findViewById(R.android.id.content)来得到content对应的layout。 </p></li>
+<li>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133103906.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/9/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15299133102725.html">
                 
                   <h1>AsyncTask 源码分析</h1>
@@ -441,83 +519,6 @@ public interface Runnable {
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133103637.html">
-                
-                  <h1>Android clean architecting</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>更多 Android 博文请关注我的博客 <a href="http://xuyushi.github.io">http://xuyushi.github.io</a></p>
-
-<p>本文为翻译，在原文的基础上略有改动</p>
-
-<blockquote>
-<p><a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/">http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/</a></p>
-</blockquote>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133103637.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/7/19</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133103685.html">
-                
-                  <h1>Android Application 从零开始 2 ——DI</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>看懂这篇文章你需要有 依赖注入 以及 dagger 相关的知识点</p>
-</blockquote>
-
-<p>为了方便管理，将所有的依赖注入的代码放在一个包，包括Module ，component，注解<br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133103685.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/7/16</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -595,6 +596,18 @@ public interface Runnable {
 	      
 		      
 			      <li class="post">
+			        <a href="mobile_growth_stack_part_2.html">移动增长堆栈（2）--洞察与分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="mobile_growth_stack_part_1.html">移动增长堆栈（1）--概述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15318371632829.html">业务流程设计</a>
 			      </li>
 		     
@@ -608,18 +621,6 @@ public interface Runnable {
 		      
 			      <li class="post">
 			        <a href="15318107329806.html">产品调研</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15316593971293.html">用思维导图梳理用户需求</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15317376170439.html">需求优先级</a>
 			      </li>
 		     
 		  

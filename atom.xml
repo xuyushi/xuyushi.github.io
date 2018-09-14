@@ -4,13 +4,181 @@
   <title><![CDATA[Xu Yushi's Blog]]></title>
   <link href="xuyushi.github.io/atom.xml" rel="self"/>
   <link href="xuyushi.github.io/"/>
-  <updated>2018-07-24T10:50:23+08:00</updated>
+  <updated>2018-09-14T09:32:04+08:00</updated>
   <id>xuyushi.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[移动增长堆栈（2）--洞察与分析]]></title>
+    <link href="xuyushi.github.io/mobile_growth_stack_part_2.html"/>
+    <updated>2018-09-13T17:12:06+08:00</updated>
+    <id>xuyushi.github.io/mobile_growth_stack_part_2.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/15368299264873/15368299403940.png" alt=""/></p>
+
+<p>洞察分析层是堆栈中最全面的层，其基础是定量和定性数据、指标、建模和衡量影响和识别机会方面的重要性的报表。 尽管可以通过足够的投资来制作自定义解决方案或快速黑客或数据库查询以获得短期洞察力，市面上还是存在许多工具和服务来帮助这一层中的特定数据收集或处理活动。</p>
+
+<h2 id="toc_0">归因(Attribution)</h2>
+
+<p>app 的安装归因于特定营销活动，内容分享归因于社交网络，邀请或者其他的获取源在网络上有不同的追踪技术。浏览器cookie可以在移动/响应式网站上使用，但对于本机应用程序，用户可以使用特定于设备的ID（如IDFA或Android ID），或通过不完美的指纹识别技术，这些技术结合了大量数据输入以匹配用户（或 ，更准确地说，一个设备）点击安装。 在考虑多个接触点和跨平台流量（例如，桌面Web到移动设备安装）时，归因变得更具挑战性。</p>
+
+<h2 id="toc_1">Deeplinks</h2>
+
+<p>本地移动应用程序正在发展;它们不再仅仅从手机的主屏幕上启动，而是越来越多地从深度链接上启动，用户可以直接访问应用程序中的特定内容(假设他们已经安装了)。许多移动应用程序都实现了deeplink模式，为应用程序提供了额外的入口点。Deeplinks可以包含在推送通知、电子邮件、消息、其他应用程序、来自网站的链接以及几乎任何可以启动常规web URL的地方。不仅如此，应用程序中的内容可以通过谷歌进行索引，并出现在搜索结果中(iOS 9和更高版本中，如果启用了通用链接，也支持应用程序索引)。深度链接也用于重新定位广告活动，即现有(但可能已失效)用户在其他应用程序中接受广告，目的是重新吸引他们，并将他们带回应用程序的特定部分。</p>
+
+<p>如果你的应用程序支持深度链接内容，那么收集这些链接的表现是很重要的。了解哪个深度链接uri正在被打开，以及理想情况下用户来自哪里(例如浏览器链接、推送通知、重定向活动等)，将提供有价值的洞察哪些内容是最受欢迎的，以及更深入地了解各种渠道和活动是如何重新吸引现有用户的。这些数据可以为新的内容的编辑政策提供信息，并帮助优化通讯活动。</p>
+
+<h2 id="toc_2">事件追踪(Event Tracking)</h2>
+
+<p>在粒度级别衡量用户参与度是进行数据驱动的优化以及评估功能的采用和性能的关键先决条件。</p>
+
+<p>用户在应用程序中执行的任何操作（应用程序打开，帐户注册，屏幕之间的导航，按钮按下，内容共享，购买等），以及以编程方式在应用程序内发生的事情（例如，敌方太空船被摧毁，级别 已完成，帐户成功创建等）是作为分析实施的一部分跟踪作为“事件”的候选者。 当网络条件允许时，分析SDK通常会将这些事件以及与此事件发生相关的任何其他元数据（通常称为“事件属性”）传输到服务器。</p>
+
+<p>为了在基于web的仪表板中进行分析，聚合和存储事件数据服务器端是目前常见的做法，许多分析工具都可以简化这一任务。这样的定量事件数据显示了用户如何与应用/游戏进行交互，而应用/游戏的特性是最常用/最不常用的，它可以帮助识别bug(例如，如果事件数量突然骤减，与事件相关的特性可能会被破坏)，并允许对关键用户路径的参与漏斗进行可视化。此外，服务器生成的营销活动或活动通知可以由事件触发，并可能使用事件属性数据进行个性化处理。</p>
+
+<h2 id="toc_3">活动测量(Campaign Measurement)</h2>
+
+<p>市场营销活动，无论是为了获得用户、参与/保留或盈利，都需要适当的度量，以便度量影响/ROI。没有对广告活动和创意/文案表现的定量了解，广告预算就无法合理分配或调整规模，也就无法优化广告活动。</p>
+
+<p>对于用户获取（UA）或重定向广告系列，此主题与安装/深层链接归因和事件跟踪密切相关; 营销人员需要了解每个网络和广告系列变体提供的安装量，获取这些新用户的费用以及这些用户的“质量”（通常根据群组生成的参与度/留存或付费事件来衡量） （归因于广告系列的用户），以优化广告支出以提高效果。</p>
+
+<p>电子邮件，推送和应用内广告系列等生命周期营销也需要进行详细衡量，以便运行实验以提高开放和点击率以及下游性能目标，例如增加应用内购买，推动应用内更多关键操作，改进 留存等</p>
+
+<h2 id="toc_4">应用商店分析与智能(App Store Analytics &amp; Intelligence)</h2>
+
+<p>任何应用发布商都将通过至少一个（可能是几个）应用商店分发他们的应用;除iTunes App Store和Google Play外，还有许多其他分销渠道，包括Windows Store，Amazon App Store，Samsung Apps，Myapp（腾讯）等。</p>
+
+<p>如果使用提供这些数据的服务，基本App Store Analytics可按国家/地区，设备，操作系统版本等以及竞争对手的应用安装和应用内购买进行衡量和报告。</p>
+
+<p>随着每天都有数以千计的新应用和游戏提交到应用商店，在商店中保持可见性对于应用发布商来说是一场持续的战斗。观察竞争趋势并对其做出反应，关键字搜索量和其他市场情报可以使发布商在竞争中占据优势。查看某类别中顶级应用程序的预测下载数据可以为战略规划提供信息，并提供发布商为了达到商店中特定排名而需要达到的每日下载量的指示（尽管通用下载估算 - 使用预测方法生成 - 应谨慎对待，因为类别和分析工具之间的准确性差异很大）。尽管如此，分析应用商店数据以期获得可操作的洞察力可能对产品生命周期的所有阶段都有所帮助。</p>
+
+<p>App Store搜索也是应用程序发现的重要组成部分，对关键字进行仔细识别和测试可以增加商店的有机下载量。存在许多ASO工具，其估计关键字搜索量并估计在搜索特定关键字时高度排名的难度。</p>
+
+<h2 id="toc_5">用户细分(User Segmentation)</h2>
+
+<p>并非所有用户都是相同的; 一些人群将更加投入，更有可能在应用程序中花钱，或者显示一些共同特征，使他们能够被分组到有意义的部分，以便进行分析，营销，动态定价等等。 大多数分析工具允许基于用户元数据（a.k.a属性）或应用程序内的行为创建和跟踪动态更新的用户细分。 通过针对特定用户细分定制应用内和外部消息传递活动，营销人员可以提高其广告系列的相关性和影响力并带来更多影响。</p>
+
+<h2 id="toc_6">队列分析(Cohort Analysis)</h2>
+
+<p>为了了解用户增长和留存如何随着时间的推移而发展，重要的是检查同类群组中的用户（具有一些共同特征的用户组，通常是安装/注册日期），而不是依赖于总体注册等顶级指标 用户，每月活动用户（MAU）和每日活动用户（DAU），这些用户往往会掩盖潜在的保留问题。</p>
+
+<p>典型的群组保留表将用户划分为在应用中首次出现的时段（通常是日/周/月），并显示在以下时段中返回到应用的用户数（或群组的百分比）。</p>
+
+<p><img src="media/15368299264873/15368384975993.png" alt=""/></p>
+
+<h2 id="toc_7">内容分析(Content Analytics)</h2>
+
+<p>如果应用或游戏包含动态内容，例如 新闻文章，食谱，照片，音乐曲目等随后跟踪内容（观看，喜欢，书签，购买等）和内容共享，可以深入了解哪些内容和类别可以提供最佳ROI。 除了跟踪内容参与之外，还期望测量特定内容项由于被共享而产生的推荐用户的数量以及哪些频道提供最佳的病毒性。</p>
+
+<h2 id="toc_8">情绪追踪(Sentiment Tracking)</h2>
+
+<p>客户满意度很重要;不满或心怀不满的用户面临流失的高风险，并且可能会在应用商店或在线论坛上发出负面反馈，从而阻止潜在用户。相反，快乐或高兴的用户可以成为移动产品的强大拥护者，并且应该在用户细分中进行识别。</p>
+
+<p>衡量客户满意度的方法有很多种;在线，应用内或电子邮件调查可用于收集详细的反馈，但更常见的是，用户只需通过弹出窗口向应用程序提供0到5星的评分，或者提供他们的净推荐分数（NPS） ）评分简单，标准化的问题“你有多大可能推荐[产品]给同事的朋友？”（评分为0-10）。</p>
+
+<p>为应用程序评分较高的用户可以自信地定位，以便对商店中的应用进行评级，邀请朋友，分享内容或发布有关应用的推文。具有负面情绪的用户可以被识别并且 - 希望 - 通过客户服务工作来安抚，并鼓励他们直接向出版商而不是公众提供反馈。</p>
+
+<p>在推广到100％的用户群之前,情感跟踪技术可用于定量评估用户对新功能或内容的反应.</p>
+
+<h2 id="toc_9">屏幕流跟(Screen Flows)</h2>
+
+<p>与事件跟踪类似，屏幕流跟踪可以深入了解用户如何浏览应用，他们登陆的屏幕以及他们到达那里的路径。 对屏幕流程的分析可以识别未充分利用的屏幕或功能，这些屏幕或功能可能会受益于UI中更突出（或完全切断），或者表明用户在应用程序的意外部分花费了大量时间。 </p>
+
+<h2 id="toc_10">转换渠道(Conversion Funnels)</h2>
+
+<p>跟踪和可视化关键参与流程中的每个事件，例如帐户创建，购买，搜索等，有助于识别表现不佳的流程，并通过显示用户在每个阶段中的落差来指导优化工作。</p>
+
+<p>在大多数分析套件中，可以临时创建新的渠道，因此可以轻松创建新的渠道来监控新功能或购买选项的性能。 详细的事件跟踪是漏斗可视化的先决条件。</p>
+
+<h2 id="toc_11">结算和收入报告(Billing And Revenue Reporting)</h2>
+
+<p>一些移动应用程序或平台运营市场，供应商和消费者可以在那里交易虚拟或现实世界的商品或服务。在其他情况下，应用程序内的内容可能以按播放付费或按观看付费的方式从供应商获得许可。</p>
+
+<p>如果上述任何一项都适用，准确(最好是自动化)的记录和报告支出、许可费、版税或广告收入、应用内购买或订阅收入是产品分析和报告框架的必要组成部分。</p>
+
+<h2 id="toc_12">增长模型（Growth Modelling）</h2>
+
+<p>增长是一个系统，有许多输入和反馈循环。 在组织内部建立共享理解 - 引导到抽象模型 - 激发增长努力，为假设生成和构思过程提供信息。 随着时间的推移，增长模型可能会得到改进，因为这种共享理解是通过实验学习和对用户行为，市场动态和运营数据的更深入理解而发展的。</p>
+
+<p><img src="media/15368299264873/15368395298439.jpg" alt=""/></p>
+
+<p>Uber’s growth model. (Src = <a href="http://andrewchen.co/ubers-virtuous-cycle-5-important-reads-about-uber/">http://andrewchen.co/ubers-virtuous-cycle-5-important-reads-about-uber/</a>)</p>
+
+<p>除了开发如上所述的高级定性模型之外，连接采集（按各种采集渠道和病毒循环细分）和留存/流失的电子表格或类似定量模型将证明非常有价值，无论是为了理解 为不同的场景提供和创建预测。 通过这种模型，可以实现场景规划，<strong>团队可以根据对活跃用户增长产生最大影响的内容来调整获客和留存工作的组合</strong>。</p>
+
+<h2 id="toc_13">LTV 模型 (LTV Modeling)</h2>
+
+<p>一旦应用程序可以变现，了解用户的生命周期价值（LTV）就非常重要。 LTV是用户在其生命周期内产生的未来预期收入的现值计算。 由于这是一个前向投影，LTV建模并不是一门精确的科学; 用户产生的实际收入可能超过或低于LTV计算，因此在使用LTV进行广告购买决策时保证是保守的。 LTV可能受到许多因素的影响，包括采购来源，用户人口统计，产品内的货币化可能性范围等。如果用户保留（寿命）可以增加，那么LTV也会更高。</p>
+
+<h2 id="toc_14">growth 计算(Growth Accounting)</h2>
+
+<p>虽然定量增长模型用于生成前瞻性预测，但增长计算过程涉及跟踪当前和历史用户增长。主动用户增长可以看作是一个简单的函数:</p>
+
+<p>活跃用户=新用户+保留用户 - 流失用户（在给定时间段内，例如最近30天）</p>
+
+<p>（注意：&#39;失效&#39;的用户可能更正确，因为他们可能没有完全被搅动，因为他们永远不会返回，而只是他们在这段时间内没有活跃）。</p>
+
+<p>另一种思考方式是，增长来自三个独立的“桶”用户：新用户，重复用户和回头客。 重复用户是那些在上一期间活跃并且在此期间再次被看到的用户。 返回的用户在前一段时间内被重新激活。 跟踪这三个存储桶中的活跃用户可以更深入地了解活动用户数以及在给定时间段内驱动增长（或缺乏增长）的因素。</p>
+
+<p><img src="media/15368299264873/15368882958675.jpg" alt=""/></p>
+
+<h1 id="toc_15">App性能分析(CPU、电池、网络、崩溃等) (App Performance Analysis (CPU, Battery, Network, Crashes Etc))</h1>
+
+<p>移动产品与桌面应用和网站的不同之处在于可以访问它们的各种环境。在桌面环境中，Web应用程序可以安全地假设未经计量的Internet连接（可能具有良好的带宽和延迟）始终可用。良好的移动产品设计用于带宽有限，延迟较高或无网络连接的情况。移动设备依靠电池运行，用户越来越精明，因此可能会删除电池占用应用程序。同样，许多用户没有无限的数据计划，并期望应用和移动网站具有数据意识。最后，崩溃的应用程序会迅速卸载，通常在应用商店中留下较差的评论。</p>
+
+<p>虽然性能分析可能主要由工程团队考虑，但值得记住的是，在上述任何情况下表现不佳的产品可能会遭受高流失和/或减少参与度。关注绩效指标将提醒团队任何潜在的增长抑制因素。</p>
+
+<p><img src="media/15368299264873/15368883864437.jpg" alt=""/></p>
+
+<p>上图:Fabric monitor应用程序，包含崩溃报告。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[移动增长堆栈（1）--概述]]></title>
+    <link href="xuyushi.github.io/mobile_growth_stack_part_1.html"/>
+    <updated>2018-09-13T16:23:56+08:00</updated>
+    <id>xuyushi.github.io/mobile_growth_stack_part_1.html</id>
+    <content type="html"><![CDATA[
+<p>本系列文章翻译自 ：<a href="https://mobilegrowthstack.com/what-is-the-mobile-growth-stack-426c6e474329">https://mobilegrowthstack.com/what-is-the-mobile-growth-stack-426c6e474329</a></p>
+
+<p><img src="media/15368270366063/15368294184568.png" alt=""/></p>
+
+<h2 id="toc_0">什么是 移动增长堆栈?</h2>
+
+<p>移动增长堆栈(Mobile Growth Stack)是一个框架，它可以帮助营销人员，创始人和增长从业者制定和完成一种能增加产品用户数的战略。尽管移动增长堆栈的某些层和元素在业务的不同阶段更具相关性，但它可以应用与产品生命周期的任何阶段，也可以应用于许多不同的业务和模型。</p>
+
+<span id="more"></span><!-- more -->
+
+<p>有关如何将增长堆栈应用于您的业务的详细说明，请查看我们关于<a href="https://mobilegrowthstack.com/applying-the-mobile-growth-stack-81b0f6ca66bf#.1ia4twj7u">应用增长栈的文章</a></p>
+
+<h2 id="toc_1">历史与进化</h2>
+
+<p>Andy Carvell 由Andy Carvell开发和发布的。 Andy花了15 年的职业生涯开发和发布移动产品和服务，而且他用了 4.5 年时间专注于SoundCloud的移动用户的增长。Andy和前SoundCloud增长团队成员Moritz Daan现在根据他们与全球各种应用开发商和发行商合作的经验，将他们整合在一起， 开发了<a href="https://www.phiture.com/">Phiture</a> -- 移动增长顾问</p>
+
+<p>您可以阅读以下有关该堆栈的原始博文：</p>
+
+<p><a href="https://medium.com/@andy_carvell/the-mobile-growth-stack-3ffa6856f482">移动增长堆栈</a></p>
+
+<p><a href="https://medium.com/@andy_carvell/2015-the-mobile-growth-stack-revised-58f5d11d43f3">2015年：移动增长堆栈修订</a></p>
+
+<p>有关将增长堆栈和“堆栈思维”应用于您的业务的深入指南，请查看本站点上的随附文章“<a href="https://mobilegrowthstack.com/applying-the-mobile-growth-stack-81b0f6ca66bf#.1ia4twj7u">应用堆栈</a>”。</p>
+
+<h2 id="toc_2">工作原理</h2>
+
+<p>增长栈有三个水平层，代表关键目标：获渠，参与/留存和变现，这三层都由第四层（洞察与分析）做支撑。</p>
+
+<p>处于产品成熟度不同阶段的公司可能会优先考虑不同的层次，以实现其中短期业务目标。成功的战略需要在某个时刻在所有三个核心层产生影响。但是如果没有洞察和分析这是很难的。</p>
+
+<p>堆栈中的每个元素（即每个单独的单元格）表示可以也不可以构成移动增长策略的一部分。 并非所有元素都同样适用于特定的app。 智能增长战略并不试图涵盖堆栈的每个元素，而是选择适当的活动组合来发挥核心优势，为近期增长提供最佳机会，并投资为下一个增长点带来能力和渠道和希望。</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[业务流程设计]]></title>
@@ -202,11 +370,26 @@ op5 --&gt; op6
 </ul></li>
 </ul>
 
-<span id="more"></span><!-- more -->    
+<span id="more"></span><!-- more -->   
 
-<h2 id="toc_0">功能点调研</h2>
+<h2 id="toc_0">选定目标产品</h2>
 
-<h3 id="toc_1">明确调研目的</h3>
+<ul>
+<li>功能点调研：关注<strong>主流产品</strong>的相关模块
+<ul>
+<li>电商支付流程：京东，淘宝</li>
+<li>社交网站注册流程：微信，qq，陌陌</li>
+</ul></li>
+<li>完整产品调研：关注<strong>龙头产品</strong>，1-2 个新晋热门产品
+<ul>
+<li>了解外卖服务流程：美团外卖，饿了么</li>
+<li>记帐类产品的核心流程：挖财，网易有钱</li>
+</ul></li>
+</ul>
+
+<h2 id="toc_1">功能点调研</h2>
+
+<h3 id="toc_2">明确调研目的</h3>
 
 <table>
 <thead>
@@ -232,7 +415,7 @@ op5 --&gt; op6
 </tbody>
 </table>
 
-<h3 id="toc_2">数据表现</h3>
+<h3 id="toc_3">数据表现</h3>
 
 <ul>
 <li>覆盖率</li>
@@ -240,7 +423,7 @@ op5 --&gt; op6
 <li>成交量</li>
 </ul>
 
-<h3 id="toc_3">对于自己的产品来说的意义</h3>
+<h3 id="toc_4">对于自己的产品来说的意义</h3>
 
 <ul>
 <li>要不要抄：和用户群是否符合？数据情况如何 </li>
@@ -248,7 +431,7 @@ op5 --&gt; op6
 <li>结论是什么</li>
 </ul>
 
-<h3 id="toc_4">核心问题</h3>
+<h3 id="toc_5">核心问题</h3>
 
 <ul>
 <li>新的功能点有哪些？最关键（你准备调研）的是哪个</li>
@@ -258,7 +441,7 @@ op5 --&gt; op6
 <li>数据表现</li>
 </ul>
 
-<h3 id="toc_5">功能调研的误区</h3>
+<h3 id="toc_6">功能调研的误区</h3>
 
 <ul>
 <li>没结论</li>
@@ -267,7 +450,7 @@ op5 --&gt; op6
 <li>费要提改进意见</li>
 </ul>
 
-<h2 id="toc_6">针对产品的调研</h2>
+<h2 id="toc_7">针对产品的调研</h2>
 
 <ul>
 <li>了解产品功能，看产品的表现</li>
@@ -275,7 +458,25 @@ op5 --&gt; op6
 <li>透过一个产品，看穿一个行业</li>
 </ul>
 
-<h3 id="toc_7">针对独立产品的调研怎么做</h3>
+<h3 id="toc_8">产品调研全过程流程图</h3>
+
+<pre><code class="language-dot">digraph p2{
+    //图设置
+    rankdir = TB
+    
+    node [ shape=&quot;record&quot;, width=.1, height=.1];
+    node [fontname = &quot;Verdana&quot;, fontsize = 11, color=&quot;black&quot;, shape=&quot;record&quot;];
+    edge [fontname = &quot;Verdana&quot;, fontsize = 9, color=&quot;black&quot;, style=&quot;solid&quot;, arrowsize = 0.6];
+    
+    调研背景 -&gt; 明确目的
+     start -&gt; inim
+    
+｝
+</code></pre>
+
+<p><img src="media/15325273985685/15325278326377.jpg" alt="" style="width:928px;"/></p>
+
+<h3 id="toc_9">针对独立产品的调研怎么做</h3>
 
 <ul>
 <li>用户：有哪些类型的用户</li>
@@ -283,7 +484,7 @@ op5 --&gt; op6
 <li>需求：产品满足了哪些需求 </li>
 </ul>
 
-<h3 id="toc_8">产品逻辑</h3>
+<h3 id="toc_10">产品逻辑</h3>
 
 <ul>
 <li>用户的流向：都有哪些用户，怎么发生联系的</li>
@@ -292,30 +493,30 @@ op5 --&gt; op6
 <li>关键路径：用户操作的关键功能、页面是什么</li>
 </ul>
 
-<h3 id="toc_9">通过迭代路径找到关键点</h3>
+<h3 id="toc_11">通过迭代路径找到关键点</h3>
 
-<h3 id="toc_10">产品的表现如何</h3>
+<h3 id="toc_12">产品的表现如何</h3>
 
 <ul>
 <li>数据表现：使用数据、排名数据、评分数据</li>
 <li>用户表现：用户点评、产品点评</li>
 </ul>
 
-<h3 id="toc_11">多个相同的产品调研</h3>
+<h3 id="toc_13">多个相同的产品调研</h3>
 
 <ul>
 <li>找相同 找不同</li>
 <li>关键功能的差异</li>
 </ul>
 
-<h3 id="toc_12">出结论</h3>
+<h3 id="toc_14">出结论</h3>
 
 <ul>
 <li>相比优点、缺点、亮点</li>
 <li>如果要抄，抄什么？怎么抄？</li>
 </ul>
 
-<h3 id="toc_13">明确目的比功能全面更重要</h3>
+<h3 id="toc_15">明确目的比功能全面更重要</h3>
 
 <ul>
 <li>目标：用来做什么？期望</li>
@@ -324,10 +525,94 @@ op5 --&gt; op6
 <li>其他：价格、服务、会不会倒闭等</li>
 </ul>
 
-<h1 id="toc_14">产品调研 的误区</h1>
+<h3 id="toc_16">深度体验产品</h3>
 
 <ul>
-<li>产品调研 不等于行业调研</li>
+<li>体验产品的过程中，重点关注用户、使用场景需求</li>
+<li>把用户、场景、需求明确下来 ，尽可能找到对应的用户做简单的访谈</li>
+<li>找出用户视角的产品实现逻辑</li>
+</ul>
+
+<blockquote>
+<p>用户是谁？使用场景，满足的需求</p>
+</blockquote>
+
+<h3 id="toc_17">还原产品</h3>
+
+<ul>
+<li>重点关注解决用户需求的过程</li>
+<li>还原产品，最终要关注的是流程，而非界面</li>
+</ul>
+
+<blockquote>
+<p>核心流程，核心页面，产品结构</p>
+</blockquote>
+
+<h3 id="toc_18">分析产品</h3>
+
+<ul>
+<li>从产品的视角来分析 ，而不是自我感觉</li>
+<li>重点关注产品表现，而非界面</li>
+<li>不要做看似专业且复杂的分析，通常用户流程终点使用过程，数据已经表现出来了</li>
+</ul>
+
+<blockquote>
+<p>关键数据，产品表现，数据猜测</p>
+</blockquote>
+
+<h3 id="toc_19">产品迭代、运营分析</h3>
+
+<ul>
+<li>现在很重要，但发展过程更重要</li>
+<li>从产品迭代中可以发现别人踩过的坑</li>
+<li>从运营过程中可以发现产品的表现和重要程度</li>
+</ul>
+
+<h3 id="toc_20">常见的迭代、运营调研工具</h3>
+
+<ul>
+<li>Appstroe: 了解一个产品的基本概况、评价</li>
+<li>appannie/应用雷达/七麦：了解更新历史、排名、评价、数据</li>
+<li>google 新闻：按实践段搜索产品的新闻稿，了解运营简单过程</li>
+<li>淘宝等：如果有会员消费，能看到折扣比例，判断热门程度</li>
+<li>手机中国 手机乐园：下载安装安卓版的历史版本</li>
+</ul>
+
+<h3 id="toc_21">横向比较同类产品</h3>
+
+<ul>
+<li>与同类产品相比，分别处于什么位置</li>
+<li>找到产品之间的核心差异点</li>
+<li>总结分析同类产品的优缺点</li>
+</ul>
+
+<blockquote>
+<p>竞争格局，产品差异，总结分析 </p>
+</blockquote>
+
+<h3 id="toc_22">调研分析报告</h3>
+
+<ul>
+<li>清晰明确的结论</li>
+<li>逻辑清晰的表达调研的过程和结论之间的关联</li>
+<li>抓重点，说正事</li>
+<li>调研报告不带个人色彩，以中立的角度来描述</li>
+<li>可读性强，照顾读者</li>
+</ul>
+
+<h3 id="toc_23">推广报告</h3>
+
+<ul>
+<li>内部分享：再公司内部建立起分享会</li>
+<li>外部分享：在第三方平台表达出来</li>
+</ul>
+
+<h1 id="toc_24">产品调研 的误区</h1>
+
+<ul>
+<li>产品调研 不等于 行业调研</li>
+<li>产品调研 不等于 产品体验报告</li>
+<li>不要用看起来很高深的分析证明自己的正确性</li>
 <li>二三手数据不能证明你正确</li>
 <li>非得加改进建议</li>
 <li>大而全</li>
@@ -797,14 +1082,17 @@ op5 --&gt; op6
 <ul>
 <li>公开渠道：勤搜索、关键词订阅、自动化监控</li>
 <li>半公开渠道：定期搜索关键字、定期分析用户评论</li>
-<li><br/>
-### 内部渠道</li>
+</ul>
+
+<h3 id="toc_4">内部渠道</h3>
+
+<ul>
 <li>整合内部用户反馈渠道</li>
 <li>定期与一线同事沟通</li>
 <li>到一线去</li>
 </ul>
 
-<h2 id="toc_4">主流应用商店与常用工具</h2>
+<h2 id="toc_5">主流应用商店与常用工具</h2>
 
 <ul>
 <li>iOS：AppStore</li>
@@ -812,7 +1100,7 @@ op5 --&gt; op6
 <li>常用工具：AppAnnie、应用雷达、ASO114、七麦</li>
 </ul>
 
-<h3 id="toc_5">应用商城监控</h3>
+<h3 id="toc_6">应用商城监控</h3>
 
 <ul>
 <li>低分差评：重点看1-3 分</li>
@@ -821,14 +1109,14 @@ op5 --&gt; op6
 <li>竞品变化：监控竞对的应用变化</li>
 </ul>
 
-<h2 id="toc_6">主流社交平台与常用工具</h2>
+<h2 id="toc_7">主流社交平台与常用工具</h2>
 
 <ul>
 <li>主流平台：微博、贴吧、知乎、雪球等</li>
 <li>工具：关键字、收藏夹、微博企业版、百度、google</li>
 </ul>
 
-<h2 id="toc_7">用户点评看什么</h2>
+<h2 id="toc_8">用户点评看什么</h2>
 
 <ul>
 <li>差评：为什么差评？原因、现象是什么</li>
@@ -2143,766 +2431,6 @@ activity 和 fragment 等都要 extend 自 dagger 中的对应类，也可以将
 <blockquote>
 <p><a href="https://juejin.im/entry/593cee56ac502e006b3dc9c2">https://juejin.im/entry/593cee56ac502e006b3dc9c2</a><br/>
 <a href="https://segmentfault.com/a/1190000010016618">https://segmentfault.com/a/1190000010016618</a></p>
-</blockquote>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[快速搭建新项目框架0-前言]]></title>
-    <link href="xuyushi.github.io/15299133100210.html"/>
-    <updated>2018-06-25T15:55:10+08:00</updated>
-    <id>xuyushi.github.io/15299133100210.html</id>
-    <content type="html"><![CDATA[
-<h1 id="toc_0">前言</h1>
-
-<p>有幸在公司从零开始做一个项目，非常兴奋。也想着在快速开发的过程中如何保持 app 代码结构 clean。由此总结此次代码整体框架的搭建过程，供日后回顾总结</p>
-
-<span id="more"></span><!-- more -->
-
-<p>通过这几天的调研 ，初步决定使用以下</p>
-
-<ol>
-<li>mvp 结构，view 和业务逻辑解耦，并可以在 UI 未给出切图时优先开发业务逻辑。</li>
-<li>dagger 注入。 是的 v p 之间无依赖关系</li>
-<li>~~clean 结构 。 将 业务逻辑独立到每个 usecase中 ~~。发现前期轻量级的 app 并不适合这种结构，使用 usecase 会降低开发效率，此模式更适合与 app 成型后 ，将可以复用的业务逻辑抽象成 usecase</li>
-<li>butteknief 注入 </li>
-<li>网络库待定 ？repository 模式 ，方便后期网络库更换</li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Architecture Components--Room  Persistence Library]]></title>
-    <link href="xuyushi.github.io/15299133101299.html"/>
-    <updated>2018-06-25T15:55:10+08:00</updated>
-    <id>xuyushi.github.io/15299133101299.html</id>
-    <content type="html"><![CDATA[
-<h1 id="toc_0">Room Persistence Library</h1>
-
-<p>Room 在 SQLite 之上提供了一个抽象层，以便在利用 SQLite 全部功能的同时能够流畅的访问数据库。</p>
-
-<p>将数据持久化到本地对于应用程序处理大量结构化数据有非常大的好处。最常见的情况是缓存相关数据。这样，当设备无法访问网络时，用户仍然可以在离线状态下浏览内容。然后，在设备重新上线后，任何用户发起的内容变更都会同步到服务器。</p>
-
-<p>核心框架提供了内置支持来处理原始的 SQL 内容。虽然这些 API 是强大的，但是它们非常低级并且使用起来需要话费巨大的时间和精力：<br/>
-<span id="more"></span><!-- more --></p>
-
-<ul>
-<li>原始的 SQL 查询没有编译时验证。随着数据图的更改，需要手动更新收影响的 SQL 查询。这个过程是耗时的并且容易出错。</li>
-<li>需要使用大量的样板代码用于在 SQL 查询和 Java 数据对象之间转换。</li>
-</ul>
-
-<p>Room 在 SQLite 之上提供的抽象层帮助处理这些问题。</p>
-
-<p>Room 有 3 个重大的组件：</p>
-
-<ul>
-<li>Database：可以使用此组件创建数据库的持有者。通过注解定义实体列表，通过类的内容定义数据库中数据访问对象（DAO）列表。它是底层连接的主要接入点。</li>
-</ul>
-
-<p>注解的类应该是一个继承了 RoomDatabase 的抽象类。在运行时，可以通过调用 Room.databaseBuilder() 或 Room.inMemoryDatabaseBuilder() 获取一个实例。</p>
-
-<ul>
-<li>Entity：该组件表示一个保存有数据库行的类。对于每个 Entity，创建一个数据库表来保存项目。必须通过 Database 中的 entities 字段引用 Entity 类。Entity 中的每个字段都会持久化到数据库中，除非使用 @Ignore 注解。</li>
-</ul>
-
-<blockquote>
-<p>注：Entity 可以拥有一个空的构造函数（如果 DAO 可以访问每个持久化的字段）或一个参数的类型和名字和 Entity 中的字段都匹配的构造函数。Room 还可以使用全部或部分的构造函数，如只接受部分字段的构造函数。</p>
-</blockquote>
-
-<ul>
-<li>DAO：该组件表示一个数据访问对象（DAO）的类或接口。DAO 是 Room 的主要组件，其职责是定义方法来访问数据库。被 @Database 注解的类必须包含一个没有参数的抽象方法，该方法的返回值是被 @Dao 注解的类。在编译时生成代码时，Room 创建该类的实现。<br/>
-&gt; 注：通过使用 DAO 访问数据库，而不是使用查询建造者或直接查询，可以分离数据库结构的不同组件。另外，DAO 可以在测试应用时很容易的模拟数据库。</li>
-</ul>
-
-<p>这些组件及其与应用程序其它部分的关系，如图 1 所示：</p>
-
-<p><img src="media/15299133101299/14985505743620.png" alt=""/></p>
-
-<p>以下代码片段包含了一个具有一个 Entity 和一个 DAO 的数据库配置：</p>
-
-<p>User.java</p>
-
-<pre><code class="language-java">
-@Entity
-public class User {
-    @PrimaryKey
-    private int uid;
-
-    @ColumnInfo(name = &quot;first_name&quot;)
-    private String firstName;
-
-    @ColumnInfo(name = &quot;last_name&quot;)
-    private String lastName;
-
-    // 简单起见忽略了 Getters 和 setters，
-    // 但是 Room 需要它们。
-}
-</code></pre>
-
-<p>UserDao.java</p>
-
-<pre><code class="language-java">@Dao
-public interface UserDao {
-    @Query(&quot;SELECT * FROM user&quot;)
-    List&lt;User&gt; getAll();
-
-    @Query(&quot;SELECT * FROM user WHERE uid IN (:userIds)&quot;)
-    List&lt;User&gt; loadAllByIds(int[] userIds);
-
-    @Query(&quot;SELECT * FROM user WHERE first_name LIKE :first AND &quot;
-           + &quot;last_name LIKE :last LIMIT 1&quot;)
-    User findByName(String first, String last);
-
-    @Insert
-    void insertAll(User... users);
-
-    @Delete
-    void delete(User user);
-}
-</code></pre>
-
-<p>AppDatabase.java</p>
-
-<pre><code class="language-java">
-@Database(entities = {User.class}, version = 1)
-public abstract class AppDatabase extends RoomDatabase {
-    public abstract UserDao userDao();
-}
-</code></pre>
-
-<p>创建上述文件之后，使用如下代码获取创建的数据库实例：</p>
-
-<pre><code class="language-java">AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-        AppDatabase.class, &quot;database-name&quot;).build();
-</code></pre>
-
-<blockquote>
-<p>注：在实例化 AppDatabase 对象时应该遵循单例设计模式，因为每个 RoomDatabase 实例都非常昂贵，并且很少需要访问多个实例。</p>
-</blockquote>
-
-<h2 id="toc_1">Entity</h2>
-
-<p>当一个类被 @Entity 注解并且被 @Database 注解的 entities 参数引用，Room 会在数据库中为该 Entity 创建一个数据库表。</p>
-
-<p>默认情况下，Room 为每个定义在 Entity 中的字段创建列。如果不希望 Entity 中某些字段被持久化，可以使用 @Ignore 注解这些字段。如下面的代码片段所示：</p>
-
-<pre><code class="language-java">
-@Entity
-class User {
-    @PrimaryKey
-    public int id;
-
-    public String firstName;
-    public String lastName;
-
-    @Ignore
-    Bitmap picture;
-}
-
-</code></pre>
-
-<p>要持久化一个字段，Room 必须有权限访问它。可以将字段设置为 public，或为该字段提供 setter 和 getter 方法。如果使用 setter 和 getter 方法，请记住，它们基于 Room 中的 Java Beans 约定。</p>
-
-<h3 id="toc_2">主键</h3>
-
-<p>每个 Entity 必须定义至少一个字段作为主键。即使只有一个字段，仍然需要使用 @PrimaryKey 注解该字段。如果希望 Room 为 Entity 分配自动 ID，可以设置 @PrimaryKey 的 autoGenerate) 属性。如果 Entity 有复合主键，可以使用 @Entity 注解的 primaryKeys) 属性，如下面的代码片段所示：</p>
-
-<pre><code class="language-java">@Entity(primaryKeys = {&quot;firstName&quot;, &quot;lastName&quot;})
-class User {
-    public String firstName;
-    public String lastName;
-
-    @Ignore
-    Bitmap picture;
-}
-</code></pre>
-
-<p>默认情况下，Room 使用类名作为数据库表的名字。如果希望数据库表有不同的名字，可以设置 @Entity 的 tableName) 属性，如下面的代码片段所示：</p>
-
-<pre><code class="language-java">@Entity(tableName = &quot;users&quot;)
-class User {
-    ...
-}
-</code></pre>
-
-<blockquote>
-<p>SQLite 中的表名不区分大小写。</p>
-</blockquote>
-
-<p>类似于 tableName) 属性，Room 使用字段名字作为数据库中列的名字。如果想要不同的列名，给字段添加一个 @ColumnInfo 注解，如下面的代码片段所示：</p>
-
-<pre><code class="language-java">@Entity(tableName = &quot;users&quot;)
-class User {
-    @PrimaryKey
-    public int id;
-
-    @ColumnInfo(name = &quot;first_name&quot;)
-    public String firstName;
-
-    @ColumnInfo(name = &quot;last_name&quot;)
-    public String lastName;
-
-    @Ignore
-    Bitmap picture;
-}
-</code></pre>
-
-<h3 id="toc_3">索引和唯一性</h3>
-
-<p>根据访问数据的方式，可能需要在数据库中索引某些字段来加速查询。要给 Entity 添加索引，需要在 @Entity 注解中添加 indices) 属性，列出想要包含在索引或复合索引中的列的名字。以下代码片段演示了该注解过程：</p>
-
-<pre><code class="language-java">@Entity(indices = {@Index(&quot;name&quot;), @Index(&quot;last_name&quot;, &quot;address&quot;)})
-class User {
-    @PrimaryKey
-    public int id;
-
-    public String firstName;
-    public String address;
-
-    @ColumnInfo(name = &quot;last_name&quot;)
-    public String lastName;
-
-    @Ignore
-    Bitmap picture;
-}
-
-</code></pre>
-
-<p>有时，有些字段或字段组必须是唯一的。可以通过设置 @Index 注解的 unique) 属性为 true 来实施唯一性。以下示例代码可以防止表中的两行数据具有一组相同的 firstNmae 列和 lastName 列：</p>
-
-<pre><code class="language-java">@Entity(indices = {@Index(value = {&quot;first_name&quot;, &quot;last_name&quot;},
-        unique = true)})
-class User {
-    @PrimaryKey
-    public int id;
-
-    @ColumnInfo(name = &quot;first_name&quot;)
-    public String firstName;
-
-    @ColumnInfo(name = &quot;last_name&quot;)
-    public String lastName;
-
-    @Ignore
-    Bitmap picture;
-}
-</code></pre>
-
-<h3 id="toc_4">关系</h3>
-
-<p>因为 SQLite 是一个关系型数据库，可以指定两个对象间的关系。即使大多数 ORM 库允许 Entity 对象之间互相引用，但是 Room 明确禁止这样做。详细信息，请参阅附录：Entity 之间无对象引用。</p>
-
-<p>虽然不能使用直接关系，但是 Room 允许在 Entity 之间定义外键约束。</p>
-
-<p>例如，有一个名为 Book 的 Entity，可以使用 @ForeignKey 注解定义其和 User 的关系，如下面的代码片段所示：</p>
-
-<pre><code class="language-java">@Entity(foreignKeys = @ForeignKey(entity = User.class,
-                                  parentColumns = &quot;id&quot;,
-                                  childColumns = &quot;user_id&quot;))
-class Book {
-    @PrimaryKey
-    public int bookId;
-
-    public String title;
-
-    @ColumnInfo(name = &quot;user_id&quot;)
-    public int userId;
-}
-</code></pre>
-
-<p>外键是非常有用的，外键可以让你指定当应用的 Entity 更新时做什么。例如，通过在 @ForeignKey 注解中包含 onDelete=CASCADE) 可以告诉 SQLite 如果相应的 User 实例被删除，则删除该用户的所有图书。</p>
-
-<blockquote>
-<p>注：SQLite 将 @Insert(OnConflict=REPLACE) 当作一组 REMOVE 和 REPLACE 操作来处理，而不是当作单独的 UPDATE 操作处理。这种替换冲突值的方法可能会影响外键约束。更多详细信息，请参阅 SQLite 文档的 ON_CONFLICT 子句。</p>
-</blockquote>
-
-<h3 id="toc_5">嵌套对象</h3>
-
-<p>有时，可能会需要将一个 Entity 或普通 Java 对象（POJO）作为数据库逻辑中的一个连贯的整体，即使对象包含多个字段。对于这些情况，可以使用 @Embedded 注解来表示要在表中分解为其子字段的对象。可以像查询其它独立字段一样查询嵌套的字段。</p>
-
-<p>例如：User 类可能包含一个类型为 Address 的字段，表示一个名为 street，city，state 和 postCode 的字段组合。要在表中单独存储组合列，请在 User 类中包含一个用 @Embedded 注解的 Address 字段，如下面的代码片段所示：</p>
-
-<pre><code class="language-java">class Address {
-    public String street;
-    public String state;
-    public String city;
-
-    @ColumnInfo(name = &quot;post_code&quot;)
-    public int postCode;
-}
-
-@Entity
-class User {
-    @PrimaryKey
-    public int id;
-
-    public String firstName;
-
-    @Embedded
-    public Address address;
-}
-</code></pre>
-
-<p>表示 User 对象的表包含以下名称的列：id，firstName，street，state，city 和 post_code。</p>
-
-<p>如果 Entity 有多个相同类型的嵌套字段，可以通过设置 prefix) 属性保持列唯一。Room 会将提供的值添加到嵌套对象每个列名的开头。</p>
-
-<h2 id="toc_6">数据访问对象（DAO）</h2>
-
-<p>Room 的主要组件是 Dao 类。DAP 以干净的方式抽象访问数据库。</p>
-
-<blockquote>
-<p>注：除非在建造者上调用了 allowMainThreadQueries())，否则 Room 不允许在主线程上访问数据库，因为这样可能会长时间锁定 UI。异步查询（返回 LiveData 或 RxJava Flowable 的查询）会规避该规则，因为当需要时他们在后台线程上异步运行。</p>
-</blockquote>
-
-<h3 id="toc_7">简便的方法</h3>
-
-<p>使用 DAO 类有多个可代表的简便方法。本文档包含了几个常见的例子。</p>
-
-<h4 id="toc_8">Insert</h4>
-
-<p>当创建一个 DAO 方法并用 @Insert 注解时，Room 会在单独的事务中生成一个将所有参数插入到数据库的实现。</p>
-
-<p>以下代码片段显示了几个示例查询：</p>
-
-<pre><code class="language-java">@Dao
-public interface MyDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    public void insertUsers(User... users);
-
-    @Insert
-    public void insertBothUsers(User user1, User user2);
-
-    @Insert
-    public void insertUsersAndFriends(User user, List&lt;User&gt; friends);
-}
-</code></pre>
-
-<p>如果 @Insert 方法只接受到一个参数，它能返回一个 long，表示被插入项的新 rowId。如果参数是一个数组或集合，它应该返回 long[] 或 List。</p>
-
-<p>更多详细信息，请参阅 @Insert 注解的参考文档或 SQLite 文档的 Rowid Tables。</p>
-
-<h4 id="toc_9">Update</h4>
-
-<p>Update 是一个用于在数据库中更新以参数形式给到的一组 Entity 的简便方法。它使用一个查询以与每个 Entity 的主键匹配。以下代码片段演示了如何定义该方法：</p>
-
-<pre><code class="language-java">@Dao
-public interface MyDao {
-    @Update
-    public void updateUsers(User... users);
-}
-</code></pre>
-
-<p>虽然通常不是必须的，可以让该方法返回一个 int 值，表示数据库中更新的行数。</p>
-
-<h4 id="toc_10">Delete</h4>
-
-<p>Delete 是一个用于从数据库中删除以参数形式给到的一组 Entity 的简便方法。它使用主键来查找要删除的 Entity。以下代码片段演示了如何定义该方法：</p>
-
-<pre><code class="language-java">@Dao
-public interface MyDao {
-    @Delete
-    public void deleteUsers(User... users);
-}
-</code></pre>
-
-<p>虽然通常不是必须的，可以让该方法返回一个 int 值，表示从数据库中删除的行数。</p>
-
-<h3 id="toc_11">使用 @Query 方法</h3>
-
-<p>@Query 是使用 DAO 类的主要注解。它允许在数据库上执行读/写操作。每个 @Query 方法在编译时验证，所以，如果查询有问题，则会发生编译时错误而不是运行时崩溃。</p>
-
-<p>Room 还会验证查询的返回值，如果返回对象的字段名字和查询响应中的相应列名不匹配，则 Room 会用以下两种方式之一提醒你：</p>
-
-<ul>
-<li>如果只有部分字段名匹配会发错警告。</li>
-<li>如果没有字段名匹配会给出错误。</li>
-</ul>
-
-<h4 id="toc_12">简单查询</h4>
-
-<pre><code class="language-java">@Dao
-public interface MyDao {
-    @Query(&quot;SELECT * FROM user&quot;)
-    public User[] loadAllUsers();
-}
-</code></pre>
-
-<p>这是一个非常简单的查询会载入所有用户。在编译时，Room 知道它正在查询用户表中的所有列。如果查询包含语法错误或数据库中不存在用户表，Room将会在应用程序编译时显示相应的错误信息。</p>
-
-<h4 id="toc_13">传递参数给查询</h4>
-
-<p>大多数情况下，需要传递参数给查询来执行过滤操作。例如，只显示大于某个年龄的用户。要完成此任务，需要在 Room 注解中使用方法参数，如以下代码片段所示：</p>
-
-<pre><code class="language-java">@Dao
-public interface MyDao {
-    @Query(&quot;SELECT * FROM user WHERE age &gt; :minAge&quot;)
-    public User[] loadAllUsersOlderThan(int minAge);
-}
-</code></pre>
-
-<p>当在编译时处理该查询时，Room 会匹配绑定参数 :minAge 和方法参数 minAge。Room 使用参数名字执进行匹配。如果没有匹配，在应用程序编译时会发生错误。</p>
-
-<p>可以在查询中传递多个参数或多次引用它们，如以下代码片段所示：</p>
-
-<pre><code class="language-java">@Dao
-public interface MyDao {
-    @Query(&quot;SELECT * FROM user WHERE age BETWEEN :minAge AND :maxAge&quot;)
-    public User[] loadAllUsersBetweenAges(int minAge, int maxAge);
-
-    @Query(&quot;SELECT * FROM user WHERE first_name LIKE :search &quot;
-           + &quot;OR last_name LIKE :search&quot;)
-    public List&lt;User&gt; findUserWithName(String search);
-}
-</code></pre>
-
-<h4 id="toc_14">返回列的子集</h4>
-
-<p>大多数情况下，只需要获取到一个 Entity 的几个字段。例如，UI 可能只显示用户的名字和姓氏，而不是用户的每个详细信息。通过只获取应用程序 UI 中显示的列，可以节省宝贵的资源，并且查询完成更快。</p>
-
-<p>Room 可以返回任何 Java 对象，只要可以将返回列的集合映射到返回的对象中。例如，可以创建如下的 POJO 来获取用户的名字和姓氏：</p>
-
-<pre><code class="language-java">public class NameTuple {
-    @ColumnInfo(name=&quot;first_name&quot;)
-    public String firstName;
-
-    @ColumnInfo(name=&quot;last_name&quot;)
-    public String lastName;
-}
-</code></pre>
-
-<p>现在，可以在查询方法中使用该 POJO。</p>
-
-<pre><code class="language-java">@Dao
-public interface MyDao {
-    @Query(&quot;SELECT first_name, last_name FROM user&quot;)
-    public List&lt;NameTuple&gt; loadFullName();
-}
-</code></pre>
-
-<p>Room 知道查询 first_name 列和 last_name 列的返回值，并将这些值映射到 NameTuple 类的字段中。因此，Room 可以生成正确的代码。如果查询返回多余的列，或 NameTuple 类中不存在的列，Room 会显示警告。</p>
-
-<blockquote>
-<p>注：这些 POJO 也可以使用 @Embedded 注解。</p>
-</blockquote>
-
-<h4 id="toc_15">传递一组参数</h4>
-
-<p>一些查询可能需要传递可变数量的参数，直到运行时才知道参数的具体数量。例如，你可能想获取某些区域下所有用户的相关信息。当参数为一个集合时 Room 就会明白，并且会在运行时基于所提供参数的数量展开该集合。</p>
-
-<pre><code class="language-java">@Dao
-public interface MyDao {
-    @Query(&quot;SELECT first_name, last_name FROM user WHERE region IN (:regions)&quot;)
-    public List&lt;NameTuple&gt; loadUsersFromRegions(List&lt;String&gt; regions);
-}
-</code></pre>
-
-<h4 id="toc_16">可观察的查询</h4>
-
-<p>在执行查询时，总会希望应用程序 UI 在数据更改时自动更新。要实现这个，需要在查询方法的描述中使用类型为 LiveData 的返回值。在数据库更新后，Room 会生成所有必须的代码来更新 LiveData。</p>
-
-<pre><code class="language-java">@Dao
-public interface MyDao {
-    @Query(&quot;SELECT first_name, last_name FROM user WHERE region IN (:regions)&quot;)
-    public LiveData&lt;List&lt;User&gt;&gt; loadUsersFromRegionsSync(List&lt;String&gt; regions);
-}
-</code></pre>
-
-<h4 id="toc_17">RxJava</h4>
-
-<p>Room 还可以从定义的查询返回 RxJava2 的 Publisher 和 Flowable 对象。要使用该功能，需要将 Room 组中的 android.arch.persistence.room:rxjava2 组件添加到构建 Gradle 依赖中。然后，可以返回 RxJava2 中定义的类型对象，如以下代码片段所示：</p>
-
-<pre><code class="language-java">@Dao
-public interface MyDao {
-    @Query(&quot;SELECT * from user where id = :id LIMIT 1&quot;)
-    public Flowable&lt;User&gt; loadUserById(int id);
-}
-</code></pre>
-
-<h4 id="toc_18">直接访问 Cursor</h4>
-
-<p>如果应用程序的逻辑需要直接访问返回行，可以从查询返回一个 Cursor 对象。如以下代码片段所示：</p>
-
-<pre><code class="language-java">@Dao
-public interface MyDao {
-    @Query(&quot;SELECT * FROM user WHERE age &gt; :minAge LIMIT 5&quot;)
-    public Cursor loadRawUsersOlderThan(int minAge);
-}
-</code></pre>
-
-<blockquote>
-<p>警告：不鼓励使用 Cursor API，因为它不能保证行是否存在或行包含什么值。仅当你已经有存在 Cursor 的代码并且不好重构时才使用此功能。</p>
-</blockquote>
-
-<h4 id="toc_19">多表查询</h4>
-
-<p>某些查询可能需要访问多个表来计算结果。Room 允许编写任何查询，所以也可以连接表。另外，如果响应是一个可观察类型，如：Flowable 或 LiveData，Room 观察查询中引用的所有表。</p>
-
-<p>以下代码片段显示了如何执行表连接以整合借阅书的用户表和当前借出的图书表之间的信息：</p>
-
-<pre><code class="language-java">@Dao
-public interface MyDao {
-    @Query(&quot;SELECT * FROM book &quot;
-           + &quot;INNER JOIN loan ON loan.book_id = book.id &quot;
-           + &quot;INNER JOIN user ON user.id = loan.user_id &quot;
-           + &quot;WHERE user.name LIKE :userName&quot;)
-   public List&lt;Book&gt; findBooksBorrowedByNameSync(String userName);
-}
-</code></pre>
-
-<p>这些查询也可以返回 POJO，例如，可以编写一个加载用户及其宠物名称的查询，如下所示：</p>
-
-<pre><code class="language-java">@Dao
-public interface MyDao {
-   @Query(&quot;SELECT user.name AS userName, pet.name AS petName &quot;
-          + &quot;FROM user, pet &quot;
-          + &quot;WHERE user.id = pet.user_id&quot;)
-   public LiveData&lt;List&lt;UserPet&gt;&gt; loadUserAndPetNames();
-
-   // You can also define this class in a separate file, as long as you add the
-   // &quot;public&quot; access modifier.
-   static class UserPet {
-       public String userName;
-       public String petName;
-   }
-}
-</code></pre>
-
-<h3 id="toc_20">使用类型转换器</h3>
-
-<p>Room 提供内置支持基本数据类型及其封装类型。然而，有时候需要使用自定义类型，并将其值存储在数据库中单独的列里。要添加自定义类型的支持，需要提供一个 TypeConverter 将自定义类转换为 Room 可以持久化的已知类型。</p>
-
-<p>例如：如果想要持久化 Date 实例，你可以编写如下的 TypeConverter 在数据库中存储等效的 Unix 时间戳。</p>
-
-<pre><code class="language-java">public class Converters {
-    @TypeConverter
-    public static Date fromTimestamp(Long value) {
-        return value == null ? null : new Date(value);
-    }
-
-    @TypeConverter
-    public static Long dateToTimestamp(Date date) {
-        return date == null ? null : date.getTime();
-    }
-}
-</code></pre>
-
-<p>上面的例子定义了两个方法，一个将 Date 对象转换为 [Long] 对象，另一个执行逆向转换，将 [Long] 转换为 Date。因为 Room 已经知道如何持久化 [Long] 对象，所以它可以使用该转换器来持久化 Date 类型的值。</p>
-
-<p>下面，给 AppDatabase 添加 [@TypeConverter] 注解，以便 Room 可以在 AppDatabase 对每个 Entity 和 DAO 使用定义的转换器。</p>
-
-<p>AppDatabase.java</p>
-
-<pre><code class="language-java">@Database(entities = {User.java}, version = 1)
-@TypeConverters({Converter.class})
-public abstract class AppDatabase extends RoomDatabase {
-    public abstract UserDao userDao();
-}
-</code></pre>
-
-<p>使用这些转换器，可以在其它查询中像使用基本数据类型一样使用自定义类型。</p>
-
-<p>User.java</p>
-
-<pre><code class="language-java">@Entity
-public class User {
-    ...
-    private Date birthday;
-}
-</code></pre>
-
-<p>UserDao.java</p>
-
-<pre><code class="language-java">@Dao
-public interface UserDao {
-    ...
-    @Query(&quot;SELECT * FROM user WHERE birthday BETWEEN :from AND :to&quot;)
-    List&lt;User&gt; findUsersBornBetweenDates(Date from, Date to);
-}
-</code></pre>
-
-<p>还可以给 @Typeconverters 限制不同的作用域，包括单个 Entity，DAO 和 DAO 方法，更多详细信息，请参阅 @TypeConverters 注解的参考文档。</p>
-
-<h3 id="toc_21">数据库迁移</h3>
-
-<p>当给应用程序添加或修改功能时，需要修改 Entity 类来反映这些修改。当用户更新到应用程序的最新版本时，你不希望他们丢失现有数据，特别是如果无法从远程服务端恢复数据时。</p>
-
-<p>Room 允许以编写 Migration 类的方式保留用户数据。每个 Migration 类都指定一个 startVersion 和 endVersion。在运行时，Room 允许每个 Migration 的 migrate()) 方法，使用正确的顺序将数据库迁移到最新版本。</p>
-
-<blockquote>
-<p>警告：如果没有提供必要的迁移，则会重建数据库，这意味着将会失去数据库中所有的数据。</p>
-</blockquote>
-
-<pre><code class="language-java">Room.databaseBuilder(getApplicationContext(), MyDb.class, &quot;database-name&quot;)
-        .addMigrations(MIGRATION_1_2, MIGRATION_2_3).build();
-
-static final Migration MIGRATION_1_2 = new Migration(1, 2) {
-    @Override
-    public void migrate(SupportSQLiteDatabase database) {
-        database.execSQL(&quot;CREATE TABLE `Fruit` (`id` INTEGER, &quot;
-                + &quot;`name` TEXT, PRIMARY KEY(`id`))&quot;);
-    }
-};
-
-static final Migration MIGRATION_2_3 = new Migration(2, 3) {
-    @Override
-    public void migrate(SupportSQLiteDatabase database) {
-        database.execSQL(&quot;ALTER TABLE Book &quot;
-                + &quot; ADD COLUMN pub_year INTEGER&quot;);
-    }
-};
-</code></pre>
-
-<p>迁移过程结束后，Room验证数据库架构以确保迁移执行正确。如果 Room 发现问题，将会抛出含有不匹配信息的异常。</p>
-
-<h4 id="toc_22">测试迁移</h4>
-
-<p>迁移不是简单的写入，并且无法正确写入它们可能会导致应用程序崩溃。为了保持应用的稳定性，应该实现测试迁移。Room 提供了一个测试 Maven 组件来帮助进行该测试过程。然而，为了使该组件正常工作，需要导出数据库的结构</p>
-
-<h4 id="toc_23">导出架构</h4>
-
-<p>汇编后，Room 将数据库的架构信息导出为 JSON 文件。要导出架构，需要在 build.gradle 文件中设置 room.schemaLocation 注解数据处理属性，如以下代码片段所示：</p>
-
-<p>build.gradle</p>
-
-<pre><code class="language-java">android {
-    ...
-    defaultConfig {
-        ...
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [&quot;room.schemaLocation&quot;:
-                             &quot;$projectDir/schemas&quot;.toString()]
-            }
-        }
-    }
-}
-</code></pre>
-
-<p>应该将导出的 JSON 文件（其表示数据库架构的历史记录）存储在版本控制系统中，因为它允许 Room 创建旧版本的数据库以进行测试。</p>
-
-<p>要测试这些迁移，请将来自 Room 的 android.arch.persistence.room:testing Maven 组件添加到测试依赖中，并将架构文件的位置添加为资产文件，如以下代码片段所示：</p>
-
-<p>build.gradle</p>
-
-<pre><code class="language-java">android {
-    ...
-    sourceSets {
-        androidTest.assets.srcDirs += files(&quot;$projectDir/schemas&quot;.toString())
-    }
-}
-</code></pre>
-
-<p>测试包提供了一个 MigrationTestHelper 类，可以读取这些架构文件。它也是一个 Junit4 的 TestRule 类，所以它可以管理创建的数据库。</p>
-
-<p>以下代码片段显示了迁移测试的例子：</p>
-
-<pre><code class="language-java">@RunWith(AndroidJUnit4.class)
-public class MigrationTest {
-    private static final String TEST_DB = &quot;migration-test&quot;;
-
-    @Rule
-    public MigrationTestHelper helper;
-
-    public MigrationTest() {
-        helper = new MigrationTestHelper(InstrumentationRegistry.getContext(),
-                MigrationDb.class.getCanonicalName(),
-                new FrameworkSQLiteOpenHelperFactory());
-    }
-
-    @Test
-    public void migrate1To2() throws IOException {
-        SupportSQLiteDatabase db = helper.createDatabase(TEST_DB, 1);
-
-        // db 的架构版本是 1. 使用 SQL 查询插入一些数据。
-        // You cannot use DAO classes because they expect the latest schema.
-        db.execSQL(...);
-
-        // 准备下一个版本。
-        db.close();
-
-        // 使用 version2 重新打开数据库
-        // 并且提供 MIGRATION_1_2 作为迁移过程。
-        db = helper.runMigrationsAndValidate(TEST_DB, 2, true, MIGRATION_1_2);
-
-        // MigrationTestHelper 自动验证架构的更改，
-        // 但是需要验证数据是否迁移正确。
-    }
-}
-</code></pre>
-
-<h3 id="toc_24">测试数据库</h3>
-
-<p>当应用程序运行测试时，如果不测试数据库本身则没有必要创建完整的数据库。Room 允许在测试中轻松的模拟数据访问层。这个过程是可能的，因为 DAO 不会泄漏数据库的任何细节。当测试应用程序的其余部分时，应该创建 DAO 类的模拟或假的实例。</p>
-
-<p>有两种方式可以测试数据库：</p>
-
-<ul>
-<li>在开发主机上。</li>
-<li>在 Android 设备上。</li>
-</ul>
-
-<h4 id="toc_25">在主机上测试</h4>
-
-<p>Room 使用 SQLite 支持库，它提供与 Android Framework 类中一致的接口。该支持库允许传递支持库的自定义实现来测试数据库查询。</p>
-
-<p>即使此设置可以让测试快速运行，但是不推荐使用，因为你的设备上（和用户设备上）运行的 SQLite 版本和你主机上运行的版本不一致。</p>
-
-<h4 id="toc_26">在 Android 设备上测试</h4>
-
-<p>用于测试数据库实现的推荐方式是编写在 Android 设备上运行的 Junit 测试。因为这些测试不需要创建 activity，所以它们应该比 UI 测试执行的更快。</p>
-
-<p>设置测试时，应该创建数据库的内存版本，使测试更加封闭，如以下示例所示：</p>
-
-<pre><code class="language-java">@RunWith(AndroidJUnit4.class)
-public class SimpleEntityReadWriteTest {
-    private UserDao mUserDao;
-    private TestDatabase mDb;
-
-    @Before
-    public void createDb() {
-        Context context = InstrumentationRegistry.getTargetContext();
-        mDb = Room.inMemoryDatabaseBuilder(context, TestDatabase.class).build();
-        mUserDao = mDb.getUserDao();
-    }
-
-    @After
-    public void closeDb() throws IOException {
-        mDb.close();
-    }
-
-    @Test
-    public void writeUserAndReadInList() throws Exception {
-        User user = TestUtil.createUser(3);
-        user.setName(&quot;george&quot;);
-        mUserDao.insert(user);
-        List&lt;User&gt; byName = mUserDao.findUsersByName(&quot;george&quot;);
-        assertThat(byName.get(0), equalTo(user));
-    }
-}
-
-</code></pre>
-
-<h2 id="toc_27">附录：Entity 之间无对象引用</h2>
-
-<p>将数据库中的关系映射到相应的对象模型是一种常见的做法，并且在服务端可以很好的运行，因为在访问时惰性加载文件是高效的。</p>
-
-<p>然而，在客户端，惰性加载是不可能的，因为有可能发生在 UI 线程上，并且在 UI 线程中查询磁盘上的信息会产生显著的性能问题。 UI 线程大约有 16ms 来计算和绘制 activity 的布局更新，所以，即使一个查询任务只需要 5ms，应用程序仍然可能没有时间绘制帧，造成显著的破坏。更糟糕的时，如果并行运行单独的事务或设备忙于其它磁盘繁重的任务，则查询可能需要更多的时间完成。但是，如果不使用惰性加载，应用程序将会获取比所需更多的数据，造成内存消耗问题。</p>
-
-<p>ORM 通常将此决定留给开发者，以便他们可以根据应用程序的情况做最好的处理。不幸的是，开发者通常的处理结果是在应用程序和 UI 之间共享模型。如果 UI 更新超时，会产生难以预料和调试的问题。</p>
-
-<p>例如：让 UI Book 对象的列表，并且没本书都有一个 Author 对象。最初可能设计使用惰性加载查询，如 Book 实例使用 getAuthor() 方法返回作者。getAuthor() 的第一次调用会调用查询数据库。一段时间后，还需要在应用程序的 UI 显示作者名字。可以轻松的添加方法调用，如以下代码片段所示：</p>
-
-<p>authorNameTextView.setText(user.getAuthor().getName());<br/>
-然而，这个看似无辜的变化造成在主线程上查询 Author 表。</p>
-
-<p>如果急需查询作者信息，当不在需要数据时，很难改变数据的加载方式，例如，应用程序的 UI 不再需要显示有关特定作者的信息。因此，当数据不在显示时应用程序必须继续加载数据。如果 Author 类引用其它的表（如，有 getBooks() 方法）情况会更糟。</p>
-
-<p>基于这些原因，Room 禁止 Entity 之间的对象引用。相反，必须明确的请求应用程序需要的数据。</p>
-
-<blockquote>
-<p>转自 <a href="https://juejin.im/post/593df980ac502e006c049607">https://juejin.im/post/593df980ac502e006c049607</a></p>
 </blockquote>
 
 ]]></content>

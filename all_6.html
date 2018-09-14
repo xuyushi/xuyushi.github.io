@@ -112,6 +112,196 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15299133101429.html">
+                
+                  <h1>retrofit源码解析1</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">简介</h2>
+
+<p>Retrofit 通过使用方法上的『注解』来定义请求的构成，将我们声明的 Http 接口转化成一个 Call 对象。<br/>
+这个 Call 对象呢，可以调用同步或非同步方法来发送请求，之后就交给 OkHttp 去执行。<br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133101429.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/6/9</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133101225.html">
+                
+                  <h1>Service 总结</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">Service的种类</h2>
+
+<h3 id="toc_1">按照进程分类</h3>
+
+<h4 id="toc_2">本地服务</h4>
+
+<ol>
+<li>主进程上运行</li>
+<li>主进程结束时，服务也结束</li>
+</ol>
+
+<h4 id="toc_3">远程服务</h4>
+
+<ol>
+<li>独立进程</li>
+<li>主进程结束时，服务不受影响</li>
+<li>使用aidl作为通信方式</li>
+</ol>
+
+<h3 id="toc_4">按运行类型分类</h3>
+
+<h4 id="toc_5">前台服务</h4>
+
+<p>在通知栏会常驻，随着服务的结束，通知栏也会消失</p>
+
+<h4 id="toc_6">后台服务</h4>
+
+<p>用户看不到效果，通常作为同步的服务</p>
+
+<h3 id="toc_7">启动方式分类</h3>
+
+<ol>
+<li>startService 启动的服务<br/>
+主要用于启动一个服务执行后台任务，不进行通信。停止服务使用stopService</li>
+<li>bindService 启动的服务<br/>
+通过binder通信，停止服务使用unbindService</li>
+<li>startService 同时也 bindService 启动的服<br/>
+停止服务应同时使用stepService与unbindService</li>
+</ol>
+
+<h2 id="toc_8">Service 与 Thread 的区别</h2>
+
+<p>1.Thread独立于Activity，不随着Activity的结束而终止，service会随着Activity的结束而终止。<br/>
+2.在某一Activity中创建Thread后，不能在别的Activity对其进行控制，而service可以通过 binder，aidl，boardcast等进行通信。</p>
+
+<h2 id="toc_9">生命周期</h2>
+
+<ul>
+<li>onCraet<br/>
+不管startService几次，系统只会创建Service的时候调用一次。</li>
+<li>onStart<br/>
+startService的时候调用</li>
+<li>onDestroy<br/>
+当服务被停止时的时候被调用。</li>
+</ul>
+
+<blockquote>
+<p>当在旋转手机屏幕的时候，因此旋转之前的使用 bindService 建立的连接便会断开</p>
+
+<p>调用startService后调用stopService，这时服务中的onDestory会执行，同样，调用binderService后，调用unbinderService，服务中的onDestory会执行。同时调用startService和binderService，必须同时调用stopService和unbinderService，onDestory才会执行</p>
+</blockquote>
+
+<h2 id="toc_10">intentService</h2>
+
+<p>在android中，service的代码默认都是运行在主线程中的，如果直接运行一些耗时的程序容易出现ANR。<br/>
+通常需要在service中开启一个子线程。</p>
+
+<pre><code class="language-java">public class MyService extends Service{
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //具体任务
+                
+            }
+        }).start();
+        return super.onStartCommand(intent, flags, startId);
+    }
+}
+</code></pre>
+
+<p>但是这样的服务一旦启动之后，就会一直处于运行状态，必须调用stopService或者stpSelf才能使任务停下来，</p>
+
+<pre><code class="language-java">    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //具体任务
+                stopSelf();
+            }
+        }).start();
+        return super.onStartCommand(intent, flags, startId);
+    }
+</code></pre>
+
+<p>有时候会忘记stopSelf或者开子线程，android提供了一个IntentService类</p>
+
+<pre><code class="language-java">public class MyService extends IntentService{
+    public MyService(String name) {
+        super(&quot;MyService&quot;);
+    }
+
+    @Override
+    protected void onHandleIntent(Intent intent) {
+        //处理任务，自动开子线程
+    }
+}
+</code></pre>
+
+<p>首先提供一个无参的构造函数，并必须在其内部调用父类的有参的构造函数，。</p>
+
+<blockquote>
+<p>参考  <a href="http://www.cnblogs.com/newcj/archive/2011/05/30/2061370.html">http://www.cnblogs.com/newcj/archive/2011/05/30/2061370.html</a><br/>
+《第一行代码》</p>
+</blockquote>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2016/6/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15299133103997.html">
                 
                   <h1>Activity Mode</h1>
@@ -975,114 +1165,6 @@ Observable.just(&quot;Hello, world!&quot;)
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133101508.html">
-                
-                  <h1>Android 中的MVP 模式</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>MVP模式的核心思想：</p>
-
-<blockquote>
-<p>MVP把Activity中的UI逻辑抽象成View接口，把业务逻辑抽象成功接口，Model类还是原来的Model。</p>
-</blockquote>
-
-<h2 id="toc_0">MVC</h2>
-
-<p><img src="media/15299133101508/14566254770300.png" alt=""/></p>
-
-<ul>
-<li>其中View层其实就是程序的UI界面，用于向用户展示数据以及接收用户的输入</li>
-<li>而Model层就是JavaBean实体类，用于保存实例数据</li>
-<li>Controller控制器用于更新UI界面和数据实例</li>
-</ul>
-
-<p>View层接受用户的输入，然后通过Controller修改对应的Model实例；同时，当Model实例的数据发生变化的时候，需要修改UI界面，可以通过Controller更新界面。View层也可以直接更新Model实例的数据，而不用每次都通过Controller，这样对于一些简单的数据更新工作会变得方便许多。</p>
-
-<h2 id="toc_1">MVP</h2>
-
-<p>MVP与MVC最不同的一点是<strong>M与V是不直接关联的也是就Model与View不存在直接关系，这两者之间间隔着的是Presenter层</strong><br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133101508.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/2/28</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133100699.html">
-                
-                  <h1>代理模式 Proxy Pattern</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">定义</h2>
-
-<blockquote>
-<p>代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。</p>
-
-<h2 id="toc_1">使用场景</h2>
-</blockquote>
-
-<ul>
-<li>一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。</li>
-<li>系统中有多于一个的产品族，而每次只使用其中某一产品族。</li>
-<li>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</li>
-<li>系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
-</ul>
-
-<h2 id="toc_2">UML 图</h2>
-
-<p><img src="media/15299133100699/14562373472577.png" alt=""/></p>
-
-<p>Subject: 抽象主题角色<br/>
-Proxy: 代理主题角色<br/>
-RealSubject: 真实主题角色</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133100699.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/2/23</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1160,6 +1242,18 @@ RealSubject: 真实主题角色</p>
 	      
 		      
 			      <li class="post">
+			        <a href="mobile_growth_stack_part_2.html">移动增长堆栈（2）--洞察与分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="mobile_growth_stack_part_1.html">移动增长堆栈（1）--概述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15318371632829.html">业务流程设计</a>
 			      </li>
 		     
@@ -1173,18 +1267,6 @@ RealSubject: 真实主题角色</p>
 		      
 			      <li class="post">
 			        <a href="15318107329806.html">产品调研</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15316593971293.html">用思维导图梳理用户需求</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15317376170439.html">需求优先级</a>
 			      </li>
 		     
 		  

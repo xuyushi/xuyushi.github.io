@@ -112,6 +112,114 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15299133101508.html">
+                
+                  <h1>Android 中的MVP 模式</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>MVP模式的核心思想：</p>
+
+<blockquote>
+<p>MVP把Activity中的UI逻辑抽象成View接口，把业务逻辑抽象成功接口，Model类还是原来的Model。</p>
+</blockquote>
+
+<h2 id="toc_0">MVC</h2>
+
+<p><img src="media/15299133101508/14566254770300.png" alt=""/></p>
+
+<ul>
+<li>其中View层其实就是程序的UI界面，用于向用户展示数据以及接收用户的输入</li>
+<li>而Model层就是JavaBean实体类，用于保存实例数据</li>
+<li>Controller控制器用于更新UI界面和数据实例</li>
+</ul>
+
+<p>View层接受用户的输入，然后通过Controller修改对应的Model实例；同时，当Model实例的数据发生变化的时候，需要修改UI界面，可以通过Controller更新界面。View层也可以直接更新Model实例的数据，而不用每次都通过Controller，这样对于一些简单的数据更新工作会变得方便许多。</p>
+
+<h2 id="toc_1">MVP</h2>
+
+<p>MVP与MVC最不同的一点是<strong>M与V是不直接关联的也是就Model与View不存在直接关系，这两者之间间隔着的是Presenter层</strong><br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133101508.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133100699.html">
+                
+                  <h1>代理模式 Proxy Pattern</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">定义</h2>
+
+<blockquote>
+<p>代理模式(Proxy Pattern) ：给某一个对象提供一个代 理，并由代理对象控制对原对象的引用。</p>
+
+<h2 id="toc_1">使用场景</h2>
+</blockquote>
+
+<ul>
+<li>一个系统不应当依赖于产品类实例如何被创建、组合和表达的细节，这对于所有类型的工厂模式都是重要的。</li>
+<li>系统中有多于一个的产品族，而每次只使用其中某一产品族。</li>
+<li>属于同一个产品族的产品将在一起使用，这一约束必须在系统的设计中体现出来。</li>
+<li>系统提供一个产品类的库，所有的产品以同样的接口出现，从而使客户端不依赖于具体实现。</li>
+</ul>
+
+<h2 id="toc_2">UML 图</h2>
+
+<p><img src="media/15299133100699/14562373472577.png" alt=""/></p>
+
+<p>Subject: 抽象主题角色<br/>
+Proxy: 代理主题角色<br/>
+RealSubject: 真实主题角色</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133100699.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15299133099503.html">
                 
                   <h1>迭代器模式 Iterator Pattern</h1>
@@ -589,111 +697,6 @@ ConcreteFactory：具体工厂，实现了实际造出产品的方法</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133099653.html">
-                
-                  <h1>装饰者模式 Decorator Design Pattern</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">定义</h2>
-
-<blockquote>
-<p><strong>装饰者模式</strong>动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更具有弹性的替代方案，其别名也可以称为包装器(Wrapper） </p>
-</blockquote>
-
-<h2 id="toc_1">使用场景</h2>
-
-<ul>
-<li>在不影响其他对象的情况下，以动态、透明的方式给单个对象添加职责。</li>
-<li>需要动态地给一个对象增加功能，这些功能也可以动态地被撤销。</li>
-<li>当不能采用继承的方式对系统进行扩充或者采用继承不利于系统扩展和维护时。不能采用继承的情况主要有两类：第一类是系统中存在大量独立的扩展，为支持每一种组合将产生大量的子类，使得子类数目呈爆炸性增长；第二类是因为类定义不能继承（如final类）.</li>
-</ul>
-
-<h2 id="toc_2">UML 图</h2>
-
-<p><img src="media/15299133099653/14560246781613.png" alt=""/></p>
-
-<p>Component: 抽象构件<br/>
-ConcreteComponent: 具体构件<br/>
-Decorator: 抽象装饰类<br/>
-ConcreteDecorator: 具体装饰类</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133099653.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/2/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133099606.html">
-                
-                  <h1>观察者模式 Observer Design Pattern</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">定义</h2>
-
-<blockquote>
-<p>观察者模式定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖都会受到通知并自动更新</p>
-</blockquote>
-
-<h2 id="toc_1">使用场景</h2>
-
-<ol>
-<li>对象之间的一对多依赖。一个对象状态的更新时，其他对象需要自动更新，而且其他对象的数量动态可变。（注册、反注册） </li>
-<li>对象仅需要将自己的更新通知给其他对象而不需要知道其他对象的细节。 (解耦)</li>
-<li>MVC 中的 View 层实现</li>
-</ol>
-
-<h2 id="toc_2">UML 图</h2>
-
-<p><img src="media/15299133099606/14559766489224.png" alt=""/></p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133099606.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/2/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -771,6 +774,18 @@ ConcreteDecorator: 具体装饰类</p>
 	      
 		      
 			      <li class="post">
+			        <a href="mobile_growth_stack_part_2.html">移动增长堆栈（2）--洞察与分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="mobile_growth_stack_part_1.html">移动增长堆栈（1）--概述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15318371632829.html">业务流程设计</a>
 			      </li>
 		     
@@ -784,18 +799,6 @@ ConcreteDecorator: 具体装饰类</p>
 		      
 			      <li class="post">
 			        <a href="15318107329806.html">产品调研</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15316593971293.html">用思维导图梳理用户需求</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15317376170439.html">需求优先级</a>
 			      </li>
 		     
 		  

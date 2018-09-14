@@ -112,6 +112,111 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15299133099653.html">
+                
+                  <h1>装饰者模式 Decorator Design Pattern</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">定义</h2>
+
+<blockquote>
+<p><strong>装饰者模式</strong>动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更具有弹性的替代方案，其别名也可以称为包装器(Wrapper） </p>
+</blockquote>
+
+<h2 id="toc_1">使用场景</h2>
+
+<ul>
+<li>在不影响其他对象的情况下，以动态、透明的方式给单个对象添加职责。</li>
+<li>需要动态地给一个对象增加功能，这些功能也可以动态地被撤销。</li>
+<li>当不能采用继承的方式对系统进行扩充或者采用继承不利于系统扩展和维护时。不能采用继承的情况主要有两类：第一类是系统中存在大量独立的扩展，为支持每一种组合将产生大量的子类，使得子类数目呈爆炸性增长；第二类是因为类定义不能继承（如final类）.</li>
+</ul>
+
+<h2 id="toc_2">UML 图</h2>
+
+<p><img src="media/15299133099653/14560246781613.png" alt=""/></p>
+
+<p>Component: 抽象构件<br/>
+ConcreteComponent: 具体构件<br/>
+Decorator: 抽象装饰类<br/>
+ConcreteDecorator: 具体装饰类</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133099653.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15299133099606.html">
+                
+                  <h1>观察者模式 Observer Design Pattern</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">定义</h2>
+
+<blockquote>
+<p>观察者模式定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖都会受到通知并自动更新</p>
+</blockquote>
+
+<h2 id="toc_1">使用场景</h2>
+
+<ol>
+<li>对象之间的一对多依赖。一个对象状态的更新时，其他对象需要自动更新，而且其他对象的数量动态可变。（注册、反注册） </li>
+<li>对象仅需要将自己的更新通知给其他对象而不需要知道其他对象的细节。 (解耦)</li>
+<li>MVC 中的 View 层实现</li>
+</ol>
+
+<h2 id="toc_2">UML 图</h2>
+
+<p><img src="media/15299133099606/14559766489224.png" alt=""/></p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133099606.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15299133099842.html">
                 
                   <h1>策略模式 Strategy Pattern</h1>
@@ -546,134 +651,6 @@ o = null;     // 帮助垃圾收集器回收此对象
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133102120.html">
-                
-                  <h1>IDEA 技巧</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">重构</h2>
-
-<ul>
-<li>Undo
-<strong>Commend + Z</strong>
-<em>undo 是安全的，可以撤销所有 refactor 操作。</em></li>
-<li>Find and replace code duplicates
-<em>可以选择当前文件，uncommit 文件、项目等 进行替换</em></li>
-<li>Rename
-<strong>Shift + Commend + F6</strong></li>
-<li>Type migration
-<strong>Shift + Commend + F6</strong>
-改变变量的属性，举个🌰 ， 可以将 int -&gt; Long ，需要migration 的是 int 而不是变量</li>
-<li>Invert boolean<br/>
-反转 boolean 型变量值 ，true -&gt; false, false -&gt; true ,同时 rename 变量值</li>
-<li>safe delete
-<strong>Fn + Commend + Delete</strong>
-安全删除</li>
-<li><p>extract<br/>
-提取变量、参数等</p></li>
-<li><p>提取为参数:Option + Cmd + P  将变量提取到方法中为方法的参数</p></li>
-<li><p>提取变量为函数名:Option + Cmd + V 将 new 出的对象，提取成一个对象</p></li>
-<li><p>提取常量:Option + Cmd + C 提取的常量为 static final,TAG快速生成</p></li>
-<li><p>提取方法:Option + Cmd + M</p></li>
-<li><p>提取为成员变量:Option + Cmd + F</p></li>
-</ul>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133102120.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/1/14</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15299133099014.html">
-                
-                  <h1>VIM 技巧</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">VIM</h1>
-
-<h2 id="toc_1">代码选择</h2>
-
-<p>v:选择代码块<br/>
-V:选择代码行<br/>
-ctrl+V:多行选中模式 （esc 之后生效）</p>
-
-<h2 id="toc_2">跳转</h2>
-
-<ul>
-<li>）:代码快跳转</li>
-<li>] :函数跳转</li>
-<li>} :class 跳转 <br/>
-## 移动</li>
-<li>hjkl</li>
-<li>f/F: 查找字符</li>
-<li>t/T: 同上，区别是停留前一个字符</li>
-<li>gg/G: 文件开头/结尾 </li>
-<li>H/M/L：跳到当前屏幕的顶部/中间/底部。</li>
-<li>‘[ 跳到上一次被改变的文本的第一个字符</li>
-<li>&#39;. 跳到上一次文本被修改的地方</li>
-<li>&#39;&#39; <mark>跳回上一次跳转的地方</mark></li>
-<li>&#39;^ 跳到插入模式最后一次结束的地方 <br/>
-## 编辑模式</li>
-<li>x/X是删除当前光标下/光标前的一个字符</li>
-<li>d/c/y是删除/修改/复制命令</li>
-</ul>
-
-<p><em>diw, yiw, ciw, viw 删除(复制,改变,选中)光标所在单词<br/>
-da”, ya”, ca”, va” 删除(复制,改变,选中)””号内所有文本,包括引号本身</em></p>
-
-<ul>
-<li>* 向前查找当前光标下的单词</li>
-<li># 反方向查找当前光标下的单词 </li>
-<li>我们在使用的过程中，会遇到这样的问题，分别在两个地方删除内容，然后需要分别粘贴，这样的情况就需要用到&quot;ayy &quot;ap这样的命令了，&quot;ayy是把当前行复制到名字为a的寄存器中，&quot;ap就是在这里粘帖a寄存器中的内容。</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2016/1/10</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -751,6 +728,18 @@ da”, ya”, ca”, va” 删除(复制,改变,选中)””号内所有文本,
 	      
 		      
 			      <li class="post">
+			        <a href="mobile_growth_stack_part_2.html">移动增长堆栈（2）--洞察与分析</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="mobile_growth_stack_part_1.html">移动增长堆栈（1）--概述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15318371632829.html">业务流程设计</a>
 			      </li>
 		     
@@ -764,18 +753,6 @@ da”, ya”, ca”, va” 删除(复制,改变,选中)””号内所有文本,
 		      
 			      <li class="post">
 			        <a href="15318107329806.html">产品调研</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15316593971293.html">用思维导图梳理用户需求</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15317376170439.html">需求优先级</a>
 			      </li>
 		     
 		  
