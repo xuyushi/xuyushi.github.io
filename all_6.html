@@ -112,6 +112,48 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15299133101383.html">
+                
+                  <h1>retrofit源码解析2</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">使用</h2>
+
+<h4 id="toc_1">首先定义一个接口</h4>
+
+<pre><code class="language-java">public interface GitHubService {  
+  @GET(&quot;users/{user}/repos&quot;)
+  Call&lt;List&lt;Repo&gt;&gt; listRepos(@Path(&quot;user&quot;) String user);
+}
+</code></pre>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133101383.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/6/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15299133101429.html">
                 
                   <h1>retrofit源码解析1</h1>
@@ -1131,40 +1173,6 @@ Observable.just(&quot;Hello, world!&quot;)
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133103550.html">
-                
-                  <h1>Android MVVM</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>在上一篇博文中介绍了 <img src="http://xuyushi.github.io/2016/02/28/MVP/" alt="Android的MVP模式"/>。MVVM 是从 MVP 的进一步发展与规范，MVP 隔离了 M 与 V 的直接联系后，靠 Presenter 来中转，所以使用 MVP 时 P 是直接调用 View 的接口来实现对视图的操作的，M 与 V是隔离了，方便测试了，但代码还不够优雅简洁啊，所以 MVVM 就弥补了这些缺陷。</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133103550.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/3/5</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -1242,13 +1250,19 @@ Observable.just(&quot;Hello, world!&quot;)
 	      
 		      
 			      <li class="post">
-			        <a href="mobile_growth_stack_part_2.html">移动增长堆栈（2）--洞察与分析</a>
+			        <a href="mobile_growth_stack_part_2.html">移动增长栈（2）--洞察与分析</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="mobile_growth_stack_part_1.html">移动增长堆栈（1）--概述</a>
+			        <a href="mobile_growth_stack_part_3.html">移动增长堆栈（3）--获客</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="mobile_growth_stack_part_1.html">移动增长栈（1）--概述</a>
 			      </li>
 		     
 		  
@@ -1261,12 +1275,6 @@ Observable.just(&quot;Hello, world!&quot;)
 		      
 			      <li class="post">
 			        <a href="15318354800090.html">完整功能点设计</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15318107329806.html">产品调研</a>
 			      </li>
 		     
 		  

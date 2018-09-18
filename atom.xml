@@ -4,7 +4,7 @@
   <title><![CDATA[Xu Yushi's Blog]]></title>
   <link href="xuyushi.github.io/atom.xml" rel="self"/>
   <link href="xuyushi.github.io/"/>
-  <updated>2018-09-14T09:45:01+08:00</updated>
+  <updated>2018-09-14T09:47:53+08:00</updated>
   <id>xuyushi.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -13,14 +13,14 @@
   <generator uri="http://www.mweb.im/">MWeb</generator>
   
   <entry>
-    <title type="html"><![CDATA[移动增长堆栈（2）--洞察与分析]]></title>
+    <title type="html"><![CDATA[移动增长栈（2）--洞察与分析]]></title>
     <link href="xuyushi.github.io/mobile_growth_stack_part_2.html"/>
     <updated>2018-09-13T17:12:06+08:00</updated>
     <id>xuyushi.github.io/mobile_growth_stack_part_2.html</id>
     <content type="html"><![CDATA[
 <p><img src="media/15368299264873/15368299403940.png" alt=""/></p>
 
-<p>洞察分析层是堆栈中最全面的层，其基础是定量和定性数据、指标、建模和衡量影响和识别机会方面的重要性的报表。 尽管可以通过足够的投资来制作自定义解决方案或快速黑客或数据库查询以获得短期洞察力，市面上还是存在许多工具和服务来帮助这一层中的特定数据收集或处理活动。</p>
+<p>洞察分析层是增长栈中最全面的层，其基础是定量和定性数据、指标、建模和衡量影响和识别机会方面的重要性的报表。 尽管可以通过足够的投资来制作自定义解决方案或快速黑客或数据库查询以获得短期洞察力，市面上还是存在许多工具和服务来帮助这一层中的特定数据收集或处理活动。</p>
 
 <span id="more"></span><!-- more -->
 
@@ -76,7 +76,7 @@
 
 <p>如果应用或游戏包含动态内容，例如 新闻文章，食谱，照片，音乐曲目等随后跟踪内容（观看，喜欢，书签，购买等）和内容共享，可以深入了解哪些内容和类别可以提供最佳ROI。 除了跟踪内容参与之外，还期望测量特定内容项由于被共享而产生的推荐用户的数量以及哪些频道提供最佳的病毒性。</p>
 
-<h2 id="toc_8">情绪追踪(Sentiment Tracking)</h2>
+<h2 id="toc_8">舆情追踪(Sentiment Tracking)</h2>
 
 <p>客户满意度很重要;不满或心怀不满的用户面临流失的高风险，并且可能会在应用商店或在线论坛上发出负面反馈，从而阻止潜在用户。相反，快乐或高兴的用户可以成为移动产品的强大拥护者，并且应该在用户细分中进行识别。</p>
 
@@ -142,7 +142,98 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[移动增长堆栈（1）--概述]]></title>
+    <title type="html"><![CDATA[移动增长堆栈（3）--获客]]></title>
+    <link href="xuyushi.github.io/mobile_growth_stack_part_3.html"/>
+    <updated>2018-09-14T09:58:15+08:00</updated>
+    <id>xuyushi.github.io/mobile_growth_stack_part_3.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/15368902959139/15371726689466.png" alt=""/></p>
+
+<p>增长栈的获客层包括为移动应用程序获取新用户而进行的活动，无论是通过<a href="http://smallbiztrends.com/2013/08/what-is-owned-earned-paid-media.html">付费的、自拥有</a>的渠道。</p>
+
+<span id="more"></span><!-- more -->
+
+<h2 id="toc_0">公关（PR）</h2>
+
+<p>PR活动包括制作和宣传有新闻价值的报道，希望吸引记者报道这些报道，而不是在任何一天都有大量相互竞争的报道。最终，执行良好的内容营销可能会随着时间的推移带来更可靠的回报，但创造性的公关可以为有机增长提供一种重要的——如果是线性的，很难归因于的——推动。由于公关通常不是初创公司创始人和数据驱动型增长营销人员的核心能力，了解当地/行业媒体格局的公关机构通常会参与其中，有时是以业绩为基础的(例如，按媒体提及次数付费)。</p>
+
+<h2 id="toc_1">应用商店优化 App Store Optimization (ASO)</h2>
+
+<p>ASO包含三项核心活动：</p>
+
+<h3 id="toc_2">App Store转换率优化：</h3>
+
+<p>由于应用程序商店是几乎所有消费者移动应用程序的分发网关，因此用于在应用程序商店中推广应用程序或游戏的资产（屏幕截图，标题，关键字，描述，应用程序图标）进行系统测试，以优化转换率。商店页面访问&#39;到&#39;应用安装&#39;是一项放大所有其他采购活动影响的活动。如果应用商店页面转换增加，性能营销支出将进一步扩大;因为点击广告的用户将最终安装该应用，每次安装费用（CPI）将下降。</p>
+
+<h3 id="toc_3">App Store搜索优化</h3>
+
+<p>针对性能最佳的关键字进行优化，以吸引高搜索量并与应用的目标受众进行良好转换，这是一个完善和实验的过程，需要定期审核才能保持领先于竞争对手。 对于某些应用，应用商店搜索占其应用商店列表的有机流量的很大比例（高达80％），而在其他情况下，搜索在应用发现中扮演的角色较小。 在任何情况下，通过在相关关键字的搜索结果中高度排名，可以至少在某种程度上增加用户获取。</p>
+
+<h3 id="toc_4">应用商店特色:</h3>
+
+<p>所有主要的应用程序商店都有一些特色的概念，编辑团队根据不同的编辑标准，为选定的应用程序提供显著的临时广告横幅风格。获得苹果、谷歌、亚马逊和其他平台所有者的支持，可以大大(而且是免费的)促进用户获取。具有特色的应用程序的发布者通常会花时间与相关的应用程序商店经理建立直接联系，并定期向他们提供有关即将发布的重要应用程序的及时信息，尽管情况并非总是如此。</p>
+
+<p>有许多东西可以增加应用程序的表现的机会:确保应用程序UI是平台设计指导方针,支持新特性或硬件平台,创建自定义内容为特殊日历事件,可以绑定到应用程序商店促销活动,并确保应用程序是免费的从错误和崩溃是其中的一些。最终，编辑团队希望在他们的商店中呈现出最高质量的应用程序，并且很少(如果有的话)提供有特色的保证。</p>
+
+<h2 id="toc_5">内容营销（Content Marketing）</h2>
+
+<p>内容营销需要投入大量的时间和资源才能获得回报，但一个强大的内容营销计划可以提供一个重要的、可持续的、不断增长的(尽管是线性的)新用户来源。</p>
+
+<p>内容营销可以采取多种形式,但涉及代的博客,新闻,信息图表,艺术品,提示和技巧,十大列表和其他类型的在线内容,吸引目标受众为核心的移动产品(应用程序、游戏或应用程序被提拔的星座)和应包括突出链接的应用程序商店应用程序可以下载。</p>
+
+<p>例如:如果所讨论的产品是一个预算应用程序，那么将为那些想要省钱或管理财务的人生成创造性的、引人入胜的内容:这可能包括省钱的小窍门，关于预算过程的信息图表等等。</p>
+
+<p>内容营销帖子通常在公司博客等自有媒体上发布，但也可以通过社交渠道、电子邮件等方式分享，以扩大影响力。随着时间的推移,与普通用户发表的内容,文章应该爬上排名网页搜索相关主题,推动更多有机搜索流量的帖子和随后的应用。内容营销建立品牌知名度,可以明显提高收购,但可能需要几个月开始交付用户。</p>
+
+<h2 id="toc_6">业绩营销（Performance marketing）</h2>
+
+<p>通过移动显示/视频广告网络，付费搜索广告，Facebook，Instagram，Twitter和其他渠道上的应用安装广告进行的业绩营销提供了比大多数其他渠道更积极地扩大用户获取的机会，尽管价格昂贵。</p>
+
+<p>通常情况下，性能营销成为一种可行的策略，用于通过应用程序内广告，应用程序内购买，订阅或某种组合从至少部分用户群中获利的产品，以及当新用户的客户获取成本（CAC）时给定的营销活动产生正投资回报率（ROI），通过预测某个置信区间内用户的生命周期价值（LTV）来计算。</p>
+
+<p>效果营销广告系列通常涉及针对其他广告客户针对每千次展示费用（每千次展示费用），每次点击费用（每次点击费用），CPI（每次安装费用）或每次转化费用（每次操作费用：例如购买商品或订阅）进行广告展示位置的出价）基础。</p>
+
+<p><a href="https://mobilegrowthstack.com/acquiring-better-users-eric-seufert-and-thomas-petit-on-ua-strategies-1fe34b01c010">详细了解如何在此设置可扩展的付费用户获取渠道</a>。</p>
+
+<h2 id="toc_7">影响者营销(Influencer Marketing)</h2>
+
+<p>从最广泛的意义上讲，“影响者营销”一词涵盖了广泛的活动，涉及与有影响力的个人或团体合作，以获得品牌或产品宣传或对他们的认可。这个概念远非新鲜事：烟草公司几代人一直通过电影明星影响我们，体育人士的商业赞助被认为是理所当然的，等等。</p>
+
+<p>与影响者合作传统上很难衡量，耗时且可能很昂贵，但往往仍然有效。以性能为中心的影响者平台的出现，将广告商与新一代独立影响者联系起来 - 包括博主，YouTube明星，Instagram用户和Snapchatters--已经使曾经由大品牌和名人代理主导的空间民主化。现在有可能将影响者营销扩展到影响者群体，这些影响者群体的影响范围较小 - 尽管是对潜在利基话题感兴趣的忠实观众 - 而不是拥有数千万粉丝的超级明星。同时，嵌入式跟踪链接以及展示次数和点击次数的实时报告使营销人员能够通过其影响力营销支出更加数据化;他们可以计算转换率，每次安装费用（CPI）和其他效果指标。</p>
+
+<p>影响者营销越来越多地成为一种表现营销活动，增加或取代传统的移动应用安装活动，以相同的条件对Facebook和DSP进行评估。在许多情况下，这些发展已经将影响者营销从品牌营销活动转变为可衡量的增长策略。</p>
+
+<h2 id="toc_8">分销优惠(Distribution Deals)</h2>
+
+<p>分销伙伴关系，提供了一个强大的网络或品牌的庞大受众/用户群，可以在一夜之间大大提高覆盖面。一般来说，作为一家刚刚起步的小公司，它们更难实现，因为必须进行某种价值交换，而更有吸引力的增长合作往往是与拥有数百万用户的大公司合作。</p>
+
+<p>几个分销协议的例子包括伙伴关系与移动通信运营商(电信推广你的应用的用户,以换取利润的减少,或者是一个固定费用),交通交流网站,预装(可能是定制的)版本的应用程序的智能手机制造商,智能电视或者其他连接设备。</p>
+
+<h2 id="toc_9">病毒传播(Viral Loops)</h2>
+
+<p>虚拟的“病毒性”概念难以人为地产生;最终，持续的病毒式增长很可能源于强大的产品或引人入胜的内容。但是，仔细关注内容共享，项目赠送或邀请流程，可以为病毒式传播创造合适的条件。</p>
+
+<p>每个频道（例如电子邮件，移动消息网络，社交网络，如Facebook，Twitter等）将根据达到的用户数量显示不同的动态（例如，一对一与一对多，轻松和可能性由接收者等在网络中重新发布的，这些份额的转换率以及通过该信道关闭循环并获得新用户所花费的平均时间。控制病毒循环性能的两个关键变量是K因子（平均每个邀请/共享达到x转换率的用户数）和循环时间（平均循环所需的平均时间）。在这两者之中，缩短周期时间会使生长轨迹更加显着增加，因为随着时间的推移病毒化合物会增加。</p>
+
+<h2 id="toc_10">交叉销售(Cross-Sell)</h2>
+
+<p>当现有用户库存在于另一个拥有的产品或平台上时（例如桌面网络应用程序，移动网络应用程序，公司产品组合中的另一个应用程序或游戏等），存在这些属性之间交叉推广的机会，以便将用户引导至新的 - 启动应用程序，或将桌面/移动网络用户迁移到原生移动设备，在那里还有其他方式可以吸引，保留和利用它们。</p>
+
+<p>从一个拥有的房产到另一个房产的交通流量是“免费”用户的一个重要来源，他们已经熟悉产品/品牌，因此可能比全新的用户更容易保留。 交叉销售对于寿命短的产品特别有用，用户可能会在一段时间后对体验感到厌倦; 游戏发行商广泛采用交叉销售策略，以便在旧游戏到达保质期结束之前，将用户投放到其投资组合中新发布的游戏中。</p>
+
+<h2 id="toc_11">内容索引(Content Indexing)</h2>
+
+<p>内容索引深层链接原子内容，主要通过Google App Indexing和改进的iOS 9推出的Apple Search提供了新的机会来推动应用程序发现以及将现有用户直接引回应用程序。</p>
+
+<p>在实施连贯且优化的搜索优化策略时，确保网络和移动网络内容也已正确编入索引并映射到应用内的相同内容非常重要，因为Google目前仍需要匹配网络内容才能在应用内编制内容（尽管如此随着网络的相关性进一步下降，未来可能会发生变化）。</p>
+
+<p>转换优化的响应式登录页面和Facebook页面也不应被忽视作为推动应用下载的其他渠道，也应该针对搜索进行优化，尽管完整的内容营销计划可能会产生更强的结果（但也需要更多的创造力和努力）。纯广告登陆页面。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[移动增长栈（1）--概述]]></title>
     <link href="xuyushi.github.io/mobile_growth_stack_part_1.html"/>
     <updated>2018-09-13T16:23:56+08:00</updated>
     <id>xuyushi.github.io/mobile_growth_stack_part_1.html</id>
@@ -151,25 +242,25 @@
 
 <p><img src="media/15368270366063/15368294184568.png" alt=""/></p>
 
-<h2 id="toc_0">什么是 移动增长堆栈?</h2>
+<h2 id="toc_0">什么是 移动增长栈?</h2>
 
-<p>移动增长堆栈(Mobile Growth Stack)是一个框架，它可以帮助营销人员，创始人和增长从业者制定和完成一种能增加产品用户数的战略。尽管移动增长堆栈的某些层和元素在业务的不同阶段更具相关性，但它可以应用与产品生命周期的任何阶段，也可以应用于许多不同的业务和模型。</p>
+<p>移动增长栈(Mobile Growth Stack)是一个框架，它可以帮助营销人员，创始人和增长从业者制定和完成一种能增加产品用户数的战略。尽管移动增长栈的某些层和元素在业务的不同阶段更具相关性，但它可以应用与产品生命周期的任何阶段，也可以应用于许多不同的业务和模型。</p>
 
 <span id="more"></span><!-- more -->
 
-<p>有关如何将增长堆栈应用于您的业务的详细说明，请查看我们关于<a href="https://mobilegrowthstack.com/applying-the-mobile-growth-stack-81b0f6ca66bf#.1ia4twj7u">应用增长栈的文章</a></p>
+<p>有关如何将增长栈应用于您的业务的详细说明，请查看我们关于<a href="https://mobilegrowthstack.com/applying-the-mobile-growth-stack-81b0f6ca66bf#.1ia4twj7u">应用增长栈的文章</a></p>
 
 <h2 id="toc_1">历史与进化</h2>
 
 <p>Andy Carvell 由Andy Carvell开发和发布的。 Andy花了15 年的职业生涯开发和发布移动产品和服务，而且他用了 4.5 年时间专注于SoundCloud的移动用户的增长。Andy和前SoundCloud增长团队成员Moritz Daan现在根据他们与全球各种应用开发商和发行商合作的经验，将他们整合在一起， 开发了<a href="https://www.phiture.com/">Phiture</a> -- 移动增长顾问</p>
 
-<p>您可以阅读以下有关该堆栈的原始博文：</p>
+<p>您可以阅读以下有关该增长栈的原始博文：</p>
 
-<p><a href="https://medium.com/@andy_carvell/the-mobile-growth-stack-3ffa6856f482">移动增长堆栈</a></p>
+<p><a href="https://medium.com/@andy_carvell/the-mobile-growth-stack-3ffa6856f482">移动增长栈</a></p>
 
-<p><a href="https://medium.com/@andy_carvell/2015-the-mobile-growth-stack-revised-58f5d11d43f3">2015年：移动增长堆栈修订</a></p>
+<p><a href="https://medium.com/@andy_carvell/2015-the-mobile-growth-stack-revised-58f5d11d43f3">2015年：移动增长栈修订</a></p>
 
-<p>有关将增长堆栈和“堆栈思维”应用于您的业务的深入指南，请查看本站点上的随附文章“<a href="https://mobilegrowthstack.com/applying-the-mobile-growth-stack-81b0f6ca66bf#.1ia4twj7u">应用堆栈</a>”。</p>
+<p>有关将增长栈和“增长栈思维”应用于您的业务的深入指南，请查看本站点上的随附文章“<a href="https://mobilegrowthstack.com/applying-the-mobile-growth-stack-81b0f6ca66bf#.1ia4twj7u">应用增长栈</a>”。</p>
 
 <h2 id="toc_2">工作原理</h2>
 
@@ -177,7 +268,7 @@
 
 <p>处于产品成熟度不同阶段的公司可能会优先考虑不同的层次，以实现其中短期业务目标。成功的战略需要在某个时刻在所有三个核心层产生影响。但是如果没有洞察和分析这是很难的。</p>
 
-<p>堆栈中的每个元素（即每个单独的单元格）表示可以也不可以构成移动增长策略的一部分。 并非所有元素都同样适用于特定的app。 智能增长战略并不试图涵盖堆栈的每个元素，而是选择适当的活动组合来发挥核心优势，为近期增长提供最佳机会，并投资为下一个增长点带来能力和渠道和希望。</p>
+<p>增长栈中的每个元素（即每个单独的单元格）表示可以也不可以构成移动增长策略的一部分。 并非所有元素都同样适用于特定的app。 智能增长战略并不试图涵盖增长栈的每个元素，而是选择适当的活动组合来发挥核心优势，为近期增长提供最佳机会，并投资为下一个增长点带来能力和渠道和希望。</p>
 
 ]]></content>
   </entry>
@@ -2238,202 +2329,6 @@ public abstract class ActivityBindingModule {
 }
 
 </code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[快速搭建新项目框架1-依赖注入]]></title>
-    <link href="xuyushi.github.io/15299133100165.html"/>
-    <updated>2018-06-25T15:55:10+08:00</updated>
-    <id>xuyushi.github.io/15299133100165.html</id>
-    <content type="html"><![CDATA[
-<p>关于依赖注入在 <a href="http://xuyushi.github.io/2017/04/08/Android%20CleanArchitecture%20--Dagger/">之前的文章里有详细的分析</a></p>
-
-<p>而最近的 dagger 的更新又再次方便了注入过程 。<br/>
-回顾之前的 dagger 在 Activity 、fragment 等 Android 组件中是如何注入的</p>
-
-<ol>
-<li>在 moduel 中，提供所需注入的元素的构造方法</li>
-<li>构造对应的 <code>Component</code>，包含所需的 <code>module</code>，并将<code>module</code> 中的方法暴露出。并申明对应的inject方法 </li>
-<li>在actvity 中注入</li>
-</ol>
-
-<p>这样做的弊端是 <br/>
-<span id="more"></span><!-- more --></p>
-
-<ol>
-<li>即使Dagger使我们的代码耦合性更低，但是如果要面临重构，我们仍然不得不去面对每个Activity中这样数行需要我们「复制」+「粘贴」的代码，这会给我们的重构带来一定的难度（试想一下，如果我们的应用有数十个乃至上百个这样的Activity或者Fragment容器，我们的重构计划，首先就要面对这样数百行的代码）。<br/></li>
-<li>更重要的是，它要求注射类型（FrombulationActivity）知道其注射器。 即使这是通过接口而不是具体类型完成的，它打破了依赖注入的核心原则：一个类不应该知道如何实现依赖注入。</li>
-<li>在开发过程中明显发现，在每个 Activity 中构造对应的<code>Component</code>，然后注入 是件很恶心的事情，而且这个注入并不能写入 base 类中，只能每个 Activity 中再重复写入</li>
-</ol>
-
-<p>在新版的 dagger 中提供了 <code>ContributesAndroidInjector</code>这样一个注解</p>
-
-<p>看下官方文档如何描述的</p>
-
-<pre><code class="language-java">/**
- * Generates an {@link AndroidInjector} for the return type of this method. The injector is
- * implemented with a {@link dagger.Subcomponent} and will be a child of the {@link dagger.Module}&#39;s
- * component.
- *
- * &lt;p&gt;This annotation must be applied to an abstract method in a {@link dagger.Module} that returns
- * a concrete Android framework type (e.g. {@code FooActivity}, {@code BarFragment}, {@code
- * MyService}, etc). The method should have no parameters.
- *
- * &lt;p&gt;For more information, see &lt;a href=&quot;https://google.github.io/dagger/android&quot;&gt;the docs&lt;/a&gt;
- */
-</code></pre>
-
-<p><code>@ContributesAndroidInjector</code>使用在 module 中的抽象方法上。该方法不该有参数，<strong>返回类型必须是 Activity、Fragment 和 Service 等 Android Framework 的类型</strong>。dagger 将会为这样的一个方法生成一个对应的 Subcomponent。这个注解还能接受一系列 Module 作为值，这些 module 将会成为所生成的 Subcomponent 的 module。</p>
-
-<h2 id="toc_0">搭建过程</h2>
-
-<h3 id="toc_1">添加依赖</h3>
-
-<pre><code class="language-gradle">    // Dagger dependencies
-    compile &quot;com.google.dagger:dagger:$rootProject.daggerVersion&quot;
-    annotationProcessor &quot;com.google.dagger:dagger-compiler:$rootProject.daggerVersion&quot;
-    compile &quot;com.google.dagger:dagger-android:$rootProject.daggerVersion&quot;
-    compile &quot;com.google.dagger:dagger-android-support:$rootProject.daggerVersion&quot; // if you use the support libraries
-    annotationProcessor &quot;com.google.dagger:dagger-android-processor:$rootProject.daggerVersion&quot;
-
-</code></pre>
-
-<h2 id="toc_2">ActivityBindingModule</h2>
-
-<p>ActivityBindingModule 使用dagger 框架提供<code>ContributesAndroidInjector注解</code> 辅助我们注入 Android 框架</p>
-
-<pre><code class="language-java">@Module
-public abstract class ActivityBindingModule {
-    @ActivityScoped
-    @ContributesAndroidInjector(modules = TellTruePresenterModule.class)
-    abstract MainActivity mainActivity();
-
-    @ActivityScoped
-    @ContributesAndroidInjector(modules = SplashPresenterModule.class)
-    abstract SplashActivity splashActivity();
-
-    @ActivityScoped
-    @ContributesAndroidInjector(modules = LoginModule.class)
-    abstract LoginActivity loginActivity();
-}
-</code></pre>
-
-<p>以后每次增加 Activity 或者 service 等，只要在这添加一行代码就行了，不需要修改对应的 Activity</p>
-
-<h2 id="toc_3">AppComponent</h2>
-
-<pre><code class="language-java">@Singleton
-@Component(modules = {TasksRepositoryModule.class,
-        ApplicationModule.class,
-        ActivityBindingModule.class,
-        AndroidSupportInjectionModule.class})
-
-public interface AppComponent extends AndroidInjector&lt;DaggerApplication&gt; {
-
-    void inject(MyApplication application);
-
-    TasksRepository getTasksRepository();
-
-    @Override
-    void inject(DaggerApplication instance);
-
-    // Gives us syntactic sugar. we can then do DaggerAppComponent.builder().application(this).build().inject(this);
-    // never having to instantiate any modules or say which module we are passing the application to.
-    // Application will just be provided into our app graph now.
-    @Component.Builder
-    interface Builder {
-
-        @BindsInstance
-        AppComponent.Builder application(Application application);
-
-        AppComponent build();
-    }
-
-//    APIInterface APIInterface();
-}
-
-</code></pre>
-
-<p>注意注解中 module 的依赖</p>
-
-<h2 id="toc_4">ApplicationModule</h2>
-
-<pre><code class="language-java">@Module
-public abstract class ApplicationModule {
-    //expose Application as an injectable context
-    @Binds
-    abstract Context bindContext(Application application);
-
-    @Provides
-    public static APIInterface provideInterface() {
-        Retrofit retrofit= new Retrofit.Builder()
-                .baseUrl(&quot;https://api.github.com&quot;)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        APIInterface service = retrofit.create(APIInterface.class);
-        return service;
-    }
-}
-
-
-</code></pre>
-
-<p>可以把全局的一些单例类放在这个 moduel。 比如<code>RetrofitService</code>、application 的<code>context</code> 等 </p>
-
-<h2 id="toc_5">添加 Activity fragment 的 scope</h2>
-
-<pre><code class="language-java">@Documented
-@Scope
-@Retention(RetentionPolicy.RUNTIME)
-public @interface ActivityScoped {
-}
-
-
-@Scope
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE, ElementType.METHOD})
-public @interface FragmentScoped {}
-
-</code></pre>
-
-<h2 id="toc_6">application 中 inject</h2>
-
-<pre><code class="language-java">public class MyApplication extends DaggerApplication {
-    @Inject
-    TasksRepository tasksRepository;
-
-    @Override
-    protected AndroidInjector&lt;? extends DaggerApplication&gt; applicationInjector() {
-        AppComponent appComponent = DaggerAppComponent.builder().application(this).build();
-        appComponent.inject(this);
-        return appComponent;
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        Utils.init(this);
-    }
-}
-
-</code></pre>
-
-<blockquote>
-<p>注意 <br/>
-activity 和 fragment 等都要 extend 自 dagger 中的对应类，也可以将对应的逻辑抽象至 base 类中</p>
-</blockquote>
-
-<p>最后可以将以上类放入同一个包中<br/>
-<img src="media/15299133100165/15091645703766.png" alt=""/></p>
-
-<h1 id="toc_7">参考</h1>
-
-<blockquote>
-<p><a href="https://juejin.im/entry/593cee56ac502e006b3dc9c2">https://juejin.im/entry/593cee56ac502e006b3dc9c2</a><br/>
-<a href="https://segmentfault.com/a/1190000010016618">https://segmentfault.com/a/1190000010016618</a></p>
-</blockquote>
 
 ]]></content>
   </entry>

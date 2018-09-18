@@ -112,6 +112,61 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15299133100311.html">
+                
+                  <h1>工厂方法模式 Factory Method Pattern</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">定义</h2>
+
+<blockquote>
+<p>工厂方法模式(Factory Method Pattern)又称为工厂模式，也叫虚拟构造器(Virtual Constructor)模式或者多态工厂(Polymorphic Factory)模式，它属于类创建型模式。在工厂方法模式中，工厂父类负责定义创建产品对象的公共接口，而工厂子类则负责生成具体的产品对象，这样做的目的是将产品类的实例化操作延迟到工厂子类中完成，即<strong>通过工厂子类来确定究竟应该实例化哪一个具体产品类</strong>（并不是指子类本身在运行时做决定，而是编写者在创建类时，不需要知道实际的创建产品的类型，选择了使用哪个子类自然决定了实际的创建产品类型）。</p>
+</blockquote>
+
+<h2 id="toc_1">使用场景</h2>
+
+<ul>
+<li>一个类不知道它所需要的对象的类：在工厂方法模式中，客户端不需要知道具体产品类的类名，只需要知道所对应的工厂即可，具体的产品对象由具体工厂类创建；客户端需要知道创建具体产品的工厂类。</li>
+<li>一个类通过其子类来指定创建哪个对象：在工厂方法模式中，对于抽象工厂类只需要提供一个创建产品的接口，而由其子类来确定具体要创建的对象，利用面向对象的多态性和里氏代换原则，在程序运行时，子类对象将覆盖父类对象，从而使得系统更容易扩展。</li>
+<li>将创建对象的任务 给多个工厂子类中的某一个，客户端在使用时可以无须关心是哪一个工厂子类创建产品子类，需要时再动态指定，可将具体工厂类的类名存储在配置文件或数据库中。</li>
+</ul>
+
+<h2 id="toc_2">UML 图</h2>
+
+<p><img src="http://7xqcjz.com1.z0.glb.clouddn.com/2016-02-28-14560634114616.png" alt=""/></p>
+
+<p>Product：抽象产品<br/>
+ConcreteProduct：具体产品<br/>
+Factory：抽象工厂<br/>
+ConcreteFactory：具体工厂，实现了实际造出产品的方法</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15299133100311.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2016/2/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java.html'>Java</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15299133099653.html">
                 
                   <h1>装饰者模式 Decorator Design Pattern</h1>
@@ -608,49 +663,6 @@ o = null;     // 帮助垃圾收集器回收此对象
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15299133100598.html">
-                
-                  <h1>Android 内存泄露</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>内存泄露的定义: <br/>
-当某些对象不再被应用程序所使用,但是由于仍然被引用而导致垃圾收集器不能释放(Remove,移除)他们.</p>
-</blockquote>
-
-<h2 id="toc_0">产生的原因：</h2>
-
-<p>内存对象明明已经不需要的时候，还仍然保留着这块内存和它的访问方式（引用）</p>
-
-<p><em>长生命周期的对象持有短生命周期对象的引用就很可能发生内存泄露，尽管短生命周期对象已经不再需要，但是因为长生命周期对象持有它的引用而导致不能被回收，这就是java中内存泄露的发生场景。</em></p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15299133100598.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2016/1/14</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='Android.html'>Android</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -728,13 +740,19 @@ o = null;     // 帮助垃圾收集器回收此对象
 	      
 		      
 			      <li class="post">
-			        <a href="mobile_growth_stack_part_2.html">移动增长堆栈（2）--洞察与分析</a>
+			        <a href="mobile_growth_stack_part_2.html">移动增长栈（2）--洞察与分析</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="mobile_growth_stack_part_1.html">移动增长堆栈（1）--概述</a>
+			        <a href="mobile_growth_stack_part_3.html">移动增长堆栈（3）--获客</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="mobile_growth_stack_part_1.html">移动增长栈（1）--概述</a>
 			      </li>
 		     
 		  
@@ -747,12 +765,6 @@ o = null;     // 帮助垃圾收集器回收此对象
 		      
 			      <li class="post">
 			        <a href="15318354800090.html">完整功能点设计</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15318107329806.html">产品调研</a>
 			      </li>
 		     
 		  
